@@ -3,6 +3,216 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/684.png",
+    "name": "PEC Zwolle",
+    "tla": "ZWO"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 0,
+    "truncated_mass": 1.981e-08
+   },
+   "expected_goals": {
+    "away": 1.154,
+    "home": 1.623
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7137,
+    "ht_over_1.5": 0.3556,
+    "ht_over_2.5": 0.1317,
+    "ht_under_0.5": 0.2863,
+    "ht_under_1.5": 0.6444,
+    "ht_under_2.5": 0.8683,
+    "htft_11": 0.2952,
+    "htft_12": 0.0175,
+    "htft_1X": 0.0503,
+    "htft_21": 0.027,
+    "htft_22": 0.1539,
+    "htft_2X": 0.0503,
+    "htft_X1": 0.1605,
+    "htft_X2": 0.0998,
+    "htft_XX": 0.1456
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/6806.png",
+    "name": "Sparta Rotterdam",
+    "tla": "SPA"
+   },
+   "match_id": 558250,
+   "matchday": 5,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.273,
+    "1x2_draw": 0.2465,
+    "1x2_home": 0.4806,
+    "btts_yes": 0.5424,
+    "over_2.5": 0.5221,
+    "under_2.5": 0.4779
+   },
+   "reasons": [
+    "Gol attesi: Sparta Rotterdam 1.62, PEC Zwolle 1.15 (totale 2.78)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-04T18:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1.png",
+    "name": "1. FC Köln",
+    "tla": "KOE"
+   },
+   "competition": "BL1",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 73,
+     "p_min": 68,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 11,
+    "truncated_mass": 3.552e-06
+   },
+   "expected_goals": {
+    "away": 1.285,
+    "home": 2.595
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8299,
+    "ht_over_1.5": 0.5287,
+    "ht_over_2.5": 0.2618,
+    "ht_under_0.5": 0.1701,
+    "ht_under_1.5": 0.4713,
+    "ht_under_2.5": 0.7382,
+    "htft_11": 0.4462,
+    "htft_12": 0.016,
+    "htft_1X": 0.0441,
+    "htft_21": 0.0416,
+    "htft_22": 0.0975,
+    "htft_2X": 0.0441,
+    "htft_X1": 0.168,
+    "htft_X2": 0.0574,
+    "htft_XX": 0.085
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/10.png",
+    "name": "VfB Stuttgart",
+    "tla": "VFB"
+   },
+   "match_id": 565791,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8633,
+    "band_p95": 0.9632,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_0.5",
+    "label": "Casa Over 0.5",
+    "p": 0.9013,
+    "p_raw": 0.9194,
+    "reference": 0.7853,
+    "runners_up": [
+     {
+      "band_p5": 0.5913,
+      "band_p95": 0.8415,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6078,
+      "p_raw": 0.7225,
+      "reference": 0.484,
+      "score": 0.030811,
+      "shrink_alpha": 0.519,
+      "sigma": 0.077
+     },
+     {
+      "band_p5": 0.6323,
+      "band_p95": 0.8543,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6564,
+      "p_raw": 0.7447,
+      "reference": 0.5383,
+      "score": 0.028678,
+      "shrink_alpha": 0.5719,
+      "sigma": 0.0692
+     },
+     {
+      "band_p5": 0.8651,
+      "band_p95": 0.9715,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9133,
+      "p_raw": 0.9278,
+      "reference": 0.8329,
+      "score": 0.027269,
+      "shrink_alpha": 0.8472,
+      "sigma": 0.034
+     },
+     {
+      "band_p5": 0.8651,
+      "band_p95": 0.9715,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9133,
+      "p_raw": 0.9278,
+      "reference": 0.8329,
+      "score": 0.027269,
+      "shrink_alpha": 0.8472,
+      "sigma": 0.034
+     },
+     {
+      "band_p5": 0.505,
+      "band_p95": 0.7839,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5262,
+      "p_raw": 0.6507,
+      "reference": 0.4217,
+      "score": 0.022099,
+      "shrink_alpha": 0.4566,
+      "sigma": 0.0873
+     }
+    ],
+    "score": 0.047496,
+    "shrink_alpha": 0.865,
+    "sigma": 0.0316
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1766,
+    "1x2_draw": 0.1727,
+    "1x2_home": 0.6507,
+    "btts_yes": 0.6577,
+    "over_2.5": 0.7363,
+    "under_2.5": 0.2637
+   },
+   "reasons": [
+    "Gol attesi: VfB Stuttgart 2.60, 1. FC Köln 1.28 (totale 3.88).",
+    "Casa Over 0.5: 90 su 100, 12 punti sopra la media di riferimento (79 su 100).",
+    "Banda di incertezza: fra 86 e 96 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-04T18:30:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/7397.png",
     "name": "Como 1907",
     "tla": "COM"
@@ -10,7 +220,7 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 67,
+     "S_min": 68,
      "p_min": 66,
      "sigma_max": 0
     },
@@ -143,15 +353,163 @@
    "reasons": [
     "Gol attesi: Genoa CFC 0.88, Como 1907 1.59 (totale 2.47).",
     "X2 (pareggio o ospite): 73 su 100, 13 punti sopra la media di riferimento (61 su 100).",
-    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 69%)."
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 69%)."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-09-04T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/64.png",
+    "name": "Liverpool FC",
+    "tla": "LIV"
+   },
+   "competition": "PL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 65,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 13,
+    "truncated_mass": 6.015e-06
+   },
+   "expected_goals": {
+    "away": 2.728,
+    "home": 0.942
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8076,
+    "ht_over_1.5": 0.4905,
+    "ht_over_2.5": 0.2292,
+    "ht_under_0.5": 0.1924,
+    "ht_under_1.5": 0.5095,
+    "ht_under_2.5": 0.7708,
+    "htft_11": 0.0565,
+    "htft_12": 0.0372,
+    "htft_1X": 0.0342,
+    "htft_21": 0.009,
+    "htft_22": 0.5231,
+    "htft_2X": 0.0342,
+    "htft_X1": 0.0387,
+    "htft_X2": 0.1883,
+    "htft_XX": 0.0788
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/349.png",
+    "name": "Ipswich Town FC",
+    "tla": "IPS"
+   },
+   "match_id": 560566,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.814,
+    "band_p95": 0.9449,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.8255,
+    "p_raw": 0.8914,
+    "reference": 0.5759,
+    "runners_up": [
+     {
+      "band_p5": 0.6269,
+      "band_p95": 0.8466,
+      "family": "1x2",
+      "key": "1x2_away",
+      "label": "Vittoria ospite",
+      "p": 0.5615,
+      "p_raw": 0.7434,
+      "reference": 0.3165,
+      "score": 0.127197,
+      "shrink_alpha": 0.5738,
+      "sigma": 0.069
+     },
+     {
+      "band_p5": 0.6269,
+      "band_p95": 0.8466,
+      "family": "handicap_asian",
+      "key": "ah_away_-0.5",
+      "label": "Asiatico ospite -0.5",
+      "p": 0.5615,
+      "p_raw": 0.7434,
+      "reference": 0.3165,
+      "score": 0.127197,
+      "shrink_alpha": 0.5738,
+      "sigma": 0.069
+     },
+     {
+      "band_p5": 0.9282,
+      "band_p95": 0.9863,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9546,
+      "p_raw": 0.9644,
+      "reference": 0.7777,
+      "score": 0.123623,
+      "shrink_alpha": 0.9477,
+      "sigma": 0.0188
+     },
+     {
+      "band_p5": 0.9282,
+      "band_p95": 0.9863,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9546,
+      "p_raw": 0.9644,
+      "reference": 0.7777,
+      "score": 0.123623,
+      "shrink_alpha": 0.9477,
+      "sigma": 0.0188
+     },
+     {
+      "band_p5": 0.6869,
+      "band_p95": 0.8759,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.6746,
+      "p_raw": 0.7912,
+      "reference": 0.4427,
+      "score": 0.109024,
+      "shrink_alpha": 0.6654,
+      "sigma": 0.0567
+     }
+    ],
+    "score": 0.142277,
+    "shrink_alpha": 0.7911,
+    "sigma": 0.0411
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.7434,
+    "1x2_draw": 0.148,
+    "1x2_home": 0.1086,
+    "btts_yes": 0.5605,
+    "over_2.5": 0.7022,
+    "under_2.5": 0.2978
+   },
+   "reasons": [
+    "Gol attesi: Ipswich Town FC 0.94, Liverpool FC 2.73 (totale 3.67).",
+    "X2 (pareggio o ospite): 83 su 100, 25 punti sopra la media di riferimento (58 su 100).",
+    "Banda di incertezza: fra 81 e 94 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-04T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T09:38:50Z",
+ "generated_at": "2026-08-08T13:29:01Z",
  "schema_version": 1,
- "silence_count": 0,
- "total": 1
+ "silence_count": 1,
+ "total": 4
 }

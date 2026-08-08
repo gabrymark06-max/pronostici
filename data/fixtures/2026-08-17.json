@@ -1,0 +1,341 @@
+{
+ "date": "2026-08-17",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/404.png",
+    "name": "Wrexham AFC",
+    "tla": "WRE"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 77,
+     "p_min": 68,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 2,
+    "truncated_mass": 2.842e-08
+   },
+   "expected_goals": {
+    "away": 1.667,
+    "home": 1.337
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7442,
+    "ht_over_1.5": 0.3955,
+    "ht_over_2.5": 0.1577,
+    "ht_under_0.5": 0.2558,
+    "ht_under_1.5": 0.6045,
+    "ht_under_2.5": 0.8423,
+    "htft_11": 0.1798,
+    "htft_12": 0.0284,
+    "htft_1X": 0.0526,
+    "htft_21": 0.0214,
+    "htft_22": 0.2777,
+    "htft_2X": 0.0526,
+    "htft_X1": 0.1069,
+    "htft_X2": 0.1465,
+    "htft_XX": 0.134
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/715.png",
+    "name": "Cardiff City FC",
+    "tla": "CAR"
+   },
+   "match_id": 561772,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7091,
+    "band_p95": 0.883,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "ag_over_0.5",
+    "label": "Ospite Over 0.5",
+    "p": 0.7676,
+    "p_raw": 0.8037,
+    "reference": 0.6917,
+    "runners_up": [
+     {
+      "band_p5": 0.5448,
+      "band_p95": 0.8168,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.6263,
+      "p_raw": 0.6898,
+      "reference": 0.5624,
+      "score": 0.008413,
+      "shrink_alpha": 0.5014,
+      "sigma": 0.0798
+     },
+     {
+      "band_p5": 0.5448,
+      "band_p95": 0.8168,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.6263,
+      "p_raw": 0.6898,
+      "reference": 0.5624,
+      "score": 0.008413,
+      "shrink_alpha": 0.5014,
+      "sigma": 0.0798
+     },
+     {
+      "band_p5": 0.5448,
+      "band_p95": 0.8168,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.6263,
+      "p_raw": 0.6898,
+      "reference": 0.5624,
+      "score": 0.008413,
+      "shrink_alpha": 0.5014,
+      "sigma": 0.0798
+     }
+    ],
+    "score": 0.014245,
+    "shrink_alpha": 0.6779,
+    "sigma": 0.0552
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.4526,
+    "1x2_draw": 0.2373,
+    "1x2_home": 0.3102,
+    "btts_yes": 0.5854,
+    "over_2.5": 0.5721,
+    "under_2.5": 0.4279
+   },
+   "reasons": [
+    "Gol attesi: Cardiff City FC 1.34, Wrexham AFC 1.67 (totale 3.00).",
+    "Ospite Over 0.5: 77 su 100, 8 punti sopra la media di riferimento (69 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 68%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-17T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1903.png",
+    "name": "Sport Lisboa e Benfica",
+    "tla": "BEN"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 68,
+     "p_min": 68,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 9,
+    "truncated_mass": 9.318e-07
+   },
+   "expected_goals": {
+    "away": 2.292,
+    "home": 0.677
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7366,
+    "ht_over_1.5": 0.3852,
+    "ht_over_2.5": 0.1508,
+    "ht_under_0.5": 0.2634,
+    "ht_under_1.5": 0.6148,
+    "ht_under_2.5": 0.8492,
+    "htft_11": 0.049,
+    "htft_12": 0.028,
+    "htft_1X": 0.0314,
+    "htft_21": 0.006,
+    "htft_22": 0.5017,
+    "htft_2X": 0.0314,
+    "htft_X1": 0.0385,
+    "htft_X2": 0.209,
+    "htft_XX": 0.1051
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/6618.png",
+    "name": "Casa Pia AC",
+    "tla": "CAS"
+   },
+   "match_id": 567267,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8417,
+    "band_p95": 0.951,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.8569,
+    "p_raw": 0.9033,
+    "reference": 0.5721,
+    "runners_up": [
+     {
+      "band_p5": 0.9503,
+      "band_p95": 0.9905,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9701,
+      "p_raw": 0.9746,
+      "reference": 0.7768,
+      "score": 0.155523,
+      "shrink_alpha": 0.9774,
+      "sigma": 0.0122
+     },
+     {
+      "band_p5": 0.9503,
+      "band_p95": 0.9905,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9701,
+      "p_raw": 0.9746,
+      "reference": 0.7768,
+      "score": 0.155523,
+      "shrink_alpha": 0.9774,
+      "sigma": 0.0122
+     },
+     {
+      "band_p5": 0.6272,
+      "band_p95": 0.8329,
+      "family": "1x2",
+      "key": "1x2_away",
+      "label": "Vittoria ospite",
+      "p": 0.5782,
+      "p_raw": 0.7344,
+      "reference": 0.3092,
+      "score": 0.153885,
+      "shrink_alpha": 0.6327,
+      "sigma": 0.061
+     },
+     {
+      "band_p5": 0.6272,
+      "band_p95": 0.8329,
+      "family": "handicap_asian",
+      "key": "ah_away_-0.5",
+      "label": "Asiatico ospite -0.5",
+      "p": 0.5782,
+      "p_raw": 0.7344,
+      "reference": 0.3092,
+      "score": 0.153885,
+      "shrink_alpha": 0.6327,
+      "sigma": 0.061
+     },
+     {
+      "band_p5": 0.9327,
+      "band_p95": 0.9877,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.9582,
+      "p_raw": 0.9662,
+      "reference": 0.8039,
+      "score": 0.103521,
+      "shrink_alpha": 0.9503,
+      "sigma": 0.0183
+     }
+    ],
+    "score": 0.189414,
+    "shrink_alpha": 0.8598,
+    "sigma": 0.0323
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.7344,
+    "1x2_draw": 0.1689,
+    "1x2_home": 0.0967,
+    "btts_yes": 0.435,
+    "over_2.5": 0.5654,
+    "under_2.5": 0.4346
+   },
+   "reasons": [
+    "Gol attesi: Casa Pia AC 0.68, Sport Lisboa e Benfica 2.29 (totale 2.97).",
+    "X2 (pareggio o ospite): 86 su 100, 28 punti sopra la media di riferimento (57 su 100).",
+    "Banda di incertezza: fra 84 e 95 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-17T19:15:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/4287.png",
+    "name": "Clube do Remo",
+    "tla": "CRE"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 0,
+    "truncated_mass": 5.822e-08
+   },
+   "expected_goals": {
+    "away": 1.049,
+    "home": 1.786
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7226,
+    "ht_over_1.5": 0.3669,
+    "ht_over_2.5": 0.1388,
+    "ht_under_0.5": 0.2774,
+    "ht_under_1.5": 0.6331,
+    "ht_under_2.5": 0.8612,
+    "htft_11": 0.3435,
+    "htft_12": 0.0147,
+    "htft_1X": 0.0475,
+    "htft_21": 0.0289,
+    "htft_22": 0.1237,
+    "htft_2X": 0.0475,
+    "htft_X1": 0.1742,
+    "htft_X2": 0.0828,
+    "htft_XX": 0.1374
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/6684.png",
+    "name": "SC Internacional",
+    "tla": "SCI"
+   },
+   "match_id": 554965,
+   "matchday": 23,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2258,
+    "1x2_draw": 0.2316,
+    "1x2_home": 0.5426,
+    "btts_yes": 0.5262,
+    "over_2.5": 0.5327,
+    "under_2.5": 0.4673
+   },
+   "reasons": [
+    "Gol attesi: SC Internacional 1.79, Clube do Remo 1.05 (totale 2.84)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-08-17T23:00:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T13:29:01Z",
+ "schema_version": 1,
+ "silence_count": 1,
+ "total": 3
+}

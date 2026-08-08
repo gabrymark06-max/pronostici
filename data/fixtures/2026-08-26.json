@@ -1,0 +1,158 @@
+{
+ "date": "2026-08-26",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/92.png",
+    "name": "Real Sociedad de Fútbol",
+    "tla": "RSO"
+   },
+   "competition": "PD",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 65,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 12,
+    "truncated_mass": 3.506e-06
+   },
+   "expected_goals": {
+    "away": 0.854,
+    "home": 2.592
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7754,
+    "ht_over_1.5": 0.44,
+    "ht_over_2.5": 0.1895,
+    "ht_under_0.5": 0.2246,
+    "ht_under_1.5": 0.56,
+    "ht_under_2.5": 0.8105,
+    "htft_11": 0.5088,
+    "htft_12": 0.0082,
+    "htft_1X": 0.0333,
+    "htft_21": 0.0355,
+    "htft_22": 0.0528,
+    "htft_2X": 0.0333,
+    "htft_X1": 0.2025,
+    "htft_X2": 0.0396,
+    "htft_XX": 0.086
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/86.png",
+    "name": "Real Madrid CF",
+    "tla": "RMA"
+   },
+   "match_id": 564631,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6391,
+    "band_p95": 0.8349,
+    "cluster_members": [
+     "ah_home_-0.5",
+     "hg_over_1.5",
+     "combo_1_over_1.5"
+    ],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6376,
+    "p_raw": 0.7421,
+    "reference": 0.4605,
+    "runners_up": [
+     {
+      "band_p5": 0.8294,
+      "band_p95": 0.945,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.8663,
+      "p_raw": 0.8959,
+      "reference": 0.7101,
+      "score": 0.068739,
+      "shrink_alpha": 0.8404,
+      "sigma": 0.0349
+     },
+     {
+      "band_p5": 0.8294,
+      "band_p95": 0.945,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8663,
+      "p_raw": 0.8959,
+      "reference": 0.7101,
+      "score": 0.068739,
+      "shrink_alpha": 0.8404,
+      "sigma": 0.0349
+     },
+     {
+      "band_p5": 0.8294,
+      "band_p95": 0.945,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.8663,
+      "p_raw": 0.8959,
+      "reference": 0.7101,
+      "score": 0.068739,
+      "shrink_alpha": 0.8404,
+      "sigma": 0.0349
+     },
+     {
+      "band_p5": 0.6829,
+      "band_p95": 0.8531,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.7076,
+      "p_raw": 0.7783,
+      "reference": 0.5393,
+      "score": 0.059298,
+      "shrink_alpha": 0.7044,
+      "sigma": 0.0518
+     },
+     {
+      "band_p5": 0.8747,
+      "band_p95": 0.9558,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.9099,
+      "p_raw": 0.9212,
+      "reference": 0.7998,
+      "score": 0.045424,
+      "shrink_alpha": 0.9072,
+      "sigma": 0.0256
+     }
+    ],
+    "score": 0.063262,
+    "shrink_alpha": 0.6289,
+    "sigma": 0.0615
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1041,
+    "1x2_draw": 0.1539,
+    "1x2_home": 0.7421,
+    "btts_yes": 0.5252,
+    "over_2.5": 0.6648,
+    "under_2.5": 0.3352
+   },
+   "reasons": [
+    "Gol attesi: Real Madrid CF 2.59, Real Sociedad de Fútbol 0.85 (totale 3.45).",
+    "Vittoria casa: 64 su 100, 18 punti sopra la media di riferimento (46 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 63%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-26T19:00:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T13:29:01Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}

@@ -1,0 +1,157 @@
+{
+ "date": "2026-08-27",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/77.png",
+    "name": "Athletic Club",
+    "tla": "ATH"
+   },
+   "competition": "PD",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 65,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 11,
+    "truncated_mass": 6.447e-06
+   },
+   "expected_goals": {
+    "away": 0.776,
+    "home": 2.746
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7827,
+    "ht_over_1.5": 0.451,
+    "ht_over_2.5": 0.1978,
+    "ht_under_0.5": 0.2173,
+    "ht_under_1.5": 0.549,
+    "ht_under_2.5": 0.8022,
+    "htft_11": 0.5468,
+    "htft_12": 0.0064,
+    "htft_1X": 0.029,
+    "htft_21": 0.0342,
+    "htft_22": 0.0412,
+    "htft_2X": 0.029,
+    "htft_X1": 0.2044,
+    "htft_X2": 0.0319,
+    "htft_XX": 0.0771
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/81.png",
+    "name": "FC Barcelona",
+    "tla": "FCB"
+   },
+   "match_id": 564630,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8662,
+    "band_p95": 0.9558,
+    "cluster_members": [
+     "eh_1_home",
+     "ah_home_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_1x",
+    "label": "1X (casa o pareggio)",
+    "p": 0.8947,
+    "p_raw": 0.9175,
+    "reference": 0.7101,
+    "runners_up": [
+     {
+      "band_p5": 0.6841,
+      "band_p95": 0.866,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.6728,
+      "p_raw": 0.7799,
+      "reference": 0.4605,
+      "score": 0.091469,
+      "shrink_alpha": 0.6646,
+      "sigma": 0.0568
+     },
+     {
+      "band_p5": 0.6841,
+      "band_p95": 0.866,
+      "family": "handicap_asian",
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.6728,
+      "p_raw": 0.7799,
+      "reference": 0.4605,
+      "score": 0.091469,
+      "shrink_alpha": 0.6646,
+      "sigma": 0.0568
+     },
+     {
+      "band_p5": 0.5726,
+      "band_p95": 0.7991,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.5417,
+      "p_raw": 0.6969,
+      "reference": 0.3402,
+      "score": 0.084961,
+      "shrink_alpha": 0.5649,
+      "sigma": 0.0702
+     },
+     {
+      "band_p5": 0.6374,
+      "band_p95": 0.8448,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6207,
+      "p_raw": 0.7521,
+      "reference": 0.4233,
+      "score": 0.078692,
+      "shrink_alpha": 0.6005,
+      "sigma": 0.0653
+     },
+     {
+      "band_p5": 0.7134,
+      "band_p95": 0.8762,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.7248,
+      "p_raw": 0.8023,
+      "reference": 0.5393,
+      "score": 0.072521,
+      "shrink_alpha": 0.7055,
+      "sigma": 0.0517
+     }
+    ],
+    "score": 0.100144,
+    "shrink_alpha": 0.8902,
+    "sigma": 0.0281
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.0825,
+    "1x2_draw": 0.1376,
+    "1x2_home": 0.7799,
+    "btts_yes": 0.4993,
+    "over_2.5": 0.6771,
+    "under_2.5": 0.3229
+   },
+   "reasons": [
+    "Gol attesi: FC Barcelona 2.75, Athletic Club 0.78 (totale 3.52).",
+    "1X (casa o pareggio): 89 su 100, 18 punti sopra la media di riferimento (71 su 100).",
+    "Banda di incertezza: fra 87 e 96 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-27T19:00:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T13:29:01Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}
