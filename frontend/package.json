@@ -1,0 +1,34 @@
+{
+  "name": "pronostici-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bollettino statistico di pronostici calcistici — Next.js in export statico, nessun runtime.",
+  "scripts": {
+    "sync:tokens": "node scripts/sync-tokens.mjs",
+    "check:tokens": "node scripts/sync-tokens.mjs --check",
+    "crests": "node scripts/fetch-crests.mjs",
+    "predev": "npm run sync:tokens",
+    "dev": "next dev",
+    "prebuild": "npm run check:tokens",
+    "build": "next build",
+    "postbuild": "node scripts/check-parole-vietate.mjs",
+    "start": "npx --yes serve@14 out -l 4321",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@types/node": "22.15.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "9.34.0",
+    "eslint-config-next": "^16.3.0",
+    "typescript": "5.8.3"
+  }
+}

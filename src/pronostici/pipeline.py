@@ -125,7 +125,7 @@ def _reasons(
     )
     if pick.alpha < 0.7:
         out.append(
-            f"Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' "
+            f"Stima prudente: l'incertezza è alta, il valore mostrato è già "
             f"riportato verso la media (peso della stima {pick.alpha:.0%})."
         )
     else:

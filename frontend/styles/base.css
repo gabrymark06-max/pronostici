@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Base — il telaio editoriale.
+   Nessun hex grezzo, nessun px magico: solo token di tokens.css.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Nessuno scroll orizzontale di pagina, a nessuna larghezza. */
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure,
+table {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* --- Misure di pagina. Colonna singola, sempre: nessuna colonna laterale,
+       nessun contenitore compatibile con un banner (MASTER 4 e 9). --------- */
+.colonna {
+  width: 100%;
+  max-width: var(--w-page);
+  margin-inline: auto;
+  padding-inline: var(--s-4);
+}
+
+@media (min-width: 768px) {
+  .colonna {
+    padding-inline: var(--s-5);
+  }
+}
+
+.colonna--lista {
+  max-width: calc(var(--w-list) + 2 * var(--s-5));
+}
+.colonna--scheda {
+  max-width: calc(var(--w-card) + 2 * var(--s-5));
+}
+.colonna--prosa {
+  max-width: calc(var(--w-prose) + 2 * var(--s-5));
+}
+
+/* --- Tipografia di sistema -------------------------------------------- */
+.titolo-pagina {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-l);
+  line-height: var(--lh-title);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.titolo-sezione {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  color: var(--ink);
+}
+
+.micro {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.corpo {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+.corpo-s {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+/* La riga di definizione può contenere un link: resta leggibile. */
+.definizione a {
+  color: var(--accent);
+}
+
+/* --- Salta al contenuto ------------------------------------------------- */
+.salta-al-contenuto {
+  position: absolute;
+  left: var(--s-3);
+  top: var(--s-3);
+  z-index: 10;
+  transform: translateY(-200%);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--rule-accent);
+  padding: var(--s-3) var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform var(--dur-1) var(--ease);
+}
+
+.salta-al-contenuto:focus {
+  transform: translateY(0);
+}
+
+/* --- Masthead ----------------------------------------------------------- */
+.masthead {
+  border-top: 2px solid var(--rule-accent);
+  border-bottom: 1px solid var(--rule-hair);
+  background: var(--paper);
+}
+
+.masthead__riga {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+}
+
+.masthead__testata {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+}
+
+.masthead__testata:hover {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  padding-bottom: var(--s-2);
+}
+
+@media (min-width: 480px) {
+  .nav {
+    gap: var(--s-5);
+  }
+}
+
+.nav__voce {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding-block: var(--s-1);
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease);
+}
+
+.nav__voce:hover {
+  color: var(--ink);
+}
+
+/* Voce attiva: sottolineatura + aria-current. Mai il solo colore. */
+.nav__voce[aria-current='page'] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* --- Interruttore del tema ---------------------------------------------- */
+.tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  padding-inline: var(--s-3);
+  background: transparent;
+  border: 1px solid var(--rule-hair);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+
+.tema:hover {
+  background: var(--paper-alt);
+  color: var(--ink);
+}
+
+/* --- Piè di pagina ------------------------------------------------------ */
+.pie {
+  flex-shrink: 0;
+  border-top: 2px solid var(--rule-heavy);
+  margin-top: var(--s-9);
+  padding-block: var(--s-6) var(--s-7);
+}
+
+.pie__gratuita {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: var(--w-prose);
+}
+
+.pie__righe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+/* --- Bersagli tattili -----------------------------------------------------
+   I link che stanno DA SOLI su una riga sono bersagli veri: 44px pieni.
+   I link dentro una frase restano inline — allargarli spezzerebbe l'interlinea
+   della prosa, ed è l'eccezione esplicita di WCAG 2.5.5 ("inline"). */
+.silenzio__rimando a,
+.quote__nota a,
+.giorno-vuoto a,
+.registro__partita,
+.ricevuta dd a,
+.corpo > a:only-child {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+}
+
+/* --- Contenitore per tabelle larghe: scorre il contenitore, mai la pagina - */
+.scorrevole {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- Tabelle di sistema ------------------------------------------------- */
+.tabella {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.tabella caption {
+  text-align: left;
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  padding-bottom: var(--s-3);
+}
+
+.tabella th,
+.tabella td {
+  text-align: left;
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  border-bottom: 1px solid var(--rule-hair);
+  vertical-align: baseline;
+}
+
+.tabella thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border-bottom-width: 2px;
+  border-bottom-color: var(--rule-heavy);
+  white-space: nowrap;
+}
+
+.tabella tbody th {
+  font-weight: 500;
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+.tabella td {
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+.tabella .num {
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.tabella tbody tr:last-child th,
+.tabella tbody tr:last-child td {
+  border-bottom: none;
+}

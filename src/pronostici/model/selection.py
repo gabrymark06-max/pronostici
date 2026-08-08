@@ -24,7 +24,13 @@ from .markets import catalog
 # grid search: con due stagioni il budget statistico non la permette (7.2).
 P_MIN = 0.50  # sicurezza: non consigliamo esiti meno probabili che no
 SIGMA_MAX = 0.12  # sicurezza: stima troppo instabile per dire qualcosa
-S_MIN = 0.005  # editoriale: sotto, non dice niente. L'unica manopola
+# Editoriale: sotto questa soglia il pronostico non dice niente piu' della
+# media. E' l'unica manopola, e non e' stata scelta a mano: il backtest del
+# 2026-08-08 (521 rifit, 4.995 partite) ha misurato la curva soglia -> tasso di
+# silenzio, e 0,008 e' il punto che porta il silenzio al 26,0%, il piu' vicino
+# al 25% dichiarato nel protocollo *prima* della corsa. Il valore precedente
+# (0,005) taceva sul 17,4%. Si sceglie il tasso, si legge la soglia.
+S_MIN = 0.008
 RHO_MAX = 0.80  # soglia di clustering per correlazione
 TAU_DEFAULT = 0.08  # sd a priori per famiglia, finche' non c'e' il backtest
 

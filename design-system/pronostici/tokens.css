@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Pronostici — design tokens
+   Fonte di verità: design-system/pronostici/MASTER.md
+   Nessun componente può contenere un hex grezzo o un px magico.
+   Contrasti verificati (WCAG 2.1) — vedi MASTER.md §3.4.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* --- 1. Carta e inchiostro (neutri) ------------------------------------ */
+  --paper:        #F4F1EA;  /* fondo pagina                                  */
+  --paper-alt:    #EAE6DC;  /* blocchi "documento diverso": backtest, revisione */
+  --ink:          #171614;  /* testo primario            16.03:1 su paper    */
+  --ink-2:        #4C473D;  /* testo secondario           8.18:1 su paper    */
+  --ink-muted:    #6B6558;  /* riga di definizione, n=    5.13:1 su paper    */
+
+  /* --- 2. Filetti (il sistema di elevazione: niente ombre) ---------------- */
+  --rule-hair:    #6B6558;  /* 1px, divisori interni                         */
+  --rule-heavy:   #171614;  /* 2px, confini di sezione                       */
+  --rule-accent:  #8E1F3D;  /* 2px, testata di card e masthead               */
+
+  /* --- 3. LINGUAGGIO A — PROBABILITÀ (pieno, numerico, orizzontale) ------- */
+  --prob-fill:    #171614;  /* riempimento barra      10.75:1 su track       */
+  --prob-track:   #CFC7B4;  /* traccia barra                                 */
+  --prob-baseline:#6B6558;  /* 1px sotto la barra: definisce l'estensione     */
+
+  /* --- 4. LINGUAGGIO B — AFFIDABILITÀ (solo tratto, mai pieno) ------------ */
+  --rel-stroke:   #35566F;  /* banda p5–p95, chip, glifi matematici  6.86:1  */
+  --rel-stroke-w: 1.5px;
+
+  /* --- 5. Accento editoriale (navigazione e link — MAI sui dati) ---------- */
+  --accent:       #8E1F3D;  /* carminio da stampa          7.71:1 su paper   */
+  --focus:        #8E1F3D;
+
+  /* --- 6. Esito a partita conclusa (sempre accompagnato da parola+glifo) -- */
+  --outcome-yes:  #2C5E3F;  /* 6.70:1                                        */
+  --outcome-no:   #8A2C2C;  /* 7.51:1                                        */
+  --warn:         #6B4E00;  /* 6.86:1 — solo per "dati non leggibili"        */
+
+  /* --- 7. Tipografia ----------------------------------------------------- */
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-text:    var(--font-public-sans), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-red-hat-mono), ui-monospace, "SF Mono", monospace;
+
+  --fs-display-xl: clamp(2.75rem, 10vw, 3.5rem);  /* 44→56  il numero grande */
+  --fs-display-l:  clamp(1.75rem, 5vw, 2.125rem); /* 28→34  titoli di pagina */
+  --fs-h2:         1.5rem;    /* 24 */
+  --fs-h3:         1.1875rem; /* 19 */
+  --fs-body:       1.0625rem; /* 17 */
+  --fs-body-s:     0.9375rem; /* 15 */
+  --fs-label:      0.8125rem; /* 13 — mono, maiuscoletto                     */
+  --fs-micro:      0.75rem;   /* 12 — PAVIMENTO ASSOLUTO, mai sotto          */
+
+  --lh-tight:  1.02;
+  --lh-title:  1.15;
+  --lh-body:   1.6;
+  --lh-prose:  1.7;
+  --ls-label:  0.06em;
+
+  /* --- 8. Spazio (4px di base; densità deliberata, non uniforme) ---------- */
+  --s-1:  4px;   --s-2:  8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 24px;   --s-6: 32px;   --s-7: 48px;  --s-8: 64px;  --s-9: 96px;
+
+  /* --- 9. Raggi: zero ovunque, tranne il chip di provenienza -------------- */
+  --radius:       0;
+  --radius-chip:  999px;   /* l'UNICO elemento arrotondato del prodotto      */
+
+  /* --- 10. Ombre: nessuna. L'elevazione è un filetto. --------------------- */
+  --shadow: none;
+
+  /* --- 11. Movimento ----------------------------------------------------- */
+  --dur-1: 120ms;  /* focus, sottolineatura nav                              */
+  --dur-2: 180ms;  /* tinta di hover, chip                                   */
+  --dur-3: 260ms;  /* apertura del blocco "altre famiglie di mercato"        */
+  --ease:  cubic-bezier(0.2, 0, 0, 1);
+
+  /* --- 12. Misure di pagina (nessuna colonna laterale: mai) --------------- */
+  --w-prose: 68ch;
+  --w-card:  720px;
+  --w-list:  880px;
+  --w-page: 1120px;
+
+  /* --- 13. Bersagli tattili ---------------------------------------------- */
+  --tap-min: 44px;
+  --row-min: 48px;
+
+  /* --- 14. Icone (Lucide, tratto 1.5) ------------------------------------ */
+  --icon-sm: 16px;  --icon-md: 20px;  --icon-lg: 24px;  --icon-stroke: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Tema scuro. Attivo sia via preferenza di sistema sia via [data-theme].
+   Entrambi i temi sono di prima classe: contrasti verificati separatamente.
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:        #14130F;
+    --paper-alt:    #1B1915;
+    --ink:          #EFEBE2;  /* 15.62:1 */
+    --ink-2:        #C0BAAC;  /*  9.61:1 */
+    --ink-muted:    #9A9386;  /*  6.10:1 */
+    --rule-hair:    #9A9386;
+    --rule-heavy:   #EFEBE2;
+    --rule-accent:  #F08CA4;
+    --prob-fill:    #EFEBE2;  /*  8.50:1 su track */
+    --prob-track:   #46413A;
+    --prob-baseline:#9A9386;
+    --rel-stroke:   #9DC0E0;  /*  9.78:1 */
+    --accent:       #F08CA4;  /*  7.96:1 */
+    --focus:        #F08CA4;
+    --outcome-yes:  #7FBF95;  /*  8.66:1 */
+    --outcome-no:   #E58E8E;  /*  7.60:1 */
+    --warn:         #D6B25E;  /*  9.20:1 */
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:        #14130F;
+  --paper-alt:    #1B1915;
+  --ink:          #EFEBE2;
+  --ink-2:        #C0BAAC;
+  --ink-muted:    #9A9386;
+  --rule-hair:    #9A9386;
+  --rule-heavy:   #EFEBE2;
+  --rule-accent:  #F08CA4;
+  --prob-fill:    #EFEBE2;
+  --prob-track:   #46413A;
+  --prob-baseline:#9A9386;
+  --rel-stroke:   #9DC0E0;
+  --accent:       #F08CA4;
+  --focus:        #F08CA4;
+  --outcome-yes:  #7FBF95;
+  --outcome-no:   #E58E8E;
+  --warn:         #D6B25E;
+}
+
+/* --------------------------------------------------------------------------
+   Primitive globali
+   -------------------------------------------------------------------------- */
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Ogni cifra del prodotto è tabellare: le colonne di numeri non ballano. */
+.num, table, .bar-figure { font-variant-numeric: tabular-nums lining-nums; }
+
+/* L'etichetta mono maiuscoletta: elemento di sistema, ricorre ovunque. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* ELEMENTO FIRMA — la riga di definizione operativa (NWS).
+   Sta sotto OGNI numero del prodotto. Sempre visibile, mai un tooltip. */
+.definizione {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  line-height: 1.45;
+  color: var(--ink-muted);
+  border-left: 1px solid var(--rule-hair);
+  padding-left: var(--s-3);
+  margin-top: var(--s-3);
+}
+
+/* Focus: sempre visibile, mai rimosso, identico in entrambi i temi. */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+/* Righe-partita: outline interno per non essere tagliato dal contenitore. */
+.row-partita:focus-visible { outline-offset: -2px; }
+
+/* Bersagli tattili */
+:where(a, button)[data-tap] { min-width: var(--tap-min); min-height: var(--tap-min); }
+.row-partita { min-height: var(--row-min); }
+
+/* Nessuna animazione è mai portatrice di informazione: si può spegnere tutto. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

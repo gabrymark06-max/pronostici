@@ -1,0 +1,1440 @@
+/* ==========================================================================
+   Componenti.
+
+   Il capitolo portante è MASTER.md §2: PROBABILITÀ e AFFIDABILITÀ sono due
+   linguaggi visivi distinti per FORMA e PESO, mai per colore.
+     A — probabilità   → pieno, rettangolo, spigolo vivo, cifra grande
+     B — affidabilità  → solo tratto, parentesi, pillola, nessuna cifra grande
+   Test da rieseguire su ogni componente nuovo: in scala di grigi i due
+   sistemi devono restare distinguibili.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Il blocco — il contenitore comune a PRONOSTICO e SILENZIO.
+   Stesso filetto di testata, stessa larghezza, stesso padding, stesso colore
+   di testo: è la regola che impedisce al silenzio di leggersi come un guasto.
+   ========================================================================== */
+.blocco {
+  border-top: 2px solid var(--rule-accent);
+  padding-top: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.blocco__intestazione {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+/* ==========================================================================
+   2. LINGUAGGIO A — la probabilità (pieno)
+   ========================================================================== */
+.prob {
+  margin-top: var(--s-5);
+}
+
+.prob__cifra {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.prob__numero {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.prob__su {
+  font-size: var(--fs-h3);
+  color: var(--ink-2);
+}
+
+/* Il grafico: barra piena + linea di base + banda in tratto, stesso asse. */
+.prob__grafico {
+  margin-top: var(--s-4);
+}
+
+.prob__barra {
+  position: relative;
+  height: 10px;
+  background: var(--prob-track);
+  border-radius: var(--radius);
+}
+
+@media (min-width: 768px) {
+  .prob__barra {
+    height: 12px;
+  }
+}
+
+/* Riempimento CONTINUO: nessuna quantizzazione, quindi nessuna bugia. */
+.prob__riempimento {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--prob-fill);
+}
+
+/* Le tacche ai decili passano SOPRA il riempimento: fanno da righello. */
+/* Righello, non segmenti: l'opacità è bassa apposta, perché tacche marcate
+   farebbero leggere il riempimento come quantizzato — cioè come la bugia che
+   il riempimento continuo esiste per evitare. */
+.prob__tacca {
+  position: absolute;
+  inset-block: 0;
+  width: 1px;
+  background: var(--paper);
+  opacity: 0.3;
+}
+
+/* La tacca del 50 è più marcata: è il pavimento p_min, e mostrarlo è già un
+   argomento. */
+.prob__tacca--pavimento {
+  inset-block: -3px;
+  opacity: 1;
+  background: var(--prob-baseline);
+}
+
+/* La linea di base definisce l'estensione della barra: la traccia da sola non
+   arriverebbe a 3:1 contro la carta. */
+.prob__baseline {
+  height: 1px;
+  background: var(--prob-baseline);
+}
+
+/* --- La banda p5–p95: SOLO TRATTO. Mai riempita, mai una tinta della scala
+       di probabilità. Stesso asse della barra, marca incompatibile. -------- */
+.prob__banda {
+  position: relative;
+  height: 18px;
+  margin-top: var(--s-1);
+}
+
+.prob__banda-tratto {
+  position: absolute;
+  top: 8px;
+  height: 0;
+  border-top: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+/* I serif alle estremità: è la parentesi ├───┤ */
+.prob__banda-serif {
+  position: absolute;
+  top: -6px;
+  width: 0;
+  height: 13px;
+  border-left: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+.prob__banda-serif--sx {
+  left: 0;
+}
+.prob__banda-serif--dx {
+  right: 0;
+}
+
+/* La tacca centrale su p, sotto il tratto. */
+.prob__banda-centro {
+  position: absolute;
+  top: 8px;
+  width: 0;
+  height: 8px;
+  border-left: var(--rel-stroke-w) solid var(--rel-stroke);
+  transform: translateX(-50%);
+}
+
+/* --- La mini-banda della riga di lista: 48px, solo tratto ---------------- */
+.mini-banda {
+  position: relative;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 12px;
+}
+
+/* Larghezza minima: una banda strettissima resterebbe un puntino, e la
+   parentesi non si leggerebbe più come parentesi. */
+.mini-banda__tratto {
+  position: absolute;
+  top: 5px;
+  height: 0;
+  min-width: 10px;
+  border-top: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+/* I serif straddiano il tratto: è una parentesi ├─┤, non una staffa. */
+.mini-banda__serif {
+  position: absolute;
+  top: -4px;
+  width: 0;
+  height: 9px;
+  border-left: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+.mini-banda__serif--sx {
+  left: 0;
+}
+.mini-banda__serif--dx {
+  right: 0;
+}
+
+/* Sotto i 375px la mini-banda esce: restano cifra e chip (oggi.md). */
+@media (max-width: 374px) {
+  .mini-banda {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   3. LINGUAGGIO B — il chip di provenienza.
+   L'UNICO elemento arrotondato dell'intero prodotto: essendo l'unica cosa con
+   un raggio, si stacca da solo — ed è proprio l'elemento che deve appartenere
+   a un sistema visivo diverso.
+   Pieno vs TRATTEGGIATO: la differenza sopravvive a monocromia, a daltonismo
+   e alla stampa. Il testo è sempre presente.
+   ========================================================================== */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-inline: var(--s-3);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chip--pieno {
+  background: var(--rel-stroke);
+  color: var(--paper);
+  border: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+.chip--vuoto {
+  background: transparent;
+  color: var(--rel-stroke);
+  border: var(--rel-stroke-w) dashed var(--rel-stroke);
+}
+
+/* Nella riga di lista il chip si riduce a una marca: la forma resta. */
+.chip--riga {
+  min-height: 22px;
+  padding-inline: var(--s-2);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   4. Lo stato di silenzio.
+   Vietati qui: icone, bordo tratteggiato del contenitore, --ink-muted sul
+   messaggio, fondo grigio, skeleton, e le parole "errore" / "non disponibile".
+   ========================================================================== */
+.silenzio__testata {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.silenzio__motivo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s-1);
+  text-align: right;
+}
+
+/* Il glifo è TIPOGRAFIA in mono, non un'icona: non va sostituito con un SVG. */
+.silenzio__glifo {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--rel-stroke);
+}
+
+.silenzio__etichetta {
+  color: var(--rel-stroke);
+}
+
+/* Il messaggio occupa lo SLOT DELLA CIFRA: la massa visiva è conservata.
+   È la regola che, da sola, impedisce al silenzio di sembrare un vuoto. */
+.silenzio__messaggio {
+  margin-top: var(--s-7);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  color: var(--ink);
+  max-width: 30ch;
+}
+
+/* Si mostra il lavoro fatto: converte un'assenza in uno sforzo. */
+.silenzio__lavoro {
+  margin-top: var(--s-4);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+.silenzio__chip {
+  margin-top: var(--s-5);
+}
+
+.silenzio__grezze {
+  border-top: 1px solid var(--rule-hair);
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+}
+
+/* Numeri NUDI, senza barra: la barra è il linguaggio del "questo lo
+   consigliamo", e darla qui rifarebbe l'argmax che abbiamo tolto di mezzo. */
+.grezze {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-5);
+  margin-top: var(--s-3);
+}
+
+.grezze__voce {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+}
+
+.grezze__etichetta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.grezze__valore {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.silenzio__rimando {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--rule-hair);
+  font-size: var(--fs-body-s);
+}
+
+/* ==========================================================================
+   5. Il blocco di rettifica — la revisione delle 36 ore.
+   Riprende l'errata corrige di un giornale: storicamente un dispositivo di
+   fiducia, non di imbarazzo. Nessuna animazione di ingresso.
+   ========================================================================== */
+.rettifica {
+  background: var(--paper-alt);
+  border-left: 3px solid var(--rule-accent);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
+  margin-top: var(--s-5);
+}
+
+.rettifica__testo {
+  margin-top: var(--s-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* Il confronto PRIMA/ORA. Mai un barrato: il barrato dice "sbagliato", e qui
+   non c'è niente di sbagliato — ci sono due stime datate. */
+.confronto {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+  margin-top: var(--s-4);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* La didascalia allineata a sinistra come tutte le altre del prodotto. */
+.confronto caption {
+  text-align: left;
+  padding-bottom: var(--s-2);
+}
+
+.confronto th,
+.confronto td {
+  text-align: left;
+  padding: var(--s-2) var(--s-3) var(--s-2) 0;
+  vertical-align: baseline;
+}
+
+.confronto th[scope='row'] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.confronto__prima th,
+.confronto__prima td {
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.confronto__ora th,
+.confronto__ora td {
+  color: var(--ink);
+}
+
+.confronto__mercato {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+}
+
+.confronto__p {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  white-space: nowrap;
+}
+
+.confronto__freccia {
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  padding-block: 0;
+}
+
+/* ==========================================================================
+   6. La riga-partita.
+   ========================================================================== */
+.gruppo-competizione {
+  border-top: 2px solid var(--rule-heavy);
+  margin-top: var(--s-6);
+  padding-top: var(--s-3);
+}
+
+.gruppo-competizione__titolo {
+  color: var(--ink);
+}
+
+.lista-partite {
+  margin-top: var(--s-2);
+}
+
+.lista-partite > li + li .row-partita {
+  border-top: 1px solid var(--rule-hair);
+}
+
+.row-partita {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-block: var(--s-3);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color var(--dur-2) var(--ease);
+}
+
+/* Hover: solo tinta di fondo. Mai transform, mai ombra, nessuno spostamento. */
+.row-partita:hover {
+  background: var(--paper-alt);
+}
+
+/* La riga sta su due livelli fino a 1024px, poi su una sola.
+   Sotto i 1024 il consiglio (mercato + cifra + banda + chip) lascia ai nomi
+   delle squadre troppo poco spazio, e i nomi si spezzano in quattro righe:
+   il contenuto perde più di quanto la riga singola guadagni. */
+@media (min-width: 1024px) {
+  .row-partita {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--s-4);
+  }
+}
+
+.row-partita__squadre {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.row-partita__ora {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums lining-nums;
+  flex: 0 0 auto;
+}
+
+.row-partita__nomi {
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .row-partita__nomi {
+    font-size: var(--fs-body);
+  }
+}
+
+.row-partita__consiglio {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-3);
+  flex: 0 0 auto;
+  padding-left: calc(var(--icon-lg) + var(--s-3));
+}
+
+@media (min-width: 1024px) {
+  .row-partita__consiglio {
+    justify-content: flex-end;
+    padding-left: 0;
+  }
+}
+
+/* Mai troncare il nome del mercato: è il contenuto. */
+.row-partita__mercato {
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+/* Il silenzio nella lista: CORSIVO SERIF contro tondo + cifra.
+   Differenza di forma, non di tinta — il testo resta --ink pieno. */
+.row-partita__silenzio {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+
+.row-partita__cifra {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.row-partita__glifo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--rel-stroke);
+}
+
+.row-partita__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  color: var(--accent);
+}
+
+.row-partita__esito {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+}
+
+/* --- Crest: spazio riservato, CLS zero, ripiego sul TLA ------------------ */
+.crest {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  background: var(--prob-track);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Il ripiego non è mai un'icona di immagine rotta né uno spazio che collassa. */
+.crest--ripiego {
+  background: transparent;
+  border: 1px solid var(--rule-hair);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+
+.crest-coppia {
+  display: inline-flex;
+  gap: var(--s-1);
+  flex: 0 0 auto;
+}
+
+/* ==========================================================================
+   7. Intestazione del giorno
+   ========================================================================== */
+.giorno__navigazione {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-block: var(--s-5) var(--s-4);
+}
+
+.freccia-giorno {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  padding-inline: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent);
+  transition: background-color var(--dur-2) var(--ease);
+}
+
+.freccia-giorno:hover {
+  background: var(--paper-alt);
+}
+
+.freccia-giorno--spenta {
+  color: var(--ink-muted);
+  opacity: 0.4;
+  cursor: default;
+}
+
+.giorno__titolo {
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.giorno__conteggio {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  margin-top: var(--s-3);
+}
+
+/* Le cifre del conteggio sono l'unica cifra che il carminio ha il permesso di
+   toccare: non è una stima, è una rivendicazione. */
+.giorno__conteggio .cifra {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.giorno__revisioni {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  margin-top: var(--s-2);
+}
+
+/* La valvola del 40%: una nota, non un banner d'allarme. */
+.valvola {
+  background: var(--paper-alt);
+  border-left: 3px solid var(--rule-accent);
+  padding: var(--s-4);
+  margin-top: var(--s-4);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* Giorno senza partite: non è un silenzio e non deve somigliargli.
+   Niente cornice, niente filetto carminio. */
+.giorno-vuoto {
+  text-align: center;
+  padding-block: var(--s-8);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+.giorno-vuoto p + p {
+  margin-top: var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+}
+
+/* ==========================================================================
+   8. Scheda partita
+   ========================================================================== */
+.scheda__ritorno {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: var(--tap-min);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.scheda__testata {
+  padding-top: var(--s-2);
+  padding-bottom: var(--s-5);
+}
+
+.scheda__squadre {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-l);
+  line-height: var(--lh-title);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.scheda__contesto {
+  margin-top: var(--s-3);
+}
+
+/* Densità BASSA sopra la piega: è il contrasto di densità che dice all'occhio
+   dove finisce il giudizio e dove comincia il materiale. */
+.scheda__mercato {
+  margin-top: var(--s-4);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-l);
+  line-height: var(--lh-title);
+  color: var(--ink);
+}
+
+.scheda__chip {
+  margin-top: var(--s-5);
+}
+
+.sezione {
+  border-top: 1px solid var(--rule-hair);
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+}
+
+.sezione--pesante {
+  border-top: 2px solid var(--rule-heavy);
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+}
+
+.sezione__corpo {
+  margin-top: var(--s-3);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* La fonte è DENTRO la frase, mai un asterisco. */
+.fascia__frase {
+  margin-top: var(--s-3);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: 52ch;
+}
+
+.fascia__n {
+  margin-top: var(--s-2);
+}
+
+/* Le ragioni: elenco corto, trattino em, nessun grassetto, nessuna icona. */
+.ragioni {
+  margin-top: var(--s-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.ragioni li {
+  display: flex;
+  gap: var(--s-3);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+.ragioni li::before {
+  content: '—';
+  flex: 0 0 auto;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+}
+
+/* --- Altre famiglie di mercato: <details> nativi, chiusi di default ------ */
+.famiglia {
+  border-bottom: 1px solid var(--rule-hair);
+}
+
+.famiglia__somma {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: var(--tap-min);
+  padding-block: var(--s-2);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color var(--dur-2) var(--ease);
+}
+
+.famiglia__somma::-webkit-details-marker {
+  display: none;
+}
+
+.famiglia__somma:hover {
+  color: var(--accent);
+}
+
+.famiglia__freccia {
+  flex: 0 0 auto;
+  transition: transform var(--dur-3) var(--ease);
+}
+
+.famiglia[open] .famiglia__freccia {
+  transform: rotate(90deg);
+}
+
+/* Nessuna barra qui dentro: la barra resta il linguaggio del solo mercato
+   consigliato. Solo cifre mono tabellari. */
+.famiglia__corpo {
+  padding-bottom: var(--s-4);
+}
+
+.mercato-riga {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-2);
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+.mercato-riga + .mercato-riga {
+  border-top: 1px solid var(--rule-hair);
+}
+
+.mercato-riga__p {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+  color: var(--ink-2);
+}
+
+/* --- Esito a partita conclusa: parola + glifo + colore, mai colore solo --- */
+.esito {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+}
+
+.esito__punteggio {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h2);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.esito__verdetto {
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+
+.esito--uscito .esito__marca {
+  color: var(--outcome-yes);
+}
+
+.esito--non-uscito .esito__marca {
+  color: var(--outcome-no);
+}
+
+.esito__marca {
+  font-family: var(--font-mono);
+}
+
+/* --- Quote: decimali, in tabella mono. Mai un nome di bookmaker in
+       evidenza, mai un link, mai sopra la piega. ------------------------- */
+.quote__nota {
+  margin-top: var(--s-2);
+}
+
+/* ==========================================================================
+   9. Come stiamo andando
+   ========================================================================== */
+.pagina__intestazione {
+  padding-block: var(--s-6) var(--s-4);
+}
+
+.pagina__occhiello {
+  display: block;
+  margin-bottom: var(--s-2);
+}
+
+.pagina__sommario {
+  margin-top: var(--s-3);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+/* --- Skill dichiarato contro realizzato: due barre sullo stesso asse ----- */
+.skill__riga {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-2);
+  padding-block: var(--s-3);
+}
+
+@media (min-width: 768px) {
+  .skill__riga {
+    grid-template-columns: minmax(0, 22ch) 1fr auto;
+    align-items: center;
+    gap: var(--s-4);
+  }
+}
+
+.skill__etichetta {
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+.skill__pista {
+  position: relative;
+  height: 12px;
+  background: var(--prob-track);
+}
+
+.skill__riempimento {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--prob-fill);
+}
+
+/* La banda di incertezza sul realizzato resta linguaggio B: solo tratto. */
+.skill__banda {
+  position: absolute;
+  top: -3px;
+  height: 18px;
+  border-left: var(--rel-stroke-w) solid var(--rel-stroke);
+  border-right: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+.skill__banda::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: var(--rel-stroke-w) solid var(--rel-stroke);
+}
+
+.skill__valore {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+}
+
+/* --- Avvio a freddo: stesso contenitore, stessa massa visiva.
+       Lo stesso principio dello stato di silenzio, applicato a una pagina. -- */
+.a-freddo {
+  margin-top: var(--s-5);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  color: var(--ink);
+  max-width: 40ch;
+}
+
+.a-freddo__nota {
+  margin-top: var(--s-4);
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+
+/* --- I filtri del registro: <button aria-pressed>, filtrano righe già
+       presenti nel DOM. Senza JavaScript la tabella resta completa. ------- */
+.filtri {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+.filtri__gruppo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.filtri__nome {
+  margin-right: var(--s-1);
+}
+
+.filtro {
+  min-height: var(--tap-min);
+  padding-inline: var(--s-3);
+  background: transparent;
+  border: 1px solid var(--rule-hair);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+
+.filtro:hover {
+  color: var(--ink);
+  background: var(--paper-alt);
+}
+
+/* Stato attivo per forma (filetto 2px) oltre che per tinta: mai il solo colore. */
+.filtro[aria-pressed='true'] {
+  color: var(--ink);
+  border-color: var(--rule-accent);
+  border-bottom-width: 3px;
+  background: var(--paper-alt);
+}
+
+.registro__conteggio {
+  margin-top: var(--s-3);
+}
+
+.registro__silenzio {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+}
+
+.registro__esito {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  white-space: nowrap;
+}
+
+.esito-uscito {
+  color: var(--outcome-yes);
+}
+.esito-non-uscito {
+  color: var(--outcome-no);
+}
+.esito-attesa {
+  color: var(--ink-muted);
+}
+
+/* --- Fascia con troppi pochi dati: mostrata, non nascosta.
+       Rifiutarsi di disegnare è a sua volta un dato. --------------------- */
+.fascia-scarsa {
+  color: var(--ink-muted);
+}
+
+.tag-mono {
+  display: inline-block;
+  margin-left: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.tag-mono--accento {
+  color: var(--accent);
+}
+
+/* Il filetto vuoto che sostituisce la barra quando non c'è abbastanza n. */
+.barra-vuota {
+  height: 12px;
+  border-top: 1px solid var(--rule-hair);
+  margin-top: 5px;
+}
+
+/* --- Mini-barra doppia dichiarato / osservato --------------------------- */
+.doppia {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 120px;
+}
+
+.doppia__pista {
+  position: relative;
+  height: 8px;
+  background: var(--prob-track);
+}
+
+.doppia__riempimento {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--prob-fill);
+}
+
+.doppia__riempimento--dichiarato {
+  background: var(--ink-2);
+}
+
+/* --- La barra verso i 500: terzo trattamento, distinto da entrambi i
+       linguaggi. Non è una probabilità e non è un'affidabilità. ---------- */
+.verso-500 {
+  margin-top: var(--s-4);
+}
+
+.verso-500__estremi {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--s-2);
+}
+
+.verso-500__pista {
+  position: relative;
+  height: 8px;
+  border: 1px solid var(--rule-hair);
+}
+
+.verso-500__riempimento {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--ink-2);
+}
+
+.verso-500__tacca {
+  position: absolute;
+  inset-block: -2px;
+  width: 1px;
+  background: var(--rule-hair);
+}
+
+/* --- Tasso di silenzio: promessa e realtà sullo stesso asse ------------- */
+.silenzio-grafico {
+  margin-top: var(--s-4);
+}
+
+.silenzio-grafico svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sg-banda {
+  fill: var(--paper-alt);
+}
+.sg-filetto {
+  stroke: var(--rule-hair);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.sg-limite {
+  stroke: var(--rule-accent);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  vector-effect: non-scaling-stroke;
+}
+.sg-barra {
+  fill: var(--prob-fill);
+}
+.sg-asse {
+  stroke: var(--prob-baseline);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.sg-testo {
+  fill: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.sg-curva {
+  fill: none;
+  stroke: var(--prob-fill);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.sg-marca {
+  stroke: var(--rule-accent);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.sg-marca--codice {
+  stroke: var(--rel-stroke);
+  stroke-dasharray: 3 2;
+}
+
+figcaption {
+  margin-top: var(--s-3);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+.dettaglio-dati {
+  margin-top: var(--s-3);
+}
+
+.dettaglio-dati > summary {
+  min-height: var(--tap-min);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* --- La separazione: deve essere impossibile da confondere.
+       Da qui in giù è un altro documento dentro la stessa pagina. -------- */
+.prova-storica {
+  border-top: 4px solid var(--rule-heavy);
+  background: var(--paper-alt);
+  margin-top: var(--s-9);
+  padding-block: var(--s-6) var(--s-8);
+}
+
+.prova-storica__avvertenza {
+  margin-top: var(--s-4);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: var(--w-prose);
+}
+
+/* La ricevuta: i campi che rendono il backtest interpretabile, stampati. */
+.ricevuta {
+  margin-top: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  line-height: 1.6;
+}
+
+.ricevuta > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-1);
+  padding-block: var(--s-2);
+  border-bottom: 1px solid var(--rule-hair);
+}
+
+@media (min-width: 640px) {
+  .ricevuta > div {
+    grid-template-columns: 22ch 1fr;
+    gap: var(--s-4);
+  }
+}
+
+.ricevuta dt {
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  font-size: var(--fs-micro);
+}
+
+.ricevuta dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Il risultato sfavorevole. Stesso peso di tutto il resto: non è una nota. */
+.sfavorevole {
+  margin-top: var(--s-5);
+  border-left: 3px solid var(--rule-accent);
+  padding: var(--s-4);
+  background: var(--paper);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: var(--w-prose);
+}
+
+/* ==========================================================================
+   10. Come funziona — deroga tipografica dichiarata.
+   Qui il corpo è Newsreader 19/1.7: questa pagina è un articolo, le altre
+   sono un bollettino. Densità deliberata, non incoerenza.
+   ========================================================================== */
+.articolo {
+  padding-block: var(--s-6) var(--s-8);
+}
+
+.articolo p,
+.articolo li {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-prose);
+  color: var(--ink);
+}
+
+.articolo p + p {
+  margin-top: var(--s-4);
+}
+
+.articolo section {
+  padding-top: var(--s-7);
+}
+
+.articolo h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  color: var(--ink);
+  margin-bottom: var(--s-4);
+}
+
+/* L'indice sta SOPRA il testo, in posizione statica: non è una colonna
+   laterale, perché una colonna laterale è la forma di uno slot pubblicitario. */
+.indice {
+  border-top: 1px solid var(--rule-hair);
+  border-bottom: 1px solid var(--rule-hair);
+  padding-block: var(--s-4);
+  margin-top: var(--s-5);
+}
+
+.indice ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-3);
+  counter-reset: voce;
+}
+
+.indice li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  line-height: 1.4;
+}
+
+.indice a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+}
+
+.articolo .elenco-netto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+}
+
+.articolo .elenco-netto li {
+  border-left: 1px solid var(--rule-hair);
+  padding-left: var(--s-4);
+}
+
+/* La legenda dei tre glifi: stessa forma dell'interfaccia, così il glifo si
+   impara. */
+.legenda-glifi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin-top: var(--s-5);
+}
+
+.legenda-glifi > li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--s-3);
+  align-items: baseline;
+}
+
+.legenda-glifi__glifo {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--rel-stroke);
+}
+
+.legenda-chip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-5);
+}
+
+.legenda-chip > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  align-items: flex-start;
+}
+
+.legenda-chip p {
+  font-family: var(--font-text);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+/* La riga di stato dei crediti: mostra un vincolo invece di nasconderlo. */
+.crediti {
+  margin-top: var(--s-5);
+  border: 1px solid var(--rule-hair);
+  padding: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--ink);
+}
+
+.crediti__valore {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.crediti__pista {
+  position: relative;
+  height: 6px;
+  background: var(--prob-track);
+  margin-top: var(--s-3);
+}
+
+.crediti__riempimento {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--ink-2);
+}
