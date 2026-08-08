@@ -14,17 +14,68 @@ import numpy as np
 
 from .archive import Match
 from .model import markets as mk
-from .model.blend import MODEL_WEIGHT, blend_lambdas, solve_market_lambdas
+from .model.blend import blend_lambdas, solve_market_lambdas
 from .model.bootstrap import BootstrapResult
 from .model.matrix import MAX_GOALS, build_matrices
 from .model.selection import Selection, build_candidates, select
 
-# Mercati su cui the-odds-api ci da' un riferimento (h2h + totals).
+# Mercati su cui the-odds-api ci da' un riferimento diretto (h2h + totals).
 ODDS_BACKED_KEYS = frozenset(
     {"1x2_home", "1x2_draw", "1x2_away"}
     | {f"over_{line}" for line in (0.5, 1.5, 2.5, 3.5, 4.5)}
     | {f"under_{line}" for line in (0.5, 1.5, 2.5, 3.5, 4.5)}
 )
+
+# Unioni di esiti 1X2: il mercato le determina **esattamente**, sommando.
+UNIONS_OF_1X2 = {
+    "dc_1x": ("1x2_home", "1x2_draw"),
+    "dc_12": ("1x2_home", "1x2_away"),
+    "dc_x2": ("1x2_draw", "1x2_away"),
+}
+
+
+def market_references(
+    quoted: dict[str, float], *, max_goals: int = MAX_GOALS
+) -> dict[str, float]:
+    """Estende le probabilita' quotate a **tutti** i mercati che il mercato
+    determina in modo esatto.
+
+    Serve a chiudere un buco che fabbrica vantaggio dal nulla. "Asiatico casa
+    -0.5" e "Vittoria casa" sono lo **stesso identico evento**: hanno la stessa
+    maschera sulla matrice. Se il primo venisse confrontato col base rate
+    storico e il secondo con la quota sgonfiata, l'argmax sceglierebbe
+    sistematicamente il riferimento piu' comodo — che e' la maledizione
+    dell'ottimizzatore applicata al riferimento invece che alla stima.
+
+    Osservato su Palmeiras-Internacional del 2026-08-09: il punteggio del
+    consigliato era 0,058 contro il base rate (0,474) invece che contro il
+    mercato, e la scelta cadeva sull'alias.
+
+    L'estensione e' **esatta**, non approssimata: si aggiungono solo le unioni
+    di esiti 1X2 (che si sommano) e i mercati la cui maschera coincide con una
+    gia' coperta. Tutto il resto resta al base rate, com'e' giusto: il mercato
+    non ci dice niente su BTTS o sul multigol stretto.
+    """
+    references = {k: v for k, v in quoted.items() if k in ODDS_BACKED_KEYS}
+    if not references:
+        return {}
+
+    for key, parts in UNIONS_OF_1X2.items():
+        if all(p in references for p in parts):
+            references[key] = sum(references[p] for p in parts)
+
+    # Identita' di maschera: due chiavi diverse per lo stesso evento.
+    defs = mk.catalog(max_goals)
+    by_mask: dict[bytes, float] = {
+        d.mask.tobytes(): references[d.key] for d in defs if d.key in references
+    }
+    for definition in defs:
+        if definition.key in references:
+            continue
+        value = by_mask.get(definition.mask.tobytes())
+        if value is not None:
+            references[definition.key] = value
+    return references
 
 
 @dataclass
@@ -40,6 +91,10 @@ class FixtureScore:
     reasons: list[str] = field(default_factory=list)
     market_probabilities: dict[str, float] = field(default_factory=dict)
     half_time: dict[str, float] = field(default_factory=dict)
+    # Tutti i candidati, non solo i sopravvissuti. Non finiscono ne' nel
+    # registro ne' nei file giornalieri: servono al backtest, che stima
+    # `tau^2` per famiglia sulla dispersione dell'intero insieme.
+    all_candidates: list = field(default_factory=list)
 
 
 def _reasons(
@@ -109,7 +164,9 @@ def score_fixture(
             k: v for k, v in market_probabilities.items() if k in ODDS_BACKED_KEYS
         }
         if len(usable) >= 2:
-            fitted = solve_market_lambdas(usable, float(np.median(rho)), max_goals=max_goals)
+            fitted = solve_market_lambdas(
+                usable, float(np.median(rho)), max_goals=max_goals
+            )
             blended = [
                 blend_lambdas((h, a), (fitted.lam_home, fitted.lam_away), model_weight)
                 for h, a in zip(lam_h, lam_a, strict=True)
@@ -122,11 +179,14 @@ def score_fixture(
     probs_by_draw = mk.probabilities_batch(matrices)
     mean_matrix = matrices.mean(axis=0)
 
-    # Riferimento: quota sgonfiata dove esiste, base rate dove non esiste.
+    # Riferimento: quota sgonfiata dove il mercato determina l'evento, base
+    # rate dove non lo determina. "Dove esiste" include gli alias: vedi
+    # `market_references`, che e' cio' che impedisce di leggere due riferimenti
+    # diversi per lo stesso identico evento.
     references = dict(base_rates)
     if market_probabilities:
         references.update(
-            {k: v for k, v in market_probabilities.items() if k in ODDS_BACKED_KEYS}
+            market_references(market_probabilities, max_goals=max_goals)
         )
 
     candidates = build_candidates(
@@ -149,7 +209,8 @@ def score_fixture(
     goals = np.arange(max_goals + 1)
     truncated = float(
         1.0
-        - poisson.pmf(goals, lam_home_point).sum() * poisson.pmf(goals, lam_away_point).sum()
+        - poisson.pmf(goals, lam_home_point).sum()
+        * poisson.pmf(goals, lam_away_point).sum()
     )
 
     return FixtureScore(
@@ -166,4 +227,5 @@ def score_fixture(
             k: float(v.mean()) for k, v in probs_by_draw.items()
         },
         half_time=half_time,
+        all_candidates=candidates,
     )

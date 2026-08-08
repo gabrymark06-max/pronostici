@@ -91,13 +91,16 @@ def catalog(max_goals: int) -> tuple[MarketDef, ...]:
         sign = "+" if hcp > 0 else ""
         out += [
             MarketDef(
-                f"eh_{hcp}_home", "handicap_eu", f"Handicap {sign}{hcp} casa", adjusted > 0
+                f"eh_{hcp}_home", "handicap_eu",
+                f"Handicap {sign}{hcp} casa", adjusted > 0,
             ),
             MarketDef(
-                f"eh_{hcp}_draw", "handicap_eu", f"Handicap {sign}{hcp} pareggio", adjusted == 0
+                f"eh_{hcp}_draw", "handicap_eu",
+                f"Handicap {sign}{hcp} pareggio", adjusted == 0,
             ),
             MarketDef(
-                f"eh_{hcp}_away", "handicap_eu", f"Handicap {sign}{hcp} ospite", adjusted < 0
+                f"eh_{hcp}_away", "handicap_eu",
+                f"Handicap {sign}{hcp} ospite", adjusted < 0,
             ),
         ]
 

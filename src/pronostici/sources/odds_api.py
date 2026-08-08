@@ -20,20 +20,30 @@ pipeline resta a w = 1,0. E' lo stato in cui il progetto si trova oggi.
 
 from __future__ import annotations
 
+import contextlib
+import json
 import logging
+import time
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 import requests
 
-from ..config import DATA, get_settings
+from ..config import CACHE_DIR, DATA, get_settings
 from ..storage import read_json, write_json
 
 log = logging.getLogger(__name__)
 
 BASE_URL = "https://api.the-odds-api.com/v4"
 BUDGET_FILE = DATA / "odds_budget.json"
+
+# Le risposte grezze restano fuori dal repository (`data/cache/` e' in
+# .gitignore): in sviluppo si lavora su queste e non si spende un credito,
+# nei test non si tocca mai la rete (brief 6.3, ultima riga).
+ODDS_CACHE_DIR = CACHE_DIR / "odds"
+DEFAULT_CACHE_MAX_AGE_S = 6 * 3600
 
 MARKETS = ("h2h", "totals")  # niente `spreads`: +50% di costo per vincoli
 REGIONS = ("eu",)  # quasi collineari a quelli che abbiamo gia'
@@ -102,7 +112,7 @@ class Budget:
 
 
 def _current_month() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m")
+    return datetime.now(UTC).strftime("%Y-%m")
 
 
 def load_budget(cap: int | None = None) -> Budget:
@@ -139,14 +149,25 @@ class OddsClient:
         solo e ogni partita resta con il pronostico da solo modello."""
         return get_settings().has_odds
 
-    def fetch_league(self, odds_key: str, budget: Budget) -> list[dict[str, Any]]:
+    def fetch_league(
+        self,
+        odds_key: str,
+        budget: Budget,
+        *,
+        markets: tuple[str, ...] = MARKETS,
+    ) -> list[dict[str, Any]]:
         """Una chiamata per campionato. Aggiorna il contatore **prima** di
-        spendere, cosi' un crash a meta' non fa perdere il conto."""
+        spendere, cosi' un crash a meta' non fa perdere il conto.
+
+        `markets` esiste per il terzo gradino della scala di degradazione:
+        con il solo `h2h` la chiamata costa la meta'.
+        """
+        cost = len(markets) * len(REGIONS)
         if not self.enabled:
             raise OddsUnavailable(
                 "ODDS_API_KEY non impostata: si procede con il solo modello"
             )
-        if not budget.can_afford(CREDITS_PER_CALL):
+        if not budget.can_afford(cost):
             raise OddsUnavailable(
                 f"tetto crediti raggiunto ({budget.used}/{budget.cap}): "
                 f"degradazione a {budget.degradation_step()}"
@@ -161,18 +182,18 @@ class OddsClient:
             params={
                 "apiKey": get_settings().odds_api_key,
                 "regions": ",".join(REGIONS),
-                "markets": ",".join(MARKETS),
+                "markets": ",".join(markets),
                 "oddsFormat": "decimal",
             },
             timeout=30,
         )
 
-        budget.used += CREDITS_PER_CALL
+        budget.used += cost
         budget.calls.append(
             {
-                "at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "league": odds_key,
-                "cost": CREDITS_PER_CALL,
+                "cost": cost,
                 "status": response.status_code,
             }
         )
@@ -181,13 +202,11 @@ class OddsClient:
         # il loro e il job si ferma finche' qualcuno non guarda.
         remaining = response.headers.get("x-requests-remaining")
         if remaining is not None:
-            try:
+            with contextlib.suppress(ValueError):
                 budget.provider_remaining = int(float(remaining))
-            except ValueError:
-                pass
         used_header = response.headers.get("x-requests-used")
         if used_header is not None:
-            try:
+            with contextlib.suppress(ValueError):
                 provider_used = int(float(used_header))
                 if provider_used > budget.used + 2 * CREDITS_PER_CALL:
                     budget.paused = True
@@ -195,9 +214,85 @@ class OddsClient:
                         f"contatore divergente: nostro {budget.used}, "
                         f"loro {provider_used}"
                     )
-            except ValueError:
-                pass
 
         if response.status_code != 200:
             raise OddsUnavailable(f"HTTP {response.status_code} da the-odds-api")
         return response.json()
+
+    # -------------------------------------------------------------- cache
+
+    def cache_path(self, odds_key: str) -> Path:
+        return ODDS_CACHE_DIR / f"{odds_key}.json"
+
+    def read_cache(self, odds_key: str) -> tuple[list[dict[str, Any]], float] | None:
+        """Ritorna `(eventi, eta_in_secondi)` se c'e' una risposta su disco."""
+        path = self.cache_path(odds_key)
+        if not path.exists():
+            return None
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return None
+        fetched_at = float(payload.get("fetched_at_epoch", 0.0))
+        return payload.get("events", []), max(0.0, time.time() - fetched_at)
+
+    def write_cache(self, odds_key: str, events: list[dict[str, Any]]) -> None:
+        ODDS_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        self.cache_path(odds_key).write_text(
+            json.dumps(
+                {
+                    "sport_key": odds_key,
+                    "fetched_at": datetime.now(UTC).strftime(
+                        "%Y-%m-%dT%H:%M:%SZ"
+                    ),
+                    "fetched_at_epoch": time.time(),
+                    "events": events,
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+    def fetch_league_cached(
+        self,
+        odds_key: str,
+        budget: Budget,
+        *,
+        max_age_s: float = DEFAULT_CACHE_MAX_AGE_S,
+        refresh: bool = False,
+        markets: tuple[str, ...] = MARKETS,
+    ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+        """Come `fetch_league`, ma spende un credito solo se serve davvero.
+
+        Ritorna `(eventi, provenienza)`. La cache viene usata anche quando la
+        rete fallisce e c'e' una risposta vecchia ma leggibile: quote di sei
+        ore fa sono un riferimento molto migliore di nessun riferimento.
+        """
+        cached = self.read_cache(odds_key)
+        if cached is not None and not refresh and cached[1] <= max_age_s:
+            return cached[0], {
+                "source": "cache",
+                "age_s": round(cached[1]),
+                "credits": 0,
+            }
+        try:
+            events = self.fetch_league(odds_key, budget, markets=markets)
+        except OddsUnavailable:
+            if cached is not None:
+                log.warning(
+                    "%s: quote non ottenibili, uso la cache di %.0f minuti fa",
+                    odds_key,
+                    cached[1] / 60,
+                )
+                return cached[0], {
+                    "source": "stale_cache",
+                    "age_s": round(cached[1]),
+                    "credits": 0,
+                }
+            raise
+        self.write_cache(odds_key, events)
+        return events, {
+            "source": "network",
+            "age_s": 0,
+            "credits": len(markets) * len(REGIONS),
+        }

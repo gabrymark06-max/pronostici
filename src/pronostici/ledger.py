@@ -16,17 +16,45 @@ Regole dure (brief 7.2):
 
 from __future__ import annotations
 
+import json
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from .config import LEDGER_DIR
-from .storage import SCHEMA_VERSION, append_jsonl, read_jsonl
+from .storage import SCHEMA_VERSION, append_jsonl, read_jsonl, write_text_atomic
 
 PHASE_PRELIMINARY = "preliminary"
 PHASE_DEFINITIVE = "definitive"
 PHASE_SETTLEMENT = "settlement"
+
+# Le transizioni fra le due verita' della stessa partita (brief 7.3). Le due
+# che cambiano stato sono, per il brief, le schermate che guadagnano piu'
+# fiducia dell'intero prodotto: un sistema che ritira pubblicamente un proprio
+# consiglio non lo ha mai fatto nessuno.
+TRANSITION_FIRST = "first"  # non c'era un preliminare da confrontare
+TRANSITION_CONFIRMED = "confirmed"  # stesso mercato consigliato
+TRANSITION_CHANGED = "changed"  # mercato diverso
+TRANSITION_TO_SILENCE = "prediction_to_silence"
+TRANSITION_FROM_SILENCE = "silence_to_prediction"
+TRANSITION_STILL_SILENT = "still_silent"
+
+# Gli unici campi che `settle` puo' scrivere su una riga gia' pubblicata, e
+# solo quando valgono None. Tutto il resto e' immutabile: la riga di
+# pronostico e' una dichiarazione datata, non un record modificabile.
+SETTLEMENT_FIELDS = (
+    "outcome",
+    "ft_home",
+    "ft_away",
+    "skill_realized",
+    "settled_at",
+)
+
+
+class LedgerImmutabilityError(RuntimeError):
+    """Un tentativo di riscrivere il passato. Non e' un caso da gestire in
+    silenzio: e' l'unica cosa che il prodotto promette di non fare."""
 
 
 @dataclass(frozen=True)
@@ -57,9 +85,21 @@ class LedgerRow:
     filter_bites: dict[str, int] = field(default_factory=dict)
     cluster_members: list[str] = field(default_factory=list)
     reasons: list[str] = field(default_factory=list)
-    outcome: int | None = None  # riempito solo dalle righe di settlement
+    outcome: int | None = None  # riempito da `settle`, una volta sola
     ft_home: int | None = None
     ft_away: int | None = None
+    # Confronto con la fase precedente: lo scrive `finalize`, ed e' cio' che
+    # permette alla scheda di dire "fino a ieri dicevamo X".
+    transition: str | None = None
+    previous_market_key: str | None = None
+    previous_market_label: str | None = None
+    previous_p: float | None = None
+    # Skill: `skill_declared` e' noto prima della partita (coincide con lo
+    # score), `skill_realized` dopo. Se il sistema e' calibrato le due medie
+    # devono coincidere: e' il cruscotto della ricerca 10.1.
+    skill_declared: float | None = None
+    skill_realized: float | None = None
+    settled_at: str | None = None
 
 
 def prediction_id(match_id: int, phase: str) -> str:
@@ -84,6 +124,27 @@ def has_phase(season: int, match_id: int, phase: str) -> bool:
     return prediction_id(match_id, phase) in existing_ids(season)
 
 
+class PhaseIndex:
+    """Gli identificativi gia' presenti, letti una volta sola.
+
+    `has_phase` rilegge l'intero registro a ogni domanda: comodo per un test,
+    inaccettabile in un job che la pone una volta per partita mentre il file
+    cresce di qualche migliaio di righe a stagione. Qui si legge una volta per
+    stagione e si risponde in memoria.
+    """
+
+    def __init__(self) -> None:
+        self._by_season: dict[int, set[str]] = {}
+
+    def _ids(self, season: int) -> set[str]:
+        if season not in self._by_season:
+            self._by_season[season] = existing_ids(season)
+        return self._by_season[season]
+
+    def has(self, season: int, match_id: int, phase: str) -> bool:
+        return prediction_id(match_id, phase) in self._ids(season)
+
+
 def append(season: int, rows: list[LedgerRow]) -> int:
     """Aggiunge righe nuove. Le righe gia' presenti vengono ignorate, non
     sovrascritte: e' cio' che rende il job idempotente senza toccare il
@@ -91,6 +152,76 @@ def append(season: int, rows: list[LedgerRow]) -> int:
     known = existing_ids(season)
     fresh = [asdict(r) for r in rows if r.prediction_id not in known]
     return append_jsonl(ledger_path(season), fresh)
+
+
+def load_all_seasons() -> dict[int, list[dict[str, Any]]]:
+    """Tutto il registro, per stagione. Il volume e' di qualche migliaio di
+    righe l'anno: leggerlo intero e' piu' semplice di qualunque indice."""
+    out: dict[int, list[dict[str, Any]]] = {}
+    if not LEDGER_DIR.exists():
+        return out
+    for path in sorted(LEDGER_DIR.glob("*.jsonl")):
+        try:
+            season = int(path.stem)
+        except ValueError:
+            continue
+        out[season] = read_jsonl(path)
+    return out
+
+
+def apply_settlements(season: int, updates: dict[str, dict[str, Any]]) -> int:
+    """Riempie i campi di esito sulle righe indicate. Ritorna quante ne cambia.
+
+    E' l'unica scrittura non-append di tutto il sistema, e ha tre guardie:
+
+    * puo' toccare solo i campi di `SETTLEMENT_FIELDS`;
+    * solo se sulla riga valgono ancora `None` — un esito gia' registrato non
+      si tocca, cosi' rieseguire `settle` e' un'operazione nulla;
+    * se un aggiornamento tentasse di cambiare qualunque altro campo, solleva.
+
+    Il resto della riga - il pronostico, la probabilita', l'ora in cui e'
+    stato scritto - resta esattamente com'era, e la cronologia di git conserva
+    comunque la versione precedente al riempimento.
+    """
+    unknown = {k for u in updates.values() for k in u} - set(SETTLEMENT_FIELDS)
+    if unknown:
+        raise LedgerImmutabilityError(
+            f"`settle` non puo' scrivere questi campi: {sorted(unknown)}"
+        )
+
+    rows = load_season(season)
+    changed = 0
+    lines: list[str] = []
+    for row in rows:
+        update = updates.get(row["prediction_id"])
+        if update:
+            applied = {k: v for k, v in update.items() if row.get(k) is None}
+            if applied:
+                row.update(applied)
+                changed += 1
+        lines.append(json.dumps(row, ensure_ascii=False, sort_keys=True))
+    if changed:
+        write_text_atomic(ledger_path(season), "\n".join(lines) + "\n")
+    return changed
+
+
+def classify_transition(previous: dict[str, Any] | None, selection) -> str:
+    """Come e' cambiato il consiglio fra preliminare e definitivo."""
+    if previous is None:
+        return TRANSITION_FIRST
+    was_silent = previous.get("market_key") is None
+    is_silent = selection.pick is None
+    if was_silent and is_silent:
+        return TRANSITION_STILL_SILENT
+    if was_silent:
+        return TRANSITION_FROM_SILENCE
+    if is_silent:
+        return TRANSITION_TO_SILENCE
+    return (
+        TRANSITION_CONFIRMED
+        if previous.get("market_key") == selection.pick.key
+        else TRANSITION_CHANGED
+    )
 
 
 def make_row(
@@ -101,6 +232,8 @@ def make_row(
     model_weight: float,
     source: str,
     reasons: list[str] | None = None,
+    previous: dict[str, Any] | None = None,
+    transition: str | None = None,
 ) -> LedgerRow:
     """Costruisce la riga da una `Selection`, silenzio incluso."""
     pick = selection.pick
@@ -113,7 +246,7 @@ def make_row(
         utc_date=match.utc_date,
         home=match.home_name,
         away=match.away_name,
-        written_at=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        written_at=datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         model_weight=model_weight,
         source=source,
         market_key=pick.key if pick else None,
@@ -131,4 +264,12 @@ def make_row(
         filter_bites=selection.filter_bites,
         cluster_members=selection.cluster_members,
         reasons=reasons or [],
+        transition=transition or classify_transition(previous, selection),
+        previous_market_key=(previous or {}).get("market_key"),
+        previous_market_label=(previous or {}).get("market_label"),
+        previous_p=(previous or {}).get("p"),
+        # Lo score dichiarato **e'** lo skill atteso sotto la nostra
+        # probabilita': non e' una seconda quantita', e' la stessa. Si copia
+        # qui perche' `settle` confronti due colonne omogenee.
+        skill_declared=round(pick.score, 6) if pick else None,
     )

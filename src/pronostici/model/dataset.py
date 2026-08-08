@@ -6,7 +6,7 @@ peso, cosi' che backtest e produzione non possano divergere in silenzio.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import numpy as np
 
@@ -28,7 +28,7 @@ def build_dataset(
     una partita non puo' mai contribuire alla propria previsione.
     """
     if as_of.tzinfo is None:
-        as_of = as_of.replace(tzinfo=timezone.utc)
+        as_of = as_of.replace(tzinfo=UTC)
 
     usable = [
         m

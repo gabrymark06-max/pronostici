@@ -79,7 +79,9 @@ def shrink(
     return alpha * np.asarray(p_hat) + (1 - alpha) * np.asarray(q_ref), alpha
 
 
-def market_correlation(matrix: np.ndarray, mask_a: np.ndarray, mask_b: np.ndarray) -> float:
+def market_correlation(
+    matrix: np.ndarray, mask_a: np.ndarray, mask_b: np.ndarray
+) -> float:
     """Correlazione **esatta** fra due mercati binari, dalla matrice congiunta.
 
     Non stimata dallo storico: alcuni mercati sono annidati (Over 2.5 dentro
@@ -109,7 +111,9 @@ def correlation_matrix(matrix: np.ndarray, keys: list[str], max_goals: int) -> n
     return corr
 
 
-def single_linkage_clusters(corr: np.ndarray, threshold: float = RHO_MAX) -> list[list[int]]:
+def single_linkage_clusters(
+    corr: np.ndarray, threshold: float = RHO_MAX
+) -> list[list[int]]:
     """Cluster a legame singolo su |correlazione| >= soglia.
 
     Riduce tipicamente ~90 mercati a pochi cluster: e' quello il **numero

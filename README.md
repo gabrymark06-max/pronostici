@@ -26,8 +26,9 @@ matrice dei gol   Dixon-Coles con decadimento esponenziale (emivita 365 giorni)
       ↓
 incertezza        300 draw bootstrap dei parametri, per campionato
       ↓
-riferimento       quote sgonfiate col metodo power dove esistono,
-                  frequenza storica del campionato dove non esistono
+riferimento       quote sgonfiate col metodo power dove il mercato determina
+                  l'evento — alias inclusi — frequenza storica dove non lo
+                  determina
       ↓
 shrinkage         α = 1/(1 + σ²/τ²)  ·  media a posteriori verso il riferimento
       ↓
@@ -45,6 +46,8 @@ Due proprietà che valgono più di quanto sembri:
 **Il punteggio è direzionale.** La divergenza KL è positiva in entrambe le direzioni: usarla nuda consiglierebbe eventi che riteniamo *meno* probabili del riferimento. Kelly dice "non scommettere" quando `p ≤ q`, e il punteggio vale zero.
 
 **Il vincolo "se è difficile che esca, non lo consigliamo" non è una soglia.** È dentro la matematica: a parità di vantaggio del 10%, il punteggio cade di 124 volte passando da p = 0,75 a p = 0,02. E i pronostici banali si escludono da soli — "Over 0.5 al 97%" contro un base rate del 96,5% vale 0,0004 nats, sotto ogni soglia.
+
+**Lo stesso evento ha un solo riferimento.** "Asiatico casa −0.5" e "Vittoria casa" sono lo stesso identico evento, e quando ci sono le quote devono essere confrontati con la stessa probabilità di mercato. Confrontarne uno col mercato e l'altro col base rate storico farebbe scegliere all'argmax il riferimento più comodo: vantaggio fabbricato da un cambio di nome.
 
 Tutti i mercati derivano dalla **stessa** matrice di probabilità congiunta dei gol, quindi sono coerenti fra loro per costruzione.
 
@@ -71,19 +74,48 @@ Tre conseguenze, tutte volute:
 ```
 src/pronostici/
 ├── sources/      football_data.py · odds_api.py (con governo della quota)
+│                 odds_parse.py (consenso fra bookmaker + de-vig power)
 ├── model/        dixon_coles · matrix · markets · devig · blend
 │                 bootstrap · baserates · selection
-├── jobs/         ingest · retrain · score · bench_fit
+├── jobs/         ingest · retrain · score · finalize · settle
+│                 backtest · bench_fit
+├── matching.py   appaia le partite di football-data con gli eventi delle quote
+├── fixtures.py   i file giornalieri, con le regole di merge
 ├── ledger.py     registro append-only dei pronostici
 └── pipeline.py
 
 data/
-├── archive/      ogni partita mai ingerita (la finestra dell'API è scorrevole:
-│                 senza archivio, lo storico si accorcerebbe da solo)
-├── leagues/      parametri e draw bootstrap per campionato
-├── fixtures/     un file per giorno — il contratto col frontend
-└── ledger/       i pronostici, append-only
+├── archive/          ogni partita mai ingerita (la finestra dell'API è scorrevole:
+│                     senza archivio, lo storico si accorcerebbe da solo)
+├── leagues/          parametri e draw bootstrap per campionato
+├── fixtures/         un file per giorno — il contratto col frontend
+├── ledger/           i pronostici, append-only
+├── accuracy.json     dichiarato contro realizzato, dal solo registro dal vivo
+├── backtest.json     la prova storica, tenuta separata e etichettata
+└── odds_budget.json  crediti quote consumati nel mese, con il tetto
 ```
+
+Lo schema completo di `data/` è il contratto col frontend ed è descritto in
+[docs/schema.md](docs/schema.md).
+
+### Le due verità della stessa partita
+
+Da T−7g a T−36h il pronostico viene dal solo modello (`w = 1,0`). A T−36h
+arrivano le quote e il pronostico viene **rivisto una volta sola**, con
+`w = 0,35`. Le due versioni sono **due righe permanenti** del registro, non un
+aggiornamento: se il consiglio è cambiato, la scheda lo dice.
+
+```
+transition            cosa mostra la scheda
+──────────────────────────────────────────────────────────────────────
+confirmed             "Le quote confermano quello che dicevamo."
+changed               "Fino a ieri dicevamo X. Ora diciamo Y."
+prediction_to_silence "Ritiriamo il pronostico: non abbiamo un vantaggio."
+silence_to_prediction "Prima non avevamo niente da dire. Ora sì."
+```
+
+Al fischio d'inizio tutto è congelato. `settle` scrive solo l'esito, e solo
+sui campi che sono ancora vuoti.
 
 ---
 
@@ -112,13 +144,38 @@ Senza `ODDS_API_KEY` il sistema funziona lo stesso: degrada a "solo modello" e o
 
 ```bash
 python -m pronostici.jobs.ingest                       # scarica e archivia
-python -m pronostici.jobs.retrain --competitions SA    # fit + 300 bootstrap
+python -m pronostici.jobs.retrain                      # fit + 300 bootstrap
 python -m pronostici.jobs.score --days 7               # pronostici preliminari
+python -m pronostici.jobs.finalize --window-hours 36   # quote → definitivi
+python -m pronostici.jobs.settle                       # esiti e accuratezza
+python -m pronostici.jobs.backtest                     # walk-forward
 python -m pronostici.jobs.bench_fit                    # cronometra il fit
 pytest                                                 # i test
 ```
 
 Ogni job è idempotente: rieseguirlo non duplica righe e non cambia il passato.
+
+`finalize` spende crediti, quindi ha due protezioni oltre al tetto: usa la
+risposta su disco se è recente (`--max-age-s`), e `--dry-run` calcola tutto
+senza scrivere. In sviluppo si lavora sulla cache e non si spende niente.
+
+### In produzione
+
+I job girano su GitHub Actions e committano il risultato: è il registro
+pubblico, ed è il meccanismo che rende verificabile l'onestà del prodotto.
+
+| Workflow | Quando (UTC) | Cosa |
+|---|---|---|
+| `daily.yml` | 03:00 | `ingest` → `settle` → `retrain` → `score`, in sequenza |
+| `odds.yml` | 10:00 e 18:00 | `finalize` |
+| `tests.yml` | a ogni push | ruff + pytest su Python 3.11 e 3.12 |
+
+Ogni job è anche eseguibile a mano (`workflow_dispatch`). Le due pipeline che
+scrivono in `data/` condividono un gruppo di concorrenza, e il push riprova
+con rebase: non si può avere un registro riscritto da due job insieme.
+
+I segreti stanno nei GitHub Actions Secrets: `FOOTBALL_DATA_API_KEY` e
+`ODDS_API_KEY`. Nient'altro.
 
 ---
 
@@ -129,8 +186,10 @@ Misurate, non stimate — vedi `data/benchmark_fit.json`.
 | | |
 |---|---|
 | Un fit Dixon-Coles (760 partite, 47 parametri) | 0,0116 s |
-| Fit + 300 bootstrap, un campionato | 3,8 s |
-| Tutte e 10 le competizioni | 38 s |
+| Fit + 300 bootstrap, un campionato | 3,3 – 13,2 s |
+| Retrain di tutte e 10 le competizioni, due stagioni ciascuna | 72 s |
+| Scoring di una giornata (25 partite, 10 campionati) | 1,0 s |
+| `finalize` su un campionato, quote incluse | 1,2 s |
 
 Il gradiente è analitico: senza, ogni passo dell'ottimizzatore costerebbe 48 valutazioni della verosimiglianza invece di una.
 
@@ -151,6 +210,8 @@ Il gradiente è analitico: senza, ogni passo dell'ottimizzatore costerebbe 48 va
 |---|---|
 | [docs/decisioni.md](docs/decisioni.md) | Scope, vincoli, cosa è escluso e perché |
 | [docs/brief.md](docs/brief.md) | Architettura, quota, silenzio, avvio a freddo |
+| [docs/schema.md](docs/schema.md) | Lo schema di `data/`: il contratto col frontend |
+| [docs/protocollo-backtest.md](docs/protocollo-backtest.md) | Le regole del backtest, scritte **prima** di guardarne i risultati |
 | [docs/research/selezione-pronostico.md](docs/research/selezione-pronostico.md) | Il metodo statistico, con le fonti |
 | [docs/research/fonti-dati.md](docs/research/fonti-dati.md) | Cosa danno davvero le fonti gratuite |
 | [docs/competitors.md](docs/competitors.md) | Come fanno gli altri, e cosa sbagliano |

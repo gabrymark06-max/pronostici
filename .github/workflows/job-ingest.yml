@@ -1,0 +1,66 @@
+name: job · ingest
+
+# Calendario e risultati da football-data.org. Ogni partita vista anche una
+# volta sola resta archiviata per sempre: la finestra gratuita di due stagioni
+# scorre, il nostro storico deve crescere e non traslare (brief, rischio 7).
+
+on:
+  workflow_call:
+    inputs:
+      competitions:
+        type: string
+        required: false
+        default: ""
+      seasons:
+        type: string
+        required: false
+        default: ""
+  workflow_dispatch:
+    inputs:
+      competitions:
+        description: Codici separati da spazio (vuoto = tutte)
+        type: string
+        required: false
+        default: ""
+      seasons:
+        description: Stagioni separate da spazio (vuoto = corrente e precedente)
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostici-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Ingest
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: |
+          ARGS=""
+          [ -n "${{ inputs.competitions }}" ] && ARGS="$ARGS --competitions ${{ inputs.competitions }}"
+          [ -n "${{ inputs.seasons }}" ] && ARGS="$ARGS --seasons ${{ inputs.seasons }}"
+          python -m pronostici.jobs.ingest $ARGS | tee "$RUNNER_TEMP/report.json"
+      - name: Riepilogo
+        run: |
+          echo '### ingest' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          tail -c 4000 "$RUNNER_TEMP/report.json" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: ./.github/actions/commit-data
+        with:
+          message: "dati: ingest calendario e risultati"
+          paths: data/archive

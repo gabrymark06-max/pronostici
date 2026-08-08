@@ -1,0 +1,1135 @@
+{
+ "date": "2026-08-08",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1912.png",
+    "name": "Telstar 1963",
+    "tla": "TEL"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 72,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 9,
+    "truncated_mass": 9.746e-07
+   },
+   "expected_goals": {
+    "away": 1.233,
+    "home": 2.301
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7963,
+    "ht_over_1.5": 0.4723,
+    "ht_over_2.5": 0.2144,
+    "ht_under_0.5": 0.2037,
+    "ht_under_1.5": 0.5277,
+    "ht_under_2.5": 0.7856,
+    "htft_11": 0.4037,
+    "htft_12": 0.0166,
+    "htft_1X": 0.0465,
+    "htft_21": 0.0382,
+    "htft_22": 0.1097,
+    "htft_2X": 0.0465,
+    "htft_X1": 0.1712,
+    "htft_X2": 0.0676,
+    "htft_XX": 0.1
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1915.png",
+    "name": "NEC",
+    "tla": "NEC"
+   },
+   "match_id": 558215,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8482,
+    "band_p95": 0.9651,
+    "cluster_members": [
+     "ah_home_1.5"
+    ],
+    "family": "handicap_eu",
+    "key": "eh_2_home",
+    "label": "Handicap +2 casa",
+    "p": 0.909,
+    "p_raw": 0.9192,
+    "reference": 0.8572,
+    "runners_up": [
+     {
+      "band_p5": 0.8142,
+      "band_p95": 0.9544,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.877,
+      "p_raw": 0.8919,
+      "reference": 0.8205,
+      "score": 0.011895,
+      "shrink_alpha": 0.7908,
+      "sigma": 0.0411
+     },
+     {
+      "band_p5": 0.5014,
+      "band_p95": 0.8137,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5655,
+      "p_raw": 0.6592,
+      "reference": 0.4915,
+      "score": 0.010953,
+      "shrink_alpha": 0.441,
+      "sigma": 0.0901
+     },
+     {
+      "band_p5": 0.9398,
+      "band_p95": 0.9917,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9722,
+      "p_raw": 0.9733,
+      "reference": 0.9409,
+      "score": 0.01087,
+      "shrink_alpha": 0.9647,
+      "sigma": 0.0153
+     },
+     {
+      "band_p5": 0.5653,
+      "band_p95": 0.829,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6331,
+      "p_raw": 0.6994,
+      "reference": 0.5605,
+      "score": 0.010852,
+      "shrink_alpha": 0.5225,
+      "sigma": 0.0765
+     },
+     {
+      "band_p5": 0.4537,
+      "band_p95": 0.7415,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5167,
+      "p_raw": 0.6076,
+      "reference": 0.4468,
+      "score": 0.009832,
+      "shrink_alpha": 0.4351,
+      "sigma": 0.0912
+     }
+    ],
+    "score": 0.012322,
+    "shrink_alpha": 0.8352,
+    "sigma": 0.0355
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1992,
+    "1x2_draw": 0.1932,
+    "1x2_home": 0.6076,
+    "btts_yes": 0.6264,
+    "over_2.5": 0.6776,
+    "under_2.5": 0.3224
+   },
+   "reasons": [
+    "Gol attesi: NEC 2.30, Telstar 1963 1.23 (totale 3.53).",
+    "Handicap +2 casa: 91 su 100, 5 punti sopra la media di riferimento (86 su 100).",
+    "Banda di incertezza: fra 85 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-08T14:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/672.png",
+    "name": "Willem II Tilburg",
+    "tla": "WII"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 72,
+     "p_min": 68,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 8,
+    "truncated_mass": 2.719e-07
+   },
+   "expected_goals": {
+    "away": 0.823,
+    "home": 2.049
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7256,
+    "ht_over_1.5": 0.3707,
+    "ht_over_2.5": 0.1413,
+    "ht_under_0.5": 0.2744,
+    "ht_under_1.5": 0.6293,
+    "ht_under_2.5": 0.8587,
+    "htft_11": 0.4314,
+    "htft_12": 0.0092,
+    "htft_1X": 0.039,
+    "htft_21": 0.0292,
+    "htft_22": 0.0757,
+    "htft_2X": 0.039,
+    "htft_X1": 0.1982,
+    "htft_X2": 0.0558,
+    "htft_XX": 0.1225
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/718.png",
+    "name": "Go Ahead Eagles",
+    "tla": "GOA"
+   },
+   "match_id": 558216,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.9062,
+    "band_p95": 0.9838,
+    "cluster_members": [
+     "ah_home_1.5"
+    ],
+    "family": "handicap_eu",
+    "key": "eh_2_home",
+    "label": "Handicap +2 casa",
+    "p": 0.9467,
+    "p_raw": 0.9544,
+    "reference": 0.8572,
+    "runners_up": [
+     {
+      "band_p5": 0.6859,
+      "band_p95": 0.8959,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7271,
+      "p_raw": 0.7995,
+      "reference": 0.605,
+      "score": 0.032776,
+      "shrink_alpha": 0.6278,
+      "sigma": 0.0616
+     },
+     {
+      "band_p5": 0.8931,
+      "band_p95": 0.982,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9374,
+      "p_raw": 0.9462,
+      "reference": 0.8609,
+      "score": 0.029796,
+      "shrink_alpha": 0.8971,
+      "sigma": 0.0271
+     },
+     {
+      "band_p5": 0.9723,
+      "band_p95": 0.9976,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9883,
+      "p_raw": 0.9888,
+      "reference": 0.9409,
+      "score": 0.029636,
+      "shrink_alpha": 0.99,
+      "sigma": 0.008
+     },
+     {
+      "band_p5": 0.7568,
+      "band_p95": 0.9302,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.808,
+      "p_raw": 0.8547,
+      "reference": 0.7016,
+      "score": 0.029435,
+      "shrink_alpha": 0.6952,
+      "sigma": 0.053
+     },
+     {
+      "band_p5": 0.7568,
+      "band_p95": 0.9302,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.808,
+      "p_raw": 0.8547,
+      "reference": 0.7016,
+      "score": 0.029435,
+      "shrink_alpha": 0.6952,
+      "sigma": 0.053
+     }
+    ],
+    "score": 0.041464,
+    "shrink_alpha": 0.9201,
+    "sigma": 0.0236
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1453,
+    "1x2_draw": 0.2023,
+    "1x2_home": 0.6524,
+    "btts_yes": 0.4787,
+    "over_2.5": 0.5427,
+    "under_2.5": 0.4573
+   },
+   "reasons": [
+    "Gol attesi: Go Ahead Eagles 2.05, Willem II Tilburg 0.82 (totale 2.87).",
+    "Handicap +2 casa: 95 su 100, 9 punti sopra la media di riferimento (86 su 100).",
+    "Banda di incertezza: fra 91 e 98 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-08T16:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/712.png",
+    "name": "FC Arouca",
+    "tla": "FCA"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 91,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 3,
+    "truncated_mass": 5.672e-08
+   },
+   "expected_goals": {
+    "away": 1.235,
+    "home": 1.78
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7421,
+    "ht_over_1.5": 0.3926,
+    "ht_over_2.5": 0.1558,
+    "ht_under_0.5": 0.2579,
+    "ht_under_1.5": 0.6074,
+    "ht_under_2.5": 0.8442,
+    "htft_11": 0.3116,
+    "htft_12": 0.0189,
+    "htft_1X": 0.0509,
+    "htft_21": 0.0303,
+    "htft_22": 0.1516,
+    "htft_2X": 0.0509,
+    "htft_X1": 0.1599,
+    "htft_X2": 0.0949,
+    "htft_XX": 0.131
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/5543.png",
+    "name": "Vitória SC",
+    "tla": "GUI"
+   },
+   "match_id": 567258,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.745,
+    "band_p95": 0.8855,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_0.5",
+    "label": "Casa Over 0.5",
+    "p": 0.8083,
+    "p_raw": 0.8259,
+    "reference": 0.7506,
+    "runners_up": [
+     {
+      "band_p5": 0.4798,
+      "band_p95": 0.6721,
+      "family": "btts",
+      "key": "btts_yes",
+      "label": "Entrambe segnano",
+      "p": 0.5533,
+      "p_raw": 0.5806,
+      "reference": 0.4993,
+      "score": 0.005829,
+      "shrink_alpha": 0.6637,
+      "sigma": 0.0569
+     },
+     {
+      "band_p5": 0.9274,
+      "band_p95": 0.9849,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9612,
+      "p_raw": 0.9623,
+      "reference": 0.9369,
+      "score": 0.005743,
+      "shrink_alpha": 0.9548,
+      "sigma": 0.0174
+     }
+    ],
+    "score": 0.009421,
+    "shrink_alpha": 0.7663,
+    "sigma": 0.0442
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2684,
+    "1x2_draw": 0.2306,
+    "1x2_home": 0.5011,
+    "btts_yes": 0.5806,
+    "over_2.5": 0.5766,
+    "under_2.5": 0.4234
+   },
+   "reasons": [
+    "Gol attesi: Vitória SC 1.78, FC Arouca 1.24 (totale 3.02).",
+    "Casa Over 0.5: 81 su 100, 6 punti sopra la media di riferimento (75 su 100).",
+    "Banda di incertezza: fra 74 e 89 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-08T17:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1920.png",
+    "name": "Fortuna Sittard",
+    "tla": "SIT"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 66,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 14,
+    "truncated_mass": 0.0001634
+   },
+   "expected_goals": {
+    "away": 0.983,
+    "home": 3.788
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8833,
+    "ht_over_1.5": 0.6326,
+    "ht_over_2.5": 0.3633,
+    "ht_under_0.5": 0.1167,
+    "ht_under_1.5": 0.3674,
+    "ht_under_2.5": 0.6367,
+    "htft_11": 0.6584,
+    "htft_12": 0.0058,
+    "htft_1X": 0.0223,
+    "htft_21": 0.0395,
+    "htft_22": 0.0288,
+    "htft_2X": 0.0223,
+    "htft_X1": 0.164,
+    "htft_X2": 0.0187,
+    "htft_XX": 0.0402
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/674.png",
+    "name": "PSV",
+    "tla": "PSV"
+   },
+   "match_id": 558217,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8128,
+    "band_p95": 0.9458,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.7996,
+    "p_raw": 0.8847,
+    "reference": 0.4915,
+    "runners_up": [
+     {
+      "band_p5": 0.7243,
+      "band_p95": 0.9015,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.6709,
+      "p_raw": 0.8221,
+      "reference": 0.3579,
+      "score": 0.20156,
+      "shrink_alpha": 0.6743,
+      "sigma": 0.0556
+     },
+     {
+      "band_p5": 0.7733,
+      "band_p95": 0.9241,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.7487,
+      "p_raw": 0.8558,
+      "reference": 0.4468,
+      "score": 0.188272,
+      "shrink_alpha": 0.7382,
+      "sigma": 0.0476
+     },
+     {
+      "band_p5": 0.7733,
+      "band_p95": 0.9241,
+      "family": "handicap_asian",
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.7487,
+      "p_raw": 0.8558,
+      "reference": 0.4468,
+      "score": 0.188272,
+      "shrink_alpha": 0.7382,
+      "sigma": 0.0476
+     },
+     {
+      "band_p5": 0.8389,
+      "band_p95": 0.949,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.8449,
+      "p_raw": 0.8999,
+      "reference": 0.5605,
+      "score": 0.185078,
+      "shrink_alpha": 0.8378,
+      "sigma": 0.0352
+     },
+     {
+      "band_p5": 0.6518,
+      "band_p95": 0.8598,
+      "family": "combo",
+      "key": "combo_1_over_2.5",
+      "label": "1 + Over 2.5",
+      "p": 0.5696,
+      "p_raw": 0.7602,
+      "reference": 0.2849,
+      "score": 0.176167,
+      "shrink_alpha": 0.5991,
+      "sigma": 0.0654
+     }
+    ],
+    "score": 0.20247,
+    "shrink_alpha": 0.7835,
+    "sigma": 0.0421
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.0566,
+    "1x2_draw": 0.0876,
+    "1x2_home": 0.8558,
+    "btts_yes": 0.606,
+    "over_2.5": 0.8482,
+    "under_2.5": 0.1518
+   },
+   "reasons": [
+    "Gol attesi: PSV 3.79, Fortuna Sittard 0.98 (totale 4.77).",
+    "Casa Over 1.5: 80 su 100, 31 punti sopra la media di riferimento (49 su 100).",
+    "Banda di incertezza: fra 81 e 95 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-08T18:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1776.png",
+    "name": "São Paulo FC",
+    "tla": "PAU"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 94,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 1,
+    "truncated_mass": 2.236e-09
+   },
+   "expected_goals": {
+    "away": 1.092,
+    "home": 1.338
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6668,
+    "ht_over_1.5": 0.3006,
+    "ht_over_2.5": 0.0994,
+    "ht_under_0.5": 0.3332,
+    "ht_under_1.5": 0.6994,
+    "ht_under_2.5": 0.9006,
+    "htft_11": 0.2504,
+    "htft_12": 0.0164,
+    "htft_1X": 0.0494,
+    "htft_21": 0.0211,
+    "htft_22": 0.1729,
+    "htft_2X": 0.0494,
+    "htft_X1": 0.1518,
+    "htft_X2": 0.1154,
+    "htft_XX": 0.1733
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1767.png",
+    "name": "Grêmio FBPA",
+    "tla": "FBP"
+   },
+   "match_id": 554956,
+   "matchday": 22,
+   "model_weight": 0.35,
+   "odds": {
+    "devig": {
+     "h2h": 1.07,
+     "totals_2.5": 1.102
+    },
+    "fetched": "cache",
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 23
+   },
+   "phase": "definitive",
+   "prediction": {
+    "band_p5": 0.5723,
+    "band_p95": 0.6617,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.6081,
+    "p_raw": 0.6136,
+    "reference": 0.5581,
+    "runners_up": [],
+    "score": 0.005101,
+    "shrink_alpha": 0.8997,
+    "sigma": 0.0267
+   },
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-08-08T10:14:07Z"
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3045,
+    "1x2_draw": 0.2727,
+    "1x2_home": 0.4228,
+    "btts_yes": 0.4896,
+    "over_2.5": 0.4379,
+    "under_2.5": 0.5621
+   },
+   "reasons": [
+    "Prima delle quote non avevamo niente da dire su questa partita. Dal confronto con il mercato e' emerso Casa Under 1.5.",
+    "Gol attesi: Grêmio FBPA 1.34, São Paulo FC 1.09 (totale 2.43).",
+    "Casa Under 1.5: 61 su 100, 5 punti sopra la media di riferimento (56 su 100).",
+    "Banda di incertezza: fra 57 e 66 su 100."
+   ],
+   "silence": null,
+   "source": "blended_with_odds",
+   "transition": "silence_to_prediction",
+   "utc_date": "2026-08-08T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/498.png",
+    "name": "Sporting Clube de Portugal",
+    "tla": "SPO"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 64,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 11,
+    "truncated_mass": 5.435e-06
+   },
+   "expected_goals": {
+    "away": 2.702,
+    "home": 0.654
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7786,
+    "ht_over_1.5": 0.4448,
+    "ht_over_2.5": 0.1931,
+    "ht_under_0.5": 0.2214,
+    "ht_under_1.5": 0.5552,
+    "ht_under_2.5": 0.8069,
+    "htft_11": 0.0343,
+    "htft_12": 0.0292,
+    "htft_1X": 0.0258,
+    "htft_21": 0.0047,
+    "htft_22": 0.5726,
+    "htft_2X": 0.0258,
+    "htft_X1": 0.0268,
+    "htft_X2": 0.2027,
+    "htft_XX": 0.0782
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/9136.png",
+    "name": "CF Estrela da Amadora",
+    "tla": "AMA"
+   },
+   "match_id": 567260,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8799,
+    "band_p95": 0.9721,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.8934,
+    "p_raw": 0.9306,
+    "reference": 0.5721,
+    "runners_up": [
+     {
+      "band_p5": 0.7012,
+      "band_p95": 0.891,
+      "family": "1x2",
+      "key": "1x2_away",
+      "label": "Vittoria ospite",
+      "p": 0.6396,
+      "p_raw": 0.7991,
+      "reference": 0.3092,
+      "score": 0.2304,
+      "shrink_alpha": 0.6743,
+      "sigma": 0.0556
+     },
+     {
+      "band_p5": 0.7012,
+      "band_p95": 0.891,
+      "family": "handicap_asian",
+      "key": "ah_away_-0.5",
+      "label": "Asiatico ospite -0.5",
+      "p": 0.6396,
+      "p_raw": 0.7991,
+      "reference": 0.3092,
+      "score": 0.2304,
+      "shrink_alpha": 0.6743,
+      "sigma": 0.0556
+     },
+     {
+      "band_p5": 0.9647,
+      "band_p95": 0.9946,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9799,
+      "p_raw": 0.9826,
+      "reference": 0.7768,
+      "score": 0.179374,
+      "shrink_alpha": 0.9871,
+      "sigma": 0.0091
+     },
+     {
+      "band_p5": 0.9647,
+      "band_p95": 0.9946,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9799,
+      "p_raw": 0.9826,
+      "reference": 0.7768,
+      "score": 0.179374,
+      "shrink_alpha": 0.9871,
+      "sigma": 0.0091
+     },
+     {
+      "band_p5": 0.8834,
+      "band_p95": 0.9649,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.9065,
+      "p_raw": 0.9285,
+      "reference": 0.6874,
+      "score": 0.137934,
+      "shrink_alpha": 0.9087,
+      "sigma": 0.0254
+     }
+    ],
+    "score": 0.249969,
+    "shrink_alpha": 0.8962,
+    "sigma": 0.0272
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.7991,
+    "1x2_draw": 0.1314,
+    "1x2_home": 0.0694,
+    "btts_yes": 0.441,
+    "over_2.5": 0.6462,
+    "under_2.5": 0.3538
+   },
+   "reasons": [
+    "Gol attesi: CF Estrela da Amadora 0.65, Sporting Clube de Portugal 2.70 (totale 3.36).",
+    "X2 (pareggio o ospite): 89 su 100, 32 punti sopra la media di riferimento (57 su 100).",
+    "Banda di incertezza: fra 88 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-08T19:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1766.png",
+    "name": "CA Mineiro",
+    "tla": "CAM"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 75,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 4,
+    "truncated_mass": 1.573e-09
+   },
+   "expected_goals": {
+    "away": 1.265,
+    "home": 1.191
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6707,
+    "ht_over_1.5": 0.3049,
+    "ht_over_2.5": 0.1017,
+    "ht_under_0.5": 0.3293,
+    "ht_under_1.5": 0.6951,
+    "ht_under_2.5": 0.8983,
+    "htft_11": 0.1995,
+    "htft_12": 0.02,
+    "htft_1X": 0.0503,
+    "htft_21": 0.0185,
+    "htft_22": 0.2226,
+    "htft_2X": 0.0503,
+    "htft_X1": 0.128,
+    "htft_X2": 0.1388,
+    "htft_XX": 0.1721
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4287.png",
+    "name": "Clube do Remo",
+    "tla": "CRE"
+   },
+   "match_id": 554958,
+   "matchday": 22,
+   "model_weight": 0.35,
+   "odds": {
+    "devig": {
+     "h2h": 1.067,
+     "totals_2.5": 1.098
+    },
+    "fetched": "cache",
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 23
+   },
+   "phase": "definitive",
+   "prediction": {
+    "band_p5": 0.6025,
+    "band_p95": 0.7252,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.6482,
+    "p_raw": 0.6661,
+    "reference": 0.5581,
+    "runners_up": [
+     {
+      "band_p5": 0.8194,
+      "band_p95": 0.8884,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8495,
+      "p_raw": 0.8545,
+      "reference": 0.7782,
+      "score": 0.016111,
+      "shrink_alpha": 0.9341,
+      "sigma": 0.0212
+     },
+     {
+      "band_p5": 0.8194,
+      "band_p95": 0.8884,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.8495,
+      "p_raw": 0.8545,
+      "reference": 0.7782,
+      "score": 0.016111,
+      "shrink_alpha": 0.9341,
+      "sigma": 0.0212
+     },
+     {
+      "band_p5": 0.9349,
+      "band_p95": 0.9678,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9517,
+      "p_raw": 0.9523,
+      "reference": 0.9136,
+      "score": 0.010785,
+      "shrink_alpha": 0.9846,
+      "sigma": 0.01
+     },
+     {
+      "band_p5": 0.8409,
+      "band_p95": 0.9143,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.8777,
+      "p_raw": 0.8807,
+      "reference": 0.835,
+      "score": 0.007137,
+      "shrink_alpha": 0.9346,
+      "sigma": 0.0212
+     }
+    ],
+    "score": 0.016779,
+    "shrink_alpha": 0.8342,
+    "sigma": 0.0357
+   },
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-08-08T10:14:07Z"
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3811,
+    "1x2_draw": 0.2732,
+    "1x2_home": 0.3457,
+    "btts_yes": 0.4981,
+    "over_2.5": 0.4444,
+    "under_2.5": 0.5556
+   },
+   "reasons": [
+    "Prima delle quote non avevamo niente da dire su questa partita. Dal confronto con il mercato e' emerso Casa Under 1.5.",
+    "Gol attesi: Clube do Remo 1.19, CA Mineiro 1.26 (totale 2.46).",
+    "Casa Under 1.5: 65 su 100, 9 punti sopra la media di riferimento (56 su 100).",
+    "Banda di incertezza: fra 60 e 73 su 100."
+   ],
+   "silence": null,
+   "source": "blended_with_odds",
+   "transition": "silence_to_prediction",
+   "utc_date": "2026-08-08T21:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1772_large.png",
+    "name": "Chapecoense AF",
+    "tla": "CHA"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 75,
+     "p_min": 68,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 1.221e-07
+   },
+   "expected_goals": {
+    "away": 0.815,
+    "home": 1.908
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7081,
+    "ht_over_1.5": 0.3486,
+    "ht_over_2.5": 0.1274,
+    "ht_under_0.5": 0.2919,
+    "ht_under_1.5": 0.6514,
+    "ht_under_2.5": 0.8726,
+    "htft_11": 0.4074,
+    "htft_12": 0.0094,
+    "htft_1X": 0.0403,
+    "htft_21": 0.0274,
+    "htft_22": 0.0829,
+    "htft_2X": 0.0403,
+    "htft_X1": 0.1966,
+    "htft_X2": 0.0613,
+    "htft_XX": 0.1346
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4241.png",
+    "name": "Coritiba FBC",
+    "tla": "COR"
+   },
+   "match_id": 554953,
+   "matchday": 22,
+   "model_weight": 0.35,
+   "odds": {
+    "devig": {
+     "h2h": 1.083,
+     "totals_2.5": 1.101
+    },
+    "fetched": "cache",
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 23
+   },
+   "phase": "definitive",
+   "prediction": {
+    "band_p5": 0.9307,
+    "band_p95": 0.9693,
+    "cluster_members": [
+     "ah_home_1.5"
+    ],
+    "family": "handicap_eu",
+    "key": "eh_2_home",
+    "label": "Handicap +2 casa",
+    "p": 0.9521,
+    "p_raw": 0.9531,
+    "reference": 0.9004,
+    "runners_up": [
+     {
+      "band_p5": 0.4937,
+      "band_p95": 0.6456,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5344,
+      "p_raw": 0.5665,
+      "reference": 0.4419,
+      "score": 0.017203,
+      "shrink_alpha": 0.742,
+      "sigma": 0.0472
+     },
+     {
+      "band_p5": 0.5906,
+      "band_p95": 0.7191,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6331,
+      "p_raw": 0.653,
+      "reference": 0.5513,
+      "score": 0.013755,
+      "shrink_alpha": 0.8042,
+      "sigma": 0.0395
+     },
+     {
+      "band_p5": 0.7479,
+      "band_p95": 0.8537,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7921,
+      "p_raw": 0.8031,
+      "reference": 0.7199,
+      "score": 0.013701,
+      "shrink_alpha": 0.8671,
+      "sigma": 0.0313
+     },
+     {
+      "band_p5": 0.9814,
+      "band_p95": 0.9939,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.989,
+      "p_raw": 0.9891,
+      "reference": 0.9651,
+      "score": 0.011535,
+      "shrink_alpha": 0.998,
+      "sigma": 0.0036
+     },
+     {
+      "band_p5": 0.8096,
+      "band_p95": 0.8893,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.8444,
+      "p_raw": 0.8495,
+      "reference": 0.7921,
+      "score": 0.008898,
+      "shrink_alpha": 0.9105,
+      "sigma": 0.0251
+     }
+    ],
+    "score": 0.018094,
+    "shrink_alpha": 0.9806,
+    "sigma": 0.0113
+   },
+   "previous": {
+    "market_key": "eh_2_home",
+    "market_label": "Handicap +2 casa",
+    "p": 0.9508,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-08T10:14:07Z"
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1544,
+    "1x2_draw": 0.2159,
+    "1x2_home": 0.6297,
+    "btts_yes": 0.4724,
+    "over_2.5": 0.5107,
+    "under_2.5": 0.4893
+   },
+   "reasons": [
+    "Le quote confermano quello che dicevamo: restiamo su Handicap +2 casa.",
+    "Gol attesi: Coritiba FBC 1.91, Chapecoense AF 0.81 (totale 2.72).",
+    "Handicap +2 casa: 95 su 100, 5 punti sopra la media di riferimento (90 su 100).",
+    "Banda di incertezza: fra 93 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "blended_with_odds",
+   "transition": "confirmed",
+   "utc_date": "2026-08-08T23:30:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T10:37:56Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 8
+}

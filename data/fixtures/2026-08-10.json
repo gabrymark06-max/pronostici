@@ -1,0 +1,156 @@
+{
+ "date": "2026-08-10",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5529.png",
+    "name": "CD Nacional",
+    "tla": "CDN"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 66,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 13,
+    "truncated_mass": 2.555e-10
+   },
+   "expected_goals": {
+    "away": 0.762,
+    "home": 1.122
+   },
+   "half_time": {
+    "ht_over_0.5": 0.5711,
+    "ht_over_1.5": 0.2081,
+    "ht_over_2.5": 0.0544,
+    "ht_under_0.5": 0.4289,
+    "ht_under_1.5": 0.7919,
+    "ht_under_2.5": 0.9456,
+    "htft_11": 0.2527,
+    "htft_12": 0.0095,
+    "htft_1X": 0.0418,
+    "htft_21": 0.015,
+    "htft_22": 0.1331,
+    "htft_2X": 0.0418,
+    "htft_X1": 0.1719,
+    "htft_X2": 0.1053,
+    "htft_XX": 0.229
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/5530.png",
+    "name": "CD Santa Clara",
+    "tla": "CD "
+   },
+   "match_id": 567257,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7911,
+    "band_p95": 0.9291,
+    "cluster_members": [
+     "mg_0_3"
+    ],
+    "family": "over_under",
+    "key": "under_3.5",
+    "label": "Under 3.5",
+    "p": 0.8439,
+    "p_raw": 0.8748,
+    "reference": 0.7203,
+    "runners_up": [
+     {
+      "band_p5": 0.5854,
+      "band_p95": 0.7985,
+      "family": "over_under",
+      "key": "under_2.5",
+      "label": "Under 2.5",
+      "p": 0.6246,
+      "p_raw": 0.7076,
+      "reference": 0.4851,
+      "score": 0.039256,
+      "shrink_alpha": 0.6269,
+      "sigma": 0.0617
+     },
+     {
+      "band_p5": 0.5854,
+      "band_p95": 0.7985,
+      "family": "multigoal",
+      "key": "mg_0_2",
+      "label": "Multigol 0-2",
+      "p": 0.6246,
+      "p_raw": 0.7076,
+      "reference": 0.4851,
+      "score": 0.039256,
+      "shrink_alpha": 0.6269,
+      "sigma": 0.0617
+     },
+     {
+      "band_p5": 0.7274,
+      "band_p95": 0.8952,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7748,
+      "p_raw": 0.8213,
+      "reference": 0.6585,
+      "score": 0.032262,
+      "shrink_alpha": 0.7148,
+      "sigma": 0.0505
+     },
+     {
+      "band_p5": 0.4916,
+      "band_p95": 0.5892,
+      "family": "multigoal",
+      "key": "mg_1_2",
+      "label": "Multigol 1-2",
+      "p": 0.537,
+      "p_raw": 0.5521,
+      "reference": 0.4215,
+      "score": 0.026944,
+      "shrink_alpha": 0.8845,
+      "sigma": 0.0289
+     },
+     {
+      "band_p5": 0.9155,
+      "band_p95": 0.9818,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9515,
+      "p_raw": 0.9557,
+      "reference": 0.8895,
+      "score": 0.024155,
+      "shrink_alpha": 0.9367,
+      "sigma": 0.0208
+     }
+    ],
+    "score": 0.042655,
+    "shrink_alpha": 0.8002,
+    "sigma": 0.04
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2502,
+    "1x2_draw": 0.311,
+    "1x2_home": 0.4387,
+    "btts_yes": 0.3526,
+    "over_2.5": 0.2924,
+    "under_2.5": 0.7076
+   },
+   "reasons": [
+    "Gol attesi: CD Santa Clara 1.12, CD Nacional 0.76 (totale 1.88).",
+    "Under 3.5: 84 su 100, 12 punti sopra la media di riferimento (72 su 100).",
+    "Banda di incertezza: fra 79 e 93 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-10T19:15:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T10:37:56Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}

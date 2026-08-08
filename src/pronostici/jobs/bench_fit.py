@@ -15,7 +15,7 @@ import json
 import platform
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import numpy as np
 import scipy
@@ -49,7 +49,7 @@ def run(competition: str, bootstrap: int, repeats: int) -> dict:
             f"nessuna partita archiviata per {competition}. "
             f"Esegui prima: python -m pronostici.jobs.ingest --competitions {competition}"
         )
-    as_of = datetime.now(timezone.utc)
+    as_of = datetime.now(UTC)
     data = build_dataset(matches, as_of=as_of)
 
     n_params = 2 * data.n_teams + 1
@@ -60,7 +60,9 @@ def run(competition: str, bootstrap: int, repeats: int) -> dict:
 
     # Una singola valutazione di verosimiglianza e del suo gradiente.
     like = DixonColesLikelihood(data)
-    theta = np.concatenate([np.zeros(data.n_teams - 1), np.zeros(data.n_teams), [0.25], [-0.05]])
+    theta = np.concatenate(
+        [np.zeros(data.n_teams - 1), np.zeros(data.n_teams), [0.25], [-0.05]]
+    )
     nll_median, _, _ = _time_it(lambda: like.negative_log_likelihood(theta), 200)
     grad_median, _, _ = _time_it(lambda: like.gradient(theta), 200)
 
@@ -74,7 +76,10 @@ def run(competition: str, bootstrap: int, repeats: int) -> dict:
 
     # Fit con warm start: e' cio' che fa ogni rifit del bootstrap.
     warm_median, warm_min, _ = _time_it(lambda: fit(data, start=params), repeats)
-    print(f"  fit con warm start:{warm_median * 1000:8.1f} ms  (min {warm_min * 1000:.1f} ms)")
+    print(
+        f"  fit con warm start:{warm_median * 1000:8.1f} ms  "
+        f"(min {warm_min * 1000:.1f} ms)"
+    )
 
     # Bootstrap parametrico vero, con warm start.
     rng = np.random.default_rng(12345)

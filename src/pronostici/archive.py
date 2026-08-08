@@ -12,10 +12,11 @@ il passato.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 from .config import ARCHIVE_DIR
 from .storage import read_json, write_json
@@ -105,7 +106,7 @@ def parse_match(payload: dict[str, Any], competition: str, season: int) -> Match
         ht_away=half.get("away"),
         venue=payload.get("venue"),
         referee=(referees[0].get("name") if referees else None),
-        first_seen=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        first_seen=datetime.now(UTC).strftime("%Y-%m-%d"),
     )
 
 

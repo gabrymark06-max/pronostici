@@ -19,7 +19,7 @@ import json
 import logging
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from ..archive import load_all
 from ..competitions import ACTIVE_CODES, get
@@ -52,7 +52,7 @@ def run(
     force: bool = False,
     as_of: datetime | None = None,
 ) -> dict:
-    as_of = as_of or datetime.now(timezone.utc)
+    as_of = as_of or datetime.now(UTC)
     started = time.monotonic()
     trained: list[dict] = []
     skipped: list[str] = []
@@ -149,7 +149,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--competitions", nargs="*", default=list(ACTIVE_CODES))
     parser.add_argument("--draws", type=int, default=DEFAULT_DRAWS)
-    parser.add_argument("--force", action="store_true", help="rifitta anche senza novita'")
+    parser.add_argument(
+        "--force", action="store_true", help="rifitta anche senza novita'"
+    )
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")

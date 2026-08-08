@@ -310,7 +310,9 @@ def fit(
         )
     else:
         # Partenza neutra: forze nulle, vantaggio campo e rho tipici.
-        mean_goals = float(np.average(data.home_goals + data.away_goals, weights=data.weights))
+        mean_goals = float(
+            np.average(data.home_goals + data.away_goals, weights=data.weights)
+        )
         base = math.log(max(mean_goals, 0.5) / 2.0)
         theta0 = np.concatenate(
             [np.zeros(n - 1), np.full(n, base), [0.25], [-0.05]]

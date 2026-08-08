@@ -14,7 +14,7 @@ import json
 import logging
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime
 
 from ..archive import merge_season, parse_match
 from ..competitions import ACTIVE_CODES, get
@@ -24,7 +24,7 @@ log = logging.getLogger("ingest")
 
 # Stagione corrente e precedente: e' tutto cio' che il piano gratuito espone.
 def default_seasons(today: datetime | None = None) -> list[int]:
-    now = today or datetime.now(timezone.utc)
+    now = today or datetime.now(UTC)
     # Le stagioni europee sono etichettate con l'anno di inizio.
     current = now.year if now.month >= 7 else now.year - 1
     return [current - 1, current]

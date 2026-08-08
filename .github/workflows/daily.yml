@@ -1,0 +1,43 @@
+name: pipeline giornaliera
+
+# I quattro job che non spendono crediti, in sequenza stretta.
+#
+# In sequenza e non in parallelo per una ragione di correttezza, non di
+# prudenza: scrivono tutti nella stessa cartella e ognuno legge cio' che il
+# precedente ha scritto. `settle` deve vedere i risultati appena ingeriti,
+# `retrain` gli stessi risultati, `score` i parametri appena rifittati.
+#
+# La concorrenza e' governata qui, sul chiamante: il gruppo resta occupato per
+# tutta la catena, e il job `finalize` (10:00 e 18:00) non puo' sovrapporsi.
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostici-data
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    uses: ./.github/workflows/job-ingest.yml
+    secrets: inherit
+
+  settle:
+    needs: ingest
+    uses: ./.github/workflows/job-settle.yml
+    secrets: inherit
+
+  retrain:
+    needs: settle
+    uses: ./.github/workflows/job-retrain.yml
+    secrets: inherit
+
+  score:
+    needs: retrain
+    uses: ./.github/workflows/job-score.yml
+    secrets: inherit

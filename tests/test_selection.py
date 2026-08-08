@@ -61,7 +61,7 @@ class TestDirectionalScore:
         assert alto / basso > 100
 
     def test_pronostico_banale_non_supera_la_soglia(self):
-        """Over 0.5 al 97% con base rate 96,5%: confidenza altissima, zero informazione."""
+        """Over 0.5 al 97% con base rate 96,5%: confidenza alta, zero informazione."""
         assert directional_score(0.97, 0.965) < S_MIN
         assert directional_score(0.62, 0.55) > S_MIN
 

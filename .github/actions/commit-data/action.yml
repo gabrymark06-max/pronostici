@@ -1,0 +1,63 @@
+name: Commit data
+description: >
+  Committa e pubblica le modifiche a data/. E' il meccanismo che rende
+  verificabile l'onestà del prodotto: ogni pronostico diventa un commit datato
+  in un repository pubblico, e nessuno — noi compresi — può riscriverlo dopo.
+
+inputs:
+  message:
+    description: Oggetto del commit
+    required: true
+  paths:
+    description: Percorsi da includere (separati da spazio)
+    required: false
+    default: data
+
+runs:
+  using: composite
+  steps:
+    - name: Committa e pubblica
+      shell: bash
+      env:
+        COMMIT_MESSAGE: ${{ inputs.message }}
+        COMMIT_PATHS: ${{ inputs.paths }}
+      run: |
+        set -euo pipefail
+        git config user.name  "pronostici-bot"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        # Un percorso può non esistere ancora (accuracy.json prima del primo
+        # `settle`): non è un errore, è il primo giorno.
+        for path in $COMMIT_PATHS; do
+          if [ -e "$path" ]; then
+            git add -- "$path"
+          fi
+        done
+
+        if git diff --cached --quiet; then
+          echo "Nessuna modifica: nessun commit, nessun deploy."
+          exit 0
+        fi
+
+        git commit -m "$COMMIT_MESSAGE"
+
+        # I job scrivono tutti nella stessa cartella. Le cadenze sono
+        # sfalsate, ma un ritardo può sovrapporle: si riprova con rebase
+        # invece di forzare. Se il rebase non riesce, si fallisce forte —
+        # un ledger sistemato a mano dalla CI sarebbe peggio di un job rosso.
+        for attempt in 1 2 3 4 5; do
+          if git push origin HEAD; then
+            echo "Pubblicato al tentativo $attempt."
+            exit 0
+          fi
+          echo "Push rifiutato (tentativo $attempt): riallineo e riprovo."
+          if ! git pull --rebase --autostash origin "${GITHUB_REF_NAME}"; then
+            git rebase --abort || true
+            echo "::error::rebase fallito: il registro va riallineato a mano."
+            exit 1
+          fi
+          sleep $((attempt * 5))
+        done
+
+        echo "::error::push non riuscito dopo 5 tentativi."
+        exit 1

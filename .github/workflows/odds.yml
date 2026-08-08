@@ -1,0 +1,28 @@
+name: quote e pronostico definitivo
+
+# Due finestre al giorno. Non e' una scelta di frequenza ma di prodotto: la
+# revisione e' **una sola** per partita (brief 7.2), e queste due finestre
+# servono solo a coprire i vari orari di calcio d'inizio. Una partita gia'
+# finalizzata viene saltata, quindi la seconda esecuzione non spende crediti
+# per rifare quello che la prima ha gia' fatto.
+#
+# Stesso gruppo di concorrenza della pipeline giornaliera: non si scrive in
+# `data/` in due posti nello stesso momento.
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostici-data
+  cancel-in-progress: false
+
+jobs:
+  finalize:
+    uses: ./.github/workflows/job-finalize.yml
+    secrets: inherit

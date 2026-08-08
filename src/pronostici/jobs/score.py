@@ -18,82 +18,18 @@ import logging
 import sys
 import time
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
+from .. import fixtures as fx
 from .. import ledger
 from ..archive import load_all
-from ..competitions import ACTIVE_CODES, get
-from ..config import FIXTURES_DIR
+from ..competitions import ACTIVE_CODES
 from ..model.bootstrap import BootstrapResult
 from ..pipeline import score_fixture
-from ..storage import SCHEMA_VERSION, read_json, write_json
+from ..storage import read_json
 from .retrain import params_path
 
 log = logging.getLogger("score")
-
-
-def season_of(match) -> int:
-    return match.season
-
-
-def fixture_payload(scored, phase: str) -> dict:
-    """La forma che il frontend consuma. Il silenzio e' un tipo di prima
-    classe, non un ramo `else`: ha il suo motivo e le sue probabilita' grezze."""
-    sel = scored.selection
-    match = scored.match
-    payload = {
-        "match_id": match.match_id,
-        "competition": match.competition,
-        "utc_date": match.utc_date,
-        "matchday": match.matchday,
-        "home": {
-            "name": match.home_name,
-            "tla": match.home_tla,
-            "crest": match.home_crest,
-        },
-        "away": {
-            "name": match.away_name,
-            "tla": match.away_tla,
-            "crest": match.away_crest,
-        },
-        "phase": phase,
-        "source": scored.source,
-        "model_weight": scored.model_weight,
-        "expected_goals": {
-            "home": round(scored.lam_home, 3),
-            "away": round(scored.lam_away, 3),
-        },
-        "reasons": scored.reasons,
-        "diagnostics": {
-            "n_candidates": sel.n_candidates,
-            "n_clusters": sel.n_clusters,
-            "filter_bites": sel.filter_bites,
-            "truncated_mass": float(f"{scored.truncated_mass:.3e}"),
-        },
-        # Sempre presenti, anche quando si tace: sono "le probabilita', senza
-        # consiglio" della card di silenzio (brief 8.4).
-        "raw_probabilities": {
-            key: round(scored.market_probabilities[key], 4)
-            for key in (
-                "1x2_home", "1x2_draw", "1x2_away",
-                "over_2.5", "under_2.5", "btts_yes",
-            )
-            if key in scored.market_probabilities
-        },
-    }
-    if sel.pick is not None:
-        payload["prediction"] = {
-            **sel.pick.to_dict(),
-            "cluster_members": sel.cluster_members,
-            "runners_up": [c.to_dict() for c in sel.runners_up],
-        }
-        payload["silence"] = None
-    else:
-        payload["prediction"] = None
-        payload["silence"] = {"reason": sel.silence_reason}
-    if scored.half_time:
-        payload["half_time"] = {k: round(v, 4) for k, v in scored.half_time.items()}
-    return payload
 
 
 def run(
@@ -103,12 +39,13 @@ def run(
     as_of: datetime | None = None,
     tau: float = 0.08,
 ) -> dict:
-    as_of = as_of or datetime.now(timezone.utc)
+    as_of = as_of or datetime.now(UTC)
     horizon = as_of + timedelta(days=days)
     started = time.monotonic()
 
     by_date: dict[str, list[dict]] = defaultdict(list)
     ledger_rows: dict[int, list] = defaultdict(list)
+    finalized = ledger.PhaseIndex()
     scored_count = silent_count = 0
     skipped: list[dict] = []
 
@@ -127,6 +64,10 @@ def run(
             if not m.is_finished and as_of <= m.date <= horizon
         ]
         for match in upcoming:
+            # Una partita gia' finalizzata non torna preliminare: la revisione
+            # e' unica e non si annulla da sola la notte dopo (brief 7.2).
+            if finalized.has(match.season, match.match_id, ledger.PHASE_DEFINITIVE):
+                continue
             try:
                 scored = score_fixture(
                     match,
@@ -142,7 +83,7 @@ def run(
                 continue
 
             day = match.utc_date[:10]
-            by_date[day].append(fixture_payload(scored, ledger.PHASE_PRELIMINARY))
+            by_date[day].append(fx.build_payload(scored, ledger.PHASE_PRELIMINARY))
             if scored.selection.is_silent:
                 silent_count += 1
             else:
@@ -160,23 +101,8 @@ def run(
             )
 
     files_changed = 0
-    for day, fixtures in sorted(by_date.items()):
-        fixtures.sort(key=lambda f: f["utc_date"])
-        silent = sum(1 for f in fixtures if f["prediction"] is None)
-        changed = write_json(
-            FIXTURES_DIR / f"{day}.json",
-            {
-                "schema_version": SCHEMA_VERSION,
-                "date": day,
-                "generated_at": as_of.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                # Il conteggio dichiarato in testa alla lista (brief 8.4):
-                # un sito che conta i propri silenzi sembra severo.
-                "silence_count": silent,
-                "total": len(fixtures),
-                "fixtures": fixtures,
-            },
-        )
-        files_changed += int(changed)
+    for day, entries in sorted(by_date.items()):
+        files_changed += int(fx.upsert_day(day, entries, generated_at=as_of))
 
     appended = 0
     for season, rows in ledger_rows.items():
