@@ -1,0 +1,426 @@
+{
+ "buckets": {
+  "0.50-0.65": {
+   "enough": true,
+   "hit_rate": 0.558,
+   "hits": 226,
+   "mean_p": 0.5713,
+   "n": 405
+  },
+  "0.65-0.80": {
+   "enough": true,
+   "hit_rate": 0.7648,
+   "hits": 413,
+   "mean_p": 0.7493,
+   "n": 540
+  },
+  "0.80-1.00": {
+   "enough": true,
+   "hit_rate": 0.9202,
+   "hits": 2928,
+   "mean_p": 0.9132,
+   "n": 3182
+  }
+ },
+ "code_commit": "7d6ff3e6e4dc75fb156c935ff42db1ed8956870f",
+ "configurations_tried": 1,
+ "filter_bites": {
+  "S_min": 391059,
+  "p_min": 333468,
+  "sigma_max": 21046
+ },
+ "generated_at": "2026-08-08T11:26:37Z",
+ "log_loss_over_2_5": {
+  "base_rate": 0.68856,
+  "model": 0.69919,
+  "model_better": false,
+  "n": 4995
+ },
+ "measures": "solo il pronostico preliminare, w = 1,0",
+ "not_measured": "il ramo con le quote (w = 0,35): le quote storiche non esistono nel nostro archivio e con 500 crediti al mese non possono esistere",
+ "parameters": {
+  "draws": 300,
+  "half_life_days": 365.0,
+  "min_train_matches": 200,
+  "model_weight": 1.0,
+  "p_min": 0.5,
+  "rho_max": 0.8,
+  "s_min_in_code": 0.005,
+  "sigma_max": 0.12,
+  "step_days": 7,
+  "tau": 0.08,
+  "window_days": 730.0
+ },
+ "per_competition": {
+  "BL1": {
+   "evaluated": 398,
+   "hit_rate": 0.866,
+   "hits": 323,
+   "silence_rate": 0.0628,
+   "with_prediction": 373
+  },
+  "BSA": {
+   "evaluated": 732,
+   "hit_rate": 0.773,
+   "hits": 378,
+   "silence_rate": 0.332,
+   "with_prediction": 489
+  },
+  "CL": {
+   "evaluated": 135,
+   "hit_rate": 0.8943,
+   "hits": 110,
+   "silence_rate": 0.0889,
+   "with_prediction": 123
+  },
+  "DED": {
+   "evaluated": 401,
+   "hit_rate": 0.9189,
+   "hits": 340,
+   "silence_rate": 0.0773,
+   "with_prediction": 370
+  },
+  "ELC": {
+   "evaluated": 896,
+   "hit_rate": 0.7975,
+   "hits": 512,
+   "silence_rate": 0.2835,
+   "with_prediction": 642
+  },
+  "FL1": {
+   "evaluated": 396,
+   "hit_rate": 0.8658,
+   "hits": 316,
+   "silence_rate": 0.0783,
+   "with_prediction": 365
+  },
+  "PD": {
+   "evaluated": 551,
+   "hit_rate": 0.8606,
+   "hits": 395,
+   "silence_rate": 0.167,
+   "with_prediction": 459
+  },
+  "PL": {
+   "evaluated": 543,
+   "hit_rate": 0.8877,
+   "hits": 411,
+   "silence_rate": 0.1473,
+   "with_prediction": 463
+  },
+  "PPL": {
+   "evaluated": 400,
+   "hit_rate": 0.9358,
+   "hits": 350,
+   "silence_rate": 0.065,
+   "with_prediction": 374
+  },
+  "SA": {
+   "evaluated": 543,
+   "hit_rate": 0.9211,
+   "hits": 432,
+   "silence_rate": 0.1363,
+   "with_prediction": 469
+  }
+ },
+ "protocol": "docs/protocollo-backtest.md",
+ "schema_version": 1,
+ "seconds": 1798.9,
+ "silence": {
+  "band": [
+   0.15,
+   0.3
+  ],
+  "by_reason": {
+   "S_min": 868
+  },
+  "chosen_s_min": 0.008,
+  "curve": [
+   {
+    "s_min": 0.001,
+    "silence_rate": 0.0328
+   },
+   {
+    "s_min": 0.002,
+    "silence_rate": 0.0713
+   },
+   {
+    "s_min": 0.003,
+    "silence_rate": 0.1053
+   },
+   {
+    "s_min": 0.004,
+    "silence_rate": 0.1403
+   },
+   {
+    "s_min": 0.005,
+    "silence_rate": 0.1738
+   },
+   {
+    "s_min": 0.006,
+    "silence_rate": 0.2052
+   },
+   {
+    "s_min": 0.007,
+    "silence_rate": 0.2342
+   },
+   {
+    "s_min": 0.008,
+    "silence_rate": 0.2603
+   },
+   {
+    "s_min": 0.009,
+    "silence_rate": 0.2857
+   },
+   {
+    "s_min": 0.01,
+    "silence_rate": 0.3093
+   },
+   {
+    "s_min": 0.011,
+    "silence_rate": 0.3327
+   },
+   {
+    "s_min": 0.012,
+    "silence_rate": 0.3574
+   },
+   {
+    "s_min": 0.013,
+    "silence_rate": 0.3744
+   },
+   {
+    "s_min": 0.014,
+    "silence_rate": 0.394
+   },
+   {
+    "s_min": 0.015,
+    "silence_rate": 0.4114
+   },
+   {
+    "s_min": 0.016,
+    "silence_rate": 0.427
+   },
+   {
+    "s_min": 0.017,
+    "silence_rate": 0.4444
+   },
+   {
+    "s_min": 0.018,
+    "silence_rate": 0.4605
+   },
+   {
+    "s_min": 0.019,
+    "silence_rate": 0.4801
+   },
+   {
+    "s_min": 0.02,
+    "silence_rate": 0.4933
+   },
+   {
+    "s_min": 0.021,
+    "silence_rate": 0.5065
+   },
+   {
+    "s_min": 0.022,
+    "silence_rate": 0.5229
+   },
+   {
+    "s_min": 0.023,
+    "silence_rate": 0.5373
+   },
+   {
+    "s_min": 0.024,
+    "silence_rate": 0.5502
+   },
+   {
+    "s_min": 0.025,
+    "silence_rate": 0.5628
+   },
+   {
+    "s_min": 0.026,
+    "silence_rate": 0.5734
+   },
+   {
+    "s_min": 0.027,
+    "silence_rate": 0.5854
+   },
+   {
+    "s_min": 0.028,
+    "silence_rate": 0.5954
+   },
+   {
+    "s_min": 0.029,
+    "silence_rate": 0.6054
+   },
+   {
+    "s_min": 0.03,
+    "silence_rate": 0.6184
+   },
+   {
+    "s_min": 0.031,
+    "silence_rate": 0.6266
+   },
+   {
+    "s_min": 0.032,
+    "silence_rate": 0.636
+   },
+   {
+    "s_min": 0.033,
+    "silence_rate": 0.6456
+   },
+   {
+    "s_min": 0.034,
+    "silence_rate": 0.6543
+   },
+   {
+    "s_min": 0.035,
+    "silence_rate": 0.6637
+   },
+   {
+    "s_min": 0.036,
+    "silence_rate": 0.6709
+   },
+   {
+    "s_min": 0.037,
+    "silence_rate": 0.6793
+   },
+   {
+    "s_min": 0.038,
+    "silence_rate": 0.6869
+   },
+   {
+    "s_min": 0.039,
+    "silence_rate": 0.6947
+   },
+   {
+    "s_min": 0.04,
+    "silence_rate": 0.7023
+   },
+   {
+    "s_min": 0.041,
+    "silence_rate": 0.7097
+   },
+   {
+    "s_min": 0.042,
+    "silence_rate": 0.7165
+   },
+   {
+    "s_min": 0.043,
+    "silence_rate": 0.7249
+   },
+   {
+    "s_min": 0.044,
+    "silence_rate": 0.7319
+   },
+   {
+    "s_min": 0.045,
+    "silence_rate": 0.7375
+   },
+   {
+    "s_min": 0.046,
+    "silence_rate": 0.7445
+   },
+   {
+    "s_min": 0.047,
+    "silence_rate": 0.7493
+   },
+   {
+    "s_min": 0.048,
+    "silence_rate": 0.7548
+   },
+   {
+    "s_min": 0.049,
+    "silence_rate": 0.761
+   },
+   {
+    "s_min": 0.05,
+    "silence_rate": 0.7656
+   }
+  ],
+  "decision": "tasso di silenzio 26.0%, il piu' vicino al 25% sulla griglia dichiarata",
+  "target": 0.25
+ },
+ "skill": {
+  "declared_mean": 0.04456,
+  "gap": -0.0053,
+  "gap_in_se": -1.3,
+  "hit_rate": 0.8643,
+  "mean_p": 0.8582,
+  "n": 4127,
+  "realized_mean": 0.04985,
+  "realized_se": 0.00406
+ },
+ "tau2_by_family": {
+  "1x2": {
+   "has_resolution": true,
+   "n": 14985,
+   "tau": 0.1188,
+   "tau2": 0.014108
+  },
+  "btts": {
+   "has_resolution": true,
+   "n": 9990,
+   "tau": 0.0736,
+   "tau2": 0.005419
+  },
+  "combo": {
+   "has_resolution": true,
+   "n": 79920,
+   "tau": 0.0904,
+   "tau2": 0.00818
+  },
+  "correct_score": {
+   "has_resolution": true,
+   "n": 79920,
+   "tau": 0.0211,
+   "tau2": 0.000447
+  },
+  "double_chance": {
+   "has_resolution": true,
+   "n": 14985,
+   "tau": 0.1188,
+   "tau2": 0.014108
+  },
+  "handicap_asian": {
+   "has_resolution": true,
+   "n": 59940,
+   "tau": 0.1134,
+   "tau2": 0.01287
+  },
+  "handicap_eu": {
+   "has_resolution": true,
+   "n": 59940,
+   "tau": 0.0959,
+   "tau2": 0.0092
+  },
+  "multigoal": {
+   "has_resolution": true,
+   "n": 59940,
+   "tau": 0.0489,
+   "tau2": 0.002387
+  },
+  "over_under": {
+   "has_resolution": true,
+   "n": 49950,
+   "tau": 0.0564,
+   "tau2": 0.003182
+  },
+  "team_goals": {
+   "has_resolution": true,
+   "n": 59940,
+   "tau": 0.1048,
+   "tau2": 0.010986
+  }
+ },
+ "volume": {
+  "evaluated": 4995,
+  "refits": 521,
+  "silence_rate_at_s_min_in_code": 0.1738,
+  "skipped_warmup_or_unknown_team": 2164,
+  "with_prediction": 4127
+ },
+ "window": {
+  "from": "2024-08-17",
+  "to": "2026-08-07"
+ }
+}
