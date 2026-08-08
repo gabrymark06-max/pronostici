@@ -1,0 +1,157 @@
+{
+ "date": "2026-09-04",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/7397.png",
+    "name": "Como 1907",
+    "tla": "COM"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 67,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 1.556e-08
+   },
+   "expected_goals": {
+    "away": 1.592,
+    "home": 0.878
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6579,
+    "ht_over_1.5": 0.2909,
+    "ht_over_2.5": 0.0941,
+    "ht_under_0.5": 0.3421,
+    "ht_under_1.5": 0.7091,
+    "ht_under_2.5": 0.9059,
+    "htft_11": 0.1102,
+    "htft_12": 0.0247,
+    "htft_1X": 0.0443,
+    "htft_21": 0.0118,
+    "htft_22": 0.3264,
+    "htft_2X": 0.0443,
+    "htft_X1": 0.0851,
+    "htft_X2": 0.1907,
+    "htft_XX": 0.1626
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/107.png",
+    "name": "Genoa CFC",
+    "tla": "GEN"
+   },
+   "match_id": 558609,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6908,
+    "band_p95": 0.865,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.734,
+    "p_raw": 0.7909,
+    "reference": 0.6066,
+    "runners_up": [
+     {
+      "band_p5": 0.8795,
+      "band_p95": 0.964,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9198,
+      "p_raw": 0.9301,
+      "reference": 0.8289,
+      "score": 0.034937,
+      "shrink_alpha": 0.8988,
+      "sigma": 0.0268
+     },
+     {
+      "band_p5": 0.8795,
+      "band_p95": 0.964,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9198,
+      "p_raw": 0.9301,
+      "reference": 0.8289,
+      "score": 0.034937,
+      "shrink_alpha": 0.8988,
+      "sigma": 0.0268
+     },
+     {
+      "band_p5": 0.9643,
+      "band_p95": 0.9932,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.981,
+      "p_raw": 0.9818,
+      "reference": 0.925,
+      "score": 0.031558,
+      "shrink_alpha": 0.9852,
+      "sigma": 0.0098
+     },
+     {
+      "band_p5": 0.6897,
+      "band_p95": 0.8605,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7222,
+      "p_raw": 0.7801,
+      "reference": 0.6105,
+      "score": 0.027436,
+      "shrink_alpha": 0.6584,
+      "sigma": 0.0576
+     },
+     {
+      "band_p5": 0.8952,
+      "band_p95": 0.9714,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.9301,
+      "p_raw": 0.9383,
+      "reference": 0.8566,
+      "score": 0.026362,
+      "shrink_alpha": 0.9004,
+      "sigma": 0.0266
+     }
+    ],
+    "score": 0.035824,
+    "shrink_alpha": 0.6909,
+    "sigma": 0.0535
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5392,
+    "1x2_draw": 0.2517,
+    "1x2_home": 0.2091,
+    "btts_yes": 0.4584,
+    "over_2.5": 0.4465,
+    "under_2.5": 0.5535
+   },
+   "reasons": [
+    "Gol attesi: Genoa CFC 0.88, Como 1907 1.59 (totale 2.47).",
+    "X2 (pareggio o ospite): 73 su 100, 13 punti sopra la media di riferimento (61 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 69%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-04T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}

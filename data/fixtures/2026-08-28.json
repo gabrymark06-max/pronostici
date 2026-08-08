@@ -1,0 +1,157 @@
+{
+ "date": "2026-08-28",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/454.png",
+    "name": "Venezia FC",
+    "tla": "VEN"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 68,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 9,
+    "truncated_mass": 5.323e-08
+   },
+   "expected_goals": {
+    "away": 0.678,
+    "home": 1.773
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6551,
+    "ht_over_1.5": 0.2879,
+    "ht_over_2.5": 0.0925,
+    "ht_under_0.5": 0.3449,
+    "ht_under_1.5": 0.7121,
+    "ht_under_2.5": 0.9075,
+    "htft_11": 0.3969,
+    "htft_12": 0.0074,
+    "htft_1X": 0.0367,
+    "htft_21": 0.024,
+    "htft_22": 0.0707,
+    "htft_2X": 0.0367,
+    "htft_X1": 0.2159,
+    "htft_X2": 0.0596,
+    "htft_XX": 0.1522
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/98.png",
+    "name": "AC Milan",
+    "tla": "MIL"
+   },
+   "match_id": 558625,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.782,
+    "band_p95": 0.924,
+    "cluster_members": [
+     "eh_1_home",
+     "ah_home_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_1x",
+    "label": "1X (casa o pareggio)",
+    "p": 0.814,
+    "p_raw": 0.8596,
+    "reference": 0.6658,
+    "runners_up": [
+     {
+      "band_p5": 0.9284,
+      "band_p95": 0.9846,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9567,
+      "p_raw": 0.9616,
+      "reference": 0.8605,
+      "score": 0.050684,
+      "shrink_alpha": 0.9518,
+      "sigma": 0.018
+     },
+     {
+      "band_p5": 0.9284,
+      "band_p95": 0.9846,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9567,
+      "p_raw": 0.9616,
+      "reference": 0.8605,
+      "score": 0.050684,
+      "shrink_alpha": 0.9518,
+      "sigma": 0.018
+     },
+     {
+      "band_p5": 0.7686,
+      "band_p95": 0.9202,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7967,
+      "p_raw": 0.8501,
+      "reference": 0.6579,
+      "score": 0.04673,
+      "shrink_alpha": 0.7222,
+      "sigma": 0.0496
+     },
+     {
+      "band_p5": 0.9354,
+      "band_p95": 0.9881,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9621,
+      "p_raw": 0.9661,
+      "reference": 0.8855,
+      "score": 0.037881,
+      "shrink_alpha": 0.9498,
+      "sigma": 0.0184
+     },
+     {
+      "band_p5": 0.9818,
+      "band_p95": 0.9978,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9917,
+      "p_raw": 0.9919,
+      "reference": 0.9447,
+      "score": 0.032349,
+      "shrink_alpha": 0.9955,
+      "sigma": 0.0054
+     }
+    ],
+    "score": 0.054603,
+    "shrink_alpha": 0.7647,
+    "sigma": 0.0444
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1404,
+    "1x2_draw": 0.2278,
+    "1x2_home": 0.6318,
+    "btts_yes": 0.4017,
+    "over_2.5": 0.4412,
+    "under_2.5": 0.5588
+   },
+   "reasons": [
+    "Gol attesi: AC Milan 1.77, Venezia FC 0.68 (totale 2.45).",
+    "1X (casa o pareggio): 81 su 100, 15 punti sopra la media di riferimento (67 su 100).",
+    "Banda di incertezza: fra 78 e 92 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-28T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}

@@ -1,0 +1,42 @@
+{
+  "competition": "SA",
+  "dataset": {
+    "effective_matches_per_team": 58.1,
+    "effective_sample_size_total": 668.4,
+    "free_parameters": 47,
+    "matches": 760,
+    "teams": 23
+  },
+  "fit": {
+    "converged": true,
+    "function_evaluations": 31,
+    "iterations": 26,
+    "log_likelihood": -1048.800361045982,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+  },
+  "machine": {
+    "numpy": "2.5.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "python": "3.13.14",
+    "scipy": "1.18.0"
+  },
+  "measured_at": "2026-08-08T00:00:38Z",
+  "notes": "Gradiente analitico: senza, ogni passo di L-BFGS-B costerebbe 48 valutazioni della verosimiglianza invece di una.",
+  "projection": {
+    "fits_within_limit": true,
+    "github_actions_job_limit_minutes": 360,
+    "one_league_fit_plus_300_bootstrap_s": 3.8,
+    "ten_leagues_minutes": 0.6,
+    "ten_leagues_s": 38.3
+  },
+  "timings_seconds": {
+    "bootstrap_draws_measured": 300,
+    "bootstrap_per_draw": 0.0127,
+    "bootstrap_total": 3.82,
+    "fit_cold_median": 0.0116,
+    "fit_warm_median": 0.0017,
+    "single_gradient_evaluation": 0.000142,
+    "single_nll_evaluation": 0.000138
+  }
+}

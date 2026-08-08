@@ -1,0 +1,221 @@
+{
+ "date": "2026-08-24",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/110.png",
+    "name": "SS Lazio",
+    "tla": "LAZ"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 98,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 0,
+    "truncated_mass": 2.192e-09
+   },
+   "expected_goals": {
+    "away": 1.189,
+    "home": 1.316
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6631,
+    "ht_over_1.5": 0.2965,
+    "ht_over_2.5": 0.0972,
+    "ht_under_0.5": 0.3369,
+    "ht_under_1.5": 0.7035,
+    "ht_under_2.5": 0.9028,
+    "htft_11": 0.2268,
+    "htft_12": 0.0191,
+    "htft_1X": 0.0502,
+    "htft_21": 0.0217,
+    "htft_22": 0.1881,
+    "htft_2X": 0.0502,
+    "htft_X1": 0.1472,
+    "htft_X2": 0.1281,
+    "htft_XX": 0.1686
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/103.png",
+    "name": "Bologna FC 1909",
+    "tla": "BOL"
+   },
+   "match_id": 558630,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3359,
+    "1x2_draw": 0.2693,
+    "1x2_home": 0.3947,
+    "btts_yes": 0.502,
+    "over_2.5": 0.4554,
+    "under_2.5": 0.5446
+   },
+   "reasons": [
+    "Gol attesi: Bologna FC 1909 1.32, SS Lazio 1.19 (totale 2.50)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-08-24T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/99.png",
+    "name": "ACF Fiorentina",
+    "tla": "FIO"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 71,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 1.718e-08
+   },
+   "expected_goals": {
+    "away": 0.816,
+    "home": 1.606
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6507,
+    "ht_over_1.5": 0.2833,
+    "ht_over_2.5": 0.0901,
+    "ht_under_0.5": 0.3493,
+    "ht_under_1.5": 0.7167,
+    "ht_under_2.5": 0.9099,
+    "htft_11": 0.3394,
+    "htft_12": 0.0105,
+    "htft_1X": 0.0425,
+    "htft_21": 0.0241,
+    "htft_22": 0.0999,
+    "htft_2X": 0.0425,
+    "htft_X1": 0.1975,
+    "htft_X2": 0.0794,
+    "htft_XX": 0.1643
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/100.png",
+    "name": "AS Roma",
+    "tla": "ROM"
+   },
+   "match_id": 558638,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.9002,
+    "band_p95": 0.9705,
+    "cluster_members": [
+     "ah_home_1.5"
+    ],
+    "family": "handicap_eu",
+    "key": "eh_2_home",
+    "label": "Handicap +2 casa",
+    "p": 0.934,
+    "p_raw": 0.9395,
+    "reference": 0.8605,
+    "runners_up": [
+     {
+      "band_p5": 0.7188,
+      "band_p95": 0.8753,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7638,
+      "p_raw": 0.8024,
+      "reference": 0.6579,
+      "score": 0.026491,
+      "shrink_alpha": 0.7329,
+      "sigma": 0.0483
+     },
+     {
+      "band_p5": 0.7208,
+      "band_p95": 0.8786,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7706,
+      "p_raw": 0.8082,
+      "reference": 0.6658,
+      "score": 0.026344,
+      "shrink_alpha": 0.7361,
+      "sigma": 0.0479
+     },
+     {
+      "band_p5": 0.7208,
+      "band_p95": 0.8786,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7706,
+      "p_raw": 0.8082,
+      "reference": 0.6658,
+      "score": 0.026344,
+      "shrink_alpha": 0.7361,
+      "sigma": 0.0479
+     },
+     {
+      "band_p5": 0.7208,
+      "band_p95": 0.8786,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7706,
+      "p_raw": 0.8082,
+      "reference": 0.6658,
+      "score": 0.026344,
+      "shrink_alpha": 0.7361,
+      "sigma": 0.0479
+     },
+     {
+      "band_p5": 0.9715,
+      "band_p95": 0.9948,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.985,
+      "p_raw": 0.9853,
+      "reference": 0.9447,
+      "score": 0.02155,
+      "shrink_alpha": 0.9917,
+      "sigma": 0.0073
+     }
+    ],
+    "score": 0.027116,
+    "shrink_alpha": 0.9298,
+    "sigma": 0.022
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1918,
+    "1x2_draw": 0.2503,
+    "1x2_home": 0.5579,
+    "btts_yes": 0.44,
+    "over_2.5": 0.4344,
+    "under_2.5": 0.5656
+   },
+   "reasons": [
+    "Gol attesi: AS Roma 1.61, ACF Fiorentina 0.82 (totale 2.42).",
+    "Handicap +2 casa: 93 su 100, 7 punti sopra la media di riferimento (86 su 100).",
+    "Banda di incertezza: fra 90 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-24T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 1,
+ "total": 2
+}

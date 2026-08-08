@@ -1,0 +1,378 @@
+{
+ "date": "2026-09-05",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/586.png",
+    "name": "Torino FC",
+    "tla": "TOR"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 84,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 4,
+    "truncated_mass": 1.395e-08
+   },
+   "expected_goals": {
+    "away": 1.054,
+    "home": 1.576
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6808,
+    "ht_over_1.5": 0.3163,
+    "ht_over_2.5": 0.1082,
+    "ht_under_0.5": 0.3192,
+    "ht_under_1.5": 0.6837,
+    "ht_under_2.5": 0.8918,
+    "htft_11": 0.2953,
+    "htft_12": 0.0157,
+    "htft_1X": 0.0483,
+    "htft_21": 0.0262,
+    "htft_22": 0.1389,
+    "htft_2X": 0.0483,
+    "htft_X1": 0.173,
+    "htft_X2": 0.0991,
+    "htft_XX": 0.155
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/99.png",
+    "name": "ACF Fiorentina",
+    "tla": "FIO"
+   },
+   "match_id": 558616,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7024,
+    "band_p95": 0.8654,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_0.5",
+    "label": "Casa Over 0.5",
+    "p": 0.7648,
+    "p_raw": 0.7869,
+    "reference": 0.7105,
+    "runners_up": [
+     {
+      "band_p5": 0.9486,
+      "band_p95": 0.9883,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9702,
+      "p_raw": 0.9709,
+      "reference": 0.9447,
+      "score": 0.007398,
+      "shrink_alpha": 0.9718,
+      "sigma": 0.0136
+     },
+     {
+      "band_p5": 0.6441,
+      "band_p95": 0.8338,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7181,
+      "p_raw": 0.7447,
+      "reference": 0.6658,
+      "score": 0.006339,
+      "shrink_alpha": 0.6638,
+      "sigma": 0.0569
+     },
+     {
+      "band_p5": 0.6441,
+      "band_p95": 0.8338,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7181,
+      "p_raw": 0.7447,
+      "reference": 0.6658,
+      "score": 0.006339,
+      "shrink_alpha": 0.6638,
+      "sigma": 0.0569
+     },
+     {
+      "band_p5": 0.6441,
+      "band_p95": 0.8338,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7181,
+      "p_raw": 0.7447,
+      "reference": 0.6658,
+      "score": 0.006339,
+      "shrink_alpha": 0.6638,
+      "sigma": 0.0569
+     },
+     {
+      "band_p5": 0.8487,
+      "band_p95": 0.9494,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.8968,
+      "p_raw": 0.9028,
+      "reference": 0.8605,
+      "score": 0.005949,
+      "shrink_alpha": 0.8586,
+      "sigma": 0.0325
+     }
+    ],
+    "score": 0.007466,
+    "shrink_alpha": 0.7107,
+    "sigma": 0.051
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2553,
+    "1x2_draw": 0.2525,
+    "1x2_home": 0.4922,
+    "btts_yes": 0.5095,
+    "over_2.5": 0.4861,
+    "under_2.5": 0.5139
+   },
+   "reasons": [
+    "Gol attesi: ACF Fiorentina 1.58, Torino FC 1.05 (totale 2.63).",
+    "Casa Over 0.5: 76 su 100, 5 punti sopra la media di riferimento (71 su 100).",
+    "Banda di incertezza: fra 70 e 87 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-05T13:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/113.png",
+    "name": "SSC Napoli",
+    "tla": "NAP"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 81,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 4,
+    "truncated_mass": 2.192e-08
+   },
+   "expected_goals": {
+    "away": 1.111,
+    "home": 1.639
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6971,
+    "ht_over_1.5": 0.3354,
+    "ht_over_2.5": 0.1193,
+    "ht_under_0.5": 0.3029,
+    "ht_under_1.5": 0.6646,
+    "ht_under_2.5": 0.8807,
+    "htft_11": 0.2984,
+    "htft_12": 0.0169,
+    "htft_1X": 0.0492,
+    "htft_21": 0.0277,
+    "htft_22": 0.1424,
+    "htft_2X": 0.0492,
+    "htft_X1": 0.1704,
+    "htft_X2": 0.0989,
+    "htft_XX": 0.147
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/108.png",
+    "name": "FC Internazionale Milano",
+    "tla": "INT"
+   },
+   "match_id": 558614,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7095,
+    "band_p95": 0.874,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_0.5",
+    "label": "Casa Over 0.5",
+    "p": 0.7759,
+    "p_raw": 0.7999,
+    "reference": 0.7105,
+    "runners_up": [
+     {
+      "band_p5": 0.4557,
+      "band_p95": 0.6784,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5315,
+      "p_raw": 0.5674,
+      "reference": 0.4776,
+      "score": 0.005807,
+      "shrink_alpha": 0.6002,
+      "sigma": 0.0653
+     },
+     {
+      "band_p5": 0.9397,
+      "band_p95": 0.9865,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9675,
+      "p_raw": 0.9683,
+      "reference": 0.9447,
+      "score": 0.00579,
+      "shrink_alpha": 0.9687,
+      "sigma": 0.0144
+     },
+     {
+      "band_p5": 0.6409,
+      "band_p95": 0.8288,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7146,
+      "p_raw": 0.7404,
+      "reference": 0.6658,
+      "score": 0.00549,
+      "shrink_alpha": 0.6538,
+      "sigma": 0.0582
+     },
+     {
+      "band_p5": 0.6409,
+      "band_p95": 0.8288,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7146,
+      "p_raw": 0.7404,
+      "reference": 0.6658,
+      "score": 0.00549,
+      "shrink_alpha": 0.6538,
+      "sigma": 0.0582
+     },
+     {
+      "band_p5": 0.6409,
+      "band_p95": 0.8288,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7146,
+      "p_raw": 0.7404,
+      "reference": 0.6658,
+      "score": 0.00549,
+      "shrink_alpha": 0.6538,
+      "sigma": 0.0582
+     }
+    ],
+    "score": 0.010914,
+    "shrink_alpha": 0.7308,
+    "sigma": 0.0486
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2596,
+    "1x2_draw": 0.2459,
+    "1x2_home": 0.4945,
+    "btts_yes": 0.5332,
+    "over_2.5": 0.5153,
+    "under_2.5": 0.4847
+   },
+   "reasons": [
+    "Gol attesi: FC Internazionale Milano 1.64, SSC Napoli 1.11 (totale 2.75).",
+    "Casa Over 0.5: 78 su 100, 7 punti sopra la media di riferimento (71 su 100).",
+    "Banda di incertezza: fra 71 e 87 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-05T16:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/102.png",
+    "name": "Atalanta BC",
+    "tla": "ATA"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 1,
+    "truncated_mass": 1.508e-09
+   },
+   "expected_goals": {
+    "away": 1.021,
+    "home": 1.297
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6346,
+    "ht_over_1.5": 0.2667,
+    "ht_over_2.5": 0.0815,
+    "ht_under_0.5": 0.3654,
+    "ht_under_1.5": 0.7333,
+    "ht_under_2.5": 0.9185,
+    "htft_11": 0.246,
+    "htft_12": 0.0153,
+    "htft_1X": 0.0478,
+    "htft_21": 0.0206,
+    "htft_22": 0.16,
+    "htft_2X": 0.0478,
+    "htft_X1": 0.1619,
+    "htft_X2": 0.1173,
+    "htft_XX": 0.1833
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/100.png",
+    "name": "AS Roma",
+    "tla": "ROM"
+   },
+   "match_id": 558611,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.9398,
+    "band_p95": 0.9857,
+    "cluster_members": [],
+    "family": "handicap_asian",
+    "key": "ah_home_2.5",
+    "label": "Asiatico casa +2.5",
+    "p": 0.9663,
+    "p_raw": 0.967,
+    "reference": 0.9447,
+    "runners_up": [],
+    "score": 0.005121,
+    "shrink_alpha": 0.9673,
+    "sigma": 0.0147
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2936,
+    "1x2_draw": 0.2792,
+    "1x2_home": 0.4272,
+    "btts_yes": 0.4583,
+    "over_2.5": 0.4076,
+    "under_2.5": 0.5924
+   },
+   "reasons": [
+    "Gol attesi: AS Roma 1.30, Atalanta BC 1.02 (totale 2.32).",
+    "Asiatico casa +2.5: 97 su 100, 2 punti sopra la media di riferimento (94 su 100).",
+    "Banda di incertezza: fra 94 e 99 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-05T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 3
+}

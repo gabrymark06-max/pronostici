@@ -1,0 +1,600 @@
+{
+ "date": "2026-08-22",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/7397.png",
+    "name": "Como 1907",
+    "tla": "COM"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 68,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 1.508e-08
+   },
+   "expected_goals": {
+    "away": 1.588,
+    "home": 0.954
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6684,
+    "ht_over_1.5": 0.3023,
+    "ht_over_2.5": 0.1003,
+    "ht_under_0.5": 0.3316,
+    "ht_under_1.5": 0.6977,
+    "ht_under_2.5": 0.8997,
+    "htft_11": 0.1222,
+    "htft_12": 0.0255,
+    "htft_1X": 0.0462,
+    "htft_21": 0.0135,
+    "htft_22": 0.3131,
+    "htft_2X": 0.0462,
+    "htft_X1": 0.0912,
+    "htft_X2": 0.183,
+    "htft_XX": 0.1592
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/115.png",
+    "name": "Udinese Calcio",
+    "tla": "UDI"
+   },
+   "match_id": 558629,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6698,
+    "band_p95": 0.8633,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.7169,
+    "p_raw": 0.7717,
+    "reference": 0.6066,
+    "runners_up": [
+     {
+      "band_p5": 0.951,
+      "band_p95": 0.9919,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.976,
+      "p_raw": 0.9773,
+      "reference": 0.925,
+      "score": 0.025082,
+      "shrink_alpha": 0.9762,
+      "sigma": 0.0125
+     },
+     {
+      "band_p5": 0.8564,
+      "band_p95": 0.9615,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.907,
+      "p_raw": 0.9188,
+      "reference": 0.8289,
+      "score": 0.024919,
+      "shrink_alpha": 0.8687,
+      "sigma": 0.0311
+     },
+     {
+      "band_p5": 0.8564,
+      "band_p95": 0.9615,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.907,
+      "p_raw": 0.9188,
+      "reference": 0.8289,
+      "score": 0.024919,
+      "shrink_alpha": 0.8687,
+      "sigma": 0.0311
+     },
+     {
+      "band_p5": 0.853,
+      "band_p95": 0.9675,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.9138,
+      "p_raw": 0.9247,
+      "reference": 0.8566,
+      "score": 0.015177,
+      "shrink_alpha": 0.8395,
+      "sigma": 0.035
+     },
+     {
+      "band_p5": 0.6205,
+      "band_p95": 0.8489,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.6922,
+      "p_raw": 0.7526,
+      "reference": 0.6105,
+      "score": 0.014482,
+      "shrink_alpha": 0.5753,
+      "sigma": 0.0687
+     }
+    ],
+    "score": 0.026628,
+    "shrink_alpha": 0.6679,
+    "sigma": 0.0564
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5196,
+    "1x2_draw": 0.2521,
+    "1x2_home": 0.2283,
+    "btts_yes": 0.4813,
+    "over_2.5": 0.4643,
+    "under_2.5": 0.5357
+   },
+   "reasons": [
+    "Gol attesi: Udinese Calcio 0.95, Como 1907 1.59 (totale 2.54).",
+    "X2 (pareggio o ospite): 72 su 100, 11 punti sopra la media di riferimento (61 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 67%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-22T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5911.png",
+    "name": "AC Monza",
+    "tla": "MON"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 64,
+     "p_min": 65,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 11,
+    "truncated_mass": 8.054e-05
+   },
+   "expected_goals": {
+    "away": 0.541,
+    "home": 3.521
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8287,
+    "ht_over_1.5": 0.5264,
+    "ht_over_2.5": 0.2598,
+    "ht_under_0.5": 0.1713,
+    "ht_under_1.5": 0.4736,
+    "ht_under_2.5": 0.7402,
+    "htft_11": 0.6913,
+    "htft_12": 0.0021,
+    "htft_1X": 0.0142,
+    "htft_21": 0.0261,
+    "htft_22": 0.0134,
+    "htft_2X": 0.0142,
+    "htft_X1": 0.1863,
+    "htft_X2": 0.0113,
+    "htft_XX": 0.041
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/108.png",
+    "name": "FC Internazionale Milano",
+    "tla": "INT"
+   },
+   "match_id": 558632,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8716,
+    "band_p95": 0.9672,
+    "cluster_members": [
+     "1x2_home",
+     "ah_home_-0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_12",
+    "label": "12 (nessun pareggio)",
+    "p": 0.903,
+    "p_raw": 0.926,
+    "reference": 0.7276,
+    "runners_up": [
+     {
+      "band_p5": 0.9351,
+      "band_p95": 0.9904,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.9563,
+      "p_raw": 0.9701,
+      "reference": 0.6658,
+      "score": 0.257329,
+      "shrink_alpha": 0.9547,
+      "sigma": 0.0174
+     },
+     {
+      "band_p5": 0.9351,
+      "band_p95": 0.9904,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.9563,
+      "p_raw": 0.9701,
+      "reference": 0.6658,
+      "score": 0.257329,
+      "shrink_alpha": 0.9547,
+      "sigma": 0.0174
+     },
+     {
+      "band_p5": 0.9351,
+      "band_p95": 0.9904,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.9563,
+      "p_raw": 0.9701,
+      "reference": 0.6658,
+      "score": 0.257329,
+      "shrink_alpha": 0.9547,
+      "sigma": 0.0174
+     },
+     {
+      "band_p5": 0.709,
+      "band_p95": 0.9223,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.6156,
+      "p_raw": 0.8316,
+      "reference": 0.2895,
+      "score": 0.228415,
+      "shrink_alpha": 0.6017,
+      "sigma": 0.0651
+     },
+     {
+      "band_p5": 0.9299,
+      "band_p95": 0.9882,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.9527,
+      "p_raw": 0.966,
+      "reference": 0.7105,
+      "score": 0.193708,
+      "shrink_alpha": 0.9479,
+      "sigma": 0.0188
+     }
+    ],
+    "score": 0.094797,
+    "shrink_alpha": 0.884,
+    "sigma": 0.029
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.0299,
+    "1x2_draw": 0.074,
+    "1x2_home": 0.8961,
+    "btts_yes": 0.399,
+    "over_2.5": 0.7603,
+    "under_2.5": 0.2397
+   },
+   "reasons": [
+    "Gol attesi: FC Internazionale Milano 3.52, AC Monza 0.54 (totale 4.06).",
+    "12 (nessun pareggio): 90 su 100, 18 punti sopra la media di riferimento (73 su 100).",
+    "Banda di incertezza: fra 87 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-22T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/113.png",
+    "name": "SSC Napoli",
+    "tla": "NAP"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 67,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 8.929e-09
+   },
+   "expected_goals": {
+    "away": 1.517,
+    "home": 0.79
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6329,
+    "ht_over_1.5": 0.265,
+    "ht_over_2.5": 0.0807,
+    "ht_under_0.5": 0.3671,
+    "ht_under_1.5": 0.735,
+    "ht_under_2.5": 0.9193,
+    "htft_11": 0.1022,
+    "htft_12": 0.0224,
+    "htft_1X": 0.0422,
+    "htft_21": 0.0101,
+    "htft_22": 0.326,
+    "htft_2X": 0.0422,
+    "htft_X1": 0.0826,
+    "htft_X2": 0.197,
+    "htft_XX": 0.1754
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/107.png",
+    "name": "Genoa CFC",
+    "tla": "GEN"
+   },
+   "match_id": 558631,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7368,
+    "band_p95": 0.8739,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.7563,
+    "p_raw": 0.8038,
+    "reference": 0.6066,
+    "runners_up": [
+     {
+      "band_p5": 0.7222,
+      "band_p95": 0.8846,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7563,
+      "p_raw": 0.8116,
+      "reference": 0.6105,
+      "score": 0.047706,
+      "shrink_alpha": 0.7251,
+      "sigma": 0.0493
+     },
+     {
+      "band_p5": 0.9043,
+      "band_p95": 0.9705,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9323,
+      "p_raw": 0.9394,
+      "reference": 0.8289,
+      "score": 0.046776,
+      "shrink_alpha": 0.9355,
+      "sigma": 0.021
+     },
+     {
+      "band_p5": 0.9043,
+      "band_p95": 0.9705,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9323,
+      "p_raw": 0.9394,
+      "reference": 0.8289,
+      "score": 0.046776,
+      "shrink_alpha": 0.9355,
+      "sigma": 0.021
+     },
+     {
+      "band_p5": 0.9128,
+      "band_p95": 0.9788,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.9461,
+      "p_raw": 0.952,
+      "reference": 0.8566,
+      "score": 0.041332,
+      "shrink_alpha": 0.9384,
+      "sigma": 0.0205
+     },
+     {
+      "band_p5": 0.9733,
+      "band_p95": 0.9946,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9852,
+      "p_raw": 0.9857,
+      "reference": 0.925,
+      "score": 0.038085,
+      "shrink_alpha": 0.9922,
+      "sigma": 0.0071
+     }
+    ],
+    "score": 0.05013,
+    "shrink_alpha": 0.7592,
+    "sigma": 0.0451
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5425,
+    "1x2_draw": 0.2613,
+    "1x2_home": 0.1962,
+    "btts_yes": 0.421,
+    "over_2.5": 0.4047,
+    "under_2.5": 0.5953
+   },
+   "reasons": [
+    "Gol attesi: Genoa CFC 0.79, SSC Napoli 1.52 (totale 2.31).",
+    "X2 (pareggio o ospite): 76 su 100, 15 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 74 e 87 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-22T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/104.png",
+    "name": "Cagliari Calcio",
+    "tla": "CAG"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 79,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 2.599e-10
+   },
+   "expected_goals": {
+    "away": 1.064,
+    "home": 1.058
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6021,
+    "ht_over_1.5": 0.2354,
+    "ht_over_2.5": 0.0665,
+    "ht_under_0.5": 0.3979,
+    "ht_under_1.5": 0.7646,
+    "ht_under_2.5": 0.9335,
+    "htft_11": 0.1929,
+    "htft_12": 0.0159,
+    "htft_1X": 0.0467,
+    "htft_21": 0.0158,
+    "htft_22": 0.195,
+    "htft_2X": 0.0467,
+    "htft_X1": 0.1407,
+    "htft_X2": 0.1419,
+    "htft_XX": 0.2044
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/112.png",
+    "name": "Parma Calcio 1913",
+    "tla": "PAR"
+   },
+   "match_id": 558636,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5366,
+    "band_p95": 0.7488,
+    "cluster_members": [
+     "mg_0_2"
+    ],
+    "family": "over_under",
+    "key": "under_2.5",
+    "label": "Under 2.5",
+    "p": 0.5984,
+    "p_raw": 0.6442,
+    "reference": 0.5303,
+    "runners_up": [
+     {
+      "band_p5": 0.6095,
+      "band_p95": 0.8123,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.6748,
+      "p_raw": 0.7149,
+      "reference": 0.6105,
+      "score": 0.00889,
+      "shrink_alpha": 0.6159,
+      "sigma": 0.0632
+     },
+     {
+      "band_p5": 0.7515,
+      "band_p95": 0.902,
+      "family": "over_under",
+      "key": "under_3.5",
+      "label": "Under 3.5",
+      "p": 0.8134,
+      "p_raw": 0.8321,
+      "reference": 0.7592,
+      "score": 0.008502,
+      "shrink_alpha": 0.7431,
+      "sigma": 0.047
+     },
+     {
+      "band_p5": 0.7515,
+      "band_p95": 0.902,
+      "family": "multigoal",
+      "key": "mg_0_3",
+      "label": "Multigol 0-3",
+      "p": 0.8134,
+      "p_raw": 0.8321,
+      "reference": 0.7592,
+      "score": 0.008502,
+      "shrink_alpha": 0.7431,
+      "sigma": 0.047
+     },
+     {
+      "band_p5": 0.8874,
+      "band_p95": 0.9683,
+      "family": "over_under",
+      "key": "under_4.5",
+      "label": "Under 4.5",
+      "p": 0.929,
+      "p_raw": 0.933,
+      "reference": 0.8908,
+      "score": 0.008454,
+      "shrink_alpha": 0.9059,
+      "sigma": 0.0258
+     },
+     {
+      "band_p5": 0.8456,
+      "band_p95": 0.954,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.8984,
+      "p_raw": 0.9062,
+      "reference": 0.8566,
+      "score": 0.007789,
+      "shrink_alpha": 0.8417,
+      "sigma": 0.0347
+     }
+    ],
+    "score": 0.00941,
+    "shrink_alpha": 0.5986,
+    "sigma": 0.0655
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3526,
+    "1x2_draw": 0.2982,
+    "1x2_home": 0.3492,
+    "btts_yes": 0.4214,
+    "over_2.5": 0.3558,
+    "under_2.5": 0.6442
+   },
+   "reasons": [
+    "Gol attesi: Parma Calcio 1913 1.06, Cagliari Calcio 1.06 (totale 2.12).",
+    "Under 2.5: 60 su 100, 7 punti sopra la media di riferimento (53 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 60%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-22T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 4
+}

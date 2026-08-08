@@ -1,0 +1,452 @@
+{
+ "date": "2026-08-23",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5890.png",
+    "name": "US Lecce",
+    "tla": "USL"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 69,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 11,
+    "truncated_mass": 5.7e-11
+   },
+   "expected_goals": {
+    "away": 0.851,
+    "home": 0.977
+   },
+   "half_time": {
+    "ht_over_0.5": 0.548,
+    "ht_over_1.5": 0.1891,
+    "ht_over_2.5": 0.0466,
+    "ht_under_0.5": 0.452,
+    "ht_under_1.5": 0.8109,
+    "ht_under_2.5": 0.9534,
+    "htft_11": 0.2031,
+    "htft_12": 0.0113,
+    "htft_1X": 0.0424,
+    "htft_21": 0.0133,
+    "htft_22": 0.1617,
+    "htft_2X": 0.0424,
+    "htft_X1": 0.1553,
+    "htft_X2": 0.1304,
+    "htft_XX": 0.2401
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/454.png",
+    "name": "Venezia FC",
+    "tla": "VEN"
+   },
+   "match_id": 558637,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8126,
+    "band_p95": 0.9396,
+    "cluster_members": [
+     "mg_0_3"
+    ],
+    "family": "over_under",
+    "key": "under_3.5",
+    "label": "Under 3.5",
+    "p": 0.8567,
+    "p_raw": 0.8835,
+    "reference": 0.7592,
+    "runners_up": [
+     {
+      "band_p5": 0.6136,
+      "band_p95": 0.8196,
+      "family": "over_under",
+      "key": "under_2.5",
+      "label": "Under 2.5",
+      "p": 0.6438,
+      "p_raw": 0.7223,
+      "reference": 0.5303,
+      "score": 0.026349,
+      "shrink_alpha": 0.5912,
+      "sigma": 0.0665
+     },
+     {
+      "band_p5": 0.6136,
+      "band_p95": 0.8196,
+      "family": "multigoal",
+      "key": "mg_0_2",
+      "label": "Multigol 0-2",
+      "p": 0.6438,
+      "p_raw": 0.7223,
+      "reference": 0.5303,
+      "score": 0.026349,
+      "shrink_alpha": 0.5912,
+      "sigma": 0.0665
+     },
+     {
+      "band_p5": 0.9238,
+      "band_p95": 0.9834,
+      "family": "over_under",
+      "key": "under_4.5",
+      "label": "Under 4.5",
+      "p": 0.9546,
+      "p_raw": 0.9587,
+      "reference": 0.8908,
+      "score": 0.026161,
+      "shrink_alpha": 0.9386,
+      "sigma": 0.0205
+     },
+     {
+      "band_p5": 0.5055,
+      "band_p95": 0.5892,
+      "family": "multigoal",
+      "key": "mg_1_2",
+      "label": "Multigol 1-2",
+      "p": 0.5433,
+      "p_raw": 0.5558,
+      "reference": 0.4461,
+      "score": 0.018984,
+      "shrink_alpha": 0.8858,
+      "sigma": 0.0287
+     },
+     {
+      "band_p5": 0.6897,
+      "band_p95": 0.882,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7439,
+      "p_raw": 0.7894,
+      "reference": 0.6579,
+      "score": 0.017236,
+      "shrink_alpha": 0.6537,
+      "sigma": 0.0582
+     }
+    ],
+    "score": 0.029137,
+    "shrink_alpha": 0.7845,
+    "sigma": 0.0419
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3039,
+    "1x2_draw": 0.3258,
+    "1x2_home": 0.3704,
+    "btts_yes": 0.3506,
+    "over_2.5": 0.2777,
+    "under_2.5": 0.7223
+   },
+   "reasons": [
+    "Gol attesi: Venezia FC 0.98, US Lecce 0.85 (totale 1.83).",
+    "Under 3.5: 86 su 100, 10 punti sopra la media di riferimento (76 su 100).",
+    "Banda di incertezza: fra 81 e 94 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-23T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/471.png",
+    "name": "US Sassuolo Calcio",
+    "tla": "SAS"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 72,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 4.422e-08
+   },
+   "expected_goals": {
+    "away": 0.913,
+    "home": 1.744
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6846,
+    "ht_over_1.5": 0.3207,
+    "ht_over_2.5": 0.1107,
+    "ht_under_0.5": 0.3154,
+    "ht_under_1.5": 0.6793,
+    "ht_under_2.5": 0.8893,
+    "htft_11": 0.3499,
+    "htft_12": 0.0122,
+    "htft_1X": 0.0442,
+    "htft_21": 0.0276,
+    "htft_22": 0.1043,
+    "htft_2X": 0.0442,
+    "htft_X1": 0.1922,
+    "htft_X2": 0.0787,
+    "htft_XX": 0.1466
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/102.png",
+    "name": "Atalanta BC",
+    "tla": "ATA"
+   },
+   "match_id": 558633,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7126,
+    "band_p95": 0.8846,
+    "cluster_members": [
+     "eh_1_home",
+     "ah_home_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_1x",
+    "label": "1X (casa o pareggio)",
+    "p": 0.7594,
+    "p_raw": 0.8025,
+    "reference": 0.6658,
+    "runners_up": [
+     {
+      "band_p5": 0.8863,
+      "band_p95": 0.9688,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.925,
+      "p_raw": 0.9327,
+      "reference": 0.8605,
+      "score": 0.020303,
+      "shrink_alpha": 0.8936,
+      "sigma": 0.0276
+     },
+     {
+      "band_p5": 0.8863,
+      "band_p95": 0.9688,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.925,
+      "p_raw": 0.9327,
+      "reference": 0.8605,
+      "score": 0.020303,
+      "shrink_alpha": 0.8936,
+      "sigma": 0.0276
+     },
+     {
+      "band_p5": 0.9639,
+      "band_p95": 0.994,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9814,
+      "p_raw": 0.982,
+      "reference": 0.9447,
+      "score": 0.017054,
+      "shrink_alpha": 0.983,
+      "sigma": 0.0105
+     },
+     {
+      "band_p5": 0.7224,
+      "band_p95": 0.8887,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.7847,
+      "p_raw": 0.8176,
+      "reference": 0.7105,
+      "score": 0.014179,
+      "shrink_alpha": 0.6929,
+      "sigma": 0.0533
+     },
+     {
+      "band_p5": 0.6556,
+      "band_p95": 0.8635,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7231,
+      "p_raw": 0.767,
+      "reference": 0.6579,
+      "score": 0.009784,
+      "shrink_alpha": 0.5977,
+      "sigma": 0.0656
+     }
+    ],
+    "score": 0.020848,
+    "shrink_alpha": 0.6848,
+    "sigma": 0.0543
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1975,
+    "1x2_draw": 0.2367,
+    "1x2_home": 0.5658,
+    "btts_yes": 0.4854,
+    "over_2.5": 0.492,
+    "under_2.5": 0.508
+   },
+   "reasons": [
+    "Gol attesi: Atalanta BC 1.74, US Sassuolo Calcio 0.91 (totale 2.66).",
+    "1X (casa o pareggio): 76 su 100, 9 punti sopra la media di riferimento (67 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 68%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-23T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/98.png",
+    "name": "AC Milan",
+    "tla": "MIL"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 70,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 7,
+    "truncated_mass": 2.33e-08
+   },
+   "expected_goals": {
+    "away": 1.649,
+    "home": 0.975
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6801,
+    "ht_over_1.5": 0.3155,
+    "ht_over_2.5": 0.1077,
+    "ht_under_0.5": 0.3199,
+    "ht_under_1.5": 0.6845,
+    "ht_under_2.5": 0.8923,
+    "htft_11": 0.1206,
+    "htft_12": 0.0268,
+    "htft_1X": 0.0464,
+    "htft_21": 0.0138,
+    "htft_22": 0.3215,
+    "htft_2X": 0.0464,
+    "htft_X1": 0.0888,
+    "htft_X2": 0.1833,
+    "htft_XX": 0.1525
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/586.png",
+    "name": "Torino FC",
+    "tla": "TOR"
+   },
+   "match_id": 558634,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6727,
+    "band_p95": 0.8521,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.7251,
+    "p_raw": 0.7755,
+    "reference": 0.6066,
+    "runners_up": [
+     {
+      "band_p5": 0.8636,
+      "band_p95": 0.9575,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9094,
+      "p_raw": 0.9195,
+      "reference": 0.8289,
+      "score": 0.026655,
+      "shrink_alpha": 0.8885,
+      "sigma": 0.0283
+     },
+     {
+      "band_p5": 0.8636,
+      "band_p95": 0.9575,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9094,
+      "p_raw": 0.9195,
+      "reference": 0.8289,
+      "score": 0.026655,
+      "shrink_alpha": 0.8885,
+      "sigma": 0.0283
+     },
+     {
+      "band_p5": 0.9551,
+      "band_p95": 0.9915,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9764,
+      "p_raw": 0.9774,
+      "reference": 0.925,
+      "score": 0.025502,
+      "shrink_alpha": 0.9808,
+      "sigma": 0.0112
+     },
+     {
+      "band_p5": 0.732,
+      "band_p95": 0.8744,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7757,
+      "p_raw": 0.8025,
+      "reference": 0.6895,
+      "score": 0.018434,
+      "shrink_alpha": 0.7628,
+      "sigma": 0.0446
+     },
+     {
+      "band_p5": 0.4876,
+      "band_p95": 0.6822,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5246,
+      "p_raw": 0.579,
+      "reference": 0.4303,
+      "score": 0.017933,
+      "shrink_alpha": 0.634,
+      "sigma": 0.0608
+     }
+    ],
+    "score": 0.030883,
+    "shrink_alpha": 0.7019,
+    "sigma": 0.0521
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5293,
+    "1x2_draw": 0.2462,
+    "1x2_home": 0.2245,
+    "btts_yes": 0.4965,
+    "over_2.5": 0.4849,
+    "under_2.5": 0.5151
+   },
+   "reasons": [
+    "Gol attesi: Torino FC 0.98, AC Milan 1.65 (totale 2.62).",
+    "X2 (pareggio o ospite): 73 su 100, 12 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 67 e 85 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-23T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 3
+}

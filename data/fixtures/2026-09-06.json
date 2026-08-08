@@ -1,0 +1,298 @@
+{
+ "date": "2026-09-06",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5911.png",
+    "name": "AC Monza",
+    "tla": "MON"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 66,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 10,
+    "truncated_mass": 3.473e-09
+   },
+   "expected_goals": {
+    "away": 0.722,
+    "home": 1.399
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6021,
+    "ht_over_1.5": 0.2354,
+    "ht_over_2.5": 0.0664,
+    "ht_under_0.5": 0.3979,
+    "ht_under_1.5": 0.7646,
+    "ht_under_2.5": 0.9336,
+    "htft_11": 0.3128,
+    "htft_12": 0.0089,
+    "htft_1X": 0.0405,
+    "htft_21": 0.0196,
+    "htft_22": 0.1002,
+    "htft_2X": 0.0405,
+    "htft_X1": 0.1992,
+    "htft_X2": 0.0841,
+    "htft_XX": 0.1942
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/112.png",
+    "name": "Parma Calcio 1913",
+    "tla": "PAR"
+   },
+   "match_id": 558612,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7335,
+    "band_p95": 0.9228,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.7734,
+    "p_raw": 0.8346,
+    "reference": 0.6579,
+    "runners_up": [
+     {
+      "band_p5": 0.9186,
+      "band_p95": 0.9887,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9545,
+      "p_raw": 0.96,
+      "reference": 0.8855,
+      "score": 0.029619,
+      "shrink_alpha": 0.9262,
+      "sigma": 0.0226
+     },
+     {
+      "band_p5": 0.8972,
+      "band_p95": 0.9784,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9347,
+      "p_raw": 0.9425,
+      "reference": 0.8605,
+      "score": 0.027711,
+      "shrink_alpha": 0.9051,
+      "sigma": 0.0259
+     },
+     {
+      "band_p5": 0.8972,
+      "band_p95": 0.9784,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9347,
+      "p_raw": 0.9425,
+      "reference": 0.8605,
+      "score": 0.027711,
+      "shrink_alpha": 0.9051,
+      "sigma": 0.0259
+     },
+     {
+      "band_p5": 0.9713,
+      "band_p95": 0.9969,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9864,
+      "p_raw": 0.9869,
+      "reference": 0.9447,
+      "score": 0.02355,
+      "shrink_alpha": 0.9888,
+      "sigma": 0.0085
+     },
+     {
+      "band_p5": 0.7066,
+      "band_p95": 0.8904,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7593,
+      "p_raw": 0.8051,
+      "reference": 0.6658,
+      "score": 0.020774,
+      "shrink_alpha": 0.6708,
+      "sigma": 0.056
+     }
+    ],
+    "score": 0.031747,
+    "shrink_alpha": 0.6537,
+    "sigma": 0.0582
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1949,
+    "1x2_draw": 0.2765,
+    "1x2_home": 0.5287,
+    "btts_yes": 0.3796,
+    "over_2.5": 0.3556,
+    "under_2.5": 0.6444
+   },
+   "reasons": [
+    "Gol attesi: Parma Calcio 1913 1.40, AC Monza 0.72 (totale 2.12).",
+    "Ospite Under 1.5: 77 su 100, 12 punti sopra la media di riferimento (66 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 65%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-06T13:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/471.png",
+    "name": "US Sassuolo Calcio",
+    "tla": "SAS"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 0,
+    "truncated_mass": 8.509e-09
+   },
+   "expected_goals": {
+    "away": 1.165,
+    "home": 1.505
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6864,
+    "ht_over_1.5": 0.3227,
+    "ht_over_2.5": 0.1119,
+    "ht_under_0.5": 0.3136,
+    "ht_under_1.5": 0.6773,
+    "ht_under_2.5": 0.8881,
+    "htft_11": 0.2655,
+    "htft_12": 0.0184,
+    "htft_1X": 0.0503,
+    "htft_21": 0.0255,
+    "htft_22": 0.1637,
+    "htft_2X": 0.0503,
+    "htft_X1": 0.1596,
+    "htft_X2": 0.1118,
+    "htft_XX": 0.1548
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/103.png",
+    "name": "Bologna FC 1909",
+    "tla": "BOL"
+   },
+   "match_id": 558613,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.295,
+    "1x2_draw": 0.2559,
+    "1x2_home": 0.4491,
+    "btts_yes": 0.5261,
+    "over_2.5": 0.4954,
+    "under_2.5": 0.5046
+   },
+   "reasons": [
+    "Gol attesi: Bologna FC 1909 1.50, US Sassuolo Calcio 1.17 (totale 2.67)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-06T16:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/98.png",
+    "name": "AC Milan",
+    "tla": "MIL"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 1,
+    "truncated_mass": 2.013e-09
+   },
+   "expected_goals": {
+    "away": 1.033,
+    "home": 1.33
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6418,
+    "ht_over_1.5": 0.274,
+    "ht_over_2.5": 0.0853,
+    "ht_under_0.5": 0.3582,
+    "ht_under_1.5": 0.726,
+    "ht_under_2.5": 0.9147,
+    "htft_11": 0.2507,
+    "htft_12": 0.0156,
+    "htft_1X": 0.0481,
+    "htft_21": 0.0213,
+    "htft_22": 0.1589,
+    "htft_2X": 0.0481,
+    "htft_X1": 0.1626,
+    "htft_X2": 0.1157,
+    "htft_XX": 0.179
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/109.png",
+    "name": "Juventus FC",
+    "tla": "JUV"
+   },
+   "match_id": 558618,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.9399,
+    "band_p95": 0.9852,
+    "cluster_members": [],
+    "family": "handicap_asian",
+    "key": "ah_home_2.5",
+    "label": "Asiatico casa +2.5",
+    "p": 0.9661,
+    "p_raw": 0.9668,
+    "reference": 0.9447,
+    "runners_up": [],
+    "score": 0.005046,
+    "shrink_alpha": 0.9688,
+    "sigma": 0.0144
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2915,
+    "1x2_draw": 0.2755,
+    "1x2_home": 0.433,
+    "btts_yes": 0.4671,
+    "over_2.5": 0.4194,
+    "under_2.5": 0.5806
+   },
+   "reasons": [
+    "Gol attesi: Juventus FC 1.33, AC Milan 1.03 (totale 2.36).",
+    "Asiatico casa +2.5: 97 su 100, 2 punti sopra la media di riferimento (94 su 100).",
+    "Banda di incertezza: fra 94 e 99 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-06T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 1,
+ "total": 3
+}

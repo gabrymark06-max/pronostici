@@ -1,0 +1,316 @@
+"""Scelta del pronostico consigliato: passi 4-8 della pipeline (ricerca 8.1).
+
+Il vincolo di prodotto dell'utente - *"se e' presente una value bet alta ma e'
+veramente difficile che esca, non gliela consigliamo"* - **non e' imposto con
+una soglia**: e' gia' dentro la matematica. Il punteggio e' la divergenza KL
+fra la nostra probabilita' e il riferimento, che coincide esattamente con il
+tasso di crescita log-ottimale di Kelly. A parita' di vantaggio del 10%, il
+punteggio cade di 124 volte passando da p=0,75 a p=0,02.
+
+Quando si tace, si persiste **quale filtro ha morso**: il frontend ne ha
+bisogno per scrivere tre messaggi diversi (brief 8.4), e un booleano non
+basterebbe.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+
+import numpy as np
+
+from .markets import catalog
+
+# Tabella dei parametri, ricerca 8.3. Valori iniziali motivati, non frutto di
+# grid search: con due stagioni il budget statistico non la permette (7.2).
+P_MIN = 0.50  # sicurezza: non consigliamo esiti meno probabili che no
+SIGMA_MAX = 0.12  # sicurezza: stima troppo instabile per dire qualcosa
+S_MIN = 0.005  # editoriale: sotto, non dice niente. L'unica manopola
+RHO_MAX = 0.80  # soglia di clustering per correlazione
+TAU_DEFAULT = 0.08  # sd a priori per famiglia, finche' non c'e' il backtest
+
+EPS = 1e-9
+
+
+def kl_binary(p: np.ndarray | float, q: np.ndarray | float) -> np.ndarray | float:
+    """Divergenza KL binaria D(p||q), in nats.
+
+    `q` e' la quota sgonfiata dove esiste, il base rate dove non esiste: lo
+    stesso identico codice serve i due casi (ricerca 3.3).
+
+    Attenzione: e' positiva **in entrambe le direzioni**. Misura quanta
+    informazione abbiamo rispetto al riferimento, non da che parte stare. Per
+    ordinare i pronostici serve `directional_score`.
+    """
+    p = np.clip(p, EPS, 1 - EPS)
+    q = np.clip(q, EPS, 1 - EPS)
+    return p * np.log(p / q) + (1 - p) * np.log((1 - p) / (1 - q))
+
+
+def directional_score(p: np.ndarray | float, q: np.ndarray | float) -> np.ndarray:
+    """Tasso di crescita log-ottimale di Kelly per **scommettere sull'evento**.
+
+    Kelly (ricerca 2.1, eq. 3) e' esplicito: `k(p) = 0` quando `p <= 1/theta`,
+    cioe' quando la nostra probabilita' non supera quella di riferimento. In
+    quel caso l'informazione c'e' ma punta dalla parte opposta: la mossa
+    ottimale e' l'evento complementare, non questo.
+
+    Usare la KL nuda come punteggio consiglierebbe eventi che riteniamo
+    **meno** probabili del riferimento - vantaggio atteso negativo, con un
+    punteggio alto. Qui il punteggio e' zero e il filtro `S_min` li elimina.
+    """
+    p_arr = np.asarray(p, dtype=float)
+    q_arr = np.asarray(q, dtype=float)
+    return np.where(p_arr > q_arr, kl_binary(p_arr, q_arr), 0.0)
+
+
+def shrink(
+    p_hat: np.ndarray | float, sigma: np.ndarray | float, q_ref: np.ndarray | float,
+    tau: np.ndarray | float,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Media a posteriori, Smith & Winkler (2006) eq. 6a-6b.
+
+    Senza questo passo l'argmax su 11 mercati sovrastima di ~1,5 sigma
+    (maledizione dell'ottimizzatore). Con sigma realistica (~0,10) il
+    punteggio si riduce di circa 6,5 volte: e' il prezzo onesto di avere due
+    stagioni di dati.
+    """
+    tau2 = np.maximum(np.asarray(tau, dtype=float) ** 2, EPS)
+    alpha = 1.0 / (1.0 + np.asarray(sigma, dtype=float) ** 2 / tau2)
+    return alpha * np.asarray(p_hat) + (1 - alpha) * np.asarray(q_ref), alpha
+
+
+def market_correlation(matrix: np.ndarray, mask_a: np.ndarray, mask_b: np.ndarray) -> float:
+    """Correlazione **esatta** fra due mercati binari, dalla matrice congiunta.
+
+    Non stimata dallo storico: alcuni mercati sono annidati (Over 2.5 dentro
+    Over 1.5) e una correlazione empirica li tratterebbe male.
+    """
+    pa = float(matrix[mask_a].sum())
+    pb = float(matrix[mask_b].sum())
+    pab = float(matrix[mask_a & mask_b].sum())
+    den = np.sqrt(pa * (1 - pa) * pb * (1 - pb))
+    return 0.0 if den <= EPS else float((pab - pa * pb) / den)
+
+
+def correlation_matrix(matrix: np.ndarray, keys: list[str], max_goals: int) -> np.ndarray:
+    """Matrice di correlazione fra i mercati candidati, tutta dalla matrice."""
+    masks = {d.key: d.mask for d in catalog(max_goals)}
+    flat = matrix.ravel()
+    sel = [masks[k].ravel() for k in keys]
+    probs = np.array([flat[m].sum() for m in sel])
+    n = len(keys)
+    corr = np.eye(n)
+    for i in range(n):
+        for j in range(i + 1, n):
+            pab = float(flat[sel[i] & sel[j]].sum())
+            den = np.sqrt(probs[i] * (1 - probs[i]) * probs[j] * (1 - probs[j]))
+            value = 0.0 if den <= EPS else (pab - probs[i] * probs[j]) / den
+            corr[i, j] = corr[j, i] = value
+    return corr
+
+
+def single_linkage_clusters(corr: np.ndarray, threshold: float = RHO_MAX) -> list[list[int]]:
+    """Cluster a legame singolo su |correlazione| >= soglia.
+
+    Riduce tipicamente ~90 mercati a pochi cluster: e' quello il **numero
+    effettivo di prove** su cui si fa argmax, e da cui dipende quanto morde la
+    maledizione dell'ottimizzatore.
+    """
+    n = corr.shape[0]
+    parent = list(range(n))
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(corr[i, j]) >= threshold:
+                ri, rj = find(i), find(j)
+                if ri != rj:
+                    parent[max(ri, rj)] = min(ri, rj)
+
+    groups: dict[int, list[int]] = {}
+    for i in range(n):
+        groups.setdefault(find(i), []).append(i)
+    return [sorted(v) for v in groups.values()]
+
+
+@dataclass
+class Candidate:
+    key: str
+    family: str
+    label: str
+    p_hat: float  # media bootstrap, non shrinkata
+    sigma: float  # sd bootstrap
+    p5: float
+    p95: float
+    p_tilde: float  # dopo shrinkage: l'unica mostrabile all'utente
+    alpha: float
+    reference: float
+    score: float
+    passes_p_min: bool
+    passes_sigma_max: bool
+    passes_s_min: bool
+
+    @property
+    def survives(self) -> bool:
+        return self.passes_p_min and self.passes_sigma_max and self.passes_s_min
+
+    def to_dict(self) -> dict:
+        return {
+            "key": self.key,
+            "family": self.family,
+            "label": self.label,
+            "p": round(self.p_tilde, 4),
+            "p_raw": round(self.p_hat, 4),
+            "sigma": round(self.sigma, 4),
+            "band_p5": round(self.p5, 4),
+            "band_p95": round(self.p95, 4),
+            "shrink_alpha": round(self.alpha, 4),
+            "reference": round(self.reference, 4),
+            "score": round(self.score, 6),
+        }
+
+
+@dataclass
+class Selection:
+    """Il risultato: un pronostico, oppure il silenzio con la sua ragione."""
+
+    pick: Candidate | None
+    silence_reason: str | None  # "S_min" | "sigma_max" | "p_min" | "no_candidates"
+    n_candidates: int
+    n_clusters: int
+    cluster_members: list[str] = field(default_factory=list)
+    filter_bites: dict[str, int] = field(default_factory=dict)
+    runners_up: list[Candidate] = field(default_factory=list)
+
+    @property
+    def is_silent(self) -> bool:
+        return self.pick is None
+
+
+def build_candidates(
+    probs_by_draw: dict[str, np.ndarray],
+    references: dict[str, float],
+    *,
+    tau: float | dict[str, float] = TAU_DEFAULT,
+    selectable_keys: set[str] | None = None,
+    max_goals: int = 12,
+) -> list[Candidate]:
+    """Passi 2-5: incertezza, riferimento, shrinkage, punteggio."""
+    defs = {d.key: d for d in catalog(max_goals)}
+    out: list[Candidate] = []
+    for key, draws in probs_by_draw.items():
+        definition = defs.get(key)
+        if definition is None or not definition.selectable:
+            continue
+        if selectable_keys is not None and key not in selectable_keys:
+            continue
+        reference = references.get(key)
+        if reference is None:
+            continue
+
+        p_hat = float(draws.mean())
+        sigma = float(draws.std(ddof=1))
+        p5, p95 = (float(v) for v in np.percentile(draws, [5, 95]))
+        tau_value = tau[definition.family] if isinstance(tau, dict) else tau
+        p_tilde, alpha = shrink(p_hat, sigma, reference, tau_value)
+        p_tilde = float(p_tilde)
+        score = float(directional_score(p_tilde, reference))
+
+        out.append(
+            Candidate(
+                key=key,
+                family=definition.family,
+                label=definition.label,
+                p_hat=p_hat,
+                sigma=sigma,
+                p5=p5,
+                p95=p95,
+                p_tilde=p_tilde,
+                alpha=float(alpha),
+                reference=reference,
+                score=score,
+                passes_p_min=p_tilde >= P_MIN,
+                passes_sigma_max=sigma <= SIGMA_MAX,
+                passes_s_min=score >= S_MIN,
+            )
+        )
+    return out
+
+
+def _silence_reason(candidates: list[Candidate]) -> str:
+    """Quale filtro ha morso, in ordine di priorita'.
+
+    L'ordine non e' arbitrario: si riporta `S_min` solo se qualcosa aveva gia'
+    superato i due filtri di sicurezza, cioe' solo quando il messaggio "non
+    abbiamo niente da aggiungere" e' quello vero. Mappa 1:1 sui tre testi
+    dell'interfaccia (brief 8.4).
+    """
+    if not candidates:
+        return "no_candidates"
+    safe = [c for c in candidates if c.passes_p_min and c.passes_sigma_max]
+    if safe:
+        return "S_min"
+    probable = [c for c in candidates if c.passes_p_min]
+    if probable:
+        return "sigma_max"
+    return "p_min"
+
+
+def select(
+    candidates: list[Candidate],
+    matrix: np.ndarray,
+    *,
+    rho_max: float = RHO_MAX,
+    max_goals: int = 12,
+) -> Selection:
+    """Passi 6-8: filtri duri, clustering, scelta, oppure silenzio."""
+    bites = {
+        "p_min": sum(1 for c in candidates if not c.passes_p_min),
+        "sigma_max": sum(1 for c in candidates if not c.passes_sigma_max),
+        "S_min": sum(1 for c in candidates if not c.passes_s_min),
+    }
+    survivors = [c for c in candidates if c.survives]
+    if not survivors:
+        return Selection(
+            pick=None,
+            silence_reason=_silence_reason(candidates),
+            n_candidates=len(candidates),
+            n_clusters=0,
+            filter_bites=bites,
+        )
+
+    keys = [c.key for c in survivors]
+    corr = correlation_matrix(matrix, keys, max_goals)
+    clusters = single_linkage_clusters(corr, rho_max)
+
+    # Si sceglie il CLUSTER con punteggio massimo...
+    best_cluster = max(clusters, key=lambda idx: max(survivors[i].score for i in idx))
+    # ...e dentro il cluster il membro con probabilita' piu' alta.
+    # E' qui che il vincolo di prodotto morde di piu': a punteggi
+    # confrontabili preferisce Over 1.5 a Over 2.5, doppia chance a 1X2.
+    winner = max(best_cluster, key=lambda i: survivors[i].p_tilde)
+    pick = survivors[winner]
+
+    others = sorted(
+        (survivors[i] for i in best_cluster if i != winner),
+        key=lambda c: -c.p_tilde,
+    )
+    runners = sorted(
+        (c for j, c in enumerate(survivors) if j not in best_cluster),
+        key=lambda c: -c.score,
+    )[:5]
+
+    return Selection(
+        pick=pick,
+        silence_reason=None,
+        n_candidates=len(candidates),
+        n_clusters=len(clusters),
+        cluster_members=[c.key for c in others],
+        filter_bites=bites,
+        runners_up=runners,
+    )

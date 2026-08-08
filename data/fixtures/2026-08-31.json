@@ -1,0 +1,302 @@
+{
+ "date": "2026-08-31",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/100.png",
+    "name": "AS Roma",
+    "tla": "ROM"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 56,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 13,
+    "truncated_mass": 1.666e-08
+   },
+   "expected_goals": {
+    "away": 1.602,
+    "home": 0.55
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6071,
+    "ht_over_1.5": 0.2401,
+    "ht_over_2.5": 0.0686,
+    "ht_under_0.5": 0.3929,
+    "ht_under_1.5": 0.7599,
+    "ht_under_2.5": 0.9314,
+    "htft_11": 0.0624,
+    "htft_12": 0.0193,
+    "htft_1X": 0.033,
+    "htft_21": 0.0053,
+    "htft_22": 0.3862,
+    "htft_2X": 0.033,
+    "htft_X1": 0.0567,
+    "htft_X2": 0.2264,
+    "htft_XX": 0.1777
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/5890.png",
+    "name": "US Lecce",
+    "tla": "USL"
+   },
+   "match_id": 558621,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8242,
+    "band_p95": 0.9405,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.8478,
+    "p_raw": 0.8929,
+    "reference": 0.6105,
+    "runners_up": [
+     {
+      "band_p5": 0.801,
+      "band_p95": 0.9268,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.8284,
+      "p_raw": 0.8738,
+      "reference": 0.6066,
+      "score": 0.115755,
+      "shrink_alpha": 0.83,
+      "sigma": 0.0362
+     },
+     {
+      "band_p5": 0.801,
+      "band_p95": 0.9268,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.8284,
+      "p_raw": 0.8738,
+      "reference": 0.6066,
+      "score": 0.115755,
+      "shrink_alpha": 0.83,
+      "sigma": 0.0362
+     },
+     {
+      "band_p5": 0.801,
+      "band_p95": 0.9268,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.8284,
+      "p_raw": 0.8738,
+      "reference": 0.6066,
+      "score": 0.115755,
+      "shrink_alpha": 0.83,
+      "sigma": 0.0362
+     },
+     {
+      "band_p5": 0.9451,
+      "band_p95": 0.9862,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9671,
+      "p_raw": 0.9706,
+      "reference": 0.8289,
+      "score": 0.094771,
+      "shrink_alpha": 0.9748,
+      "sigma": 0.0129
+     },
+     {
+      "band_p5": 0.9451,
+      "band_p95": 0.9862,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9671,
+      "p_raw": 0.9706,
+      "reference": 0.8289,
+      "score": 0.094771,
+      "shrink_alpha": 0.9748,
+      "sigma": 0.0129
+     }
+    ],
+    "score": 0.135367,
+    "shrink_alpha": 0.8403,
+    "sigma": 0.0349
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.6275,
+    "1x2_draw": 0.2463,
+    "1x2_home": 0.1262,
+    "btts_yes": 0.3331,
+    "over_2.5": 0.3635,
+    "under_2.5": 0.6365
+   },
+   "reasons": [
+    "Gol attesi: US Lecce 0.55, AS Roma 1.60 (totale 2.15).",
+    "Casa Under 1.5: 85 su 100, 24 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 82 e 94 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-31T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/103.png",
+    "name": "Bologna FC 1909",
+    "tla": "BOL"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 76,
+     "p_min": 66,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 6,
+    "truncated_mass": 2.248e-08
+   },
+   "expected_goals": {
+    "away": 1.006,
+    "home": 1.643
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6835,
+    "ht_over_1.5": 0.3194,
+    "ht_over_2.5": 0.11,
+    "ht_under_0.5": 0.3165,
+    "ht_under_1.5": 0.6806,
+    "ht_under_2.5": 0.89,
+    "htft_11": 0.3156,
+    "htft_12": 0.0145,
+    "htft_1X": 0.0471,
+    "htft_21": 0.027,
+    "htft_22": 0.1256,
+    "htft_2X": 0.0471,
+    "htft_X1": 0.1802,
+    "htft_X2": 0.0913,
+    "htft_XX": 0.1515
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/102.png",
+    "name": "Atalanta BC",
+    "tla": "ATA"
+   },
+   "match_id": 558628,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6782,
+    "band_p95": 0.8469,
+    "cluster_members": [
+     "eh_1_home",
+     "ah_home_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_1x",
+    "label": "1X (casa o pareggio)",
+    "p": 0.737,
+    "p_raw": 0.7668,
+    "reference": 0.6658,
+    "runners_up": [
+     {
+      "band_p5": 0.7279,
+      "band_p95": 0.8729,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.7772,
+      "p_raw": 0.801,
+      "reference": 0.7105,
+      "score": 0.011385,
+      "shrink_alpha": 0.7372,
+      "sigma": 0.0478
+     },
+     {
+      "band_p5": 0.9553,
+      "band_p95": 0.9892,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9751,
+      "p_raw": 0.9756,
+      "reference": 0.9447,
+      "score": 0.010966,
+      "shrink_alpha": 0.9814,
+      "sigma": 0.011
+     },
+     {
+      "band_p5": 0.8649,
+      "band_p95": 0.9527,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.909,
+      "p_raw": 0.9148,
+      "reference": 0.8605,
+      "score": 0.010942,
+      "shrink_alpha": 0.8929,
+      "sigma": 0.0277
+     },
+     {
+      "band_p5": 0.8649,
+      "band_p95": 0.9527,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.909,
+      "p_raw": 0.9148,
+      "reference": 0.8605,
+      "score": 0.010942,
+      "shrink_alpha": 0.8929,
+      "sigma": 0.0277
+     },
+     {
+      "band_p5": 0.4701,
+      "band_p95": 0.6856,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5372,
+      "p_raw": 0.5762,
+      "reference": 0.4776,
+      "score": 0.007094,
+      "shrink_alpha": 0.604,
+      "sigma": 0.0648
+     }
+    ],
+    "score": 0.011855,
+    "shrink_alpha": 0.7044,
+    "sigma": 0.0518
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2332,
+    "1x2_draw": 0.2465,
+    "1x2_home": 0.5203,
+    "btts_yes": 0.5053,
+    "over_2.5": 0.4913,
+    "under_2.5": 0.5087
+   },
+   "reasons": [
+    "Gol attesi: Atalanta BC 1.64, Bologna FC 1909 1.01 (totale 2.65).",
+    "1X (casa o pareggio): 74 su 100, 7 punti sopra la media di riferimento (67 su 100).",
+    "Banda di incertezza: fra 68 e 85 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-31T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 2
+}

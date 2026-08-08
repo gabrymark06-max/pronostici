@@ -1,0 +1,367 @@
+{
+ "date": "2026-08-30",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/7397.png",
+    "name": "Como 1907",
+    "tla": "COM"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 98,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 0,
+    "truncated_mass": 9.402e-10
+   },
+   "expected_goals": {
+    "away": 1.063,
+    "home": 1.237
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6316,
+    "ht_over_1.5": 0.2637,
+    "ht_over_2.5": 0.0801,
+    "ht_under_0.5": 0.3684,
+    "ht_under_1.5": 0.7363,
+    "ht_under_2.5": 0.9199,
+    "htft_11": 0.2282,
+    "htft_12": 0.0162,
+    "htft_1X": 0.0482,
+    "htft_21": 0.0196,
+    "htft_22": 0.1741,
+    "htft_2X": 0.0482,
+    "htft_X1": 0.1539,
+    "htft_X2": 0.1257,
+    "htft_XX": 0.186
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/113.png",
+    "name": "SSC Napoli",
+    "tla": "NAP"
+   },
+   "match_id": 558626,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3165,
+    "1x2_draw": 0.2826,
+    "1x2_home": 0.401,
+    "btts_yes": 0.4576,
+    "over_2.5": 0.4026,
+    "under_2.5": 0.5974
+   },
+   "reasons": [
+    "Gol attesi: SSC Napoli 1.24, Como 1907 1.06 (totale 2.30)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-08-30T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/107.png",
+    "name": "Genoa CFC",
+    "tla": "GEN"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 86,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 5,
+    "truncated_mass": 2.959e-09
+   },
+   "expected_goals": {
+    "away": 0.946,
+    "home": 1.379
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6357,
+    "ht_over_1.5": 0.2678,
+    "ht_over_2.5": 0.0821,
+    "ht_under_0.5": 0.3643,
+    "ht_under_1.5": 0.7322,
+    "ht_under_2.5": 0.9179,
+    "htft_11": 0.2731,
+    "htft_12": 0.0136,
+    "htft_1X": 0.0465,
+    "htft_21": 0.0217,
+    "htft_22": 0.139,
+    "htft_2X": 0.0465,
+    "htft_X1": 0.1741,
+    "htft_X2": 0.105,
+    "htft_XX": 0.1805
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/110.png",
+    "name": "SS Lazio",
+    "tla": "LAZ"
+   },
+   "match_id": 558622,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6585,
+    "band_p95": 0.8439,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.7245,
+    "p_raw": 0.7555,
+    "reference": 0.6579,
+    "runners_up": [
+     {
+      "band_p5": 0.9522,
+      "band_p95": 0.989,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.974,
+      "p_raw": 0.9746,
+      "reference": 0.9447,
+      "score": 0.010073,
+      "shrink_alpha": 0.98,
+      "sigma": 0.0114
+     },
+     {
+      "band_p5": 0.8481,
+      "band_p95": 0.9501,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9022,
+      "p_raw": 0.9077,
+      "reference": 0.8605,
+      "score": 0.007954,
+      "shrink_alpha": 0.8828,
+      "sigma": 0.0292
+     },
+     {
+      "band_p5": 0.8481,
+      "band_p95": 0.9501,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9022,
+      "p_raw": 0.9077,
+      "reference": 0.8605,
+      "score": 0.007954,
+      "shrink_alpha": 0.8828,
+      "sigma": 0.0292
+     },
+     {
+      "band_p5": 0.877,
+      "band_p95": 0.9657,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9231,
+      "p_raw": 0.9273,
+      "reference": 0.8855,
+      "score": 0.007782,
+      "shrink_alpha": 0.9012,
+      "sigma": 0.0265
+     },
+     {
+      "band_p5": 0.6456,
+      "band_p95": 0.8274,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7181,
+      "p_raw": 0.7414,
+      "reference": 0.6658,
+      "score": 0.00633,
+      "shrink_alpha": 0.6915,
+      "sigma": 0.0534
+     }
+    ],
+    "score": 0.010221,
+    "shrink_alpha": 0.6828,
+    "sigma": 0.0545
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2586,
+    "1x2_draw": 0.2744,
+    "1x2_home": 0.467,
+    "btts_yes": 0.4519,
+    "over_2.5": 0.4093,
+    "under_2.5": 0.5907
+   },
+   "reasons": [
+    "Gol attesi: SS Lazio 1.38, Genoa CFC 0.95 (totale 2.32).",
+    "Ospite Under 1.5: 72 su 100, 7 punti sopra la media di riferimento (66 su 100).",
+    "Stima prudente: l'incertezza e' alta, il valore mostrato e' gia' riportato verso la media (peso della stima 68%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-30T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/108.png",
+    "name": "FC Internazionale Milano",
+    "tla": "INT"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 64,
+     "p_min": 67,
+     "sigma_max": 0
+    },
+    "n_candidates": 98,
+    "n_clusters": 14,
+    "truncated_mass": 1.628e-06
+   },
+   "expected_goals": {
+    "away": 2.413,
+    "home": 0.879
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7606,
+    "ht_over_1.5": 0.4184,
+    "ht_over_2.5": 0.1737,
+    "ht_under_0.5": 0.2394,
+    "ht_under_1.5": 0.5816,
+    "ht_under_2.5": 0.8263,
+    "htft_11": 0.0625,
+    "htft_12": 0.0348,
+    "htft_1X": 0.0362,
+    "htft_21": 0.0093,
+    "htft_22": 0.4758,
+    "htft_2X": 0.0362,
+    "htft_X1": 0.0465,
+    "htft_X2": 0.202,
+    "htft_XX": 0.0967
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/104.png",
+    "name": "Cagliari Calcio",
+    "tla": "CAG"
+   },
+   "match_id": 558623,
+   "matchday": 2,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8078,
+    "band_p95": 0.9388,
+    "cluster_members": [
+     "eh_-1_away",
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.8211,
+    "p_raw": 0.8781,
+    "reference": 0.6066,
+    "runners_up": [
+     {
+      "band_p5": 0.5881,
+      "band_p95": 0.8175,
+      "family": "1x2",
+      "key": "1x2_away",
+      "label": "Vittoria ospite",
+      "p": 0.5501,
+      "p_raw": 0.7072,
+      "reference": 0.3342,
+      "score": 0.097792,
+      "shrink_alpha": 0.5789,
+      "sigma": 0.0682
+     },
+     {
+      "band_p5": 0.5881,
+      "band_p95": 0.8175,
+      "family": "handicap_asian",
+      "key": "ah_away_-0.5",
+      "label": "Asiatico ospite -0.5",
+      "p": 0.5501,
+      "p_raw": 0.7072,
+      "reference": 0.3342,
+      "score": 0.097792,
+      "shrink_alpha": 0.5789,
+      "sigma": 0.0682
+     },
+     {
+      "band_p5": 0.8498,
+      "band_p95": 0.9525,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.8776,
+      "p_raw": 0.9052,
+      "reference": 0.6895,
+      "score": 0.097791,
+      "shrink_alpha": 0.8719,
+      "sigma": 0.0307
+     },
+     {
+      "band_p5": 0.6445,
+      "band_p95": 0.847,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.6343,
+      "p_raw": 0.7467,
+      "reference": 0.4303,
+      "score": 0.084033,
+      "shrink_alpha": 0.6448,
+      "sigma": 0.0594
+     },
+     {
+      "band_p5": 0.5651,
+      "band_p95": 0.8079,
+      "family": "team_goals",
+      "key": "ag_over_1.5",
+      "label": "Ospite Over 1.5",
+      "p": 0.532,
+      "p_raw": 0.687,
+      "reference": 0.3421,
+      "score": 0.075477,
+      "shrink_alpha": 0.5506,
+      "sigma": 0.0723
+     }
+    ],
+    "score": 0.107699,
+    "shrink_alpha": 0.7903,
+    "sigma": 0.0412
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.7072,
+    "1x2_draw": 0.1709,
+    "1x2_home": 0.1219,
+    "btts_yes": 0.5251,
+    "over_2.5": 0.6335,
+    "under_2.5": 0.3665
+   },
+   "reasons": [
+    "Gol attesi: Cagliari Calcio 0.88, FC Internazionale Milano 2.41 (totale 3.29).",
+    "X2 (pareggio o ospite): 82 su 100, 21 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 81 e 94 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-08-30T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-08T09:38:50Z",
+ "schema_version": 1,
+ "silence_count": 1,
+ "total": 3
+}
