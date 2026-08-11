@@ -23,8 +23,30 @@ const VIETATE = [
   /\bstake\b/i,
   /\bprofitt\w*/i,
   /\bscommetti su\b/i,
+  // Identificatori delle grandezze diagnostiche.
   /\bp_raw\b/i,
   /\bshrink_alpha\b/i,
+  /\bsigma\b/i,
+  /\bscore\b/i,
+];
+
+/**
+ * Il guardiano cercava solo i NOMI, e questo lasciava passare la cosa che
+ * doveva fermare. `shrink_alpha` non compariva da nessuna parte, ma il suo
+ * valore si': «peso della stima 69%» su 21 schede, che e' esattamente la
+ * glossa che docs/schema.md da' a quel campo. Un identificatore non e' il
+ * problema — nessuno scriverebbe mai `shrink_alpha` in una frase italiana.
+ * Il problema e' la GRANDEZZA, comunque la si dica.
+ *
+ * Di qui la seconda lista: forme, non parole.
+ */
+const FORME_VIETATE = [
+  // La glossa di `shrink_alpha`, in tutte le sue declinazioni.
+  /peso della stima/i,
+  // Le probabilita' si dicono «N su 100», mai in percentuale: una percentuale
+  // in pagina e' quasi sempre una grandezza interna che e' sfuggita.
+  // Eccezione legittima: nessuna, oggi.
+  /\d+\s*%/,
 ];
 
 /** Il testo visibile: via script, style, e i tag. */
@@ -51,7 +73,7 @@ let pagine = 0;
 for (const file of htmlDentro(OUT)) {
   pagine += 1;
   const testo = testoVisibile(readFileSync(file, 'utf8'));
-  for (const regola of VIETATE) {
+  for (const regola of [...VIETATE, ...FORME_VIETATE]) {
     const trovato = regola.exec(testo);
     if (trovato) {
       const i = Math.max(0, trovato.index - 60);

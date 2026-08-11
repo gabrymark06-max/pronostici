@@ -1,0 +1,13 @@
+# Fine riga normalizzati a LF nel repository.
+#
+# Senza questa riga, con `core.autocrlf = true` (il default di Git su Windows)
+# la copia di lavoro riceve CRLF mentre gli script confrontano contro LF. Il
+# controllo dei token falliva su due byte, con i due file di contenuto
+# identico, e faceva uscire `npm run build` con 1 su ogni clone Windows.
+* text=auto eol=lf
+
+# Binari: mai toccati.
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.ico binary

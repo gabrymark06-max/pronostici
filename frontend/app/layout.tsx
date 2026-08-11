@@ -19,16 +19,34 @@ import '@/styles/componenti.css';
 
    Instrument Sans e' variabile sull'asse `wdth` (75-100): la condensazione
    dei nomi di squadra a 375px e' una decisione continua, non un secondo font. */
+/* IL COSTO DEI FONT, misurato e non stimato.
+   La configurazione precedente spediva 620 kB di woff2 in 14 file, con NOVE
+   preload nell'head a priorita' massima, prima del primo paint. Effetto: LCP
+   mobile 5.488ms contro un budget di 2.500, con 5.033ms (il 92%) di solo
+   Render Delay — la rete finiva a 300ms e il TBT era 16ms, quindi non era ne'
+   il server ne' la CPU. Bloccando i woff2 la stessa pagina faceva 3.026ms.
+   I font costavano 2.462ms.
+
+   Tre tagli, in ordine di resa:
+
+   1. Via il CORSIVO di Newsreader. Era il file piu' pesante della pagina —
+      143,6 kB, il 23% del totale — preloadato per due usi minuti (il silenzio
+      in lista e le rettifiche). Il corsivo sintetico del browser copre quei
+      due casi senza che nessuno se ne accorga.
+   2. Via `latin-ext` da Newsreader e Instrument Sans. I dieci campionati
+      coperti sono in italiano, inglese, spagnolo, tedesco, francese,
+      olandese, portoghese: tutti dentro `latin`. `latin-ext` serve al polacco
+      e al ceco, che non abbiamo.
+   3. DM Mono da tre pesi a due. Il 300 non era usato da nessuna regola. */
 const newsreader = Newsreader({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   display: 'swap',
   axes: ['opsz'],
-  style: ['normal', 'italic'],
   variable: '--font-newsreader',
 });
 
 const instrument = Instrument_Sans({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   display: 'swap',
   axes: ['wdth'],
   variable: '--font-instrument',
@@ -37,7 +55,7 @@ const instrument = Instrument_Sans({
 const dmMono = DM_Mono({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['300', '400', '500'],
+  weight: ['400', '500'],
   variable: '--font-dm-mono',
 });
 

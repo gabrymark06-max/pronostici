@@ -1402,6 +1402,17 @@
 
 /* Il chip di provenienza. Due stati distinguibili SENZA COLORE: pieno contro
    tratteggiato. La differenza sopravvive a monocromia e alla stampa. */
+/* IL TRABOCCO ORIZZONTALE, terza comparsa e ultima.
+   «Confronto con le quote» in `nowrap` usciva fino a 109px dal viewport a
+   320-414px con il testo ingrandito al 150-200%, e si leggeva troncato a meta'
+   parola. Non si vedeva perche' `html { overflow-x: clip }` NASCONDE il
+   trabocco: a zoom 100 non c'e' un solo elemento fuori posto, ed e' li' che
+   guardano tutti i controlli.
+   Il correttivo generale in base.css elenca `p, li, dd, dt, td, th, …`: uno
+   `span` non e' in quell'elenco e non veniva raggiunto. Qui la regola sta
+   sull'elemento che ne ha bisogno.
+   Il chip resta l'unico elemento arrotondato del prodotto: `align-items:
+   center` e il padding simmetrico reggono anche su due righe. */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -1413,7 +1424,10 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  text-align: center;
 }
 
 .chip--pieno {

@@ -22,9 +22,24 @@ if (!existsSync(sorgente)) {
 const atteso = intestazione + readFileSync(sorgente, 'utf8');
 const controlla = process.argv.includes('--check');
 
+/**
+ * Il confronto ignora la forma dei fine riga.
+ *
+ * Con `core.autocrlf = true` — il default di Git su Windows — la copia di
+ * lavoro ha CRLF mentre questo script costruisce l'intestazione con `\n`.
+ * I due file avevano contenuto IDENTICO e differivano di due byte: bastava a
+ * far uscire `npm run build` con 1 su qualunque clone Windows, cioe' sulla
+ * piattaforma primaria del progetto. Su Linux il checkout e' LF e passava,
+ * quindi nessuna macchina di integrazione lo avrebbe mai visto.
+ *
+ * Quello che il controllo deve garantire e' che i token spediti al bundler
+ * siano gli stessi del design system: un a-capo non e' un token.
+ */
+const normalizza = (testo) => testo.replace(/\r\n/g, '\n');
+
 if (controlla) {
   const attuale = existsSync(destinazione) ? readFileSync(destinazione, 'utf8') : '';
-  if (attuale !== atteso) {
+  if (normalizza(attuale) !== normalizza(atteso)) {
     console.error(
       '[token] styles/tokens.css non corrisponde al design system.\n' +
         '        Esegui: npm run sync:tokens',

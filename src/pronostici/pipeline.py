@@ -171,9 +171,14 @@ def _reasons(
         f"({reference * 100:.0f} su 100)."
     )
     if pick.alpha < 0.7:
+        # La parentetica stampava `alpha` in percentuale: `shrink_alpha` e' fra
+        # i campi che non devono MAI raggiungere una pagina, e la chiave non
+        # c'era, ma il valore si'. Un guardiano che cerca i nomi non lo vede.
+        # L'informazione utile all'utente e' che la stima e' stata resa
+        # prudente; di quanto e' una diagnostica nostra.
         out.append(
-            f"Stima prudente: l'incertezza è alta, il valore mostrato è già "
-            f"riportato verso la media (peso della stima {pick.alpha:.0%})."
+            "Stima prudente: l'incertezza è alta, e il valore mostrato è già "
+            "riportato verso la media."
         )
     else:
         out.append(
