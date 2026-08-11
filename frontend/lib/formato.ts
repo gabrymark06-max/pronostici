@@ -33,10 +33,14 @@ export function dataLungaMaiuscola(data: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-/** "SAB 22" — per le frecce ieri/domani. */
-export function dataBreve(data: string): string {
+/**
+ * `{ sigla: 'SAB', numero: '22' }` — le due righe di una voce della striscia
+ * dei giorni. Mono maiuscolo su due livelli: la sigla si legge di sfuggita,
+ * il numero è l'ancora.
+ */
+export function pezziGiorno(data: string): { sigla: string; numero: string } {
   const d = daIso(data);
-  return `${GIORNI_BREVI[d.getUTCDay()]} ${d.getUTCDate()}`;
+  return { sigla: GIORNI_BREVI[d.getUTCDay()] ?? '', numero: String(d.getUTCDate()) };
 }
 
 /** "22 agosto 2026" — per le ricevute e i timestamp. */
@@ -58,11 +62,6 @@ export function conArticolo(iso: string): string {
   const giorno = Number(iso.slice(8, 10));
   const testo = istanteInData(iso);
   return giorno === 8 || giorno === 11 ? `l'${testo}` : `il ${testo}`;
-}
-
-/** La parte data `YYYY-MM-DD` di un istante UTC, letta nel fuso italiano. */
-export function giornoLocale(iso: string): string {
-  return new Intl.DateTimeFormat('sv-SE', { timeZone: FUSO }).format(new Date(iso));
 }
 
 /** "20:45" nel fuso italiano. */
@@ -87,14 +86,6 @@ export function suCento(p: number): number {
 /** 0.079 → "0,079". Virgola decimale, cifre fisse. */
 export function decimale(n: number, cifre = 2): string {
   return n.toLocaleString('it-IT', { minimumFractionDigits: cifre, maximumFractionDigits: cifre });
-}
-
-/** 0.26 → "26%". Solo per i tassi di silenzio, che sono tassi e non probabilità di esito. */
-export function percentuale(n: number, cifre = 0): string {
-  return `${(n * 100).toLocaleString('it-IT', {
-    minimumFractionDigits: cifre,
-    maximumFractionDigits: cifre,
-  })}%`;
 }
 
 /** 1234 → "1.234" */

@@ -1,8 +1,8 @@
 /**
- * La scelta della fonte per il record di fascia (MASTER 7.3).
+ * La scelta della fonte per il record di fascia.
  *
- * NOTA sulla regola architetturale di come-stiamo-andando.md: `accuracy.json`
- * e `backtest.json` non si incontrano mai in un componente. Qui non si
+ * REGOLA ARCHITETTURALE: `accuracy.json` (il vivo) e `backtest.json` (lo
+ * storico) non si incontrano mai in un componente. Qui non si
  * incontrano nemmeno: questa funzione SCEGLIE una delle due fonti e restituisce
  * un solo record, già etichettato con la propria provenienza. Non somma, non
  * media, non mette due numeri nella stessa frase. Il componente che la consuma
@@ -25,6 +25,12 @@ export interface RecordFascia {
   fonte: FonteFascia;
   n: number;
   suCento: number;
+  /**
+   * SOLO la finestra temporale — «dal 17 agosto 2024 al 7 agosto 2026», «da
+   * ieri». La FONTE non sta qui: la nomina il componente, insieme al numero,
+   * dentro la frase. Quando `periodo` conteneva anche «test storico» la
+   * scheda stampava «nel nostro test storico: 3182 casi, test storico dal…».
+   */
   periodo: string;
 }
 
@@ -56,11 +62,23 @@ export function recordDiFascia(
       fonte: 'storico',
       n: daStorico.n,
       suCento: Math.round(daStorico.hit_rate * 100),
-      periodo: `test storico dal ${dataConAnno(backtest.window.from)} al ${dataConAnno(
-        backtest.window.to,
-      )}`,
+      periodo: `dal ${dataConAnno(backtest.window.from)} al ${dataConAnno(backtest.window.to)}`,
     };
   }
 
   return null;
+}
+
+/**
+ * La forma CORTA, per la riga di lista.
+ *
+ * "fascia 80–100 · avverati 92 su 100" — la fascia sta dentro la frase perche'
+ * un tasso senza la sua fascia e' una media che mente: gli 85 su 100 sono
+ * facili, i 55 no. La fonte non entra qui: nella lista non c'e' spazio per
+ * qualificarla, e una fonte non qualificata sarebbe peggio che nessuna. Sulla
+ * scheda, dove la frase e' intera, la fonte c'e' sempre.
+ */
+export function fraseCortaDiFascia(record: RecordFascia | null): string | null {
+  if (!record) return null;
+  return `fascia ${record.etichetta} · avverati ${record.suCento} su 100`;
 }

@@ -38,10 +38,15 @@ export function BloccoRevisione({ fixture }: { fixture: Fixture }) {
 
   return (
     <aside className="rettifica">
-      <p className="label">{etichetta}</p>
-      <p className="rettifica__testo">{testo}</p>
+      {/* La stessa riga di taratura di ogni blocco in cui il prodotto si
+          espone: una rettifica non è un'eccezione da nascondere, è il
+          prodotto che parla. */}
+      <span className="taratura" aria-hidden="true" />
+      <div className="rettifica__corpo">
+        <p className="label">{etichetta}</p>
+        <p className="rettifica__testo">{testo}</p>
 
-      {mostraConfronto && precedente && fixture.prediction ? (
+        {mostraConfronto && precedente && fixture.prediction ? (
         /* Le tabelle larghe scorrono dentro il proprio contenitore:
            la pagina non scorre mai in orizzontale, a nessuna larghezza. */
         <div className="scorrevole">
@@ -78,7 +83,8 @@ export function BloccoRevisione({ fixture }: { fixture: Fixture }) {
           </tbody>
         </table>
         </div>
-      ) : null}
+        ) : null}
+      </div>
     </aside>
   );
 }

@@ -1,15 +1,24 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { RigaPartita } from '@/components/RigaPartita';
-import { giorniDisponibili, giorniVicini, leggiGiorno, manifestoCrest } from '@/lib/dati';
-import { dataBreve, dataLunga, dataLungaMaiuscola } from '@/lib/formato';
+import { BloccoCampionato } from '@/components/BloccoCampionato';
+import { Calendario } from '@/components/Calendario';
+import { ComeSiLegge } from '@/components/ComeSiLegge';
+import { rangoCompetizione } from '@/lib/campionati';
 import {
-  fraseRevisioniDelGiorno,
-  fraseSilenziDelGiorno,
-  nomeCompetizione,
-} from '@/lib/testi';
-import type { Fixture } from '@/lib/tipi';
+  finestraGiorni,
+  giorniDisponibili,
+  giorniVicini,
+  leggiAccuracy,
+  leggiBacktest,
+  leggiGiorno,
+  manifestoCrest,
+  riepilogoGiorni,
+} from '@/lib/dati';
+import { recordDiFascia } from '@/lib/fascia';
+import { dataLunga, dataLungaMaiuscola } from '@/lib/formato';
+import { fraseRevisioniDelGiorno, fraseSilenziDelGiorno, MARCHIO } from '@/lib/testi';
+import { tace, type Fixture } from '@/lib/tipi';
 
 /** Tutte le rotte sono pre-renderizzate: nessun runtime, deep-linking obbligatorio. */
 export function generateStaticParams() {
@@ -26,21 +35,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!giorno) return { title: `Partite del ${data}` };
 
   const titolo = `${dataLungaMaiuscola(data)}: ${giorno.total} partite`;
-  const descrizione =
-    giorno.silence_count > 0
-      ? `${fraseSilenziDelGiorno(giorno.silence_count, giorno.total)} Un pronostico per partita, con la probabilità e la sua definizione.`
-      : `${fraseSilenziDelGiorno(giorno.silence_count, giorno.total)} Ogni pronostico con la probabilità e la sua definizione.`;
+  const descrizione = `${fraseSilenziDelGiorno(
+    giorno.silence_count,
+    giorno.total,
+  )} Un pronostico per partita, con la probabilità e quante volte pronostici così si sono avverati.`;
 
   return {
     title: titolo,
     description: descrizione,
     alternates: { canonical: `/giorno/${data}/` },
-    openGraph: { title: titolo, description: descrizione, type: 'website' },
+    /* `siteName` va ripetuto qui: l'oggetto openGraph della pagina SOSTITUISCE
+       quello della radice, non ci si fonde, e senza questa riga og:site_name
+       non finisce nell'HTML di nessuna pagina reale. */
+    openGraph: { title: titolo, description: descrizione, type: 'website', siteName: MARCHIO },
   };
 }
 
-/** Raggruppa per competizione, in ordine di primo calcio d'inizio. */
-function perCompetizione(fixtures: Fixture[]): { codice: string; partite: Fixture[] }[] {
+/**
+ * Raggruppa per campionato, nell'ORDINE DICHIARATO in lib/campionati.ts.
+ *
+ * Nella v2 l'ordine era quello del primo calcio d'inizio, quindi cambiava
+ * ogni giorno: un lettore non poteva imparare dove sta il suo campionato.
+ * Un ordine stabile e' meta' dell'organizzazione per campionati.
+ */
+function perCampionato(fixtures: Fixture[]): { codice: string; partite: Fixture[] }[] {
   const gruppi = new Map<string, Fixture[]>();
   for (const f of fixtures) {
     const esistente = gruppi.get(f.competition);
@@ -52,7 +70,17 @@ function perCompetizione(fixtures: Fixture[]): { codice: string; partite: Fixtur
       codice,
       partite: [...partite].sort((a, b) => a.utc_date.localeCompare(b.utc_date)),
     }))
-    .sort((a, b) => (a.partite[0]?.utc_date ?? '').localeCompare(b.partite[0]?.utc_date ?? ''));
+    .sort(
+      (a, b) =>
+        rangoCompetizione(a.codice) - rangoCompetizione(b.codice) ||
+        a.codice.localeCompare(b.codice),
+    );
+}
+
+/** "14 partite" / "1 partita" / "nessuna partita" — per il titolo non visibile. */
+function etichettaPartite(totale: number): string {
+  if (totale === 0) return 'nessuna partita';
+  return totale === 1 ? '1 partita' : `${totale} partite`;
 }
 
 export default async function PaginaGiorno({ params }: Props) {
@@ -64,111 +92,83 @@ export default async function PaginaGiorno({ params }: Props) {
   const manifesto = manifestoCrest();
   const crest = (url: string | null) => (url ? (manifesto[url] ?? url) : null);
 
-  const gruppi = perCompetizione(giorno.fixtures);
+  /* Il record di fascia si calcola una volta per riga, qui: i due file
+     (accuracy e backtest) si leggono una sola volta per pagina, e nella riga
+     arriva gia' un solo record etichettato con la propria provenienza. */
+  const accuracy = leggiAccuracy();
+  const backtest = leggiBacktest();
+  const record = (fixture: Fixture) =>
+    tace(fixture) ? null : recordDiFascia(fixture.prediction.p, accuracy, backtest);
+
+  const gruppi = perCampionato(giorno.fixtures);
   const revisioni = fraseRevisioniDelGiorno(giorno.fixtures);
-  const quotaSilenzi = giorno.total > 0 ? giorno.silence_count / giorno.total : 0;
+  const silenzi = giorno.silence_count;
 
   return (
-    <div className="colonna colonna--lista">
-      <nav className="giorno__navigazione" aria-label="Cambia giorno">
-        {precedente ? (
-          <a
-            className="freccia-giorno"
-            href={`/giorno/${precedente}/`}
-            aria-label={`Giorno precedente, ${dataLunga(precedente)}`}
-          >
-            <span aria-hidden="true">‹</span> {dataBreve(precedente)}
-          </a>
-        ) : (
-          <span className="freccia-giorno freccia-giorno--spenta" aria-disabled="true">
-            <span aria-hidden="true">‹</span> —
-          </span>
-        )}
+    <>
+      <Calendario
+        giorni={riepilogoGiorni(finestraGiorni(data))}
+        corrente={data}
+        precedente={precedente}
+        successivo={successivo}
+      />
 
-        <h1 className="titolo-pagina giorno__titolo">{dataLungaMaiuscola(data)}</h1>
-
-        {successivo ? (
-          <a
-            className="freccia-giorno"
-            href={`/giorno/${successivo}/`}
-            aria-label={`Giorno successivo, ${dataLunga(successivo)}`}
-          >
-            {dataBreve(successivo)} <span aria-hidden="true">›</span>
-          </a>
-        ) : (
-          <span className="freccia-giorno freccia-giorno--spenta" aria-disabled="true">
-            — <span aria-hidden="true">›</span>
-          </span>
-        )}
-      </nav>
+      {/* IL TITOLO NON SI VEDE, ma esiste.
+          La data e il conteggio erano stampati subito sotto il calendario, che
+          li dice gia' entrambi: la striscia porta la sigla, il numero del
+          giorno, il totale delle partite, e segna il giorno corrente. Ripeterli
+          in prosa era un titolo che spiegava il controllo che gli stava sopra.
+          Resta l'<h1> per i motori e per chi ascolta — nascosto alla vista, MAI
+          `display:none`, che lo toglierebbe anche a loro. */}
+      <h1 className="solo-lettori">
+        {dataLungaMaiuscola(data)} — {etichettaPartite(giorno.total)}
+        {silenzi > 0 ? `, ${silenzi} in silenzio` : ''}
+      </h1>
 
       {giorno.total === 0 ? (
-        /* Un giorno senza partite non è un silenzio e non deve somigliargli:
-           niente cornice, niente filetto carminio. */
-        <div className="giorno-vuoto">
-          <p>Il {dataLunga(data)} non si gioca in nessuno dei campionati che seguiamo.</p>
-          <p>Le frecce qui sopra portano al primo giorno con partite.</p>
+        /* Un giorno senza partite NON e' un silenzio e non deve somigliargli:
+           niente tacche, niente lastra. */
+        <div className="colonna colonna--lista">
+          <div className="giorno-vuoto">
+            <p>Il {dataLunga(data)} non si gioca in nessuno dei campionati che seguiamo.</p>
+            <p>Il calendario qui sopra porta ai giorni in cui si gioca.</p>
+          </div>
         </div>
       ) : (
         <>
-          {/* Il conteggio c'è SEMPRE, anche a zero: è il rituale del prodotto.
-              Un sito che conta i propri silenzi in prima pagina sembra severo. */}
-          <p className="giorno__conteggio">
-            {ripartisciConCifre(fraseSilenziDelGiorno(giorno.silence_count, giorno.total))}
-          </p>
+          {/* LA FASCIA DELLA LEGENDA. Attaccata alla striscia dei giorni —
+              stesso fondo, nessuno stacco: fra il calendario e cio' che segue
+              non deve restare una banda di fondo pagina. Il respiro sta DENTRO
+              la fascia, sopra e sotto i riquadri, e la fascia e' larga quanto
+              la lista perche' e' la stessa superficie. */}
+          <div className="fascia">
+            <div className="colonna colonna--lista fascia__interno">
+              <ComeSiLegge />
+            </div>
+          </div>
 
-          {/* Senza cifre in carminio: l'accento tocca solo il conteggio dei
-              silenzi, che non è una stima ma una rivendicazione. */}
-          {revisioni ? <p className="giorno__revisioni">{revisioni}</p> : null}
+          {/* LA LASTRA. Sotto i 1024px esce dalla colonna e tocca i bordi dello
+              schermo: un documento ha i margini, uno schermo no. */}
+          <div className="lastra">
+            <div className="colonna colonna--lista lista-lastra">
+              {/* La riga delle revisioni descrive la LISTA, non la giornata:
+                  sta qui, in testa a cio' che descrive, e compare solo nei
+                  giorni in cui qualcosa e' davvero cambiato. */}
+              {revisioni ? <p className="lista__revisioni">{revisioni}</p> : null}
 
-          <p className="definizione">
-            Tacere è una risposta: la diamo quando nessun mercato supera il nostro criterio.{' '}
-            <a href="/come-funziona/#silenzio">Perché →</a>
-          </p>
-
-          {/* Valvola del 40%: una nota, non un banner d'allarme.
-              Non è un role="alert": non è un errore. */}
-          {quotaSilenzi > 0.4 ? (
-            <p className="valvola">
-              Oggi è una giornata insolita: taciamo su più di quattro partite su dieci. Non
-              abbassiamo la soglia per riempire la pagina —{' '}
-              <a href="/come-funziona/#silenzio">spieghiamo perché</a>.
-            </p>
-          ) : null}
-
-          {gruppi.map((gruppo) => (
-            <section className="gruppo-competizione" key={gruppo.codice}>
-              <h2 className="label gruppo-competizione__titolo">
-                {nomeCompetizione(gruppo.codice)}
-              </h2>
-              <ul className="lista-partite">
-                {gruppo.partite.map((fixture) => (
-                  <li key={fixture.match_id}>
-                    <RigaPartita fixture={fixture} crest={crest} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+              {gruppi.map((gruppo) => (
+                <BloccoCampionato
+                  key={gruppo.codice}
+                  codice={gruppo.codice}
+                  partite={gruppo.partite}
+                  crest={crest}
+                  record={record}
+                />
+              ))}
+            </div>
+          </div>
         </>
       )}
-    </div>
-  );
-}
-
-/**
- * Le cifre del conteggio vanno in Newsreader 600 --accent: è l'unica cifra che
- * il carminio ha il permesso di toccare, perché non è una stima — è una
- * rivendicazione.
- */
-function ripartisciConCifre(frase: string) {
-  return frase.split(/(\d+)/).map((pezzo, i) =>
-    /^\d+$/.test(pezzo) ? (
-      <span className="cifra" key={`${i}-${pezzo}`}>
-        {pezzo}
-      </span>
-    ) : (
-      pezzo
-    ),
+    </>
   );
 }

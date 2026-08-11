@@ -1,9 +1,15 @@
 # Pagina: Come funziona — `/come-funziona`
 
-> **Deroga tipografica dichiarata:** qui il corpo è **Newsreader 19/1.7**, non Public Sans.
+> **Deroga tipografica dichiarata:** qui il corpo è **IBM Plex Sans 20/1.7** (`--fs-lead`), non 17.
 > Questa pagina è un articolo; le altre sono un bollettino. È densità deliberata, non incoerenza —
 > ed è l'unica pagina del prodotto che si legge invece di consultarsi.
-> Larghezza `--w-prose` (68ch). Densità: **bassa**.
+> Larghezza `--w-prose` (66ch). Densità: **bassa** — 64px fra le sezioni.
+>
+> **v2:** la deroga è di *dimensione e respiro*, non di famiglia. Il serif non esiste più nel
+> prodotto (`MASTER.md` §0): un corpo serif su una pagina lunga era il singolo elemento che faceva
+> leggere l'intero sito come un documento stampato. Il testo lungo sta su una lastra `--surface`
+> larga quanto la prosa, così anche l'articolo ha un piano sotto invece di galleggiare sul fondo.
+> Ogni sezione si apre con la **fascia da 6px** e la sua etichetta mono, come ovunque nel prodotto.
 
 ## Struttura
 

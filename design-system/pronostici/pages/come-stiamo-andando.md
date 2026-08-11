@@ -53,10 +53,12 @@ vede il giorno del lancio, ed è quello da disegnare per primo su questa pagina.
 Compare da `n ≥ 1`. `<table>` con `<caption>` *"Ogni pronostico che abbiamo pubblicato prima della
 partita."* Colonne: data · partita · fase · mercato · probabilità · esito.
 
-- Cifre in Red Hat Mono tabellare. Righe alte 44px, divisori 1px `--rule-hair`.
+- Cifre in **IBM Plex Mono** tabellare — cifra da referto, mai da tabellone. Righe alte 44px,
+  divisori 1px `--edge`, tabella su `--surface`, `<thead>` su `--surface-2` e **appiccicato** dentro
+  il contenitore scorrevole.
 - Esito: `uscito ▪` / `non uscito ▫` / `in attesa —`, parola + glifo + colore.
 - Fase: chip di provenienza pieno/tratteggiato, lo stesso componente della scheda.
-- I silenzi **sono nel registro**, con `nessun pronostico` in Newsreader corsivo e il glifo del
+- I silenzi **sono nel registro**, con `nessun pronostico` in **Plex Sans corsivo** e il glifo del
   motivo. Un registro che elenca solo i pronostici nasconderebbe metà della propria disciplina.
 - Filtri: `<button aria-pressed>` per fase, esito, competizione. Filtrano righe **già presenti nel
   DOM**; senza JavaScript la tabella resta completa e leggibile. Nessun filtro è preselezionato.
@@ -74,8 +76,8 @@ Compare da `n ≥ 150`. Tre righe, non un grafico:
 
 - Ogni riga porta una **mini-barra doppia** (dichiarato / osservato) sullo stesso asse: lo scarto si
   legge come disallineamento, senza dover leggere due numeri.
-- **`enough: false` → riga in `--ink-muted`, tag mono `TROPPO POCHI`, e la barra sostituita da un
-  filetto vuoto.** Non nascosta (brief §9.4, `schema.md`). Rifiutarsi di disegnare è a sua volta un
+- **`enough: false` → riga in `--ink-3`, tag mono `TROPPO POCHI` su fondo `--surface-3`, e la barra
+  sostituita da un filetto vuoto 1px `--edge-strong`.** Non nascosta (brief §9.4, `schema.md`). Rifiutarsi di disegnare è a sua volta un
   dato, e va disegnato come tale.
 - La curva di calibrazione a 5 punti compare solo da `n ≥ 500` con `n ≥ 50` per fascia. Prima non
   esiste — e la pagina lo dice: *"La curva di calibrazione compare da 500 pronostici. Ne mancano
@@ -86,7 +88,7 @@ Compare da `n ≥ 150`. Tre righe, non un grafico:
 SVG inline, nessuna libreria. Barre settimanali (`silence.rate`), asse y 0–50%.
 
 **Elemento che nessun concorrente ha: la banda obiettivo dichiarata.** Una fascia orizzontale
-`--paper-alt` con filetti 1px fra 15% e 30% (`backtest.json.silence.band`), etichettata
+`--surface-2` con filetti 1px `--edge-strong` fra 15% e 30% (`backtest.json.silence.band`), etichettata
 *"banda che ci siamo dati"*, più una linea 1px al 40% etichettata *"limite duro"*. Promessa e
 realtà sullo stesso asse.
 Sotto: la ripartizione per motivo (`by_reason`) come tre cifre mono con i loro glifi `≈ ± <`.
@@ -111,12 +113,14 @@ Riempimento `--ink-2` (non `--prob-fill`), altezza 8px, tacche mono ogni 100. `r
 ### 6. La separazione — deve essere impossibile da confondere
 
 ```
-════════════════════════════════════════════════════  4px --rule-heavy, piena larghezza
-PROVA STORICA (BACKTEST)                              ← Newsreader 600 --fs-display-l
-                                                      ← da qui in giù: fondo --paper-alt
+████████████████████████████████████████████████████  12px --segnale (.fascia--lg), piena larghezza
+PROVA STORICA (BACKTEST)                              ← .titolo-pagina, Archivo wdth 70 / 700
+                                                      ← da qui in giù: fondo --surface-2
 ```
 
-Da questo punto la sezione ha **un fondo diverso** (`--paper-alt`), un titolo proprio e una
+La fascia da **12px** è il doppio di quella di ogni altra sezione: è l'unico punto del prodotto in
+cui compare, e significa "da qui è un altro documento". Da questo punto la sezione ha **un fondo
+diverso** (`--surface-2`), un titolo proprio e una
 larghezza propria. Visivamente è un altro documento dentro la stessa pagina. Nessun elemento
 grafico è condiviso con le sezioni 1–5.
 

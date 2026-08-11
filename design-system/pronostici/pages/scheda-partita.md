@@ -1,51 +1,63 @@
 # Pagina: Scheda partita — `/partita/[match_id]`
 
-> La schermata principale. Larghezza `--w-card` (720px). Densità: **bassa sopra la piega**
+> La schermata principale. Larghezza `--w-card` (760px). Densità: **bassa sopra la piega**
 > (`--s-7`/`--s-8` fra i blocchi), **alta sotto** (tabelle a `--s-3`). È il contrasto di densità
 > che dice all'occhio dove finisce il giudizio e dove comincia il materiale.
+>
+> **v2:** il pronostico non è un blocco su carta, è **una lastra** (`--surface`) che sta sul fondo
+> pagina, con la fascia da 6px in cima. Sotto i 1024px la lastra tocca i bordi dello schermo.
+> La cifra è il protagonista assoluto: 132px, condensata, e **una sola per schermata**.
 
 ## Gerarchia sopra la piega — l'ordine è vincolante (brief §14.3)
 
 ```
-‹ Torna a sabato 22 agosto                                      ← link --accent
+‹ Torna a sabato 22 agosto                                      ← link: ink + sottolineatura segnale
 
-[crest]  UDINESE CALCIO  —  COMO 1907  [crest]                  ← Newsreader 600 --fs-display-l
-Serie A · giornata 1 · sabato 22 agosto, 20:45                  ← .label
+UDINESE CALCIO — COMO 1907                                      ← .titolo-pagina, 40→56 condensata
+[crest][crest]  Serie A · giornata 1 · sabato 22 agosto, 20:45  ← .label
 
-══════════════════════════════════════════════════════ 2px --rule-accent
-IL NOSTRO PRONOSTICO                                            ← .label
-
-X2 (pareggio o ospite)                                          ← Newsreader 600 --fs-display-l
-                                                                   ① IL PRONOSTICO
-
- 72  su 100                                                     ← ② LA PROBABILITÀ
-┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐                Newsreader 600 --fs-display-xl
-│█████████████████████████████░░░░░░░░│░░░░│░░░░│░│                riempimento continuo + decili
-└────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
-───────────────────────────────────────────────────  1px --prob-baseline
-                    ├──────────────┤                            ← banda p5–p95, solo tratto
-                          │
-| Su 100 partite come questa, in 72 esce «X2 (pareggio          ← .definizione — ELEMENTO FIRMA
-| o ospite)». Fra 67 e 86 su 100 nelle nostre simulazioni.
-| Stima media.
-
-( solo modello statistico )                                     ← chip tratteggiato
+┌── lastra --surface ───────────────────────────────────────────────────┐
+│████████████████████████████████████████████████████████ 6px --segnale │  ← LA FASCIA
+│ IL NOSTRO PRONOSTICO                                                  │  ← .label
+│                                                                       │
+│ X2 (pareggio o ospite)                                                │  ← ① IL PRONOSTICO
+│                                                       Archivo wdth 70 / 700, --fs-h2
+│                                                                       │
+│ 72  SU 100                                                            │  ← ② LA PROBABILITÀ
+│ ▔▔▔ .cifra: Archivo wdth 62 / 800, 80→132px, ls -.035em, lh .84       │
+│      «SU 100» in Plex Mono 15 --ink-2, sulla linea di base            │
+│ ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐                   │
+│ │█████████████████████████████░░░░░░░░│░░░░│░░░░│░│  barra 16px       │
+│ └────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘                   │
+│ ──────────────────────────────────────────────────  1px --prob-baseline│
+│                     ├──────────────┤                banda, tratto 2px │
+│                           │                                            │
+│ ┃ Su 100 partite come questa, in 72 esce «X2 (pareggio                │ ← .definizione
+│ ┃ o ospite)». Fra 67 e 86 su 100 nelle nostre simulazioni.            │   incassata su --surface-2
+│ ┃ Stima media.                                                        │
+│                                                                       │
+│ ( solo modello statistico )                                           │ ← chip tratteggiato
+└───────────────────────────────────────────────────────────────────────┘
 
 [ blocco di revisione, se transition ∈ {changed, silence_to_prediction} ]
+  fondo --surface-2, fascia 6px --segnale, corsivo Plex Sans 20
 
-────────────────────────────────────────────────────  1px --rule-hair
+████████████████████████████████████████ 6px --segnale
 QUANTO SPESSO SI AVVERANO PRONOSTICI COSÌ                       ← ③ RECORD DI FASCIA
 Su 100 pronostici in questa fascia (65–80), nel nostro
-test storico ne sono usciti 76.
-n=540 · stagioni 2024-25                                        ← mono --fs-micro
+test storico ne sono usciti 76.                                    il «76» è cifra da referto: mono
+n=540 · stagioni 2024-25                                        ← mono --fs-micro, --ink-3
 
-────────────────────────────────────────────────────
+████████████████████████████████████████ 6px --segnale
 PERCHÉ                                                          ← ④ LE RAGIONI
 —  Gol attesi: Udinese 0.95, Como 1.59 (totale 2.54).
 —  X2: 72 su 100, 11 punti sopra la media di riferimento (61 su 100).
 —  [terza ragione, se c'è]
-══════════════════════════════════════════════════════ 2px --rule-heavy
 ```
+
+**Una sola cifra da tabellone per schermata.** Il `76` del record di fascia, i gol attesi delle
+ragioni, le quote e le probabilità grezze sono **cifre da referto** (Plex Mono, dimensione del
+corpo). Se una seconda cifra cresce, il `72` smette di dominare e la schermata torna piatta.
 
 **Nessun altro elemento entra sopra la piega.** Non le altre famiglie di mercato, non la forma
 recente, non le quote, non i runner-up. La misura di successo di questa schermata è che a 375px, con
@@ -55,8 +67,10 @@ il testo di sistema al massimo, i quattro blocchi ①②③④ siano leggibili i
 
 **① Il pronostico.** `prediction.label` così com'è — sono nomi di mercato standard già appresi
 (`competitors.md` §4), non si traducono e non si abbelliscono. Se `prediction` è `null`, questo
-blocco e ② sono sostituiti in blocco dallo **stato di silenzio** di `MASTER.md` §5.2, con lo stesso
-filetto di testata e la stessa posizione. Nessun altro cambiamento di layout.
+blocco e ② sono sostituiti in blocco dallo **stato di silenzio** di `MASTER.md` §5.2, **nella stessa
+lastra, con la stessa fascia da 6px, lo stesso padding e la stessa posizione**. Nessun altro
+cambiamento di layout, nessun cambio di fondo, nessuna opacità ridotta. Il messaggio va nello slot
+della cifra a `--fs-h2` in Archivo condensata 700.
 
 **② La probabilità.** `p` (già shrinkata) × 100 arrotondata all'intero, resa come `72` + `su 100`.
 Mai il simbolo `%`. Mai la parola "confidenza". Mai `p_raw`.
@@ -95,15 +109,17 @@ lo screen reader legge la coppia come una coppia. Il glifo `↓` fra le due righ
    `--dur-3`. **Nessuna barra** dentro: solo cifre mono tabellari. La barra resta il linguaggio del
    solo mercato consigliato.
 2. **Forma recente W-D-L** con legenda esplicita (convenzione portante, `competitors.md` §4).
-   Glifi quadrati con la lettera dentro: `V` `N` `P` in mono su fondo `--prob-track` /
-   `--paper-alt` — la lettera è il portatore di significato, il colore è rinforzo.
+   Glifi quadrati con la lettera dentro: `V` `N` `P` in mono su fondo `--surface-3` (vinta) /
+   `--surface-2` (pari) / contorno 1px `--edge-strong` (persa) — la lettera è il portatore di
+   significato, il fondo è rinforzo. Mai il segnale: non è un dato che si celebra.
    *Nota di scope:* richiede un campo che `schema.md` v1 non ha ancora. Se non arriva, la sezione
    non si finge: non compare.
 3. **Le quote, se `phase === "definitive"`** e `odds` è presente: **in decimale** (convenzione
    portante), in tabella mono, con l'etichetta `quote di mercato, sgonfiate` e la data di rilevazione.
    **Mai un link a un bookmaker. Mai un nome di bookmaker in evidenza. Mai una quota accanto al
    pronostico consigliato**: sopra la piega le quote non entrano.
-4. **Esito, a partita conclusa.** `result` + `outcome`: punteggio in Newsreader 600, poi
+4. **Esito, a partita conclusa.** `result` + `outcome`: punteggio in Archivo condensata 700 a
+   `--fs-h2` (non `--fs-cifra`: la cifra da tabellone resta una sola), poi
    *"Il nostro pronostico X2 è uscito ▪"* / *"non è uscito ▫"*, parola + glifo + colore.
    Questo blocco, quando esiste, sale **sopra** il punto 1 — l'esito è più importante dei mercati
    alternativi.

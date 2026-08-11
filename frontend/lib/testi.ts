@@ -48,6 +48,18 @@ export const TESTO_PROVENIENZA = {
   model_only: 'solo modello statistico',
 } as const;
 
+/**
+ * Nella riga di lista il chip si riduce a una marca (MASTER §7.2): il testo
+ * resta — abbreviato, mai sostituito da un pallino o da un'icona — perché la
+ * colonna del chip è larga quanto la cifra più la banda, e la frase intera
+ * non ci sta a 375px senza rubare spazio al nome del mercato, che è il
+ * contenuto e non si tronca mai.
+ */
+export const TESTO_PROVENIENZA_RIGA = {
+  blended_with_odds: 'quote',
+  model_only: 'modello',
+} as const;
+
 /* ------------------------------------------------------------------ */
 /* La banda p5–p95, qualificata a parole (MASTER 2)                    */
 /* ------------------------------------------------------------------ */
@@ -297,6 +309,19 @@ export function etichettaFascia(chiave: string): string {
 /* ------------------------------------------------------------------ */
 /* Costanti del prodotto                                               */
 /* ------------------------------------------------------------------ */
+
+/**
+ * IL NOME DEL PRODOTTO, in un posto solo.
+ *
+ * «Novanta» viene dalla firma del prodotto — «90 su 100», la sola forma in cui
+ * una probabilita' entra in pagina — e dai novanta minuti. Ogni punto in cui
+ * il sito dice come si chiama legge da qui: la testata, il `<title>`, i
+ * metadati. Non si scrive a mano da nessun'altra parte.
+ */
+export const MARCHIO = 'Novanta';
+
+/** La riga che accompagna il nome nel titolo del sito e nei metadati. */
+export const PAYOFF = 'un pronostico per partita, e il silenzio quando non c’è';
 
 export const REPO = 'https://github.com/GabrieleMarchesini2006/pronostici';
 

@@ -1,4 +1,3 @@
-
 import { suCento, testoPulito } from '@/lib/formato';
 import { grezzeInOrdine } from '@/lib/mercati';
 import { vesteSilenzio } from '@/lib/testi';
@@ -7,23 +6,28 @@ import type { FixtureInSilenzio } from '@/lib/tipi';
 import { ChipProvenienza } from './ChipProvenienza';
 
 /**
- * Lo stato di silenzio. Il 26% delle partite non ha un pronostico, e quel
- * silenzio è la funzionalità: deve leggersi come SEVERITÀ, non come guasto.
+ * LO STATO DI SILENZIO.
  *
- * Le tre regole strutturali che lo tengono in piedi (MASTER 5.1):
- *  1. stesso contenitore del pronostico — stesso filetto di testata 2px
- *     --rule-accent, stessa larghezza, stesso padding, stesso colore di testo;
- *  2. il messaggio occupa lo SLOT DELLA CIFRA (24px al posto di 56px):
- *     la massa visiva è conservata, ed è la regola che da sola impedisce al
+ * Circa tre partite su dieci non hanno un pronostico, e quel silenzio e' la
+ * funzionalita': deve leggersi come SEVERITÀ, non come guasto.
+ *
+ * Le tre regole strutturali che lo tengono in piedi:
+ *  1. STESSA LASTRA del pronostico — stessa riga di taratura, stesso fondo,
+ *     stessa larghezza, stesso padding, stesso colore di testo. E' lo stesso
+ *     contenitore riempito diversamente, e infatti lastra e taratura le mette
+ *     la pagina, non questo componente;
+ *  2. il messaggio occupa lo SLOT DELLA CIFRA, alla stessa dimensione ottica:
+ *     la massa visiva e' conservata, ed e' la regola che da sola impedisce al
  *     silenzio di sembrare un vuoto;
  *  3. si mostra il lavoro fatto, con `diagnostics.n_candidates`: converte
  *     un'assenza in uno sforzo.
  *
  * Vietati qui: icone o triangoli di avviso, bordo tratteggiato del
- * contenitore, testo in --ink-muted, sfondo grigio, skeleton o shimmer, e le
- * parole "errore", "nessun dato", "non disponibile", "N/D".
+ * contenitore, testo in --ink-3, fondo diverso da --surface, opacita'
+ * ridotta, skeleton o shimmer, e le parole "errore", "nessun dato", "non
+ * disponibile".
  *
- * I tre motivi si distinguono per GLIFO + ETICHETTA, mai per colore: un segno
+ * I motivi si distinguono per GLIFO + ETICHETTA, mai per colore: un segno
  * matematico dice "misurato", non "guasto".
  */
 export function BloccoSilenzio({ fixture }: { fixture: FixtureInSilenzio }) {
@@ -54,10 +58,10 @@ export function BloccoSilenzio({ fixture }: { fixture: FixtureInSilenzio }) {
       {grezze.length > 0 ? (
         <div className="silenzio__grezze">
           <h3 className="label">Le probabilità, senza consiglio</h3>
-          {/* Numeri NUDI, senza barra: la barra è il linguaggio del "questo lo
-              consigliamo", e darla a numeri che non consigliamo inviterebbe
-              l'occhio a scegliere la più alta — cioè a ricostruire l'argmax
-              che abbiamo tolto di mezzo apposta. */}
+          {/* Numeri NUDI, senza barra: la barra e' il linguaggio del "questo
+              lo consigliamo", e darla a numeri che non consigliamo
+              inviterebbe l'occhio a scegliere la piu' alta — cioe' a
+              ricostruire l'argmax che abbiamo tolto di mezzo apposta. */}
           <div className="grezze">
             {grezze.map((voce) => (
               <span className="grezze__voce" key={voce.etichetta}>
@@ -68,10 +72,6 @@ export function BloccoSilenzio({ fixture }: { fixture: FixtureInSilenzio }) {
           </div>
         </div>
       ) : null}
-
-      <p className="silenzio__rimando">
-        <a href="/come-funziona/#silenzio">Perché a volte non diciamo niente →</a>
-      </p>
     </section>
   );
 }

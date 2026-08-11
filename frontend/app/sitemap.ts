@@ -7,12 +7,14 @@ export const dynamic = 'force-static';
 
 const BASE = 'https://pronostici.example';
 
-/** Elenca tutti i giorni e tutte le partite generate (scheda-partita.md, SEO). */
+/**
+ * Il sito ha due tipi di pagina e basta: la giornata e la partita.
+ * Le rotte `/come-funziona/` e `/come-stiamo-andando/` non esistono piu' e
+ * non compaiono qui.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const fisse: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: 'daily', priority: 1 },
-    { url: `${BASE}/come-stiamo-andando/`, changeFrequency: 'daily', priority: 0.8 },
-    { url: `${BASE}/come-funziona/`, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
   const giorni: MetadataRoute.Sitemap = giorniDisponibili().map((data) => ({

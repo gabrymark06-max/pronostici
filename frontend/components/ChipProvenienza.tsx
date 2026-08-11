@@ -1,4 +1,4 @@
-import { TESTO_PROVENIENZA } from '@/lib/testi';
+import { TESTO_PROVENIENZA, TESTO_PROVENIENZA_RIGA } from '@/lib/testi';
 import type { Provenienza } from '@/lib/tipi';
 
 /**
@@ -6,8 +6,13 @@ import type { Provenienza } from '@/lib/tipi';
  * COLORE: pieno contro tratteggiato. La differenza sopravvive a monocromia, a
  * daltonismo e alla stampa.
  *
- * Il testo è sempre presente — mai un pallino, mai solo un'icona.
- * Non è interattivo: nessun hover, nessun cursore a mano (MASTER 7.2).
+ * Il testo è sempre presente — mai un pallino, mai solo un'icona. Nella riga
+ * di lista è abbreviato, perché lì la colonna è stretta e il nome del mercato
+ * non si tronca mai.
+ *
+ * Resta l'UNICO elemento arrotondato dell'intero prodotto: essendo l'unica
+ * cosa con un raggio, si stacca da solo. Non è interattivo: nessun hover,
+ * nessun cursore a mano (MASTER §7.2).
  */
 export function ChipProvenienza({
   source,
@@ -27,7 +32,7 @@ export function ChipProvenienza({
         .filter(Boolean)
         .join(' ')}
     >
-      {TESTO_PROVENIENZA[source]}
+      {compatto ? TESTO_PROVENIENZA_RIGA[source] : TESTO_PROVENIENZA[source]}
     </span>
   );
 }

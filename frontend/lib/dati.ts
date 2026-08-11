@@ -18,10 +18,8 @@ import {
   SCHEMA_VERSION_ATTESA,
   type Accuracy,
   type Backtest,
-  type BudgetQuote,
   type Fixture,
   type GiornoFixtures,
-  type RigaRegistro,
 } from './tipi';
 
 /** `data/` sta nella radice del repo, un livello sopra `frontend/`. */
@@ -81,6 +79,48 @@ export function leggiGiorno(data: string): GiornoFixtures | null {
   return giorno;
 }
 
+/**
+ * La finestra della STRISCIA DEI GIORNI: fino a `quanti` giorni che esistono
+ * davvero in `data/fixtures/`, centrati sul giorno corrente per quanto
+ * possibile. I giorni senza partite non compaiono — la striscia porta solo a
+ * pagine che esistono.
+ */
+export function finestraGiorni(data: string, quanti = 7): string[] {
+  const giorni = giorniDisponibili();
+  if (giorni.length <= quanti) return giorni;
+
+  const i = giorni.indexOf(data);
+  if (i === -1) return giorni.slice(0, quanti);
+
+  const meta = Math.floor(quanti / 2);
+  const da = Math.min(Math.max(0, i - meta), giorni.length - quanti);
+  return giorni.slice(da, da + quanti);
+}
+
+export interface RiepilogoGiorno {
+  data: string;
+  total: number;
+  silence_count: number;
+}
+
+/**
+ * Il conteggio delle partite per ogni giorno della finestra.
+ *
+ * Serve al calendario: una casella che dice anche QUANTE partite ci sono
+ * smette di essere una destinazione e diventa un'informazione. Si legge a
+ * build time come tutto il resto — nessuna chiamata a runtime.
+ */
+export function riepilogoGiorni(giorni: string[]): RiepilogoGiorno[] {
+  return giorni.map((data) => {
+    const giorno = leggiGiorno(data);
+    return {
+      data,
+      total: giorno?.total ?? 0,
+      silence_count: giorno?.silence_count ?? 0,
+    };
+  });
+}
+
 export interface Vicini {
   precedente: string | null;
   successivo: string | null;
@@ -130,13 +170,13 @@ export function leggiPartita(matchId: number): PartitaConGiorno | null {
 }
 
 /* ------------------------------------------------------------------ */
-/* Registro, accuratezza, prova storica, budget                       */
+/* Accuratezza dal vivo e prova storica                               */
 /* ------------------------------------------------------------------ */
 
 /**
- * `accuracy.json` — SOLO il registro dal vivo.
- * Non passa mai nello stesso componente di `leggiBacktest()`: vedi
- * design-system/pronostici/pages/come-stiamo-andando.md, regola architetturale.
+ * `accuracy.json` — SOLO il registro dal vivo. I due file non si mescolano
+ * mai in un componente: e' `recordDiFascia()` in lib/fascia.ts a SCEGLIERE
+ * una delle due fonti e a restituire un solo record gia' etichettato.
  */
 export function leggiAccuracy(): Accuracy {
   const dati = leggiJson<Accuracy>(join(RADICE_DATI, 'accuracy.json'));
@@ -149,30 +189,6 @@ export function leggiBacktest(): Backtest {
   const dati = leggiJson<Backtest>(join(RADICE_DATI, 'backtest.json'));
   verificaSchema(dati.schema_version, 'data/backtest.json');
   return dati;
-}
-
-/** Tutte le righe del registro append-only, dalla più recente alla più vecchia. */
-export function leggiRegistro(): RigaRegistro[] {
-  const cartella = join(RADICE_DATI, 'ledger');
-  if (!existsSync(cartella)) return [];
-  const righe: RigaRegistro[] = [];
-  for (const nome of readdirSync(cartella).filter((n) => n.endsWith('.jsonl')).sort()) {
-    const testo = readFileSync(join(cartella, nome), 'utf8');
-    for (const linea of testo.split('\n')) {
-      if (!linea.trim()) continue;
-      const riga = JSON.parse(linea) as RigaRegistro;
-      verificaSchema(riga.schema_version, `data/ledger/${nome}`);
-      righe.push(riga);
-    }
-  }
-  return righe.sort((a, b) => b.utc_date.localeCompare(a.utc_date));
-}
-
-/** `odds_budget.json`. Facoltativo: se manca, la riga di trasparenza non compare. */
-export function leggiBudgetQuote(): BudgetQuote | null {
-  const percorso = join(RADICE_DATI, 'odds_budget.json');
-  if (!existsSync(percorso)) return null;
-  return leggiJson<BudgetQuote>(percorso);
 }
 
 /* ------------------------------------------------------------------ */

@@ -5,15 +5,21 @@ import type { Pronostico } from '@/lib/tipi';
 /**
  * LINGUAGGIO A + LINGUAGGIO B sullo stesso asse, con marche incompatibili.
  *
- *  A — probabilità : cifra grande in serif + barra PIENA a spigoli vivi
- *  B — affidabilità: nessuna cifra grande, solo la parentesi ├───┤ in TRATTO
+ *  A — probabilita' : LA CIFRA (Newsreader con asse ottico alto, tabellare)
+ *                     + barra PIENA a spigoli vivi
+ *  B — affidabilita': nessuna cifra grande, solo la parentesi ├───┤ in TRATTO
  *
- * Il riempimento è continuo e le tacche ai decili gli passano sopra: nessun
- * arrotondamento a segmenti, quindi nessuna bugia di quantizzazione. Le tacche
- * fanno da righello, e quella del 50 è più marcata perché è il pavimento p_min.
+ * L'unita' e' «su 100» in mono sulla linea di base, mai `%` e mai grande. E'
+ * l'unica cifra monumentale della schermata: se una seconda cresce, questa
+ * smette di dominare e la pagina torna piatta.
  *
- * La riga di definizione è testo reale nel DOM: l'informazione esiste anche
- * senza il grafico, e non è mai affidata a un tooltip.
+ * Il riempimento e' continuo e le tacche ai decili gli passano sopra: nessun
+ * arrotondamento a segmenti, quindi nessuna bugia di quantizzazione. Le
+ * tacche fanno da righello, e quella del 50 e' piu' marcata perche' e' il
+ * pavimento sotto il quale non consigliamo mai.
+ *
+ * La riga di definizione e' testo reale nel DOM: l'informazione esiste anche
+ * senza il grafico, e non e' mai affidata a un tooltip.
  */
 export function BarraProbabilita({ pronostico }: { pronostico: Pronostico }) {
   const percentuale = pronostico.p * 100;
@@ -26,23 +32,29 @@ export function BarraProbabilita({ pronostico }: { pronostico: Pronostico }) {
   return (
     <div className="prob">
       <p className="prob__cifra">
-        <span className="prob__numero">{suCento(pronostico.p)}</span>
+        <span className="cifra">{suCento(pronostico.p)}</span>
         <span className="prob__su">su 100</span>
       </p>
 
       <div className="prob__grafico" role="img" aria-label={etichettaBarra(pronostico)}>
         <div className="prob__barra">
           <div className="prob__riempimento" style={{ width: `${percentuale}%` }} />
+        </div>
+        <div className="prob__baseline" />
+
+        {/* Il righello sta SOTTO la barra: sopra il riempimento le tacche la
+            spezzavano in dieci segmenti e la facevano leggere come una
+            quantizzazione che non esiste. */}
+        <div className="prob__righello" aria-hidden="true">
           {decili.map((d) => (
             <span
               key={d}
-              aria-hidden="true"
               className={`prob__tacca${d === 50 ? ' prob__tacca--pavimento' : ''}`}
               style={{ left: `${d}%` }}
             />
           ))}
+          <span className="prob__pavimento-etichetta">50</span>
         </div>
-        <div className="prob__baseline" />
 
         {conBanda ? (
           <div className="prob__banda" aria-hidden="true">
@@ -50,7 +62,6 @@ export function BarraProbabilita({ pronostico }: { pronostico: Pronostico }) {
               <span className="prob__banda-serif prob__banda-serif--sx" />
               <span className="prob__banda-serif prob__banda-serif--dx" />
             </div>
-            <span className="prob__banda-centro" style={{ left: `${percentuale}%` }} />
           </div>
         ) : null}
       </div>
@@ -63,22 +74,5 @@ export function BarraProbabilita({ pronostico }: { pronostico: Pronostico }) {
         ))}
       </p>
     </div>
-  );
-}
-
-/**
- * La versione ridotta per la riga di lista: 48px, solo tratto, nessuna cifra.
- * Sotto i 375px sparisce via CSS — restano la cifra e il chip.
- */
-export function MiniBanda({ p5, p95 }: { p5: number; p95: number }) {
-  const da = p5 * 100;
-  const a = p95 * 100;
-  return (
-    <span className="mini-banda" aria-hidden="true">
-      <span className="mini-banda__tratto" style={{ left: `${da}%`, width: `${a - da}%` }}>
-        <span className="mini-banda__serif mini-banda__serif--sx" />
-        <span className="mini-banda__serif mini-banda__serif--dx" />
-      </span>
-    </span>
   );
 }

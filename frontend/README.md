@@ -1,4 +1,4 @@
-# Frontend — Pronostici
+# Frontend — Novanta
 
 Next.js App Router in **export statico** (`output: 'export'`). Legge i JSON di `../data/`
 **in fase di build**. Nessun runtime, nessuna API route, nessun segreto, nessuna variabile
@@ -55,22 +55,36 @@ viene proprio generata. Il contratto è `docs/schema.md`; cambiarlo richiede di 
 
 ```
 app/
-  layout.tsx                  font, tema, masthead, piè di pagina
+  layout.tsx                  font, tema, testata. Nessun piè di pagina
   page.tsx                    / → rimando statico al giorno più recente
-  giorno/[data]/page.tsx      la lista del giorno
+  giorno/[data]/page.tsx      la lista del giorno, organizzata per campionato
   partita/[match_id]/page.tsx la scheda partita
-  come-stiamo-andando/        registro dal vivo + prova storica (separati)
-  come-funziona/              l'articolo: criterio, parametri, protocollo
-components/                   i componenti del design system
+components/
+  Testata.tsx                 la barra: segno «Novanta», tre voci con icona, il tema
+  Marchio.tsx                 il segno: la riga di taratura chiusa in un quadro pieno
+  Calendario.tsx              il binario dei giorni, con il conteggio partite per giorno
+  BloccoCampionato.tsx        il campionato come blocco: bandiera, nome, partite
+  Bandiera.tsx                le bandiere dei campionati, SVG in linea
+  RigaPartita.tsx             la riga: squadre impilate, mercato, cifra, misurino
+  QuadroNumeri.tsx            sotto la piega: gol attesi, record di fascia, lavoro fatto
+  ComeSiLegge.tsx             i tre riquadri in cima alla giornata
+  …                           BarraProbabilita, BloccoSilenzio, BloccoRevisione, Crest, …
 lib/
   tipi.ts                     il contratto di docs/schema.md in TypeScript
   dati.ts                     lettura di data/ a build time, fallimento forte
+  campionati.ts               l'ordine dichiarato dei campionati e il loro paese
   testi.ts                    le frasi del design system, in un posto solo
   formato.ts  mercati.ts  fascia.ts
 styles/
   tokens.css                  GENERATO dal design system — non si modifica a mano
   base.css  componenti.css
 ```
+
+**Il sito ha due pagine e basta.** `/come-funziona/` e `/come-stiamo-andando/` sono state
+rimosse: il dato che stava sulla seconda — quante volte si sono avverati i pronostici di
+una data fascia di probabilità — non è sparito, si è spostato accanto al pronostico che
+descrive (`QuadroNumeri` sulla scheda, una riga in mono nella lista). Il metodo e il
+protocollo restano verificabili dal repository, linkato fra le voci della testata.
 
 ## Deploy
 
@@ -95,7 +109,11 @@ che deve far partire il build.
   non c'è stato condiviso fra le pagine da preservare.
 - **`<details>` nativi** per le altre famiglie di mercato: funzionano senza JavaScript e il
   contenuto è nel DOM per i crawler.
-- **I filtri del registro** filtrano righe già presenti nel DOM: senza JavaScript la
-  tabella resta completa e leggibile.
+- **Il trabocco orizzontale** era una stringa sola: l'indirizzo del repository nel piè di
+  pagina, 43 caratteri senza un punto di a capo. Non si vedeva perché `html { overflow-x:
+  clip }` lo nascondeva invece di risolverlo — `scrollWidth` non supera mai `clientWidth`,
+  quindi il contenuto veniva tagliato in silenzio. Chiuso con `overflow-wrap: anywhere` sui
+  contenitori di testo. Verificato a 320/360/375/414/768/1024/1440 px con font di base
+  16/20/24 px (WCAG 1.4.4 e 1.4.10).
 - **Nessuno skeleton, in nessun punto.** L'HTML arriva già pieno, e uno skeleton grigio a
   forma di card sarebbe indistinguibile da uno stato di silenzio mal fatto.

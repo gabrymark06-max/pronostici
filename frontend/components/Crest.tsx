@@ -3,36 +3,62 @@
 import { useRef, useState } from 'react';
 
 /**
+ * LO STEMMA.
+ *
+ * E' l'unico raster del prodotto e l'unico elemento figurativo: in una lista
+ * di calcio e' cio' che fa fermare l'occhio su una riga invece che su
+ * un'altra, quindi va letto, non intuito.
+ *
+ * Storia delle dimensioni, perche' e' una decisione e non un default: 24px
+ * con una lastra piena dietro (la lastra li trasformava in tasselli mal
+ * ritagliati), poi 30px affiancati a coppie — e affiancati due stemmi da
+ * 30px si toccano e le due squadre diventano una macchia sola. Adesso sono
+ * 28px nella lista e 52px sulla scheda, ma soprattutto sono IMPILATI: uno
+ * per riga, accanto al proprio nome. E' la forma che da' a ognuno il suo
+ * spazio, ed e' anche quella che chi guarda il calcio conosce gia'.
+ *
  * Spazio riservato con width/height espliciti: CLS zero, niente entra o si
  * sposta dopo il primo paint.
  *
- * Se il crest non carica si ripiega sul `tla` in un quadrato 24px mono con
- * filetto: mai un'icona di immagine rotta, mai uno spazio che collassa.
- * Il controllo su `naturalWidth` serve perché un errore avvenuto PRIMA
- * dell'idratazione non farebbe mai scattare `onError`.
+ * Se lo stemma non carica si ripiega sulla sigla della squadra in un
+ * quadrato con filetto: mai un'icona di immagine rotta, mai uno spazio che
+ * collassa. Il controllo su `naturalWidth` serve perche' un errore avvenuto
+ * PRIMA dell'idratazione non farebbe mai scattare `onError`.
  *
- * `alt=""`: il crest è decorativo, il nome della squadra è testo lì accanto.
+ * `alt=""`: lo stemma e' decorativo, il nome della squadra e' testo lì
+ * accanto.
  */
-export function Crest({ src, tla }: { src: string | null; tla: string }) {
+export function Crest({
+  src,
+  tla,
+  grande = false,
+}: {
+  src: string | null;
+  tla: string;
+  grande?: boolean;
+}) {
   const [rotto, setRotto] = useState(src === null);
   const riferimento = useRef<HTMLImageElement>(null);
 
+  const classe = grande ? 'crest crest--scheda' : 'crest';
+  const lato = grande ? 52 : 28;
+
   if (rotto || !src) {
     return (
-      <span className="crest crest--ripiego" aria-hidden="true">
+      <span className={`${classe} crest--ripiego`} aria-hidden="true">
         {tla}
       </span>
     );
   }
 
   return (
-    <span className="crest">
+    <span className={classe}>
       <img
         ref={riferimento}
         src={src}
         alt=""
-        width={24}
-        height={24}
+        width={lato}
+        height={lato}
         loading="lazy"
         decoding="async"
         onError={() => setRotto(true)}

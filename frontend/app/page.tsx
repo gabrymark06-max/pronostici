@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { giornoDiApertura } from '@/lib/dati';
 import { dataLunga } from '@/lib/formato';
+import { MARCHIO } from '@/lib/testi';
 
 /**
  * `/` è un rimando statico al giorno più recente disponibile.
@@ -13,7 +14,7 @@ import { dataLunga } from '@/lib/formato';
  */
 export function generateMetadata(): Metadata {
   const giorno = giornoDiApertura();
-  if (!giorno) return { title: 'Pronostici' };
+  if (!giorno) return { title: MARCHIO };
   return {
     alternates: { canonical: `/giorno/${giorno}/` },
     other: { refresh: `0; url=/giorno/${giorno}/` },
@@ -28,10 +29,7 @@ export default function Home() {
       <div className="colonna colonna--lista">
         <div className="giorno-vuoto">
           <p>Non ci sono ancora giornate pubblicate.</p>
-          <p>
-            I pronostici compaiono qui quando il calcolo della notte ha girato.{' '}
-            <a href="/come-funziona/">Come funziona</a>
-          </p>
+          <p>I pronostici compaiono qui quando il calcolo della notte ha girato.</p>
         </div>
       </div>
     );
