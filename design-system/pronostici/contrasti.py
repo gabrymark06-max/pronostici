@@ -42,6 +42,7 @@ RUOLI = {
     "--warn": "warn",
     "--prob-track": "track",
     "--prob-fill": "fill",
+    "--prob-mercato": "tacca",
 }
 
 PIANI = ("ground", "surface", "surface-2", "surface-3")
@@ -127,6 +128,14 @@ def resoconto(nome: str, p: dict[str, str]) -> list[str]:
     for a, b, etichetta, minimo in (
         ("edge-strong", "surface", "bordo di controllo su surface", MIN_NON_TESTO),
         ("fill", "track", "riempimento barra su traccia", MIN_NON_TESTO),
+        # La tacca del mercato sta SULLA traccia della barra: deve staccarsi da
+        # essa, non dallo sfondo pagina. E' il confronto che porta il
+        # significato (dove sta la quota rispetto alla nostra probabilita'),
+        # quindi e' un elemento non testuale che veicola informazione: 3:1.
+        ("tacca", "track", "tacca del mercato su traccia", MIN_NON_TESTO),
+        # Il bersaglio — l'elemento firma — e' una forma piena in vermiglio
+        # sulla lastra. Stessa regola: informazione, non decorazione.
+        ("segnale", "surface", "bersaglio su surface", MIN_NON_TESTO),
     ):
         if a in p and b in p:
             r = rapporto(p[a], p[b])

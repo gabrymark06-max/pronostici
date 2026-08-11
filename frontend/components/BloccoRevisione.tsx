@@ -38,10 +38,6 @@ export function BloccoRevisione({ fixture }: { fixture: Fixture }) {
 
   return (
     <aside className="rettifica">
-      {/* La stessa riga di taratura di ogni blocco in cui il prodotto si
-          espone: una rettifica non è un'eccezione da nascondere, è il
-          prodotto che parla. */}
-      <span className="taratura" aria-hidden="true" />
       <div className="rettifica__corpo">
         <p className="label">{etichetta}</p>
         <p className="rettifica__testo">{testo}</p>

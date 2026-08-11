@@ -33,6 +33,13 @@ SUPPORTED_LINES = frozenset(OU_LINES)
 # Sotto questa soglia il consenso e' un bookmaker solo travestito da mediana.
 MIN_BOOKMAKERS = 2
 
+# I due operatori con licenza ADM presenti nella fonte gratuita. Sisal non c'e'
+# in nessuna regione di the-odds-api: verificato sulla loro tavola dei
+# bookmaker, e nella cache non e' mai comparsa. Quando si mostra un prezzo a un
+# utente italiano si mostra quello di un libro su cui puo' davvero giocare, non
+# la mediana europea che include libri a lui inaccessibili.
+IT_BOOKS = frozenset({"codere_it", "unibet_it"})
+
 
 @dataclass
 class OddsSnapshot:
@@ -46,6 +53,12 @@ class OddsSnapshot:
     n_bookmakers: int = 0
     devig: dict[str, dict[str, float]] = field(default_factory=dict)
     dropped: list[str] = field(default_factory=list)
+    # Quote decimali DA MOSTRARE, chiave nostra -> prezzo. Sono un'altra cosa
+    # rispetto a `probabilities`: quelle sono sgonfiate e servono al modello,
+    # questi sono i prezzi lordi che l'utente vedrebbe allo sportello.
+    prices: dict[str, float] = field(default_factory=dict)
+    price_scope: str = ""  # "it" | "eu"
+    price_books: int = 0
 
     @property
     def is_usable(self) -> bool:
@@ -65,6 +78,9 @@ class OddsSnapshot:
                 for k, v in self.devig.items()
             },
             "dropped": self.dropped,
+            "prices": {k: round(v, 2) for k, v in self.prices.items()},
+            "price_scope": self.price_scope,
+            "price_books": self.price_books,
         }
 
 
@@ -72,13 +88,25 @@ H2H = dict[str, list[float]]
 TOTALS = dict[tuple[float, str], list[float]]
 
 
-def _median_prices(event: dict[str, Any]) -> tuple[H2H, TOTALS, int]:
-    """Raccoglie le quote di tutti i bookmaker, senza ancora decidere niente."""
+def _median_prices(
+    event: dict[str, Any], *, only: frozenset[str] | None = None
+) -> tuple[H2H, TOTALS, int]:
+    """Raccoglie le quote dei bookmaker, senza ancora decidere niente.
+
+    Con `only` si restringe a un sottoinsieme di libri (le chiavi di
+    the-odds-api). Serve a distinguere il consenso EUROPEO, che identifica bene
+    la probabilita' equa perche' e' fatto di 20+ libri, dal prezzo ITALIANO,
+    che e' l'unico su cui un utente italiano puo' davvero giocare.
+    """
     home = event.get("home_team", "")
     away = event.get("away_team", "")
     h2h: dict[str, list[float]] = {"home": [], "draw": [], "away": []}
     totals: dict[tuple[float, str], list[float]] = {}
-    books = event.get("bookmakers") or []
+    books = [
+        b
+        for b in (event.get("bookmakers") or [])
+        if only is None or b.get("key") in only
+    ]
 
     for book in books:
         for market in book.get("markets") or []:
@@ -160,7 +188,43 @@ def event_probabilities(
             "margin_pct": result.margin_pct,
         }
 
+    _attach_prices(snapshot, event, h2h_prices, totals_prices, n_books)
     return snapshot
+
+
+def _attach_prices(
+    snapshot: OddsSnapshot,
+    event: dict[str, Any],
+    eu_h2h: H2H,
+    eu_totals: TOTALS,
+    eu_books: int,
+) -> None:
+    """I prezzi da mostrare: italiani se ci sono, altrimenti europei.
+
+    Non si sgonfia niente qui. Una quota mostrata deve essere la quota che
+    esiste allo sportello, margine compreso: sgonfiarla darebbe un numero che
+    nessuno puo' giocare, e confrontarlo con la nostra quota equa non
+    significherebbe piu' niente.
+    """
+    it_h2h, it_totals, it_books = _median_prices(event, only=IT_BOOKS)
+    usa_it = bool(it_books)
+
+    h2h = it_h2h if usa_it else eu_h2h
+    totals = it_totals if usa_it else eu_totals
+    snapshot.price_scope = "it" if usa_it else "eu"
+    snapshot.price_books = it_books if usa_it else eu_books
+
+    for nostra, loro in (
+        ("1x2_home", "home"),
+        ("1x2_draw", "draw"),
+        ("1x2_away", "away"),
+    ):
+        if h2h[loro]:
+            snapshot.prices[nostra] = float(median(h2h[loro]))
+
+    for (line, side), quotes in totals.items():
+        if quotes:
+            snapshot.prices[f"{side}_{line}"] = float(median(quotes))
 
 
 def parse_league(

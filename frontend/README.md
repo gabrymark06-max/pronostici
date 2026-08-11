@@ -1,4 +1,4 @@
-# Frontend — Novanta
+# Frontend — CENTRO
 
 Next.js App Router in **export statico** (`output: 'export'`). Legge i JSON di `../data/`
 **in fase di build**. Nessun runtime, nessuna API route, nessun segreto, nessuna variabile
@@ -60,7 +60,7 @@ app/
   giorno/[data]/page.tsx      la lista del giorno, organizzata per campionato
   partita/[match_id]/page.tsx la scheda partita
 components/
-  Testata.tsx                 la barra: segno «Novanta», tre voci con icona, il tema
+  Testata.tsx                 la barra: marchio CENTRO, quattro voci con icona, il tema
   Marchio.tsx                 il segno: la riga di taratura chiusa in un quadro pieno
   Calendario.tsx              il binario dei giorni, con il conteggio partite per giorno
   BloccoCampionato.tsx        il campionato come blocco: bandiera, nome, partite

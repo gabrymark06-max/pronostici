@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { BloccoCampionato } from '@/components/BloccoCampionato';
 import { Calendario } from '@/components/Calendario';
-import { ComeSiLegge } from '@/components/ComeSiLegge';
+import { Fondo } from '@/components/Fondo';
 import { rangoCompetizione } from '@/lib/campionati';
 import {
   finestraGiorni,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const descrizione = `${fraseSilenziDelGiorno(
     giorno.silence_count,
     giorno.total,
-  )} Un pronostico per partita, con la probabilità e quante volte pronostici così si sono avverati.`;
+  )} Un pronostico per partita, con la probabilità, la quota equa e quante volte pronostici così si sono avverati.`;
 
   return {
     title: titolo,
@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * Raggruppa per campionato, nell'ORDINE DICHIARATO in lib/campionati.ts.
  *
- * Nella v2 l'ordine era quello del primo calcio d'inizio, quindi cambiava
- * ogni giorno: un lettore non poteva imparare dove sta il suo campionato.
- * Un ordine stabile e' meta' dell'organizzazione per campionati.
+ * L'ordine per primo calcio d'inizio cambierebbe ogni giorno, e un lettore non
+ * potrebbe imparare dove sta il suo campionato. Un ordine stabile è metà
+ * dell'organizzazione per campionati.
  */
 function perCampionato(fixtures: Fixture[]): { codice: string; partite: Fixture[] }[] {
   const gruppi = new Map<string, Fixture[]>();
@@ -92,9 +92,8 @@ export default async function PaginaGiorno({ params }: Props) {
   const manifesto = manifestoCrest();
   const crest = (url: string | null) => (url ? (manifesto[url] ?? url) : null);
 
-  /* Il record di fascia si calcola una volta per riga, qui: i due file
-     (accuracy e backtest) si leggono una sola volta per pagina, e nella riga
-     arriva gia' un solo record etichettato con la propria provenienza. */
+  /* I due file si leggono una volta sola per pagina, e nella riga arriva già
+     un solo record etichettato con la propria provenienza. */
   const accuracy = leggiAccuracy();
   const backtest = leggiBacktest();
   const record = (fixture: Fixture) =>
@@ -107,27 +106,26 @@ export default async function PaginaGiorno({ params }: Props) {
   return (
     <>
       <Calendario
-        giorni={riepilogoGiorni(finestraGiorni(data))}
+        giorni={riepilogoGiorni(finestraGiorni(data, 9))}
         corrente={data}
         precedente={precedente}
         successivo={successivo}
       />
 
       {/* IL TITOLO NON SI VEDE, ma esiste.
-          La data e il conteggio erano stampati subito sotto il calendario, che
-          li dice gia' entrambi: la striscia porta la sigla, il numero del
-          giorno, il totale delle partite, e segna il giorno corrente. Ripeterli
-          in prosa era un titolo che spiegava il controllo che gli stava sopra.
-          Resta l'<h1> per i motori e per chi ascolta — nascosto alla vista, MAI
-          `display:none`, che lo toglierebbe anche a loro. */}
+          La data e il conteggio sono già nella striscia dei giorni, che porta
+          sigla, numero, totale delle partite e segna il giorno corrente:
+          ripeterli in prosa era un titolo che spiegava il controllo che gli
+          stava sopra. Resta l'<h1> per i motori e per chi ascolta — nascosto
+          alla vista, MAI `display:none`, che lo toglierebbe anche a loro. */}
       <h1 className="solo-lettori">
         {dataLungaMaiuscola(data)} — {etichettaPartite(giorno.total)}
         {silenzi > 0 ? `, ${silenzi} in silenzio` : ''}
       </h1>
 
       {giorno.total === 0 ? (
-        /* Un giorno senza partite NON e' un silenzio e non deve somigliargli:
-           niente tacche, niente lastra. */
+        /* Un giorno senza partite NON è un silenzio e non deve somigliargli:
+           niente lastra, niente glifo. */
         <div className="colonna colonna--lista">
           <div className="giorno-vuoto">
             <p>Il {dataLunga(data)} non si gioca in nessuno dei campionati che seguiamo.</p>
@@ -135,40 +133,27 @@ export default async function PaginaGiorno({ params }: Props) {
           </div>
         </div>
       ) : (
-        <>
-          {/* LA FASCIA DELLA LEGENDA. Attaccata alla striscia dei giorni —
-              stesso fondo, nessuno stacco: fra il calendario e cio' che segue
-              non deve restare una banda di fondo pagina. Il respiro sta DENTRO
-              la fascia, sopra e sotto i riquadri, e la fascia e' larga quanto
-              la lista perche' e' la stessa superficie. */}
-          <div className="fascia">
-            <div className="colonna colonna--lista fascia__interno">
-              <ComeSiLegge />
-            </div>
-          </div>
+        <div className="lastra">
+          <div className="colonna colonna--lista">
+            {/* La riga delle revisioni descrive la LISTA, non la giornata: sta
+                in testa a ciò che descrive, e compare solo nei giorni in cui
+                qualcosa è davvero cambiato. */}
+            {revisioni ? <p className="lista__revisioni">{revisioni}</p> : null}
 
-          {/* LA LASTRA. Sotto i 1024px esce dalla colonna e tocca i bordi dello
-              schermo: un documento ha i margini, uno schermo no. */}
-          <div className="lastra">
-            <div className="colonna colonna--lista lista-lastra">
-              {/* La riga delle revisioni descrive la LISTA, non la giornata:
-                  sta qui, in testa a cio' che descrive, e compare solo nei
-                  giorni in cui qualcosa e' davvero cambiato. */}
-              {revisioni ? <p className="lista__revisioni">{revisioni}</p> : null}
-
-              {gruppi.map((gruppo) => (
-                <BloccoCampionato
-                  key={gruppo.codice}
-                  codice={gruppo.codice}
-                  partite={gruppo.partite}
-                  crest={crest}
-                  record={record}
-                />
-              ))}
-            </div>
+            {gruppi.map((gruppo) => (
+              <BloccoCampionato
+                key={gruppo.codice}
+                codice={gruppo.codice}
+                partite={gruppo.partite}
+                crest={crest}
+                record={record}
+              />
+            ))}
           </div>
-        </>
+        </div>
       )}
+
+      <Fondo accuracy={accuracy} backtest={backtest} />
     </>
   );
 }

@@ -1,206 +1,175 @@
 /* ==========================================================================
-   Novanta — design tokens · v4
-   Direzione: "TABELLONE NOTTURNO".
+   CENTRO — design tokens · v7
+   Direzione: "TABELLONE CON UN SEGNALE".
 
-   Una frase: un tabellone di consultazione su fondo quasi nero, dove
-   l'interfaccia sparisce fino a diventare un reticolo di colonne, e le uniche
-   cose che si vedono davvero sono i dati, gli stemmi e le bandiere.
+   Una frase: la meccanica di consultazione di un tabellone di risultati, su
+   fondo notturno, con UN SOLO colore caldo che compare esclusivamente dove il
+   prodotto decide qualcosa.
 
-   COSA CAMBIA DALLA v3 ("bollettino notturno") E PERCHE'.
-   La v3 era la direzione giusta letta a voce troppo alta: righe da 80-104px,
-   corpo da 15-17px, un'intestazione editoriale da 330px prima della prima
-   partita. A 1440x1080 entravano CINQUE partite. Il proprietario l'ha detto
-   in una riga — «sembra un documento, voglio uno strumento» — e aveva
-   ragione: un bollettino si legge, un tabellone si consulta, e la differenza
-   fra i due si misura in righe per schermata, non in intenzioni.
+   COSA CAMBIA DALLA v6 E PERCHE'.
+   La v6 aveva una regola dichiarata: «l'interfaccia non ha un colore
+   d'accento, il segnale e' un VALORE». Era una posizione difendibile e ha
+   prodotto una schermata che il proprietario ha giudicato piatta tre volte di
+   fila. Una tavolozza interamente acromatica funziona su un documento, dove
+   l'occhio ha tempo; su un tabellone da quaranta righe non da' all'occhio
+   nessun punto dove atterrare, e la gerarchia deve essere ricostruita
+   leggendo. La v7 introduce UN colore, uno solo, e lo spende dove serve.
 
    Le cinque regole che spiegano tutto il file:
 
-   1. LA DENSITA' E' LA FUNZIONE, non una preferenza estetica. La riga di
-      partita e' alta 44px, il corpo della lista e' 13-14px, l'interlinea e'
-      1.25, il padding interno e' 4px. Il respiro sta FRA I GRUPPI (8px di
-      stacco, testate di campionato da 44px), mai dentro la lista.
-   2. L'INTERFACCIA NON HA UN COLORE D'ACCENTO. Il segnale e' un VALORE, non
-      una tinta: dove un'altra interfaccia metterebbe l'ocra o il viola, qui
-      c'e' l'osso su nero (o l'inchiostro su carta fredda). E' la decisione
-      che fa risaltare stemmi e bandiere, che sono l'unico elemento figurativo
-      del prodotto e la ragione per cui una lista di calcio si guarda.
-   3. Restano TRE tinte, tutte semantiche e mai decorative: l'acciaio
-      dell'affidabilita', il verde e il rosso dell'esito. Ognuna arriva sempre
-      accompagnata da una parola e da un glifo: il colore non porta mai da
-      solo un significato.
-   4. FONDO QUASI NERO, SUPERFICI APPENA STACCATE, DIVISORI SOTTILISSIMI. I
-      quattro piani stanno entro 1.25:1 l'uno dall'altro: a questa densita' un
-      gradino forte fra le superfici trasforma la lista in una scala. Nessuna
-      ombra, nessun blur, nessun gradiente di colore.
-   5. ELEMENTO FIRMA: LA RIGA DI TARATURA. Una scala a tacche, come quella di
-      uno strumento di misura, che ricorre a QUATTRO scale — sotto il marchio,
-      nella riga di stato del giorno (dove le tacche vuote sono i silenzi),
-      sotto ogni cifra di probabilita', e — nuova in v4 — nella colonna
-      dell'affidabilita', dove il tratto lungo quanto la banda p5-p95 e' la
-      quarta e piu' piccola manifestazione della stessa idea.
+   1. IL VERMIGLIO E' IL CENTRO DEL BERSAGLIO, e compare solo li'. Marchio,
+      giorno attivo del calendario, contorno di fuoco, la marca del pronostico
+      del giorno. Non tinge testi di servizio, non fa da fondo a una sezione,
+      non decora un bordo. Se comparisse ovunque non significherebbe piu'
+      niente: e' un accento perche' e' raro.
+   2. UNA SCONFITTA NON E' ROSSA. Nella v6 l'esito negativo era un rosa acceso
+      che si contendeva l'attenzione con tutto il resto. Qui e' NEUTRO —
+      inchiostro freddo, glifo, e la parola «non uscito». Solo il pronostico
+      centrato prende un colore (il verde). Un prodotto che si fa misurare in
+      pubblico non ha bisogno di gridare quando sbaglia: ha bisogno di dirlo, e
+      lo dice con una parola. In piu' questo libera il rosso, che diventa
+      inequivocabilmente il colore del marchio.
+   3. LA DENSITA' E' LA FUNZIONE. La riga di partita e' alta 64px e porta
+      cinque colonne incolonnate lungo tutta la pagina. Il respiro sta FRA i
+      blocchi, mai dentro la lista.
+   4. FONDO NOTTURNO, QUATTRO PIANI VICINISSIMI (entro 1.3:1). Nessuna ombra,
+      nessun blur, nessun gradiente di colore in nessun punto.
+   5. ELEMENTO FIRMA: IL BERSAGLIO. Due quadrati concentrici con il centro
+      pieno. Ricorre a tre scale — il marchio, il punto elenco di ogni titolo
+      di sezione, e (la piu' utile) la TACCA SUL MISURINO: sulla barra della
+      probabilita' un piccolo quadro segna dove sta la probabilita' implicita
+      nella quota. La distanza fra il riempimento e quella tacca E' il
+      vantaggio, e si vede senza leggere un numero.
 
-   IL VINCOLO DIFFICILE, RISOLTO E NON AGGIRATO. A questa densita' il bersaglio
-   44x44 e' il problema vero. La soluzione NON e' un ::after che sborda dalla
-   riga: due righe adiacenti che sbordano di 2px ciascuna si contendono 4px di
-   banda, e il clic in quella banda finisce sulla riga sbagliata — un bersaglio
-   ambiguo e' peggio di uno piccolo. La soluzione e' che LA RIGA E' ALTA 44px
-   ESATTI e il bersaglio COINCIDE con la riga: nessuna sovrapposizione, nessuna
-   ambiguita', 44px pieni per >500px di larghezza, su ogni puntatore. 44 e' il
-   massimo dell'intervallo 36-44 richiesto, ed e' l'unico valore dell'intervallo
-   che non chiede compromessi sull'accessibilita'.
+   TIPOGRAFIA — la v6 usava un serif da notiziario come voce, ed e' la ragione
+   principale per cui la pagina «sembrava un documento». Qui la voce e' Archivo
+   sull'asse di larghezza: a wdth 125 e peso 700 il logotipo e le cifre grosse
+   hanno il taglio dei tabelloni sportivi, che e' esattamente il registro del
+   prodotto. Il contrasto con Instrument Sans non e' serif-contro-grottesco ma
+   LARGHEZZA-contro-larghezza: 125 contro 84 e' un salto piu' grande di quello
+   fra due famiglie diverse, e non porta in pagina una terza personalita'.
 
-   Contrasti calcolati (WCAG 2.1, non stimati) — ogni valore in commento.
-   In v4 NON esistono coppie vietate: --ink-3 su --surface-3 fa 5.19:1 in
-   scuro e 5.23:1 in chiaro (in v3 faceva 4.34 in chiaro ed era proibita).
+   Contrasti: NON stimati. `design-system/pronostici/contrasti.py` legge questo
+   file e fallisce se una coppia scende sotto 4.5:1 (testo) o 3:1 (non testo).
    ========================================================================== */
 
 /* ==========================================================================
    TEMA SCURO — il default del prodotto, non una preferenza di sistema.
-   Il chiaro esiste completo e si ottiene solo con l'interruttore in testata.
    ========================================================================== */
 :root {
   color-scheme: dark;
 
-  /* --- 1. Rampa neutra: ardesia quasi nera, quattro piani vicinissimi.
-         Il blu nella neutra non e' decorativo — su un grigio caldo gli stemmi
-         rossi e gialli (Brasile, Spagna) si spengono; su un'ardesia fredda
-         squillano. I piani stanno entro 1.25:1 l'uno dall'altro: a 44px per
-         riga un gradino forte fra le superfici trasforma la lista in una
-         scala di grigi che l'occhio legge prima dei dati. ----------------- */
-  --ground:      #080B0E;  /* fondo pagina — quasi nero                       */
-  --surface:     #0E1216;  /* lastra: lista, scheda, testata   1.05:1 su ground */
-  --surface-2:   #151A20;  /* testata di campionato, hover     1.07:1 su surface */
-  --surface-3:   #1F262E;  /* pressione, tag                   1.23:1 su surface */
+  /* --- 1. Rampa neutra: ardesia fredda, quattro piani vicinissimi.
+         Il blu nella neutra non e' decorativo: su un grigio caldo gli stemmi
+         rossi e gialli si spengono, su un'ardesia fredda squillano. --------- */
+  --ground:      #0A0D12;  /* fondo pagina                                    */
+  --surface:     #12161C;  /* lastra: lista, scheda, testata                  */
+  --surface-2:   #191F26;  /* testata di campionato, hover                    */
+  --surface-3:   #232B34;  /* pressione, tag, celle di dato                   */
 
-  /* --- 2. Spigoli. Il divisore di riga e' SOTTILISSIMO (1.14:1): a questa
-         densita' un filetto visibile ripetuto quaranta volte diventa una
-         gabbia. La struttura la fa l'allineamento delle colonne, non il
-         filetto. --------------------------------------------------------- */
-  --edge:        #1A2026;  /* 1px, divisori di riga (decorativo)  1.14:1      */
-  --edge-strong: #6C7884;  /* 4.17:1 su surface · 3.88 su surface-2           */
+  /* --- 2. Spigoli. Il divisore di riga e' sottilissimo: a questa densita' un
+         filetto visibile ripetuto quaranta volte diventa una gabbia. -------- */
+  --edge:        #242C35;
+  --edge-strong: #707C8A;
 
   /* --- 3. Inchiostri ------------------------------------------------------ */
-  --ink:         #E9EDF1;  /* 16.77:1 su ground · 15.98 su surface · 12.98 su surface-3 */
-  --ink-2:       #A9B3BD;  /*  9.27:1 su ground ·  8.84 su surface ·  7.18 su surface-3 */
-  --ink-3:       #8C98A4;  /*  6.71:1 su ground ·  6.40 su surface ·  5.19 su surface-3 */
+  --ink:         #EEF2F6;
+  --ink-2:       #A9B4C0;
+  --ink-3:       #8D99A6;
 
-  /* --- 4. SEGNALE = OSSO. Non e' una tinta: e' il valore piu' alto della
-         rampa. Marca il giorno attivo, il contorno di fuoco, le tacche di
-         taratura. -------------------------------------------------------- */
-  --segnale:     #F0F3F6;  /* 16.88:1 su surface                              */
-  --segnale-ink: #080B0E;  /* il testo che sta SOPRA il segnale     17.71:1   */
+  /* --- 4. IL SEGNALE = VERMIGLIO. Il centro del bersaglio.
+         Compare SOLO su: marchio, giorno attivo, contorno di fuoco, marca del
+         pronostico piu' forte del giorno. Mai su testo di servizio, mai come
+         fondo di sezione, mai su un bordo decorativo. ---------------------- */
+  --segnale:     #FF5C36;
+  --segnale-ink: #0A0D12;  /* il testo che sta SOPRA il segnale               */
 
-  /* --- 5. LINGUAGGIO A — PROBABILITA (pieno, numerico, orizzontale) ------- */
-  --prob-fill:     #E9EDF1;  /* riempimento barra         10.73:1 su track    */
-  --prob-track:    #2C343C;
-  --prob-baseline: #6C7884;
+  /* --- 5. PROBABILITA — barra piena orizzontale + tacca del mercato -------- */
+  --prob-fill:     #EEF2F6;
+  --prob-track:    #2B333C;
+  --prob-mercato:  #FF5C36;  /* la tacca: dove sta la quota del mercato       */
 
-  /* --- 6. LINGUAGGIO B — AFFIDABILITA (solo tratto, mai un pieno) --------- */
-  --rel-stroke:    #8FBBDC;  /* acciaio  9.23:1 su surface                    */
+  /* --- 6. AFFIDABILITA — solo tratto, mai un pieno ------------------------ */
+  --rel-stroke:    #8FBBDC;
   --rel-stroke-w:  1.5px;
   --rel-stroke-w-lg: 2px;
 
-  /* --- 7. Esito a partita conclusa (sempre parola + glifo + colore) ------- */
-  --outcome-yes: #79C08F;  /*  8.73:1 su surface                              */
-  --outcome-no:  #E88C8C;  /*  7.67:1 su surface                              */
-  --warn:        #E0BE72;  /*  solo "dati non leggibili"                      */
+  /* --- 7. Esito a partita conclusa.
+         Solo il centrato prende un colore. Il mancato e' NEUTRO: parola +
+         glifo, nessuna tinta d'allarme. Vedi regola 2. --------------------- */
+  --outcome-yes: #4FC98A;
+  --outcome-no:  #9AA6B3;
+  --warn:        #E8C170;
 
-  /* --- 8. Link: inchiostro pieno + sottolineatura. Senza un accento di
-         colore, l'affordance del link e' interamente nel tratto: per questo
-         la sottolineatura e' spessa e non sparisce mai. DENTRO LA LISTA la
-         riga NON e' sottolineata: quaranta righe sottolineate sono un muro,
-         e li' l'affordance e' la riga stessa. ---------------------------- */
+  /* --- 8. Link e fuoco ---------------------------------------------------- */
   --link-ink:  var(--ink);
   --link-edge: var(--edge-strong);
   --focus:     var(--segnale);
 
   /* ========================================================================
-     9. TIPOGRAFIA — tre famiglie, ruoli disgiunti, nessuna delle tre
-     scontata.
+     9. TIPOGRAFIA — tre famiglie, ruoli disgiunti.
 
-     La v4 non cambia le famiglie: cambia QUANTO SPAZIO OCCUPANO. In v3 il
-     serif stava sui titoli da 48px, sul sommario, sui nomi dei campionati e
-     sulle cifre; era ovunque, ed e' la ragione principale per cui la pagina
-     si leggeva come un documento. Qui il serif e' RARO — il marchio, il nome
-     del campionato a 15px, la cifra di probabilita' — e proprio perche' e'
-     raro si vede.
-
-     Newsreader (variabile, asse opsz 6-72) e' la VOCE. Un carattere da
-     notiziario disegnato per lo schermo, che porta il prodotto dove nessun
-     sito di risultati va — quelli sono tutti grotteschi. In una riga di 14px
-     in Instrument Sans, una cifra in Newsreader a 19px e' l'unico glifo con
-     grazie della schermata: si trova senza cercarla.
+     Archivo (variabile, assi wght 100-900 e wdth 62-125) e' la VOCE: logotipo
+     a wdth 125 / wght 700, cifre di probabilita' e quote a wdth 100 / wght
+     600. E' il carattere dei tabelloni.
 
      Instrument Sans (variabile, asse wdth 75-100) e' il LAVORO: regge la
-     densita' della lista a 13-14px, e l'asse di larghezza permette di
-     stringere i nomi delle squadre a 375px senza troncarli mai.
+     densita' della lista a 13-15px, e l'asse di larghezza stringe i nomi di
+     squadra a 360px senza troncarli.
 
-     DM Mono e' lo STRUMENTO, e sta al suo posto: orari, conteggi, la riga di
-     prova della fascia. Sono tutte cifre che devono incolonnarsi.
+     DM Mono e' lo STRUMENTO: orari, conteggi, la riga di prova della fascia.
+     Cifre che devono incolonnarsi.
      ======================================================================== */
-  --font-display: var(--font-newsreader), 'Iowan Old Style', Georgia, serif;
+  --font-display: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif;
   --font-text:    var(--font-instrument), system-ui, -apple-system, sans-serif;
   --font-mono:    var(--font-dm-mono), ui-monospace, 'SF Mono', monospace;
 
-  /* Asse di larghezza di Instrument Sans: la condensazione e' continua. */
-  --wdth-stretta: 84;   /* nomi di squadra nella lista fitta                  */
-  --wdth-media:   92;   /* etichette di mercato                               */
+  /* Assi di larghezza. La condensazione e' continua, non un secondo font. */
+  --wdth-espansa: 125;  /* logotipo, occhielli di sezione                     */
+  --wdth-piena:   100;  /* cifre                                              */
+  --wdth-media:    92;  /* etichette di mercato                               */
+  --wdth-stretta:  84;  /* nomi di squadra nella lista fitta                  */
 
-  /* Asse ottico di Newsreader: un serif ha bisogno di grazie diverse a 14px
-     e a 88px. --opsz-riga e' nuovo in v4: a 19px servono grazie piu' grasse
-     di quelle che servono a 22px, o la cifra si smaterializza sul nero. */
-  --opsz-cifra:  60;
-  --opsz-titolo: 32;
-  --opsz-lega:   20;
-  --opsz-riga:   14;
-
-  /* Scala. In v4 il rapporto cifra-di-riga / corpo-di-riga e' 1.36x: la cifra
-     domina la colonna perche' e' l'unico serif della riga, non perche' e'
-     grande. In v3 era 2.3x e costava 30px di altezza a ogni riga. */
-  --fs-cifra:      clamp(3.25rem, 10vw, 5rem);   /*  52 → 80  la scheda       */
-  --fs-cifra-riga: 1.0625rem;                    /*  17  la riga, < 768       */
-  --fs-cifra-riga-lg: 1.1875rem;                 /*  19  la riga, ≥ 768       */
-  --fs-h1:         clamp(1.375rem, 3.6vw, 1.75rem); /* 22 → 28  la scheda     */
-  --fs-h2:         clamp(1.125rem, 2.8vw, 1.375rem);/* 18 → 22               */
-  --fs-lega:       0.9375rem;  /* 15 — nome del campionato nella testata      */
+  /* Scala tipografica */
+  --fs-cifra:      clamp(3.5rem, 11vw, 5.5rem);  /*  56 → 88  la scheda       */
+  --fs-cifra-riga: 1.25rem;                      /*  20  la riga, < 768       */
+  --fs-cifra-riga-lg: 1.4375rem;                 /*  23  la riga, ≥ 768       */
+  --fs-quota:      1.0625rem;                    /*  17  la quota in lista    */
+  --fs-h1:         clamp(1.5rem, 4vw, 2rem);     /*  24 → 32                  */
+  --fs-h2:         clamp(1.1875rem, 3vw, 1.5rem);/*  19 → 24                  */
+  --fs-lega:       0.9375rem;  /* 15 — nome del campionato                    */
   --fs-lead:       1.0625rem;  /* 17 — sommari della scheda                   */
-  --fs-body:       1rem;       /* 16 — prosa della scheda                     */
+  --fs-body:       1rem;       /* 16 — prosa                                  */
   --fs-body-s:     0.9375rem;  /* 15 — righe di lista da 768px                */
-  --fs-lista:      0.8125rem;  /* 13 — righe di lista sotto 768px             */
+  --fs-lista:      0.875rem;   /* 14 — righe di lista sotto 768px             */
   --fs-label:      0.75rem;    /* 12 — occhielli                              */
   --fs-micro:      0.75rem;    /* 12 — PAVIMENTO ASSOLUTO, mai sotto          */
 
-  --lh-cifra: 0.86;
-  --lh-riga:  1.25;  /* l'interlinea della lista: stretta, non schiacciata    */
-  --lh-tight: 1.05;
+  --lh-cifra: 0.85;
+  --lh-riga:  1.25;
+  --lh-tight: 1.08;
   --lh-title: 1.15;
   --lh-body:  1.55;
   --lh-prose: 1.65;
 
-  --ls-cifra:   -0.02em;
-  --ls-display: -0.012em;
-  --ls-label:    0.08em;
-  --ls-marchio:  0.02em;
+  --ls-cifra:   -0.03em;
+  --ls-display: -0.015em;
+  --ls-label:    0.09em;
+  --ls-logo:     0.01em;
 
-  /* --- 10. Spazio (base 4). La densita' e' deliberata, mai uniforme.
-         --s-1 e --s-2 sono lo spazio DENTRO la lista; da --s-4 in su e' lo
-         spazio FRA i blocchi e dentro la scheda. --------------------------- */
+  /* --- 10. Spazio (base 4). Densita' deliberata, mai uniforme. ------------ */
   --s-1:  4px;  --s-2:  8px;  --s-3: 12px;  --s-4: 16px;  --s-5: 24px;
   --s-6: 32px;  --s-7: 48px;  --s-8: 64px;  --s-9: 96px;  --s-10: 128px;
 
-  /* --- 11. LA RIGA DI TARATURA — elemento firma. Tacche dure, nessuna
-         interpolazione di colore: e' una scala di strumento, non un
-         gradiente. ------------------------------------------------------- */
-  --tacca-passo:   6px;   /* distanza fra due tacche                          */
-  --tacca-spess:   1px;   /* spessore della tacca                             */
-  --taratura-h:    6px;   /* altezza della riga in testa a un blocco          */
-  --taratura-h-lg: 10px;  /* confine fra due parti del documento              */
+  /* --- 11. IL BERSAGLIO — elemento firma. Due quadri concentrici, centro
+         pieno. Nessuna interpolazione: sono forme, non sfumature. --------- */
+  --bersaglio-sm:  8px;   /* punto elenco dei titoli di sezione               */
+  --bersaglio-md: 14px;   /* marca del pronostico del giorno                  */
 
-  /* --- 12. Raggi. La struttura e' stampata (0); i controlli sono oggetti
-         (2px). Nessun raggio uniforme su tutto. -------------------------- */
+  /* --- 12. Raggi. La struttura e' stampata (0); i controlli sono oggetti. -- */
   --radius:     0;
   --radius-tag: 2px;
+  --radius-controllo: 3px;
 
   /* --- 13. Ombre: nessuna, in nessun punto, in nessuno stato. ------------- */
   --shadow: none;
@@ -209,122 +178,98 @@
   --dur-1: 140ms;  --dur-2: 200ms;  --dur-3: 280ms;
   --ease:  cubic-bezier(0.2, 0, 0, 1);
 
-  /* --- 15. Misure di pagina.
-         --w-page cresce da 1120 a 1264 perche' da 1024px in su la pagina ha
-         DUE colonne: la barra dei campionati e la lista. --------------------*/
-  /* v5: LA PAGINA USA LO SCHERMO. In v4 la lista si fermava a 1000px dentro
-     una pagina da 1264: su un monitor da 1920 restavano 650px di vuoto ai
-     lati mentre le colonne dentro si accalcavano. La densita' non si ottiene
-     stringendo la pagina, si ottiene mettendo piu' righe nella stessa altezza:
-     comprimere anche la LARGHEZZA e' il modo di ottenere una lista illeggibile
-     e un video mezzo vuoto insieme. */
+  /* --- 15. Misure di pagina ---------------------------------------------- */
   --w-prose: 68ch;
-  --w-card:  860px;
-  --w-list:  1500px;
-  --w-page:  1800px;
-  --barra-w: 15rem;    /* 240px — la barra laterale dei campionati            */
+  --w-card:  920px;
+  --w-list:  1440px;
+  --w-page:  1680px;
 
-  /* --- 16. IL TELAIO DELLA LISTA — il cuore della v4.
+  /* --- 16. IL TELAIO.
 
-         Le colonne sono fisse e allineate lungo tutta la pagina, nell'ordine
-         che chi usa un sito di risultati si aspetta:
+         La barra di navigazione e' ALTA: 64px sotto i 768px, 72px sopra. Un
+         prodotto che si presenta con un filetto non si presenta.
 
-           ora · stemma+casa / stemma+ospite · pronostico · probabilita' · affidabilita'
+         Il calendario e' appiccicato sotto la barra: i due insieme sono il
+         cromo, e restano visibili mentre la lista scorre.
 
-         Scorrere la lista diventa un confronto incolonnato invece che una
-         lettura riga per riga. E' la meccanica dei siti di risultati, ed e'
-         l'unica cosa che se ne prende: nessun marchio, nessun logotipo,
-         nessuna identita' visiva di terzi. --------------------------------- */
-  /* v5: 44px erano il minimo tattile usato come altezza di riga, cioe' il
-     limite trattato come obiettivo. Il risultato si legge accalcato. 60px
-     danno respiro dentro la riga senza tornare al documento della v3, e il
-     bersaglio resta esattamente la riga: nessuna sovrapposizione fra righe
-     adiacenti, nessun clic ambiguo. */
-  /* v6 — LA TESTATA E' UNA BARRA, NON UNA RIGA.
-     56px bastavano a un marchio e a due bottoni, e infatti il prodotto si
-     presentava con una riga sottile che si scambiava per un filetto. La barra
-     ora porta il segno, il logotipo e tre voci con icona: sotto i 768px sta su
-     due livelli (marchio + comandi, poi le voci), da 768px su uno solo. */
-  --testata-h:    52px;  /* il livello del marchio, sotto i 768px             */
-  --testata-h-lg: 76px;  /* la barra intera, da 768px                         */
-  --testata-voci-h: 48px;/* il livello delle voci, sotto i 768px              */
-  --rail-h:    56px;   /* la barra dei giorni                                 */
-  --lega-h:    52px;   /* la testata di campionato, appiccicata ed espandibile */
-  --riga-h:    60px;   /* riga di partita da 768px                            */
-  --riga-h-sm: 78px;   /* riga di partita su due livelli, sotto 768px         */
+         La riga di partita porta cinque colonne, sempre nello stesso ordine:
 
-  /* Le colonne respirano: con 1500px di lista lo spazio c'e', e stringerle
-     era un risparmio senza motivo. */
+           ora · squadre · pronostico · probabilita' · quota
+
+         Sotto i 768px passa su due livelli dentro la stessa griglia, con
+         `grid-template-areas`: un cambio di forma dichiarato, non un
+         rimescolamento. -------------------------------------------------- */
+  --barra-h:     64px;   /* la barra di navigazione, < 768                    */
+  --barra-h-lg:  72px;   /* la barra di navigazione, ≥ 768                    */
+  --rail-h:      64px;   /* la striscia dei giorni                            */
+  --lega-h:      48px;   /* la testata di campionato, appiccicata             */
+  --riga-h:      64px;   /* riga di partita, ≥ 768                            */
+  --riga-h-sm:   92px;   /* riga di partita su due livelli, < 768             */
+
   --col-ora:     3.25rem;  /* 52 — "20:45"                                    */
-  --col-mercato: 19rem;    /* 304 — il pronostico + la riga di prova          */
-  --col-cifra:   4rem;     /* 64 — la cifra e la sua barra                    */
-  --col-affid:   3.5rem;   /* 56 — il tratto della banda p5-p95               */
+  --col-mercato: 16rem;    /* 256 — il pronostico + la riga di prova          */
+  --col-cifra:   4.5rem;   /* 72 — la cifra e il suo misurino                 */
+  --col-quota:   5.5rem;   /* 88 — quota equa + quota di mercato              */
 
-  /* Gli stemmi sono l'unico raster del prodotto. In v3 erano 28px, che a
-     righe da 80px era la misura giusta; a 44px con due squadre impilate la
-     misura giusta e' 18px — esattamente il corpo della riga di testo che
-     accompagnano, cosi' la riga non cresce per contenerli. */
-  --crest-lista:  24px;
+  /* Gli stemmi sono l'unico raster del prodotto. */
+  --crest-lista:  22px;
   --crest-scheda: 56px;
 
-  /* La bandiera del campionato: 21x14, con un filetto che le da' un bordo
-     anche quando e' quasi bianca (Inghilterra) su fondo chiaro. */
   --bandiera-w: 21px;
   --bandiera-h: 14px;
 
-  /* --- 17. Bersagli tattili. Vale per la riga, per la testata di campionato,
-         per ogni voce della barra dei giorni e della barra laterale. ------- */
+  /* --- 17. Bersagli tattili ---------------------------------------------- */
   --tap-min: 44px;
 
   /* --- 18. Icone (tratto 1.75 — sul fondo scuro 1.5 sparisce) ------------- */
   --icon-sm: 16px;  --icon-md: 20px;  --icon-lg: 24px;  --icon-stroke: 1.75;
 
-  /* --- 19. IL MARCHIO — «Novanta».
-         Il nome viene dalla firma del prodotto («90 su 100») e dai novanta
-         minuti. Il segno e' la riga di taratura — l'elemento firma — chiusa in
-         un quadro pieno: sette graduazioni in negativo, l'ultima alta il
-         doppio, che e' il 90 su una scala che finisce a 100. Un solo SVG in
-         linea, nessun raster, nessuna emoji, nessuna libreria. ------------- */
-  --marchio-quadro:    30px;  /* il lato del quadro, sotto i 768px            */
-  --marchio-quadro-lg: 36px;  /* da 768px                                     */
-  --fs-marchio:    19px;
-  --fs-marchio-lg: 23px;
+  /* --- 19. IL MARCHIO — «CENTRO».
+         Il nome viene da «fare centro»: e' cio' che il prodotto promette e
+         cio' su cui accetta di essere misurato in pubblico. Il segno e'
+         l'elemento firma alla sua scala maggiore — due quadri concentrici e
+         il centro pieno in vermiglio. Un solo SVG in linea: nessun raster,
+         nessuna emoji, nessuna libreria di icone. ------------------------- */
+  --marchio-quadro:    32px;
+  --marchio-quadro-lg: 38px;
+  --fs-marchio:    20px;
+  --fs-marchio-lg: 25px;
 }
 
 /* ==========================================================================
    TEMA CHIARO — di prima classe, verificato separatamente, mai dedotto.
    Non e' l'inversione dello scuro: il fondo e' una carta fredda e le lastre
    sono piu' CHIARE del fondo. E' cio' che da' profondita' senza ombre.
-   Si attiva solo con l'interruttore: [data-theme="light"].
    ========================================================================== */
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --ground:      #E1E5E9;
-  --surface:     #F7F9FB;  /* la lastra e' piu' chiara del fondo   1.20:1     */
-  --surface-2:   #E3E8ED;  /* 1.17:1 su surface — appena staccata             */
-  --surface-3:   #CFD7DE;  /* 1.38:1 su surface                               */
+  --ground:      #E6EAEE;
+  --surface:     #FBFCFD;
+  --surface-2:   #EDF1F5;
+  --surface-3:   #D6DDE4;
 
-  --edge:        #CCD4DB;  /* 1.42:1 su surface — sottilissimo                */
-  --edge-strong: #606B76;  /* 5.15:1 su surface · 4.41 su surface-2           */
+  --edge:        #D2D9E0;
+  --edge-strong: #5F6A76;
 
-  --ink:         #0F141A;  /* 14.61:1 su ground · 17.53 su surface · 12.71 su surface-3 */
-  --ink-2:       #3D4750;  /*  7.49:1 su ground ·  8.98 su surface ·  6.51 su surface-3 */
-  --ink-3:       #4B555E;  /*  6.01:1 su ground ·  7.21 su surface ·  5.23 su surface-3 */
+  --ink:         #0D1218;
+  --ink-2:       #3B4550;
+  --ink-3:       #49535D;
 
-  /* Il segnale resta un valore, non una tinta: in chiaro e' l'inchiostro. */
-  --segnale:     #0F141A;  /* 14.61:1 su ground                               */
-  --segnale-ink: #F7F9FB;  /* 17.53:1 sopra il segnale                        */
+  /* Il vermiglio scende di luminosita' finche' regge 4.5:1 anche sul piano
+     piu' scuro dei quattro. Resta lo stesso colore, non un altro accento. */
+  --segnale:     #B72E0C;
+  --segnale-ink: #FBFCFD;
 
-  --prob-fill:     #0F141A;  /* 9.63:1 su track                               */
-  --prob-track:    #B4BCC4;
-  --prob-baseline: #606B76;
+  --prob-fill:     #0D1218;
+  --prob-track:    #AEB8C2;
+  --prob-mercato:  #B72E0C;
 
-  --rel-stroke:    #295A82;  /* 6.91:1 su surface                             */
+  --rel-stroke:    #275880;
 
-  --outcome-yes: #1B5B39;  /* 7.65:1 su surface                               */
-  --outcome-no:  #96301F;  /* 7.26:1 su surface                               */
-  --warn:        #6A4D00;
+  --outcome-yes: #12653C;
+  --outcome-no:  #4E5862;
+  --warn:        #6B4E00;
 }
 
 /* Chi ha chiesto piu' contrasto lo ottiene sugli SPIGOLI: i divisori tenui
@@ -350,11 +295,13 @@ body {
 }
 
 /* Ogni cifra del prodotto e' tabellare: le colonne di numeri non ballano. */
-.num, table, .cifra, .cifra-media, .cifra-riga { font-variant-numeric: tabular-nums lining-nums; }
+.num, table, .cifra, .cifra-media, .cifra-riga, .quota__valore {
+  font-variant-numeric: tabular-nums lining-nums;
+}
 
 /* Testo per i soli lettori di schermo. Serve alle colonne che portano un
-   significato con una geometria (l'affidabilita'): la geometria e' rapida per
-   l'occhio, ma non esiste per chi ascolta, e allora la parola c'e' comunque. */
+   significato con una geometria: la geometria e' rapida per l'occhio, ma non
+   esiste per chi ascolta, e allora la parola c'e' comunque. */
 .solo-lettori {
   position: absolute;
   width: 1px;
@@ -368,94 +315,62 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   ELEMENTO FIRMA — LA RIGA DI TARATURA.
-   Una scala a tacche in testa a ogni blocco in cui il prodotto si espone.
-
-   `repeating-linear-gradient` con SOLI STOP DURI: e' un pattern, non una
-   sfumatura. Nessuna interpolazione di colore avviene qui.
+   ELEMENTO FIRMA — IL BERSAGLIO.
+   Due quadri concentrici, il centro pieno. Disegnato con un box-shadow a
+   spread negativo: nessun pseudo-elemento, nessun SVG ripetuto quaranta volte.
    -------------------------------------------------------------------------- */
-.taratura {
-  display: block;
-  height: var(--taratura-h);
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--ink-3) 0 var(--tacca-spess),
-    transparent var(--tacca-spess) var(--tacca-passo)
-  );
-  background-repeat: repeat-x;
+.bersaglio {
+  display: inline-block;
+  inline-size: var(--bersaglio-sm);
+  block-size: var(--bersaglio-sm);
+  flex: none;
+  background: var(--segnale);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--ink-3);
 }
 
-/* La variante forte: la scala e' in osso pieno. Riservata al blocco del
-   pronostico e del silenzio, cioe' all'unico punto in cui il prodotto si
-   espone davvero. */
-.taratura--forte {
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--segnale) 0 var(--tacca-spess),
-    transparent var(--tacca-spess) var(--tacca-passo)
-  );
-}
-
-.taratura--alta { height: var(--taratura-h-lg); }
-
-/* L'occhiello che segue una riga di taratura. In sans spaziata, non in mono:
-   il mono maiuscolo su ogni etichetta faceva leggere la pagina come un
-   terminale. */
-.label {
-  font-family: var(--font-text);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-2);
+.bersaglio--md {
+  inline-size: var(--bersaglio-md);
+  block-size: var(--bersaglio-md);
 }
 
 /* --------------------------------------------------------------------------
-   LA CIFRA — il protagonista della scheda. Newsreader con asse ottico alto: a
-   80px un serif da testo ha grazie troppo grasse, e l'asse opsz e'
-   esattamente il comando che le assottiglia.
+   LA CIFRA — Archivo a larghezza piena, peso 600. A 88px un grottesco largo
+   sostiene il peso della schermata senza diventare un titolo di giornale.
    -------------------------------------------------------------------------- */
 .cifra {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-cifra);
-  font-weight: 400;
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
   font-size: var(--fs-cifra);
   line-height: var(--lh-cifra);
   letter-spacing: var(--ls-cifra);
   color: var(--ink);
 }
 
-/* La cifra nella riga di lista. A 17-19px l'asse ottico scende a 14: e' la
-   taratura che tiene le grazie visibili su fondo quasi nero a questo corpo. */
 .cifra-riga {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-weight: 500;
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
   font-size: var(--fs-cifra-riga);
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
-/* La cifra di mezzo: il quadro dei numeri sotto la piega. Sta fra la cifra
-   monumentale della scheda e quella della riga di lista, e non le fa
-   concorrenza — se una seconda cifra crescesse fino alla prima, la pagina
-   tornerebbe piatta. L'asse ottico segue il corpo: 20 a 34px. */
 .cifra-media {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-weight: 500;
-  font-size: 2.125rem;
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: 2.25rem;
   line-height: 1;
   letter-spacing: var(--ls-display);
   color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .titolo-pagina {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-titolo);
-  font-weight: 500;
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
   font-size: var(--fs-h1);
   line-height: var(--lh-title);
   letter-spacing: var(--ls-display);
@@ -464,35 +379,44 @@ body {
 
 .titolo-sezione {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-weight: 500;
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
   font-size: var(--fs-h2);
   line-height: var(--lh-title);
   letter-spacing: var(--ls-display);
   color: var(--ink);
 }
 
-/* --------------------------------------------------------------------------
-   La riga di definizione operativa. Resta sotto OGNI numero della scheda:
-   e' testo reale nel DOM, non un tooltip, non un asterisco.
-   -------------------------------------------------------------------------- */
+/* L'occhiello. In Archivo espanso maiuscolo: e' la stessa voce del logotipo a
+   scala minima, ed e' cio' che tiene insieme la testata e le sezioni. */
+.label {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* La riga di definizione operativa. Resta sotto OGNI numero della scheda:
+   e' testo reale nel DOM, non un tooltip, non un asterisco. */
 .definizione {
   font-family: var(--font-text);
   font-size: var(--fs-body-s);
   line-height: 1.6;
   color: var(--ink-2);
   background: var(--surface-2);
-  border-left: 2px solid var(--edge-strong);
+  border-left: 2px solid var(--segnale);
   padding: var(--s-3) var(--s-4);
   margin-top: var(--s-4);
 }
 
 /* --------------------------------------------------------------------------
-   Link. Senza un accento di colore l'affordance sta tutta nel tratto: la
-   sottolineatura e' spessa, non sparisce mai, e ingrassa al passaggio.
-   DENTRO LA LISTA la regola si spegne (vedi .riga-partita, .lega__somma,
-   .barra-leghe__voce): quaranta righe sottolineate sono un muro, e li'
-   l'affordance e' la riga stessa che si illumina.
+   Link. L'affordance sta nel tratto, non nella tinta: il vermiglio e' riservato
+   al marchio e alle decisioni, e non si spende per dire «questo e' un link».
+   DENTRO LA LISTA la regola si spegne: quaranta righe sottolineate sono un
+   muro, e li' l'affordance e' la riga stessa che si illumina.
    -------------------------------------------------------------------------- */
 a {
   color: var(--link-ink);
@@ -509,8 +433,7 @@ a:hover {
   text-decoration-color: var(--ink);
 }
 
-/* Focus: sempre visibile, mai rimosso, verificato in entrambi i temi.
-   L'osso su quasi-nero fa 16.88:1 — molto oltre il 3:1 richiesto. */
+/* Fuoco: sempre visibile, mai rimosso, verificato in entrambi i temi. */
 :where(a, button, summary, [tabindex]):focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
@@ -519,7 +442,6 @@ a:hover {
    non farselo tagliare dal contenitore che scorre. */
 .riga-partita:focus-visible,
 .lega__somma:focus-visible,
-.barra-leghe__voce:focus-visible,
 .rail__giorno:focus-visible { outline-offset: -3px; }
 
 /* Nessuna animazione porta informazione: si puo' spegnere tutto. */

@@ -81,6 +81,23 @@ export interface Quote {
   markets?: string[];
   n_bookmakers?: number;
   fetched?: string;
+  /**
+   * Le quote decimali DA MOSTRARE, chiave nostra → prezzo lordo.
+   *
+   * Sono un'altra cosa rispetto alle probabilità sgonfiate che usa il modello:
+   * qui il margine dell'operatore c'è ancora, perché è il prezzo che l'utente
+   * troverebbe davvero allo sportello. Sgonfiarlo darebbe un numero che
+   * nessuno può giocare, e confrontarlo con la nostra quota equa non
+   * significherebbe più niente.
+   *
+   * Copertura reale: solo 1X2 e Over/Under, e solo sulle partite per cui il
+   * budget delle quote ha permesso una chiamata. Sulla maggior parte dei
+   * pronostici questo campo è assente, ed è previsto che lo sia.
+   */
+  prices?: Record<string, number>;
+  /** `it` = operatori con licenza ADM, `eu` = mediana europea di ripiego. */
+  price_scope?: string;
+  price_books?: number;
 }
 
 export interface Risultato {

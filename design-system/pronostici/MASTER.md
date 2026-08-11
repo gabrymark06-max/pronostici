@@ -1,8 +1,8 @@
-# Design System Master — Novanta
+# Design System Master — CENTRO
 
 > ## ⚠️ Parti superate — leggere prima, 2026-08-11
 >
-> Il prodotto si chiama **Novanta**, non «Pronostici»: dove questo file usa il
+> Il prodotto si chiama **CENTRO**, non «Pronostici»: dove questo file usa il
 > vecchio nome, è il vecchio nome.
 >
 > **Il file che comanda è [`tokens.css`](./tokens.css)**, che è aggiornato ed è
@@ -29,7 +29,7 @@
 > Se esiste, le sue regole **sovrascrivono** questo file. Altrimenti vale solo questo.
 > I token vivono in [`tokens.css`](./tokens.css) — è quello che il frontend importa.
 
-**Progetto:** Novanta — web app gratuita di pronostici calcistici
+**Progetto:** CENTRO — web app gratuita di pronostici calcistici
 **Generato:** 2026-08-08 · **rifatto nel carattere** 2026-08-08 (v2)
 **Stack:** Next.js App Router in **export statico** (`output: 'export'`), nessun runtime.
 **Lingua:** italiano, una sola.

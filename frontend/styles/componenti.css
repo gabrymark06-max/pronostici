@@ -1,827 +1,882 @@
 /* ==========================================================================
-   Componenti. v4 — "tabellone notturno".
-   Ordine: stemmi → la giornata (stato, barra dei campionati, gruppo, riga) →
-   la scheda → le parti minute.
+   COMPONENTI — v7, "tabellone con un segnale".
+
+   Ordine: cromo (barra, calendario) → lista (campionato, riga) → scheda di
+   partita → fondo (come funziona, rendimento, piede).
+
+   Nessun hex qui dentro: tutto viene da tokens.css.
    ========================================================================== */
 
 /* ==========================================================================
-   1. STEMMI E BANDIERE — l'unico colore della pagina.
-
-   Il resto dell'interfaccia e' acromatico apposta: stemmi e bandiere sono
-   l'unico elemento figurativo del prodotto, e in una lista di calcio sono il
-   motivo per cui l'occhio si ferma su una riga invece che su un'altra.
-
-   In v3 erano 28px, giusti per righe da 80px. A 44px con due squadre
-   impilate la misura giusta e' 18px: e' esattamente il corpo del testo che
-   accompagnano, quindi la riga non cresce per contenerli.
-
-   Spazio riservato con width/height espliciti: CLS zero.
+   1. LA BARRA DI NAVIGAZIONE
    ========================================================================== */
-.crest {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: var(--crest-lista);
-  height: var(--crest-lista);
-}
 
-.crest img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Ripiego: la sigla della squadra in un quadrato con filetto. Mai un'icona di
-   immagine rotta, mai uno spazio che collassa. A 18px la sigla di tre lettere
-   non ci sta: si stringe con l'asse di larghezza e scende al pavimento di
-   corpo, che qui e' l'unica eccezione documentata perche' NON e' testo — e'
-   un contrassegno con `aria-hidden`, e il nome per esteso sta accanto. */
-.crest--ripiego {
-  font-family: var(--font-text);
-  font-variation-settings: 'wdth' 75;
-  font-size: 9px;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--ink-2);
+.barra {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 30;
   background: var(--surface-2);
-  border: 1px solid var(--edge-strong);
-  letter-spacing: -0.02em;
+  border-block-end: 1px solid var(--edge);
 }
 
-.crest--scheda {
-  width: var(--crest-scheda);
-  height: var(--crest-scheda);
-}
-.crest--scheda.crest--ripiego {
-  font-size: var(--fs-body-s);
-  font-variation-settings: 'wdth' 92;
-  letter-spacing: 0;
-}
-
-/* La bandiera del campionato. Il filetto interno le da' un bordo anche
-   quando il campo e' quasi bianco (Inghilterra) su tema chiaro. */
-.bandiera {
-  display: block;
-  width: var(--bandiera-w);
-  height: var(--bandiera-h);
-  flex: 0 0 auto;
-}
-
-/* ==========================================================================
-   2. LA RIGA DI STATO DEL GIORNO.
-
-   Sostituisce l'intestazione editoriale della v3: titolo da 48px, sommario
-   da 19px, conteggio a tacche alto 30px con la sua legenda, e una nota di
-   metodo da tre righe. In tutto 330px prima della prima partita — piu' di
-   sette righe di lista spese per dire di che giorno si tratta.
-
-   Qui la stessa informazione sta in 44px: la data, i tre conteggi, e la
-   riga di taratura ridotta a una striscia da 10px in cui ogni tacca e' una
-   partita e ogni tacca vuota e' un silenzio. L'elemento firma sopravvive
-   alla densita' rimpicciolendo, non sparendo.
-
-   L'h1 c'e' e dice la data per esteso: resta il titolo della pagina per i
-   motori e per chi ascolta. Non e' piu' alto 48px perche' chi ha aperto la
-   pagina del 5 settembre sa gia' che giorno ha aperto.
-   ========================================================================== */
-.stato {
+.barra__interno {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--s-2) var(--s-4);
-  min-height: var(--rail-h);
-  padding-block: var(--s-2);
-  background: var(--surface);
-  border-bottom: 1px solid var(--edge);
+  gap: var(--s-4);
+  min-height: var(--barra-h);
 }
 
-.stato__data {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-weight: 600;
-  font-size: var(--fs-lega);
-  line-height: 1.15;
-  letter-spacing: var(--ls-display);
-  color: var(--ink);
-  margin: 0;
-}
-
-.stato__conti {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--s-1) var(--s-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  line-height: 1.3;
-  color: var(--ink-2);
-}
-
-.stato__conti b {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-weight: 600;
-  font-size: 1.15em;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
-/* La riga di taratura alla scala del giorno: una tacca per partita, piena se
-   abbiamo un pronostico, vuota se taciamo. Mostra il silenzio invece di
-   dichiararlo, e lo mostra come una proporzione misurata. Il colore non
-   porta niente: piena contro vuota e' una differenza di FORMA, e la riga dei
-   conteggi qui accanto la nomina in parole. */
-.stato__tacche {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 10px;
-  margin-inline-start: auto;
-  flex: 0 1 auto;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.stato__tacca {
-  display: block;
-  width: 3px;
-  height: 100%;
-  flex: 0 0 auto;
-  background: var(--ink-2);
-}
-
-.stato__tacca--vuota {
-  background: transparent;
-  border: 1px solid var(--edge-strong);
-  height: 60%;
-}
-
-/* La nota sul metodo: una riga sola, non un blocco di prosa. Il testo intero
-   e' rimasto nel piede, dove chi vuole leggerlo lo trova. */
-.stato__nota {
-  font-size: var(--fs-micro);
-  line-height: 1.45;
-  color: var(--ink-3);
-  padding-block: var(--s-2);
-  border-bottom: 1px solid var(--edge);
-  background: var(--surface);
-}
-
-/* Un giorno senza partite NON e' un silenzio e non deve somigliargli:
-   niente tacche, niente lastra. */
-.giorno-vuoto {
-  padding-block: var(--s-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-  font-size: var(--fs-lead);
-  color: var(--ink-2);
-  max-width: var(--w-prose);
-}
-
-/* ==========================================================================
-   3. LA BARRA DEI CAMPIONATI — da 1024px in su.
-
-   E' la convenzione dei siti di risultati, e ha due lavori veri: permette di
-   saltare a un campionato senza scorrere quaranta righe, e da' al prodotto
-   la forma che chi arriva da quei siti si aspetta di trovare.
-
-   Sotto i 1024px non esiste: i campionati restano solo come gruppi nella
-   lista, che e' l'unica forma che regge su uno schermo stretto. Non e' un
-   cassetto nascosto dietro un hamburger — un comando che a volte c'e' e a
-   volte e' sepolto e' peggio di un comando che a volte non c'e'.
-
-   E' appiccicata: la lista scorre, la barra resta.
-   ========================================================================== */
-.barra-leghe {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .barra-leghe {
-    display: block;
-    position: sticky;
-    top: calc(var(--rail-h) + var(--s-4));
-    background: var(--surface);
-    border: 1px solid var(--edge);
+@media (min-width: 768px) {
+  .barra__interno {
+    min-height: var(--barra-h-lg);
+    gap: var(--s-6);
   }
 }
 
-.barra-leghe__titolo {
-  padding: var(--s-2) var(--s-3);
-  border-bottom: 1px solid var(--edge);
-  background: var(--surface-2);
+/* --- Il marchio ---------------------------------------------------------- */
+
+.marchio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: var(--tap-min);
+  flex: none;
+  text-decoration: none;
+  color: var(--ink);
+}
+/* Il marchio non è "un link nel testo": è il marchio. La sottolineatura
+   generale degli anchor va spenta esplicitamente, e con essa il suo hover. */
+.marchio,
+.marchio:hover {
+  text-decoration: none;
 }
 
-.barra-leghe__voce {
-  display: grid;
-  grid-template-columns: var(--bandiera-w) minmax(0, 1fr) auto;
+.marchio__segno {
+  inline-size: var(--marchio-quadro);
+  block-size: var(--marchio-quadro);
+  flex: none;
+}
+.marchio__anello { fill: none; stroke: var(--ink); stroke-width: 2; }
+.marchio__centro { fill: var(--segnale); }
+
+.marchio__nome {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-weight: 700;
+  font-size: var(--fs-marchio);
+  line-height: 1;
+  letter-spacing: var(--ls-logo);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .marchio__segno {
+    inline-size: var(--marchio-quadro-lg);
+    block-size: var(--marchio-quadro-lg);
+  }
+  .marchio__nome { font-size: var(--fs-marchio-lg); }
+}
+
+/* --- Le voci ------------------------------------------------------------- */
+
+.barra__voci {
+  display: flex;
+  align-items: stretch;
+  gap: var(--s-1);
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Sotto i 768px le voci scorrono invece di nascondersi dietro un
+     hamburger. Nessun menu a scomparsa a nessuna larghezza. */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.barra__voci::-webkit-scrollbar { display: none; }
+
+.voce {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding-inline: var(--s-3);
+  min-height: var(--tap-min);
+  flex: none;
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  /* Il filetto sotto è l'affordance della voce e diventa vermiglio al
+     passaggio: è l'unico punto del cromo in cui il segnale si accende. */
+  border-block-end: 3px solid transparent;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.voce,
+.voce:hover {
+  text-decoration: none;
+}
+.voce:hover {
+  color: var(--ink);
+  border-block-end-color: var(--segnale);
+}
+
+.voce__icona {
+  inline-size: var(--icon-md);
+  block-size: var(--icon-md);
+  flex: none;
+}
+
+/* Sotto i 480px l'etichetta della voce più lunga («Come funziona») farebbe
+   scorrere la barra per tre voci su quattro. Le icone restano, e il nome resta
+   nel nome accessibile: chi ascolta e chi usa il comando vocale non perde
+   niente, e sopra i 480 tornano tutte le parole. */
+@media (max-width: 479px) {
+  .voce__nome {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .voce { padding-inline: var(--s-2); }
+}
+
+.barra__comandi {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: none;
+  margin-inline-start: auto;
+}
+
+/* --- L'interruttore del tema --------------------------------------------- */
+
+.bottone {
+  display: inline-flex;
   align-items: center;
   gap: var(--s-2);
   min-height: var(--tap-min);
+  min-width: var(--tap-min);
   padding-inline: var(--s-3);
-  text-decoration: none;
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius-controllo);
   color: var(--ink-2);
-  border-bottom: 1px solid var(--edge);
-  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.bottone:hover {
+  color: var(--ink);
+  border-color: var(--ink);
 }
 
-.barra-leghe li:last-child .barra-leghe__voce {
-  border-bottom: none;
+.bottone__marca {
+  inline-size: 10px;
+  block-size: 10px;
+  flex: none;
+  border: 1.5px solid currentColor;
+}
+.bottone__marca--piena { background: currentColor; }
+
+/* ==========================================================================
+   2. IL CALENDARIO — appiccicato sotto la barra.
+   ========================================================================== */
+
+.rail {
+  position: sticky;
+  inset-block-start: var(--barra-h);
+  z-index: 20;
+  background: var(--surface);
+  border-block-end: 1px solid var(--edge);
 }
 
-.barra-leghe__voce:hover {
+@media (min-width: 768px) {
+  .rail { inset-block-start: var(--barra-h-lg); }
+}
+
+.rail__interno {
+  display: flex;
+  align-items: stretch;
+  gap: var(--s-2);
+  min-height: var(--rail-h);
+}
+
+.rail__binario {
+  display: flex;
+  align-items: stretch;
+  gap: var(--s-1);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.rail__binario::-webkit-scrollbar { display: none; }
+.rail__binario > li { flex: 1 0 4.5rem; scroll-snap-align: center; }
+
+.rail__giorno {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: 1px;
+  block-size: 100%;
+  min-height: var(--tap-min);
+  padding-inline: var(--s-2);
+  color: var(--ink-2);
+  text-decoration: none;
+  border-block-end: 3px solid transparent;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.rail__giorno,
+.rail__giorno:hover {
+  text-decoration: none;
+}
+.rail__giorno:hover {
   background: var(--surface-2);
   color: var(--ink);
 }
-.barra-leghe__voce:active {
-  background: var(--surface-3);
+
+.rail__sigla {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: inherit;
 }
 
-.barra-leghe__nome {
-  font-family: var(--font-text);
-  font-variation-settings: 'wdth' var(--wdth-media);
-  font-size: var(--fs-body-s);
-  font-weight: 500;
-  line-height: 1.2;
+.rail__numero {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--ink);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.barra-leghe__n {
+.rail__conteggio {
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
+  line-height: 1;
   color: var(--ink-3);
-  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* IERI / OGGI / DOMANI: la sigla si accende, ma non è un secondo stato attivo.
+   Il giorno che stai guardando resta l'unico con il fondo pieno. */
+.rail__giorno--vicino .rail__sigla { color: var(--ink); }
+
+/* Il giorno che stai guardando. Fondo vermiglio pieno: è l'unico punto della
+   pagina in cui il segnale fa da superficie, e per questo si trova subito. */
+.rail__giorno[aria-current='date'] {
+  background: var(--segnale);
+  border-block-end-color: var(--segnale);
+}
+.rail__giorno[aria-current='date'] .rail__sigla,
+.rail__giorno[aria-current='date'] .rail__numero,
+.rail__giorno[aria-current='date'] .rail__conteggio {
+  color: var(--segnale-ink);
+}
+
+.rail__freccia {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--tap-min);
+  min-height: var(--tap-min);
+  flex: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ink-2);
+  text-decoration: none;
+  border: 1px solid var(--edge);
+  align-self: center;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.rail__freccia,
+.rail__freccia:hover {
+  text-decoration: none;
+}
+.rail__freccia:hover {
+  color: var(--ink);
+  border-color: var(--edge-strong);
+}
+.rail__freccia--spenta {
+  color: var(--ink-3);
+  opacity: 0.4;
 }
 
 /* ==========================================================================
-   4. IL GRUPPO DI CAMPIONATO — <details> nativo.
-
-   Un gruppo richiudibile fatto con <details>/<summary>: funziona senza
-   JavaScript, e' raggiungibile da tastiera con Invio e Spazio, annuncia il
-   proprio stato da solo, e il contenuto resta nel DOM per i motori. Su un
-   sito statico e' l'unica scelta onesta.
-
-   La testata e' appiccicata sotto la barra dei giorni: durante lo scorrimento
-   sai sempre in che campionato sei. E' aperta di default — un utente che apre
-   la pagina vuole vedere le partite, non un indice.
-
-   E' QUI che sta il respiro: 8px di stacco fra un gruppo e il successivo, e
-   una testata alta 44px. Dentro la lista, invece, non c'e' respiro affatto.
+   3. LA LISTA — campionato e riga di partita.
    ========================================================================== */
-/* IL RESPIRO E' DEL GRUPPO APERTO, NON DELLA LISTA.
-   In v5 lo stacco era fisso: 32px fra un campionato e il successivo, sempre.
-   Chiudendo tutti i gruppi restavano solo le barre dei nomi, e continuavano a
-   galleggiare a 32px l'una dall'altra — un indice sparpagliato su mezzo
-   schermo, esattamente cio' che si chiude un gruppo per NON avere.
-   Qui lo stacco lo porta `[open]`: un gruppo aperto si stacca da cio' che ha
-   sopra e da cio' che ha sotto, perche' e' un blocco; i gruppi chiusi si
-   impilano attaccati, e tornano a leggersi come un indice. */
+
+.lista__revisioni {
+  padding-block: var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  border-block-end: 1px solid var(--edge);
+}
+
+/* --- Il campionato ------------------------------------------------------- */
+
+/* NIENTE MARGINE FRA I BLOCCHI. Con due campionati richiusi, un margine
+   lascerebbe due strisce di fondo pagina sospese fra due testate: le testate
+   devono toccarsi e formare un elenco continuo. Lo stacco esiste solo quando
+   ci sono partite da separare, e allora è un filetto sulla lista. */
 .lega {
-  margin-top: 0;
-  background: var(--surface);
+  border-block-end: 1px solid var(--edge);
 }
-
-.lega[open],
-.lega[open] + .lega {
-  margin-top: var(--s-6);
-}
-
-/* Due barre chiuse adiacenti porterebbero due filetti a contatto: il secondo
-   si toglie, cosi' fra due nomi resta una riga sola. */
-.lega:not([open]) + .lega:not([open]) > .lega__somma {
-  border-top-color: transparent;
-}
-
-/* Vale sull'aperto come sul chiuso: il primo gruppo non si stacca da niente. */
-.lega:first-of-type {
-  margin-top: 0;
+.lega:last-child {
+  border-block-end: 0;
 }
 
 .lega__somma {
   position: sticky;
-  top: var(--rail-h);
+  /* Barra + calendario. Se una delle due altezze cambia, cambia qui. */
+  inset-block-start: calc(var(--barra-h) + var(--rail-h));
   z-index: 10;
   display: flex;
   align-items: center;
   gap: var(--s-3);
   min-height: var(--lega-h);
-  padding-block: var(--s-2);
-  padding-inline: var(--s-4);
+  padding-inline: var(--s-1);
   background: var(--surface-2);
-  border-block: 1px solid var(--edge);
   cursor: pointer;
   list-style: none;
-  color: var(--ink);
-  transition: background-color var(--dur-2) var(--ease);
+  transition: background-color var(--dur-1) var(--ease);
+}
+.lega__somma::-webkit-details-marker { display: none; }
+.lega__somma:hover { background: var(--surface-3); }
+
+@media (min-width: 768px) {
+  .lega__somma {
+    inset-block-start: calc(var(--barra-h-lg) + var(--rail-h));
+    padding-inline: var(--s-3);
+  }
 }
 
-/* Il marcatore nativo va tolto in due modi diversi: `list-style` copre i
-   browser moderni, la pseudo-classe webkit copre Safari. */
-.lega__somma::-webkit-details-marker {
-  display: none;
+.lega__freccia {
+  flex: none;
+  inline-size: var(--s-5);
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ink-3);
+  transform: rotate(90deg);
+  transition: transform var(--dur-1) var(--ease);
 }
+.lega:not([open]) .lega__freccia { transform: rotate(0deg); }
 
-.lega__somma:hover {
-  background: var(--surface-3);
-}
-
-/* NIENTE `min-width: 0` QUI. Con lo zero il nome poteva contrarsi sotto la
-   propria larghezza minima, e `break-word` faceva il resto: a 375px si leggeva
-   «Brasile / irão», spezzato a meta' parola. Senza, la larghezza minima del
-   nome e' la sua parola piu' lunga, il conteggio accanto cede lo spazio, e
-   `break-word` resta solo come rete per un nome piu' largo dello schermo. */
-.lega__nome {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-weight: 600;
-  font-size: var(--fs-lega);
-  line-height: 1.15;
-  letter-spacing: var(--ls-display);
-  color: var(--ink);
-  overflow-wrap: break-word;
-}
-
-/* Va a capo. Con `white-space: nowrap` su entrambe le voci e `min-width: 0`
-   sul contenitore, a 375px «7 partite · 4 in silenzio» usciva dallo schermo di
-   56px: il trabocco non si vedeva solo perche' la radice lo taglia. La riga
-   ora si impila sotto la giornata, e la barra cresce di quel tanto. */
-.lega__meta {
-  margin-inline-start: auto;
+.lega__titolo {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: flex-end;
-  gap: 0 var(--s-3);
-  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 1px;
   min-width: 0;
-  text-align: end;
 }
 
-.lega__conteggio {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  line-height: 1.35;
-  color: var(--ink-2);
-}
-
-.lega__giornata {
+.lega__paese {
   font-size: var(--fs-micro);
   font-weight: 600;
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--ink-3);
+  line-height: 1;
+}
+
+.lega__nome {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-size: var(--fs-lega);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* La freccia del gruppo: ruota di 90 gradi all'apertura. Trasformazione pura,
-   200ms, e si spegne con prefers-reduced-motion come tutto il resto. */
-.lega__freccia {
-  flex: 0 0 auto;
-  width: var(--icon-sm);
+.lega__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-inline-start: auto;
+  padding-inline-end: var(--s-2);
   font-family: var(--font-mono);
-  font-size: var(--fs-body-s);
-  line-height: 1;
+  font-size: var(--fs-micro);
   color: var(--ink-3);
-  transition: transform var(--dur-2) var(--ease);
+  white-space: nowrap;
+}
+/* Sotto i 560px il conteggio da solo dice già abbastanza: la giornata è la
+   prima cosa che si può togliere senza perdere la funzione della testata. */
+/* Sotto i 600px la testata deve prima di tutto far leggere il NOME del
+   campionato: era «Bras...» perche' giornata e silenzi si prendevano meta'
+   riga. Spariscono nell'ordine in cui si puo' farne a meno — prima la
+   giornata, poi il dettaglio dei silenzi — e il nome torna intero. */
+@media (max-width: 599px) {
+  .lega__giornata,
+  .lega__silenzi { display: none; }
+  .lega__meta { padding-inline-end: 0; }
 }
 
-.lega[open] > .lega__somma .lega__freccia {
-  transform: rotate(90deg);
+/* --- La riga di partita -------------------------------------------------- */
+
+.lega__partite > li + li .riga {
+  border-block-start: 1px solid var(--edge);
 }
 
-/* ==========================================================================
-   5. LA RIGA DI PARTITA — il cuore del prodotto.
+/*  IL TELAIO A CINQUE COLONNE.
+    ora · squadre · pronostico · probabilità · quota
 
-   Un <a> che avvolge l'intera riga, su una griglia a colonne FISSE:
+    Da 768px le colonne si incolonnano lungo tutta la lista, così scorrere
+    diventa un confronto invece che quaranta letture separate.
 
-     ora · stemma+casa / stemma+ospite · pronostico · probabilita' · affidabilita'
-
-   Le cifre si incolonnano lungo tutta la lista, e scorrere la pagina diventa
-   un confronto invece che quaranta letture separate. E' la meccanica dei siti
-   di risultati, ed e' l'unica cosa che se ne prende.
-
-   Le due squadre sono IMPILATE — casa sopra, ospite sotto — ognuna con il
-   proprio stemma da 18px accanto al proprio nome, in due righe COMPATTE
-   dentro la stessa riga di lista. In v3 erano due righe alte, e da sole
-   costavano 40px per partita.
-
-   L'ALTEZZA E' 44px ESATTI da 768px in su. Non 40 con un ::after che sborda:
-   due righe adiacenti che sbordano di 2px si contendono 4px di banda, e il
-   clic in quella banda finisce sulla riga sbagliata. Qui il bersaglio
-   COINCIDE con la riga — 44px pieni per oltre 280px di larghezza, su ogni
-   puntatore, senza sovrapposizioni.
-
-   Sotto i 768px la riga passa a due livelli dentro la stessa griglia
-   (58px): non c'e' modo di tenere cinque colonne a 375px senza troncare il
-   nome del mercato, che e' il contenuto e non si tronca mai.
-
-   Il silenzio ha la STESSA ALTEZZA e lo STESSO PESO di una riga con
-   pronostico. La differenza e' di FORMA, non di tinta: corsivo serif contro
-   tondo sans, glifo contro cifra. La colonna della cifra NON RESTA MAI VUOTA
-   — se si svuotasse, il silenzio tornerebbe a leggersi come un buco.
-   ========================================================================== */
-.riga-partita {
-  position: relative; /* contenitore per la colonna affidabilità sola-lettori */
+    ALTEZZA 64px ESATTI e il bersaglio COINCIDE con la riga: nessuna
+    sovrapposizione fra righe adiacenti, nessun clic ambiguo. */
+.riga {
   display: grid;
-  grid-template-columns: var(--col-ora) minmax(0, 1fr) var(--col-cifra);
-  grid-template-areas:
-    'ora squadre cifra'
-    'ora mercato cifra';
-  column-gap: var(--s-3);
-  row-gap: var(--s-1);
   align-items: center;
+  gap: var(--s-2) var(--s-3);
+  padding: var(--s-2) var(--s-3);
   min-height: var(--riga-h-sm);
-  padding-block: var(--s-2);
-  padding-inline: var(--s-2);
-  border-bottom: 1px solid var(--edge);
-  text-decoration: none;
   color: var(--ink);
-  transition: background-color var(--dur-2) var(--ease);
-}
+  text-decoration: none;
+  transition: background-color var(--dur-1) var(--ease);
 
-/* La riga non e' sottolineata: quaranta righe sottolineate sono un muro, e
-   qui l'affordance e' la riga stessa che si illumina e il cursore che cambia. */
-.riga-partita,
-.riga-partita:hover {
+  /* Sotto i 768px: due livelli. Sopra, l'orario e le due squadre; sotto, il
+     pronostico a sinistra con probabilita' e quota incolonnate a destra. Tre
+     livelli (una riga per la cifra e una per la quota) portavano la riga a
+     120px e riducevano lo schermo a quattro partite. */
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    'ora     squadre squadre squadre'
+    'mercato mercato cifra   quota'
+    'barra   barra   barra   barra';
+}
+.riga,
+.riga:hover {
   text-decoration: none;
 }
-
-.lega__partite li:last-child .riga-partita {
-  border-bottom: none;
-}
-
-/* Hover: il piano sale di un gradino. :active di due. Mai transform, mai
-   ombra, nessuno spostamento di layout. */
-.riga-partita:hover {
+.riga:hover {
   background: var(--surface-2);
 }
-.riga-partita:active {
-  background: var(--surface-3);
-}
 
-@media (min-width: 768px) {
-  .riga-partita {
-    grid-template-columns:
-      var(--col-ora) minmax(0, 1fr) var(--col-mercato)
-      var(--col-cifra) var(--col-affid);
-    grid-template-areas: 'ora squadre mercato cifra affid';
-    /* v5: le colonne stavano a 12px l'una dall'altra dentro una lista larga
-       1000px. Con 1500px lo spazio c'e', e 24px fra colonne e' la differenza
-       fra un tabellone e un foglio di calcolo. */
-    column-gap: var(--s-5);
-    row-gap: 0;
+/* IL TELAIO A SEI COLONNE PARTE DA 900px, NON DA 768.
+   A 768 le colonne fisse — orario, pronostico, cifra, quota — piu' i cinque
+   spazi fra loro occupano 580px dei 720 disponibili: alle squadre ne restavano
+   centocinquanta, e i nomi si riducevano a «S…» e «F…». Un nome di squadra
+   troncato alla prima lettera non e' una lista di calcio. Fino a 899px resta il
+   telaio a due livelli, che a quella larghezza legge meglio di sei colonne
+   strizzate. */
+@media (min-width: 900px) {
+  .riga {
     min-height: var(--riga-h);
-    padding-block: var(--s-2);
-    padding-inline: var(--s-4);
+    padding-inline: var(--s-3);
+    gap: var(--s-4);
+    /* LE SQUADRE HANNO UN TETTO, IL PRONOSTICO NO.
+       Con `1fr` sulle squadre, a 1440px il nome della squadra restava lungo
+       160px e la colonna ne prendeva 830: fra le squadre e il pronostico si
+       apriva mezzo schermo di vuoto. Il tetto sta sulle squadre, che hanno una
+       lunghezza propria e finita; la colonna elastica e' quella del
+       pronostico, che e' testo e usa lo spazio che gli si da'. */
+    grid-template-columns:
+      var(--col-ora) minmax(0, 24rem) var(--col-mercato)
+      minmax(3rem, 1fr) var(--col-cifra) var(--col-quota);
+    grid-template-areas: 'ora squadre mercato barra cifra quota';
   }
 }
 
-.riga-partita__ora {
+@media (min-width: 1200px) {
+  .riga { gap: var(--s-5); padding-inline: var(--s-4); }
+}
+
+.riga__ora {
   grid-area: ora;
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
-  color: var(--ink-2);
+  line-height: 1;
+  color: var(--ink-3);
   white-space: nowrap;
-  align-self: center;
 }
 
-/* --- Le due squadre, impilate e compatte ---------------------------------- */
+/* --- Le squadre, impilate ------------------------------------------------ */
+
 .squadre {
   grid-area: squadre;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1px;
+  display: grid;
+  gap: 3px;
   min-width: 0;
 }
 
 .squadra {
-  display: flex;
+  display: grid;
+  grid-template-columns: var(--crest-lista) minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--s-2);
-  min-width: 0;
-  min-height: var(--crest-lista);
 }
 
 .squadra__nome {
   font-family: var(--font-text);
   font-variation-settings: 'wdth' var(--wdth-stretta);
   font-size: var(--fs-lista);
-  font-weight: 500;
-  line-height: var(--lh-riga);
+  line-height: 1.2;
   color: var(--ink);
-  min-width: 0;
-  overflow-wrap: anywhere;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
   .squadra__nome {
     font-variation-settings: 'wdth' var(--wdth-media);
     font-size: var(--fs-body-s);
-    /* Da 768px la colonna e' larga abbastanza da tenere ogni nome su una riga:
-       il troncamento tiene le due squadre a 18px l'una e la riga a 44px anche
-       con «Borussia Monchengladbach». Il nome per esteso e' sulla scheda, a un
-       clic di distanza, ed e' nel `title`. */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
-/* --- Il pronostico: la colonna che giustifica il prodotto ----------------- */
-.riga-partita__mercato {
-  grid-area: mercato;
-  display: flex;
-  flex-direction: column;
+.squadra__gol {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: var(--fs-body-s);
+  line-height: 1;
+  color: var(--ink);
+  padding-inline-start: var(--s-2);
+}
+
+/* --- Lo stemma ----------------------------------------------------------- */
+
+.crest {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  inline-size: var(--crest-lista);
+  block-size: var(--crest-lista);
+  flex: none;
+}
+.crest img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+/* Il ripiego: la sigla in un quadro a filetto. Mai un'icona di immagine
+   rotta, mai uno spazio che collassa. */
+.crest--ripiego {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-3);
+  border: 1px solid var(--edge);
+}
+.crest--scheda {
+  inline-size: var(--crest-scheda);
+  block-size: var(--crest-scheda);
+}
+.crest--scheda.crest--ripiego { font-size: var(--fs-body-s); }
+
+/* --- Il pronostico ------------------------------------------------------- */
+
+.riga__mercato {
+  grid-area: mercato;
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.mercato__testa {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+
+/* Mai troncare il nome del mercato: è il contenuto. Va a capo, e la riga
+   cresce — è il motivo per cui `min-height` non è `height`. */
+.mercato__nome {
+  font-family: var(--font-text);
+  font-variation-settings: 'wdth' var(--wdth-media);
+  font-size: var(--fs-lista);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .mercato__nome { font-size: var(--fs-body-s); }
+}
+
+.mercato__silenzio {
+  font-size: var(--fs-lista);
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.mercato__prova {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  line-height: 1.3;
+  color: var(--ink-3);
+}
+
+/* --- L'esito nella riga -------------------------------------------------- */
+
+.esito-riga {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.esito-riga--uscito { color: var(--outcome-yes); }
+.esito-riga--mancato { color: var(--outcome-no); }
+
+/* --- La cifra ------------------------------------------------------------ */
+
+.riga__cifra {
+  grid-area: cifra;
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .riga__cifra { justify-items: end; }
+}
+
+.cifra-riga {
+  font-size: var(--fs-cifra-riga);
+}
+@media (min-width: 768px) {
+  .cifra-riga { font-size: var(--fs-cifra-riga-lg); }
+}
+
+.riga__suCento {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.riga__glifo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-cifra-riga);
+  line-height: 1;
+  color: var(--ink-3);
+}
+
+.riga__barra {
+  grid-area: barra;
+  display: block;
+  min-width: 0;
+}
+
+/* IL MISURINO + LA TACCA DEL MERCATO. */
+.misurino {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: 4px;
+  background: var(--prob-track);
+}
+.misurino__pieno {
+  display: block;
+  block-size: 100%;
+  background: var(--prob-fill);
+}
+.misurino__tacca {
+  position: absolute;
+  inset-block-start: -2px;
+  inline-size: 3px;
+  block-size: 8px;
+  margin-inline-start: -1px;
+  background: var(--prob-mercato);
+}
+
+/* --- La quota ------------------------------------------------------------ */
+
+.riga__quota {
+  grid-area: quota;
+  display: grid;
+  justify-items: start;
   gap: 1px;
   min-width: 0;
 }
 
-.mercato__etichetta {
-  min-width: 0;
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-2);
-  font-family: var(--font-text);
-  font-variation-settings: 'wdth' var(--wdth-media);
-  font-size: var(--fs-lista);
-  font-weight: 500;
-  line-height: var(--lh-riga);
-  color: var(--ink);
-}
-
-/* Il nome del mercato non si tronca mai: e' il contenuto. Se non ci sta,
-   va a capo — ed e' l'unica cosa della riga a cui e' permesso farla crescere. */
-.mercato__nome {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
 @media (min-width: 768px) {
-  .mercato__etichetta {
-    font-size: var(--fs-body-s);
-  }
+  .riga__quota { justify-items: end; }
 }
 
-/* Il silenzio nella colonna del pronostico: stesso posto, stesso corpo,
-   corsivo serif invece che tondo sans. E' una forma diversa, non un peso
-   minore. */
-.mercato__silenzio {
+.quota__valore {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-style: italic;
-  font-weight: 400;
-  font-size: var(--fs-body-s);
-  line-height: var(--lh-riga);
-  color: var(--ink);
-}
-
-/* La riga di prova storica accanto al pronostico — «avverati 92 su 100».
-   E' il dato che rende il pronostico verificabile, e resta nella riga: in
-   mono minuto, perche' nella lista e' una texture che si legge di sfuggita;
-   la frase intera, con la fonte, sta sulla scheda. */
-.mercato__prova {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  line-height: 1.2;
-  color: var(--ink-3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* --- La probabilita': LINGUAGGIO A, il pieno ------------------------------ */
-.riga-partita__cifra {
-  grid-area: cifra;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 3px;
-  justify-self: end;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .riga-partita__cifra .cifra-riga {
-    font-size: var(--fs-cifra-riga-lg);
-  }
-}
-
-.riga-partita__glifo {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-size: var(--fs-cifra-riga);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: var(--fs-quota);
   line-height: 1;
   color: var(--ink);
 }
 
-@media (min-width: 768px) {
-  .riga-partita__glifo {
-    font-size: var(--fs-cifra-riga-lg);
-  }
-}
-
-/* Il misurino: il pieno sotto la cifra. Larghezza = probabilita'. */
-.misurino {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: var(--prob-track);
-}
-
-.misurino__pieno {
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  background: var(--prob-fill);
-}
-
-/* --- L'affidabilita': LINGUAGGIO B, il solo tratto ------------------------
-   Sotto i 768px vive dentro la colonna della cifra; da 768px ha la propria.
-
-   E' LA QUARTA SCALA DELL'ELEMENTO FIRMA: un tratto lungo quanto la banda
-   p5-p95, con due grazie agli estremi, su un asse largo quanto la colonna.
-   Tratto corto = stima stretta, tratto lungo = stima larga, e due righe si
-   confrontano a colpo d'occhio perche' l'asse e' lo stesso per tutte.
-
-   Solo tratto, mai un pieno: la probabilita' e' un pieno numerico,
-   l'affidabilita' e' un tratto. Le due marche restano distinguibili in
-   monocromia e in stampa, e la parola per chi ascolta sta in .solo-lettori.
-   -------------------------------------------------------------------------- */
-/* Sotto i 768px la colonna non c'è: non ci sta, e il tratto a quella
-   larghezza smetterebbe di essere confrontabile. Ma NON si spegne con
-   `display: none`, che la toglierebbe anche a chi ascolta: diventa
-   sola-lettori, così la parola («stima stretta») resta annunciata su ogni
-   riga anche dove il tratto non si vede. */
-.affid {
-  grid-area: auto;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-@media (min-width: 768px) {
-  .affid {
-    grid-area: affid;
-    position: static;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 12px;
-    margin: 0;
-    overflow: visible;
-    clip-path: none;
-  }
-}
-
-.affid__tratto {
-  position: relative;
-  height: var(--rel-stroke-w);
-  min-width: 4px;
-  background: var(--rel-stroke);
-}
-
-.affid__grazia {
-  position: absolute;
-  top: 50%;
-  width: var(--rel-stroke-w-lg);
-  height: 9px;
-  background: var(--rel-stroke);
-  transform: translateY(-50%);
-}
-.affid__grazia--sx { left: 0; }
-.affid__grazia--dx { right: 0; }
-
-/* Il silenzio non ha una banda, e non deve fingerne una vuota: un tratto
-   neutro, alla stessa altezza ottica, dice «non pertinente» senza dire
-   «zero». */
-.affid__muto {
-  display: block;
-  width: 10px;
-  height: 1px;
-  background: var(--ink-3);
-}
-
-/* L'esito dentro la riga di lista, a partita conclusa. Parola + glifo +
-   colore, mai il colore da solo. Le righe concluse restano a piena opacita':
-   il registro e' il prodotto. */
-.riga-partita__esito {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--s-1);
+.quota__nota {
   font-family: var(--font-mono);
-  font-size: var(--fs-micro);
+  font-size: 10px;
   line-height: 1.2;
+  color: var(--ink-3);
   white-space: nowrap;
 }
-.esito-uscito { color: var(--outcome-yes); }
-.esito-non-uscito { color: var(--outcome-no); }
-
-/* ==========================================================================
-   6. LA SCHEDA DELLA PARTITA
-   ========================================================================== */
-.scheda__contesto {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-3);
-}
-
-.scheda__contesto .label {
+.quota__nota strong {
+  font-weight: 500;
   color: var(--ink-2);
 }
 
-/* Il collegamento «torna al giorno» stava sopra il titolo e mandava indietro
-   chi era appena arrivato: e' stato tolto, e la testata della scheda apre la
-   pagina. Il padding in alto e' quello che prima portava quella riga. */
-.scheda__testata {
-  padding-block: var(--s-5);
-}
-
-/* Le squadre della scheda: impilate come nella lista, ma con gli stemmi a
-   44px. E' la stessa forma a due scale — chi arriva dalla lista riconosce
-   subito la partita che ha aperto. */
-.scheda__squadre {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-  margin-top: var(--s-4);
-}
-
-.scheda__squadra {
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  min-width: 0;
-}
-
-.scheda__nome {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-titolo);
-  font-weight: 500;
-  font-size: var(--fs-h1);
-  line-height: 1.1;
-  letter-spacing: var(--ls-display);
-  color: var(--ink);
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-
-.scheda__lato {
+.quota__vuoto {
   font-family: var(--font-mono);
-  font-size: var(--fs-micro);
+  font-size: var(--fs-quota);
   color: var(--ink-3);
-  text-transform: uppercase;
+}
+
+/* --- Tag e chip ---------------------------------------------------------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--s-2);
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: var(--ls-label);
-  margin-inline-start: auto;
-  flex: 0 0 auto;
-  align-self: center;
+  text-transform: uppercase;
+  color: var(--segnale-ink);
+  background: var(--segnale);
+  white-space: nowrap;
 }
 
-/* --- Il blocco del pronostico (e del silenzio: e' lo stesso contenitore) -- */
-.blocco {
-  padding-block: var(--s-4) var(--s-5);
-}
-
-.scheda__mercato {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-titolo);
+/* L'unico elemento arrotondato del prodotto: essendo l'unico, si stacca da
+   solo senza bisogno di una tinta. Non è interattivo. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--s-2);
+  border-radius: 999px;
+  font-size: var(--fs-micro);
   font-weight: 500;
-  font-size: var(--fs-h2);
-  line-height: 1.15;
-  letter-spacing: var(--ls-display);
-  color: var(--ink);
-  margin-top: var(--s-2);
+  line-height: 1.35;
+  color: var(--ink-2);
+  /* A zoom 200 % l'etichetta più lunga usciva dal proprio riquadro: il chip va
+     a capo invece di troncare (WCAG 1.4.4 e 1.4.10). */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  text-align: center;
 }
+.chip--vuoto { border: 1px dashed var(--edge-strong); }
+.chip--pieno { border: 1px solid var(--edge-strong); background: var(--surface-3); }
+.chip--riga { font-size: 10px; padding-block: 1px; }
 
-.scheda__chip {
-  margin-top: var(--s-4);
+/* --- La bandiera del campionato ------------------------------------------ */
+
+.bandiera {
+  inline-size: var(--bandiera-w);
+  block-size: var(--bandiera-h);
+  flex: none;
+  border: 1px solid var(--edge);
 }
 
 /* ==========================================================================
-   7. LA PROBABILITA SULLA SCHEDA — LINGUAGGIO A (pieno) + B (tratto).
-   Le due marche sono incompatibili apposta: la probabilita' e' un pieno
-   numerico, l'affidabilita' e' solo un tratto. Restano distinguibili in
-   monocromia e in stampa.
+   4. LA SCHEDA DI PARTITA
    ========================================================================== */
-.prob {
-  margin-top: var(--s-4);
+
+.lastra--testa { padding-block: var(--s-5); }
+.lastra--pronostico { padding-block: var(--s-6); }
+
+.partita__contesto {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin-block-end: var(--s-5);
 }
+
+.partita__quando {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+}
+
+.partita__squadre {
+  display: grid;
+  gap: var(--s-3);
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.partita__squadra {
+  display: grid;
+  grid-template-columns: var(--crest-scheda) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.partita__nome {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+}
+
+.partita__lato {
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.partita__gol {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+/* --- Il blocco del pronostico -------------------------------------------- */
+
+.blocco > .label {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-block-end: var(--s-3);
+}
+
+.partita__mercato {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+  margin-block-end: var(--s-5);
+}
+
+.partita__chip { margin-block-start: var(--s-5); }
+
+/* --- La barra della probabilità ------------------------------------------ */
 
 .prob__cifra {
   display: flex;
@@ -832,745 +887,598 @@
 .prob__su {
   font-family: var(--font-mono);
   font-size: var(--fs-body-s);
-  color: var(--ink-2);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
 .prob__grafico {
-  margin-top: var(--s-4);
+  position: relative;
+  margin-block-start: var(--s-4);
+  padding-block-end: var(--s-5);
 }
 
 .prob__barra {
-  position: relative;
-  height: 16px;
+  block-size: 12px;
   background: var(--prob-track);
-  overflow: hidden;
 }
-
 .prob__riempimento {
-  position: absolute;
-  inset-block: 0;
-  left: 0;
+  block-size: 100%;
   background: var(--prob-fill);
 }
 
 .prob__baseline {
-  height: 1px;
-  background: var(--prob-baseline);
+  block-size: 1px;
+  background: var(--edge);
 }
 
-/* IL RIGHELLO. Le tacche ai decili stanno SOTTO la barra, non sopra: sopra
-   il riempimento pieno spezzavano la barra in dieci segmenti e la facevano
-   leggere come una quantizzazione che non esiste. La tacca del 50 e' piu'
-   lunga e porta la sua etichetta: e' il pavimento sotto il quale non
-   consigliamo mai. */
 .prob__righello {
   position: relative;
-  height: 24px;
+  block-size: var(--s-3);
 }
-
 .prob__tacca {
   position: absolute;
-  top: 0;
-  width: 1px;
-  height: 4px;
-  background: var(--ink-3);
-}
-
-.prob__tacca--pavimento {
-  width: 2px;
-  height: 8px;
+  inset-block-start: 0;
+  inline-size: 1px;
+  block-size: 5px;
   background: var(--edge-strong);
 }
-
+.prob__tacca--pavimento {
+  block-size: 10px;
+  inline-size: 2px;
+  background: var(--ink-3);
+}
 .prob__pavimento-etichetta {
   position: absolute;
-  top: 10px;
-  left: 50%;
+  inset-block-start: 10px;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: var(--fs-micro);
+  font-size: 10px;
   color: var(--ink-3);
+}
+
+/* La banda p5–p95: solo tratto, mai un pieno. Le due marche restano
+   distinguibili in monocromia e per chi non distingue i colori. */
+.prob__banda {
+  position: relative;
+  block-size: var(--s-4);
+  margin-block-start: var(--s-2);
+}
+.prob__banda-tratto {
+  position: absolute;
+  inset-block-start: 50%;
+  block-size: var(--rel-stroke-w);
+  background: var(--rel-stroke);
+}
+.prob__banda-serif {
+  position: absolute;
+  inset-block-start: -5px;
+  inline-size: var(--rel-stroke-w-lg);
+  block-size: 12px;
+  background: var(--rel-stroke);
+}
+.prob__banda-serif--sx { inset-inline-start: 0; }
+.prob__banda-serif--dx { inset-inline-end: 0; }
+
+/* --- Le due quote sulla scheda ------------------------------------------- */
+
+.quote {
+  display: grid;
+  gap: 1px;
+  margin-block-start: var(--s-5);
+  background: var(--edge);
+  border: 1px solid var(--edge);
+}
+
+@media (min-width: 640px) {
+  .quote { grid-template-columns: 1fr 1fr; }
+}
+
+.quote__cella {
+  padding: var(--s-4);
+  background: var(--surface-2);
+}
+
+.quote__valore {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 1.05;
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+  margin-block: var(--s-2);
+}
+.quote__valore--assente { color: var(--ink-3); }
+
+.quote__nota {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+/* --- La tavola di tutti i mercati ---------------------------------------- */
+
+/* Il bersaglio e la marca stanno in linea col nome: serve un contenitore
+   flessibile. NON sulla testata di famiglia, che e' un `th` con `colspan={4}`:
+   un flex container perde lo span e la sua barra si fermava a un quarto della
+   tavola. */
+.tabella--mercati tbody tr:not(.tabella__famiglia) th {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+/* SOTTO I 900px LA TAVOLA NON È PIÙ UNA TAVOLA.
+   Quattro colonne di cui una testuale non stanno in 328px: l'alternativa era
+   uno scorrimento laterale dentro un contenitore, che su un telefono nasconde
+   metà dei numeri dietro un gesto che nessuno fa. Qui ogni riga diventa un
+   blocchetto: il nome del mercato sopra, i tre numeri sotto, ognuno con la
+   propria etichetta ripresa da `data-etichetta`. La struttura della tavola
+   resta intatta per chi ascolta — `<th scope>` e `<caption>` non si toccano —
+   e cambia solo la presentazione.
+
+   LA SOGLIA È 900 E NON 600 PER IL TESTO INGRANDITO. Chi porta il corpo al
+   200 % non cambia la larghezza della finestra, quindi le media query non
+   scattano: a 640px con il carattere raddoppiato la tavola a quattro colonne
+   sfondava la pagina di cinquecento pixel (WCAG 1.4.4). Allineare la soglia a
+   quella del telaio della lista fa sì che la tavola vera compaia solo dove ci
+   sono davvero 900px di finestra. */
+@media (max-width: 899px) {
+  .tabella--mercati,
+  .tabella--mercati tbody,
+  .tabella--mercati tr {
+    display: block;
+  }
+  .tabella--mercati thead {
+    /* Le intestazioni tornano dentro ogni cella con `data-etichetta`: qui
+       sarebbero una riga di quattro parole senza colonne sotto. */
+    display: none;
+  }
+  .tabella--mercati tbody tr {
+    padding-block: var(--s-3);
+    border-block-end: 1px solid var(--edge);
+  }
+  .tabella--mercati tbody tr:not(.tabella__famiglia) th {
+    padding: 0 0 var(--s-2);
+    border: 0;
+    flex-wrap: wrap;
+  }
+  .tabella--mercati td {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    padding: 2px 0;
+    margin-inline-end: var(--s-5);
+    border: 0;
+    text-align: start;
+  }
+  .tabella--mercati td::before {
+    content: attr(data-etichetta);
+    font-family: var(--font-text);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .tabella--mercati .tabella__famiglia {
+    padding-block: 0;
+    border-block-end: 0;
+  }
+  .tabella--mercati .tabella__famiglia th {
+    display: block;
+    padding: var(--s-2) var(--s-3);
+    margin-block-start: var(--s-3);
+  }
+}
+
+.tabella__famiglia th {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: var(--surface-2);
+  padding-block: var(--s-2);
+}
+
+.tabella__nostro { background: var(--surface-2); }
+.tabella__nostro td,
+.tabella__nostro th { color: var(--ink); font-weight: 600; }
+
+.tabella__vuoto {
+  inline-size: var(--bersaglio-sm);
+  block-size: var(--bersaglio-sm);
+  flex: none;
+}
+
+.tabella__marca {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--segnale-ink);
+  background: var(--segnale);
+  padding: 1px var(--s-2);
   white-space: nowrap;
 }
 
-/* La banda: solo tratto, sotto il righello, con le due grazie agli estremi. */
-.prob__banda {
-  position: relative;
-  margin-top: var(--s-2);
-  height: 14px;
+.tabella__unita {
+  font-size: 10px;
+  color: var(--ink-3);
 }
 
-.prob__banda-tratto {
-  position: absolute;
-  top: 50%;
-  height: var(--rel-stroke-w-lg);
-  background: var(--rel-stroke);
-}
+/* --- Il quadro dei numeri ------------------------------------------------ */
 
-.prob__banda-serif {
-  position: absolute;
-  top: 50%;
-  width: var(--rel-stroke-w-lg);
-  height: 12px;
-  background: var(--rel-stroke);
-  transform: translateY(-50%);
-}
-.prob__banda-serif--sx { left: 0; }
-.prob__banda-serif--dx { right: 0; }
-
-/* ==========================================================================
-   8. IL QUADRO DEI NUMERI — «come ci siamo arrivati».
-
-   Sostituisce quattro blocchi che erano tutti la stessa cosa: taratura,
-   occhiello, paragrafo di prosa. Uno dopo l'altro pesavano uguale, quindi non
-   c'era gerarchia, ed erano prosa, quindi non si guardavano.
-
-   Tre celle nella lingua dei riquadri «come si legge»: icona, occhiello,
-   cifra, un grafico piccolo, una riga che qualifica il dato e ne dichiara la
-   fonte. Il «perche'» resta, ma sotto le celle e ridotto a cio' che le celle
-   non dicono gia'.
-   ========================================================================== */
-.quadro {
-  margin-top: var(--s-6);
-}
-
-.quadro__titolo {
-  display: block;
-}
+.quadro { padding-block: var(--s-6); border-block-start: 1px solid var(--edge); }
+.quadro__titolo { margin-block-end: var(--s-4); }
 
 .quadro__celle {
   display: grid;
-  gap: 0;
-  margin-top: var(--s-4);
+  gap: 1px;
+  background: var(--edge);
+  border: 1px solid var(--edge);
+}
+@media (min-width: 720px) {
+  .quadro__celle { grid-template-columns: repeat(3, 1fr); }
 }
 
 .cella {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  padding: var(--s-4);
+  background: var(--surface-2);
+  display: grid;
+  align-content: start;
   gap: var(--s-3);
-  padding-block: var(--s-5);
-  border-top: 2px solid var(--edge-strong);
-  min-width: 0;
 }
 
 .cella__icona {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
-  color: var(--ink-2);
-  flex: 0 0 auto;
+  inline-size: var(--icon-lg);
+  block-size: var(--icon-lg);
+  color: var(--ink-3);
 }
 
 .cella__occhiello {
-  font-family: var(--font-text);
-  font-size: var(--fs-body);
-  font-weight: 600;
-  line-height: var(--lh-tight);
-  letter-spacing: 0;
-  color: var(--ink);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
 }
 
 .cella__cifra {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
   gap: var(--s-2);
-  min-width: 0;
 }
 
 .cella__unita {
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
-  color: var(--ink-2);
-  letter-spacing: 0.02em;
-}
-
-.cella__corpo {
-  width: 100%;
-  min-width: 0;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
 .cella__nota {
-  font-size: var(--fs-body-s);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-}
-
-/* Quando il record di fascia non c'e' ancora, la cella non sparisce: resta la
-   sola nota, e allora e' lei a portare il peso della cella. */
-.cella__nota--sola {
-  color: var(--ink);
-}
-
-@media (min-width: 768px) {
-  .quadro__celle {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .cella {
-    padding-inline: var(--s-5);
-  }
-
-  .cella:first-child {
-    padding-inline-start: 0;
-  }
-
-  .cella:last-child {
-    padding-inline-end: 0;
-  }
-
-  .cella + .cella {
-    border-left: 1px solid var(--edge);
-  }
-}
-
-/* --- I gol attesi: nome, valore, e la barra su una scala FISSA ------------ */
-.gol {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  column-gap: var(--s-3);
-  row-gap: var(--s-1);
-}
-
-.gol + .gol {
-  margin-top: var(--s-3);
-}
-
-.gol__nome {
-  font-size: var(--fs-body-s);
-  line-height: 1.3;
-  color: var(--ink);
-  min-width: 0;
-}
-
-.gol__lato {
-  font-family: var(--font-mono);
   font-size: var(--fs-micro);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-label);
+  line-height: var(--lh-body);
   color: var(--ink-3);
+}
+.cella__nota--sola { margin-block-start: 0; }
+
+.cella__corpo { display: grid; gap: var(--s-2); }
+
+/* I gol attesi */
+.gol { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s-2); align-items: baseline; }
+.gol__nome {
+  font-variation-settings: 'wdth' var(--wdth-stretta);
+  font-size: var(--fs-micro);
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.gol__valore {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-weight: 600;
-  font-size: var(--fs-body);
-  line-height: 1;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
-.gol__barra {
+.gol__valore { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink); }
+.gol__lato {
   grid-column: 1 / -1;
-  display: block;
-  height: 8px;
-  background: var(--prob-track);
+  font-size: 10px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
+.gol__barra { grid-column: 1 / -1; block-size: 4px; background: var(--prob-track); }
+.gol__riempimento { block-size: 100%; background: var(--prob-fill); }
 
-.gol__riempimento {
-  display: block;
-  height: 100%;
-  background: var(--prob-fill);
-}
+/* La proporzione a venti tacche */
+.scala20 { display: flex; gap: 2px; }
+.scala20 > span { flex: 1; block-size: 10px; background: var(--prob-track); }
+.scala20 > span[data-piena='1'] { background: var(--prob-fill); }
 
-/* --- La proporzione a venti tacche ---------------------------------------
-   Cento tacche non si contano, venti si: una tacca ogni cinque pronostici.
-   E' la riga di taratura alla sua quarta scala. */
-.scala20 {
-  display: flex;
-  align-items: stretch;
-  gap: 2px;
-  height: 18px;
-  max-width: 280px;
-}
+.quadro__perche { margin-block-start: var(--s-5); }
 
-.scala20__tacca {
-  flex: 1 1 0;
-  background: var(--ink);
-}
+/* --- Le probabilità grezze (solo sotto un silenzio) ---------------------- */
 
-.scala20__tacca--vuota {
-  background: transparent;
-  border: 1px solid var(--edge-strong);
-}
-
-/* --- Il «perche'», sotto le celle e dentro la stessa sezione -------------- */
-.quadro__perche {
-  margin-top: var(--s-5);
-  padding-top: var(--s-4);
-  border-top: 1px solid var(--edge);
-}
-
-/* ==========================================================================
-   9. IL SILENZIO SULLA SCHEDA.
-   Il 29% delle partite non ha un pronostico, e quel silenzio e' la
-   funzionalita': deve leggersi come SEVERITA, non come guasto.
-   Vietati qui: icone di avviso, bordo tratteggiato, testo in --ink-3, fondo
-   diverso da --surface, opacita' ridotta, e le parole «errore», «nessun
-   dato», «non disponibile».
-   ========================================================================== */
-.silenzio__testata {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--s-3);
-  margin-top: var(--s-2);
-}
-
-.silenzio__motivo {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  padding: var(--s-1) var(--s-3);
-  background: var(--surface-3);
-  border-radius: var(--radius-tag);
-}
-
-.silenzio__glifo {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-size: 1.25rem;
-  line-height: 1;
-  color: var(--ink);
-}
-
-.silenzio__etichetta {
-  color: var(--ink-2);
-}
-
-/* Il messaggio occupa lo SLOT DELLA CIFRA: la massa visiva e' conservata, ed
-   e' la regola che da sola impedisce al silenzio di sembrare un vuoto. */
-.silenzio__messaggio {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-titolo);
-  font-weight: 400;
-  font-size: var(--fs-h2);
-  line-height: 1.25;
-  letter-spacing: var(--ls-display);
-  color: var(--ink);
-  margin-top: var(--s-4);
-  max-width: 24ch;
-}
-
-.silenzio__lavoro {
-  margin-top: var(--s-4);
-  font-size: var(--fs-body);
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: var(--w-prose);
-}
-
-.silenzio__chip {
-  margin-top: var(--s-4);
-}
-
-.silenzio__grezze {
-  margin-top: var(--s-5);
-}
-
-/* Numeri NUDI, senza barra: la barra e' il linguaggio del «questo lo
-   consigliamo», e darla a numeri che non consigliamo inviterebbe l'occhio a
-   rifare l'argmax che abbiamo tolto di mezzo apposta. */
 .grezze {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-2);
-  margin-top: var(--s-3);
+  gap: var(--s-4);
+  margin-block-start: var(--s-4);
 }
-
-.grezze__voce {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--s-2);
-  padding: var(--s-2) var(--s-3);
-  background: var(--surface-2);
-  border-radius: var(--radius-tag);
-}
-
+.grezze__voce { display: grid; gap: 2px; }
 .grezze__etichetta {
-  font-size: var(--fs-micro);
-  font-weight: 600;
+  font-size: 10px;
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-.grezze__valore {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-size: var(--fs-body);
-  color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
-/* ==========================================================================
-   10. SEZIONI DELLA SCHEDA
-
-   UNA sola riga di taratura apre la parte sotto la piega. Prima ce n'era una
-   per sezione: ripetuta cinque volte smetteva di segnare un confine e
-   diventava un motivo a righe, e le cinque sezioni pesavano tutte uguale.
-   Adesso il confine e' uno, e le sezioni si separano con un filetto — che e'
-   un segno piu' debole, com'e' giusto che sia.
-   ========================================================================== */
-.sotto-la-piega {
-  margin-top: var(--s-7);
-}
-
-.sezione {
-  margin-top: var(--s-6);
-  padding-top: var(--s-5);
-  border-top: 1px solid var(--edge);
-}
-
-.sezione__titolo {
-  display: block;
-}
-
-.ragioni {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-  margin-top: var(--s-4);
-  max-width: var(--w-prose);
-}
-
-.ragioni li {
-  display: grid;
-  grid-template-columns: 1.25rem 1fr;
-  font-size: var(--fs-body);
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-.ragioni li::before {
-  content: '—';
   color: var(--ink-3);
 }
+.grezze__valore { font-family: var(--font-mono); font-size: var(--fs-body-s); color: var(--ink); }
 
-/* --- Le altre famiglie di mercato ---------------------------------------- */
-.famiglie {
-  margin-top: var(--s-4);
-}
+/* --- Il silenzio --------------------------------------------------------- */
 
-.famiglia {
-  border-bottom: 1px solid var(--edge);
-}
-
-.famiglia__somma {
+.silenzio__testata {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--s-3);
-  min-height: var(--tap-min);
-  padding-block: var(--s-2);
-  cursor: pointer;
-  list-style: none;
-  font-family: var(--font-text);
-  font-size: var(--fs-body-s);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--ink);
+  margin-block-end: var(--s-4);
 }
-
-.famiglia__somma::-webkit-details-marker {
-  display: none;
-}
-
-.famiglia__freccia {
-  color: var(--ink-3);
-  transition: transform var(--dur-2) var(--ease);
-}
-
-.famiglia[open] .famiglia__freccia {
-  transform: rotate(90deg);
-}
-
-.famiglia__corpo {
-  padding-bottom: var(--s-4);
-}
-
-.mercato-riga {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s-4);
-  padding-block: var(--s-2);
-  font-size: var(--fs-body-s);
-  color: var(--ink-2);
-}
-
-.mercato-riga__p {
+.silenzio__glifo {
   font-family: var(--font-mono);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--ink-3);
+}
+.silenzio__messaggio {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-display);
   color: var(--ink);
-  white-space: nowrap;
 }
-
-/* --- La rettifica: la revisione delle 36 ore ------------------------------
-   Tiene la propria riga di taratura: una rettifica non e' una sezione fra le
-   altre, ed e' l'unico blocco sotto la piega in cui il prodotto si corregge. */
-.rettifica {
-  margin-top: var(--s-6);
-  background: var(--surface-2);
-}
-
-.rettifica__corpo {
-  padding: var(--s-4) var(--s-4) var(--s-5);
-}
-
-.rettifica__testo {
-  margin-top: var(--s-3);
-  font-size: var(--fs-body);
-  line-height: 1.55;
-  color: var(--ink);
+.silenzio__motivo {
+  margin-block-start: var(--s-3);
   max-width: var(--w-prose);
+  color: var(--ink-2);
+  line-height: var(--lh-prose);
 }
+.silenzio__lavoro,
+.silenzio__grezze { margin-block-start: var(--s-5); }
+.silenzio__chip { margin-block-start: var(--s-5); }
 
-/* Il confronto PRIMA/ORA non e' mai un barrato: il barrato dice «sbagliato»,
-   e qui non c'e' niente di sbagliato — ci sono due stime datate. */
-.confronto {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: var(--s-4);
+/* --- La rettifica -------------------------------------------------------- */
+
+.rettifica {
+  margin-block: var(--s-6);
+  border: 1px solid var(--edge-strong);
 }
+.rettifica__corpo { padding: var(--s-4); display: grid; gap: var(--s-3); }
+.rettifica__testo { color: var(--ink); line-height: var(--lh-body); max-width: var(--w-prose); }
 
+.confronto { font-size: var(--fs-body-s); min-width: 22rem; }
 .confronto th,
-.confronto td {
-  text-align: left;
-  padding: var(--s-2) var(--s-3) var(--s-2) 0;
-  vertical-align: baseline;
-  font-size: var(--fs-body-s);
-}
+.confronto td { padding: var(--s-2) var(--s-3); text-align: start; border-block-end: 1px solid var(--edge); }
+.confronto__prima { color: var(--ink-3); }
+.confronto__mercato { font-weight: 600; }
+.confronto__p { font-family: var(--font-mono); text-align: end; }
+.confronto__ora { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-3); }
+.confronto__freccia { color: var(--ink-3); text-align: center; }
 
-.confronto th {
-  font-size: var(--fs-micro);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
+.micro { font-size: var(--fs-micro); color: var(--ink-3); line-height: var(--lh-body); }
 
-.confronto__mercato {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.confronto__p {
-  font-family: var(--font-mono);
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.confronto__freccia {
-  color: var(--ink-3);
-  padding-block: 0;
-}
-
-/* --- L'esito, a partita conclusa ----------------------------------------- */
-.esito {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--s-3) var(--s-5);
-  margin-top: var(--s-4);
-}
+/* --- L'esito sulla scheda ------------------------------------------------ */
 
 .esito__punteggio {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-titolo);
-  font-weight: 500;
-  font-size: var(--fs-h2);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: var(--ls-cifra);
   color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
 }
-
 .esito__verdetto {
-  font-size: var(--fs-body);
-  color: var(--ink);
+  margin-block-start: var(--s-3);
+  color: var(--ink-2);
+  line-height: var(--lh-body);
+  max-width: var(--w-prose);
 }
-
 .esito--uscito .esito__marca { color: var(--outcome-yes); }
-.esito--non-uscito .esito__marca { color: var(--outcome-no); }
+.esito--mancato .esito__marca { color: var(--outcome-no); }
 
 /* ==========================================================================
-   11. PARTI MINUTE
+   5. IL FONDO — come funziona, rendimento, piede.
    ========================================================================== */
 
-/* Il chip di provenienza. Due stati distinguibili SENZA COLORE: pieno contro
-   tratteggiato. La differenza sopravvive a monocromia e alla stampa. */
-/* IL TRABOCCO ORIZZONTALE, terza comparsa e ultima.
-   «Confronto con le quote» in `nowrap` usciva fino a 109px dal viewport a
-   320-414px con il testo ingrandito al 150-200%, e si leggeva troncato a meta'
-   parola. Non si vedeva perche' `html { overflow-x: clip }` NASCONDE il
-   trabocco: a zoom 100 non c'e' un solo elemento fuori posto, ed e' li' che
-   guardano tutti i controlli.
-   Il correttivo generale in base.css elenca `p, li, dd, dt, td, th, …`: uno
-   `span` non e' in quell'elenco e non veniva raggiunto. Qui la regola sta
-   sull'elemento che ne ha bisogno.
-   Il chip resta l'unico elemento arrotondato del prodotto: `align-items:
-   center` e il padding simmetrico reggono anche su due righe. */
-.chip {
-  display: inline-flex;
+.fondo {
+  padding-block: var(--s-8);
+  border-block-start: 1px solid var(--edge);
+  /* Barra + calendario sono appiccicati in cima: senza questo, un salto a
+     `#come-funziona` porta il titolo della sezione ESATTAMENTE sotto il cromo,
+     e chi ci arriva vede il testo che comincia a meta'. */
+  scroll-margin-block-start: calc(var(--barra-h) + var(--rail-h) + var(--s-4));
+}
+@media (min-width: 768px) {
+  .fondo {
+    scroll-margin-block-start: calc(var(--barra-h-lg) + var(--rail-h) + var(--s-4));
+  }
+}
+.fondo--chiaro { background: var(--surface); }
+
+.fondo__testata {
+  display: grid;
+  gap: var(--s-3);
+  max-width: var(--w-prose);
+  margin-block-end: var(--s-6);
+}
+.fondo__testata .label {
+  display: flex;
   align-items: center;
-  min-height: 24px;
-  padding: 2px var(--s-3);
-  border-radius: 999px;
-  font-family: var(--font-text);
-  font-size: var(--fs-micro);
-  font-weight: 600;
+  gap: var(--s-2);
+}
+
+/* --- Le tre schede «come funziona» --------------------------------------- */
+
+.schede {
+  display: grid;
+  gap: 1px;
+  background: var(--edge);
+  border: 1px solid var(--edge);
+}
+@media (min-width: 860px) {
+  .schede { grid-template-columns: repeat(3, 1fr); }
+}
+
+.scheda-info {
+  display: grid;
+  align-content: start;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--surface-2);
+}
+
+.scheda-info__segno {
+  inline-size: 40px;
+  block-size: 40px;
+  color: var(--segnale);
+}
+
+.scheda-info__titolo {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+}
+
+.scheda-info__corpo {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-prose);
+  color: var(--ink-2);
+}
+
+/* --- Il rendimento ------------------------------------------------------- */
+
+.registro {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+}
+/* `min-width: 0` NON È DECORATIVO. Un figlio di griglia ha `min-width: auto`,
+   quindi non può stringersi sotto il proprio contenuto minimo: la tavola
+   accanto imponeva la propria larghezza alla traccia, e la traccia alla
+   pagina. È così che una tabella in fondo alla pagina faceva scorrere in
+   orizzontale tutto il sito a 360px. */
+.registro > * { min-width: 0; }
+
+@media (min-width: 900px) {
+  .registro { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: var(--s-8); }
+}
+
+.registro__perno {
+  padding: var(--s-5);
+  background: var(--surface-2);
+  border: 1px solid var(--edge);
+}
+
+.registro__unita {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  max-width: 100%;
-  text-align: center;
-}
-
-.chip--pieno {
-  background: var(--surface-3);
-  border: 1px solid var(--edge-strong);
-  color: var(--ink);
-}
-
-.chip--vuoto {
-  background: transparent;
-  border: 1px dashed var(--edge-strong);
   color: var(--ink-2);
+  margin-block-start: var(--s-2);
 }
 
-/* La versione da riga di lista: minuscola, dentro la riga del mercato. */
-.chip--riga {
-  min-height: 0;
-  padding: 0 var(--s-1);
-  border-radius: var(--radius-tag);
+.registro__fonte {
+  margin-block-start: var(--s-4);
+  padding-block-start: var(--s-4);
+  border-block-start: 1px solid var(--edge);
   font-size: var(--fs-micro);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  flex: 0 0 auto;
-}
-
-/* Il tag di transizione in coda alla riga di lista. */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--s-1);
-  border: 1px solid var(--edge-strong);
-  border-radius: var(--radius-tag);
-  font-size: var(--fs-micro);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-2);
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-
-/* ==========================================================================
-   COME SI LEGGE — i tre riquadri con icona in cima alla giornata.
-
-   Sostituiscono il paragrafo di prosa che spiegava il metodo. In cima a uno
-   strumento di consultazione un blocco di testo non viene letto, viene
-   scavalcato: tre riquadri con un'icona, un titolo corto e una riga sola si
-   guardano invece di leggersi.
-
-   LARGHI QUANTO LA LISTA. Stavano dentro tre riquadri con il proprio fondo,
-   dentro la colonna, su fondo pagina: sul telefono lasciavano due margini che
-   la lista sotto non aveva, e la pagina si leggeva a due larghezze diverse.
-   Ora stanno sulla fascia — la stessa superficie della lista — e il filetto
-   alto da 2px corre continuo da un bordo all'altro, con i tre riquadri
-   appesi sotto e separati da un capello verticale.
-
-   Tre colonne da 768px, una sola sotto — la stessa soglia della riga di
-   lista. Impilati anche sul tablet costavano 530px prima della prima partita:
-   in uno strumento di consultazione la spiegazione non puo' pesare piu' di
-   mezza schermata.
-   ========================================================================== */
-.spiegazione {
-  display: grid;
-  gap: 0;
-}
-
-.riquadro {
-  padding-block: var(--s-5);
-  border-top: 2px solid var(--edge-strong);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-  min-width: 0;
-}
-
-@media (min-width: 768px) {
-  .spiegazione {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .riquadro {
-    padding-inline: var(--s-5);
-  }
-
-  /* Le due colonne esterne si allineano al contenuto della lista: il riquadro
-     non si scosta di 24px da cio' che gli sta sotto. */
-  .riquadro:first-child {
-    padding-inline-start: 0;
-  }
-
-  .riquadro:last-child {
-    padding-inline-end: 0;
-  }
-
-  .riquadro + .riquadro {
-    border-left: 1px solid var(--edge);
-  }
-}
-
-.riquadro__icona {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
-  color: var(--ink-2);
-  flex: 0 0 auto;
-}
-
-.riquadro__titolo {
-  font-family: var(--font-text);
-  font-size: var(--fs-body);
-  font-weight: 600;
-  line-height: var(--lh-tight);
-  color: var(--ink);
-  letter-spacing: 0;
-}
-
-.riquadro__testo {
-  font-size: var(--fs-body-s);
   line-height: var(--lh-body);
-  color: var(--ink-2);
+  color: var(--ink-3);
 }
 
-.riquadro__testo b {
-  color: var(--ink);
+.registro__uscite { color: var(--outcome-yes); font-weight: 500; }
+
+/* L'INTESTAZIONE STA SOPRA IL SUO NUMERO. In una tavola di soli numeri le
+   intestazioni allineate a sinistra e i valori allineati a destra si separano
+   di trecento pixel, e la colonna smette di leggersi come colonna. */
+.registro__tavola .tabella { max-width: 36rem; }
+.registro__tavola .tabella thead th + th { text-align: end; }
+
+/* Quattro colonne corte stanno in 328px solo se smettono di portarsi dietro il
+   respiro pensato per 1440: qui l'incolonnamento vale più del padding, perché
+   è il confronto fra «dichiarato» e «usciti» tutta la ragione della tavola. */
+@media (max-width: 599px) {
+  .registro__tavola .tabella th,
+  .registro__tavola .tabella td { padding-inline: var(--s-1); }
+  .registro__tavola .tabella thead th { white-space: normal; letter-spacing: 0.04em; }
+}
+
+.registro__lettura {
+  margin-block-start: var(--s-4);
+  max-width: var(--w-prose);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+/* --- Il registro dal vivo ------------------------------------------------ */
+
+.vivo {
+  margin-block-start: var(--s-7);
+  padding: var(--s-5);
+  border: 1px solid var(--edge);
+  border-inline-start: 3px solid var(--segnale);
+  display: grid;
+  gap: var(--s-3);
+  max-width: var(--w-prose);
+}
+
+.vivo__riga { line-height: var(--lh-body); color: var(--ink); }
+.vivo__riga strong {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
   font-weight: 600;
+  font-size: 1.25rem;
+}
+.vivo__avviso,
+.vivo__registro {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
 }
 
-/* ==========================================================================
-   LA RIGA DELLE REVISIONI, in testa alla lista.
-   Compare solo nei giorni in cui qualcosa e' cambiato davvero, e descrive la
-   lista che le sta sotto — non la giornata.
-   ========================================================================== */
-.lista__revisioni {
-  padding-block: var(--s-4);
-  padding-inline: var(--s-3);
-  font-size: var(--fs-body-s);
-  line-height: 1.5;
-  color: var(--ink-2);
+/* --- Il piede ------------------------------------------------------------ */
+
+.piede {
   background: var(--surface);
+  border-block-start: 1px solid var(--edge);
+  padding-block: var(--s-7);
 }
 
-@media (min-width: 768px) {
-  .lista__revisioni {
-    padding-inline: var(--s-4);
-  }
+/* Il limite di misura sta sulle RIGHE, non sul contenitore: messo sul
+   contenitore sostituiva il `max-width` della colonna e, con `margin-inline:
+   auto` ereditato, spostava tutto il piede al centro di 1440px mentre il resto
+   della pagina comincia a sinistra. */
+.piede__interno { display: grid; gap: var(--s-3); }
+.piede__riga, .piede__marchio { max-width: var(--w-prose); }
+
+.piede__marchio {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-weight: 700;
+  font-size: var(--fs-marchio);
+  letter-spacing: var(--ls-logo);
+  text-transform: uppercase;
+  color: var(--ink);
 }
+
+.piede__riga { font-size: var(--fs-body-s); line-height: var(--lh-body); color: var(--ink-2); }
+.piede__riga--minuta { font-size: var(--fs-micro); color: var(--ink-3); }

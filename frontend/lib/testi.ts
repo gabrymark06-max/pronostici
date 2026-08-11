@@ -316,12 +316,15 @@ export function etichettaFascia(chiave: string): string {
 /**
  * IL NOME DEL PRODOTTO, in un posto solo.
  *
- * «Novanta» viene dalla firma del prodotto — «90 su 100», la sola forma in cui
- * una probabilita' entra in pagina — e dai novanta minuti. Ogni punto in cui
- * il sito dice come si chiama legge da qui: la testata, il `<title>`, i
- * metadati. Non si scrive a mano da nessun'altra parte.
+ * «CENTRO» viene da «fare centro»: è ciò che il prodotto promette e ciò su cui
+ * accetta di essere misurato in pubblico, partita per partita, con il registro
+ * aperto. È anche il nome del segno — due quadri concentrici con il centro
+ * pieno — così nome e marchio dicono la stessa cosa invece di due.
+ *
+ * Ogni punto in cui il sito dice come si chiama legge da qui: la testata, il
+ * `<title>`, i metadati. Non si scrive a mano da nessun'altra parte.
  */
-export const MARCHIO = 'Novanta';
+export const MARCHIO = 'CENTRO';
 
 /** La riga che accompagna il nome nel titolo del sito e nei metadati. */
 export const PAYOFF = 'un pronostico per partita, e il silenzio quando non c’è';

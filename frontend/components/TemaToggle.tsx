@@ -39,10 +39,10 @@ function istantaneaServer(): Tema {
   return 'dark';
 }
 
-/* --surface-2 nei due temi: e' il fondo della testata, cioe' la superficie che
+/* --surface-2 nei due temi: e' il fondo della barra, cioe' la superficie che
    tocca il cromo del browser. Deve restare allineato a `themeColor` in
    app/layout.tsx e allo script che applica il tema prima del primo paint. */
-const META: Record<Tema, string> = { dark: '#151A20', light: '#E3E8ED' };
+const META: Record<Tema, string> = { dark: '#191F26', light: '#EDF1F5' };
 
 export function TemaToggle() {
   const tema = useSyncExternalStore(sottoscrivi, istantanea, istantaneaServer);

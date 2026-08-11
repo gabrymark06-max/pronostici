@@ -1,50 +1,57 @@
-import { GIOCO_RESPONSABILE, REPO } from '@/lib/testi';
-
+import { ANCORA_FUNZIONAMENTO, ANCORA_REGISTRO } from './ancore';
 import { Marchio } from './Marchio';
 import { TemaToggle } from './TemaToggle';
 
 /**
- * LA TESTATA.
+ * LA BARRA DI NAVIGAZIONE.
  *
- * Prima era una riga sottile: marchio in serif e due bottoni squadrati a
- * destra, alta quanto un filetto. Un prodotto che si presenta con un filetto
- * non si presenta. Ora e' una barra: il segno a sinistra, le voci con icona ed
- * etichetta accanto, i comandi a destra, e un confine netto sotto.
+ * L'impianto è quello dei tabelloni di risultati (diretta.it): barra alta e
+ * piena larghezza, marchio ben visibile a sinistra, voci con etichetta subito
+ * dopo, comandi dell'utente all'estremo destro, confine netto sotto. Di loro
+ * si prende la MECCANICA e le proporzioni, mai il marchio né i colori.
  *
- * L'impianto e' quello dei tabelloni di risultati (diretta.it): logo ben
- * visibile a sinistra, voci con icona + etichetta subito dopo, comandi
- * dell'utente all'estremo destro. Di loro si prende la MECCANICA, mai il
- * marchio ne' i colori: la nostra identita' resta acromatica.
+ * 72px da 768px in su. Le versioni precedenti stavano fra 52 e 56, ed è la
+ * ragione per cui il prodotto si presentava con quello che sembrava un
+ * filetto: sotto i ~64px una barra non ha spazio per un marchio letto come
+ * marchio, e diventa un bordo dello schermo.
  *
- * LE VOCI SONO TRE PERCHE' TRE SONO LE COSE VERE. Non c'e' un menu inventato:
- * «Oggi» porta al giorno di apertura, e le altre due sono i rimandi che devono
- * esistere sempre — il codice pubblico e il numero verde. Vivevano nel piede,
- * che e' stato tolto; qui sono piu' visibili di quanto siano mai state in
- * fondo alla pagina.
+ * LE VOCI SONO QUATTRO E SONO TUTTE VERE. Non c'è un menu inventato per
+ * riempire: «Oggi» porta al giorno di apertura, «Come funziona» e
+ * «Registro» sono le due ancore in fondo alla pagina, «Codice» è il
+ * repository pubblico. Il numero verde e la riga sulla gratuità stanno nel
+ * piede, che è il posto in cui si guardano davvero.
  *
- * Il confine con il contenuto e' la riga di taratura a piena larghezza: lo
- * stesso segno del marchio, alla scala della pagina.
- *
- * Nessun hamburger a nessuna larghezza: sotto i 768px la barra passa su due
- * livelli invece di nascondere le voci dietro un bottone.
+ * NESSUN HAMBURGER A NESSUNA LARGHEZZA. Sotto i 768px la barra tiene marchio e
+ * comandi sul primo livello e fa scorrere le voci orizzontalmente sul secondo:
+ * quattro voci non si nascondono dietro un bottone.
  */
 export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
   const casa = giornoApertura ? `/giorno/${giornoApertura}/` : '/';
 
   return (
-    <header className="testata">
-      <div className="colonna colonna--lista testata__interno">
+    <header className="barra">
+      <div className="colonna colonna--pagina barra__interno">
         <Marchio href={casa} />
 
-        <nav className="testata__voci" aria-label="Sezioni">
+        <nav className="barra__voci" aria-label="Sezioni">
           <a className="voce" href={casa}>
             <IconaGiornata />
             <span className="voce__nome">Oggi</span>
           </a>
 
+          <a className="voce" href={`${casa}#${ANCORA_FUNZIONAMENTO}`}>
+            <IconaBersaglio />
+            <span className="voce__nome">Come funziona</span>
+          </a>
+
+          <a className="voce" href={`${casa}#${ANCORA_REGISTRO}`}>
+            <IconaRegistro />
+            <span className="voce__nome">Registro</span>
+          </a>
+
           <a
-            className="voce"
-            href={REPO}
+            className="voce voce--esterna"
+            href="https://github.com/GabrieleMarchesini2006/pronostici"
             rel="noopener noreferrer"
             target="_blank"
             /* Il nome accessibile comincia col testo visibile (WCAG 2.5.3):
@@ -54,47 +61,34 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
             <IconaCodice />
             <span className="voce__nome">Codice</span>
           </a>
-
-          <a
-            className="voce"
-            href={GIOCO_RESPONSABILE.href}
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label={`Numero verde — ${GIOCO_RESPONSABILE.testo}. Si apre in una nuova scheda`}
-          >
-            <IconaVerde />
-            <span className="voce__nome">Numero verde</span>
-          </a>
         </nav>
 
-        <div className="testata__comandi">
+        <div className="barra__comandi">
           <TemaToggle />
         </div>
       </div>
-
-      {/* Il confine fra il cromo e il contenuto: l'elemento firma a piena
-          larghezza, fuori dalla colonna perche' il confine e' della pagina. */}
-      <span className="taratura testata__confine" aria-hidden="true" />
     </header>
   );
 }
 
-/* Le icone parlano la stessa lingua dei tre riquadri «come si legge»: tratto a
-   --icon-stroke, terminazioni squadrate, sola geometria ortogonale. Sono
-   decorative: l'etichetta accanto dice gia' tutto a chi ascolta. */
+/* Le icone parlano una lingua sola: tratto a --icon-stroke, terminazioni
+   squadrate, sola geometria ortogonale — la stessa del marchio. Sono
+   decorative: l'etichetta accanto dice già tutto a chi ascolta. */
+
+const COMUNI = {
+  className: 'voce__icona',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 'var(--icon-stroke)',
+  strokeLinecap: 'square' as const,
+  'aria-hidden': true,
+  focusable: 'false' as const,
+};
 
 function IconaGiornata() {
   return (
-    <svg
-      className="voce__icona"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="var(--icon-stroke)"
-      strokeLinecap="square"
-      aria-hidden="true"
-      focusable="false"
-    >
+    <svg {...COMUNI}>
       <path d="M4 6h16v14H4z" />
       <path d="M4 11h16" />
       <path d="M9 4v3" />
@@ -104,40 +98,33 @@ function IconaGiornata() {
   );
 }
 
-function IconaCodice() {
+/** Il bersaglio: la stessa geometria del marchio, a 24px e in solo tratto. */
+function IconaBersaglio() {
   return (
-    <svg
-      className="voce__icona"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="var(--icon-stroke)"
-      strokeLinecap="square"
-      strokeLinejoin="miter"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M9 7l-5 5 5 5" />
-      <path d="M15 7l5 5-5 5" />
+    <svg {...COMUNI}>
+      <path d="M3 3h18v18H3z" />
+      <path d="M8 8h8v8H8z" />
+      <path d="M11 11h2v2h-2z" fill="currentColor" stroke="none" />
     </svg>
   );
 }
 
-function IconaVerde() {
+function IconaRegistro() {
   return (
-    <svg
-      className="voce__icona"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="var(--icon-stroke)"
-      strokeLinecap="square"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M4 4h16v16H4z" />
-      <path d="M12 11v6" />
-      <path d="M12 7v1.5" />
+    <svg {...COMUNI}>
+      <path d="M4 20V13" />
+      <path d="M10 20V8" />
+      <path d="M16 20v-5" />
+      <path d="M22 20V4" />
+    </svg>
+  );
+}
+
+function IconaCodice() {
+  return (
+    <svg {...COMUNI} strokeLinejoin="miter">
+      <path d="M9 7l-5 5 5 5" />
+      <path d="M15 7l5 5-5 5" />
     </svg>
   );
 }

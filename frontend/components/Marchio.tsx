@@ -1,39 +1,35 @@
 import { MARCHIO } from '@/lib/testi';
 
 /**
- * IL MARCHIO — «Novanta».
+ * IL MARCHIO — «CENTRO».
  *
- * Il nome viene da due parti dello stesso prodotto: la firma numerica («90 su
- * 100», la sola forma in cui una probabilita' entra in pagina) e i novanta
- * minuti. Non e' una parola inventata per sembrare un marchio: e' l'unita' di
- * misura del sito.
+ * Il nome viene da «fare centro»: ciò che il prodotto promette e ciò su cui
+ * accetta di essere misurato in pubblico. Il segno è la stessa cosa detta in
+ * geometria — un bersaglio ridotto all'osso: quadro esterno a filetto, quadro
+ * interno a filetto, centro pieno in vermiglio.
  *
- * IL SEGNO e' l'elemento firma applicato a se stesso. La riga di taratura —
- * la scala a tacche che apre ogni blocco in cui il prodotto si espone — viene
- * chiusa dentro un quadro pieno e ridotta a sette graduazioni in negativo.
- * L'ultima e' alta il triplo delle altre: e' l'estremo alto della scala, il
- * solo punto in cui questo prodotto parla, ed e' la stessa geometria che sulla
- * scheda porta la cifra.
+ * PERCHÉ QUADRATI E NON CERCHI. Tutta la pagina è a spigolo vivo — lastre,
+ * righe, celle, tag. Un bersaglio circolare sarebbe l'unica curva della
+ * schermata, e un elemento firma che non appartiene alla griglia non firma
+ * niente. Il quadro concentrico invece ricompare identico a due scale più
+ * piccole: come punto elenco di ogni titolo di sezione, e come marca del
+ * pronostico più forte della giornata.
+ *
+ * A 20px il quadro interno e il centro sono ancora due forme distinte: è la
+ * ragione per cui gli anelli sono due e non tre.
  *
  * Un solo SVG in linea: nessun raster, nessuna emoji, nessuna libreria di
- * icone. I due colori vengono dai token via classe CSS — un attributo di
- * presentazione non risolve `var()`, quindi `fill` sta nel foglio di stile e
- * non qui.
+ * icone. I colori vengono dai token via classe CSS — un attributo di
+ * presentazione non risolve `var()`, quindi `fill` sta nel foglio di stile.
  */
 export function Marchio({ href }: { href: string }) {
   return (
-    <a className="marchio" href={href} aria-label={`${MARCHIO} — vai al giorno di apertura`}>
+    <a className="marchio" href={href} aria-label={`${MARCHIO} — vai alle partite di oggi`}>
       <svg className="marchio__segno" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect className="marchio__quadro" x="0" y="0" width="32" height="32" />
-        <g className="marchio__tacche">
-          <rect x="3" y="13" width="2" height="6" />
-          <rect x="7" y="13" width="2" height="6" />
-          <rect x="11" y="13" width="2" height="6" />
-          <rect x="15" y="13" width="2" height="6" />
-          <rect x="19" y="13" width="2" height="6" />
-          <rect x="23" y="13" width="2" height="6" />
-          <rect x="27" y="7" width="2" height="18" />
-        </g>
+        {/* Quadro esterno: filetto di 2, quindi inset di 1 sui bordi. */}
+        <rect className="marchio__anello" x="1" y="1" width="30" height="30" />
+        <rect className="marchio__anello" x="8" y="8" width="16" height="16" />
+        <rect className="marchio__centro" x="13" y="13" width="6" height="6" />
       </svg>
       <span className="marchio__nome">{MARCHIO}</span>
     </a>

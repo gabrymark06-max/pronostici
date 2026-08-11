@@ -1,16 +1,7 @@
 /* ==========================================================================
-   Base — il telaio. v4, direzione "tabellone notturno" (tokens.css).
-
-   La profondita' viene da TRE cose e da nessun'altra:
-     1. il piano   — --ground < --surface < --surface-2 < --surface-3,
-                     quattro gradini vicinissimi (max 1.25:1 fra due)
-     2. l'allineamento — le colonne della lista si incolonnano lungo tutta
-                     la pagina; e' l'allineamento a fare la struttura, non il
-                     filetto
-     3. il taglio  — sotto i 1024px le superfici toccano i bordi dello schermo
-
-   Vietati in tutto il file: box-shadow, blur, backdrop-filter, gradienti di
-   colore, translateY in hover. Nessun hex grezzo, nessun px magico.
+   BASE — azzeramento, telaio della pagina, primitive di struttura.
+   v7, direzione "tabellone con un segnale" (tokens.css).
+   I colori e le misure vengono TUTTI da tokens.css: qui non esiste un hex.
    ========================================================================== */
 
 *,
@@ -25,25 +16,25 @@ body {
   padding: 0;
 }
 
-/* `clip` invece di `hidden`: non crea uno scrollport, quindi non rompe
-   `position: sticky` sulla barra dei giorni e sulle testate di campionato. */
+/* `min-height: 100%` invece di 100vh: su iOS la barra dell'indirizzo entra e
+   esce, e 100vh fa saltare l'altezza della pagina a ogni scorrimento. */
 html {
-  overflow-x: clip;
+  min-height: 100%;
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
+  /* Il fondo pagina deve reggere anche quando il contenuto è più corto della
+     finestra, o sotto il piede si vede il bianco del browser. */
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
 }
 
 main {
   flex: 1 0 auto;
-  width: 100%;
 }
 
-h1, h2, h3, p, ul, ol, figure, table {
+h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol {
   margin: 0;
 }
 
@@ -52,686 +43,241 @@ ul, ol {
   list-style: none;
 }
 
-img {
+img, svg {
+  display: block;
   max-width: 100%;
-}
-
-/* IL TRABOCCO ORIZZONTALE, chiuso alla radice.
-   `html { overflow-x: clip }` NASCONDE il trabocco: scrollWidth non supera mai
-   clientWidth, quindi il sintomo sparisce dai controlli e il contenuto viene
-   tagliato in silenzio. La cura vera e' permettere a QUALUNQUE parola troppo
-   lunga di andare a capo. `anywhere` invece di `break-word` perche' solo
-   `anywhere` fa contrarre anche la larghezza minima intrinseca del
-   contenitore, che e' cio' che spinge fuori una griglia (WCAG 1.4.10). */
-:where(p, li, dd, dt, td, th, figcaption, h1, h2, h3, blockquote) {
-  overflow-wrap: anywhere;
 }
 
 button {
   font: inherit;
   color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
-em {
-  font-style: italic;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------
-   Ancoraggio verticale. Appiccicate ci sono DUE cose e solo due: la barra dei
-   giorni (44px) e la testata del campionato in cui stai scorrendo (44px).
-   La riga del marchio scorre via: con due pagine sole non c'e' niente da
-   navigare da li', mentre il giorno si cambia in continuazione.
+   IL SALTO AL CONTENUTO. Fuori campo finché non riceve il fuoco; a quel punto
+   è un bersaglio pieno da 44px, non un filo di testo.
    -------------------------------------------------------------------------- */
-:root {
-  --h-appiccicato: var(--rail-h);
+.salta-al-contenuto {
+  position: fixed;
+  inset-block-start: var(--s-2);
+  inset-inline-start: var(--s-2);
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: var(--s-2) var(--s-4);
+  background: var(--segnale);
+  color: var(--segnale-ink);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--dur-1) var(--ease);
 }
-
-:target {
-  scroll-margin-top: calc(var(--h-appiccicato) + var(--lega-h));
+.salta-al-contenuto:focus-visible {
+  transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
-   Misure di pagina. Due impianti:
-     .colonna  — colonna singola, per la scheda partita e la prosa
-     .scaffale — DUE colonne da 1024px in su: barra dei campionati + lista
+   LE COLONNE. Tre larghezze dichiarate, una per tipo di contenuto.
+
+   `--pagina` è la più larga e serve SOLO alla barra di navigazione: il cromo
+   usa lo schermo intero, il contenuto no. `--lista` è la lista delle partite.
+   `--scheda` è la prosa e la scheda di una partita, dove una riga lunga 1400px
+   sarebbe illeggibile.
+
+   La pagina usa lo schermo. Una versione precedente fermava la lista a 1000px
+   dentro una pagina da 1264: su un monitor da 1920 restavano 650px di vuoto ai
+   lati mentre le colonne dentro si accalcavano. La densità non si ottiene
+   stringendo la pagina — si ottiene mettendo più righe nella stessa altezza.
    -------------------------------------------------------------------------- */
 .colonna {
   width: 100%;
-  max-width: var(--w-page);
   margin-inline: auto;
   padding-inline: var(--s-4);
 }
 
+.colonna--pagina  { max-width: var(--w-page); }
+.colonna--lista   { max-width: var(--w-list); }
+.colonna--scheda  { max-width: var(--w-card); }
+
 @media (min-width: 768px) {
-  .colonna {
-    padding-inline: var(--s-5);
-  }
+  .colonna { padding-inline: var(--s-5); }
+}
+@media (min-width: 1280px) {
+  .colonna { padding-inline: var(--s-6); }
 }
 
-.colonna--lista {
-  max-width: calc(var(--w-page));
-}
-.colonna--scheda {
-  max-width: calc(var(--w-card) + 2 * var(--s-5));
-}
-.colonna--prosa {
-  max-width: calc(var(--w-prose) + 2 * var(--s-5));
-}
+/* --------------------------------------------------------------------------
+   LA LASTRA — la superficie su cui poggia il contenuto denso.
 
-/* ==========================================================================
-   LO SCAFFALE — l'impianto della giornata.
-
-   Sotto i 1024px: una colonna sola, e la lista tocca i bordi dello schermo
-   (padding-inline 0 sul contenitore, il padding vive dentro la riga). Un
-   documento ha i margini, uno schermo no.
-
-   Da 1024px: due colonne. A sinistra la barra dei campionati, che permette di
-   saltare a un campionato e da' al prodotto la forma che chi arriva da un
-   sito di risultati si aspetta. A destra la lista, larga --w-list.
-   ========================================================================== */
-.scaffale {
-  width: 100%;
-  max-width: var(--w-page);
-  margin-inline: auto;
-}
-
-.scaffale__lista {
-  min-width: 0;
-}
-
-@media (min-width: 1024px) {
-  .scaffale {
-    display: grid;
-    grid-template-columns: var(--barra-w) minmax(0, 1fr);
-    align-items: start;
-    gap: var(--s-5);
-    padding-inline: var(--s-5);
-  }
-
-  .scaffale__lista {
-    max-width: var(--w-list);
-  }
-}
-
-/* La lastra della lista: la superficie su cui stanno i gruppi. */
+   Sotto i 900px tocca i bordi dello schermo: un documento ha i margini, uno
+   schermo no. Sopra, si stacca dal fondo e porta un filetto che la chiude.
+   -------------------------------------------------------------------------- */
 .lastra {
   background: var(--surface);
+  border-block: 1px solid var(--edge);
 }
 
-/* LA FASCIA — la superficie che sta fra la barra dei giorni e la lista.
-   Ha lo stesso fondo della barra e della lastra e nessun margine in alto: fra
-   il calendario e cio' che segue non resta una banda di fondo pagina, e la
-   striscia dei giorni si attacca pulita a quello che comanda.
-   Il respiro sta DENTRO: e' il padding della fascia a staccare i riquadri dal
-   calendario sopra e dai pronostici sotto, e i riquadri sono larghi quanto la
-   lista perche' stanno nella stessa colonna, sulla stessa superficie. */
-.fascia {
-  background: var(--surface);
-  margin-bottom: var(--s-6);
+.lastra + .lastra {
+  border-block-start: 0;
 }
 
-.fascia__interno {
-  padding-block: var(--s-6);
-}
-
-@media (min-width: 768px) {
-  .fascia__interno {
-    padding-block: var(--s-7);
-  }
-}
-
-@media (min-width: 1024px) {
-  .lastra--scheda {
-    max-width: calc(var(--w-card) + 2 * var(--s-5));
+@media (min-width: 900px) {
+  .lastra {
+    max-width: calc(var(--w-list) + var(--s-6) * 2);
     margin-inline: auto;
+    margin-block: var(--s-5);
+    border: 1px solid var(--edge);
   }
-}
-
-/* Il padding orizzontale DENTRO la lista: lo portano le righe, non il
-   contenitore, cosi' l'evidenziazione al passaggio arriva ai bordi. */
-.pad-lista {
-  padding-inline: var(--s-3);
-}
-
-@media (min-width: 768px) {
-  .pad-lista {
-    padding-inline: var(--s-4);
+  .lastra--testa,
+  .lastra--pronostico {
+    max-width: calc(var(--w-card) + var(--s-6) * 2);
+  }
+  .lastra + .lastra {
+    border-block-start: 1px solid var(--edge);
+    margin-block-start: 0;
   }
 }
 
 /* --------------------------------------------------------------------------
-   Tipografia di servizio.
+   SEZIONI di prosa e di dato, fuori dalla lastra.
    -------------------------------------------------------------------------- */
-.micro {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  color: var(--ink-3);
-  letter-spacing: 0.01em;
+.sezione {
+  padding-block: var(--s-6);
+  border-block-start: 1px solid var(--edge);
+}
+.sezione:first-child {
+  border-block-start: 0;
 }
 
-.corpo {
-  font-size: var(--fs-body);
+.sezione__titolo {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-block-end: var(--s-4);
+}
+
+.sezione__lettura {
+  max-width: var(--w-prose);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-prose);
+  margin-block-end: var(--s-5);
+}
+
+.sezione__nota {
+  max-width: var(--w-prose);
+  color: var(--ink-3);
+  font-size: var(--fs-micro);
   line-height: var(--lh-body);
-  color: var(--ink);
+  margin-block-start: var(--s-4);
 }
 
 /* --------------------------------------------------------------------------
-   Salta al contenuto
+   TAVOLE. Una tavola larga scorre DENTRO il proprio contenitore: la pagina non
+   scorre mai in orizzontale, a nessuna larghezza.
    -------------------------------------------------------------------------- */
-.salta-al-contenuto {
-  position: absolute;
-  left: var(--s-3);
-  top: var(--s-3);
-  z-index: 40;
-  transform: translateY(-200%);
-  background: var(--segnale);
-  color: var(--segnale-ink);
-  /* Era alto 43px: mancava un pixel al bersaglio minimo, ed e' il primo
-     comando che incontra chi naviga da tastiera. */
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap-min);
-  padding: var(--s-3) var(--s-4);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: transform var(--dur-1) var(--ease);
-}
-
-.salta-al-contenuto:focus {
-  transform: translateY(0);
-}
-
-/* ==========================================================================
-   LA TESTATA — v6. UNA BARRA, NON UNA RIGA.
-
-   Prima era alta 56px e conteneva un logotipo e due bottoni squadrati: si
-   leggeva come un filetto, non come la testa del prodotto. Ora e' una barra
-   piena, alta 76px da 768px in su, con l'impianto dei tabelloni di risultati:
-   segno a sinistra, voci con icona ed etichetta subito dopo, comandi
-   dell'utente all'estremo destro.
-
-   IL CONFINE CON IL CONTENUTO E' L'ELEMENTO FIRMA: la riga di taratura a
-   piena larghezza, non un bordo da 1px che spariva sul fondo quasi nero.
-
-   Sotto i 768px la barra passa su DUE LIVELLI — marchio e comandi sopra, le
-   voci sotto — invece di nascondere le voci dietro un hamburger. Non c'e'
-   niente da nascondere: sono tre.
-   ========================================================================== */
-.testata {
-  background: var(--surface-2);
-}
-
-.testata__interno {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    'marchio comandi'
-    'voci    voci';
-  align-items: center;
-}
-
-.testata__interno > .marchio {
-  grid-area: marchio;
-  min-height: var(--testata-h);
-}
-
-.testata__comandi {
-  grid-area: comandi;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--s-2);
-  min-width: 0;
-}
-
-/* Le voci: sotto i 768px sono il secondo livello, separate dal primo da un
-   filetto. Vanno a capo se il testo e' ingrandito, mai fuori dallo schermo. */
-.testata__voci {
-  grid-area: voci;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 var(--s-2);
-  min-height: var(--testata-voci-h);
-  margin-inline: calc(-1 * var(--s-2));
-  border-top: 1px solid var(--edge);
-}
-
-/* La riga di taratura che chiude la barra: e' della PAGINA, quindi sta fuori
-   dalla colonna e arriva ai due bordi dello schermo. */
-.testata__confine {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .testata__interno {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    grid-template-areas: 'marchio voci comandi';
-    column-gap: var(--s-6);
-    min-height: var(--testata-h-lg);
-  }
-
-  /* `0` azzerava anche il bersaglio tattile, e con due classi + combinatore
-     questa regola batte per specificita' quella su `.marchio`. L'intento era
-     impedire al marchio di dettare l'altezza della barra: `--tap-min` (44px)
-     sta sotto `--testata-h-lg` (76px), quindi l'intento e' salvo e il
-     bersaglio resta a norma. */
-  .testata__interno > .marchio {
-    min-height: var(--tap-min);
-  }
-
-  .testata__voci {
-    min-height: 0;
-    border-top: 0;
-    gap: 0 var(--s-3);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   IL MARCHIO — «Novanta»: il segno + il logotipo.
-   Il segno e' la riga di taratura chiusa in un quadro pieno; il logotipo e'
-   in Newsreader, la stessa famiglia della cifra. La taratura non sta piu'
-   SOTTO le lettere: adesso e' dentro il quadro, dove e' un segno e non una
-   sottolineatura.
-   -------------------------------------------------------------------------- */
-/* Il marchio e' un collegamento vero (porta alla giornata di apertura), quindi
-   il bersaglio da 44px vale anche per lui: era 134x36. Il segno resta della
-   sua misura, cresce solo l'area cliccabile. */
-.marchio {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-3);
-  text-decoration: none;
-  color: var(--ink);
-  min-width: 0;
-  min-height: var(--tap-min);
-}
-
-.marchio__segno {
-  width: var(--marchio-quadro);
-  height: var(--marchio-quadro);
-  flex: 0 0 auto;
-  /* Il quadro e' pieno di osso: nel tema chiaro e' pieno d'inchiostro. Il
-     valore viene dai token, non da un attributo di presentazione, perche' un
-     attributo SVG non risolve var(). */
-}
-
-.marchio__quadro {
-  fill: var(--ink);
-}
-
-/* Le tacche sono in NEGATIVO: il colore e' quello della barra, cosi' il segno
-   resta lo stesso oggetto nei due temi senza una seconda regola. */
-.marchio__tacche {
-  fill: var(--surface-2);
-}
-
-.marchio__nome {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-lega);
-  font-weight: 600;
-  font-size: var(--fs-marchio);
-  line-height: 1;
-  letter-spacing: var(--ls-marchio);
-  color: var(--ink);
-  min-width: 0;
-}
-
-@media (min-width: 768px) {
-  .marchio__segno {
-    width: var(--marchio-quadro-lg);
-    height: var(--marchio-quadro-lg);
-  }
-
-  .marchio__nome {
-    font-size: var(--fs-marchio-lg);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   LE VOCI — icona + etichetta, come su un tabellone di risultati.
-   Tre voci, e sono tutte vere: il giorno di apertura, il codice pubblico e il
-   numero verde. Le ultime due vivevano nel piede, che non c'e' piu'.
-   L'affordance non e' il passaggio del mouse: e' l'icona accanto alla parola,
-   dentro un <nav>, con il bersaglio da 44px pieni.
-   -------------------------------------------------------------------------- */
-.voce {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  min-height: var(--tap-min);
-  padding-inline: var(--s-2);
-  color: var(--ink-2);
-  text-decoration: none;
-  font-family: var(--font-text);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
-}
-
-.voce:hover {
-  background: var(--surface-3);
-  color: var(--ink);
-  border-bottom-color: var(--ink-3);
-}
-
-.voce:active {
-  background: var(--surface);
-}
-
-.voce__icona {
-  width: var(--icon-md);
-  height: var(--icon-md);
-  flex: 0 0 auto;
-}
-
-/* A 375px e sotto le tre voci stanno su una riga sola solo senza il padding
-   di cortesia: si stringe l'intorno, mai il bersaglio, che resta alto 44px. */
-@media (max-width: 400px) {
-  .voce {
-    padding-inline: var(--s-1);
-    gap: var(--s-1);
-  }
-}
-
-/* Bottone di servizio. Non e' un raggio da 8px su tutto: la struttura del
-   prodotto e' a spigolo vivo, e i controlli hanno 2px per distinguersi. */
-.bottone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--s-2);
-  min-height: var(--tap-min);
-  min-width: var(--tap-min);
-  padding-inline: var(--s-3);
-  background: transparent;
-  border: 1px solid var(--edge-strong);
-  border-radius: var(--radius-tag);
-  color: var(--ink-2);
-  font-family: var(--font-text);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background-color var(--dur-2) var(--ease),
-              color var(--dur-2) var(--ease),
-              border-color var(--dur-2) var(--ease);
-}
-
-.bottone:hover {
-  background: var(--surface-2);
-  color: var(--ink);
-  border-color: var(--ink-3);
-}
-
-.bottone:active {
-  background: var(--surface-3);
-}
-
-/* Il quadratino di stato del tema: pieno per lo scuro, vuoto per il chiaro.
-   La parola resta accanto — il glifo non porta mai il significato da solo. */
-.bottone__marca {
-  width: 10px;
-  height: 10px;
-  border: 1px solid currentColor;
-  flex: 0 0 auto;
-}
-.bottone__marca--piena { background: currentColor; }
-
-/* ==========================================================================
-   LA BARRA DEI GIORNI — la superficie di controllo del prodotto.
-
-   44px invece dei 66px della v3, e su UNA riga invece che su tre. Ogni voce
-   dice sigla, numero e conteggio delle partite; il conteggio sta sulla stessa
-   riga del numero, non sotto, ed e' quello che ha tolto 22px alla barra senza
-   togliere niente all'informazione.
-
-   Restano <a> reali verso /giorno/{data}: funzionano senza JavaScript, sono
-   condivisibili, e il back del browser fa la cosa giusta senza codice.
-   ========================================================================== */
-.rail {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: var(--surface);
-  border-bottom: 1px solid var(--edge);
-}
-
-.rail__interno {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: var(--s-1);
-  height: var(--rail-h);
-}
-
-.rail__binario {
-  display: flex;
-  align-items: stretch;
-  gap: 1px;
-  min-width: 0;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-}
-
-.rail__binario::-webkit-scrollbar {
-  display: none;
-}
-
-/* Le voci NON si contraggono. `overflow-wrap: anywhere`, che la base mette su
-   ogni <li> per impedire il trabocco orizzontale, e' una proprieta' EREDITATA:
-   arrivava fino alle sigle dei giorni e le mandava a capo lettera per lettera
-   — «D / O / M» in colonna dentro una casella da 62px. Qui la regola si
-   spegne: la casella cresce fino al proprio contenuto, e a scorrere e' il
-   binario, che e' il suo mestiere. */
-.rail__binario > li {
-  flex: 0 0 auto;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-/* Da 768px la finestra dei giorni entra tutta: il binario smette di scorrere
-   e si centra fra le due frecce. */
-@media (min-width: 768px) {
-  .rail__binario {
-    overflow-x: visible;
-    scroll-snap-type: none;
-    flex: 0 1 auto;
-  }
-}
-
-.rail__giorno {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--s-1);
-  flex: 0 0 auto;
-  /* 62px: sono i px che fanno entrare cinque giorni interi a 375px, cosi'
-     resta una sola casella tagliata al bordo — che e' l'affordance dello
-     scorrimento — invece di due. 62 x 44 e' sopra il bersaglio minimo. */
-  min-width: 62px;
-  min-height: var(--tap-min);
-  /* Stretto sul telefono: la casella deve contenere sigla, numero e conteggio
-     su UNA riga — e' cio' che serve a ogni pixel qui — e ogni pixel di padding
-     e' un giorno in meno visibile prima di dover scorrere. */
-  padding-inline: var(--s-1);
-  scroll-snap-align: center;
-  scroll-margin-inline: var(--s-5);
-  text-decoration: none;
-  color: var(--ink-2);
-  background: transparent;
-  border-bottom: 2px solid transparent;
-  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
-}
-
-.rail__giorno:hover {
-  background: var(--surface-2);
-  color: var(--ink);
-}
-
-.rail__giorno:active {
-  background: var(--surface-3);
-}
-
-.rail__sigla {
-  font-family: var(--font-text);
-  font-size: var(--fs-micro);
-  font-weight: 600;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.rail__numero {
-  font-family: var(--font-display);
-  font-variation-settings: 'opsz' var(--opsz-riga);
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
-/* Il conteggio: in alto a destra della voce, minuto. Dice dove vale la pena
-   andare, non solo dove si puo' andare. */
-.rail__conteggio {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  line-height: 1;
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
-/* Giorno corrente: piano pieno + la barra da 2px sotto + aria-current.
-   Tre marche, nessuna delle quali e' il colore. */
-.rail__giorno[aria-current='date'] {
-  background: var(--surface-2);
-  border-bottom-color: var(--segnale);
-  color: var(--ink);
-}
-
-.rail__giorno[aria-current='date'] .rail__conteggio {
-  color: var(--ink-2);
-}
-
-@media (min-width: 768px) {
-  .rail__giorno {
-    min-width: 76px;
-    padding-inline: var(--s-3);
-  }
-}
-
-/* Le frecce fiancheggiano il binario: 44x44 pieni, con un bordo reale. */
-.rail__freccia {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: var(--tap-min);
-  min-height: var(--tap-min);
-  align-self: center;
-  border: 1px solid var(--edge-strong);
-  border-radius: var(--radius-tag);
-  font-size: var(--fs-body);
-  line-height: 1;
-  text-decoration: none;
-  color: var(--ink);
-  transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
-}
-
-.rail__freccia:hover {
-  background: var(--surface-2);
-  border-color: var(--ink-3);
-}
-
-/* Estremo senza giorno: non un link morto, un segno spento e dichiarato. */
-.rail__freccia--spenta {
-  color: var(--ink-3);
-  border-color: var(--edge);
-  cursor: default;
-}
-
-/* --------------------------------------------------------------------------
-   Bersagli tattili.
-   I link che stanno DA SOLI su una riga sono bersagli veri: 44px pieni.
-   I link dentro una frase restano inline — allargarli spezzerebbe
-   l'interlinea, ed e' l'eccezione esplicita di WCAG 2.5.5 ("inline").
-   -------------------------------------------------------------------------- */
-.giorno-vuoto a {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap-min);
-}
-
-/* --- Contenitore per tabelle larghe: scorre il contenitore, mai la pagina - */
 .scorrevole {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  /* Il filetto dice che c'è altro da vedere anche quando la barra di
+     scorrimento è invisibile (il default su macOS e su touch). */
+  border-inline: 1px solid var(--edge);
+  margin-inline: -1px;
 }
 
-/* ==========================================================================
-   Tabelle di sistema.
-   ========================================================================== */
+/* NESSUN `min-width` di default.
+   Una larghezza minima globale sulle tavole sembra prudente e non lo è: a
+   360px trasformava OGNI tavola in un blocco più largo dello schermo, e con
+   `.registro__tavola` dentro una griglia il valore risaliva anche alla
+   colonna accanto, allargando la pagina intera. Le tavole che davvero non
+   possono stringersi si dichiarano una per una (`.confronto`); le altre si
+   impaginano diversamente sotto una certa larghezza. */
 .tabella {
-  width: 100%;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums lining-nums;
+  font-size: var(--fs-body-s);
 }
 
 .tabella caption {
-  text-align: left;
-  font-size: var(--fs-body-s);
-  color: var(--ink-2);
-  padding-bottom: var(--s-3);
+  text-align: start;
+  color: var(--ink-3);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  padding-block-end: var(--s-3);
 }
 
 .tabella th,
 .tabella td {
-  text-align: left;
   padding: var(--s-3);
-  border-bottom: 1px solid var(--edge);
+  text-align: start;
+  border-block-end: 1px solid var(--edge);
   vertical-align: baseline;
 }
 
 .tabella thead th {
-  background: var(--surface-2);
-  font-size: var(--fs-micro);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-espansa);
+  font-size: var(--fs-label);
+  font-weight: 700;
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--ink-3);
+  border-block-end: 1px solid var(--edge-strong);
   white-space: nowrap;
 }
 
 .tabella tbody th {
-  font-weight: 600;
-  font-size: var(--fs-body-s);
+  font-weight: 500;
   color: var(--ink);
 }
 
-.tabella td {
-  font-size: var(--fs-body-s);
-  color: var(--ink);
-}
-
-.tabella .num {
+.tabella td.num,
+.tabella th.num {
+  text-align: end;
   font-family: var(--font-mono);
   white-space: nowrap;
 }
 
-.tabella tbody tr:last-child th,
-.tabella tbody tr:last-child td {
-  border-bottom: none;
+/* --------------------------------------------------------------------------
+   Il giorno senza partite. Non è un silenzio e non deve somigliargli.
+   -------------------------------------------------------------------------- */
+.giorno-vuoto {
+  padding-block: var(--s-9);
+  max-width: var(--w-prose);
+  color: var(--ink-2);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-prose);
+}
+.giorno-vuoto p + p {
+  margin-block-start: var(--s-3);
+}
+
+/* --------------------------------------------------------------------------
+   Elenco di ragioni. Il punto elenco è un quadretto, non un pallino: la pagina
+   non ha curve, e un pallino sarebbe l'unica.
+   -------------------------------------------------------------------------- */
+.ragioni {
+  display: grid;
+  gap: var(--s-3);
+  max-width: var(--w-prose);
+}
+.ragioni li {
+  display: grid;
+  grid-template-columns: 6px 1fr;
+  gap: var(--s-3);
+  color: var(--ink-2);
+  line-height: var(--lh-body);
+}
+.ragioni li::before {
+  content: '';
+  inline-size: 6px;
+  block-size: 6px;
+  margin-block-start: 0.55em;
+  background: var(--edge-strong);
 }

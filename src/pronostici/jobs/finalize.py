@@ -297,6 +297,10 @@ def run(
                             k: round(v["beta"], 3) for k, v in snapshot.devig.items()
                         },
                         "fetched": meta["source"],
+                        # Le quote lorde da mostrare accanto al pronostico.
+                        "prices": {k: round(v, 2) for k, v in snapshot.prices.items()},
+                        "price_scope": snapshot.price_scope,
+                        "price_books": snapshot.price_books,
                     },
                 )
             )

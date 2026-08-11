@@ -1,31 +1,33 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 
 import type { RiepilogoGiorno } from '@/lib/dati';
 import { dataLunga, pezziGiorno } from '@/lib/formato';
 
 /**
- * IL CALENDARIO — la sola superficie di controllo del prodotto, e l'unica
- * cosa appiccicata alla pagina.
+ * IL CALENDARIO — la sola superficie di controllo del prodotto.
  *
- * Cosa non andava nella striscia della v2:
- *  - sette caselle mono strette e tutte uguali, in cui il numero del giorno
- *    non pesava piu' dell'abbreviazione;
- *  - le due frecce spinte agli estremi opposti del contenitore, che a 1440px
- *    finivano a mezzo schermo di distanza dalle caselle e non sembravano piu'
- *    appartenere allo stesso comando;
- *  - nessuna informazione: una casella diceva solo che quel giorno esiste.
+ * Appiccicato subito sotto la barra di navigazione: barra e calendario insieme
+ * sono il cromo, e restano visibili mentre la lista scorre. È la meccanica dei
+ * tabelloni di risultati, dove il primo gesto è sempre «che giorno guardo».
  *
- * Qui le frecce FIANCHEGGIANO il binario, il gruppo e' centrato, e ogni
- * casella porta il proprio numero di partite. Il calendario dice anche dove
- * vale la pena andare, non solo dove si puo' andare.
+ * Ogni casella porta tre cose: la sigla del giorno, il numero, e QUANTE
+ * PARTITE ci sono. La terza è ciò che trasforma il calendario da elenco di
+ * destinazioni in informazione — dice anche dove vale la pena andare.
  *
- * Restano <a> reali verso /giorno/{data}: funzionano senza JavaScript, sono
- * condivisibili, e il back del browser fa la cosa giusta senza codice.
- * L'unico JavaScript porta in vista il giorno corrente quando il binario
- * scorre, e lo fa scrivendo `scrollLeft` invece di `scrollIntoView`: cosi'
- * scorre il binario, mai la pagina.
+ * IERI / OGGI / DOMANI. Sono le tre parole che chi apre un tabellone cerca per
+ * prime, e la sigla del giorno della settimana non le sostituisce. Non si
+ * possono però calcolare a build time: il sito è statico, il calcolo gira una
+ * volta la notte, e una pagina servita il giorno dopo direbbe «OGGI» sul
+ * giorno sbagliato — un errore silenzioso e credibile, il tipo peggiore. Si
+ * calcolano quindi DOPO l'idratazione, sull'orologio di chi guarda: prima di
+ * allora la casella mostra la sigla, che è vera sempre.
+ *
+ * Restano `<a>` reali verso `/giorno/{data}`: funzionano senza JavaScript,
+ * sono condivisibili, e il tasto indietro fa la cosa giusta senza codice.
+ * L'altro JavaScript porta in vista il giorno corrente scrivendo `scrollLeft`
+ * invece di `scrollIntoView`: così scorre il binario, mai la pagina.
  */
 export function Calendario({
   giorni,
@@ -40,6 +42,13 @@ export function Calendario({
 }) {
   const binario = useRef<HTMLUListElement>(null);
   const attivo = useRef<HTMLAnchorElement>(null);
+
+  /* L'orologio è uno stato ESTERNO a React, e si legge come tale invece di
+     copiarlo in uno stato con un effetto: `useSyncExternalStore` dà `null` sul
+     server e la data locale sul client, senza il render a cascata che un
+     `setState` dentro un effetto produrrebbe. Il valore è una stringa, quindi
+     `getSnapshot` resta stabile fra due chiamate nello stesso giorno. */
+  const oggi = useSyncExternalStore(niente, dataLocale, () => null);
 
   useEffect(() => {
     const contenitore = binario.current;
@@ -58,29 +67,27 @@ export function Calendario({
           {giorni.map((giorno) => {
             const { sigla, numero } = pezziGiorno(giorno.data);
             const attuale = giorno.data === corrente;
+            const parola = parolaRelativa(giorno.data, oggi);
             return (
               <li key={giorno.data}>
                 <a
                   ref={attuale ? attivo : undefined}
-                  className="rail__giorno"
+                  className={`rail__giorno${parola ? ' rail__giorno--vicino' : ''}`}
                   href={`/giorno/${giorno.data}/`}
                   aria-current={attuale ? 'date' : undefined}
                   /* WCAG 2.5.3 «Label in Name»: il nome accessibile deve
-                     COMINCIARE con il testo che si vede. Prima diceva
-                     «sabato 8 agosto, 8 partite» mentre in pagina c'e'
-                     «SAB 8 8»: gli screen reader stavano bene, ma chi usa il
-                     comando vocale dice quello che legge — «clicca SAB 8» —
-                     e non attivava niente. */
-                  aria-label={`${sigla} ${numero} — ${dataLunga(giorno.data)}, ${etichettaConteggio(giorno.total)}`}
+                     COMINCIARE con il testo che si vede. Chi usa il comando
+                     vocale dice quello che legge — «clicca OGGI 11». */
+                  aria-label={`${parola ?? sigla} ${numero} — ${dataLunga(giorno.data)}, ${etichettaConteggio(giorno.total)}`}
                 >
                   <span className="rail__sigla" aria-hidden="true">
-                    {sigla}
+                    {parola ?? sigla}
                   </span>
                   <span className="rail__numero" aria-hidden="true">
                     {numero}
                   </span>
                   <span className="rail__conteggio" aria-hidden="true">
-                    {giorno.total}
+                    {giorno.total === 0 ? '—' : giorno.total}
                   </span>
                 </a>
               </li>
@@ -94,13 +101,43 @@ export function Calendario({
   );
 }
 
+/* L'orologio non emette eventi a cui iscriversi: la sottoscrizione è vuota per
+   contratto, e la data si rilegge a ogni render come qualunque altro valore
+   esterno. Chi tiene la scheda aperta oltre la mezzanotte vede la parola
+   aggiornarsi al primo render successivo — non è uno stato da mantenere. */
+function niente(): () => void {
+  return () => {};
+}
+
+/** La data LOCALE di chi guarda, non quella UTC: alle 01:00 in Italia
+    `toISOString()` direbbe ancora ieri. */
+function dataLocale(): string {
+  const adesso = new Date();
+  const y = adesso.getFullYear();
+  const m = String(adesso.getMonth() + 1).padStart(2, '0');
+  const d = String(adesso.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+/** `IERI` / `OGGI` / `DOMANI`, o `null` per ogni altro giorno. */
+function parolaRelativa(data: string, oggi: string | null): string | null {
+  if (!oggi) return null;
+  if (data === oggi) return 'OGGI';
+  const base = new Date(`${oggi}T12:00:00Z`).getTime();
+  const giorno = new Date(`${data}T12:00:00Z`).getTime();
+  const differenza = Math.round((giorno - base) / 86_400_000);
+  if (differenza === -1) return 'IERI';
+  if (differenza === 1) return 'DOMANI';
+  return null;
+}
+
 function etichettaConteggio(total: number): string {
   if (total === 0) return 'nessuna partita';
   return total === 1 ? '1 partita' : `${total} partite`;
 }
 
 /**
- * L'estremo senza giorno non e' un link morto: e' un segno spento, fuori
+ * L'estremo senza giorno non è un link morto: è un segno spento, fuori
  * dall'ordine di tabulazione e dichiarato come tale.
  */
 function Freccia({ data, verso }: { data: string | null; verso: 'precedente' | 'successivo' }) {

@@ -1,26 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Novanta">
-  <!-- Il segno del marchio: la riga di taratura chiusa in un quadro pieno.
-       Un file di icona non puo' leggere i token CSS, quindi i valori sono
-       trascritti a mano da design-system/pronostici/tokens.css:
-         chiaro  quadro --ink #0F141A  su tacche --surface #F7F9FB
-         scuro   quadro --ink #E9EDF1  su tacche --surface #0E1216
-       Se i token cambiano, questo file va aggiornato con loro. -->
-  <style>
-    .quadro { fill: #0F141A; }
-    .tacche { fill: #F7F9FB; }
-    @media (prefers-color-scheme: dark) {
-      .quadro { fill: #E9EDF1; }
-      .tacche { fill: #0E1216; }
-    }
-  </style>
-  <rect class="quadro" x="0" y="0" width="32" height="32" />
-  <g class="tacche">
-    <rect x="3" y="13" width="2" height="6" />
-    <rect x="7" y="13" width="2" height="6" />
-    <rect x="11" y="13" width="2" height="6" />
-    <rect x="15" y="13" width="2" height="6" />
-    <rect x="19" y="13" width="2" height="6" />
-    <rect x="23" y="13" width="2" height="6" />
-    <rect x="27" y="7" width="2" height="18" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Il segno del marchio CENTRO: due quadri concentrici e il centro pieno.
+       Qui i colori sono letterali e non possono che esserlo — una favicon è
+       un file a sé, servita fuori dal foglio di stile, e `var()` non esiste.
+       Sono --ground e --segnale del tema scuro (tokens.css): se cambiano lì,
+       vanno cambiati anche qui. -->
+  <rect width="32" height="32" fill="#0A0D12"/>
+  <rect x="4" y="4" width="24" height="24" fill="none" stroke="#EEF2F6" stroke-width="2"/>
+  <rect x="11" y="11" width="10" height="10" fill="none" stroke="#EEF2F6" stroke-width="2"/>
+  <rect x="14" y="14" width="4" height="4" fill="#FF5C36"/>
 </svg>
