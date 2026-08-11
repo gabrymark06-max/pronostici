@@ -10,11 +10,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 77,
-     "p_min": 68,
+     "S_min": 71,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 2,
     "truncated_mass": 2.842e-08
    },
@@ -55,7 +55,7 @@
     "family": "team_goals",
     "key": "ag_over_0.5",
     "label": "Ospite Over 0.5",
-    "p": 0.7676,
+    "p": 0.7794,
     "p_raw": 0.8037,
     "reference": 0.6917,
     "runners_up": [
@@ -65,24 +65,11 @@
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6263,
+      "p": 0.6502,
       "p_raw": 0.6898,
       "reference": 0.5624,
-      "score": 0.008413,
-      "shrink_alpha": 0.5014,
-      "sigma": 0.0798
-     },
-     {
-      "band_p5": 0.5448,
-      "band_p95": 0.8168,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.6263,
-      "p_raw": 0.6898,
-      "reference": 0.5624,
-      "score": 0.008413,
-      "shrink_alpha": 0.5014,
+      "score": 0.016003,
+      "shrink_alpha": 0.6892,
       "sigma": 0.0798
      },
      {
@@ -91,16 +78,29 @@
       "family": "handicap_asian",
       "key": "ah_away_0.5",
       "label": "Asiatico ospite +0.5",
-      "p": 0.6263,
+      "p": 0.6477,
       "p_raw": 0.6898,
       "reference": 0.5624,
-      "score": 0.008413,
-      "shrink_alpha": 0.5014,
+      "score": 0.015064,
+      "shrink_alpha": 0.669,
+      "sigma": 0.0798
+     },
+     {
+      "band_p5": 0.5448,
+      "band_p95": 0.8168,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.6377,
+      "p_raw": 0.6898,
+      "reference": 0.5624,
+      "score": 0.011725,
+      "shrink_alpha": 0.591,
       "sigma": 0.0798
      }
     ],
-    "score": 0.014245,
-    "shrink_alpha": 0.6779,
+    "score": 0.0192,
+    "shrink_alpha": 0.7831,
     "sigma": 0.0552
    },
    "raw_probabilities": {
@@ -113,8 +113,8 @@
    },
    "reasons": [
     "Gol attesi: Cardiff City FC 1.34, Wrexham AFC 1.67 (totale 3.00).",
-    "Ospite Over 0.5: 77 su 100, 8 punti sopra la media di riferimento (69 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 68%)."
+    "Ospite Over 0.5: 78 su 100, 9 punti sopra la media di riferimento (69 su 100).",
+    "Banda di incertezza: fra 71 e 88 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -129,34 +129,34 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 68,
-     "p_min": 68,
+     "S_min": 59,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 9,
-    "truncated_mass": 9.043e-07
+    "truncated_mass": 8.94e-07
    },
    "expected_goals": {
-    "away": 2.286,
-    "home": 0.677
+    "away": 2.283,
+    "home": 0.68
    },
    "half_time": {
-    "ht_over_0.5": 0.7348,
-    "ht_over_1.5": 0.3828,
-    "ht_over_2.5": 0.1492,
-    "ht_under_0.5": 0.2652,
-    "ht_under_1.5": 0.6172,
-    "ht_under_2.5": 0.8508,
-    "htft_11": 0.0492,
-    "htft_12": 0.028,
-    "htft_1X": 0.0314,
-    "htft_21": 0.006,
-    "htft_22": 0.4997,
-    "htft_2X": 0.0314,
-    "htft_X1": 0.0388,
+    "ht_over_0.5": 0.7346,
+    "ht_over_1.5": 0.3826,
+    "ht_over_2.5": 0.1491,
+    "ht_under_0.5": 0.2654,
+    "ht_under_1.5": 0.6174,
+    "ht_under_2.5": 0.8509,
+    "htft_11": 0.0495,
+    "htft_12": 0.0281,
+    "htft_1X": 0.0316,
+    "htft_21": 0.0061,
+    "htft_22": 0.4987,
+    "htft_2X": 0.0316,
+    "htft_X1": 0.039,
     "htft_X2": 0.2098,
-    "htft_XX": 0.1056
+    "htft_XX": 0.1058
    },
    "home": {
     "crest": "https://crests.football-data.org/6618.png",
@@ -168,101 +168,100 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8481,
-    "band_p95": 0.9493,
+    "band_p5": 0.6252,
+    "band_p95": 0.8305,
     "cluster_members": [
-     "eh_-1_away",
-     "ah_away_0.5"
+     "ah_away_-0.5"
     ],
-    "family": "double_chance",
-    "key": "dc_x2",
-    "label": "X2 (pareggio o ospite)",
-    "p": 0.8598,
-    "p_raw": 0.9032,
-    "reference": 0.5732,
+    "family": "1x2",
+    "key": "1x2_away",
+    "label": "Vittoria ospite",
+    "p": 0.6473,
+    "p_raw": 0.7331,
+    "reference": 0.308,
     "runners_up": [
      {
-      "band_p5": 0.9521,
-      "band_p95": 0.9891,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9709,
-      "p_raw": 0.9746,
-      "reference": 0.7773,
-      "score": 0.15661,
-      "shrink_alpha": 0.9811,
-      "sigma": 0.0111
+      "band_p5": 0.8443,
+      "band_p95": 0.9495,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.88,
+      "p_raw": 0.9018,
+      "reference": 0.5721,
+      "score": 0.226268,
+      "shrink_alpha": 0.9337,
+      "sigma": 0.0317
      },
      {
-      "band_p5": 0.9521,
-      "band_p95": 0.9891,
+      "band_p5": 0.8443,
+      "band_p95": 0.9495,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.878,
+      "p_raw": 0.9018,
+      "reference": 0.5721,
+      "score": 0.222923,
+      "shrink_alpha": 0.9277,
+      "sigma": 0.0317
+     },
+     {
+      "band_p5": 0.8443,
+      "band_p95": 0.9495,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.8694,
+      "p_raw": 0.9018,
+      "reference": 0.5721,
+      "score": 0.208856,
+      "shrink_alpha": 0.9018,
+      "sigma": 0.0317
+     },
+     {
+      "band_p5": 0.952,
+      "band_p95": 0.9904,
       "family": "handicap_asian",
       "key": "ah_away_1.5",
       "label": "Asiatico ospite +1.5",
-      "p": 0.9709,
-      "p_raw": 0.9746,
-      "reference": 0.7773,
-      "score": 0.15661,
-      "shrink_alpha": 0.9811,
-      "sigma": 0.0111
+      "p": 0.9722,
+      "p_raw": 0.9743,
+      "reference": 0.7775,
+      "score": 0.159326,
+      "shrink_alpha": 0.9892,
+      "sigma": 0.0118
      },
      {
-      "band_p5": 0.6265,
-      "band_p95": 0.8258,
-      "family": "1x2",
-      "key": "1x2_away",
-      "label": "Vittoria ospite",
-      "p": 0.5734,
-      "p_raw": 0.7322,
-      "reference": 0.3095,
-      "score": 0.14811,
-      "shrink_alpha": 0.6244,
-      "sigma": 0.0621
-     },
-     {
-      "band_p5": 0.6265,
-      "band_p95": 0.8258,
-      "family": "handicap_asian",
-      "key": "ah_away_-0.5",
-      "label": "Asiatico ospite -0.5",
-      "p": 0.5734,
-      "p_raw": 0.7322,
-      "reference": 0.3095,
-      "score": 0.14811,
-      "shrink_alpha": 0.6244,
-      "sigma": 0.0621
-     },
-     {
-      "band_p5": 0.9386,
-      "band_p95": 0.9849,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.9612,
-      "p_raw": 0.9668,
-      "reference": 0.8045,
-      "score": 0.108295,
-      "shrink_alpha": 0.9654,
-      "sigma": 0.0151
+      "band_p5": 0.952,
+      "band_p95": 0.9904,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9713,
+      "p_raw": 0.9743,
+      "reference": 0.7775,
+      "score": 0.157423,
+      "shrink_alpha": 0.985,
+      "sigma": 0.0118
      }
     ],
-    "score": 0.192603,
-    "shrink_alpha": 0.8686,
-    "sigma": 0.0311
+    "score": 0.243113,
+    "shrink_alpha": 0.7982,
+    "sigma": 0.0597
    },
    "raw_probabilities": {
-    "1x2_away": 0.7322,
-    "1x2_draw": 0.171,
-    "1x2_home": 0.0968,
+    "1x2_away": 0.7331,
+    "1x2_draw": 0.1687,
+    "1x2_home": 0.0982,
     "btts_yes": 0.4361,
-    "over_2.5": 0.5638,
-    "under_2.5": 0.4362
+    "over_2.5": 0.5648,
+    "under_2.5": 0.4352
    },
    "reasons": [
-    "Gol attesi: Casa Pia AC 0.68, Sport Lisboa e Benfica 2.29 (totale 2.96).",
-    "X2 (pareggio o ospite): 86 su 100, 29 punti sopra la media di riferimento (57 su 100).",
-    "Banda di incertezza: fra 85 e 95 su 100."
+    "Gol attesi: Casa Pia AC 0.68, Sport Lisboa e Benfica 2.28 (totale 2.96).",
+    "Vittoria ospite: 65 su 100, 34 punti sopra la media di riferimento (31 su 100).",
+    "Banda di incertezza: fra 63 e 83 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -277,11 +276,11 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 85,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 5.734e-08
    },
@@ -325,6 +324,7 @@
     "under_2.5": 0.4677
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: SC Internacional 1.78, Clube do Remo 1.05 (totale 2.83)."
    ],
    "silence": {
@@ -334,7 +334,7 @@
    "utc_date": "2026-08-17T23:00:00Z"
   }
  ],
- "generated_at": "2026-08-11T04:21:47Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 3

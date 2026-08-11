@@ -42,6 +42,35 @@ class BootstrapResult:
             np.exp(self.attack[:, a] + self.defence[:, h]),
         )
 
+    def team_spread(self, team: str) -> float:
+        """Quanto ballano i parametri di una squadra fra un draw e l'altro.
+
+        E' la traduzione diretta di "poco storico affidabile": una squadra
+        neopromossa, o che ha giocato poche partite dentro la finestra pesata,
+        ha attacco e difesa mal determinati e i suoi 300 rifit si sparpagliano.
+        Serve al messaggio di silenzio `sigma_max`, che deve dire **quale**
+        delle due squadre rende instabile la stima: il frontend non ha modo di
+        saperlo, e "queste squadre" e' esattamente l'informazione che manca.
+
+        Si combinano attacco e difesa perche' entrambi entrano nei due lambda
+        della partita: l'attacco della squadra nei suoi gol, la difesa in quelli
+        dell'avversario.
+        """
+        i = self.teams.index(team)
+        ddof = 1 if self.draws > 1 else 0
+        return float(
+            np.hypot(
+                self.attack[:, i].std(ddof=ddof), self.defence[:, i].std(ddof=ddof)
+            )
+        )
+
+    def least_reliable(self, *teams: str) -> str | None:
+        """La squadra con i parametri piu' instabili fra quelle indicate."""
+        known = [t for t in teams if t in self.teams]
+        if not known:
+            return None
+        return max(known, key=self.team_spread)
+
     def to_dict(self) -> dict:
         return {
             "teams": list(self.teams),

@@ -25,6 +25,7 @@ from .. import ledger
 from ..archive import load_all
 from ..competitions import ACTIVE_CODES
 from ..model.bootstrap import BootstrapResult
+from ..model.tau import resolve as resolve_tau
 from ..pipeline import score_fixture
 from ..storage import read_json
 from .retrain import params_path
@@ -37,9 +38,17 @@ def run(
     *,
     days: int = 7,
     as_of: datetime | None = None,
-    tau: float = 0.08,
+    tau: float | dict[str, float] | None = None,
 ) -> dict:
+    """`tau=None` significa "quelli misurati dal backtest", che e' il default.
+
+    Fino al 2026-08-11 qui c'era 0,08 per tutte le famiglie: il valore di
+    partenza della ricerca 8.3, valido *finche' non c'era il backtest*. Il
+    backtest c'e' dal 2026-08-08 e ha misurato i dieci valori; questo job li
+    usa, e dichiara nel rapporto da dove vengono.
+    """
     as_of = as_of or datetime.now(UTC)
+    tau, tau_origin = resolve_tau(tau)
     horizon = as_of + timedelta(days=days)
     started = time.monotonic()
 
@@ -111,6 +120,7 @@ def run(
     total = scored_count + silent_count
     return {
         "seconds": round(time.monotonic() - started, 1),
+        "tau": tau_origin,
         "fixtures": total,
         "with_prediction": scored_count,
         "silent": silent_count,
@@ -126,7 +136,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--competitions", nargs="*", default=list(ACTIVE_CODES))
     parser.add_argument("--days", type=int, default=7)
-    parser.add_argument("--tau", type=float, default=0.08)
+    parser.add_argument(
+        "--tau",
+        type=float,
+        default=None,
+        help="tau unico per tutte le famiglie; senza, quelli misurati dal backtest",
+    )
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")

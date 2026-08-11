@@ -1,0 +1,741 @@
+{
+ "arms": {
+  "hl_120": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03303,
+     "markets": 3,
+     "model": 0.58978,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01679,
+     "markets": 2,
+     "model": 0.70595,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.0125,
+     "markets": 16,
+     "model": 0.50839,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00088,
+     "markets": 16,
+     "model": 0.20618,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03303,
+     "markets": 3,
+     "model": 0.58978,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03236,
+     "markets": 12,
+     "model": 0.41998,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02405,
+     "markets": 12,
+     "model": 0.41507,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.01095,
+     "markets": 12,
+     "model": 0.63704,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.01353,
+     "markets": 10,
+     "model": 0.50006,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01284,
+     "markets": 12,
+     "model": 0.53917,
+     "model_better": true
+    }
+   },
+   "half_life_days": 120.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01821,
+    "delta_se": 0.00434,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.4983,
+    "model": 0.70675,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0796,
+     "log_loss_in_sample": 0.68642,
+     "slope": 0.3422
+    },
+    "sd_p_model": 0.14274
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 3.847e-05
+  },
+  "hl_180": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03453,
+     "markets": 3,
+     "model": 0.58828,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01408,
+     "markets": 2,
+     "model": 0.70324,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01413,
+     "markets": 16,
+     "model": 0.50676,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00132,
+     "markets": 16,
+     "model": 0.20573,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03453,
+     "markets": 3,
+     "model": 0.58828,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03395,
+     "markets": 12,
+     "model": 0.41838,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.0253,
+     "markets": 12,
+     "model": 0.41383,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.00907,
+     "markets": 12,
+     "model": 0.63516,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.01085,
+     "markets": 10,
+     "model": 0.49738,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01518,
+     "markets": 12,
+     "model": 0.53683,
+     "model_better": true
+    }
+   },
+   "half_life_days": 180.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01521,
+    "delta_se": 0.00414,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49872,
+    "model": 0.70375,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0792,
+     "log_loss_in_sample": 0.68617,
+     "slope": 0.3647
+    },
+    "sd_p_model": 0.13783
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 3.243e-05
+  },
+  "hl_270": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03507,
+     "markets": 3,
+     "model": 0.58774,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01282,
+     "markets": 2,
+     "model": 0.70198,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01476,
+     "markets": 16,
+     "model": 0.50613,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00151,
+     "markets": 16,
+     "model": 0.20554,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03507,
+     "markets": 3,
+     "model": 0.58774,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03453,
+     "markets": 12,
+     "model": 0.4178,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02574,
+     "markets": 12,
+     "model": 0.41338,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.00822,
+     "markets": 12,
+     "model": 0.6343,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.00959,
+     "markets": 10,
+     "model": 0.49613,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01615,
+     "markets": 12,
+     "model": 0.53586,
+     "model_better": true
+    }
+   },
+   "half_life_days": 270.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01394,
+    "delta_se": 0.00405,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49881,
+    "model": 0.70249,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0793,
+     "log_loss_in_sample": 0.6861,
+     "slope": 0.3748
+    },
+    "sd_p_model": 0.13528
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 3.119e-05
+  },
+  "hl_365": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58764,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01235,
+     "markets": 2,
+     "model": 0.7015,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01492,
+     "markets": 16,
+     "model": 0.50597,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00158,
+     "markets": 16,
+     "model": 0.20548,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58764,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03463,
+     "markets": 12,
+     "model": 0.4177,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02582,
+     "markets": 12,
+     "model": 0.41331,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.0079,
+     "markets": 12,
+     "model": 0.63398,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.00913,
+     "markets": 10,
+     "model": 0.49567,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01643,
+     "markets": 12,
+     "model": 0.53557,
+     "model_better": true
+    }
+   },
+   "half_life_days": 365.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01351,
+    "delta_se": 0.00401,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49879,
+    "model": 0.70206,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0793,
+     "log_loss_in_sample": 0.68611,
+     "slope": 0.3783
+    },
+    "sd_p_model": 0.13427
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 3.099e-05
+  },
+  "hl_365_maxgoals18": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58764,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01235,
+     "markets": 2,
+     "model": 0.70151,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01492,
+     "markets": 16,
+     "model": 0.50597,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00157,
+     "markets": 16,
+     "model": 0.20548,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58764,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03463,
+     "markets": 12,
+     "model": 0.41771,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02581,
+     "markets": 12,
+     "model": 0.41331,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.00791,
+     "markets": 12,
+     "model": 0.634,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.00914,
+     "markets": 10,
+     "model": 0.49568,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01643,
+     "markets": 12,
+     "model": 0.53557,
+     "model_better": true
+    }
+   },
+   "half_life_days": 365.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01353,
+    "delta_se": 0.00401,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49879,
+    "model": 0.70208,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0793,
+     "log_loss_in_sample": 0.68611,
+     "slope": 0.3781
+    },
+    "sd_p_model": 0.13428
+   },
+   "max_goals": 18,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 1.851e-07
+  },
+  "hl_365_rho0": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03537,
+     "markets": 3,
+     "model": 0.58744,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01289,
+     "markets": 2,
+     "model": 0.70204,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01504,
+     "markets": 16,
+     "model": 0.50585,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.00189,
+     "markets": 16,
+     "model": 0.20517,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03537,
+     "markets": 3,
+     "model": 0.58744,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03469,
+     "markets": 12,
+     "model": 0.41764,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02596,
+     "markets": 12,
+     "model": 0.41316,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.00792,
+     "markets": 12,
+     "model": 0.63401,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.00846,
+     "markets": 10,
+     "model": 0.49499,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01643,
+     "markets": 12,
+     "model": 0.53557,
+     "model_better": true
+    }
+   },
+   "half_life_days": 365.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01353,
+    "delta_se": 0.00401,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49879,
+    "model": 0.70208,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0793,
+     "log_loss_in_sample": 0.68611,
+     "slope": 0.378
+    },
+    "sd_p_model": 0.13427
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": true,
+   "truncated_mass_mean": 3.099e-05
+  },
+  "hl_540": {
+   "by_family": {
+    "1x2": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58765,
+     "model_better": true
+    },
+    "btts": {
+     "base_rate": 0.68916,
+     "delta": 0.01211,
+     "markets": 2,
+     "model": 0.70127,
+     "model_better": false
+    },
+    "combo": {
+     "base_rate": 0.52089,
+     "delta": -0.01495,
+     "markets": 16,
+     "model": 0.50594,
+     "model_better": true
+    },
+    "correct_score": {
+     "base_rate": 0.20705,
+     "delta": -0.0016,
+     "markets": 16,
+     "model": 0.20545,
+     "model_better": true
+    },
+    "double_chance": {
+     "base_rate": 0.62281,
+     "delta": -0.03516,
+     "markets": 3,
+     "model": 0.58765,
+     "model_better": true
+    },
+    "handicap_asian": {
+     "base_rate": 0.45233,
+     "delta": -0.03464,
+     "markets": 12,
+     "model": 0.41769,
+     "model_better": true
+    },
+    "handicap_eu": {
+     "base_rate": 0.43912,
+     "delta": -0.02582,
+     "markets": 12,
+     "model": 0.4133,
+     "model_better": true
+    },
+    "multigoal": {
+     "base_rate": 0.62609,
+     "delta": 0.00772,
+     "markets": 12,
+     "model": 0.63381,
+     "model_better": false
+    },
+    "over_under": {
+     "base_rate": 0.48654,
+     "delta": 0.00885,
+     "markets": 10,
+     "model": 0.49539,
+     "model_better": false
+    },
+    "team_goals": {
+     "base_rate": 0.552,
+     "delta": -0.01655,
+     "markets": 12,
+     "model": 0.53545,
+     "model_better": true
+    }
+   },
+   "half_life_days": 540.0,
+   "headline": {
+    "base_rate": 0.68855,
+    "delta": 0.01336,
+    "delta_se": 0.00399,
+    "market": "over_2.5",
+    "mean_p_base": 0.51262,
+    "mean_p_model": 0.49874,
+    "model": 0.7019,
+    "model_better": false,
+    "realized_rate": 0.51953,
+    "recalibrated": {
+     "converged": true,
+     "intercept": 0.0795,
+     "log_loss_in_sample": 0.68615,
+     "slope": 0.3791
+    },
+    "sd_p_model": 0.13359
+   },
+   "max_goals": 12,
+   "n_matches": 5018,
+   "rho_zero": false,
+   "truncated_mass_mean": 3.094e-05
+  }
+ },
+ "bootstrap_check": {
+  "available": true,
+  "backtest_bootstrap_mean": {
+   "base_rate": 0.68856,
+   "model": 0.69919,
+   "n": 4995
+  },
+  "base_rate_gap": -1e-05,
+  "here_point_fit": {
+   "base_rate": 0.68855,
+   "model": 0.70206,
+   "n": 5018
+  },
+  "model_gap": 0.00287,
+  "source": "data/backtest.json"
+ },
+ "code_commit": "a904916155ec2355ba3273ee01cd2ebc4b796de4",
+ "configurations_tried": 7,
+ "generated_at": "2026-08-11T13:49:31Z",
+ "measures": "log loss per mercato del solo modello (p_hat nel punto stimato) contro il base rate del campionato, walk-forward",
+ "not_measured": "il bootstrap: qui il modello e' il fit puntuale. Lo scarto rispetto alla media dei 300 draw e' riportato in `bootstrap_check`",
+ "parameters": {
+  "grid": [
+   120.0,
+   180.0,
+   270.0,
+   365.0,
+   540.0
+  ],
+  "max_goals": 12,
+  "min_train_matches": 200,
+  "step_days": 7,
+  "window_days": 730.0
+ },
+ "protocol": "docs/protocollo-backtest.md (addendum 2026-08-11)",
+ "ranking_by_headline_log_loss": [
+  "hl_540",
+  "hl_365",
+  "hl_270",
+  "hl_180",
+  "hl_120"
+ ],
+ "schema_version": 1,
+ "seconds": 76.7,
+ "verdict": {
+  "base_rate_beaten_at_best": false,
+  "baseline_arm": "hl_365",
+  "best_arm": "hl_540",
+  "best_half_life": 540.0,
+  "headline_delta_baseline": 0.01351,
+  "headline_delta_best": 0.01336,
+  "reading": "nessuna emivita della griglia batte il base rate su over_2.5: la famiglia over/under non ha risoluzione dimostrabile e deve uscire dalla selezione"
+ },
+ "volume": {
+  "evaluated_at_baseline": 5018,
+  "fits": 2620,
+  "skipped": 2072
+ }
+}

@@ -10,34 +10,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 81,
-     "p_min": 66,
+     "S_min": 80,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 5,
-    "truncated_mass": 4.377e-10
+    "n_candidates": 88,
+    "n_clusters": 2,
+    "truncated_mass": 5.361e-10
    },
    "expected_goals": {
-    "away": 0.817,
-    "home": 1.173
+    "away": 0.839,
+    "home": 1.193
    },
    "half_time": {
-    "ht_over_0.5": 0.5934,
-    "ht_over_1.5": 0.2275,
-    "ht_over_2.5": 0.0628,
-    "ht_under_0.5": 0.4066,
-    "ht_under_1.5": 0.7725,
-    "ht_under_2.5": 0.9372,
-    "htft_11": 0.2568,
-    "htft_12": 0.0106,
-    "htft_1X": 0.0434,
-    "htft_21": 0.0163,
-    "htft_22": 0.1391,
-    "htft_2X": 0.0434,
-    "htft_X1": 0.1686,
-    "htft_X2": 0.1059,
-    "htft_XX": 0.2158
+    "ht_over_0.5": 0.601,
+    "ht_over_1.5": 0.2344,
+    "ht_over_2.5": 0.066,
+    "ht_under_0.5": 0.399,
+    "ht_under_1.5": 0.7656,
+    "ht_under_2.5": 0.934,
+    "htft_11": 0.2575,
+    "htft_12": 0.0111,
+    "htft_1X": 0.0441,
+    "htft_21": 0.0169,
+    "htft_22": 0.1415,
+    "htft_2X": 0.0441,
+    "htft_X1": 0.1676,
+    "htft_X2": 0.1066,
+    "htft_XX": 0.2108
    },
    "home": {
     "crest": "https://crests.football-data.org/1768.png",
@@ -49,98 +49,46 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5131,
-    "band_p95": 0.72,
+    "band_p5": 0.5052,
+    "band_p95": 0.7092,
     "cluster_members": [],
     "family": "btts",
     "key": "btts_no",
     "label": "Non entrambe segnano",
-    "p": 0.5647,
-    "p_raw": 0.6228,
-    "reference": 0.4778,
+    "p": 0.5544,
+    "p_raw": 0.6125,
+    "reference": 0.477,
     "runners_up": [
      {
-      "band_p5": 0.5472,
-      "band_p95": 0.7955,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.6063,
-      "p_raw": 0.6795,
-      "reference": 0.5252,
-      "score": 0.013323,
-      "shrink_alpha": 0.5257,
-      "sigma": 0.076
-     },
-     {
-      "band_p5": 0.5472,
-      "band_p95": 0.7955,
-      "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.6063,
-      "p_raw": 0.6795,
-      "reference": 0.5252,
-      "score": 0.013323,
-      "shrink_alpha": 0.5257,
-      "sigma": 0.076
-     },
-     {
-      "band_p5": 0.7604,
-      "band_p95": 0.9276,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.8306,
-      "p_raw": 0.8554,
-      "reference": 0.7718,
-      "score": 0.010509,
-      "shrink_alpha": 0.7029,
-      "sigma": 0.052
-     },
-     {
-      "band_p5": 0.7604,
-      "band_p95": 0.9276,
-      "family": "multigoal",
-      "key": "mg_0_3",
-      "label": "Multigol 0-3",
-      "p": 0.8306,
-      "p_raw": 0.8554,
-      "reference": 0.7718,
-      "score": 0.010509,
-      "shrink_alpha": 0.7029,
-      "sigma": 0.052
-     },
-     {
-      "band_p5": 0.8929,
-      "band_p95": 0.9788,
-      "family": "over_under",
-      "key": "under_4.5",
-      "label": "Under 4.5",
-      "p": 0.9404,
-      "p_raw": 0.9447,
-      "reference": 0.9041,
-      "score": 0.008667,
-      "shrink_alpha": 0.895,
-      "sigma": 0.0274
+      "band_p5": 0.5287,
+      "band_p95": 0.788,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.6254,
+      "p_raw": 0.6666,
+      "reference": 0.5571,
+      "score": 0.009603,
+      "shrink_alpha": 0.6241,
+      "sigma": 0.0813
      }
     ],
-    "score": 0.015106,
-    "shrink_alpha": 0.5991,
-    "sigma": 0.0654
+    "score": 0.012,
+    "shrink_alpha": 0.5711,
+    "sigma": 0.0638
    },
    "raw_probabilities": {
-    "1x2_away": 0.257,
-    "1x2_draw": 0.303,
-    "1x2_home": 0.44,
-    "btts_yes": 0.3772,
-    "over_2.5": 0.3205,
-    "under_2.5": 0.6795
+    "1x2_away": 0.2609,
+    "1x2_draw": 0.299,
+    "1x2_home": 0.4401,
+    "btts_yes": 0.3875,
+    "over_2.5": 0.3319,
+    "under_2.5": 0.6681
    },
    "reasons": [
-    "Gol attesi: CA Paranaense 1.17, Fluminense FC 0.82 (totale 1.99).",
-    "Non entrambe segnano: 56 su 100, 9 punti sopra la media di riferimento (48 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 60%)."
+    "Gol attesi: CA Paranaense 1.19, Fluminense FC 0.84 (totale 2.03).",
+    "Non entrambe segnano: 55 su 100, 8 punti sopra la media di riferimento (48 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 57%)."
    ],
    "silence": null,
    "source": "model_only",
@@ -155,34 +103,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 91,
-     "p_min": 67,
+     "S_min": 80,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 2,
-    "truncated_mass": 7.29e-09
+    "n_candidates": 88,
+    "n_clusters": 4,
+    "truncated_mass": 7.834e-09
    },
    "expected_goals": {
-    "away": 0.791,
-    "home": 1.491
+    "away": 0.786,
+    "home": 1.5
    },
    "half_time": {
-    "ht_over_0.5": 0.6437,
-    "ht_over_1.5": 0.276,
-    "ht_over_2.5": 0.0863,
-    "ht_under_0.5": 0.3563,
-    "ht_under_1.5": 0.724,
-    "ht_under_2.5": 0.9137,
-    "htft_11": 0.3288,
-    "htft_12": 0.0099,
-    "htft_1X": 0.0426,
-    "htft_21": 0.0213,
-    "htft_22": 0.1073,
-    "htft_2X": 0.0426,
-    "htft_X1": 0.1882,
-    "htft_X2": 0.0816,
-    "htft_XX": 0.1778
+    "ht_over_0.5": 0.6442,
+    "ht_over_1.5": 0.2765,
+    "ht_over_2.5": 0.0865,
+    "ht_under_0.5": 0.3558,
+    "ht_under_1.5": 0.7235,
+    "ht_under_2.5": 0.9135,
+    "htft_11": 0.3314,
+    "htft_12": 0.0098,
+    "htft_1X": 0.0424,
+    "htft_21": 0.0214,
+    "htft_22": 0.1058,
+    "htft_2X": 0.0424,
+    "htft_X1": 0.1891,
+    "htft_X2": 0.0807,
+    "htft_XX": 0.177
    },
    "home": {
     "crest": "https://crests.football-data.org/1766.png",
@@ -194,46 +142,98 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7253,
-    "band_p95": 0.8831,
+    "band_p5": 0.7245,
+    "band_p95": 0.8852,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.7866,
-    "p_raw": 0.8113,
-    "reference": 0.7199,
+    "p": 0.7966,
+    "p_raw": 0.8129,
+    "reference": 0.7205,
     "runners_up": [
      {
-      "band_p5": 0.4983,
-      "band_p95": 0.6786,
+      "band_p5": 0.494,
+      "band_p95": 0.6639,
       "family": "btts",
       "key": "btts_no",
       "label": "Non entrambe segnano",
-      "p": 0.5496,
-      "p_raw": 0.5823,
-      "reference": 0.4778,
-      "score": 0.010298,
-      "shrink_alpha": 0.6864,
-      "sigma": 0.0541
+      "p": 0.545,
+      "p_raw": 0.5831,
+      "reference": 0.477,
+      "score": 0.009263,
+      "shrink_alpha": 0.6411,
+      "sigma": 0.0551
+     },
+     {
+      "band_p5": 0.8934,
+      "band_p95": 0.9694,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9375,
+      "p_raw": 0.9389,
+      "reference": 0.9006,
+      "score": 0.008628,
+      "shrink_alpha": 0.9625,
+      "sigma": 0.0224
+     },
+     {
+      "band_p5": 0.7077,
+      "band_p95": 0.8732,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7924,
+      "p_raw": 0.8017,
+      "reference": 0.7359,
+      "score": 0.008614,
+      "shrink_alpha": 0.858,
+      "sigma": 0.0483
+     },
+     {
+      "band_p5": 0.7077,
+      "band_p95": 0.8732,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7916,
+      "p_raw": 0.8017,
+      "reference": 0.7359,
+      "score": 0.008374,
+      "shrink_alpha": 0.8463,
+      "sigma": 0.0483
+     },
+     {
+      "band_p5": 0.8934,
+      "band_p95": 0.9694,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9369,
+      "p_raw": 0.9389,
+      "reference": 0.9006,
+      "score": 0.008358,
+      "shrink_alpha": 0.9483,
+      "sigma": 0.0224
      }
     ],
-    "score": 0.011662,
-    "shrink_alpha": 0.7303,
-    "sigma": 0.0486
+    "score": 0.01536,
+    "shrink_alpha": 0.8238,
+    "sigma": 0.0485
    },
    "raw_probabilities": {
-    "1x2_away": 0.2006,
-    "1x2_draw": 0.2634,
-    "1x2_home": 0.536,
-    "btts_yes": 0.4177,
-    "over_2.5": 0.3982,
-    "under_2.5": 0.6018
+    "1x2_away": 0.1983,
+    "1x2_draw": 0.2622,
+    "1x2_home": 0.5395,
+    "btts_yes": 0.4169,
+    "over_2.5": 0.3992,
+    "under_2.5": 0.6008
    },
    "reasons": [
-    "Gol attesi: CA Mineiro 1.49, EC Vitória 0.79 (totale 2.28).",
-    "Ospite Under 1.5: 79 su 100, 7 punti sopra la media di riferimento (72 su 100).",
-    "Banda di incertezza: fra 73 e 88 su 100."
+    "Gol attesi: CA Mineiro 1.50, EC Vitória 0.79 (totale 2.29).",
+    "Ospite Under 1.5: 80 su 100, 8 punti sopra la media di riferimento (72 su 100).",
+    "Banda di incertezza: fra 72 e 89 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -248,34 +248,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 67,
+     "S_min": 87,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
-    "truncated_mass": 2.543e-08
+    "truncated_mass": 2.428e-08
    },
    "expected_goals": {
-    "away": 0.982,
-    "home": 1.661
+    "away": 0.974,
+    "home": 1.655
    },
    "half_time": {
-    "ht_over_0.5": 0.6974,
-    "ht_over_1.5": 0.3357,
-    "ht_over_2.5": 0.1195,
-    "ht_under_0.5": 0.3026,
-    "ht_under_1.5": 0.6643,
-    "ht_under_2.5": 0.8805,
-    "htft_11": 0.3307,
-    "htft_12": 0.0136,
-    "htft_1X": 0.0468,
-    "htft_21": 0.0262,
-    "htft_22": 0.1238,
-    "htft_2X": 0.0468,
-    "htft_X1": 0.1761,
-    "htft_X2": 0.0857,
-    "htft_XX": 0.1505
+    "ht_over_0.5": 0.6952,
+    "ht_over_1.5": 0.333,
+    "ht_over_2.5": 0.1179,
+    "ht_under_0.5": 0.3048,
+    "ht_under_1.5": 0.667,
+    "ht_under_2.5": 0.8821,
+    "htft_11": 0.3306,
+    "htft_12": 0.0134,
+    "htft_1X": 0.0466,
+    "htft_21": 0.026,
+    "htft_22": 0.1231,
+    "htft_2X": 0.0466,
+    "htft_X1": 0.1767,
+    "htft_X2": 0.0856,
+    "htft_XX": 0.1514
    },
    "home": {
     "crest": "https://crests.football-data.org/1777.png",
@@ -288,15 +288,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2249,
-    "1x2_draw": 0.2445,
-    "1x2_home": 0.5306,
-    "btts_yes": 0.5006,
-    "over_2.5": 0.49,
-    "under_2.5": 0.51
+    "1x2_away": 0.2246,
+    "1x2_draw": 0.2444,
+    "1x2_home": 0.531,
+    "btts_yes": 0.4967,
+    "over_2.5": 0.4865,
+    "under_2.5": 0.5135
    },
    "reasons": [
-    "Gol attesi: EC Bahia 1.66, SC Internacional 0.98 (totale 2.64)."
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: EC Bahia 1.65, SC Internacional 0.97 (totale 2.63)."
    ],
    "silence": {
     "reason": "S_min"
@@ -313,34 +314,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 67,
+     "S_min": 86,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
-    "truncated_mass": 2.077e-08
+    "truncated_mass": 2.403e-08
    },
    "expected_goals": {
-    "away": 0.915,
-    "home": 1.632
+    "away": 0.916,
+    "home": 1.653
    },
    "half_time": {
-    "ht_over_0.5": 0.6841,
-    "ht_over_1.5": 0.3201,
-    "ht_over_2.5": 0.1103,
-    "ht_under_0.5": 0.3159,
-    "ht_under_1.5": 0.6799,
-    "ht_under_2.5": 0.8897,
-    "htft_11": 0.3361,
+    "ht_over_0.5": 0.6869,
+    "ht_over_1.5": 0.3233,
+    "ht_over_2.5": 0.1122,
+    "ht_under_0.5": 0.3131,
+    "ht_under_1.5": 0.6767,
+    "ht_under_2.5": 0.8878,
+    "htft_11": 0.3401,
     "htft_12": 0.0122,
-    "htft_1X": 0.0453,
-    "htft_21": 0.025,
-    "htft_22": 0.1159,
-    "htft_2X": 0.0453,
-    "htft_X1": 0.1812,
-    "htft_X2": 0.0827,
-    "htft_XX": 0.1562
+    "htft_1X": 0.0452,
+    "htft_21": 0.0254,
+    "htft_22": 0.1143,
+    "htft_2X": 0.0452,
+    "htft_X1": 0.182,
+    "htft_X2": 0.0815,
+    "htft_XX": 0.1542
    },
    "home": {
     "crest": "https://crests.football-data.org/1779.png",
@@ -353,15 +354,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2133,
-    "1x2_draw": 0.2474,
-    "1x2_home": 0.5393,
-    "btts_yes": 0.4751,
-    "over_2.5": 0.466,
-    "under_2.5": 0.534
+    "1x2_away": 0.2107,
+    "1x2_draw": 0.2447,
+    "1x2_home": 0.5446,
+    "btts_yes": 0.477,
+    "over_2.5": 0.4711,
+    "under_2.5": 0.5289
    },
    "reasons": [
-    "Gol attesi: SC Corinthians Paulista 1.63, Santos FC 0.92 (totale 2.55)."
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: SC Corinthians Paulista 1.65, Santos FC 0.92 (totale 2.57)."
    ],
    "silence": {
     "reason": "S_min"
@@ -378,34 +380,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 71,
-     "p_min": 68,
+     "S_min": 67,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 8,
-    "truncated_mass": 3.899e-07
+    "truncated_mass": 3.511e-07
    },
    "expected_goals": {
-    "away": 0.917,
-    "home": 2.117
+    "away": 0.92,
+    "home": 2.097
    },
    "half_time": {
-    "ht_over_0.5": 0.7465,
-    "ht_over_1.5": 0.3986,
-    "ht_over_2.5": 0.1598,
-    "ht_under_0.5": 0.2535,
-    "ht_under_1.5": 0.6014,
-    "ht_under_2.5": 0.8402,
-    "htft_11": 0.4274,
-    "htft_12": 0.0108,
-    "htft_1X": 0.0411,
-    "htft_21": 0.0315,
-    "htft_22": 0.0834,
-    "htft_2X": 0.0411,
-    "htft_X1": 0.1905,
-    "htft_X2": 0.0584,
-    "htft_XX": 0.1158
+    "ht_over_0.5": 0.7443,
+    "ht_over_1.5": 0.3956,
+    "ht_over_2.5": 0.1578,
+    "ht_under_0.5": 0.2557,
+    "ht_under_1.5": 0.6044,
+    "ht_under_2.5": 0.8422,
+    "htft_11": 0.4231,
+    "htft_12": 0.0109,
+    "htft_1X": 0.0414,
+    "htft_21": 0.0314,
+    "htft_22": 0.0849,
+    "htft_2X": 0.0414,
+    "htft_X1": 0.1902,
+    "htft_X2": 0.0595,
+    "htft_XX": 0.1172
    },
    "home": {
     "crest": "https://crests.football-data.org/1783.png",
@@ -417,100 +419,100 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5323,
-    "band_p95": 0.7516,
+    "band_p5": 0.5333,
+    "band_p95": 0.7556,
     "cluster_members": [
      "ah_home_-0.5"
     ],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.5742,
-    "p_raw": 0.6459,
-    "reference": 0.4738,
+    "p": 0.6031,
+    "p_raw": 0.641,
+    "reference": 0.4748,
     "runners_up": [
      {
-      "band_p5": 0.7678,
-      "band_p95": 0.9045,
+      "band_p5": 0.7759,
+      "band_p95": 0.9064,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8199,
-      "p_raw": 0.8445,
-      "reference": 0.7352,
-      "score": 0.019949,
-      "shrink_alpha": 0.7746,
-      "sigma": 0.0432
+      "p": 0.8308,
+      "p_raw": 0.842,
+      "reference": 0.7359,
+      "score": 0.025401,
+      "shrink_alpha": 0.8944,
+      "sigma": 0.0408
      },
      {
-      "band_p5": 0.7678,
-      "band_p95": 0.9045,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8199,
-      "p_raw": 0.8445,
-      "reference": 0.7352,
-      "score": 0.019949,
-      "shrink_alpha": 0.7746,
-      "sigma": 0.0432
-     },
-     {
-      "band_p5": 0.7678,
-      "band_p95": 0.9045,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.8199,
-      "p_raw": 0.8445,
-      "reference": 0.7352,
-      "score": 0.019949,
-      "shrink_alpha": 0.7746,
-      "sigma": 0.0432
-     },
-     {
-      "band_p5": 0.4956,
-      "band_p95": 0.7284,
+      "band_p5": 0.4975,
+      "band_p95": 0.7393,
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.5415,
-      "p_raw": 0.6196,
-      "reference": 0.4419,
-      "score": 0.019935,
-      "shrink_alpha": 0.5605,
-      "sigma": 0.0708
+      "p": 0.5552,
+      "p_raw": 0.6136,
+      "reference": 0.4429,
+      "score": 0.025316,
+      "shrink_alpha": 0.6579,
+      "sigma": 0.0756
      },
      {
-      "band_p5": 0.5877,
-      "band_p95": 0.7826,
+      "band_p5": 0.7759,
+      "band_p95": 0.9064,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.8298,
+      "p_raw": 0.842,
+      "reference": 0.7359,
+      "score": 0.024857,
+      "shrink_alpha": 0.8853,
+      "sigma": 0.0408
+     },
+     {
+      "band_p5": 0.7759,
+      "band_p95": 0.9064,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8257,
+      "p_raw": 0.842,
+      "reference": 0.7359,
+      "score": 0.022623,
+      "shrink_alpha": 0.8466,
+      "sigma": 0.0408
+     },
+     {
+      "band_p5": 0.5887,
+      "band_p95": 0.7906,
       "family": "combo",
       "key": "combo_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6424,
-      "p_raw": 0.691,
-      "reference": 0.5513,
-      "score": 0.017099,
-      "shrink_alpha": 0.652,
-      "sigma": 0.0584
+      "p": 0.6438,
+      "p_raw": 0.6857,
+      "reference": 0.5523,
+      "score": 0.017234,
+      "shrink_alpha": 0.6856,
+      "sigma": 0.0612
      }
     ],
-    "score": 0.020226,
-    "shrink_alpha": 0.5837,
-    "sigma": 0.0676
+    "score": 0.033094,
+    "shrink_alpha": 0.772,
+    "sigma": 0.0646
    },
    "raw_probabilities": {
-    "1x2_away": 0.1555,
-    "1x2_draw": 0.1986,
-    "1x2_home": 0.6459,
-    "btts_yes": 0.5216,
-    "over_2.5": 0.5809,
-    "under_2.5": 0.4191
+    "1x2_away": 0.158,
+    "1x2_draw": 0.201,
+    "1x2_home": 0.641,
+    "btts_yes": 0.521,
+    "over_2.5": 0.576,
+    "under_2.5": 0.424
    },
    "reasons": [
-    "Gol attesi: CR Flamengo 2.12, Botafogo FR 0.92 (totale 3.03).",
-    "Vittoria casa: 57 su 100, 10 punti sopra la media di riferimento (47 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 58%)."
+    "Gol attesi: CR Flamengo 2.10, Botafogo FR 0.92 (totale 3.02).",
+    "Vittoria casa: 60 su 100, 13 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 53 e 76 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -525,34 +527,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 74,
-     "p_min": 68,
+     "S_min": 66,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 8,
-    "truncated_mass": 6.431e-07
+    "truncated_mass": 7.095e-07
    },
    "expected_goals": {
-    "away": 0.812,
-    "home": 2.215
+    "away": 0.831,
+    "home": 2.235
    },
    "half_time": {
-    "ht_over_0.5": 0.7456,
-    "ht_over_1.5": 0.3974,
-    "ht_over_2.5": 0.159,
-    "ht_under_0.5": 0.2544,
-    "ht_under_1.5": 0.6026,
-    "ht_under_2.5": 0.841,
-    "htft_11": 0.4644,
-    "htft_12": 0.0085,
-    "htft_1X": 0.0368,
-    "htft_21": 0.0305,
-    "htft_22": 0.0662,
-    "htft_2X": 0.0368,
-    "htft_X1": 0.1985,
-    "htft_X2": 0.0484,
-    "htft_XX": 0.1099
+    "ht_over_0.5": 0.7499,
+    "ht_over_1.5": 0.4033,
+    "ht_over_2.5": 0.1631,
+    "ht_under_0.5": 0.2501,
+    "ht_under_1.5": 0.5967,
+    "ht_under_2.5": 0.8369,
+    "htft_11": 0.4641,
+    "htft_12": 0.0087,
+    "htft_1X": 0.0372,
+    "htft_21": 0.0311,
+    "htft_22": 0.0673,
+    "htft_2X": 0.0372,
+    "htft_X1": 0.1973,
+    "htft_X2": 0.0488,
+    "htft_XX": 0.1083
    },
    "home": {
     "crest": "https://crests.football-data.org/1767.png",
@@ -564,101 +566,100 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7661,
-    "band_p95": 0.9446,
+    "band_p5": 0.5255,
+    "band_p95": 0.8248,
     "cluster_members": [
-     "eh_1_home",
-     "ah_home_0.5"
+     "ah_home_-0.5"
     ],
-    "family": "double_chance",
-    "key": "dc_1x",
-    "label": "1X (casa o pareggio)",
-    "p": 0.8261,
-    "p_raw": 0.8706,
-    "reference": 0.7352,
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6059,
+    "p_raw": 0.6844,
+    "reference": 0.4748,
     "runners_up": [
      {
-      "band_p5": 0.9151,
-      "band_p95": 0.9885,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9547,
-      "p_raw": 0.9597,
-      "reference": 0.9004,
-      "score": 0.020249,
-      "shrink_alpha": 0.9154,
-      "sigma": 0.0243
+      "band_p5": 0.7612,
+      "band_p95": 0.9437,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.845,
+      "p_raw": 0.8687,
+      "reference": 0.7359,
+      "score": 0.034156,
+      "shrink_alpha": 0.821,
+      "sigma": 0.0555
      },
      {
-      "band_p5": 0.9151,
-      "band_p95": 0.9885,
+      "band_p5": 0.7612,
+      "band_p95": 0.9437,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.8431,
+      "p_raw": 0.8687,
+      "reference": 0.7359,
+      "score": 0.032915,
+      "shrink_alpha": 0.8069,
+      "sigma": 0.0555
+     },
+     {
+      "band_p5": 0.7612,
+      "band_p95": 0.9437,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8354,
+      "p_raw": 0.8687,
+      "reference": 0.7359,
+      "score": 0.028113,
+      "shrink_alpha": 0.7493,
+      "sigma": 0.0555
+     },
+     {
+      "band_p5": 0.4766,
+      "band_p95": 0.8003,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.549,
+      "p_raw": 0.6427,
+      "reference": 0.4429,
+      "score": 0.022599,
+      "shrink_alpha": 0.5309,
+      "sigma": 0.0985
+     },
+     {
+      "band_p5": 0.9089,
+      "band_p95": 0.9875,
       "family": "handicap_asian",
       "key": "ah_home_1.5",
       "label": "Asiatico casa +1.5",
-      "p": 0.9547,
-      "p_raw": 0.9597,
-      "reference": 0.9004,
-      "score": 0.020249,
-      "shrink_alpha": 0.9154,
-      "sigma": 0.0243
-     },
-     {
-      "band_p5": 0.5261,
-      "band_p95": 0.8262,
-      "family": "1x2",
-      "key": "1x2_home",
-      "label": "Vittoria casa",
-      "p": 0.5625,
-      "p_raw": 0.6851,
-      "reference": 0.4738,
-      "score": 0.015765,
-      "shrink_alpha": 0.4198,
-      "sigma": 0.094
-     },
-     {
-      "band_p5": 0.5261,
-      "band_p95": 0.8262,
-      "family": "handicap_asian",
-      "key": "ah_home_-0.5",
-      "label": "Asiatico casa -0.5",
-      "p": 0.5625,
-      "p_raw": 0.6851,
-      "reference": 0.4738,
-      "score": 0.015765,
-      "shrink_alpha": 0.4198,
-      "sigma": 0.094
-     },
-     {
-      "band_p5": 0.7962,
-      "band_p95": 0.946,
-      "family": "team_goals",
-      "key": "hg_over_0.5",
-      "label": "Casa Over 0.5",
-      "p": 0.8553,
-      "p_raw": 0.8809,
-      "reference": 0.7921,
-      "score": 0.013222,
-      "shrink_alpha": 0.7114,
-      "sigma": 0.0509
+      "p": 0.9559,
+      "p_raw": 0.9585,
+      "reference": 0.9006,
+      "score": 0.021154,
+      "shrink_alpha": 0.955,
+      "sigma": 0.0246
      }
     ],
-    "score": 0.023171,
-    "shrink_alpha": 0.6717,
-    "sigma": 0.0559
+    "score": 0.034559,
+    "shrink_alpha": 0.6255,
+    "sigma": 0.0919
    },
    "raw_probabilities": {
-    "1x2_away": 0.1294,
-    "1x2_draw": 0.1855,
-    "1x2_home": 0.6851,
-    "btts_yes": 0.4814,
-    "over_2.5": 0.5751,
-    "under_2.5": 0.4249
+    "1x2_away": 0.1313,
+    "1x2_draw": 0.1843,
+    "1x2_home": 0.6844,
+    "btts_yes": 0.49,
+    "over_2.5": 0.5837,
+    "under_2.5": 0.4163
    },
    "reasons": [
-    "Gol attesi: Grêmio FBPA 2.22, Chapecoense AF 0.81 (totale 3.03).",
-    "1X (casa o pareggio): 83 su 100, 9 punti sopra la media di riferimento (74 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 67%)."
+    "Gol attesi: Grêmio FBPA 2.24, Chapecoense AF 0.83 (totale 3.07).",
+    "Vittoria casa: 61 su 100, 13 punti sopra la media di riferimento (47 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 63%)."
    ],
    "silence": null,
    "source": "model_only",
@@ -673,34 +674,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 72,
-     "p_min": 67,
+     "S_min": 62,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 5,
-    "truncated_mass": 2.532e-09
+    "truncated_mass": 2.545e-09
    },
    "expected_goals": {
     "away": 1.355,
-    "home": 1.075
+    "home": 1.079
    },
    "half_time": {
-    "ht_over_0.5": 0.6668,
-    "ht_over_1.5": 0.3006,
-    "ht_over_2.5": 0.0994,
-    "ht_under_0.5": 0.3332,
-    "ht_under_1.5": 0.6994,
-    "ht_under_2.5": 0.9006,
-    "htft_11": 0.168,
+    "ht_over_0.5": 0.6672,
+    "ht_over_1.5": 0.3011,
+    "ht_over_2.5": 0.0996,
+    "ht_under_0.5": 0.3328,
+    "ht_under_1.5": 0.6989,
+    "ht_under_2.5": 0.9004,
+    "htft_11": 0.1687,
     "htft_12": 0.0214,
     "htft_1X": 0.0492,
-    "htft_21": 0.0161,
-    "htft_22": 0.2561,
+    "htft_21": 0.0162,
+    "htft_22": 0.2554,
     "htft_2X": 0.0492,
-    "htft_X1": 0.1129,
-    "htft_X2": 0.1543,
-    "htft_XX": 0.1729
+    "htft_X1": 0.1133,
+    "htft_X2": 0.154,
+    "htft_XX": 0.1726
    },
    "home": {
     "crest": "https://crests.football-data.org/4364.png",
@@ -712,101 +713,101 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6008,
-    "band_p95": 0.7945,
+    "band_p5": 0.6046,
+    "band_p95": 0.8018,
     "cluster_members": [
-     "eh_-1_away",
-     "ah_away_0.5"
+     "ah_away_0.5",
+     "eh_-1_away"
     ],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
-    "p": 0.6385,
-    "p_raw": 0.7019,
-    "reference": 0.5262,
+    "p": 0.6622,
+    "p_raw": 0.7007,
+    "reference": 0.5252,
     "runners_up": [
      {
-      "band_p5": 0.8184,
-      "band_p95": 0.9361,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8654,
-      "p_raw": 0.883,
-      "reference": 0.7782,
-      "score": 0.024665,
-      "shrink_alpha": 0.8315,
-      "sigma": 0.036
-     },
-     {
-      "band_p5": 0.8184,
-      "band_p95": 0.9361,
+      "band_p5": 0.8169,
+      "band_p95": 0.9372,
       "family": "handicap_asian",
       "key": "ah_away_1.5",
       "label": "Asiatico ospite +1.5",
-      "p": 0.8654,
-      "p_raw": 0.883,
-      "reference": 0.7782,
-      "score": 0.024665,
-      "shrink_alpha": 0.8315,
-      "sigma": 0.036
+      "p": 0.8715,
+      "p_raw": 0.882,
+      "reference": 0.7786,
+      "score": 0.028324,
+      "shrink_alpha": 0.8981,
+      "sigma": 0.0382
      },
      {
-      "band_p5": 0.9346,
-      "band_p95": 0.9849,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9622,
-      "p_raw": 0.9641,
-      "reference": 0.9136,
-      "score": 0.018616,
-      "shrink_alpha": 0.9637,
-      "sigma": 0.0155
+      "band_p5": 0.8169,
+      "band_p95": 0.9372,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8679,
+      "p_raw": 0.882,
+      "reference": 0.7786,
+      "score": 0.026002,
+      "shrink_alpha": 0.863,
+      "sigma": 0.0382
      },
      {
-      "band_p5": 0.6088,
-      "band_p95": 0.8102,
+      "band_p5": 0.5949,
+      "band_p95": 0.8109,
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.6499,
-      "p_raw": 0.7087,
-      "reference": 0.5581,
-      "score": 0.01743,
-      "shrink_alpha": 0.6096,
-      "sigma": 0.064
+      "p": 0.6624,
+      "p_raw": 0.7071,
+      "reference": 0.5571,
+      "score": 0.023035,
+      "shrink_alpha": 0.7019,
+      "sigma": 0.0683
      },
      {
-      "band_p5": 0.8452,
-      "band_p95": 0.9532,
+      "band_p5": 0.9333,
+      "band_p95": 0.9859,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9624,
+      "p_raw": 0.9635,
+      "reference": 0.9138,
+      "score": 0.018693,
+      "shrink_alpha": 0.9788,
+      "sigma": 0.0167
+     },
+     {
+      "band_p5": 0.8357,
+      "band_p95": 0.9534,
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.8919,
-      "p_raw": 0.9029,
-      "reference": 0.835,
-      "score": 0.013072,
-      "shrink_alpha": 0.8386,
-      "sigma": 0.0351
+      "p": 0.8941,
+      "p_raw": 0.9016,
+      "reference": 0.8354,
+      "score": 0.01401,
+      "shrink_alpha": 0.8859,
+      "sigma": 0.0376
      }
     ],
-    "score": 0.025698,
-    "shrink_alpha": 0.6391,
-    "sigma": 0.0601
+    "score": 0.038508,
+    "shrink_alpha": 0.7811,
+    "sigma": 0.0629
    },
    "raw_probabilities": {
-    "1x2_away": 0.4308,
-    "1x2_draw": 0.2711,
-    "1x2_home": 0.2981,
-    "btts_yes": 0.4814,
-    "over_2.5": 0.4362,
-    "under_2.5": 0.5638
+    "1x2_away": 0.4302,
+    "1x2_draw": 0.2705,
+    "1x2_home": 0.2993,
+    "btts_yes": 0.4818,
+    "over_2.5": 0.4372,
+    "under_2.5": 0.5628
    },
    "reasons": [
-    "Gol attesi: Mirassol FC 1.07, SE Palmeiras 1.36 (totale 2.43).",
-    "X2 (pareggio o ospite): 64 su 100, 11 punti sopra la media di riferimento (53 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 64%)."
+    "Gol attesi: Mirassol FC 1.08, SE Palmeiras 1.36 (totale 2.43).",
+    "X2 (pareggio o ospite): 66 su 100, 14 punti sopra la media di riferimento (53 su 100).",
+    "Banda di incertezza: fra 60 e 80 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -821,34 +822,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
-     "sigma_max": 2
+     "S_min": 88,
+     "p_min": 61,
+     "sigma_max": 8
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
-    "truncated_mass": 5.02e-09
+    "truncated_mass": 6.344e-09
    },
    "expected_goals": {
-    "away": 1.231,
-    "home": 1.424
+    "away": 1.204,
+    "home": 1.461
    },
    "half_time": {
-    "ht_over_0.5": 0.6991,
-    "ht_over_1.5": 0.3377,
-    "ht_over_2.5": 0.1207,
-    "ht_under_0.5": 0.3009,
-    "ht_under_1.5": 0.6623,
-    "ht_under_2.5": 0.8793,
-    "htft_11": 0.2473,
-    "htft_12": 0.0195,
-    "htft_1X": 0.0514,
-    "htft_21": 0.0233,
-    "htft_22": 0.1882,
-    "htft_2X": 0.0514,
-    "htft_X1": 0.1443,
-    "htft_X2": 0.1181,
-    "htft_XX": 0.1565
+    "ht_over_0.5": 0.7002,
+    "ht_over_1.5": 0.339,
+    "ht_over_2.5": 0.1215,
+    "ht_under_0.5": 0.2998,
+    "ht_under_1.5": 0.661,
+    "ht_under_2.5": 0.8785,
+    "htft_11": 0.258,
+    "htft_12": 0.0188,
+    "htft_1X": 0.0511,
+    "htft_21": 0.024,
+    "htft_22": 0.1792,
+    "htft_2X": 0.0511,
+    "htft_X1": 0.1486,
+    "htft_X2": 0.1138,
+    "htft_XX": 0.1553
    },
    "home": {
     "crest": "https://crests.football-data.org/4287.png",
@@ -861,15 +862,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3296,
-    "1x2_draw": 0.2559,
-    "1x2_home": 0.4144,
-    "btts_yes": 0.5157,
-    "over_2.5": 0.4886,
-    "under_2.5": 0.5114
+    "1x2_away": 0.3164,
+    "1x2_draw": 0.2548,
+    "1x2_home": 0.4288,
+    "btts_yes": 0.5119,
+    "over_2.5": 0.4879,
+    "under_2.5": 0.5121
    },
    "reasons": [
-    "Gol attesi: Clube do Remo 1.42, Coritiba FBC 1.23 (totale 2.66)."
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Clube do Remo 1.46, Coritiba FBC 1.20 (totale 2.67)."
    ],
    "silence": {
     "reason": "S_min"
@@ -886,34 +888,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
-    "truncated_mass": 7.392e-09
+    "truncated_mass": 5.482e-09
    },
    "expected_goals": {
-    "away": 0.969,
-    "home": 1.492
+    "away": 0.965,
+    "home": 1.454
    },
    "half_time": {
-    "ht_over_0.5": 0.6714,
-    "ht_over_1.5": 0.3057,
-    "ht_over_2.5": 0.1022,
-    "ht_under_0.5": 0.3286,
-    "ht_under_1.5": 0.6943,
-    "ht_under_2.5": 0.8978,
-    "htft_11": 0.2995,
+    "ht_over_0.5": 0.665,
+    "ht_over_1.5": 0.2986,
+    "ht_over_2.5": 0.0983,
+    "ht_under_0.5": 0.335,
+    "ht_under_1.5": 0.7014,
+    "ht_under_2.5": 0.9017,
+    "htft_11": 0.2923,
     "htft_12": 0.0136,
-    "htft_1X": 0.0471,
-    "htft_21": 0.0232,
-    "htft_22": 0.1362,
-    "htft_2X": 0.0471,
-    "htft_X1": 0.1709,
-    "htft_X2": 0.0954,
-    "htft_XX": 0.1669
+    "htft_1X": 0.0472,
+    "htft_21": 0.0225,
+    "htft_22": 0.1391,
+    "htft_2X": 0.0472,
+    "htft_X1": 0.1695,
+    "htft_X2": 0.0978,
+    "htft_XX": 0.1708
    },
    "home": {
     "crest": "https://crests.football-data.org/1776.png",
@@ -926,15 +928,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2477,
-    "1x2_draw": 0.2608,
-    "1x2_home": 0.4915,
-    "btts_yes": 0.4734,
-    "over_2.5": 0.4443,
-    "under_2.5": 0.5557
+    "1x2_away": 0.2526,
+    "1x2_draw": 0.2647,
+    "1x2_home": 0.4827,
+    "btts_yes": 0.4675,
+    "over_2.5": 0.4338,
+    "under_2.5": 0.5662
    },
    "reasons": [
-    "Gol attesi: São Paulo FC 1.49, RB Bragantino 0.97 (totale 2.46)."
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: São Paulo FC 1.45, RB Bragantino 0.97 (totale 2.42)."
    ],
    "silence": {
     "reason": "S_min"
@@ -951,34 +954,34 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 86,
-     "p_min": 67,
+     "S_min": 77,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 1,
-    "truncated_mass": 2.638e-09
+    "truncated_mass": 3.045e-09
    },
    "expected_goals": {
-    "away": 1.304,
-    "home": 1.272
+    "away": 1.291,
+    "home": 1.316
    },
    "half_time": {
-    "ht_over_0.5": 0.688,
-    "ht_over_1.5": 0.3246,
-    "ht_over_2.5": 0.113,
-    "ht_under_0.5": 0.312,
-    "ht_under_1.5": 0.6754,
-    "ht_under_2.5": 0.887,
-    "htft_11": 0.2096,
-    "htft_12": 0.0209,
-    "htft_1X": 0.0512,
-    "htft_21": 0.0203,
-    "htft_22": 0.2195,
-    "htft_2X": 0.0512,
-    "htft_X1": 0.1299,
-    "htft_X2": 0.1344,
-    "htft_XX": 0.1628
+    "ht_over_0.5": 0.6923,
+    "ht_over_1.5": 0.3296,
+    "ht_over_2.5": 0.1159,
+    "ht_under_0.5": 0.3077,
+    "ht_under_1.5": 0.6704,
+    "ht_under_2.5": 0.8841,
+    "htft_11": 0.2193,
+    "htft_12": 0.0207,
+    "htft_1X": 0.0515,
+    "htft_21": 0.0213,
+    "htft_22": 0.2116,
+    "htft_2X": 0.0515,
+    "htft_X1": 0.1336,
+    "htft_X2": 0.1301,
+    "htft_XX": 0.1605
    },
    "home": {
     "crest": "https://crests.football-data.org/1780.png",
@@ -990,35 +993,35 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5336,
-    "band_p95": 0.7583,
+    "band_p5": 0.5103,
+    "band_p95": 0.7406,
     "cluster_members": [
-     "eh_-1_away",
-     "ah_away_0.5"
+     "ah_away_0.5",
+     "eh_-1_away"
     ],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
-    "p": 0.5953,
-    "p_raw": 0.6397,
-    "reference": 0.5262,
+    "p": 0.6007,
+    "p_raw": 0.6256,
+    "reference": 0.5252,
     "runners_up": [],
-    "score": 0.009644,
-    "shrink_alpha": 0.6087,
-    "sigma": 0.0641
+    "score": 0.011519,
+    "shrink_alpha": 0.7518,
+    "sigma": 0.0683
    },
    "raw_probabilities": {
-    "1x2_away": 0.3751,
-    "1x2_draw": 0.2646,
-    "1x2_home": 0.3603,
-    "btts_yes": 0.5175,
-    "over_2.5": 0.4736,
-    "under_2.5": 0.5264
+    "1x2_away": 0.3632,
+    "1x2_draw": 0.2624,
+    "1x2_home": 0.3744,
+    "btts_yes": 0.5231,
+    "over_2.5": 0.4813,
+    "under_2.5": 0.5187
    },
    "reasons": [
-    "Gol attesi: CR Vasco da Gama 1.27, Cruzeiro EC 1.30 (totale 2.58).",
-    "X2 (pareggio o ospite): 60 su 100, 7 punti sopra la media di riferimento (53 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 61%)."
+    "Gol attesi: CR Vasco da Gama 1.32, Cruzeiro EC 1.29 (totale 2.61).",
+    "X2 (pareggio o ospite): 60 su 100, 8 punti sopra la media di riferimento (53 su 100).",
+    "Banda di incertezza: fra 51 e 74 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1033,12 +1036,12 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 67,
+     "S_min": 84,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 0,
+    "n_candidates": 88,
+    "n_clusters": 1,
     "truncated_mass": 8.424e-08
    },
    "expected_goals": {
@@ -1071,7 +1074,21 @@
    "matchday": 2,
    "model_weight": 1.0,
    "phase": "preliminary",
-   "prediction": null,
+   "prediction": {
+    "band_p5": 0.7554,
+    "band_p95": 0.9006,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_0.5",
+    "label": "Casa Over 0.5",
+    "p": 0.8263,
+    "p_raw": 0.8361,
+    "reference": 0.7692,
+    "runners_up": [],
+    "score": 0.009792,
+    "shrink_alpha": 0.8533,
+    "sigma": 0.0435
+   },
    "raw_probabilities": {
     "1x2_away": 0.2523,
     "1x2_draw": 0.2265,
@@ -1081,11 +1098,11 @@
     "under_2.5": 0.4156
    },
    "reasons": [
-    "Gol attesi: Liverpool FC 1.84, Nottingham Forest FC 1.21 (totale 3.05)."
+    "Gol attesi: Liverpool FC 1.84, Nottingham Forest FC 1.21 (totale 3.05).",
+    "Casa Over 0.5: 83 su 100, 6 punti sopra la media di riferimento (77 su 100).",
+    "Banda di incertezza: fra 76 e 90 su 100."
    ],
-   "silence": {
-    "reason": "S_min"
-   },
+   "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-29T11:30:00Z"
   },
@@ -1098,11 +1115,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 4.112e-09
    },
@@ -1146,6 +1163,7 @@
     "under_2.5": 0.5504
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Derby County FC 1.42, Swansea City AFC 1.06 (totale 2.48)."
    ],
    "silence": {
@@ -1163,12 +1181,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 86,
-     "p_min": 66,
+     "S_min": 73,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 5,
+    "n_candidates": 88,
+    "n_clusters": 6,
     "truncated_mass": 6.129e-09
    },
    "expected_goals": {
@@ -1208,48 +1226,22 @@
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.7693,
+    "p": 0.777,
     "p_raw": 0.7911,
     "reference": 0.7007,
     "runners_up": [
      {
       "band_p5": 0.8915,
       "band_p95": 0.9574,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9264,
-      "p_raw": 0.9293,
-      "reference": 0.8817,
-      "score": 0.010918,
-      "shrink_alpha": 0.9398,
-      "sigma": 0.0202
-     },
-     {
-      "band_p5": 0.8915,
-      "band_p95": 0.9574,
       "family": "handicap_asian",
       "key": "ah_home_1.5",
       "label": "Asiatico casa +1.5",
-      "p": 0.9264,
+      "p": 0.9278,
       "p_raw": 0.9293,
       "reference": 0.8817,
-      "score": 0.010918,
-      "shrink_alpha": 0.9398,
+      "score": 0.011664,
+      "shrink_alpha": 0.9691,
       "sigma": 0.0202
-     },
-     {
-      "band_p5": 0.4753,
-      "band_p95": 0.6435,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.536,
-      "p_raw": 0.5644,
-      "reference": 0.465,
-      "score": 0.010079,
-      "shrink_alpha": 0.7139,
-      "sigma": 0.0506
      },
      {
       "band_p5": 0.7093,
@@ -1257,11 +1249,37 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.7663,
+      "p": 0.774,
       "p_raw": 0.7819,
       "reference": 0.7066,
-      "score": 0.009005,
-      "shrink_alpha": 0.7929,
+      "score": 0.011525,
+      "shrink_alpha": 0.8941,
+      "sigma": 0.0409
+     },
+     {
+      "band_p5": 0.8915,
+      "band_p95": 0.9574,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9273,
+      "p_raw": 0.9293,
+      "reference": 0.8817,
+      "score": 0.011361,
+      "shrink_alpha": 0.9574,
+      "sigma": 0.0202
+     },
+     {
+      "band_p5": 0.7093,
+      "band_p95": 0.8448,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7733,
+      "p_raw": 0.7819,
+      "reference": 0.7066,
+      "score": 0.011284,
+      "shrink_alpha": 0.885,
       "sigma": 0.0409
      },
      {
@@ -1270,16 +1288,16 @@
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.7663,
+      "p": 0.7703,
       "p_raw": 0.7819,
       "reference": 0.7066,
-      "score": 0.009005,
-      "shrink_alpha": 0.7929,
+      "score": 0.010291,
+      "shrink_alpha": 0.8462,
       "sigma": 0.0409
      }
     ],
-    "score": 0.0118,
-    "shrink_alpha": 0.759,
+    "score": 0.014681,
+    "shrink_alpha": 0.8439,
     "sigma": 0.0451
    },
    "raw_probabilities": {
@@ -1292,7 +1310,7 @@
    },
    "reasons": [
     "Gol attesi: Middlesbrough FC 1.47, West Bromwich Albion FC 0.85 (totale 2.32).",
-    "Ospite Under 1.5: 77 su 100, 7 punti sopra la media di riferimento (70 su 100).",
+    "Ospite Under 1.5: 78 su 100, 8 punti sopra la media di riferimento (70 su 100).",
     "Banda di incertezza: fra 71 e 85 su 100."
    ],
    "silence": null,
@@ -1308,12 +1326,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
-     "p_min": 67,
+     "S_min": 75,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 4,
+    "n_candidates": 88,
+    "n_clusters": 7,
     "truncated_mass": 1.282e-07
    },
    "expected_goals": {
@@ -1350,12 +1368,12 @@
     "band_p5": 0.8606,
     "band_p95": 0.9571,
     "cluster_members": [
-     "ah_home_1.5"
+     "eh_2_home"
     ],
-    "family": "handicap_eu",
-    "key": "eh_2_home",
-    "label": "Handicap +2 casa",
-    "p": 0.9002,
+    "family": "handicap_asian",
+    "key": "ah_home_1.5",
+    "label": "Asiatico casa +1.5",
+    "p": 0.9049,
     "p_raw": 0.9103,
     "reference": 0.8329,
     "runners_up": [
@@ -1365,12 +1383,38 @@
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.8708,
+      "p": 0.8772,
       "p_raw": 0.8881,
       "reference": 0.799,
-      "score": 0.017848,
-      "shrink_alpha": 0.8062,
+      "score": 0.021365,
+      "shrink_alpha": 0.8771,
       "sigma": 0.0392
+     },
+     {
+      "band_p5": 0.4399,
+      "band_p95": 0.6704,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5149,
+      "p_raw": 0.5503,
+      "reference": 0.4217,
+      "score": 0.01758,
+      "shrink_alpha": 0.7248,
+      "sigma": 0.0732
+     },
+     {
+      "band_p5": 0.4399,
+      "band_p95": 0.6704,
+      "family": "handicap_asian",
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.5125,
+      "p_raw": 0.5503,
+      "reference": 0.4217,
+      "score": 0.016677,
+      "shrink_alpha": 0.7058,
+      "sigma": 0.0732
      },
      {
       "band_p5": 0.9507,
@@ -1378,11 +1422,11 @@
       "family": "handicap_asian",
       "key": "ah_home_2.5",
       "label": "Asiatico casa +2.5",
-      "p": 0.9707,
+      "p": 0.9712,
       "p_raw": 0.9718,
       "reference": 0.9302,
-      "score": 0.015951,
-      "shrink_alpha": 0.9738,
+      "score": 0.016448,
+      "shrink_alpha": 0.9868,
       "sigma": 0.0131
      },
      {
@@ -1391,42 +1435,16 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.7397,
+      "p": 0.754,
       "p_raw": 0.7719,
       "reference": 0.6748,
-      "score": 0.00998,
-      "shrink_alpha": 0.6684,
-      "sigma": 0.0563
-     },
-     {
-      "band_p5": 0.6809,
-      "band_p95": 0.8625,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.7397,
-      "p_raw": 0.7719,
-      "reference": 0.6748,
-      "score": 0.00998,
-      "shrink_alpha": 0.6684,
-      "sigma": 0.0563
-     },
-     {
-      "band_p5": 0.6809,
-      "band_p95": 0.8625,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.7397,
-      "p_raw": 0.7719,
-      "reference": 0.6748,
-      "score": 0.00998,
-      "shrink_alpha": 0.6684,
+      "score": 0.015039,
+      "shrink_alpha": 0.8163,
       "sigma": 0.0563
      }
     ],
-    "score": 0.018537,
-    "shrink_alpha": 0.8702,
+    "score": 0.02145,
+    "shrink_alpha": 0.9309,
     "sigma": 0.0309
    },
    "raw_probabilities": {
@@ -1439,7 +1457,7 @@
    },
    "reasons": [
     "Gol attesi: RB Leipzig 1.92, Borussia Mönchengladbach 1.15 (totale 3.06).",
-    "Handicap +2 casa: 90 su 100, 7 punti sopra la media di riferimento (83 su 100).",
+    "Asiatico casa +1.5: 90 su 100, 7 punti sopra la media di riferimento (83 su 100).",
     "Banda di incertezza: fra 86 e 96 su 100."
    ],
    "silence": null,
@@ -1455,12 +1473,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
-     "p_min": 67,
+     "S_min": 72,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 4,
+    "n_candidates": 88,
+    "n_clusters": 6,
     "truncated_mass": 3.824e-08
    },
    "expected_goals": {
@@ -1494,41 +1512,30 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8961,
-    "band_p95": 0.9758,
-    "cluster_members": [],
+    "band_p5": 0.7601,
+    "band_p95": 0.9157,
+    "cluster_members": [
+     "eh_-2_away"
+    ],
     "family": "handicap_asian",
-    "key": "ah_away_2.5",
-    "label": "Asiatico ospite +2.5",
-    "p": 0.9407,
-    "p_raw": 0.9448,
-    "reference": 0.892,
+    "key": "ah_away_1.5",
+    "label": "Asiatico ospite +1.5",
+    "p": 0.8402,
+    "p_raw": 0.8523,
+    "reference": 0.763,
     "runners_up": [
      {
-      "band_p5": 0.7601,
-      "band_p95": 0.9157,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8309,
-      "p_raw": 0.8523,
-      "reference": 0.763,
-      "score": 0.013721,
-      "shrink_alpha": 0.7598,
-      "sigma": 0.045
-     },
-     {
-      "band_p5": 0.7601,
-      "band_p95": 0.9157,
+      "band_p5": 0.8961,
+      "band_p95": 0.9758,
       "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8309,
-      "p_raw": 0.8523,
-      "reference": 0.763,
-      "score": 0.013721,
-      "shrink_alpha": 0.7598,
-      "sigma": 0.045
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9427,
+      "p_raw": 0.9448,
+      "reference": 0.892,
+      "score": 0.01579,
+      "shrink_alpha": 0.9595,
+      "sigma": 0.0233
      },
      {
       "band_p5": 0.7354,
@@ -1536,11 +1543,11 @@
       "family": "team_goals",
       "key": "ag_over_0.5",
       "label": "Ospite Over 0.5",
-      "p": 0.794,
+      "p": 0.8009,
       "p_raw": 0.8132,
       "reference": 0.7297,
-      "score": 0.011118,
-      "shrink_alpha": 0.7703,
+      "score": 0.013694,
+      "shrink_alpha": 0.852,
       "sigma": 0.0437
      },
      {
@@ -1549,17 +1556,43 @@
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.8016,
+      "p": 0.8102,
       "p_raw": 0.8276,
       "reference": 0.743,
-      "score": 0.009504,
-      "shrink_alpha": 0.6924,
+      "score": 0.012628,
+      "shrink_alpha": 0.7944,
       "sigma": 0.0533
+     },
+     {
+      "band_p5": 0.5563,
+      "band_p95": 0.7807,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.6551,
+      "p_raw": 0.679,
+      "reference": 0.5784,
+      "score": 0.012327,
+      "shrink_alpha": 0.7624,
+      "sigma": 0.0663
+     },
+     {
+      "band_p5": 0.5563,
+      "band_p95": 0.7807,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.6533,
+      "p_raw": 0.679,
+      "reference": 0.5784,
+      "score": 0.011768,
+      "shrink_alpha": 0.7452,
+      "sigma": 0.0663
      }
     ],
-    "score": 0.014454,
-    "shrink_alpha": 0.9218,
-    "sigma": 0.0233
+    "score": 0.017963,
+    "shrink_alpha": 0.8641,
+    "sigma": 0.045
    },
    "raw_probabilities": {
     "1x2_away": 0.4451,
@@ -1571,8 +1604,8 @@
    },
    "reasons": [
     "Gol attesi: 1. FC Union Berlin 1.41, Eintracht Frankfurt 1.71 (totale 3.12).",
-    "Asiatico ospite +2.5: 94 su 100, 5 punti sopra la media di riferimento (89 su 100).",
-    "Banda di incertezza: fra 90 e 98 su 100."
+    "Asiatico ospite +1.5: 84 su 100, 8 punti sopra la media di riferimento (76 su 100).",
+    "Banda di incertezza: fra 76 e 92 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1587,12 +1620,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 96,
-     "p_min": 65,
+     "S_min": 83,
+     "p_min": 60,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 2,
+    "n_candidates": 88,
+    "n_clusters": 1,
     "truncated_mass": 1.313e-07
    },
    "expected_goals": {
@@ -1632,26 +1665,12 @@
     "family": "team_goals",
     "key": "ag_over_0.5",
     "label": "Ospite Over 0.5",
-    "p": 0.8108,
+    "p": 0.8202,
     "p_raw": 0.8377,
     "reference": 0.7297,
-    "runners_up": [
-     {
-      "band_p5": 0.5712,
-      "band_p95": 0.776,
-      "family": "btts",
-      "key": "btts_yes",
-      "label": "Entrambe segnano",
-      "p": 0.6423,
-      "p_raw": 0.6815,
-      "reference": 0.5785,
-      "score": 0.008492,
-      "shrink_alpha": 0.6193,
-      "sigma": 0.0627
-     }
-    ],
-    "score": 0.017981,
-    "shrink_alpha": 0.7509,
+    "runners_up": [],
+    "score": 0.022627,
+    "shrink_alpha": 0.838,
     "sigma": 0.0461
    },
    "raw_probabilities": {
@@ -1664,7 +1683,7 @@
    },
    "reasons": [
     "Gol attesi: 1. FC Köln 1.73, TSG 1899 Hoffenheim 1.86 (totale 3.59).",
-    "Ospite Over 0.5: 81 su 100, 8 punti sopra la media di riferimento (73 su 100).",
+    "Ospite Over 0.5: 82 su 100, 9 punti sopra la media di riferimento (73 su 100).",
     "Banda di incertezza: fra 75 e 90 su 100."
    ],
    "silence": null,
@@ -1680,11 +1699,11 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
-     "p_min": 67,
+     "S_min": 81,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 2,
     "truncated_mass": 7.563e-09
    },
@@ -1719,33 +1738,33 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.9457,
-    "band_p95": 0.987,
+    "band_p5": 0.6176,
+    "band_p95": 0.8121,
     "cluster_members": [],
-    "family": "handicap_asian",
-    "key": "ah_home_2.5",
-    "label": "Asiatico casa +2.5",
-    "p": 0.969,
-    "p_raw": 0.9699,
-    "reference": 0.9383,
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.6952,
+    "p_raw": 0.7197,
+    "reference": 0.6226,
     "runners_up": [
      {
-      "band_p5": 0.6176,
-      "band_p95": 0.8121,
-      "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.6841,
-      "p_raw": 0.7197,
-      "reference": 0.6226,
-      "score": 0.008253,
-      "shrink_alpha": 0.6333,
-      "sigma": 0.0609
+      "band_p5": 0.9457,
+      "band_p95": 0.987,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9695,
+      "p_raw": 0.9699,
+      "reference": 0.9383,
+      "score": 0.0102,
+      "shrink_alpha": 0.9863,
+      "sigma": 0.0133
      }
     ],
-    "score": 0.009891,
-    "shrink_alpha": 0.9729,
-    "sigma": 0.0133
+    "score": 0.011565,
+    "shrink_alpha": 0.7477,
+    "sigma": 0.0609
    },
    "raw_probabilities": {
     "1x2_away": 0.2665,
@@ -1757,8 +1776,8 @@
    },
    "reasons": [
     "Gol attesi: AFC Bournemouth 1.49, Everton FC 1.04 (totale 2.54).",
-    "Asiatico casa +2.5: 97 su 100, 3 punti sopra la media di riferimento (94 su 100).",
-    "Banda di incertezza: fra 95 e 99 su 100."
+    "Ospite Under 1.5: 70 su 100, 7 punti sopra la media di riferimento (62 su 100).",
+    "Banda di incertezza: fra 62 e 81 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1773,11 +1792,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 61,
-     "p_min": 65,
+     "S_min": 56,
+     "p_min": 60,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 10,
     "truncated_mass": 2.792e-09
    },
@@ -1818,7 +1837,7 @@
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.8646,
+    "p": 0.8849,
     "p_raw": 0.9189,
     "reference": 0.592,
     "runners_up": [
@@ -1828,24 +1847,11 @@
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.8109,
+      "p": 0.8421,
       "p_raw": 0.8747,
       "reference": 0.5624,
-      "score": 0.138056,
-      "shrink_alpha": 0.7957,
-      "sigma": 0.0405
-     },
-     {
-      "band_p5": 0.8026,
-      "band_p95": 0.9362,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.8109,
-      "p_raw": 0.8747,
-      "reference": 0.5624,
-      "score": 0.138056,
-      "shrink_alpha": 0.7957,
+      "score": 0.179003,
+      "shrink_alpha": 0.8957,
       "sigma": 0.0405
      },
      {
@@ -1854,25 +1860,25 @@
       "family": "handicap_asian",
       "key": "ah_away_0.5",
       "label": "Asiatico ospite +0.5",
-      "p": 0.8109,
+      "p": 0.8393,
       "p_raw": 0.8747,
       "reference": 0.5624,
-      "score": 0.138056,
-      "shrink_alpha": 0.7957,
+      "score": 0.175027,
+      "shrink_alpha": 0.8867,
       "sigma": 0.0405
      },
      {
-      "band_p5": 0.948,
-      "band_p95": 0.9917,
+      "band_p5": 0.8026,
+      "band_p95": 0.9362,
       "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9693,
-      "p_raw": 0.974,
-      "reference": 0.8039,
-      "score": 0.12435,
-      "shrink_alpha": 0.972,
-      "sigma": 0.0136
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.8273,
+      "p_raw": 0.8747,
+      "reference": 0.5624,
+      "score": 0.158788,
+      "shrink_alpha": 0.8485,
+      "sigma": 0.0405
      },
      {
       "band_p5": 0.948,
@@ -1880,16 +1886,29 @@
       "family": "handicap_asian",
       "key": "ah_away_1.5",
       "label": "Asiatico ospite +1.5",
-      "p": 0.9693,
+      "p": 0.9716,
       "p_raw": 0.974,
       "reference": 0.8039,
-      "score": 0.12435,
-      "shrink_alpha": 0.972,
+      "score": 0.129251,
+      "shrink_alpha": 0.9859,
+      "sigma": 0.0136
+     },
+     {
+      "band_p5": 0.948,
+      "band_p95": 0.9917,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9707,
+      "p_raw": 0.974,
+      "reference": 0.8039,
+      "score": 0.127277,
+      "shrink_alpha": 0.9804,
       "sigma": 0.0136
      }
     ],
-    "score": 0.178142,
-    "shrink_alpha": 0.834,
+    "score": 0.21005,
+    "shrink_alpha": 0.8961,
     "sigma": 0.0357
    },
    "raw_probabilities": {
@@ -1902,7 +1921,7 @@
    },
    "reasons": [
     "Gol attesi: Norwich City FC 0.46, Burnley FC 1.37 (totale 1.83).",
-    "Casa Under 1.5: 86 su 100, 27 punti sopra la media di riferimento (59 su 100).",
+    "Casa Under 1.5: 88 su 100, 29 punti sopra la media di riferimento (59 su 100).",
     "Banda di incertezza: fra 85 e 97 su 100."
    ],
    "silence": null,
@@ -1918,11 +1937,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 1.091e-08
    },
@@ -1966,6 +1985,7 @@
     "under_2.5": 0.5205
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Bristol City FC 1.54, Portsmouth FC 1.06 (totale 2.60)."
    ],
    "silence": {
@@ -1983,11 +2003,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 86,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 2.181e-08
    },
@@ -2031,6 +2051,7 @@
     "under_2.5": 0.5102
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Southampton FC 1.64, Millwall FC 1.00 (totale 2.64)."
    ],
    "silence": {
@@ -2048,11 +2069,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 85,
-     "p_min": 66,
+     "S_min": 79,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 3,
     "truncated_mass": 3.097e-10
    },
@@ -2087,59 +2108,46 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.4827,
-    "band_p95": 0.6788,
+    "band_p5": 0.5771,
+    "band_p95": 0.7998,
     "cluster_members": [],
-    "family": "btts",
-    "key": "btts_no",
-    "label": "Non entrambe segnano",
-    "p": 0.5361,
-    "p_raw": 0.5769,
-    "reference": 0.465,
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.6638,
+    "p_raw": 0.6963,
+    "reference": 0.592,
     "runners_up": [
-     {
-      "band_p5": 0.5304,
-      "band_p95": 0.7574,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.5866,
-      "p_raw": 0.6402,
-      "reference": 0.5216,
-      "score": 0.008517,
-      "shrink_alpha": 0.5478,
-      "sigma": 0.0727
-     },
-     {
-      "band_p5": 0.5304,
-      "band_p95": 0.7574,
-      "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.5866,
-      "p_raw": 0.6402,
-      "reference": 0.5216,
-      "score": 0.008517,
-      "shrink_alpha": 0.5478,
-      "sigma": 0.0727
-     },
      {
       "band_p5": 0.823,
       "band_p95": 0.9489,
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.8841,
+      "p": 0.8882,
       "p_raw": 0.8955,
       "reference": 0.8381,
-      "score": 0.008488,
-      "shrink_alpha": 0.8006,
+      "score": 0.01019,
+      "shrink_alpha": 0.8733,
       "sigma": 0.0399
+     },
+     {
+      "band_p5": 0.4827,
+      "band_p95": 0.6788,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5317,
+      "p_raw": 0.5769,
+      "reference": 0.465,
+      "score": 0.008897,
+      "shrink_alpha": 0.5958,
+      "sigma": 0.0606
      }
     ],
-    "score": 0.010114,
-    "shrink_alpha": 0.6352,
-    "sigma": 0.0606
+    "score": 0.01093,
+    "shrink_alpha": 0.6888,
+    "sigma": 0.0704
    },
    "raw_probabilities": {
     "1x2_away": 0.3316,
@@ -2151,8 +2159,8 @@
    },
    "reasons": [
     "Gol attesi: Charlton Athletic FC 1.11, Preston North End FC 1.03 (totale 2.14).",
-    "Non entrambe segnano: 54 su 100, 7 punti sopra la media di riferimento (47 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 64%)."
+    "Casa Under 1.5: 66 su 100, 7 punti sopra la media di riferimento (59 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 69%)."
    ],
    "silence": null,
    "source": "model_only",
@@ -2167,11 +2175,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 67,
+     "S_min": 88,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 1.754e-09
    },
@@ -2215,6 +2223,7 @@
     "under_2.5": 0.5817
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Blackburn Rovers FC 1.31, Queens Park Rangers FC 1.05 (totale 2.36)."
    ],
    "silence": {
@@ -2232,12 +2241,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 73,
-     "p_min": 67,
+     "S_min": 63,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 4,
+    "n_candidates": 88,
+    "n_clusters": 7,
     "truncated_mass": 1.692e-08
    },
    "expected_goals": {
@@ -2274,40 +2283,40 @@
     "band_p5": 0.6161,
     "band_p95": 0.826,
     "cluster_members": [
-     "eh_-1_away",
-     "ah_away_0.5"
+     "ah_away_0.5",
+     "eh_-1_away"
     ],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
-    "p": 0.6618,
+    "p": 0.6902,
     "p_raw": 0.7298,
     "reference": 0.5624,
     "runners_up": [
      {
       "band_p5": 0.8184,
       "band_p95": 0.9476,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.874,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.882,
       "p_raw": 0.8919,
       "reference": 0.8039,
-      "score": 0.017332,
-      "shrink_alpha": 0.7967,
+      "score": 0.021819,
+      "shrink_alpha": 0.8873,
       "sigma": 0.0404
      },
      {
       "band_p5": 0.8184,
       "band_p95": 0.9476,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.874,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8786,
       "p_raw": 0.8919,
       "reference": 0.8039,
-      "score": 0.017332,
-      "shrink_alpha": 0.7967,
+      "score": 0.01986,
+      "shrink_alpha": 0.8492,
       "sigma": 0.0404
      },
      {
@@ -2316,11 +2325,11 @@
       "family": "handicap_asian",
       "key": "ah_away_2.5",
       "label": "Asiatico ospite +2.5",
-      "p": 0.9631,
+      "p": 0.9643,
       "p_raw": 0.9655,
       "reference": 0.9185,
-      "score": 0.016443,
-      "shrink_alpha": 0.9494,
+      "score": 0.017441,
+      "shrink_alpha": 0.9741,
       "sigma": 0.0185
      },
      {
@@ -2329,16 +2338,29 @@
       "family": "team_goals",
       "key": "ag_over_0.5",
       "label": "Ospite Over 0.5",
-      "p": 0.765,
+      "p": 0.7745,
       "p_raw": 0.7926,
       "reference": 0.6917,
-      "score": 0.013265,
-      "shrink_alpha": 0.7266,
+      "score": 0.017031,
+      "shrink_alpha": 0.8202,
       "sigma": 0.0491
+     },
+     {
+      "band_p5": 0.4534,
+      "band_p95": 0.6612,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5057,
+      "p_raw": 0.5553,
+      "reference": 0.4157,
+      "score": 0.016431,
+      "shrink_alpha": 0.6448,
+      "sigma": 0.0671
      }
     ],
-    "score": 0.020581,
-    "shrink_alpha": 0.5939,
+    "score": 0.034338,
+    "shrink_alpha": 0.7633,
     "sigma": 0.0662
    },
    "raw_probabilities": {
@@ -2351,8 +2373,8 @@
    },
    "reasons": [
     "Gol attesi: Cardiff City FC 1.13, Sheffield United FC 1.60 (totale 2.73).",
-    "X2 (pareggio o ospite): 66 su 100, 10 punti sopra la media di riferimento (56 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 59%)."
+    "X2 (pareggio o ospite): 69 su 100, 13 punti sopra la media di riferimento (56 su 100).",
+    "Banda di incertezza: fra 62 e 83 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -2367,34 +2389,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 92,
-     "p_min": 67,
+     "S_min": 81,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 2,
-    "truncated_mass": 1.599e-08
+    "n_candidates": 88,
+    "n_clusters": 4,
+    "truncated_mass": 1.378e-08
    },
    "expected_goals": {
-    "away": 1.038,
-    "home": 1.595
+    "away": 1.03,
+    "home": 1.575
    },
    "half_time": {
-    "ht_over_0.5": 0.6944,
-    "ht_over_1.5": 0.3321,
-    "ht_over_2.5": 0.1174,
-    "ht_under_0.5": 0.3056,
-    "ht_under_1.5": 0.6679,
-    "ht_under_2.5": 0.8826,
-    "htft_11": 0.3079,
-    "htft_12": 0.015,
-    "htft_1X": 0.0482,
-    "htft_21": 0.0257,
-    "htft_22": 0.1378,
-    "htft_2X": 0.0482,
-    "htft_X1": 0.1695,
-    "htft_X2": 0.0939,
-    "htft_XX": 0.1537
+    "ht_over_0.5": 0.6895,
+    "ht_over_1.5": 0.3264,
+    "ht_over_2.5": 0.114,
+    "ht_under_0.5": 0.3105,
+    "ht_under_1.5": 0.6736,
+    "ht_under_2.5": 0.886,
+    "htft_11": 0.3046,
+    "htft_12": 0.0149,
+    "htft_1X": 0.0481,
+    "htft_21": 0.0253,
+    "htft_22": 0.1382,
+    "htft_2X": 0.0481,
+    "htft_X1": 0.1698,
+    "htft_X2": 0.095,
+    "htft_XX": 0.1559
    },
    "home": {
     "crest": "https://crests.football-data.org/670.png",
@@ -2406,46 +2428,85 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.9436,
-    "band_p95": 0.9902,
+    "band_p5": 0.6041,
+    "band_p95": 0.8204,
     "cluster_members": [],
-    "family": "handicap_asian",
-    "key": "ah_home_2.5",
-    "label": "Asiatico casa +2.5",
-    "p": 0.9707,
-    "p_raw": 0.9717,
-    "reference": 0.9409,
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.6904,
+    "p_raw": 0.7249,
+    "reference": 0.6052,
     "runners_up": [
      {
-      "band_p5": 0.6023,
-      "band_p95": 0.8265,
+      "band_p5": 0.9456,
+      "band_p95": 0.9891,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9718,
+      "p_raw": 0.9723,
+      "reference": 0.9415,
+      "score": 0.010197,
+      "shrink_alpha": 0.9846,
+      "sigma": 0.0142
+     },
+     {
+      "band_p5": 0.8459,
+      "band_p95": 0.9528,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.902,
+      "p_raw": 0.906,
+      "reference": 0.8574,
+      "score": 0.008973,
+      "shrink_alpha": 0.9172,
+      "sigma": 0.0341
+     },
+     {
+      "band_p5": 0.8419,
+      "band_p95": 0.9571,
       "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.6716,
-      "p_raw": 0.7221,
-      "reference": 0.605,
-      "score": 0.009514,
-      "shrink_alpha": 0.5691,
-      "sigma": 0.0696
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.906,
+      "p_raw": 0.9111,
+      "reference": 0.8626,
+      "score": 0.008775,
+      "shrink_alpha": 0.8938,
+      "sigma": 0.0361
+     },
+     {
+      "band_p5": 0.8459,
+      "band_p95": 0.9528,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9005,
+      "p_raw": 0.906,
+      "reference": 0.8574,
+      "score": 0.008379,
+      "shrink_alpha": 0.888,
+      "sigma": 0.0341
      }
     ],
-    "score": 0.009726,
-    "shrink_alpha": 0.9661,
-    "sigma": 0.015
+    "score": 0.015674,
+    "shrink_alpha": 0.7121,
+    "sigma": 0.0666
    },
    "raw_probabilities": {
-    "1x2_away": 0.2499,
-    "1x2_draw": 0.2503,
-    "1x2_home": 0.4999,
-    "btts_yes": 0.5045,
-    "over_2.5": 0.4862,
-    "under_2.5": 0.5138
+    "1x2_away": 0.2513,
+    "1x2_draw": 0.2516,
+    "1x2_home": 0.4971,
+    "btts_yes": 0.4999,
+    "over_2.5": 0.4792,
+    "under_2.5": 0.5208
    },
    "reasons": [
-    "Gol attesi: SBV Excelsior 1.60, Sparta Rotterdam 1.04 (totale 2.63).",
-    "Asiatico casa +2.5: 97 su 100, 3 punti sopra la media di riferimento (94 su 100).",
-    "Banda di incertezza: fra 94 e 99 su 100."
+    "Gol attesi: SBV Excelsior 1.57, Sparta Rotterdam 1.03 (totale 2.60).",
+    "Ospite Under 1.5: 69 su 100, 9 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 60 e 82 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -2460,34 +2521,34 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 74,
-     "p_min": 66,
+     "S_min": 68,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 9,
-    "truncated_mass": 8.956e-11
+    "n_candidates": 88,
+    "n_clusters": 10,
+    "truncated_mass": 7.115e-11
    },
    "expected_goals": {
-    "away": 0.988,
-    "home": 0.951
+    "away": 0.971,
+    "home": 0.931
    },
    "half_time": {
-    "ht_over_0.5": 0.5816,
-    "ht_over_1.5": 0.217,
-    "ht_over_2.5": 0.0582,
-    "ht_under_0.5": 0.4184,
-    "ht_under_1.5": 0.783,
-    "ht_under_2.5": 0.9418,
-    "htft_11": 0.1851,
-    "htft_12": 0.0137,
-    "htft_1X": 0.0445,
-    "htft_21": 0.0131,
-    "htft_22": 0.1974,
-    "htft_2X": 0.0445,
-    "htft_X1": 0.1348,
-    "htft_X2": 0.1416,
-    "htft_XX": 0.2252
+    "ht_over_0.5": 0.5732,
+    "ht_over_1.5": 0.2098,
+    "ht_over_2.5": 0.0551,
+    "ht_under_0.5": 0.4268,
+    "ht_under_1.5": 0.7902,
+    "ht_under_2.5": 0.9449,
+    "htft_11": 0.1826,
+    "htft_12": 0.0133,
+    "htft_1X": 0.044,
+    "htft_21": 0.0127,
+    "htft_22": 0.1958,
+    "htft_2X": 0.044,
+    "htft_X1": 0.1351,
+    "htft_X2": 0.1425,
+    "htft_XX": 0.23
    },
    "home": {
     "crest": "https://crests.football-data.org/7822.png",
@@ -2499,97 +2560,97 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8626,
-    "band_p95": 0.9709,
+    "band_p5": 0.8576,
+    "band_p95": 0.9716,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_2.5",
     "label": "Casa Under 2.5",
-    "p": 0.9044,
-    "p_raw": 0.9247,
-    "reference": 0.8039,
+    "p": 0.9164,
+    "p_raw": 0.9284,
+    "reference": 0.806,
     "runners_up": [
      {
-      "band_p5": 0.7828,
-      "band_p95": 0.9313,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.8233,
-      "p_raw": 0.8644,
-      "reference": 0.7203,
-      "score": 0.028879,
-      "shrink_alpha": 0.7145,
-      "sigma": 0.0506
+      "band_p5": 0.6275,
+      "band_p95": 0.8612,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7025,
+      "p_raw": 0.7607,
+      "reference": 0.5723,
+      "score": 0.036009,
+      "shrink_alpha": 0.6912,
+      "sigma": 0.07
      },
      {
-      "band_p5": 0.7828,
-      "band_p95": 0.9313,
-      "family": "multigoal",
-      "key": "mg_0_3",
-      "label": "Multigol 0-3",
-      "p": 0.8233,
-      "p_raw": 0.8644,
-      "reference": 0.7203,
-      "score": 0.028879,
-      "shrink_alpha": 0.7145,
-      "sigma": 0.0506
-     },
-     {
-      "band_p5": 0.9287,
+      "band_p5": 0.9279,
       "band_p95": 0.9882,
       "family": "handicap_asian",
       "key": "ah_away_2.5",
       "label": "Asiatico ospite +2.5",
-      "p": 0.9601,
-      "p_raw": 0.964,
-      "reference": 0.8949,
-      "score": 0.028812,
-      "shrink_alpha": 0.9427,
-      "sigma": 0.0197
+      "p": 0.9638,
+      "p_raw": 0.9656,
+      "reference": 0.896,
+      "score": 0.032159,
+      "shrink_alpha": 0.9739,
+      "sigma": 0.0186
      },
      {
-      "band_p5": 0.5749,
-      "band_p95": 0.8028,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.596,
-      "p_raw": 0.6931,
-      "reference": 0.4851,
-      "score": 0.024734,
-      "shrink_alpha": 0.5335,
-      "sigma": 0.0748
+      "band_p5": 0.7996,
+      "band_p95": 0.94,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.8658,
+      "p_raw": 0.8789,
+      "reference": 0.7775,
+      "score": 0.025294,
+      "shrink_alpha": 0.8709,
+      "sigma": 0.0437
      },
      {
-      "band_p5": 0.5749,
-      "band_p95": 0.8028,
+      "band_p5": 0.7996,
+      "band_p95": 0.94,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8615,
+      "p_raw": 0.8789,
+      "reference": 0.7775,
+      "score": 0.022725,
+      "shrink_alpha": 0.8284,
+      "sigma": 0.0437
+     },
+     {
+      "band_p5": 0.7791,
+      "band_p95": 0.9394,
       "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.596,
-      "p_raw": 0.6931,
-      "reference": 0.4851,
-      "score": 0.024734,
-      "shrink_alpha": 0.5335,
-      "sigma": 0.0748
+      "key": "mg_0_3",
+      "label": "Multigol 0-3",
+      "p": 0.7976,
+      "p_raw": 0.8708,
+      "reference": 0.7187,
+      "score": 0.016473,
+      "shrink_alpha": 0.5188,
+      "sigma": 0.0471
      }
     ],
-    "score": 0.037838,
-    "shrink_alpha": 0.8321,
-    "sigma": 0.0359
+    "score": 0.047278,
+    "shrink_alpha": 0.9022,
+    "sigma": 0.0345
    },
    "raw_probabilities": {
-    "1x2_away": 0.3538,
-    "1x2_draw": 0.3123,
-    "1x2_home": 0.3339,
-    "btts_yes": 0.3754,
-    "over_2.5": 0.3069,
-    "under_2.5": 0.6931
+    "1x2_away": 0.3532,
+    "1x2_draw": 0.315,
+    "1x2_home": 0.3318,
+    "btts_yes": 0.3671,
+    "over_2.5": 0.2972,
+    "under_2.5": 0.7028
    },
    "reasons": [
-    "Gol attesi: FC Alverca 0.95, CD Santa Clara 0.99 (totale 1.94).",
-    "Casa Under 2.5: 90 su 100, 10 punti sopra la media di riferimento (80 su 100).",
+    "Gol attesi: FC Alverca 0.93, CD Santa Clara 0.97 (totale 1.90).",
+    "Casa Under 2.5: 92 su 100, 11 punti sopra la media di riferimento (81 su 100).",
     "Banda di incertezza: fra 86 e 97 su 100."
    ],
    "silence": null,
@@ -2605,12 +2666,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 87,
-     "p_min": 67,
+     "S_min": 72,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 0,
+    "n_candidates": 88,
+    "n_clusters": 2,
     "truncated_mass": 1.57e-08
    },
    "expected_goals": {
@@ -2643,7 +2704,38 @@
    "matchday": 3,
    "model_weight": 1.0,
    "phase": "preliminary",
-   "prediction": null,
+   "prediction": {
+    "band_p5": 0.5104,
+    "band_p95": 0.7692,
+    "cluster_members": [
+     "ah_away_0.5",
+     "eh_-1_away"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.613,
+    "p_raw": 0.6459,
+    "reference": 0.5395,
+    "runners_up": [
+     {
+      "band_p5": 0.6916,
+      "band_p95": 0.8679,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7636,
+      "p_raw": 0.7801,
+      "reference": 0.7009,
+      "score": 0.009806,
+      "shrink_alpha": 0.7917,
+      "sigma": 0.0538
+     }
+    ],
+    "score": 0.010986,
+    "shrink_alpha": 0.6906,
+    "sigma": 0.0795
+   },
    "raw_probabilities": {
     "1x2_away": 0.4039,
     "1x2_draw": 0.242,
@@ -2653,11 +2745,11 @@
     "under_2.5": 0.4328
    },
    "reasons": [
-    "Gol attesi: Levante UD 1.43, Real Betis Balompié 1.55 (totale 2.98)."
+    "Gol attesi: Levante UD 1.43, Real Betis Balompié 1.55 (totale 2.98).",
+    "X2 (pareggio o ospite): 61 su 100, 7 punti sopra la media di riferimento (54 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 69%)."
    ],
-   "silence": {
-    "reason": "S_min"
-   },
+   "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-29T15:00:00Z"
   },
@@ -2670,12 +2762,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 96,
-     "p_min": 68,
+     "S_min": 81,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 1,
+    "n_candidates": 88,
+    "n_clusters": 3,
     "truncated_mass": 1.183e-08
    },
    "expected_goals": {
@@ -2712,17 +2804,57 @@
     "band_p5": 0.7472,
     "band_p95": 0.9119,
     "cluster_members": [
-     "ah_away_1.5"
+     "eh_-2_away"
     ],
-    "family": "handicap_eu",
-    "key": "eh_-2_away",
-    "label": "Handicap -2 ospite",
-    "p": 0.8073,
+    "family": "handicap_asian",
+    "key": "ah_away_1.5",
+    "label": "Asiatico ospite +1.5",
+    "p": 0.8164,
     "p_raw": 0.829,
     "reference": 0.7536,
-    "runners_up": [],
-    "score": 0.008197,
-    "shrink_alpha": 0.7122,
+    "runners_up": [
+     {
+      "band_p5": 0.5307,
+      "band_p95": 0.763,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.6117,
+      "p_raw": 0.6377,
+      "reference": 0.5427,
+      "score": 0.00971,
+      "shrink_alpha": 0.7267,
+      "sigma": 0.0729
+     },
+     {
+      "band_p5": 0.5307,
+      "band_p95": 0.763,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.6099,
+      "p_raw": 0.6377,
+      "reference": 0.5427,
+      "score": 0.009209,
+      "shrink_alpha": 0.7078,
+      "sigma": 0.0729
+     },
+     {
+      "band_p5": 0.6861,
+      "band_p95": 0.8468,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7574,
+      "p_raw": 0.7705,
+      "reference": 0.6977,
+      "score": 0.008811,
+      "shrink_alpha": 0.8205,
+      "sigma": 0.049
+     }
+    ],
+    "score": 0.011319,
+    "shrink_alpha": 0.8326,
     "sigma": 0.0509
    },
    "raw_probabilities": {
@@ -2735,7 +2867,7 @@
    },
    "reasons": [
     "Gol attesi: RC Strasbourg Alsace 1.43, Racing Club de Lens 1.49 (totale 2.92).",
-    "Handicap -2 ospite: 81 su 100, 5 punti sopra la media di riferimento (75 su 100).",
+    "Asiatico ospite +1.5: 82 su 100, 6 punti sopra la media di riferimento (75 su 100).",
     "Banda di incertezza: fra 75 e 91 su 100."
    ],
    "silence": null,
@@ -2751,11 +2883,11 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 1.116e-08
    },
@@ -2799,6 +2931,7 @@
     "under_2.5": 0.4982
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: US Sassuolo Calcio 1.54, Torino FC 1.16 (totale 2.70)."
    ],
    "silence": {
@@ -2816,11 +2949,11 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 68,
-     "p_min": 66,
+     "S_min": 61,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 7,
     "truncated_mass": 2.671e-08
    },
@@ -2855,56 +2988,57 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8956,
-    "band_p95": 0.9771,
+    "band_p5": 0.7218,
+    "band_p95": 0.8988,
     "cluster_members": [
-     "ah_away_1.5"
+     "ah_away_0.5",
+     "eh_-1_away"
     ],
-    "family": "handicap_eu",
-    "key": "eh_-2_away",
-    "label": "Handicap -2 ospite",
-    "p": 0.9323,
-    "p_raw": 0.9424,
-    "reference": 0.8289,
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.7805,
+    "p_raw": 0.8171,
+    "reference": 0.6066,
     "runners_up": [
      {
-      "band_p5": 0.7218,
-      "band_p95": 0.8988,
-      "family": "double_chance",
-      "key": "dc_x2",
-      "label": "X2 (pareggio o ospite)",
-      "p": 0.7503,
-      "p_raw": 0.8171,
-      "reference": 0.6066,
-      "score": 0.046047,
-      "shrink_alpha": 0.683,
-      "sigma": 0.0545
-     },
-     {
-      "band_p5": 0.7218,
-      "band_p95": 0.8988,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.7503,
-      "p_raw": 0.8171,
-      "reference": 0.6066,
-      "score": 0.046047,
-      "shrink_alpha": 0.683,
-      "sigma": 0.0545
-     },
-     {
-      "band_p5": 0.7218,
-      "band_p95": 0.8988,
+      "band_p5": 0.8956,
+      "band_p95": 0.9771,
       "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.7503,
-      "p_raw": 0.8171,
-      "reference": 0.6066,
-      "score": 0.046047,
-      "shrink_alpha": 0.683,
-      "sigma": 0.0545
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9371,
+      "p_raw": 0.9424,
+      "reference": 0.8289,
+      "score": 0.052026,
+      "shrink_alpha": 0.9536,
+      "sigma": 0.025
+     },
+     {
+      "band_p5": 0.8956,
+      "band_p95": 0.9771,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9352,
+      "p_raw": 0.9424,
+      "reference": 0.8289,
+      "score": 0.049853,
+      "shrink_alpha": 0.9363,
+      "sigma": 0.025
+     },
+     {
+      "band_p5": 0.7018,
+      "band_p95": 0.8943,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7554,
+      "p_raw": 0.8045,
+      "reference": 0.6105,
+      "score": 0.047064,
+      "shrink_alpha": 0.7471,
+      "sigma": 0.061
      },
      {
       "band_p5": 0.9693,
@@ -2912,11 +3046,11 @@
       "family": "handicap_asian",
       "key": "ah_away_2.5",
       "label": "Asiatico ospite +2.5",
-      "p": 0.9852,
+      "p": 0.9856,
       "p_raw": 0.9859,
       "reference": 0.925,
-      "score": 0.038145,
-      "shrink_alpha": 0.9889,
+      "score": 0.038718,
+      "shrink_alpha": 0.9945,
       "sigma": 0.0085
      },
      {
@@ -2925,17 +3059,17 @@
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.9393,
+      "p": 0.9428,
       "p_raw": 0.9482,
       "reference": 0.8566,
-      "score": 0.034432,
-      "shrink_alpha": 0.9028,
+      "score": 0.037875,
+      "shrink_alpha": 0.941,
       "sigma": 0.0263
      }
     ],
-    "score": 0.046782,
-    "shrink_alpha": 0.9109,
-    "sigma": 0.025
+    "score": 0.068647,
+    "shrink_alpha": 0.8261,
+    "sigma": 0.0545
    },
    "raw_probabilities": {
     "1x2_away": 0.574,
@@ -2947,8 +3081,8 @@
    },
    "reasons": [
     "Gol attesi: AC Monza 0.81, Udinese Calcio 1.67 (totale 2.48).",
-    "Handicap -2 ospite: 93 su 100, 10 punti sopra la media di riferimento (83 su 100).",
-    "Banda di incertezza: fra 90 e 98 su 100."
+    "X2 (pareggio o ospite): 78 su 100, 17 punti sopra la media di riferimento (61 su 100).",
+    "Banda di incertezza: fra 72 e 90 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -2963,12 +3097,12 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 94,
-     "p_min": 68,
+     "S_min": 77,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 0,
+    "n_candidates": 88,
+    "n_clusters": 1,
     "truncated_mass": 2.549e-08
    },
    "expected_goals": {
@@ -3001,7 +3135,21 @@
    "matchday": 2,
    "model_weight": 1.0,
    "phase": "preliminary",
-   "prediction": null,
+   "prediction": {
+    "band_p5": 0.7237,
+    "band_p95": 0.8648,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "ag_over_0.5",
+    "label": "Ospite Over 0.5",
+    "p": 0.7866,
+    "p_raw": 0.7978,
+    "reference": 0.728,
+    "runners_up": [],
+    "score": 0.009137,
+    "shrink_alpha": 0.8405,
+    "sigma": 0.0456
+   },
    "raw_probabilities": {
     "1x2_away": 0.4166,
     "1x2_draw": 0.2359,
@@ -3011,11 +3159,11 @@
     "under_2.5": 0.4076
    },
    "reasons": [
-    "Gol attesi: Tottenham Hotspur FC 1.46, Newcastle United FC 1.62 (totale 3.09)."
+    "Gol attesi: Tottenham Hotspur FC 1.46, Newcastle United FC 1.62 (totale 3.09).",
+    "Ospite Over 0.5: 79 su 100, 6 punti sopra la media di riferimento (73 su 100).",
+    "Banda di incertezza: fra 72 e 86 su 100."
    ],
-   "silence": {
-    "reason": "S_min"
-   },
+   "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-29T16:30:00Z"
   },
@@ -3028,12 +3176,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 74,
-     "p_min": 68,
+     "S_min": 63,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 9,
+    "n_candidates": 88,
+    "n_clusters": 10,
     "truncated_mass": 5.863e-07
    },
    "expected_goals": {
@@ -3073,34 +3221,21 @@
     "family": "team_goals",
     "key": "ag_under_2.5",
     "label": "Ospite Under 2.5",
-    "p": 0.93,
+    "p": 0.936,
     "p_raw": 0.9453,
     "reference": 0.799,
     "runners_up": [
      {
       "band_p5": 0.9165,
       "band_p95": 0.9839,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9502,
-      "p_raw": 0.9588,
-      "reference": 0.8329,
-      "score": 0.064861,
-      "shrink_alpha": 0.9316,
-      "sigma": 0.0217
-     },
-     {
-      "band_p5": 0.9165,
-      "band_p95": 0.9839,
       "family": "handicap_asian",
       "key": "ah_home_1.5",
       "label": "Asiatico casa +1.5",
-      "p": 0.9502,
+      "p": 0.9543,
       "p_raw": 0.9588,
       "reference": 0.8329,
-      "score": 0.064861,
-      "shrink_alpha": 0.9316,
+      "score": 0.070646,
+      "shrink_alpha": 0.9648,
       "sigma": 0.0217
      },
      {
@@ -3109,25 +3244,25 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8141,
+      "p": 0.8389,
       "p_raw": 0.8674,
       "reference": 0.6748,
-      "score": 0.048823,
-      "shrink_alpha": 0.7231,
+      "score": 0.069495,
+      "shrink_alpha": 0.852,
       "sigma": 0.0495
      },
      {
-      "band_p5": 0.7649,
-      "band_p95": 0.9315,
+      "band_p5": 0.9165,
+      "band_p95": 0.9839,
       "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8141,
-      "p_raw": 0.8674,
-      "reference": 0.6748,
-      "score": 0.048823,
-      "shrink_alpha": 0.7231,
-      "sigma": 0.0495
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9526,
+      "p_raw": 0.9588,
+      "reference": 0.8329,
+      "score": 0.068269,
+      "shrink_alpha": 0.9514,
+      "sigma": 0.0217
      },
      {
       "band_p5": 0.7649,
@@ -3135,16 +3270,29 @@
       "family": "handicap_asian",
       "key": "ah_home_0.5",
       "label": "Asiatico casa +0.5",
-      "p": 0.8141,
+      "p": 0.8366,
       "p_raw": 0.8674,
       "reference": 0.6748,
-      "score": 0.048823,
-      "shrink_alpha": 0.7231,
+      "score": 0.067366,
+      "shrink_alpha": 0.8399,
       "sigma": 0.0495
+     },
+     {
+      "band_p5": 0.53,
+      "band_p95": 0.7915,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5981,
+      "p_raw": 0.6801,
+      "reference": 0.4217,
+      "score": 0.062795,
+      "shrink_alpha": 0.6827,
+      "sigma": 0.081
      }
     ],
-    "score": 0.067296,
-    "shrink_alpha": 0.8949,
+    "score": 0.074821,
+    "shrink_alpha": 0.936,
     "sigma": 0.0274
    },
    "raw_probabilities": {
@@ -3157,7 +3305,7 @@
    },
    "reasons": [
     "Gol attesi: Borussia Dortmund 2.20, Hamburger SV 0.83 (totale 3.03).",
-    "Ospite Under 2.5: 93 su 100, 13 punti sopra la media di riferimento (80 su 100).",
+    "Ospite Under 2.5: 94 su 100, 14 punti sopra la media di riferimento (80 su 100).",
     "Banda di incertezza: fra 89 e 98 su 100."
    ],
    "silence": null,
@@ -3173,34 +3321,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
-    "truncated_mass": 1.579e-07
+    "truncated_mass": 1.405e-07
    },
    "expected_goals": {
-    "away": 1.226,
-    "home": 1.951
+    "away": 1.279,
+    "home": 1.93
    },
    "half_time": {
-    "ht_over_0.5": 0.7609,
-    "ht_over_1.5": 0.4187,
-    "ht_over_2.5": 0.174,
-    "ht_under_0.5": 0.2391,
-    "ht_under_1.5": 0.5813,
-    "ht_under_2.5": 0.826,
-    "htft_11": 0.3441,
-    "htft_12": 0.0181,
-    "htft_1X": 0.0497,
-    "htft_21": 0.0331,
-    "htft_22": 0.1354,
-    "htft_2X": 0.0497,
-    "htft_X1": 0.1653,
-    "htft_X2": 0.0844,
-    "htft_XX": 0.1203
+    "ht_over_0.5": 0.7633,
+    "ht_over_1.5": 0.4222,
+    "ht_over_2.5": 0.1765,
+    "ht_under_0.5": 0.2367,
+    "ht_under_1.5": 0.5778,
+    "ht_under_2.5": 0.8235,
+    "htft_11": 0.3315,
+    "htft_12": 0.0194,
+    "htft_1X": 0.0507,
+    "htft_21": 0.0332,
+    "htft_22": 0.1446,
+    "htft_2X": 0.0507,
+    "htft_X1": 0.1612,
+    "htft_X2": 0.0887,
+    "htft_XX": 0.1201
    },
    "home": {
     "crest": "https://crests.football-data.org/682.png",
@@ -3213,15 +3361,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2404,
-    "1x2_draw": 0.2197,
-    "1x2_home": 0.5399,
-    "btts_yes": 0.599,
-    "over_2.5": 0.6115,
-    "under_2.5": 0.3885
+    "1x2_away": 0.2554,
+    "1x2_draw": 0.22,
+    "1x2_home": 0.5246,
+    "btts_yes": 0.6087,
+    "over_2.5": 0.6177,
+    "under_2.5": 0.3823
    },
    "reasons": [
-    "Gol attesi: AZ 1.95, Go Ahead Eagles 1.23 (totale 3.18)."
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: AZ 1.93, Go Ahead Eagles 1.28 (totale 3.21)."
    ],
    "silence": {
     "reason": "S_min"
@@ -3238,11 +3387,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 67,
+     "S_min": 88,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 2.599e-08
    },
@@ -3286,6 +3435,7 @@
     "under_2.5": 0.4877
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Real Sociedad de Fútbol 1.66, RCD Espanyol de Barcelona 1.07 (totale 2.74)."
    ],
    "silence": {
@@ -3303,11 +3453,11 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 69,
-     "p_min": 67,
+     "S_min": 59,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 9,
     "truncated_mass": 2.878e-08
    },
@@ -3348,7 +3498,7 @@
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.8237,
+    "p": 0.8388,
     "p_raw": 0.865,
     "reference": 0.6579,
     "runners_up": [
@@ -3358,24 +3508,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8261,
+      "p": 0.8435,
       "p_raw": 0.8611,
       "reference": 0.6658,
-      "score": 0.064585,
-      "shrink_alpha": 0.8206,
-      "sigma": 0.0374
-     },
-     {
-      "band_p5": 0.7935,
-      "band_p95": 0.9173,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8261,
-      "p_raw": 0.8611,
-      "reference": 0.6658,
-      "score": 0.064585,
-      "shrink_alpha": 0.8206,
+      "score": 0.080803,
+      "shrink_alpha": 0.9098,
       "sigma": 0.0374
      },
      {
@@ -3384,42 +3521,55 @@
       "family": "handicap_asian",
       "key": "ah_home_0.5",
       "label": "Asiatico casa +0.5",
-      "p": 0.8261,
+      "p": 0.8419,
       "p_raw": 0.8611,
       "reference": 0.6658,
-      "score": 0.064585,
-      "shrink_alpha": 0.8206,
+      "score": 0.079271,
+      "shrink_alpha": 0.9019,
       "sigma": 0.0374
      },
      {
-      "band_p5": 0.9398,
-      "band_p95": 0.9833,
+      "band_p5": 0.7935,
+      "band_p95": 0.9173,
       "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9608,
-      "p_raw": 0.964,
-      "reference": 0.8605,
-      "score": 0.056211,
-      "shrink_alpha": 0.9691,
-      "sigma": 0.0143
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8353,
+      "p_raw": 0.8611,
+      "reference": 0.6658,
+      "score": 0.07292,
+      "shrink_alpha": 0.868,
+      "sigma": 0.0374
      },
      {
-      "band_p5": 0.9398,
-      "band_p95": 0.9833,
+      "band_p5": 0.5041,
+      "band_p95": 0.7271,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5687,
+      "p_raw": 0.6227,
+      "reference": 0.3934,
+      "score": 0.062481,
+      "shrink_alpha": 0.7646,
+      "sigma": 0.0659
+     },
+     {
+      "band_p5": 0.5041,
+      "band_p95": 0.7271,
       "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9608,
-      "p_raw": 0.964,
-      "reference": 0.8605,
-      "score": 0.056211,
-      "shrink_alpha": 0.9691,
-      "sigma": 0.0143
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.5648,
+      "p_raw": 0.6227,
+      "reference": 0.3934,
+      "score": 0.059722,
+      "shrink_alpha": 0.7474,
+      "sigma": 0.0659
      }
     ],
-    "score": 0.068304,
-    "shrink_alpha": 0.8006,
+    "score": 0.082468,
+    "shrink_alpha": 0.8733,
     "sigma": 0.0399
    },
    "raw_probabilities": {
@@ -3432,7 +3582,7 @@
    },
    "reasons": [
     "Gol attesi: Juventus FC 1.68, Parma Calcio 1913 0.64 (totale 2.32).",
-    "Ospite Under 1.5: 82 su 100, 17 punti sopra la media di riferimento (66 su 100).",
+    "Ospite Under 1.5: 84 su 100, 18 punti sopra la media di riferimento (66 su 100).",
     "Banda di incertezza: fra 80 e 92 su 100."
    ],
    "silence": null,
@@ -3448,11 +3598,11 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 74,
-     "p_min": 68,
+     "S_min": 65,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 9,
     "truncated_mass": 1.903e-07
    },
@@ -3490,12 +3640,12 @@
     "band_p5": 0.917,
     "band_p95": 0.9769,
     "cluster_members": [
-     "ah_home_1.5"
+     "eh_2_home"
     ],
-    "family": "handicap_eu",
-    "key": "eh_2_home",
-    "label": "Handicap +2 casa",
-    "p": 0.9459,
+    "family": "handicap_asian",
+    "key": "ah_home_1.5",
+    "label": "Asiatico casa +1.5",
+    "p": 0.9487,
     "p_raw": 0.9517,
     "reference": 0.8392,
     "runners_up": [
@@ -3505,24 +3655,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8134,
+      "p": 0.8294,
       "p_raw": 0.8462,
       "reference": 0.6915,
-      "score": 0.038249,
-      "shrink_alpha": 0.7881,
-      "sigma": 0.0415
-     },
-     {
-      "band_p5": 0.7682,
-      "band_p95": 0.9074,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8134,
-      "p_raw": 0.8462,
-      "reference": 0.6915,
-      "score": 0.038249,
-      "shrink_alpha": 0.7881,
+      "score": 0.04973,
+      "shrink_alpha": 0.8913,
       "sigma": 0.0415
      },
      {
@@ -3531,11 +3668,24 @@
       "family": "handicap_asian",
       "key": "ah_home_0.5",
       "label": "Asiatico casa +0.5",
-      "p": 0.8134,
+      "p": 0.8279,
       "p_raw": 0.8462,
       "reference": 0.6915,
-      "score": 0.038249,
-      "shrink_alpha": 0.7881,
+      "score": 0.048618,
+      "shrink_alpha": 0.882,
+      "sigma": 0.0415
+     },
+     {
+      "band_p5": 0.7682,
+      "band_p95": 0.9074,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8218,
+      "p_raw": 0.8462,
+      "reference": 0.6915,
+      "score": 0.044069,
+      "shrink_alpha": 0.8424,
       "sigma": 0.0415
      },
      {
@@ -3544,29 +3694,29 @@
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.9357,
+      "p": 0.939,
       "p_raw": 0.9439,
       "reference": 0.8472,
-      "score": 0.037357,
-      "shrink_alpha": 0.9157,
+      "score": 0.040563,
+      "shrink_alpha": 0.9491,
       "sigma": 0.0243
      },
      {
-      "band_p5": 0.9761,
-      "band_p95": 0.9956,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9878,
-      "p_raw": 0.9881,
-      "reference": 0.9315,
-      "score": 0.036894,
-      "shrink_alpha": 0.9938,
-      "sigma": 0.0063
+      "band_p5": 0.5344,
+      "band_p95": 0.7357,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5975,
+      "p_raw": 0.6377,
+      "reference": 0.4573,
+      "score": 0.039491,
+      "shrink_alpha": 0.7775,
+      "sigma": 0.0636
      }
     ],
-    "score": 0.05429,
-    "shrink_alpha": 0.9486,
+    "score": 0.05779,
+    "shrink_alpha": 0.9737,
     "sigma": 0.0186
    },
    "raw_probabilities": {
@@ -3579,7 +3729,7 @@
    },
    "reasons": [
     "Gol attesi: Olympique Lyonnais 1.98, Le Havre AC 0.84 (totale 2.83).",
-    "Handicap +2 casa: 95 su 100, 11 punti sopra la media di riferimento (84 su 100).",
+    "Asiatico casa +1.5: 95 su 100, 11 punti sopra la media di riferimento (84 su 100).",
     "Banda di incertezza: fra 92 e 98 su 100."
    ],
    "silence": null,
@@ -3595,12 +3745,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 68,
-     "p_min": 66,
+     "S_min": 65,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 12,
+    "n_candidates": 88,
+    "n_clusters": 10,
     "truncated_mass": 1.272e-09
    },
    "expected_goals": {
@@ -3634,67 +3784,41 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.9319,
-    "band_p95": 0.9817,
+    "band_p5": 0.7611,
+    "band_p95": 0.8948,
     "cluster_members": [],
     "family": "team_goals",
-    "key": "ag_under_2.5",
-    "label": "Ospite Under 2.5",
-    "p": 0.9554,
-    "p_raw": 0.9601,
-    "reference": 0.8472,
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.8039,
+    "p_raw": 0.8318,
+    "reference": 0.6411,
     "runners_up": [
      {
-      "band_p5": 0.7611,
-      "band_p95": 0.8948,
+      "band_p5": 0.9319,
+      "band_p95": 0.9817,
       "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.7884,
-      "p_raw": 0.8318,
-      "reference": 0.6411,
-      "score": 0.051267,
-      "shrink_alpha": 0.7725,
-      "sigma": 0.0434
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9573,
+      "p_raw": 0.9601,
+      "reference": 0.8472,
+      "score": 0.062529,
+      "shrink_alpha": 0.9754,
+      "sigma": 0.0166
      },
      {
-      "band_p5": 0.7713,
-      "band_p95": 0.9183,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.8051,
-      "p_raw": 0.8513,
-      "reference": 0.6625,
-      "score": 0.049952,
-      "shrink_alpha": 0.7555,
-      "sigma": 0.0455
-     },
-     {
-      "band_p5": 0.7713,
-      "band_p95": 0.9183,
-      "family": "multigoal",
-      "key": "mg_0_3",
-      "label": "Multigol 0-3",
-      "p": 0.8051,
-      "p_raw": 0.8513,
-      "reference": 0.6625,
-      "score": 0.049952,
-      "shrink_alpha": 0.7555,
-      "sigma": 0.0455
-     },
-     {
-      "band_p5": 0.8996,
-      "band_p95": 0.9752,
-      "family": "over_under",
-      "key": "under_4.5",
-      "label": "Under 4.5",
-      "p": 0.9337,
-      "p_raw": 0.943,
-      "reference": 0.8301,
-      "score": 0.047462,
-      "shrink_alpha": 0.9178,
-      "sigma": 0.0239
+      "band_p5": 0.896,
+      "band_p95": 0.9675,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9332,
+      "p_raw": 0.9367,
+      "reference": 0.8392,
+      "score": 0.040396,
+      "shrink_alpha": 0.9645,
+      "sigma": 0.0218
      },
      {
       "band_p5": 0.896,
@@ -3702,17 +3826,43 @@
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
-      "p": 0.93,
+      "p": 0.9319,
       "p_raw": 0.9367,
       "reference": 0.8392,
-      "score": 0.037279,
-      "shrink_alpha": 0.9311,
+      "score": 0.03912,
+      "shrink_alpha": 0.9511,
       "sigma": 0.0218
+     },
+     {
+      "band_p5": 0.9735,
+      "band_p95": 0.9947,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9856,
+      "p_raw": 0.9858,
+      "reference": 0.9315,
+      "score": 0.033224,
+      "shrink_alpha": 0.9963,
+      "sigma": 0.0069
+     },
+     {
+      "band_p5": 0.7713,
+      "band_p95": 0.9183,
+      "family": "multigoal",
+      "key": "mg_0_3",
+      "label": "Multigol 0-3",
+      "p": 0.7637,
+      "p_raw": 0.8513,
+      "reference": 0.6625,
+      "score": 0.024311,
+      "shrink_alpha": 0.5359,
+      "sigma": 0.0455
      }
     ],
-    "score": 0.059911,
-    "shrink_alpha": 0.9585,
-    "sigma": 0.0166
+    "score": 0.063354,
+    "shrink_alpha": 0.8536,
+    "sigma": 0.0434
    },
    "raw_probabilities": {
     "1x2_away": 0.2143,
@@ -3724,8 +3874,8 @@
    },
    "reasons": [
     "Gol attesi: AJ Auxerre 1.28, Angers SCO 0.73 (totale 2.02).",
-    "Ospite Under 2.5: 96 su 100, 11 punti sopra la media di riferimento (85 su 100).",
-    "Banda di incertezza: fra 93 e 98 su 100."
+    "Ospite Under 1.5: 80 su 100, 16 punti sopra la media di riferimento (64 su 100).",
+    "Banda di incertezza: fra 76 e 89 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -3740,12 +3890,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 68,
+     "S_min": 86,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 0,
+    "n_candidates": 88,
+    "n_clusters": 1,
     "truncated_mass": 6.785e-09
    },
    "expected_goals": {
@@ -3778,7 +3928,23 @@
    "matchday": 2,
    "model_weight": 1.0,
    "phase": "preliminary",
-   "prediction": null,
+   "prediction": {
+    "band_p5": 0.747,
+    "band_p95": 0.8968,
+    "cluster_members": [
+     "eh_-2_away"
+    ],
+    "family": "handicap_asian",
+    "key": "ah_away_1.5",
+    "label": "Asiatico ospite +1.5",
+    "p": 0.8116,
+    "p_raw": 0.8231,
+    "reference": 0.7536,
+    "runners_up": [],
+    "score": 0.009585,
+    "shrink_alpha": 0.8338,
+    "sigma": 0.0506
+   },
    "raw_probabilities": {
     "1x2_away": 0.3714,
     "1x2_draw": 0.2523,
@@ -3788,11 +3954,11 @@
     "under_2.5": 0.4745
    },
    "reasons": [
-    "Gol attesi: Stade Brestois 29 1.40, Toulouse FC 1.39 (totale 2.79)."
+    "Gol attesi: Stade Brestois 29 1.40, Toulouse FC 1.39 (totale 2.79).",
+    "Asiatico ospite +1.5: 81 su 100, 6 punti sopra la media di riferimento (75 su 100).",
+    "Banda di incertezza: fra 75 e 90 su 100."
    ],
-   "silence": {
-    "reason": "S_min"
-   },
+   "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-29T18:45:00Z"
   },
@@ -3805,34 +3971,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 76,
-     "p_min": 66,
+     "S_min": 66,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 6,
-    "truncated_mass": 2.786e-07
+    "truncated_mass": 2.593e-07
    },
    "expected_goals": {
-    "away": 2.051,
-    "home": 1.422
+    "away": 2.037,
+    "home": 1.427
    },
    "half_time": {
-    "ht_over_0.5": 0.7906,
-    "ht_over_1.5": 0.4632,
-    "ht_over_2.5": 0.2073,
-    "ht_under_0.5": 0.2094,
-    "ht_under_1.5": 0.5368,
-    "ht_under_2.5": 0.7927,
-    "htft_11": 0.1544,
-    "htft_12": 0.036,
-    "htft_1X": 0.0519,
-    "htft_21": 0.022,
-    "htft_22": 0.3312,
-    "htft_2X": 0.0519,
-    "htft_X1": 0.0892,
-    "htft_X2": 0.154,
-    "htft_XX": 0.1095
+    "ht_over_0.5": 0.7889,
+    "ht_over_1.5": 0.4605,
+    "ht_over_2.5": 0.2052,
+    "ht_under_0.5": 0.2111,
+    "ht_under_1.5": 0.5395,
+    "ht_under_2.5": 0.7948,
+    "htft_11": 0.1561,
+    "htft_12": 0.0358,
+    "htft_1X": 0.052,
+    "htft_21": 0.0223,
+    "htft_22": 0.3277,
+    "htft_2X": 0.052,
+    "htft_X1": 0.0904,
+    "htft_X2": 0.1537,
+    "htft_XX": 0.1101
    },
    "home": {
     "crest": "https://crests.football-data.org/684.png",
@@ -3844,96 +4010,96 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7971,
-    "band_p95": 0.9193,
+    "band_p5": 0.7995,
+    "band_p95": 0.9242,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_over_0.5",
     "label": "Ospite Over 0.5",
-    "p": 0.8393,
-    "p_raw": 0.8663,
-    "reference": 0.7125,
+    "p": 0.8446,
+    "p_raw": 0.8638,
+    "reference": 0.7128,
     "runners_up": [
      {
-      "band_p5": 0.9179,
-      "band_p95": 0.9813,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9506,
-      "p_raw": 0.9557,
-      "reference": 0.8712,
-      "score": 0.035578,
-      "shrink_alpha": 0.9393,
-      "sigma": 0.0203
-     },
-     {
-      "band_p5": 0.8021,
-      "band_p95": 0.932,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8534,
-      "p_raw": 0.8796,
-      "reference": 0.7513,
-      "score": 0.031294,
-      "shrink_alpha": 0.7961,
-      "sigma": 0.0405
-     },
-     {
-      "band_p5": 0.8021,
-      "band_p95": 0.932,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8534,
-      "p_raw": 0.8796,
-      "reference": 0.7513,
-      "score": 0.031294,
-      "shrink_alpha": 0.7961,
-      "sigma": 0.0405
-     },
-     {
-      "band_p5": 0.4735,
-      "band_p95": 0.7163,
-      "family": "team_goals",
-      "key": "ag_over_1.5",
-      "label": "Ospite Over 1.5",
-      "p": 0.5074,
-      "p_raw": 0.6023,
-      "reference": 0.395,
-      "score": 0.02582,
-      "shrink_alpha": 0.5422,
-      "sigma": 0.0735
-     },
-     {
-      "band_p5": 0.619,
-      "band_p95": 0.8228,
+      "band_p5": 0.6173,
+      "band_p95": 0.8321,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6636,
-      "p_raw": 0.7322,
-      "reference": 0.5532,
-      "score": 0.025251,
-      "shrink_alpha": 0.6165,
-      "sigma": 0.0631
+      "p": 0.6877,
+      "p_raw": 0.7282,
+      "reference": 0.5527,
+      "score": 0.038137,
+      "shrink_alpha": 0.7697,
+      "sigma": 0.065
+     },
+     {
+      "band_p5": 0.8025,
+      "band_p95": 0.9361,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.8626,
+      "p_raw": 0.8776,
+      "reference": 0.7513,
+      "score": 0.037672,
+      "shrink_alpha": 0.8814,
+      "sigma": 0.0416
+     },
+     {
+      "band_p5": 0.9163,
+      "band_p95": 0.9814,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.952,
+      "p_raw": 0.9548,
+      "reference": 0.8712,
+      "score": 0.037033,
+      "shrink_alpha": 0.9667,
+      "sigma": 0.0211
+     },
+     {
+      "band_p5": 0.6173,
+      "band_p95": 0.8321,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.6848,
+      "p_raw": 0.7282,
+      "reference": 0.5527,
+      "score": 0.036441,
+      "shrink_alpha": 0.7528,
+      "sigma": 0.065
+     },
+     {
+      "band_p5": 0.4773,
+      "band_p95": 0.7285,
+      "family": "team_goals",
+      "key": "ag_over_1.5",
+      "label": "Ospite Over 1.5",
+      "p": 0.5247,
+      "p_raw": 0.5981,
+      "reference": 0.3948,
+      "score": 0.034428,
+      "shrink_alpha": 0.6393,
+      "sigma": 0.0787
      }
     ],
-    "score": 0.044008,
-    "shrink_alpha": 0.8247,
-    "sigma": 0.0369
+    "score": 0.047841,
+    "shrink_alpha": 0.8729,
+    "sigma": 0.04
    },
    "raw_probabilities": {
-    "1x2_away": 0.5195,
-    "1x2_draw": 0.2127,
-    "1x2_home": 0.2678,
-    "btts_yes": 0.6527,
-    "over_2.5": 0.6689,
-    "under_2.5": 0.3311
+    "1x2_away": 0.5159,
+    "1x2_draw": 0.2123,
+    "1x2_home": 0.2718,
+    "btts_yes": 0.6509,
+    "over_2.5": 0.6666,
+    "under_2.5": 0.3334
    },
    "reasons": [
-    "Gol attesi: PEC Zwolle 1.42, NEC 2.05 (totale 3.47).",
+    "Gol attesi: PEC Zwolle 1.43, NEC 2.04 (totale 3.46).",
     "Ospite Over 0.5: 84 su 100, 13 punti sopra la media di riferimento (71 su 100).",
     "Banda di incertezza: fra 80 e 92 su 100."
    ],
@@ -3950,11 +4116,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 69,
-     "p_min": 66,
+     "S_min": 60,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 7,
     "truncated_mass": 1.581e-08
    },
@@ -3992,28 +4158,28 @@
     "band_p5": 0.6315,
     "band_p95": 0.8279,
     "cluster_members": [
-     "eh_-1_away",
-     "ah_away_0.5"
+     "ah_away_0.5",
+     "eh_-1_away"
     ],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
-    "p": 0.6676,
+    "p": 0.6981,
     "p_raw": 0.7372,
     "reference": 0.5395,
     "runners_up": [
      {
-      "band_p5": 0.9372,
-      "band_p95": 0.9879,
+      "band_p5": 0.8285,
+      "band_p95": 0.947,
       "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9659,
-      "p_raw": 0.9682,
-      "reference": 0.9059,
-      "score": 0.027367,
-      "shrink_alpha": 0.9639,
-      "sigma": 0.0155
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.8881,
+      "p_raw": 0.8973,
+      "reference": 0.7934,
+      "score": 0.031556,
+      "shrink_alpha": 0.912,
+      "sigma": 0.0352
      },
      {
       "band_p5": 0.8285,
@@ -4021,25 +4187,25 @@
       "family": "handicap_eu",
       "key": "eh_-2_away",
       "label": "Handicap -2 ospite",
-      "p": 0.8804,
+      "p": 0.8849,
       "p_raw": 0.8973,
       "reference": 0.7934,
-      "score": 0.026239,
-      "shrink_alpha": 0.8377,
+      "score": 0.029278,
+      "shrink_alpha": 0.8812,
       "sigma": 0.0352
      },
      {
-      "band_p5": 0.8285,
-      "band_p95": 0.947,
+      "band_p5": 0.9372,
+      "band_p95": 0.9879,
       "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8804,
-      "p_raw": 0.8973,
-      "reference": 0.7934,
-      "score": 0.026239,
-      "shrink_alpha": 0.8377,
-      "sigma": 0.0352
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.967,
+      "p_raw": 0.9682,
+      "reference": 0.9059,
+      "score": 0.028585,
+      "shrink_alpha": 0.9817,
+      "sigma": 0.0155
      },
      {
       "band_p5": 0.8261,
@@ -4047,11 +4213,11 @@
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.881,
+      "p": 0.8875,
       "p_raw": 0.8986,
       "reference": 0.8074,
-      "score": 0.019605,
-      "shrink_alpha": 0.8079,
+      "score": 0.023461,
+      "shrink_alpha": 0.8783,
       "sigma": 0.039
      },
      {
@@ -4060,16 +4226,16 @@
       "family": "combo",
       "key": "combo_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.508,
+      "p": 0.5155,
       "p_raw": 0.5568,
       "reference": 0.4167,
-      "score": 0.01688,
-      "shrink_alpha": 0.6516,
+      "score": 0.019738,
+      "shrink_alpha": 0.7048,
       "sigma": 0.0585
      }
     ],
-    "score": 0.033852,
-    "shrink_alpha": 0.6477,
+    "score": 0.052442,
+    "shrink_alpha": 0.8021,
     "sigma": 0.059
    },
    "raw_probabilities": {
@@ -4082,16 +4248,16 @@
    },
    "reasons": [
     "Gol attesi: Sevilla FC 1.09, Club Atlético de Madrid 1.59 (totale 2.69).",
-    "X2 (pareggio o ospite): 67 su 100, 13 punti sopra la media di riferimento (54 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 65%)."
+    "X2 (pareggio o ospite): 70 su 100, 16 punti sopra la media di riferimento (54 su 100).",
+    "Banda di incertezza: fra 63 e 83 su 100."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-29T19:30:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
- "silence_count": 15,
+ "silence_count": 11,
  "total": 39
 }

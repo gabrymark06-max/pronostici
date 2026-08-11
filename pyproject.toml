@@ -24,6 +24,11 @@ filterwarnings = ["error::RuntimeWarning"]
 src = ["src"]
 line-length = 90
 target-version = "py311"
+# `design-system/` non e' codice dell'applicazione: contiene uno script di
+# servizio che ristampa i rapporti di contrasto della palette. Vive accanto
+# alla specifica che documenta, non dentro il pacchetto, e non e' importato da
+# niente.
+exclude = ["design-system"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

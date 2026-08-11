@@ -97,23 +97,70 @@ class FixtureScore:
     all_candidates: list = field(default_factory=list)
 
 
+def _silence_sentence(
+    match: Match, selection: Selection, boot: BootstrapResult, with_odds: bool
+) -> str:
+    """La frase del silenzio, gia' in italiano, per `reasons[0]`.
+
+    Il contratto col frontend (design-system MASTER 5.3) e' che `reasons[0]` e'
+    il titolo della scheda quando c'e'. Finora, tacendo, ci finiva la riga dei
+    gol attesi: un titolo che non risponde alla domanda "perche' non dite
+    niente".
+
+    Il caso `sigma_max` e' quello che **non puo'** stare nel frontend: dire
+    *quale* squadra ha poco storico affidabile richiede i 300 draw dei
+    parametri, che stanno solo qui. Con "queste squadre" il messaggio e' vero
+    ma inutile; con il nome e' una diagnosi.
+    """
+    reason = selection.silence_reason
+    if reason == "sigma_max":
+        team = boot.least_reliable(match.home_name, match.away_name)
+        if team:
+            return (
+                f"Abbiamo troppe poche partite affidabili su {team} per dare un "
+                f"numero in cui crediamo."
+            )
+        return (
+            "Abbiamo troppe poche partite affidabili su queste squadre per dare "
+            "un numero in cui crediamo."
+        )
+    if reason == "p_min":
+        return (
+            "Quello che vediamo di diverso è troppo improbabile perché ve lo "
+            "consigliamo."
+        )
+    riferimento = (
+        "quello che dicono già le quote"
+        if with_odds
+        else "quello che dice già la media del campionato"
+    )
+    return f"Il nostro modello dice quasi esattamente {riferimento}."
+
+
 def _reasons(
     match: Match,
     lam_home: float,
     lam_away: float,
     selection: Selection,
     references: dict[str, float],
+    boot: BootstrapResult,
+    *,
+    with_odds: bool = False,
 ) -> list[str]:
     """Due o tre frasi generate dalla matrice: i due rate attesi, il base rate
     del campionato, e di quanto ci discostiamo. Mai "value bet", mai "edge",
     mai un importo (decisioni.md)."""
-    out = [
+    expected = (
         f"Gol attesi: {match.home_name} {lam_home:.2f}, "
         f"{match.away_name} {lam_away:.2f} (totale {lam_home + lam_away:.2f})."
-    ]
+    )
     pick = selection.pick
     if pick is None:
-        return out
+        # Il perche' del silenzio viene prima dei gol attesi: e' la risposta
+        # alla domanda che l'utente si sta facendo guardando la scheda.
+        return [_silence_sentence(match, selection, boot, with_odds), expected]
+
+    out = [expected]
 
     reference = references.get(pick.key, pick.reference)
     delta = (pick.p_tilde - reference) * 100
@@ -144,6 +191,9 @@ def score_fixture(
     market_probabilities: dict[str, float] | None = None,
     model_weight: float = 1.0,
     ht_ratio: float | None = None,
+    selectable_keys: set[str] | None = None,
+    excluded_families: frozenset[str] | None = None,
+    include_unselectable: bool = False,
     max_goals: int = MAX_GOALS,
 ) -> FixtureScore:
     """Scora una fixture. Con `market_probabilities` (gia' sgonfiate col
@@ -190,7 +240,13 @@ def score_fixture(
         )
 
     candidates = build_candidates(
-        probs_by_draw, references, tau=tau, max_goals=max_goals
+        probs_by_draw,
+        references,
+        tau=tau,
+        selectable_keys=selectable_keys,
+        excluded_families=excluded_families,
+        include_unselectable=include_unselectable,
+        max_goals=max_goals,
     )
     selection = select(candidates, mean_matrix, max_goals=max_goals)
 
@@ -222,7 +278,15 @@ def score_fixture(
         model_weight=model_weight if source == "blended_with_odds" else 1.0,
         source=source,
         truncated_mass=truncated,
-        reasons=_reasons(match, lam_home_point, lam_away_point, selection, references),
+        reasons=_reasons(
+            match,
+            lam_home_point,
+            lam_away_point,
+            selection,
+            references,
+            boot,
+            with_odds=source == "blended_with_odds",
+        ),
         market_probabilities={
             k: float(v.mean()) for k, v in probs_by_draw.items()
         },

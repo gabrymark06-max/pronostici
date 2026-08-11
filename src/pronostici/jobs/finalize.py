@@ -37,6 +37,7 @@ from ..competitions import ACTIVE_CODES, get
 from ..matching import pair_events
 from ..model.blend import MODEL_WEIGHT
 from ..model.bootstrap import BootstrapResult
+from ..model.tau import resolve as resolve_tau
 from ..pipeline import score_fixture
 from ..sources.odds_api import (
     MARKETS,
@@ -122,7 +123,7 @@ def run(
     *,
     window_hours: int = WINDOW_HOURS,
     as_of: datetime | None = None,
-    tau: float = 0.08,
+    tau: float | dict[str, float] | None = None,
     offline: bool = False,
     refresh: bool = False,
     max_age_s: float = 6 * 3600,
@@ -130,6 +131,8 @@ def run(
 ) -> dict:
     as_of = as_of or datetime.now(UTC)
     started = time.monotonic()
+    # `None` = i tau per famiglia misurati dal backtest (vedi `model/tau.py`).
+    tau, tau_origin = resolve_tau(tau)
     budget = load_budget()
     client = OddsClient(offline=offline)
 
@@ -137,6 +140,7 @@ def run(
     report: dict = {
         "as_of": as_of.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "window_hours": window_hours,
+        "tau": tau_origin,
         "degradation_step": step,
         "credits_before": budget.used,
         "leagues": [],
@@ -342,7 +346,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--competitions", nargs="*", default=list(ACTIVE_CODES))
     parser.add_argument("--window-hours", type=int, default=WINDOW_HOURS)
-    parser.add_argument("--tau", type=float, default=0.08)
+    parser.add_argument(
+        "--tau",
+        type=float,
+        default=None,
+        help="tau unico per tutte le famiglie; senza, quelli misurati dal backtest",
+    )
     parser.add_argument("--as-of", default=None, help="ISO 8601, per le prove")
     parser.add_argument("--offline", action="store_true", help="solo cache, mai rete")
     parser.add_argument("--refresh", action="store_true", help="ignora la cache")

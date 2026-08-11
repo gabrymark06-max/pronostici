@@ -32,7 +32,34 @@ SIGMA_MAX = 0.12  # sicurezza: stima troppo instabile per dire qualcosa
 # (0,005) taceva sul 17,4%. Si sceglie il tasso, si legge la soglia.
 S_MIN = 0.008
 RHO_MAX = 0.80  # soglia di clustering per correlazione
-TAU_DEFAULT = 0.08  # sd a priori per famiglia, finche' non c'e' il backtest
+# Ricaduta quando il backtest non ha ancora misurato una famiglia (ricerca 8.3).
+# I valori veri arrivano da `model.tau.load_tau_by_family`.
+TAU_DEFAULT = 0.08
+
+# Famiglie che si **calcolano e si mostrano** ma non concorrono al consigliato.
+#
+# 2026-08-11, over/under. Il backtest del 2026-08-08 aveva gia' pubblicato il
+# risultato negativo (log loss 0,69919 contro 0,68856 del base rate su Over
+# 2.5). L'indagine di `jobs/halflife.py` su 5.018 partite ha escluso le tre
+# cause sospette:
+#
+# * l'emivita: su tutta la griglia 120-540 giorni il modello resta sotto il base
+#   rate, con uno scarto fra 0,0134 e 0,0182 nats e un errore standard di 0,004;
+# * la correzione Dixon-Coles: le sue quattro celle stanno **tutte** sotto la
+#   linea 2.5 e le loro correzioni si annullano, quindi su Over 2.5 il suo
+#   effetto e' esattamente zero (verificato in `tests/test_matrix_totals.py`);
+# * il troncamento: massa persa 3,1e-05, e con `max_goals = 18` il log loss
+#   cambia di 2e-05.
+#
+# Resta la spiegazione semplice: la nostra stima per-partita dei **gol totali**
+# non porta informazione. La ricalibrazione logistica in-sample - un limite
+# superiore, quindi ottimistico - guadagna 0,0024 nats sul base rate.
+#
+# Il rimedio del protocollo 4.2 non e' abbassare il criterio: e' restringere lo
+# scope. Over/under resta calcolato, resta mostrato, resta confrontato con le
+# quote; semplicemente non puo' piu' essere il consiglio. Undici mercati di cui
+# ci fidiamo, non dodici di cui uno no.
+NON_SELECTABLE_FAMILIES = frozenset({"over_under"})
 
 EPS = 1e-9
 
@@ -164,10 +191,20 @@ class Candidate:
     passes_p_min: bool
     passes_sigma_max: bool
     passes_s_min: bool
+    # Una famiglia esclusa dalla selezione produce comunque il suo candidato:
+    # serve a misurarla (tau^2 per famiglia, log loss contro il base rate) anche
+    # quando non puo' piu' vincere. Toglierla dal calcolo renderebbe cieco
+    # proprio il numero che ha motivato l'esclusione.
+    selectable: bool = True
 
     @property
     def survives(self) -> bool:
-        return self.passes_p_min and self.passes_sigma_max and self.passes_s_min
+        return (
+            self.selectable
+            and self.passes_p_min
+            and self.passes_sigma_max
+            and self.passes_s_min
+        )
 
     def to_dict(self) -> dict:
         return {
@@ -208,16 +245,39 @@ def build_candidates(
     *,
     tau: float | dict[str, float] = TAU_DEFAULT,
     selectable_keys: set[str] | None = None,
+    excluded_families: frozenset[str] | None = None,
+    include_unselectable: bool = False,
     max_goals: int = 12,
 ) -> list[Candidate]:
-    """Passi 2-5: incertezza, riferimento, shrinkage, punteggio."""
+    """Passi 2-5: incertezza, riferimento, shrinkage, punteggio.
+
+    `include_unselectable=True` restituisce **anche** i mercati che non possono
+    vincere, marcati `selectable=False`. Non li rende eleggibili — `select` li
+    scarta comunque — ma permette al backtest di continuare a misurare le
+    famiglie escluse. E' l'unico modo di sapere se un giorno tornassero a
+    portare informazione.
+
+    `excluded_families=None` significa "quelle di produzione". Passare un
+    insieme vuoto le riammette tutte: serve ai bracci di confronto del backtest,
+    che devono poter riprodurre la configurazione **precedente** all'esclusione.
+    Un parametro che sapesse solo restringere renderebbe impossibile misurare
+    cosa si e' guadagnato togliendo una famiglia.
+    """
+    excluded = (
+        NON_SELECTABLE_FAMILIES if excluded_families is None else excluded_families
+    )
     defs = {d.key: d for d in catalog(max_goals)}
     out: list[Candidate] = []
     for key, draws in probs_by_draw.items():
         definition = defs.get(key)
-        if definition is None or not definition.selectable:
+        if definition is None:
             continue
-        if selectable_keys is not None and key not in selectable_keys:
+        selectable = (
+            definition.selectable
+            and definition.family not in excluded
+            and (selectable_keys is None or key in selectable_keys)
+        )
+        if not selectable and not include_unselectable:
             continue
         reference = references.get(key)
         if reference is None:
@@ -247,6 +307,7 @@ def build_candidates(
                 passes_p_min=p_tilde >= P_MIN,
                 passes_sigma_max=sigma <= SIGMA_MAX,
                 passes_s_min=score >= S_MIN,
+                selectable=selectable,
             )
         )
     return out
@@ -278,7 +339,14 @@ def select(
     rho_max: float = RHO_MAX,
     max_goals: int = 12,
 ) -> Selection:
-    """Passi 6-8: filtri duri, clustering, scelta, oppure silenzio."""
+    """Passi 6-8: filtri duri, clustering, scelta, oppure silenzio.
+
+    I candidati non eleggibili escono **prima** di ogni conteggio: `n_candidates`
+    e `filter_bites` sono quello che l'utente vede scritto sulla scheda del
+    silenzio ("abbiamo esaminato N mercati"), e devono contare i mercati che
+    potevano davvero essere consigliati.
+    """
+    candidates = [c for c in candidates if c.selectable]
     bites = {
         "p_min": sum(1 for c in candidates if not c.passes_p_min),
         "sigma_max": sum(1 for c in candidates if not c.passes_sigma_max),

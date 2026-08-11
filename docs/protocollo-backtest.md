@@ -31,6 +31,45 @@ Se questo numero dovesse cambiare, va aggiornato **qui**, con la data, e il
 backtest va rieseguito da capo. Un numero non scritto rende il backtest non
 interpretabile.
 
+### Emendamento del 2026-08-11 — configurazioni provate: 1 → 7
+
+Il backtest del 2026-08-08 ha pubblicato un risultato **sfavorevole**: su Over
+2.5 il log loss del modello (0,69919) è peggiore del solo tasso storico
+(0,68856) su 4.995 partite.
+
+Per capirne la causa ho eseguito `jobs/halflife.py`, che prova **sei
+configurazioni aggiuntive** oltre alla linea di base, su 5.018 partite:
+
+| Braccio | Cosa cambia |
+|---|---|
+| `hl_120` `hl_180` `hl_270` `hl_540` | emivita del decadimento, contro i 365 giorni di base |
+| `hl_365_maxgoals18` | troncamento della matrice a 18 gol invece di 12 |
+| `hl_365_rho0` | correzione di Dixon-Coles disattivata |
+
+**Totale dichiarato: 7.**
+
+Questa non è una grid search alla ricerca della configurazione migliore: è una
+**diagnosi**, e il suo esito è negativo su tutti e sette i bracci. Nessuna
+emivita batte il tasso storico su Over 2.5 — lo scarto resta fra +0,0085 e
++0,0135 nats. Il braccio migliore (`hl_540`) è peggiore del base rate quanto
+quello di partenza, e la differenza fra i due (0,01336 contro 0,01351) è dentro
+il rumore.
+
+**L'emivita non è stata cambiata.** Cambiarla sulla base di sette prove con due
+stagioni di dati sarebbe esattamente l'errore che questo documento esiste per
+impedire, e per giunta cambierebbe un parametro che il test dice non essere la
+causa.
+
+Il rimedio adottato è di **scope**, non di parametro: la famiglia over/under
+esce dalla selezione (§4.2). Resta calcolata, resta mostrata, resta confrontata
+con le quote — semplicemente non può più essere il pronostico consigliato.
+
+Il contrasto che rende la diagnosi credibile: sulla stessa griglia e sugli
+stessi dati, la famiglia **1X2 batte il tasso storico in tutti e sette i
+bracci**, con uno scarto stabile di −0,035 nats. Il modello ha risoluzione su
+*chi vince* e non ne ha su *quanti gol si segnano*. È una proprietà del
+modello, non un difetto di taratura.
+
 ---
 
 ## 1. Cosa misura, e cosa non misura

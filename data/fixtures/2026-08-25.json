@@ -10,12 +10,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 95,
-     "p_min": 67,
+     "S_min": 81,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 0,
+    "n_candidates": 88,
+    "n_clusters": 1,
     "truncated_mass": 6.337e-09
    },
    "expected_goals": {
@@ -48,7 +48,23 @@
    "matchday": 1,
    "model_weight": 1.0,
    "phase": "preliminary",
-   "prediction": null,
+   "prediction": {
+    "band_p5": 0.5105,
+    "band_p95": 0.7438,
+    "cluster_members": [
+     "ah_away_0.5"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.6048,
+    "p_raw": 0.6267,
+    "reference": 0.5395,
+    "runners_up": [],
+    "score": 0.008656,
+    "shrink_alpha": 0.7485,
+    "sigma": 0.0689
+   },
    "raw_probabilities": {
     "1x2_away": 0.3739,
     "1x2_draw": 0.2528,
@@ -58,17 +74,17 @@
     "under_2.5": 0.4776
    },
    "reasons": [
-    "Gol attesi: Valencia CF 1.39, Real Betis Balompié 1.39 (totale 2.78)."
+    "Gol attesi: Valencia CF 1.39, Real Betis Balompié 1.39 (totale 2.78).",
+    "X2 (pareggio o ospite): 60 su 100, 7 punti sopra la media di riferimento (54 su 100).",
+    "Banda di incertezza: fra 51 e 74 su 100."
    ],
-   "silence": {
-    "reason": "S_min"
-   },
+   "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-25T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
- "silence_count": 1,
+ "silence_count": 0,
  "total": 1
 }

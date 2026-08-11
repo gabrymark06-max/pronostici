@@ -10,11 +10,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 66,
+     "S_min": 88,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 9.899e-09
    },
@@ -58,6 +58,7 @@
     "under_2.5": 0.5128
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Millwall FC 1.53, Wrexham AFC 1.11 (totale 2.63)."
    ],
    "silence": {
@@ -75,11 +76,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 92,
-     "p_min": 67,
+     "S_min": 82,
+     "p_min": 62,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 0,
     "truncated_mass": 5.962e-08
    },
@@ -123,6 +124,7 @@
     "under_2.5": 0.4388
    },
    "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
     "Gol attesi: Queens Park Rangers FC 1.79, Cardiff City FC 1.16 (totale 2.95)."
    ],
    "silence": {
@@ -140,12 +142,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 78,
-     "p_min": 66,
+     "S_min": 76,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 7,
+    "n_candidates": 88,
+    "n_clusters": 4,
     "truncated_mass": 7.016e-10
    },
    "expected_goals": {
@@ -179,85 +181,72 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5269,
-    "band_p95": 0.7099,
+    "band_p5": 0.7213,
+    "band_p95": 0.8918,
     "cluster_members": [],
-    "family": "btts",
-    "key": "btts_no",
-    "label": "Non entrambe segnano",
-    "p": 0.5705,
-    "p_raw": 0.622,
-    "reference": 0.465,
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.7902,
+    "p_raw": 0.8118,
+    "reference": 0.7007,
     "runners_up": [
      {
-      "band_p5": 0.5568,
-      "band_p95": 0.7724,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.6125,
-      "p_raw": 0.674,
-      "reference": 0.5216,
-      "score": 0.016749,
-      "shrink_alpha": 0.5966,
-      "sigma": 0.0658
+      "band_p5": 0.5269,
+      "band_p95": 0.7099,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5646,
+      "p_raw": 0.622,
+      "reference": 0.465,
+      "score": 0.019871,
+      "shrink_alpha": 0.6342,
+      "sigma": 0.0559
      },
      {
-      "band_p5": 0.5568,
-      "band_p95": 0.7724,
-      "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.6125,
-      "p_raw": 0.674,
-      "reference": 0.5216,
-      "score": 0.016749,
-      "shrink_alpha": 0.5966,
-      "sigma": 0.0658
-     },
-     {
-      "band_p5": 0.7213,
-      "band_p95": 0.8918,
+      "band_p5": 0.9123,
+      "band_p95": 0.9809,
       "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.7793,
-      "p_raw": 0.8118,
-      "reference": 0.7007,
-      "score": 0.015615,
-      "shrink_alpha": 0.7073,
-      "sigma": 0.0515
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9502,
+      "p_raw": 0.9519,
+      "reference": 0.9061,
+      "score": 0.013563,
+      "shrink_alpha": 0.9618,
+      "sigma": 0.0209
      },
      {
-      "band_p5": 0.7683,
-      "band_p95": 0.9153,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.832,
-      "p_raw": 0.8527,
-      "reference": 0.7666,
-      "score": 0.012877,
-      "shrink_alpha": 0.7595,
-      "sigma": 0.045
+      "band_p5": 0.8738,
+      "band_p95": 0.965,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9215,
+      "p_raw": 0.9239,
+      "reference": 0.8817,
+      "score": 0.008512,
+      "shrink_alpha": 0.9439,
+      "sigma": 0.0276
      },
      {
-      "band_p5": 0.7683,
-      "band_p95": 0.9153,
-      "family": "multigoal",
-      "key": "mg_0_3",
-      "label": "Multigol 0-3",
-      "p": 0.832,
-      "p_raw": 0.8527,
-      "reference": 0.7666,
-      "score": 0.012877,
-      "shrink_alpha": 0.7595,
-      "sigma": 0.045
+      "band_p5": 0.8738,
+      "band_p95": 0.965,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9206,
+      "p_raw": 0.9239,
+      "reference": 0.8817,
+      "score": 0.008121,
+      "shrink_alpha": 0.9233,
+      "sigma": 0.0276
      }
     ],
-    "score": 0.022313,
-    "shrink_alpha": 0.672,
-    "sigma": 0.0559
+    "score": 0.020459,
+    "shrink_alpha": 0.8057,
+    "sigma": 0.0515
    },
    "raw_probabilities": {
     "1x2_away": 0.2409,
@@ -269,8 +258,8 @@
    },
    "reasons": [
     "Gol attesi: West Bromwich Albion FC 1.22, Charlton Athletic FC 0.79 (totale 2.01).",
-    "Non entrambe segnano: 57 su 100, 11 punti sopra la media di riferimento (47 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 67%)."
+    "Ospite Under 1.5: 79 su 100, 9 punti sopra la media di riferimento (70 su 100).",
+    "Banda di incertezza: fra 72 e 89 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -285,12 +274,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 62,
-     "p_min": 65,
+     "S_min": 59,
+     "p_min": 60,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 11,
+    "n_candidates": 88,
+    "n_clusters": 10,
     "truncated_mass": 4.455e-09
    },
    "expected_goals": {
@@ -330,7 +319,7 @@
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.9229,
+    "p": 0.9315,
     "p_raw": 0.9448,
     "reference": 0.7007,
     "runners_up": [
@@ -340,25 +329,12 @@
       "family": "team_goals",
       "key": "ag_under_0.5",
       "label": "Ospite Under 0.5",
-      "p": 0.5337,
+      "p": 0.5813,
       "p_raw": 0.6956,
       "reference": 0.3083,
-      "score": 0.10901,
-      "shrink_alpha": 0.5819,
+      "score": 0.158517,
+      "shrink_alpha": 0.7049,
       "sigma": 0.0678
-     },
-     {
-      "band_p5": 0.6839,
-      "band_p95": 0.8592,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.6769,
-      "p_raw": 0.7702,
-      "reference": 0.465,
-      "score": 0.091184,
-      "shrink_alpha": 0.6943,
-      "sigma": 0.0531
      },
      {
       "band_p5": 0.8464,
@@ -366,24 +342,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8778,
+      "p": 0.8916,
       "p_raw": 0.9049,
       "reference": 0.7066,
-      "score": 0.083486,
-      "shrink_alpha": 0.8637,
-      "sigma": 0.0318
-     },
-     {
-      "band_p5": 0.8464,
-      "band_p95": 0.9523,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8778,
-      "p_raw": 0.9049,
-      "reference": 0.7066,
-      "score": 0.083486,
-      "shrink_alpha": 0.8637,
+      "score": 0.099476,
+      "shrink_alpha": 0.9332,
       "sigma": 0.0318
      },
      {
@@ -392,16 +355,42 @@
       "family": "handicap_asian",
       "key": "ah_home_0.5",
       "label": "Asiatico casa +0.5",
-      "p": 0.8778,
+      "p": 0.8904,
       "p_raw": 0.9049,
       "reference": 0.7066,
-      "score": 0.083486,
-      "shrink_alpha": 0.8637,
+      "score": 0.098012,
+      "shrink_alpha": 0.9272,
       "sigma": 0.0318
+     },
+     {
+      "band_p5": 0.8464,
+      "band_p95": 0.9523,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8853,
+      "p_raw": 0.9049,
+      "reference": 0.7066,
+      "score": 0.091844,
+      "shrink_alpha": 0.901,
+      "sigma": 0.0318
+     },
+     {
+      "band_p5": 0.6839,
+      "band_p95": 0.8592,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.6657,
+      "p_raw": 0.7702,
+      "reference": 0.465,
+      "score": 0.081671,
+      "shrink_alpha": 0.6578,
+      "sigma": 0.0531
      }
     ],
-    "score": 0.149606,
-    "shrink_alpha": 0.9103,
+    "score": 0.16425,
+    "shrink_alpha": 0.9457,
     "sigma": 0.0251
    },
    "raw_probabilities": {
@@ -414,7 +403,7 @@
    },
    "reasons": [
     "Gol attesi: Burnley FC 1.43, Middlesbrough FC 0.37 (totale 1.80).",
-    "Ospite Under 1.5: 92 su 100, 22 punti sopra la media di riferimento (70 su 100).",
+    "Ospite Under 1.5: 93 su 100, 23 punti sopra la media di riferimento (70 su 100).",
     "Banda di incertezza: fra 90 e 98 su 100."
    ],
    "silence": null,
@@ -422,7 +411,7 @@
    "utc_date": "2026-09-02T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 2,
  "total": 4

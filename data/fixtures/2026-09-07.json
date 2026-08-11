@@ -1,0 +1,220 @@
+{
+ "date": "2026-09-07",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5890.png",
+    "name": "US Lecce",
+    "tla": "USL"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 74,
+     "p_min": 61,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 5,
+    "truncated_mass": 6.515e-10
+   },
+   "expected_goals": {
+    "away": 0.828,
+    "home": 1.213
+   },
+   "half_time": {
+    "ht_over_0.5": 0.5879,
+    "ht_over_1.5": 0.2226,
+    "ht_over_2.5": 0.0606,
+    "ht_under_0.5": 0.4121,
+    "ht_under_1.5": 0.7774,
+    "ht_under_2.5": 0.9394,
+    "htft_11": 0.2567,
+    "htft_12": 0.0111,
+    "htft_1X": 0.0435,
+    "htft_21": 0.0176,
+    "htft_22": 0.1335,
+    "htft_2X": 0.0435,
+    "htft_X1": 0.1766,
+    "htft_X2": 0.1075,
+    "htft_XX": 0.2099
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/104.png",
+    "name": "Cagliari Calcio",
+    "tla": "CAG"
+   },
+   "match_id": 558610,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7035,
+    "band_p95": 0.8796,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.7705,
+    "p_raw": 0.798,
+    "reference": 0.6579,
+    "runners_up": [
+     {
+      "band_p5": 0.9028,
+      "band_p95": 0.9773,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9437,
+      "p_raw": 0.9463,
+      "reference": 0.8855,
+      "score": 0.020092,
+      "shrink_alpha": 0.9568,
+      "sigma": 0.0223
+     },
+     {
+      "band_p5": 0.9624,
+      "band_p95": 0.9921,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9791,
+      "p_raw": 0.9793,
+      "reference": 0.9447,
+      "score": 0.014631,
+      "shrink_alpha": 0.9927,
+      "sigma": 0.0097
+     },
+     {
+      "band_p5": 0.8715,
+      "band_p95": 0.9565,
+      "family": "handicap_asian",
+      "key": "ah_home_1.5",
+      "label": "Asiatico casa +1.5",
+      "p": 0.9141,
+      "p_raw": 0.9172,
+      "reference": 0.8605,
+      "score": 0.013588,
+      "shrink_alpha": 0.9455,
+      "sigma": 0.0272
+     },
+     {
+      "band_p5": 0.8715,
+      "band_p95": 0.9565,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.913,
+      "p_raw": 0.9172,
+      "reference": 0.8605,
+      "score": 0.012975,
+      "shrink_alpha": 0.9255,
+      "sigma": 0.0272
+     },
+     {
+      "band_p5": 0.6605,
+      "band_p95": 0.8376,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7336,
+      "p_raw": 0.7472,
+      "reference": 0.6658,
+      "score": 0.010741,
+      "shrink_alpha": 0.8335,
+      "sigma": 0.0531
+     }
+    ],
+    "score": 0.030099,
+    "shrink_alpha": 0.8033,
+    "sigma": 0.0519
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2528,
+    "1x2_draw": 0.2983,
+    "1x2_home": 0.4489,
+    "btts_yes": 0.3901,
+    "over_2.5": 0.3342,
+    "under_2.5": 0.6658
+   },
+   "reasons": [
+    "Gol attesi: Cagliari Calcio 1.21, US Lecce 0.83 (totale 2.04).",
+    "Ospite Under 1.5: 77 su 100, 11 punti sopra la media di riferimento (66 su 100).",
+    "Banda di incertezza: fra 70 e 88 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-07T16:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/110.png",
+    "name": "SS Lazio",
+    "tla": "LAZ"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 1.189e-09
+   },
+   "expected_goals": {
+    "away": 1.248,
+    "home": 1.132
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6444,
+    "ht_over_1.5": 0.2768,
+    "ht_over_2.5": 0.0867,
+    "ht_under_0.5": 0.3556,
+    "ht_under_1.5": 0.7232,
+    "ht_under_2.5": 0.9133,
+    "htft_11": 0.1855,
+    "htft_12": 0.0201,
+    "htft_1X": 0.0492,
+    "htft_21": 0.0178,
+    "htft_22": 0.2214,
+    "htft_2X": 0.0492,
+    "htft_X1": 0.1298,
+    "htft_X2": 0.1481,
+    "htft_XX": 0.179
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/115.png",
+    "name": "Udinese Calcio",
+    "tla": "UDI"
+   },
+   "match_id": 558617,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3891,
+    "1x2_draw": 0.2782,
+    "1x2_home": 0.3327,
+    "btts_yes": 0.4766,
+    "over_2.5": 0.4235,
+    "under_2.5": 0.5765
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Udinese Calcio 1.13, SS Lazio 1.25 (totale 2.38)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-07T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-11T15:55:25Z",
+ "schema_version": 1,
+ "silence_count": 1,
+ "total": 2
+}

@@ -10,12 +10,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 65,
-     "p_min": 66,
+     "S_min": 60,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 12,
+    "n_candidates": 88,
+    "n_clusters": 10,
     "truncated_mass": 3.506e-06
    },
    "expected_goals": {
@@ -59,7 +59,7 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.6376,
+    "p": 0.6826,
     "p_raw": 0.7421,
     "reference": 0.4605,
     "runners_up": [
@@ -69,24 +69,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8663,
+      "p": 0.8812,
       "p_raw": 0.8959,
       "reference": 0.7101,
-      "score": 0.068739,
-      "shrink_alpha": 0.8404,
-      "sigma": 0.0349
-     },
-     {
-      "band_p5": 0.8294,
-      "band_p95": 0.945,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.8663,
-      "p_raw": 0.8959,
-      "reference": 0.7101,
-      "score": 0.068739,
-      "shrink_alpha": 0.8404,
+      "score": 0.084251,
+      "shrink_alpha": 0.9207,
       "sigma": 0.0349
      },
      {
@@ -95,11 +82,24 @@
       "family": "handicap_asian",
       "key": "ah_home_0.5",
       "label": "Asiatico casa +0.5",
-      "p": 0.8663,
+      "p": 0.8799,
       "p_raw": 0.8959,
       "reference": 0.7101,
-      "score": 0.068739,
-      "shrink_alpha": 0.8404,
+      "score": 0.082804,
+      "shrink_alpha": 0.9136,
+      "sigma": 0.0349
+     },
+     {
+      "band_p5": 0.8294,
+      "band_p95": 0.945,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8742,
+      "p_raw": 0.8959,
+      "reference": 0.7101,
+      "score": 0.076767,
+      "shrink_alpha": 0.8832,
       "sigma": 0.0349
      },
      {
@@ -108,11 +108,11 @@
       "family": "combo",
       "key": "combo_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7076,
+      "p": 0.7192,
       "p_raw": 0.7783,
       "reference": 0.5393,
-      "score": 0.059298,
-      "shrink_alpha": 0.7044,
+      "score": 0.067999,
+      "shrink_alpha": 0.7527,
       "sigma": 0.0518
      },
      {
@@ -121,16 +121,16 @@
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.9099,
+      "p": 0.9144,
       "p_raw": 0.9212,
       "reference": 0.7998,
-      "score": 0.045424,
-      "shrink_alpha": 0.9072,
+      "score": 0.049658,
+      "shrink_alpha": 0.9438,
       "sigma": 0.0256
      }
     ],
-    "score": 0.063262,
-    "shrink_alpha": 0.6289,
+    "score": 0.100326,
+    "shrink_alpha": 0.7889,
     "sigma": 0.0615
    },
    "raw_probabilities": {
@@ -143,15 +143,15 @@
    },
    "reasons": [
     "Gol attesi: Real Madrid CF 2.59, Real Sociedad de Fútbol 0.85 (totale 3.45).",
-    "Vittoria casa: 64 su 100, 18 punti sopra la media di riferimento (46 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 63%)."
+    "Vittoria casa: 68 su 100, 22 punti sopra la media di riferimento (46 su 100).",
+    "Banda di incertezza: fra 64 e 83 su 100."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-26T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

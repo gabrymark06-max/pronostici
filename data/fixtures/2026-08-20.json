@@ -10,12 +10,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 81,
-     "p_min": 65,
+     "S_min": 80,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 6,
+    "n_candidates": 88,
+    "n_clusters": 3,
     "truncated_mass": 2.116e-09
    },
    "expected_goals": {
@@ -49,41 +49,28 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.505,
-    "band_p95": 0.6754,
+    "band_p5": 0.7265,
+    "band_p95": 0.8688,
     "cluster_members": [],
-    "family": "btts",
-    "key": "btts_no",
-    "label": "Non entrambe segnano",
-    "p": 0.5534,
-    "p_raw": 0.594,
-    "reference": 0.4495,
+    "family": "team_goals",
+    "key": "ag_under_1.5",
+    "label": "Ospite Under 1.5",
+    "p": 0.7849,
+    "p_raw": 0.8025,
+    "reference": 0.6821,
     "runners_up": [
      {
-      "band_p5": 0.7265,
-      "band_p95": 0.8688,
-      "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.7751,
-      "p_raw": 0.8025,
-      "reference": 0.6821,
-      "score": 0.021247,
-      "shrink_alpha": 0.7728,
-      "sigma": 0.0434
-     },
-     {
-      "band_p5": 0.8783,
-      "band_p95": 0.966,
-      "family": "over_under",
-      "key": "under_4.5",
-      "label": "Under 4.5",
-      "p": 0.9224,
-      "p_raw": 0.9292,
-      "reference": 0.868,
-      "score": 0.014838,
-      "shrink_alpha": 0.8897,
-      "sigma": 0.0282
+      "band_p5": 0.505,
+      "band_p95": 0.6754,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5483,
+      "p_raw": 0.594,
+      "reference": 0.4495,
+      "score": 0.019616,
+      "shrink_alpha": 0.684,
+      "sigma": 0.05
      },
      {
       "band_p5": 0.915,
@@ -91,43 +78,17 @@
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.9464,
+      "p": 0.9473,
       "p_raw": 0.9487,
       "reference": 0.9021,
-      "score": 0.013085,
-      "shrink_alpha": 0.9504,
+      "score": 0.013703,
+      "shrink_alpha": 0.9705,
       "sigma": 0.0183
-     },
-     {
-      "band_p5": 0.5201,
-      "band_p95": 0.7397,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.5799,
-      "p_raw": 0.6349,
-      "reference": 0.5042,
-      "score": 0.011517,
-      "shrink_alpha": 0.5791,
-      "sigma": 0.0682
-     },
-     {
-      "band_p5": 0.5201,
-      "band_p95": 0.7397,
-      "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.5799,
-      "p_raw": 0.6349,
-      "reference": 0.5042,
-      "score": 0.011517,
-      "shrink_alpha": 0.5791,
-      "sigma": 0.0682
      }
     ],
-    "score": 0.021669,
-    "shrink_alpha": 0.7189,
-    "sigma": 0.05
+    "score": 0.026141,
+    "shrink_alpha": 0.8537,
+    "sigma": 0.0434
    },
    "raw_probabilities": {
     "1x2_away": 0.23,
@@ -139,15 +100,15 @@
    },
    "reasons": [
     "Gol attesi: Rayo Vallecano de Madrid 1.34, Deportivo Alavés 0.82 (totale 2.16).",
-    "Non entrambe segnano: 55 su 100, 10 punti sopra la media di riferimento (45 su 100).",
-    "Banda di incertezza: fra 50 e 68 su 100."
+    "Ospite Under 1.5: 78 su 100, 10 punti sopra la media di riferimento (68 su 100).",
+    "Banda di incertezza: fra 73 e 87 su 100."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-20T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

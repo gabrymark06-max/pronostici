@@ -1,0 +1,501 @@
+{
+ "date": "2026-09-09",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1912.png",
+    "name": "Telstar 1963",
+    "tla": "TEL"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 77,
+     "p_min": 63,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 5,
+    "truncated_mass": 1.748e-07
+   },
+   "expected_goals": {
+    "away": 1.09,
+    "home": 1.969
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7468,
+    "ht_over_1.5": 0.399,
+    "ht_over_2.5": 0.1602,
+    "ht_under_0.5": 0.2532,
+    "ht_under_1.5": 0.601,
+    "ht_under_2.5": 0.8398,
+    "htft_11": 0.3691,
+    "htft_12": 0.015,
+    "htft_1X": 0.0468,
+    "htft_21": 0.0322,
+    "htft_22": 0.1148,
+    "htft_2X": 0.0468,
+    "htft_X1": 0.1766,
+    "htft_X2": 0.0758,
+    "htft_XX": 0.1228
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/666.png",
+    "name": "FC Twente '65",
+    "tla": "TWE"
+   },
+   "match_id": 558239,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8567,
+    "band_p95": 0.966,
+    "cluster_members": [
+     "eh_2_home"
+    ],
+    "family": "handicap_asian",
+    "key": "ah_home_1.5",
+    "label": "Asiatico casa +1.5",
+    "p": 0.9153,
+    "p_raw": 0.9202,
+    "reference": 0.8574,
+    "runners_up": [
+     {
+      "band_p5": 0.4199,
+      "band_p95": 0.7102,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5309,
+      "p_raw": 0.5742,
+      "reference": 0.4473,
+      "score": 0.014007,
+      "shrink_alpha": 0.6585,
+      "sigma": 0.0855
+     },
+     {
+      "band_p5": 0.4199,
+      "band_p95": 0.7102,
+      "family": "handicap_asian",
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.5282,
+      "p_raw": 0.5742,
+      "reference": 0.4473,
+      "score": 0.01312,
+      "shrink_alpha": 0.6373,
+      "sigma": 0.0855
+     },
+     {
+      "band_p5": 0.9496,
+      "band_p95": 0.992,
+      "family": "handicap_asian",
+      "key": "ah_home_2.5",
+      "label": "Asiatico casa +2.5",
+      "p": 0.9752,
+      "p_raw": 0.9757,
+      "reference": 0.9415,
+      "score": 0.013046,
+      "shrink_alpha": 0.9862,
+      "sigma": 0.0134
+     },
+     {
+      "band_p5": 0.6751,
+      "band_p95": 0.8876,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7708,
+      "p_raw": 0.7898,
+      "reference": 0.7011,
+      "score": 0.012189,
+      "shrink_alpha": 0.7853,
+      "sigma": 0.0621
+     },
+     {
+      "band_p5": 0.6751,
+      "band_p95": 0.8876,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.7694,
+      "p_raw": 0.7898,
+      "reference": 0.7011,
+      "score": 0.011681,
+      "shrink_alpha": 0.7692,
+      "sigma": 0.0621
+     }
+    ],
+    "score": 0.015703,
+    "shrink_alpha": 0.9228,
+    "sigma": 0.0328
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2102,
+    "1x2_draw": 0.2157,
+    "1x2_home": 0.5742,
+    "btts_yes": 0.5601,
+    "over_2.5": 0.5841,
+    "under_2.5": 0.4159
+   },
+   "reasons": [
+    "Gol attesi: FC Twente '65 1.97, Telstar 1963 1.09 (totale 3.06).",
+    "Asiatico casa +1.5: 92 su 100, 6 punti sopra la media di riferimento (86 su 100).",
+    "Banda di incertezza: fra 86 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-09T16:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/74.png",
+    "name": "West Bromwich Albion FC",
+    "tla": "WBA"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 61,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 2.261e-09
+   },
+   "expected_goals": {
+    "away": 0.971,
+    "home": 1.347
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6509,
+    "ht_over_1.5": 0.2835,
+    "ht_over_2.5": 0.0902,
+    "ht_under_0.5": 0.3491,
+    "ht_under_1.5": 0.7165,
+    "ht_under_2.5": 0.9098,
+    "htft_11": 0.2704,
+    "htft_12": 0.0138,
+    "htft_1X": 0.0473,
+    "htft_21": 0.0206,
+    "htft_22": 0.1508,
+    "htft_2X": 0.0473,
+    "htft_X1": 0.1629,
+    "htft_X2": 0.1055,
+    "htft_XX": 0.1814
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/342.png",
+    "name": "Derby County FC",
+    "tla": "DER"
+   },
+   "match_id": 561829,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2712,
+    "1x2_draw": 0.2759,
+    "1x2_home": 0.4529,
+    "btts_yes": 0.4547,
+    "over_2.5": 0.4078,
+    "under_2.5": 0.5922
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Derby County FC 1.35, West Bromwich Albion FC 0.97 (totale 2.32)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-09T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/332.png",
+    "name": "Birmingham City FC",
+    "tla": "BIR"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 61,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 7.355e-09
+   },
+   "expected_goals": {
+    "away": 1.104,
+    "home": 1.489
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6918,
+    "ht_over_1.5": 0.329,
+    "ht_over_2.5": 0.1155,
+    "ht_under_0.5": 0.3082,
+    "ht_under_1.5": 0.671,
+    "ht_under_2.5": 0.8845,
+    "htft_11": 0.2785,
+    "htft_12": 0.0165,
+    "htft_1X": 0.0497,
+    "htft_21": 0.024,
+    "htft_22": 0.1596,
+    "htft_2X": 0.0497,
+    "htft_X1": 0.1579,
+    "htft_X2": 0.1049,
+    "htft_XX": 0.1591
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/68.png",
+    "name": "Norwich City FC",
+    "tla": "NOR"
+   },
+   "match_id": 561832,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.283,
+    "1x2_draw": 0.258,
+    "1x2_home": 0.459,
+    "btts_yes": 0.5089,
+    "over_2.5": 0.4769,
+    "under_2.5": 0.5231
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Norwich City FC 1.49, Birmingham City FC 1.10 (totale 2.59)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-09T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/69.png",
+    "name": "Queens Park Rangers FC",
+    "tla": "QPR"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 1.4e-09
+   },
+   "expected_goals": {
+    "away": 1.158,
+    "home": 1.262
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6667,
+    "ht_over_1.5": 0.3005,
+    "ht_over_2.5": 0.0993,
+    "ht_under_0.5": 0.3333,
+    "ht_under_1.5": 0.6995,
+    "ht_under_2.5": 0.9007,
+    "htft_11": 0.227,
+    "htft_12": 0.0178,
+    "htft_1X": 0.0499,
+    "htft_21": 0.0198,
+    "htft_22": 0.1941,
+    "htft_2X": 0.0499,
+    "htft_X1": 0.141,
+    "htft_X2": 0.1256,
+    "htft_XX": 0.175
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/348.png",
+    "name": "Charlton Athletic FC",
+    "tla": "CHA"
+   },
+   "match_id": 561831,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3385,
+    "1x2_draw": 0.2742,
+    "1x2_home": 0.3874,
+    "btts_yes": 0.4832,
+    "over_2.5": 0.4334,
+    "under_2.5": 0.5666
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Charlton Athletic FC 1.26, Queens Park Rangers FC 1.16 (totale 2.42)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-09T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1903.png",
+    "name": "Sport Lisboa e Benfica",
+    "tla": "BEN"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 59,
+     "p_min": 63,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 10,
+    "truncated_mass": 6.246e-07
+   },
+   "expected_goals": {
+    "away": 2.21,
+    "home": 0.792
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7392,
+    "ht_over_1.5": 0.3886,
+    "ht_over_2.5": 0.1531,
+    "ht_under_0.5": 0.2608,
+    "ht_under_1.5": 0.6114,
+    "ht_under_2.5": 0.8469,
+    "htft_11": 0.0639,
+    "htft_12": 0.0303,
+    "htft_1X": 0.0362,
+    "htft_21": 0.0082,
+    "htft_22": 0.4645,
+    "htft_2X": 0.0362,
+    "htft_X1": 0.0479,
+    "htft_X2": 0.2022,
+    "htft_XX": 0.1106
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/583.png",
+    "name": "Moreirense FC",
+    "tla": "MOR"
+   },
+   "match_id": 567282,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5884,
+    "band_p95": 0.7935,
+    "cluster_members": [
+     "ah_away_-0.5"
+    ],
+    "family": "1x2",
+    "key": "1x2_away",
+    "label": "Vittoria ospite",
+    "p": 0.6075,
+    "p_raw": 0.6939,
+    "reference": 0.308,
+    "runners_up": [
+     {
+      "band_p5": 0.8105,
+      "band_p95": 0.9352,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.848,
+      "p_raw": 0.8761,
+      "reference": 0.5721,
+      "score": 0.176446,
+      "shrink_alpha": 0.9077,
+      "sigma": 0.0379
+     },
+     {
+      "band_p5": 0.8105,
+      "band_p95": 0.9352,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.8456,
+      "p_raw": 0.8761,
+      "reference": 0.5721,
+      "score": 0.172954,
+      "shrink_alpha": 0.8996,
+      "sigma": 0.0379
+     },
+     {
+      "band_p5": 0.8105,
+      "band_p95": 0.9352,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.8351,
+      "p_raw": 0.8761,
+      "reference": 0.5721,
+      "score": 0.158552,
+      "shrink_alpha": 0.865,
+      "sigma": 0.0379
+     },
+     {
+      "band_p5": 0.934,
+      "band_p95": 0.9855,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9601,
+      "p_raw": 0.9635,
+      "reference": 0.7775,
+      "score": 0.133893,
+      "shrink_alpha": 0.9815,
+      "sigma": 0.0156
+     },
+     {
+      "band_p5": 0.934,
+      "band_p95": 0.9855,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9587,
+      "p_raw": 0.9635,
+      "reference": 0.7775,
+      "score": 0.131343,
+      "shrink_alpha": 0.9743,
+      "sigma": 0.0156
+     }
+    ],
+    "score": 0.190067,
+    "shrink_alpha": 0.7761,
+    "sigma": 0.0638
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.6939,
+    "1x2_draw": 0.1822,
+    "1x2_home": 0.1239,
+    "btts_yes": 0.4792,
+    "over_2.5": 0.573,
+    "under_2.5": 0.427
+   },
+   "reasons": [
+    "Gol attesi: Moreirense FC 0.79, Sport Lisboa e Benfica 2.21 (totale 3.00).",
+    "Vittoria ospite: 61 su 100, 30 punti sopra la media di riferimento (31 su 100).",
+    "Banda di incertezza: fra 59 e 79 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-09T19:15:00Z"
+  }
+ ],
+ "generated_at": "2026-08-11T15:55:25Z",
+ "schema_version": 1,
+ "silence_count": 3,
+ "total": 5
+}

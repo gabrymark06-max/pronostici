@@ -199,6 +199,25 @@ def probabilities_batch(matrices: np.ndarray) -> dict[str, np.ndarray]:
     return {key: values[:, i] for i, key in enumerate(keys)}
 
 
+def outcomes(
+    ft_home: int, ft_away: int, *, max_goals: int = 12
+) -> dict[str, int]:
+    """L'esito 0/1 di **tutti** i mercati, da un risultato finale.
+
+    E' la stessa maschera usata per prevedere, letta nella cella del risultato:
+    previsione e verifica non possono divergere per una svista. Rispetto a
+    `settle.outcome_of`, che risponde su una chiave sola, qui si legge una
+    colonna intera - che e' cio' che serve a chi misura il log loss di novanta
+    mercati su cinquemila partite.
+    """
+    keys, stack = _mask_stack(max_goals)
+    size = max_goals + 1
+    h = min(max(int(ft_home), 0), max_goals)
+    a = min(max(int(ft_away), 0), max_goals)
+    column = stack[:, h * size + a]
+    return {key: int(column[i]) for i, key in enumerate(keys)}
+
+
 def asian_push_lines(gm: GoalMatrix) -> dict[str, dict[str, float]]:
     """Linee asiatiche intere: vincita, rimborso, perdita.
 

@@ -10,12 +10,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 82,
-     "p_min": 66,
+     "S_min": 79,
+     "p_min": 61,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 8,
+    "n_candidates": 88,
+    "n_clusters": 4,
     "truncated_mass": 2.944e-07
    },
    "expected_goals": {
@@ -49,28 +49,28 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8032,
-    "band_p95": 0.9195,
+    "band_p5": 0.4833,
+    "band_p95": 0.7168,
     "cluster_members": [],
     "family": "team_goals",
-    "key": "hg_over_0.5",
-    "label": "Casa Over 0.5",
-    "p": 0.8542,
-    "p_raw": 0.8681,
-    "reference": 0.7791,
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.5606,
+    "p_raw": 0.6054,
+    "reference": 0.4568,
     "runners_up": [
      {
-      "band_p5": 0.7996,
-      "band_p95": 0.9187,
-      "family": "over_under",
-      "key": "over_1.5",
-      "label": "Over 1.5",
-      "p": 0.8462,
-      "p_raw": 0.8622,
-      "reference": 0.7733,
-      "score": 0.016573,
-      "shrink_alpha": 0.8201,
-      "sigma": 0.0375
+      "band_p5": 0.8032,
+      "band_p95": 0.9195,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.8594,
+      "p_raw": 0.8681,
+      "reference": 0.7791,
+      "score": 0.020818,
+      "shrink_alpha": 0.9023,
+      "sigma": 0.0345
      },
      {
       "band_p5": 0.5733,
@@ -78,56 +78,30 @@
       "family": "btts",
       "key": "btts_yes",
       "label": "Entrambe segnano",
-      "p": 0.6241,
+      "p": 0.6195,
       "p_raw": 0.6629,
       "reference": 0.538,
-      "score": 0.015121,
-      "shrink_alpha": 0.6895,
+      "score": 0.013537,
+      "shrink_alpha": 0.6527,
       "sigma": 0.0537
      },
      {
-      "band_p5": 0.4833,
-      "band_p95": 0.7168,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.5422,
-      "p_raw": 0.6054,
-      "reference": 0.4568,
-      "score": 0.014619,
-      "shrink_alpha": 0.5746,
-      "sigma": 0.0688
-     },
-     {
-      "band_p5": 0.5756,
-      "band_p95": 0.7845,
-      "family": "over_under",
-      "key": "over_2.5",
-      "label": "Over 2.5",
-      "p": 0.6239,
-      "p_raw": 0.6788,
-      "reference": 0.5394,
-      "score": 0.014573,
-      "shrink_alpha": 0.6062,
-      "sigma": 0.0645
-     },
-     {
-      "band_p5": 0.9472,
-      "band_p95": 0.9849,
-      "family": "over_under",
-      "key": "over_0.5",
-      "label": "Over 0.5",
-      "p": 0.9678,
-      "p_raw": 0.9685,
-      "reference": 0.9384,
-      "score": 0.008958,
-      "shrink_alpha": 0.977,
-      "sigma": 0.0123
+      "band_p5": 0.5225,
+      "band_p95": 0.7191,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5998,
+      "p_raw": 0.6309,
+      "reference": 0.529,
+      "score": 0.010138,
+      "shrink_alpha": 0.6944,
+      "sigma": 0.06
      }
     ],
-    "score": 0.01804,
-    "shrink_alpha": 0.8433,
-    "sigma": 0.0345
+    "score": 0.021613,
+    "shrink_alpha": 0.6986,
+    "sigma": 0.0688
    },
    "raw_probabilities": {
     "1x2_away": 0.2754,
@@ -139,8 +113,8 @@
    },
    "reasons": [
     "Gol attesi: Olympique de Marseille 2.06, RC Strasbourg Alsace 1.46 (totale 3.53).",
-    "Casa Over 0.5: 85 su 100, 8 punti sopra la media di riferimento (78 su 100).",
-    "Banda di incertezza: fra 80 e 92 su 100."
+    "Casa Over 1.5: 56 su 100, 10 punti sopra la media di riferimento (46 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 70%)."
    ],
    "silence": null,
    "source": "model_only",
@@ -155,12 +129,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 82,
-     "p_min": 68,
+     "S_min": 71,
+     "p_min": 63,
      "sigma_max": 0
     },
-    "n_candidates": 98,
-    "n_clusters": 4,
+    "n_candidates": 88,
+    "n_clusters": 5,
     "truncated_mass": 2.217e-07
    },
    "expected_goals": {
@@ -200,22 +174,22 @@
     "family": "team_goals",
     "key": "hg_over_1.5",
     "label": "Casa Over 1.5",
-    "p": 0.5145,
+    "p": 0.5361,
     "p_raw": 0.592,
     "reference": 0.4233,
     "runners_up": [
      {
-      "band_p5": 0.5053,
-      "band_p95": 0.7039,
-      "family": "over_under",
-      "key": "over_2.5",
-      "label": "Over 2.5",
-      "p": 0.5661,
-      "p_raw": 0.6084,
-      "reference": 0.4958,
-      "score": 0.009913,
-      "shrink_alpha": 0.6247,
-      "sigma": 0.062
+      "band_p5": 0.4521,
+      "band_p95": 0.6979,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5389,
+      "p_raw": 0.5706,
+      "reference": 0.4605,
+      "score": 0.012327,
+      "shrink_alpha": 0.7124,
+      "sigma": 0.0755
      },
      {
       "band_p5": 0.5519,
@@ -223,12 +197,25 @@
       "family": "combo",
       "key": "combo_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6087,
+      "p": 0.6152,
       "p_raw": 0.6534,
       "reference": 0.5393,
-      "score": 0.009811,
-      "shrink_alpha": 0.6087,
+      "score": 0.01173,
+      "shrink_alpha": 0.6652,
       "sigma": 0.0641
+     },
+     {
+      "band_p5": 0.4521,
+      "band_p95": 0.6979,
+      "family": "handicap_asian",
+      "key": "ah_home_-0.5",
+      "label": "Asiatico casa -0.5",
+      "p": 0.5368,
+      "p_raw": 0.5706,
+      "reference": 0.4605,
+      "score": 0.011664,
+      "shrink_alpha": 0.6929,
+      "sigma": 0.0755
      },
      {
       "band_p5": 0.7973,
@@ -236,16 +223,29 @@
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.85,
+      "p": 0.8541,
       "p_raw": 0.8611,
       "reference": 0.7998,
-      "score": 0.008432,
-      "shrink_alpha": 0.8188,
+      "score": 0.009932,
+      "shrink_alpha": 0.8857,
       "sigma": 0.0376
+     },
+     {
+      "band_p5": 0.6944,
+      "band_p95": 0.871,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7705,
+      "p_raw": 0.7838,
+      "reference": 0.7101,
+      "score": 0.009269,
+      "shrink_alpha": 0.8194,
+      "sigma": 0.0558
      }
     ],
-    "score": 0.016819,
-    "shrink_alpha": 0.5406,
+    "score": 0.025705,
+    "shrink_alpha": 0.6688,
     "sigma": 0.0737
    },
    "raw_probabilities": {
@@ -258,15 +258,15 @@
    },
    "reasons": [
     "Gol attesi: Real Betis Balompié 2.01, Real Sociedad de Fútbol 1.15 (totale 3.16).",
-    "Casa Over 1.5: 51 su 100, 9 punti sopra la media di riferimento (42 su 100).",
-    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 54%)."
+    "Casa Over 1.5: 54 su 100, 11 punti sopra la media di riferimento (42 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 67%)."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-21T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 2

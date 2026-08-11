@@ -10,11 +10,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 65,
-     "p_min": 66,
+     "S_min": 60,
+     "p_min": 60,
      "sigma_max": 0
     },
-    "n_candidates": 98,
+    "n_candidates": 88,
     "n_clusters": 11,
     "truncated_mass": 6.447e-06
    },
@@ -49,70 +49,58 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8662,
-    "band_p95": 0.9558,
+    "band_p5": 0.6841,
+    "band_p95": 0.866,
     "cluster_members": [
-     "eh_1_home",
-     "ah_home_0.5"
+     "ah_home_-0.5",
+     "hg_over_1.5",
+     "combo_1_over_1.5"
     ],
-    "family": "double_chance",
-    "key": "dc_1x",
-    "label": "1X (casa o pareggio)",
-    "p": 0.8947,
-    "p_raw": 0.9175,
-    "reference": 0.7101,
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.7205,
+    "p_raw": 0.7799,
+    "reference": 0.4605,
     "runners_up": [
      {
-      "band_p5": 0.6841,
-      "band_p95": 0.866,
-      "family": "1x2",
-      "key": "1x2_home",
-      "label": "Vittoria casa",
-      "p": 0.6728,
-      "p_raw": 0.7799,
-      "reference": 0.4605,
-      "score": 0.091469,
-      "shrink_alpha": 0.6646,
-      "sigma": 0.0568
+      "band_p5": 0.8662,
+      "band_p95": 0.9558,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.9065,
+      "p_raw": 0.9175,
+      "reference": 0.7101,
+      "score": 0.115568,
+      "shrink_alpha": 0.947,
+      "sigma": 0.0281
      },
      {
-      "band_p5": 0.6841,
-      "band_p95": 0.866,
+      "band_p5": 0.8662,
+      "band_p95": 0.9558,
       "family": "handicap_asian",
-      "key": "ah_home_-0.5",
-      "label": "Asiatico casa -0.5",
-      "p": 0.6728,
-      "p_raw": 0.7799,
-      "reference": 0.4605,
-      "score": 0.091469,
-      "shrink_alpha": 0.6646,
-      "sigma": 0.0568
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.9055,
+      "p_raw": 0.9175,
+      "reference": 0.7101,
+      "score": 0.114186,
+      "shrink_alpha": 0.9422,
+      "sigma": 0.0281
      },
      {
-      "band_p5": 0.5726,
-      "band_p95": 0.7991,
-      "family": "combo",
-      "key": "combo_1_over_1.5",
-      "label": "1 + Over 1.5",
-      "p": 0.5417,
-      "p_raw": 0.6969,
-      "reference": 0.3402,
-      "score": 0.084961,
-      "shrink_alpha": 0.5649,
-      "sigma": 0.0702
-     },
-     {
-      "band_p5": 0.6374,
-      "band_p95": 0.8448,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.6207,
-      "p_raw": 0.7521,
-      "reference": 0.4233,
-      "score": 0.078692,
-      "shrink_alpha": 0.6005,
-      "sigma": 0.0653
+      "band_p5": 0.8662,
+      "band_p95": 0.9558,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.9011,
+      "p_raw": 0.9175,
+      "reference": 0.7101,
+      "score": 0.108297,
+      "shrink_alpha": 0.921,
+      "sigma": 0.0281
      },
      {
       "band_p5": 0.7134,
@@ -120,17 +108,30 @@
       "family": "combo",
       "key": "combo_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7248,
+      "p": 0.7375,
       "p_raw": 0.8023,
       "reference": 0.5393,
-      "score": 0.072521,
-      "shrink_alpha": 0.7055,
+      "score": 0.083197,
+      "shrink_alpha": 0.7536,
       "sigma": 0.0517
+     },
+     {
+      "band_p5": 0.5007,
+      "band_p95": 0.7439,
+      "family": "combo",
+      "key": "combo_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.5037,
+      "p_raw": 0.628,
+      "reference": 0.3326,
+      "score": 0.062058,
+      "shrink_alpha": 0.5792,
+      "sigma": 0.077
      }
     ],
-    "score": 0.100144,
-    "shrink_alpha": 0.8902,
-    "sigma": 0.0281
+    "score": 0.138666,
+    "shrink_alpha": 0.8138,
+    "sigma": 0.0568
    },
    "raw_probabilities": {
     "1x2_away": 0.0825,
@@ -142,15 +143,15 @@
    },
    "reasons": [
     "Gol attesi: FC Barcelona 2.75, Athletic Club 0.78 (totale 3.52).",
-    "1X (casa o pareggio): 89 su 100, 18 punti sopra la media di riferimento (71 su 100).",
-    "Banda di incertezza: fra 87 e 96 su 100."
+    "Vittoria casa: 72 su 100, 26 punti sopra la media di riferimento (46 su 100).",
+    "Banda di incertezza: fra 68 e 87 su 100."
    ],
    "silence": null,
    "source": "model_only",
    "utc_date": "2026-08-27T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-08T13:29:01Z",
+ "generated_at": "2026-08-11T15:55:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

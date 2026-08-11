@@ -1,0 +1,657 @@
+{
+ "date": "2026-09-08",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/356.png",
+    "name": "Sheffield United FC",
+    "tla": "SHE"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 71,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 6,
+    "truncated_mass": 4.635e-10
+   },
+   "expected_goals": {
+    "away": 1.159,
+    "home": 1.03
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6297,
+    "ht_over_1.5": 0.2618,
+    "ht_over_2.5": 0.0791,
+    "ht_under_0.5": 0.3703,
+    "ht_under_1.5": 0.7382,
+    "ht_under_2.5": 0.9209,
+    "htft_11": 0.1819,
+    "htft_12": 0.0172,
+    "htft_1X": 0.0475,
+    "htft_21": 0.0149,
+    "htft_22": 0.2237,
+    "htft_2X": 0.0475,
+    "htft_X1": 0.1249,
+    "htft_X2": 0.1458,
+    "htft_XX": 0.1964
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/59.png",
+    "name": "Blackburn Rovers FC",
+    "tla": "BLA"
+   },
+   "match_id": 561821,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6325,
+    "band_p95": 0.8052,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.6964,
+    "p_raw": 0.725,
+    "reference": 0.592,
+    "runners_up": [
+     {
+      "band_p5": 0.8608,
+      "band_p95": 0.9511,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.9069,
+      "p_raw": 0.9122,
+      "reference": 0.8381,
+      "score": 0.020032,
+      "shrink_alpha": 0.9282,
+      "sigma": 0.0292
+     },
+     {
+      "band_p5": 0.5772,
+      "band_p95": 0.7627,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.6541,
+      "p_raw": 0.6774,
+      "reference": 0.5624,
+      "score": 0.017456,
+      "shrink_alpha": 0.7971,
+      "sigma": 0.0599
+     },
+     {
+      "band_p5": 0.5772,
+      "band_p95": 0.7627,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.6523,
+      "p_raw": 0.6774,
+      "reference": 0.5624,
+      "score": 0.016776,
+      "shrink_alpha": 0.7816,
+      "sigma": 0.0599
+     },
+     {
+      "band_p5": 0.9341,
+      "band_p95": 0.9825,
+      "family": "handicap_asian",
+      "key": "ah_away_2.5",
+      "label": "Asiatico ospite +2.5",
+      "p": 0.9618,
+      "p_raw": 0.9627,
+      "reference": 0.9185,
+      "score": 0.015387,
+      "shrink_alpha": 0.9801,
+      "sigma": 0.0162
+     },
+     {
+      "band_p5": 0.809,
+      "band_p95": 0.9245,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.8684,
+      "p_raw": 0.8754,
+      "reference": 0.8039,
+      "score": 0.014545,
+      "shrink_alpha": 0.9032,
+      "sigma": 0.0371
+     }
+    ],
+    "score": 0.023401,
+    "shrink_alpha": 0.7852,
+    "sigma": 0.0548
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3869,
+    "1x2_draw": 0.2905,
+    "1x2_home": 0.3226,
+    "btts_yes": 0.4353,
+    "over_2.5": 0.3737,
+    "under_2.5": 0.6263
+   },
+   "reasons": [
+    "Gol attesi: Blackburn Rovers FC 1.03, Sheffield United FC 1.16 (totale 2.19).",
+    "Casa Under 1.5: 70 su 100, 10 punti sopra la media di riferimento (59 su 100).",
+    "Banda di incertezza: fra 63 e 81 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/72.png",
+    "name": "Swansea City AFC",
+    "tla": "SWA"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 69,
+     "p_min": 63,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 6,
+    "truncated_mass": 1.479e-07
+   },
+   "expected_goals": {
+    "away": 0.993,
+    "home": 1.94
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7359,
+    "ht_over_1.5": 0.3843,
+    "ht_over_2.5": 0.1502,
+    "ht_under_0.5": 0.2641,
+    "ht_under_1.5": 0.6157,
+    "ht_under_2.5": 0.8498,
+    "htft_11": 0.3826,
+    "htft_12": 0.0129,
+    "htft_1X": 0.0449,
+    "htft_21": 0.0304,
+    "htft_22": 0.1045,
+    "htft_2X": 0.0449,
+    "htft_X1": 0.1817,
+    "htft_X2": 0.0709,
+    "htft_XX": 0.1273
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/340.png",
+    "name": "Southampton FC",
+    "tla": "SOU"
+   },
+   "match_id": 561822,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4647,
+    "band_p95": 0.7167,
+    "cluster_members": [
+     "ah_home_-0.5"
+    ],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5475,
+    "p_raw": 0.5912,
+    "reference": 0.4376,
+    "runners_up": [
+     {
+      "band_p5": 0.4274,
+      "band_p95": 0.6923,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5098,
+      "p_raw": 0.5719,
+      "reference": 0.408,
+      "score": 0.021064,
+      "shrink_alpha": 0.6212,
+      "sigma": 0.0818
+     },
+     {
+      "band_p5": 0.7065,
+      "band_p95": 0.884,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7923,
+      "p_raw": 0.8084,
+      "reference": 0.7066,
+      "score": 0.01897,
+      "shrink_alpha": 0.8421,
+      "sigma": 0.0514
+     },
+     {
+      "band_p5": 0.7065,
+      "band_p95": 0.884,
+      "family": "handicap_asian",
+      "key": "ah_home_0.5",
+      "label": "Asiatico casa +0.5",
+      "p": 0.791,
+      "p_raw": 0.8084,
+      "reference": 0.7066,
+      "score": 0.018377,
+      "shrink_alpha": 0.8293,
+      "sigma": 0.0514
+     },
+     {
+      "band_p5": 0.7065,
+      "band_p95": 0.884,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7856,
+      "p_raw": 0.8084,
+      "reference": 0.7066,
+      "score": 0.016033,
+      "shrink_alpha": 0.7766,
+      "sigma": 0.0514
+     },
+     {
+      "band_p5": 0.7669,
+      "band_p95": 0.9096,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.8386,
+      "p_raw": 0.8501,
+      "reference": 0.7744,
+      "score": 0.012747,
+      "shrink_alpha": 0.8486,
+      "sigma": 0.0443
+     }
+    ],
+    "score": 0.02427,
+    "shrink_alpha": 0.7154,
+    "sigma": 0.0749
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1916,
+    "1x2_draw": 0.2172,
+    "1x2_home": 0.5912,
+    "btts_yes": 0.5312,
+    "over_2.5": 0.5577,
+    "under_2.5": 0.4423
+   },
+   "reasons": [
+    "Gol attesi: Southampton FC 1.94, Swansea City AFC 0.99 (totale 2.93).",
+    "Vittoria casa: 55 su 100, 11 punti sopra la media di riferimento (44 su 100).",
+    "Banda di incertezza: fra 46 e 72 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1081.png",
+    "name": "Preston North End FC",
+    "tla": "PNE"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 1.803e-09
+   },
+   "expected_goals": {
+    "away": 1.151,
+    "home": 1.3
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6712,
+    "ht_over_1.5": 0.3055,
+    "ht_over_2.5": 0.1021,
+    "ht_under_0.5": 0.3288,
+    "ht_under_1.5": 0.6945,
+    "ht_under_2.5": 0.8979,
+    "htft_11": 0.2353,
+    "htft_12": 0.0176,
+    "htft_1X": 0.05,
+    "htft_21": 0.0205,
+    "htft_22": 0.1883,
+    "htft_2X": 0.05,
+    "htft_X1": 0.1439,
+    "htft_X2": 0.1221,
+    "htft_XX": 0.1722
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/346.png",
+    "name": "Watford FC",
+    "tla": "WAT"
+   },
+   "match_id": 561823,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3287,
+    "1x2_draw": 0.2713,
+    "1x2_home": 0.4,
+    "btts_yes": 0.491,
+    "over_2.5": 0.4422,
+    "under_2.5": 0.5578
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Watford FC 1.30, Preston North End FC 1.15 (totale 2.45)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/70.png",
+    "name": "Stoke City FC",
+    "tla": "STK"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 87,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 0,
+    "truncated_mass": 1.025e-09
+   },
+   "expected_goals": {
+    "away": 1.154,
+    "home": 1.217
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6591,
+    "ht_over_1.5": 0.2923,
+    "ht_over_2.5": 0.0949,
+    "ht_under_0.5": 0.3409,
+    "ht_under_1.5": 0.7077,
+    "ht_under_2.5": 0.9051,
+    "htft_11": 0.2189,
+    "htft_12": 0.0176,
+    "htft_1X": 0.0496,
+    "htft_21": 0.0188,
+    "htft_22": 0.1986,
+    "htft_2X": 0.0496,
+    "htft_X1": 0.1386,
+    "htft_X2": 0.129,
+    "htft_XX": 0.1793
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/715.png",
+    "name": "Cardiff City FC",
+    "tla": "CAR"
+   },
+   "match_id": 561824,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3466,
+    "1x2_draw": 0.2773,
+    "1x2_home": 0.3761,
+    "btts_yes": 0.4733,
+    "over_2.5": 0.4211,
+    "under_2.5": 0.5789
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Cardiff City FC 1.22, Stoke City FC 1.15 (totale 2.37)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/384.png",
+    "name": "Millwall FC",
+    "tla": "MIL"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 84,
+     "p_min": 62,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 1,
+    "truncated_mass": 1.53e-09
+   },
+   "expected_goals": {
+    "away": 0.94,
+    "home": 1.303
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6387,
+    "ht_over_1.5": 0.2709,
+    "ht_over_2.5": 0.0836,
+    "ht_under_0.5": 0.3613,
+    "ht_under_1.5": 0.7291,
+    "ht_under_2.5": 0.9164,
+    "htft_11": 0.2662,
+    "htft_12": 0.0131,
+    "htft_1X": 0.0466,
+    "htft_21": 0.0195,
+    "htft_22": 0.1495,
+    "htft_2X": 0.0466,
+    "htft_X1": 0.1635,
+    "htft_X2": 0.1063,
+    "htft_XX": 0.1886
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/343.png",
+    "name": "Middlesbrough FC",
+    "tla": "MID"
+   },
+   "match_id": 561825,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4844,
+    "band_p95": 0.6431,
+    "cluster_members": [],
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.5314,
+    "p_raw": 0.5611,
+    "reference": 0.465,
+    "runners_up": [],
+    "score": 0.008836,
+    "shrink_alpha": 0.6909,
+    "sigma": 0.0492
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.27,
+    "1x2_draw": 0.2819,
+    "1x2_home": 0.4481,
+    "btts_yes": 0.4389,
+    "over_2.5": 0.3879,
+    "under_2.5": 0.6121
+   },
+   "reasons": [
+    "Gol attesi: Middlesbrough FC 1.30, Millwall FC 0.94 (totale 2.24).",
+    "Non entrambe segnano: 53 su 100, 7 punti sopra la media di riferimento (47 su 100).",
+    "Stima prudente: l'incertezza è alta, il valore mostrato è già riportato verso la media (peso della stima 69%)."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/328.png",
+    "name": "Burnley FC",
+    "tla": "BUR"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 57,
+     "p_min": 61,
+     "sigma_max": 0
+    },
+    "n_candidates": 88,
+    "n_clusters": 8,
+    "truncated_mass": 8.874e-09
+   },
+   "expected_goals": {
+    "away": 1.517,
+    "home": 0.479
+   },
+   "half_time": {
+    "ht_over_0.5": 0.5958,
+    "ht_over_1.5": 0.2296,
+    "ht_over_2.5": 0.0638,
+    "ht_under_0.5": 0.4042,
+    "ht_under_1.5": 0.7704,
+    "ht_under_2.5": 0.9362,
+    "htft_11": 0.0587,
+    "htft_12": 0.0161,
+    "htft_1X": 0.0306,
+    "htft_21": 0.0042,
+    "htft_22": 0.3929,
+    "htft_2X": 0.0306,
+    "htft_X1": 0.052,
+    "htft_X2": 0.2221,
+    "htft_XX": 0.193
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/404.png",
+    "name": "Wrexham AFC",
+    "tla": "WRE"
+   },
+   "match_id": 561830,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.8358,
+    "band_p95": 0.9686,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.8704,
+    "p_raw": 0.9133,
+    "reference": 0.592,
+    "runners_up": [
+     {
+      "band_p5": 0.8087,
+      "band_p95": 0.9394,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.8467,
+      "p_raw": 0.8828,
+      "reference": 0.5624,
+      "score": 0.185612,
+      "shrink_alpha": 0.8873,
+      "sigma": 0.0423
+     },
+     {
+      "band_p5": 0.8087,
+      "band_p95": 0.9394,
+      "family": "handicap_asian",
+      "key": "ah_away_0.5",
+      "label": "Asiatico ospite +0.5",
+      "p": 0.8436,
+      "p_raw": 0.8828,
+      "reference": 0.5624,
+      "score": 0.181144,
+      "shrink_alpha": 0.8777,
+      "sigma": 0.0423
+     },
+     {
+      "band_p5": 0.8087,
+      "band_p95": 0.9394,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.8305,
+      "p_raw": 0.8828,
+      "reference": 0.5624,
+      "score": 0.16304,
+      "shrink_alpha": 0.8369,
+      "sigma": 0.0423
+     },
+     {
+      "band_p5": 0.9476,
+      "band_p95": 0.992,
+      "family": "handicap_asian",
+      "key": "ah_away_1.5",
+      "label": "Asiatico ospite +1.5",
+      "p": 0.9721,
+      "p_raw": 0.9749,
+      "reference": 0.8039,
+      "score": 0.130244,
+      "shrink_alpha": 0.9834,
+      "sigma": 0.0147
+     },
+     {
+      "band_p5": 0.9476,
+      "band_p95": 0.992,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.971,
+      "p_raw": 0.9749,
+      "reference": 0.8039,
+      "score": 0.1279,
+      "shrink_alpha": 0.9769,
+      "sigma": 0.0147
+     }
+    ],
+    "score": 0.186866,
+    "shrink_alpha": 0.8664,
+    "sigma": 0.0411
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.6262,
+    "1x2_draw": 0.2566,
+    "1x2_home": 0.1172,
+    "btts_yes": 0.29,
+    "over_2.5": 0.322,
+    "under_2.5": 0.678
+   },
+   "reasons": [
+    "Gol attesi: Wrexham AFC 0.48, Burnley FC 1.52 (totale 2.00).",
+    "Casa Under 1.5: 87 su 100, 28 punti sopra la media di riferimento (59 su 100).",
+    "Banda di incertezza: fra 84 e 97 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-08T18:45:00Z"
+  }
+ ],
+ "generated_at": "2026-08-11T15:55:25Z",
+ "schema_version": 1,
+ "silence_count": 2,
+ "total": 6
+}
