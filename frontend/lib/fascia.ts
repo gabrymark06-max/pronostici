@@ -72,13 +72,23 @@ export function recordDiFascia(
 /**
  * La forma CORTA, per la riga di lista.
  *
- * "fascia 80–100 · avverati 92 su 100" — la fascia sta dentro la frase perche'
- * un tasso senza la sua fascia e' una media che mente: gli 85 su 100 sono
- * facili, i 55 no. La fonte non entra qui: nella lista non c'e' spazio per
- * qualificarla, e una fonte non qualificata sarebbe peggio che nessuna. Sulla
- * scheda, dove la frase e' intera, la fonte c'e' sempre.
+ * "fascia 80–100 · avverati 92 su 100 · n=3182, storico" — la fascia sta
+ * dentro la frase perche' un tasso senza la sua fascia e' una media che mente:
+ * gli 85 su 100 sono facili, i 55 no.
+ *
+ * `n` e la provenienza ci sono anche qui. La versione precedente li ometteva
+ * per mancanza di spazio, ragionando che una fonte non qualificata fosse
+ * peggio di nessuna. Ma e' la lista il posto piu' letto del prodotto — 388
+ * occorrenze su 238 pagine contro una per scheda — e un tasso senza il suo `n`
+ * e' esattamente cio' che rimproveriamo a chi scrive "accuratezza superiore al
+ * 75%" senza dire su quante partite. Il posto piu' letto e' quello dove la
+ * qualificazione conta di piu', non quello dove si puo' saltare.
  */
 export function fraseCortaDiFascia(record: RecordFascia | null): string | null {
   if (!record) return null;
-  return `fascia ${record.etichetta} · avverati ${record.suCento} su 100`;
+  const fonte = record.fonte === 'vivo' ? 'dal vivo' : 'storico';
+  return (
+    `fascia ${record.etichetta} · avverati ${record.suCento} su 100 · ` +
+    `n=${record.n}, ${fonte}`
+  );
 }

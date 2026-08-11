@@ -6,7 +6,7 @@
  * copy libero: sono la parte del design system che vive nel testo. Cambiarle
  * è una modifica al design system, non un ritocco.
  */
-import { conArticolo, suCento } from './formato';
+import { conPreposizione, suCento } from './formato';
 import type {
   Fixture,
   FixtureInSilenzio,
@@ -203,7 +203,10 @@ export function testoTransizione(
   precedente: Precedente | null | undefined,
   pronostico: Pronostico | null,
 ): string | null {
-  const quando = precedente ? conArticolo(precedente.written_at) : null;
+  /* «Fino AL 22 agosto», non «fino IL 22 agosto»: qui serve la preposizione
+     articolata, non l'articolo. Tutte e tre le frasi sotto cominciano con
+     "Fino ", quindi l'errore compariva in ognuna. */
+  const quando = precedente ? conPreposizione(precedente.written_at) : null;
 
   switch (transizione) {
     case 'confirmed':

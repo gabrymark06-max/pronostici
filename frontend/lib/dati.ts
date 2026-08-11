@@ -70,12 +70,43 @@ export function giornoDiApertura(): string | null {
   return giorni.find((g) => g >= oggi) ?? giorni[giorni.length - 1] ?? null;
 }
 
+/**
+ * Ogni partita ha ESATTAMENTE uno fra `prediction` e `silence`.
+ *
+ * Il tipo `Fixture` lo dichiara come unione, e `tace()` restringe su
+ * `prediction === null` — ma i tipi non sopravvivono alla lettura di un JSON.
+ * Con entrambi a `null` il build moriva su un `TypeError: Cannot read
+ * properties of null (reading 'reason')` a meta' di una funzione di testo: la
+ * sicurezza c'era (nessuna pagina sbagliata veniva pubblicata) ma la diagnosi
+ * no, e chi la leggeva non sapeva quale file guardare.
+ *
+ * Qui il fallimento e' strutturato come quello di `schema_version`: dice il
+ * file, la partita, e cosa non torna.
+ */
+function verificaEsclusivita(giorno: GiornoFixtures, file: string): void {
+  for (const f of giorno.fixtures) {
+    const haPronostico = f.prediction !== null && f.prediction !== undefined;
+    const haSilenzio = f.silence !== null && f.silence !== undefined;
+    if (haPronostico === haSilenzio) {
+      throw new Error(
+        `DATI NON LEGGIBILI — ${file}\n` +
+          `  partita ${f.match_id} (${f.home?.name} - ${f.away?.name})\n` +
+          `  prediction: ${haPronostico ? 'presente' : 'null'}, ` +
+          `silence: ${haSilenzio ? 'presente' : 'null'}\n` +
+          `  Il contratto è docs/schema.md: esattamente uno dei due, mai\n` +
+          `  entrambi e mai nessuno. Rigenera con jobs.score o jobs.finalize.`,
+      );
+    }
+  }
+}
+
 /** Il giorno richiesto, o `null` se quel file non esiste (giorno senza partite mai generato). */
 export function leggiGiorno(data: string): GiornoFixtures | null {
   const percorso = join(RADICE_DATI, 'fixtures', `${data}.json`);
   if (!existsSync(percorso)) return null;
   const giorno = leggiJson<GiornoFixtures>(percorso);
   verificaSchema(giorno.schema_version, `data/fixtures/${data}.json`);
+  verificaEsclusivita(giorno, `data/fixtures/${data}.json`);
   return giorno;
 }
 

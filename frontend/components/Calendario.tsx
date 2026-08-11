@@ -65,7 +65,13 @@ export function Calendario({
                   className="rail__giorno"
                   href={`/giorno/${giorno.data}/`}
                   aria-current={attuale ? 'date' : undefined}
-                  aria-label={`${dataLunga(giorno.data)}, ${etichettaConteggio(giorno.total)}`}
+                  /* WCAG 2.5.3 «Label in Name»: il nome accessibile deve
+                     COMINCIARE con il testo che si vede. Prima diceva
+                     «sabato 8 agosto, 8 partite» mentre in pagina c'e'
+                     «SAB 8 8»: gli screen reader stavano bene, ma chi usa il
+                     comando vocale dice quello che legge — «clicca SAB 8» —
+                     e non attivava niente. */
+                  aria-label={`${sigla} ${numero} — ${dataLunga(giorno.data)}, ${etichettaConteggio(giorno.total)}`}
                 >
                   <span className="rail__sigla" aria-hidden="true">
                     {sigla}

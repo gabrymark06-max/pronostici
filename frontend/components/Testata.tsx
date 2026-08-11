@@ -47,7 +47,9 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
             href={REPO}
             rel="noopener noreferrer"
             target="_blank"
-            aria-label="Codice e registro pubblici, si apre in una nuova scheda"
+            /* Il nome accessibile comincia col testo visibile (WCAG 2.5.3):
+               chi usa il comando vocale dice «clicca Codice». */
+            aria-label="Codice — codice e registro pubblici, si apre in una nuova scheda"
           >
             <IconaCodice />
             <span className="voce__nome">Codice</span>
@@ -58,7 +60,7 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
             href={GIOCO_RESPONSABILE.href}
             rel="noopener noreferrer"
             target="_blank"
-            aria-label={`${GIOCO_RESPONSABILE.testo}. Si apre in una nuova scheda`}
+            aria-label={`Numero verde — ${GIOCO_RESPONSABILE.testo}. Si apre in una nuova scheda`}
           >
             <IconaVerde />
             <span className="voce__nome">Numero verde</span>

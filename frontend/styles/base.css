@@ -226,6 +226,11 @@ em {
   transform: translateY(-200%);
   background: var(--segnale);
   color: var(--segnale-ink);
+  /* Era alto 43px: mancava un pixel al bersaglio minimo, ed e' il primo
+     comando che incontra chi naviga da tastiera. */
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
   padding: var(--s-3) var(--s-4);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -309,8 +314,13 @@ em {
     min-height: var(--testata-h-lg);
   }
 
+  /* `0` azzerava anche il bersaglio tattile, e con due classi + combinatore
+     questa regola batte per specificita' quella su `.marchio`. L'intento era
+     impedire al marchio di dettare l'altezza della barra: `--tap-min` (44px)
+     sta sotto `--testata-h-lg` (76px), quindi l'intento e' salvo e il
+     bersaglio resta a norma. */
   .testata__interno > .marchio {
-    min-height: 0;
+    min-height: var(--tap-min);
   }
 
   .testata__voci {
@@ -327,6 +337,9 @@ em {
    SOTTO le lettere: adesso e' dentro il quadro, dove e' un segno e non una
    sottolineatura.
    -------------------------------------------------------------------------- */
+/* Il marchio e' un collegamento vero (porta alla giornata di apertura), quindi
+   il bersaglio da 44px vale anche per lui: era 134x36. Il segno resta della
+   sua misura, cresce solo l'area cliccabile. */
 .marchio {
   display: inline-flex;
   align-items: center;
@@ -334,6 +347,7 @@ em {
   text-decoration: none;
   color: var(--ink);
   min-width: 0;
+  min-height: var(--tap-min);
 }
 
 .marchio__segno {

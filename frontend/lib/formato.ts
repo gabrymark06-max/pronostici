@@ -56,12 +56,26 @@ export function istanteInData(iso: string): string {
 
 /**
  * "l'8 agosto" / "il 22 agosto" — l'articolo elide davanti a 8 e 11.
- * Serve nei testi delle transizioni ("Fino al ... dicevamo").
  */
 export function conArticolo(iso: string): string {
   const giorno = Number(iso.slice(8, 10));
   const testo = istanteInData(iso);
   return giorno === 8 || giorno === 11 ? `l'${testo}` : `il ${testo}`;
+}
+
+/**
+ * "all'8 agosto" / "al 22 agosto" — la preposizione articolata.
+ *
+ * Le transizioni dicono «Fino AL ... dicevamo», non «fino IL». Con
+ * `conArticolo` uscivano frasi come «Fino l'8 agosto 2026 dicevamo Casa Over
+ * 1.5»: un errore di grammatica italiana proprio nel blocco che esiste per
+ * guadagnare fiducia, cioe' dove costa di piu'. Il commento della funzione
+ * precedente scriveva la forma giusta; era il codice a non averla.
+ */
+export function conPreposizione(iso: string): string {
+  const giorno = Number(iso.slice(8, 10));
+  const testo = istanteInData(iso);
+  return giorno === 8 || giorno === 11 ? `all'${testo}` : `al ${testo}`;
 }
 
 /** "20:45" nel fuso italiano. */
