@@ -1,4 +1,4 @@
-# Pronostici
+# Novanta
 
 Pronostici calcistici gratuiti sui principali campionati europei. Per ogni partita **un solo pronostico consigliato**, scelto con un criterio dichiarato, spiegato, e accompagnato da quanto spesso pronostici simili si sono avverati.
 
@@ -34,7 +34,7 @@ shrinkage         α = 1/(1 + σ²/τ²)  ·  media a posteriori verso il riferi
       ↓
 punteggio         S = p·ln(p/b) + (1−p)·ln((1−p)/(1−b)),  zero se p ≤ b
       ↓
-filtri            p ≥ 0,50   ·   σ ≤ 0,12   ·   S ≥ 0,005 nats
+filtri            p ≥ 0,50   ·   σ ≤ 0,12   ·   S ≥ 0,008 nats
       ↓
 clustering        correlazione calcolata esatta dalla matrice congiunta;
                   si sceglie il cluster con punteggio massimo, e dentro il
@@ -58,6 +58,22 @@ Tutti i mercati derivano dalla **stessa** matrice di probabilità congiunta dei 
 1X2 · doppia chance · over/under (ogni linea) · BTTS · handicap europeo e asiatico · multigol · combo · risultato esatto · gol casa/ospite · over/under primo tempo e HT/FT.
 
 Marcatori, cartellini, corner e tiri **non** sono coperti: le fonti gratuite non espongono i dati per giocatore e per evento necessari, e preferiamo non stimarli male.
+
+### Over/under si calcola, ma non si consiglia
+
+Il backtest ha misurato che sui **gol totali** il modello non batte la semplice
+frequenza storica del campionato: su Over 2.5 il log loss è 0,69919 contro
+0,68856. L'indagine su sette configurazioni dichiarate ha escluso emivita,
+correzione di Dixon-Coles e troncamento della matrice.
+
+Sugli stessi dati, invece, **1X2 batte il tasso storico in tutti e sette i
+bracci** con uno scarto stabile di −0,035 nats. Il modello ha risoluzione su
+*chi vince*, non su *quanti gol si segnano*: è una proprietà del modello, non
+un difetto di taratura.
+
+Quindi la famiglia over/under resta calcolata, resta mostrata sulla scheda e
+resta confrontata con le quote, ma **non può essere il pronostico
+consigliato**. Undici mercati di cui ci fidiamo, non dodici con uno marcio.
 
 ---
 
@@ -201,6 +217,8 @@ Il gradiente è analitico: senza, ogni passo dell'ottimizzatore costerebbe 48 va
 - L'accuratezza storica è sempre riportata **per fascia di probabilità**, mai aggregata: un dato aggregato nasconde che gli 85% sono facili e i 55% no.
 - Il backtest, finché ci sarà, è etichettato come backtest e **mai** sommato ai pronostici dal vivo. Un backtest non è un track record: è la stessa persona che decide le regole e conta i punti.
 - Con due stagioni di storico, P(Over 2.5) ha una banda di circa ±10 punti. Uno scarto di 5 punti dal mercato è rumore, e il prodotto non lo spaccia per segnale.
+- **I risultati sfavorevoli restano pubblicati.** Che il modello non batta il tasso storico sui gol totali è scritto qui sopra, in `data/backtest.json` e nel protocollo, non nascosto in fondo a un file.
+- **Il registro non si azzera per convenienza.** È stato azzerato una volta sola, l'8 agosto, quando nessuna partita si era ancora conclusa e nessuno aveva visto quelle righe. Da quando ci sono esiti reali, un cambio di parametro si **data** in [docs/registro-parametri.md](docs/registro-parametri.md) e le righe precedenti restano dove sono.
 
 ---
 
@@ -212,6 +230,7 @@ Il gradiente è analitico: senza, ogni passo dell'ottimizzatore costerebbe 48 va
 | [docs/brief.md](docs/brief.md) | Architettura, quota, silenzio, avvio a freddo |
 | [docs/schema.md](docs/schema.md) | Lo schema di `data/`: il contratto col frontend |
 | [docs/protocollo-backtest.md](docs/protocollo-backtest.md) | Le regole del backtest, scritte **prima** di guardarne i risultati |
+| [docs/registro-parametri.md](docs/registro-parametri.md) | Ogni cambio di parametro, con la data e le righe che lo precedono |
 | [docs/research/selezione-pronostico.md](docs/research/selezione-pronostico.md) | Il metodo statistico, con le fonti |
 | [docs/research/fonti-dati.md](docs/research/fonti-dati.md) | Cosa danno davvero le fonti gratuite |
 | [docs/competitors.md](docs/competitors.md) | Come fanno gli altri, e cosa sbagliano |

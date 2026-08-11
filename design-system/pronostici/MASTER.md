@@ -1,10 +1,35 @@
-# Design System Master — Pronostici
+# Design System Master — Novanta
+
+> ## ⚠️ Parti superate — leggere prima, 2026-08-11
+>
+> Il prodotto si chiama **Novanta**, non «Pronostici»: dove questo file usa il
+> vecchio nome, è il vecchio nome.
+>
+> **Il file che comanda è [`tokens.css`](./tokens.css)**, che è aggiornato ed è
+> l'unico che il frontend importa davvero — la build fallisce se diverge. Questo
+> documento è la spiegazione dei token, e in alcuni punti spiega una versione
+> che non esiste più.
+>
+> Cosa è cambiato dopo l'ultima stesura:
+>
+> - **`/come-funziona` e `/come-stiamo-andando` non esistono più.** Le pagine
+>   sono state rimosse e le loro specifiche cancellate. Ogni riga qui sotto che
+>   le nomina — dimensioni della prosa, ritmo delle sezioni, filtri del registro,
+>   collegamenti `#silenzio` e `#quote` — descrive pagine morte. Il metodo si
+>   spiega ora nei tre riquadri in cima alla giornata, e il dato di accuratezza
+>   sta accanto a ogni pronostico.
+> - **Non c'è più un piè di pagina.** I due rimandi che conteneva (codice e
+>   numero verde) sono saliti in testata.
+> - **La testata è una barra alta con logo**, non una riga con un logotipo.
+>
+> Il resto — i due linguaggi visivi, il trattamento del silenzio, la riga di
+> taratura, i contrasti calcolati — è valido e in vigore.
 
 > **LOGICA:** quando costruisci una pagina, guarda prima `pages/<nome>.md`.
 > Se esiste, le sue regole **sovrascrivono** questo file. Altrimenti vale solo questo.
 > I token vivono in [`tokens.css`](./tokens.css) — è quello che il frontend importa.
 
-**Progetto:** Pronostici — web app gratuita di pronostici calcistici
+**Progetto:** Novanta — web app gratuita di pronostici calcistici
 **Generato:** 2026-08-08 · **rifatto nel carattere** 2026-08-08 (v2)
 **Stack:** Next.js App Router in **export statico** (`output: 'export'`), nessun runtime.
 **Lingua:** italiano, una sola.
