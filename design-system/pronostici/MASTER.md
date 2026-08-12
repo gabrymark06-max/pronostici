@@ -1,29 +1,41 @@
 # Design System Master — CENTRO
 
-> ## ⚠️ Parti superate — leggere prima, 2026-08-11
+> ## ⚠️ Questo file descrive un design che non esiste più — 2026-08-12
 >
-> Il prodotto si chiama **CENTRO**, non «Pronostici»: dove questo file usa il
-> vecchio nome, è il vecchio nome.
+> **L'autorità è [`tokens.css`](./tokens.css).** È l'unico file che il frontend
+> importa davvero, la build fallisce se diverge dal design system, e i suoi
+> commenti contengono la direzione, le cinque regole che la governano e il
+> perché di ogni scelta. Se questo documento e `tokens.css` dicono cose diverse,
+> ha ragione `tokens.css`.
 >
-> **Il file che comanda è [`tokens.css`](./tokens.css)**, che è aggiornato ed è
-> l'unico che il frontend importa davvero — la build fallisce se diverge. Questo
-> documento è la spiegazione dei token, e in alcuni punti spiega una versione
-> che non esiste più.
+> Il 12 agosto 2026 la grafica è stata rifatta da capo (v7, «tabellone con un
+> segnale»). Le pagine qui sotto descrivono in larga parte la v2. Cosa è morto,
+> in ordine di quanto costa crederci:
 >
-> Cosa è cambiato dopo l'ultima stesura:
+> - **Il prodotto si chiama CENTRO**, non «Novanta» e non «Pronostici». Il
+>   marchio è un bersaglio — due quadri concentrici col centro pieno.
+> - **Esiste un colore d'accento.** Questo file dichiara il contrario, e per tre
+>   versioni è stato vero: «il segnale è un valore, non una tinta». La regola ha
+>   prodotto una schermata giudicata piatta tre volte di fila ed è stata
+>   abbandonata. Ora c'è **un** vermiglio, speso solo dove il prodotto decide
+>   qualcosa: marchio, giorno attivo, contorno di fuoco, tacca del mercato.
+> - **La riga di taratura non è più l'elemento firma.** Lo è il bersaglio, che
+>   ricorre a tre scale — marchio, punto elenco dei titoli, e la tacca sul
+>   misurino che segna dove sta la probabilità implicita nella quota.
+> - **Niente serif.** Newsreader è uscito: era la ragione principale per cui la
+>   pagina «sembrava un documento». La voce è Archivo sull'asse di larghezza.
+> - **Una sconfitta non è rossa.** L'esito mancato è neutro, con glifo e parola.
+> - **Il piè di pagina è tornato**, e con lui due sezioni in fondo alla giornata:
+>   «come funziona» e «il registro». Le pagine `/come-funziona` e
+>   `/come-stiamo-andando` restano morte: quel contenuto vive in fondo alla
+>   lista, non in pagine sue.
+> - **La barra di navigazione è alta 72px** e porta quattro voci con icona.
 >
-> - **`/come-funziona` e `/come-stiamo-andando` non esistono più.** Le pagine
->   sono state rimosse e le loro specifiche cancellate. Ogni riga qui sotto che
->   le nomina — dimensioni della prosa, ritmo delle sezioni, filtri del registro,
->   collegamenti `#silenzio` e `#quote` — descrive pagine morte. Il metodo si
->   spiega ora nei tre riquadri in cima alla giornata, e il dato di accuratezza
->   sta accanto a ogni pronostico.
-> - **Non c'è più un piè di pagina.** I due rimandi che conteneva (codice e
->   numero verde) sono saliti in testata.
-> - **La testata è una barra alta con logo**, non una riga con un logotipo.
->
-> Il resto — i due linguaggi visivi, il trattamento del silenzio, la riga di
-> taratura, i contrasti calcolati — è valido e in vigore.
+> **Cosa resta valido e in vigore:** i due linguaggi visivi (la probabilità è un
+> pieno, l'affidabilità è un tratto — mai la stessa marca per due significati),
+> il trattamento del silenzio come tipo di prima classe, la densità come
+> funzione e non come preferenza, e tutte le regole di accessibilità, che non si
+> negoziano mai per estetica.
 
 > **LOGICA:** quando costruisci una pagina, guarda prima `pages/<nome>.md`.
 > Se esiste, le sue regole **sovrascrivono** questo file. Altrimenti vale solo questo.

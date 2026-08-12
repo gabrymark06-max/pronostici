@@ -1,0 +1,63 @@
+name: frontend
+
+# IL SITO SI COSTRUISCE DAVVERO, A OGNI PUSH.
+#
+# Fino al 12 agosto 2026 la sola integrazione erano i test Python. Il frontend
+# non veniva mai costruito da nessuna macchina che non fosse quella di chi
+# scriveva: un errore di tipo, un token divergente o una parola vietata finiti
+# in `main` sarebbero rimasti li' fino al build successivo a mano.
+#
+# I quattro controlli non sono generici: ognuno presidia un guasto che questo
+# progetto ha gia' avuto.
+#
+#   check:tokens   `styles/tokens.css` e' generato da `design-system/`. Le due
+#                  copie hanno divergito una volta e il confronto ignorava i
+#                  fine riga, quindi passava su Linux e falliva su Windows.
+#   typecheck      il contratto con `data/` e' tipizzato: uno schema che cambia
+#                  senza che i tipi lo seguano deve fermare la build.
+#   lint           regole React che hanno gia' pescato un `setState` dentro un
+#                  effetto.
+#   build          include `check-parole-vietate`, che gira DOPO ed e' l'unico
+#                  controllo che legge il testo davvero pubblicato: ha fermato
+#                  «rendimento» nella barra e «peso della stima» su 21 schede.
+#
+# Non tocca la rete e non ha bisogno di segreti: i dati sono nel repo.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "design-system/**"
+      - "data/**"
+      - ".github/workflows/frontend.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Token allineati al design system
+        run: npm run check:tokens
+      - name: Tipi
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      # `build` esegue anche `check-parole-vietate` come postbuild.
+      - name: Build ed export statico
+        run: npm run build
