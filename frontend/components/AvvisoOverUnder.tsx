@@ -2,8 +2,8 @@
  * L'AVVISO SU OVER/UNDER — il debito che paga la riammissione di questa famiglia.
  *
  * Il backtest su 5.018 partite ha misurato che sui GOL TOTALI il nostro modello
- * non batte la semplice frequenza storica del campionato: log loss 0,69919
- * contro 0,68856. Sette configurazioni dichiarate hanno escluso l'emivita, la
+ * non batte la semplice frequenza storica del campionato: log loss 0,69922
+ * contro 0,68855. Sette configurazioni dichiarate hanno escluso l'emivita, la
  * correzione di Dixon-Coles e il troncamento della matrice. Su quel mercato
  * l'informazione non c'è, e per tre giorni over/under è stato calcolato e
  * mostrato ma mai consigliato.

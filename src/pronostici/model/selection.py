@@ -39,7 +39,7 @@ TAU_DEFAULT = 0.08
 # Famiglie che si **calcolano e si mostrano** ma non concorrono al consigliato.
 #
 # 2026-08-11, over/under. Il backtest del 2026-08-08 aveva gia' pubblicato il
-# risultato negativo (log loss 0,69919 contro 0,68856 del base rate su Over
+# risultato negativo (log loss 0,69922 contro 0,68855 del base rate su Over
 # 2.5). L'indagine di `jobs/halflife.py` su 5.018 partite ha escluso le tre
 # cause sospette:
 #

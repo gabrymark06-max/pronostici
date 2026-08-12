@@ -11,6 +11,57 @@ Questo file è quella data. Ogni voce dice **cosa** è cambiato, **quando**, e
 
 ---
 
+## 2026-08-12 (6) — il backtest col catalogo a 114 mercati
+
+**Cosa cambia:** il numero pubblicato passa da **86 a 80 su 100**. Sembra un
+peggioramento e non lo è: va letto insieme alla probabilità media dichiarata,
+che è scesa esattamente della stessa quantità.
+
+| | prima (86 mercati) | dopo (114 mercati) |
+|---|---|---|
+| pronostici valutati | 4.127 | 3.812 |
+| probabilità media dichiarata | 85,8 su 100 | 79,3 su 100 |
+| usciti davvero | 86,4 su 100 | **79,9 su 100** |
+| abilità realizzata (nat) | 0,0498 | **0,0602** |
+| scarto dichiarato/realizzato | −1,30 errori standard | **−0,84** |
+| silenzio | 17,4 % | 24,0 % |
+
+**Come si legge.** Il sistema ha smesso di consigliare scommesse quasi certe e
+ha cominciato a consigliarne di meno probabili ma con più vantaggio. Il tasso
+di successo scende di sei punti perché la probabilità dichiarata scende di sei
+punti: la calibrazione non peggiora, **migliora**. Lo scarto fra ciò che
+dichiariamo e ciò che si realizza passa da −1,30 a −0,84 errori standard, cioè
+diventa meno distinguibile da zero, che è l'unica cosa che questo numero deve
+fare. E l'abilità realizzata — il tasso di crescita log-ottimale, che è il
+criterio con cui il sistema sceglie — sale del 21 %.
+
+**Le tre fasce, dichiarato contro uscito:** 58,5 → 61,2 (n=538); 73,2 → 75,1
+(n=1.175); 88,0 → 87,4 (n=2.099). Le prime due promettono meno di quanto
+mantengono, la terza sfora di sei decimi. Nessuna fascia è ottimista in modo
+preoccupante.
+
+**La maledizione dell'ottimizzatore non ha morso.** Era il rischio dichiarato
+passando da 86 a 114 candidati: più mercati, più probabilità che il vincitore
+sia un caso fortunato. La misura dice di no — raggruppamento per correlazione
+esatta, punteggio direzionale e shrinkage hanno retto. Il silenzio è salito dal
+17 al 24 %, dentro la banda 15–30 % del protocollo: il sistema tace di più, ed è
+il modo giusto di assorbire un catalogo più grande.
+
+**Over/Under resta senza vantaggio, confermato su 5.018 partite:** log loss
+0,69922 contro 0,68855 del tasso storico. È il numero che `AvvisoOverUnder`
+cita accanto a ogni pronostico di quella famiglia.
+
+**Un'imprecisione dichiarata.** Le quattro famiglie di combo nuove hanno girato
+in questa corsa con lo shrinkage di ripiego (τ = 0,08), perché i τ misurati si
+leggono dal `backtest.json` **precedente** e lì quelle famiglie non esistevano.
+Ora sono misurate: 0,0823 · 0,0783 · 0,0663 · 0,0513 — tre delle quattro sotto
+il ripiego, quindi in produzione le combo verranno riportate verso il
+riferimento più di quanto lo siano state qui, e vinceranno ancora meno. Una
+corsa di conferma è in esecuzione. L'effetto atteso è minimo: su 192 pronostici
+di produzione le combo ne vincono **uno**.
+
+---
+
 ## 2026-08-12 (5) — `score` cancellava le quote
 
 **Cosa cambia:** `fixtures.upsert_day` conserva i campi che il chiamante non

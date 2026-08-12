@@ -84,8 +84,8 @@ schedine italiane.
 ### Over/under si calcola, ma non si consiglia
 
 Il backtest ha misurato che sui **gol totali** il modello non batte la semplice
-frequenza storica del campionato: su Over 2.5 il log loss è 0,69919 contro
-0,68856. L'indagine su sette configurazioni dichiarate ha escluso emivita,
+frequenza storica del campionato: su Over 2.5 il log loss è 0,69922 contro
+0,68855. L'indagine su sette configurazioni dichiarate ha escluso emivita,
 correzione di Dixon-Coles e troncamento della matrice.
 
 Sugli stessi dati, invece, **1X2 batte il tasso storico in tutti e sette i
