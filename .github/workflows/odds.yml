@@ -1,10 +1,28 @@
 name: quote e pronostico definitivo
 
-# Due finestre al giorno. Non e' una scelta di frequenza ma di prodotto: la
-# revisione e' **una sola** per partita (brief 7.2), e queste due finestre
-# servono solo a coprire i vari orari di calcio d'inizio. Una partita gia'
-# finalizzata viene saltata, quindi la seconda esecuzione non spende crediti
-# per rifare quello che la prima ha gia' fatto.
+# DUE COSE DIVERSE CHE USANO LA STESSA FONTE.
+#
+# `quote` attacca i PREZZI alle partite dei prossimi quattordici giorni. E'
+# informazione: si riscrive ogni giorno, non impegna nessuno. Gira una volta
+# sola, alle 10:00, e paga la chiamata.
+#
+# `finalize` prende la DECISIONE definitiva a T-36h. Gira due volte, alle 10:00
+# e alle 18:00, per coprire i vari orari di calcio d'inizio; una partita gia'
+# finalizzata viene saltata, quindi la seconda esecuzione non rifa' il lavoro
+# della prima.
+#
+# L'ORDINE ALLE 10:00 NON E' CASUALE: `quote` gira per primo e riempie la cache
+# delle quote, che vale sei ore ed e' condivisa. `finalize`, subito dopo, riusa
+# quelle risposte invece di ricomprarle. Invertirli raddoppierebbe la spesa
+# senza cambiare una virgola del risultato.
+#
+# COSTO E DEGRADAZIONE. Con dieci campionati in attivita' `quote` costa venti
+# crediti al giorno, cioe' circa seicento al mese contro i cinquecento del
+# piano gratuito. Non e' una svista: sotto il tetto entra in funzione la scala
+# di degradazione: prima escono i campionati minori, poi il mercato dei totali.
+# Nell'ultima settimana di un mese pieno il Brasileirao perde la colonna del
+# mercato e la Serie A la tiene. E' l'ordine giusto, ed e' preferibile a una
+# copertura uniformemente peggiore per tutto il mese.
 #
 # Stesso gruppo di concorrenza della pipeline giornaliera: non si scrive in
 # `data/` in due posti nello stesso momento.
@@ -23,6 +41,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  quote:
+    # Solo la finestra del mattino: i prezzi si aggiornano una volta al giorno.
+    # `workflow_dispatch` non ha `schedule`, quindi l'esecuzione a mano lo
+    # include sempre — che e' cio' che serve quando si interviene a mano.
+    if: github.event.schedule != '0 18 * * *'
+    uses: ./.github/workflows/job-quote.yml
+    secrets: inherit
+
   finalize:
+    # `always()` perche' `finalize` deve girare anche alle 18:00, quando `quote`
+    # e' stato saltato. Senza, un job saltato salterebbe anche i dipendenti.
+    needs: quote
+    if: always()
     uses: ./.github/workflows/job-finalize.yml
     secrets: inherit

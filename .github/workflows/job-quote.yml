@@ -1,0 +1,99 @@
+name: job · quote
+
+# I PREZZI DI MERCATO, separati dalla decisione.
+#
+# `finalize` prende le quote a T-36h e RIDECIDE il pronostico: e' una decisione,
+# si prende una volta sola per partita, e va presa il piu' tardi possibile
+# perche' le quote vicine al calcio d'inizio sono le piu' informative.
+#
+# Questo job non decide niente. Attacca un prezzo alle partite dei prossimi
+# quattordici giorni, e lo riscrive ogni volta che gira: un prezzo e'
+# informazione, non un impegno. Senza di lui la colonna «mercato» del sito
+# restava vuota su 205 pronostici su 205, perche' le uniche partite quotate
+# erano le dieci dentro la finestra di `finalize`.
+#
+# Gira PRIMA di `finalize` nella pipeline giornaliera, e non e' un dettaglio:
+# la cache delle quote e' condivisa e vale sei ore, quindi `finalize` riusa la
+# risposta che questo job ha gia' pagato invece di chiederla di nuovo.
+#
+# Senza ODDS_API_KEY il job non fallisce: degrada e le partite restano senza
+# prezzo, che e' esattamente com'erano prima.
+
+on:
+  workflow_call:
+    inputs:
+      window_days:
+        type: string
+        required: false
+        default: "14"
+      competitions:
+        type: string
+        required: false
+        default: ""
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: Quanti giorni avanti attaccare i prezzi
+        type: string
+        required: false
+        default: "14"
+      competitions:
+        description: Codici separati da spazio (vuoto = tutte)
+        type: string
+        required: false
+        default: ""
+      reconcile:
+        description: >
+          Riallinea il contatore dei crediti a quello del fornitore e toglie la
+          pausa. Da usare quando il job si e' fermato per «contatore divergente».
+        type: boolean
+        required: false
+        default: false
+      dry_run:
+        description: Calcola e riporta senza scrivere i fixture
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostici-data
+  cancel-in-progress: false
+
+jobs:
+  quote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Quote
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          # 450 su 500. Il margine e' piccolo apposta: sotto il tetto entra in
+          # funzione la scala di degradazione (prima i campionati minori, poi il
+          # mercato dei totali), che e' il modo previsto di finire il mese senza
+          # sbattere contro il muro del fornitore.
+          ODDS_CREDIT_CAP: "450"
+        run: |
+          ARGS="--window-days ${{ inputs.window_days || '14' }}"
+          [ -n "${{ inputs.competitions }}" ] && ARGS="$ARGS --competitions ${{ inputs.competitions }}"
+          [ "${{ inputs.reconcile }}" = "true" ] && ARGS="$ARGS --reconcile"
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python -m pronostici.jobs.quote $ARGS | tee "$RUNNER_TEMP/report.json"
+      - name: Riepilogo
+        run: |
+          echo '### quote' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          tail -c 6000 "$RUNNER_TEMP/report.json" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: ./.github/actions/commit-data
+        with:
+          message: "dati: prezzi di mercato aggiornati"
+          paths: data/fixtures data/odds_budget.json

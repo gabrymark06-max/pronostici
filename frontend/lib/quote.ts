@@ -1,28 +1,39 @@
 /**
  * LE QUOTE.
  *
- * Due numeri diversi, con due statuti diversi, e la differenza fra i due è il
- * punto di tutto il prodotto.
+ * TRE numeri, con tre statuti diversi. Confonderli è il modo più facile di
+ * mentire con dei numeri veri, quindi qui hanno tre nomi e tre funzioni.
  *
- * ① LA QUOTA EQUA — `1 / probabilità`. È SEMPRE disponibile, su ogni
- *    pronostico e su ogni mercato, perché è solo un'altra forma della
- *    probabilità che già mostriamo. Vuol dire: «a questa quota la scommessa è
- *    in pari; sotto, il valore atteso è negativo». È il numero più utile che
- *    possiamo dare, perché non dipende da dove uno gioca.
+ * ① LA NOSTRA QUOTA EQUA — `1 / probabilità nostra`. SEMPRE disponibile, su
+ *    ogni pronostico, perché è solo un'altra forma della probabilità che già
+ *    mostriamo. Vuol dire: «a questa quota la scommessa è in pari; sotto, il
+ *    valore atteso è negativo».
  *
- * ② LA QUOTA DI MERCATO — il prezzo lordo mediano degli operatori. Esiste solo
- *    su 1X2 e Over/Under, e solo sulle partite per cui il budget delle quote
- *    ha permesso una chiamata: sulla grande maggioranza dei pronostici NON
- *    c'è, e la lista deve reggere quella assenza senza sembrare rotta.
+ * ② LA QUOTA EQUA DEL MERCATO — `1 / probabilità di mercato sgonfiata`. È
+ *    quello che il mercato pensa, tolto il margine dell'operatore. È il
+ *    confronto che conta davvero, perché è pari a pari: la nostra stima contro
+ *    la loro, senza che il margine sporchi la differenza. Ed è lo stesso
+ *    numero che il modello usa internamente per decidere.
+ *
+ * ③ IL PREZZO ALLO SPORTELLO — la quota lorda mediana degli operatori. Ha il
+ *    margine dentro, ed è l'unico dei tre che qualcuno può davvero giocare.
+ *
+ * COPERTURA, misurata e non sperata. ② esiste per gli undici mercati che le
+ * quote gratuite determinano in modo esatto: 1X2, le tre doppie chance,
+ * l'handicap europeo ±1, il multigol 0-2, Over/Under 2.5. ③ esiste solo per i
+ * cinque quotati direttamente. Su gol di squadra, entrambe segnano e multigol
+ * stretti non esiste nessuno dei due, e non si inventa: quelle scommesse la
+ * fonte gratuita non le copre.
  *
  * PERCHÉ NON C'È SISAL. Nessuna fonte gratuita la espone: the-odds-api, che è
- * la nostra, non la include in nessuna regione. Gli unici due operatori con
- * licenza ADM disponibili sono Codere IT e Unibet IT, e sono quelli che
- * finiscono qui quando ci sono. Non si inventa un prezzo per un marchio che
- * non abbiamo, e non si scrive «Sisal» sopra il numero di un altro.
+ * la nostra, non la include in nessuna regione — verificato sulla loro tavola
+ * dei bookmaker. Gli unici due operatori con licenza ADM disponibili sono
+ * Codere IT e Unibet IT, e sono quelli che finiscono in ③ quando ci sono. Non
+ * si inventa un prezzo per un marchio che non abbiamo, e non si scrive
+ * «Sisal» sopra il numero di un altro.
  *
- * NON SI NOMINA L'OPERATORE. Il prezzo compare come consenso e basta: mostrare
- * il marchio di un operatore senza un accordo è pubblicità non richiesta, e a
+ * NON SI NOMINA L'OPERATORE. Il prezzo compare come consenso: mostrare il
+ * marchio di un operatore senza un accordo è pubblicità non richiesta, e a
  * distanza di ore sarebbe anche un prezzo stantio spacciato per fresco.
  */
 import { decimale } from './formato';
@@ -32,10 +43,12 @@ import type { Fixture, Mercato, Quote } from './tipi';
 const P_MINIMA_PER_QUOTA = 0.01;
 
 export interface QuoteDelMercato {
-  /** `1 / p`, sempre presente. */
-  equa: number;
-  /** Il prezzo lordo del consenso, se quel mercato è quotato dalla fonte. */
+  /** ① `1 / p` nostra. Sempre presente. */
+  nostra: number;
+  /** ② `1 / p` di mercato, sgonfiata. `null` se il mercato non lo determina. */
   mercato: number | null;
+  /** ③ Il prezzo lordo allo sportello. `null` quasi sempre. */
+  prezzo: number | null;
   /** `it` = operatori ADM italiani, `eu` = mediana europea. */
   provenienza: 'it' | 'eu' | null;
   /** Quanti operatori compongono il consenso. */
@@ -55,19 +68,21 @@ export function formattaQuota(q: number): string {
 /**
  * Le quote di un mercato dentro una partita.
  *
- * `odds.prices` usa le NOSTRE chiavi (`1x2_home`, `over_2.5`), non quelle
- * della fonte: la corrispondenza è già stata fatta nel backend, e qui basta
- * una lettura diretta. Quando la chiave non c'è — cioè quasi sempre, perché
- * handicap, doppia chance e gol di squadra non sono coperti — `mercato` resta
- * `null` e la colonna mostra un trattino.
+ * `odds.market_p` e `odds.prices` usano le NOSTRE chiavi (`1x2_home`,
+ * `dc_x2`), non quelle della fonte: la corrispondenza è già stata fatta nel
+ * backend, e qui basta una lettura diretta.
  */
 export function quoteDi(mercato: Mercato, odds: Quote | null | undefined): QuoteDelMercato {
+  const pMercato = odds?.market_p?.[mercato.key];
   const prezzo = odds?.prices?.[mercato.key];
-  const valido = typeof prezzo === 'number' && prezzo > 1;
+  const haMercato = typeof pMercato === 'number' && pMercato > 0 && pMercato < 1;
+  const haPrezzo = typeof prezzo === 'number' && prezzo > 1;
+
   return {
-    equa: quotaEqua(mercato.p),
-    mercato: valido ? prezzo : null,
-    provenienza: valido ? (odds?.price_scope === 'it' ? 'it' : 'eu') : null,
+    nostra: quotaEqua(mercato.p),
+    mercato: haMercato ? 1 / pMercato : null,
+    prezzo: haPrezzo ? prezzo : null,
+    provenienza: haPrezzo ? (odds?.price_scope === 'it' ? 'it' : 'eu') : null,
     operatori: odds?.price_books ?? 0,
   };
 }
@@ -79,44 +94,56 @@ export function quoteDelPronostico(fixture: Fixture): QuoteDelMercato | null {
 }
 
 /**
- * Il margine fra il prezzo offerto e la nostra quota equa, in parole.
+ * Il confronto fra la nostra quota equa e quella del mercato, in parole.
  *
- * Se il mercato paga PIÙ della quota equa, per noi quella scommessa ha valore
- * atteso positivo. Non è un consiglio a giocare — il pronostico è già stato
- * scelto senza guardare qui — ma è il confronto che rende il numero
- * verificabile da chiunque, ed è l'unica ragione per cui la quota di mercato
- * sta in pagina.
+ * Se il mercato paga PIÙ di quanto paghiamo noi, vuol dire che dà l'evento per
+ * meno probabile di quanto lo diamo noi: per noi quel prezzo è generoso. Non è
+ * un consiglio a giocare — il pronostico è già stato scelto senza guardare qui
+ * — ma è il confronto che rende il numero verificabile da chiunque.
+ *
+ * La soglia dell'uno per cento non è estetica: sotto quella differenza il
+ * de-vig e l'arrotondamento a due decimali pesano quanto il segnale, e
+ * scrivere «generoso» su uno scarto che sta dentro il rumore sarebbe dare
+ * una precisione che non abbiamo.
  */
 export function fraseConfronto(q: QuoteDelMercato): string | null {
   if (q.mercato === null) return null;
+
+  const scarto = (q.mercato - q.nostra) / q.nostra;
+  const numeri =
+    `Noi diciamo ${formattaQuota(q.nostra)}, il mercato ${formattaQuota(q.mercato)}` +
+    ' (a margine tolto).';
+
+  if (Math.abs(scarto) < 0.01) {
+    return `${numeri} Siamo d’accordo: su questa scommessa non vediamo niente che il mercato non veda già.`;
+  }
+  if (scarto > 0) {
+    return `${numeri} Il mercato la dà per meno probabile di noi: se hai ragione tu a seguirci, il prezzo è dalla tua parte.`;
+  }
+  return `${numeri} Il mercato la dà per più probabile di noi: il prezzo che troverai è più caro del nostro valore.`;
+}
+
+/** La riga sul prezzo lordo, quando lo conosciamo. Nomina la provenienza, mai l'operatore. */
+export function fraseSportello(q: QuoteDelMercato): string | null {
+  if (q.prezzo === null) return null;
   const fonte =
     q.provenienza === 'it'
       ? q.operatori === 1
         ? 'un operatore con licenza italiana'
         : `${q.operatori} operatori con licenza italiana`
       : `${q.operatori} operatori europei`;
-
-  if (q.mercato > q.equa) {
-    return (
-      `Il mercato paga ${formattaQuota(q.mercato)} (${fonte}), sopra la nostra ` +
-      `quota equa di ${formattaQuota(q.equa)}: per noi il prezzo è generoso.`
-    );
-  }
-  return (
-    `Il mercato paga ${formattaQuota(q.mercato)} (${fonte}), sotto la nostra ` +
-    `quota equa di ${formattaQuota(q.equa)}: per noi il prezzo è caro.`
-  );
+  return `Allo sportello questa scommessa si trova a ${formattaQuota(q.prezzo)} (${fonte}), margine incluso.`;
 }
 
 /**
- * Dove sta la probabilità implicita nella quota di mercato, come frazione
- * 0–1. È la posizione della TACCA sul misurino: la distanza fra il
- * riempimento (noi) e la tacca (loro) È il vantaggio, e si vede senza leggere
- * un numero.
+ * Dove sta la probabilità di mercato, come frazione 0–1. È la posizione della
+ * TACCA sul misurino: la distanza fra il riempimento (noi) e la tacca (loro) È
+ * il vantaggio, e si vede senza leggere un numero.
  *
- * Il prezzo è lordo — margine incluso — quindi `1/prezzo` sovrastima sempre un
- * po' la probabilità vera del mercato. La tacca è un riferimento visivo, non
- * una misura: per questo non porta mai un'etichetta numerica accanto.
+ * Si usa la probabilità SGONFIATA, non `1/prezzo`: il prezzo lordo contiene il
+ * margine, quindi `1/prezzo` sovrastima sempre un po' e la tacca cadrebbe
+ * sistematicamente a destra del vero. Una marca visiva storta in una sola
+ * direzione è peggio di una marca assente.
  */
 export function posizioneTacca(q: QuoteDelMercato): number | null {
   if (q.mercato === null) return null;

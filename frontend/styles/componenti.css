@@ -1482,3 +1482,13 @@
 
 .piede__riga { font-size: var(--fs-body-s); line-height: var(--lh-body); color: var(--ink-2); }
 .piede__riga--minuta { font-size: var(--fs-micro); color: var(--ink-3); }
+
+/* La terza riga della cella delle quote: il prezzo lordo. Rientra e si stacca,
+   perche' e' un numero di natura diversa dai due sopra — quello ha il margine
+   dentro ed e' l'unico che qualcuno puo' davvero giocare. */
+.quote__nota--sportello {
+  margin-block-start: var(--s-2);
+  padding-block-start: var(--s-2);
+  border-block-start: 1px solid var(--edge);
+  color: var(--ink-3);
+}

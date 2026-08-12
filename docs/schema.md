@@ -49,12 +49,55 @@ Un file per giorno. È quello che la home legge.
 | `half_time` | oggetto | facoltativo: mercati primo tempo e HT/FT |
 | `transition` | string | solo in fase `definitive` |
 | `previous` | oggetto | solo in fase `definitive` |
-| `odds` | oggetto | solo in fase `definitive` |
+| `odds` | oggetto | prezzi e probabilità di mercato — vedi sotto |
 | `result` | `{home, away}` | comparso dopo il fischio finale |
 | `outcome` | 0 \| 1 | il pronostico si è avverato |
 
 `prediction` e `silence` sono **mutuamente esclusivi**. Il silenzio è un tipo
 di prima classe, non un ramo `else`: va modellato nei tipi.
+
+### `odds`
+
+Presente su ogni partita per cui abbiamo letto le quote — non solo in fase
+`definitive`. Le due cose sono separate da quando esiste `jobs/quote`: attaccare
+un prezzo è informazione e si rifà ogni giorno, finalizzare è una decisione e si
+fa una volta sola.
+
+```jsonc
+{
+  "n_bookmakers": 23,
+  "markets": ["1x2_away", "1x2_draw", "1x2_home", "over_2.5", "under_2.5"],
+
+  // ① I PREZZI LORDI, margine incluso. Le nostre chiavi, non le loro.
+  //    Solo i cinque mercati quotati direttamente dalla fonte gratuita.
+  //    Sono l'unico numero che qualcuno possa davvero giocare.
+  "prices": { "1x2_home": 2.33, "over_2.5": 2.05 },
+  "price_scope": "it",          // "it" = operatori ADM, "eu" = mediana europea
+  "price_books": 1,
+
+  // ② LE PROBABILITA SGONFIATE, estese a tutti i mercati che le quote
+  //    determinano in modo ESATTO: undici chiavi a partire da cinque quote.
+  //    Le tre doppie chance sono somme di esiti 1X2; l'handicap europeo ±1 e
+  //    il multigol 0-2 hanno la stessa maschera di un mercato già coperto.
+  //    Nessuna approssimazione: è la stessa estensione che usa il modello.
+  "market_p": { "1x2_home": 0.5742, "dc_x2": 0.4259, "under_2.5": 0.4159 },
+
+  // ③ Solo dopo `finalize`: il margine misurato al momento della decisione.
+  "devig": { "h2h": 1.061, "totals_2.5": 1.11 },
+  "fetched": "network"
+}
+```
+
+**Cosa il frontend deve tenere distinto.** `1/market_p[k]` è la quota **equa**
+del mercato e si confronta pari a pari con la nostra `1/p`. `prices[k]` è il
+prezzo **lordo** e non si confronta con la nostra quota equa: il margine
+farebbe sembrare il mercato sistematicamente più avaro di quanto sia. Un
+mercato può avere `market_p` senza `prices` — è il caso normale per la doppia
+chance, che il mercato determina ma nessuno ci quota direttamente.
+
+**Cosa NON c'è, e non si deriva.** Gol di squadra, entrambe segnano e multigol
+stretti non sono determinati da 1X2 + over/under: su quelle scommesse entrambi
+i campi sono assenti, e restano assenti.
 
 ### `prediction`
 
@@ -71,7 +114,7 @@ di prima classe, non un ramo `else`: va modellato nei tipi.
   "shrink_alpha": 0.67,         // quanto peso ha avuto la stima
   "reference": 0.6066,          // base rate, o quota sgonfiata se ci sono quote
   "score": 0.026628,            // divergenza KL, in nats
-  "cluster_members": ["eh_-1_away", "ah_away_0.5"],
+  "cluster_members": ["eh_-1_away", "dc_x2"],
   "runners_up": [ /* stessa forma, altri cluster */ ]
 }
 ```

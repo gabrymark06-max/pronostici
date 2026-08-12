@@ -10,12 +10,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 60,
-     "p_min": 61,
+     "S_min": 54,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 9,
     "truncated_mass": 3.506e-06
    },
    "expected_goals": {
@@ -52,7 +52,6 @@
     "band_p5": 0.6391,
     "band_p95": 0.8349,
     "cluster_members": [
-     "ah_home_-0.5",
      "hg_over_1.5",
      "combo_1_over_1.5"
     ],
@@ -74,19 +73,6 @@
       "reference": 0.7101,
       "score": 0.084251,
       "shrink_alpha": 0.9207,
-      "sigma": 0.0349
-     },
-     {
-      "band_p5": 0.8294,
-      "band_p95": 0.945,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.8799,
-      "p_raw": 0.8959,
-      "reference": 0.7101,
-      "score": 0.082804,
-      "shrink_alpha": 0.9136,
       "sigma": 0.0349
      },
      {
@@ -127,6 +113,19 @@
       "score": 0.049658,
       "shrink_alpha": 0.9438,
       "sigma": 0.0256
+     },
+     {
+      "band_p5": 0.9398,
+      "band_p95": 0.9867,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9665,
+      "p_raw": 0.9681,
+      "reference": 0.8903,
+      "score": 0.039567,
+      "shrink_alpha": 0.9787,
+      "sigma": 0.0141
      }
     ],
     "score": 0.100326,
@@ -151,7 +150,7 @@
    "utc_date": "2026-08-26T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:24:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

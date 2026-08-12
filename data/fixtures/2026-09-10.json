@@ -1,0 +1,154 @@
+{
+ "date": "2026-09-10",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5613.png",
+    "name": "Sporting Clube de Braga",
+    "tla": "SCB"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 54,
+     "p_min": 56,
+     "sigma_max": 0
+    },
+    "n_candidates": 76,
+    "n_clusters": 7,
+    "truncated_mass": 8.148e-08
+   },
+   "expected_goals": {
+    "away": 1.84,
+    "home": 0.916
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7089,
+    "ht_over_1.5": 0.3496,
+    "ht_over_2.5": 0.128,
+    "ht_under_0.5": 0.2911,
+    "ht_under_1.5": 0.6504,
+    "ht_under_2.5": 0.872,
+    "htft_11": 0.1,
+    "htft_12": 0.0283,
+    "htft_1X": 0.0438,
+    "htft_21": 0.0117,
+    "htft_22": 0.3743,
+    "htft_2X": 0.0438,
+    "htft_X1": 0.0718,
+    "htft_X2": 0.1887,
+    "htft_XX": 0.1376
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/9136.png",
+    "name": "CF Estrela da Amadora",
+    "tla": "AMA"
+   },
+   "match_id": 567276,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.479,
+    "band_p95": 0.6989,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_away",
+    "label": "Vittoria ospite",
+    "p": 0.5231,
+    "p_raw": 0.5902,
+    "reference": 0.308,
+    "runners_up": [
+     {
+      "band_p5": 0.7296,
+      "band_p95": 0.8792,
+      "family": "double_chance",
+      "key": "dc_x2",
+      "label": "X2 (pareggio o ospite)",
+      "p": 0.7809,
+      "p_raw": 0.813,
+      "reference": 0.5721,
+      "score": 0.096297,
+      "shrink_alpha": 0.8668,
+      "sigma": 0.0466
+     },
+     {
+      "band_p5": 0.8934,
+      "band_p95": 0.9672,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9288,
+      "p_raw": 0.9374,
+      "reference": 0.7775,
+      "score": 0.084018,
+      "shrink_alpha": 0.9461,
+      "sigma": 0.0229
+     },
+     {
+      "band_p5": 0.7296,
+      "band_p95": 0.8792,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.767,
+      "p_raw": 0.813,
+      "reference": 0.5721,
+      "score": 0.083246,
+      "shrink_alpha": 0.8092,
+      "sigma": 0.0466
+     },
+     {
+      "band_p5": 0.8834,
+      "band_p95": 0.9703,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.924,
+      "p_raw": 0.9321,
+      "reference": 0.806,
+      "score": 0.055003,
+      "shrink_alpha": 0.9356,
+      "sigma": 0.0275
+     },
+     {
+      "band_p5": 0.6692,
+      "band_p95": 0.8571,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7211,
+      "p_raw": 0.7664,
+      "reference": 0.5723,
+      "score": 0.047428,
+      "shrink_alpha": 0.7668,
+      "sigma": 0.0578
+     }
+    ],
+    "score": 0.099574,
+    "shrink_alpha": 0.7624,
+    "sigma": 0.0663
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5902,
+    "1x2_draw": 0.2228,
+    "1x2_home": 0.187,
+    "btts_yes": 0.4965,
+    "over_2.5": 0.517,
+    "under_2.5": 0.483
+   },
+   "reasons": [
+    "Gol attesi: CF Estrela da Amadora 0.92, Sporting Clube de Braga 1.84 (totale 2.76).",
+    "Vittoria ospite: 52 su 100, 22 punti sopra la media di riferimento (31 su 100).",
+    "Banda di incertezza: fra 48 e 70 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "utc_date": "2026-09-10T19:15:00Z"
+  }
+ ],
+ "generated_at": "2026-08-12T00:24:25Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}

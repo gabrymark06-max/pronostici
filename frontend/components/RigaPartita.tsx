@@ -21,14 +21,15 @@ import { Misurino } from './Misurino';
  * logotipo, nessuna identità visiva di terzi.
  *
  * LE DUE QUOTE, e perché sono due.
- *  · LA QUOTA EQUA (grande) è `1/probabilità`. C'è sempre, su ogni mercato,
- *    perché è solo un'altra forma del numero che mostriamo già. Dice: sotto
- *    questo prezzo la scommessa non conviene.
- *  · LA QUOTA DI MERCATO (piccola, sotto) è il prezzo lordo del consenso degli
- *    operatori. Esiste solo su 1X2 e Over/Under e solo dove il budget delle
- *    quote ha permesso una chiamata: sulla maggior parte delle righe non c'è,
- *    e la riga deve reggere l'assenza senza sembrare rotta. Per questo è la
- *    quota equa a occupare la posizione grande, e non il contrario.
+ *  · LA NOSTRA (grande) è `1/probabilità`. C'è sempre, su ogni mercato, perché
+ *    è solo un'altra forma del numero che mostriamo già. Dice: sotto questo
+ *    prezzo la scommessa non conviene.
+ *  · IL MERCATO (piccola, sotto) è la stessa cosa calcolata sulle quote, col
+ *    margine dell'operatore tolto: un confronto pari a pari. Esiste sugli
+ *    undici mercati che le quote determinano in modo esatto, e solo sulle
+ *    partite entro la finestra del job `quote`. Sui gol di squadra e su
+ *    entrambe-segnano non esiste, e la riga deve reggere l'assenza senza
+ *    sembrare rotta: per questo la posizione grande è la nostra, non la loro.
  *
  * ALTEZZA 64px ESATTI da 768px in su, e il bersaglio COINCIDE con la riga. Non
  * 56px con un `::after` che sborda: due righe adiacenti che sbordano di 4px si
@@ -167,21 +168,21 @@ export function RigaPartita({
           </span>
         ) : (
           <>
-            <span className="quota__valore">{formattaQuota(quote.equa)}</span>
+            <span className="quota__valore">{formattaQuota(quote.nostra)}</span>
             <span className="quota__nota">
               {quote.mercato !== null ? (
                 <>
                   mercato <strong>{formattaQuota(quote.mercato)}</strong>
                 </>
               ) : (
-                'equa'
+                'la nostra'
               )}
             </span>
             <span className="solo-lettori">
-              Quota equa {formattaQuota(quote.equa)}
+              La nostra quota equa è {formattaQuota(quote.nostra)}
               {quote.mercato !== null
-                ? `. Il mercato paga ${formattaQuota(quote.mercato)}.`
-                : '. Questo mercato non è quotato dalla nostra fonte.'}
+                ? `. Il mercato, tolto il margine, la valuta ${formattaQuota(quote.mercato)}.`
+                : '. Il mercato non determina questa scommessa.'}
             </span>
           </>
         )}

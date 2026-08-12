@@ -95,6 +95,20 @@ export interface Quote {
    * pronostici questo campo è assente, ed è previsto che lo sia.
    */
   prices?: Record<string, number>;
+  /**
+   * Le probabilità di mercato SGONFIATE, per ogni mercato che le quote
+   * determinano in modo esatto.
+   *
+   * Sono undici chiavi a partire da cinque quote: le tre doppie chance sono
+   * somme di esiti 1X2, l'handicap europeo ±1 e il multigol 0-2 hanno la
+   * stessa maschera di un mercato già coperto. Nessuna approssimazione: è la
+   * stessa estensione che usa il modello per scegliere.
+   *
+   * Serve perché il pronostico consigliato quasi mai È un 1X2 — su 21 partite
+   * quotate, zero. Con la sola tabella dei prezzi la colonna «mercato» restava
+   * vuota anche dove il mercato aveva parlato chiarissimo.
+   */
+  market_p?: Record<string, number>;
   /** `it` = operatori con licenza ADM, `eu` = mediana europea di ripiego. */
   price_scope?: string;
   price_books?: number;

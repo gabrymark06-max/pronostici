@@ -10,12 +10,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 74,
-     "p_min": 61,
+     "S_min": 65,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 5,
+    "n_candidates": 76,
+    "n_clusters": 4,
     "truncated_mass": 6.515e-10
    },
    "expected_goals": {
@@ -73,32 +73,6 @@
       "sigma": 0.0223
      },
      {
-      "band_p5": 0.9624,
-      "band_p95": 0.9921,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9791,
-      "p_raw": 0.9793,
-      "reference": 0.9447,
-      "score": 0.014631,
-      "shrink_alpha": 0.9927,
-      "sigma": 0.0097
-     },
-     {
-      "band_p5": 0.8715,
-      "band_p95": 0.9565,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9141,
-      "p_raw": 0.9172,
-      "reference": 0.8605,
-      "score": 0.013588,
-      "shrink_alpha": 0.9455,
-      "sigma": 0.0272
-     },
-     {
       "band_p5": 0.8715,
       "band_p95": 0.9565,
       "family": "handicap_eu",
@@ -122,6 +96,19 @@
       "reference": 0.6658,
       "score": 0.010741,
       "shrink_alpha": 0.8335,
+      "sigma": 0.0531
+     },
+     {
+      "band_p5": 0.6605,
+      "band_p95": 0.8376,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7281,
+      "p_raw": 0.7472,
+      "reference": 0.6658,
+      "score": 0.009024,
+      "shrink_alpha": 0.7653,
       "sigma": 0.0531
      }
     ],
@@ -155,11 +142,11 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 62,
+     "S_min": 76,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 1.189e-09
    },
@@ -213,7 +200,7 @@
    "utc_date": "2026-09-07T18:45:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:24:25Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 2

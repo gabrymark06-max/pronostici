@@ -138,6 +138,54 @@ def save_budget(budget: Budget) -> bool:
     return write_json(BUDGET_FILE, budget.to_dict(), indent=2)
 
 
+def reconcile_budget(budget: Budget) -> dict:
+    """Riallinea il contatore locale a quello del fornitore e toglie la pausa.
+
+    QUANDO SERVE. Il contatore si mette in pausa da solo se i due numeri
+    divergono di piu' di due chiamate, e fa bene: una divergenza vuol dire che
+    qualcuno ha speso crediti fuori dai job, e continuare al buio e' il modo di
+    arrivare a fine mese senza quote e senza saperlo. Ma e' una PAUSA, non un
+    guasto: qualcuno guarda, capisce da dove viene la differenza, e riallinea.
+
+    Il 12 agosto 2026 la differenza venivano da due cose nostre: una chiamata di
+    verifica fatta a mano e dei `--dry-run` che facevano richieste vere senza poi
+    salvare il contatore (corretto, vedi `jobs/quote.py`).
+
+    `/v4/sports` NON consuma crediti — verificato chiamandolo due volte di
+    seguito e leggendo `x-requests-used` invariato — quindi la riconciliazione
+    e' gratuita e si puo' rifare quante volte serve.
+    """
+    if not get_settings().has_odds:
+        raise OddsUnavailable("ODDS_API_KEY non impostata")
+    response = requests.get(
+        f"{BASE_URL}/sports/",
+        params={"apiKey": get_settings().odds_api_key},
+        timeout=30,
+    )
+    if response.status_code != 200:
+        raise OddsUnavailable(f"HTTP {response.status_code} da the-odds-api")
+
+    prima = budget.used
+    usati = response.headers.get("x-requests-used")
+    restanti = response.headers.get("x-requests-remaining")
+    if usati is not None:
+        with contextlib.suppress(ValueError):
+            # Vince il loro: e' l'unico contatore che decide davvero se la
+            # prossima chiamata verra' servita.
+            budget.used = int(float(usati))
+    if restanti is not None:
+        with contextlib.suppress(ValueError):
+            budget.provider_remaining = int(float(restanti))
+    budget.paused = False
+    budget.pause_reason = None
+    return {
+        "used_prima": prima,
+        "used_dopo": budget.used,
+        "provider_remaining": budget.provider_remaining,
+        "cap": budget.cap,
+    }
+
+
 @dataclass
 class OddsClient:
     offline: bool = False

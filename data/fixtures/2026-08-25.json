@@ -10,11 +10,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 81,
-     "p_min": 63,
+     "S_min": 72,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 1,
     "truncated_mass": 6.337e-09
    },
@@ -47,13 +47,44 @@
    "match_id": 564637,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.35257,
+     "1x2_draw": 0.2907,
+     "1x2_home": 0.35673,
+     "dc_12": 0.7093,
+     "dc_1x": 0.64743,
+     "dc_x2": 0.64327,
+     "eh_-1_away": 0.64327,
+     "eh_1_home": 0.64743,
+     "mg_0_2": 0.52854,
+     "over_2.5": 0.47146,
+     "under_2.5": 0.52854
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 14,
+    "price_books": 14,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 2.7,
+     "1x2_draw": 3.25,
+     "1x2_home": 2.67,
+     "over_2.5": 2.0,
+     "under_2.5": 1.8
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.5105,
     "band_p95": 0.7438,
-    "cluster_members": [
-     "ah_away_0.5"
-    ],
+    "cluster_members": [],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
@@ -83,7 +114,7 @@
    "utc_date": "2026-08-25T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:30:14Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

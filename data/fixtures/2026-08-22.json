@@ -10,11 +10,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 61,
+     "S_min": 76,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 2.861e-09
    },
@@ -76,11 +76,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 61,
+     "S_min": 76,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 3.158e-09
    },
@@ -142,12 +142,12 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 63,
-     "p_min": 62,
+     "S_min": 57,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 6,
+    "n_candidates": 76,
+    "n_clusters": 5,
     "truncated_mass": 2.218e-08
    },
    "expected_goals": {
@@ -179,17 +179,48 @@
    "match_id": 560544,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.36695,
+     "1x2_draw": 0.28574,
+     "1x2_home": 0.34731,
+     "dc_12": 0.71426,
+     "dc_1x": 0.63305,
+     "dc_x2": 0.65269,
+     "eh_-1_away": 0.65269,
+     "eh_1_home": 0.63305,
+     "mg_0_2": 0.51356,
+     "over_2.5": 0.48644,
+     "under_2.5": 0.51356
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 2.6,
+     "1x2_draw": 3.35,
+     "1x2_home": 2.7,
+     "over_2.5": 1.87,
+     "under_2.5": 1.8
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.8686,
     "band_p95": 0.9715,
-    "cluster_members": [
-     "eh_-2_away"
-    ],
-    "family": "handicap_asian",
-    "key": "ah_away_1.5",
-    "label": "Asiatico ospite +1.5",
-    "p": 0.9171,
+    "cluster_members": [],
+    "family": "handicap_eu",
+    "key": "eh_-2_away",
+    "label": "Handicap -2 ospite",
+    "p": 0.9126,
     "p_raw": 0.9298,
     "reference": 0.7777,
     "runners_up": [
@@ -204,19 +235,6 @@
       "reference": 0.5759,
       "score": 0.061259,
       "shrink_alpha": 0.7734,
-      "sigma": 0.0643
-     },
-     {
-      "band_p5": 0.6875,
-      "band_p95": 0.8845,
-      "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.7403,
-      "p_raw": 0.7931,
-      "reference": 0.5759,
-      "score": 0.058532,
-      "shrink_alpha": 0.7567,
       "sigma": 0.0643
      },
      {
@@ -257,10 +275,23 @@
       "score": 0.047159,
       "shrink_alpha": 0.6374,
       "sigma": 0.079
+     },
+     {
+      "band_p5": 0.4312,
+      "band_p95": 0.7057,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5156,
+      "p_raw": 0.5748,
+      "reference": 0.4427,
+      "score": 0.010675,
+      "shrink_alpha": 0.5515,
+      "sigma": 0.0815
      }
     ],
-    "score": 0.069471,
-    "shrink_alpha": 0.9168,
+    "score": 0.064451,
+    "shrink_alpha": 0.8874,
     "sigma": 0.0342
    },
    "raw_probabilities": {
@@ -273,7 +304,7 @@
    },
    "reasons": [
     "Gol attesi: Ipswich Town FC 0.89, Sunderland AFC 1.64 (totale 2.53).",
-    "Asiatico ospite +1.5: 92 su 100, 14 punti sopra la media di riferimento (78 su 100).",
+    "Handicap -2 ospite: 91 su 100, 13 punti sopra la media di riferimento (78 su 100).",
     "Banda di incertezza: fra 87 e 97 su 100."
    ],
    "silence": null,
@@ -289,11 +320,11 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 62,
+     "S_min": 76,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 8.546e-09
    },
@@ -326,6 +357,39 @@
    "match_id": 560545,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.29086,
+     "1x2_draw": 0.27618,
+     "1x2_home": 0.43296,
+     "dc_12": 0.72382,
+     "dc_1x": 0.70914,
+     "dc_x2": 0.56704,
+     "eh_-1_away": 0.56704,
+     "eh_1_home": 0.70914,
+     "mg_0_2": 0.49565,
+     "over_2.5": 0.50435,
+     "under_2.5": 0.49565
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 19,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 3.2,
+     "1x2_draw": 3.4,
+     "1x2_home": 2.25,
+     "over_2.5": 1.85,
+     "under_2.5": 1.82
+    }
+   },
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
@@ -355,12 +419,12 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 73,
-     "p_min": 62,
+     "S_min": 62,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 1.172e-09
    },
    "expected_goals": {
@@ -392,6 +456,39 @@
    "match_id": 560546,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.27561,
+     "1x2_draw": 0.27561,
+     "1x2_home": 0.44878,
+     "dc_12": 0.72439,
+     "dc_1x": 0.72439,
+     "dc_x2": 0.55122,
+     "eh_-1_away": 0.55122,
+     "eh_1_home": 0.72439,
+     "mg_0_2": 0.50286,
+     "over_2.5": 0.49714,
+     "under_2.5": 0.50286
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 3.4,
+     "1x2_draw": 3.45,
+     "1x2_home": 2.15,
+     "over_2.5": 1.84,
+     "under_2.5": 1.83
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.6552,
@@ -457,17 +554,17 @@
       "sigma": 0.0693
      },
      {
-      "band_p5": 0.9472,
-      "band_p95": 0.9863,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9683,
-      "p_raw": 0.9687,
-      "reference": 0.9383,
-      "score": 0.009373,
-      "shrink_alpha": 0.9879,
-      "sigma": 0.0125
+      "band_p5": 0.719,
+      "band_p95": 0.8767,
+      "family": "multigoal",
+      "key": "mg_0_3",
+      "label": "Multigol 0-3",
+      "p": 0.7456,
+      "p_raw": 0.8043,
+      "reference": 0.6877,
+      "score": 0.008129,
+      "shrink_alpha": 0.497,
+      "sigma": 0.0492
      }
     ],
     "score": 0.018465,
@@ -500,11 +597,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 62,
+     "S_min": 76,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 2.123e-09
    },
@@ -566,11 +663,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 72,
-     "p_min": 62,
+     "S_min": 65,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 3,
     "truncated_mass": 6.319e-08
    },
@@ -607,9 +704,7 @@
    "prediction": {
     "band_p5": 0.4423,
     "band_p95": 0.6887,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -633,19 +728,6 @@
      {
       "band_p5": 0.7059,
       "band_p95": 0.884,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.7814,
-      "p_raw": 0.8013,
-      "reference": 0.7066,
-      "score": 0.014305,
-      "shrink_alpha": 0.7898,
-      "sigma": 0.0585
-     },
-     {
-      "band_p5": 0.7059,
-      "band_p95": 0.884,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
@@ -655,19 +737,6 @@
       "score": 0.012118,
       "shrink_alpha": 0.7288,
       "sigma": 0.0585
-     },
-     {
-      "band_p5": 0.8792,
-      "band_p95": 0.9689,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9274,
-      "p_raw": 0.9307,
-      "reference": 0.8817,
-      "score": 0.011457,
-      "shrink_alpha": 0.9327,
-      "sigma": 0.0305
      },
      {
       "band_p5": 0.8792,
@@ -713,11 +782,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 78,
-     "p_min": 63,
+     "S_min": 69,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 1,
     "truncated_mass": 8.736e-08
    },
@@ -754,9 +823,7 @@
    "prediction": {
     "band_p5": 0.4136,
     "band_p95": 0.6703,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -794,12 +861,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 67,
-     "p_min": 61,
+     "S_min": 60,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 6,
+    "n_candidates": 76,
+    "n_clusters": 5,
     "truncated_mass": 3.542e-10
    },
    "expected_goals": {
@@ -872,32 +939,6 @@
      {
       "band_p5": 0.6092,
       "band_p95": 0.7828,
-      "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.6797,
-      "p_raw": 0.7044,
-      "reference": 0.5624,
-      "score": 0.028809,
-      "shrink_alpha": 0.8262,
-      "sigma": 0.052
-     },
-     {
-      "band_p5": 0.8373,
-      "band_p95": 0.9336,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8884,
-      "p_raw": 0.8942,
-      "reference": 0.8039,
-      "score": 0.025852,
-      "shrink_alpha": 0.9351,
-      "sigma": 0.0299
-     },
-     {
-      "band_p5": 0.6092,
-      "band_p95": 0.7828,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
@@ -907,6 +948,32 @@
       "score": 0.025133,
       "shrink_alpha": 0.7727,
       "sigma": 0.052
+     },
+     {
+      "band_p5": 0.8373,
+      "band_p95": 0.9336,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8862,
+      "p_raw": 0.8942,
+      "reference": 0.8039,
+      "score": 0.024463,
+      "shrink_alpha": 0.9115,
+      "sigma": 0.0299
+     },
+     {
+      "band_p5": 0.5109,
+      "band_p95": 0.6581,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5566,
+      "p_raw": 0.5915,
+      "reference": 0.465,
+      "score": 0.01681,
+      "shrink_alpha": 0.724,
+      "sigma": 0.0454
      }
     ],
     "score": 0.04226,
@@ -939,12 +1006,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 64,
-     "p_min": 62,
+     "S_min": 58,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 9,
     "truncated_mass": 2.394e-07
    },
    "expected_goals": {
@@ -980,9 +1047,7 @@
    "prediction": {
     "band_p5": 0.5232,
     "band_p95": 0.7562,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -1006,19 +1071,6 @@
      {
       "band_p5": 0.7717,
       "band_p95": 0.9113,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.831,
-      "p_raw": 0.8486,
-      "reference": 0.7066,
-      "score": 0.041525,
-      "shrink_alpha": 0.8758,
-      "sigma": 0.0427
-     },
-     {
-      "band_p5": 0.7717,
-      "band_p95": 0.9113,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
@@ -1028,19 +1080,6 @@
       "score": 0.037462,
       "shrink_alpha": 0.8345,
       "sigma": 0.0427
-     },
-     {
-      "band_p5": 0.9153,
-      "band_p95": 0.9786,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9505,
-      "p_raw": 0.9523,
-      "reference": 0.8817,
-      "score": 0.028281,
-      "shrink_alpha": 0.9735,
-      "sigma": 0.0187
      },
      {
       "band_p5": 0.4541,
@@ -1054,6 +1093,32 @@
       "score": 0.028,
       "shrink_alpha": 0.6286,
       "sigma": 0.0806
+     },
+     {
+      "band_p5": 0.9153,
+      "band_p95": 0.9786,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9497,
+      "p_raw": 0.9523,
+      "reference": 0.8817,
+      "score": 0.027607,
+      "shrink_alpha": 0.9633,
+      "sigma": 0.0187
+     },
+     {
+      "band_p5": 0.5583,
+      "band_p95": 0.7726,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6227,
+      "p_raw": 0.6733,
+      "reference": 0.5287,
+      "score": 0.017975,
+      "shrink_alpha": 0.6502,
+      "sigma": 0.0663
      }
     ],
     "score": 0.046637,
@@ -1086,12 +1151,12 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 67,
-     "p_min": 62,
+     "S_min": 61,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 6,
+    "n_candidates": 76,
+    "n_clusters": 5,
     "truncated_mass": 1.838e-08
    },
    "expected_goals": {
@@ -1125,42 +1190,16 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.9103,
-    "band_p95": 0.9765,
+    "band_p5": 0.7843,
+    "band_p95": 0.9168,
     "cluster_members": [],
-    "family": "handicap_asian",
-    "key": "ah_away_2.5",
-    "label": "Asiatico ospite +2.5",
-    "p": 0.9468,
-    "p_raw": 0.9493,
-    "reference": 0.8712,
+    "family": "handicap_eu",
+    "key": "eh_-2_away",
+    "label": "Handicap -2 ospite",
+    "p": 0.8421,
+    "p_raw": 0.8581,
+    "reference": 0.7513,
     "runners_up": [
-     {
-      "band_p5": 0.7843,
-      "band_p95": 0.9168,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8461,
-      "p_raw": 0.8581,
-      "reference": 0.7513,
-      "score": 0.026712,
-      "shrink_alpha": 0.8883,
-      "sigma": 0.0402
-     },
-     {
-      "band_p5": 0.7843,
-      "band_p95": 0.9168,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8421,
-      "p_raw": 0.8581,
-      "reference": 0.7513,
-      "score": 0.024354,
-      "shrink_alpha": 0.8505,
-      "sigma": 0.0402
-     },
      {
       "band_p5": 0.5797,
       "band_p95": 0.7716,
@@ -1177,19 +1216,6 @@
      {
       "band_p5": 0.5797,
       "band_p95": 0.7716,
-      "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.6527,
-      "p_raw": 0.6804,
-      "reference": 0.5527,
-      "score": 0.02066,
-      "shrink_alpha": 0.7829,
-      "sigma": 0.0597
-     },
-     {
-      "band_p5": 0.5797,
-      "band_p95": 0.7716,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
@@ -1199,11 +1225,50 @@
       "score": 0.017463,
       "shrink_alpha": 0.7206,
       "sigma": 0.0597
+     },
+     {
+      "band_p5": 0.7588,
+      "band_p95": 0.9147,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.8347,
+      "p_raw": 0.8478,
+      "reference": 0.7712,
+      "score": 0.012308,
+      "shrink_alpha": 0.8295,
+      "sigma": 0.0475
+     },
+     {
+      "band_p5": 0.7194,
+      "band_p95": 0.8598,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7814,
+      "p_raw": 0.7934,
+      "reference": 0.7128,
+      "score": 0.012107,
+      "shrink_alpha": 0.8509,
+      "sigma": 0.0439
+     },
+     {
+      "band_p5": 0.4951,
+      "band_p95": 0.7259,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.5842,
+      "p_raw": 0.6179,
+      "reference": 0.5084,
+      "score": 0.011558,
+      "shrink_alpha": 0.6919,
+      "sigma": 0.0699
      }
     ],
-    "score": 0.031784,
-    "shrink_alpha": 0.9689,
-    "sigma": 0.0203
+    "score": 0.024354,
+    "shrink_alpha": 0.8505,
+    "sigma": 0.0402
    },
    "raw_probabilities": {
     "1x2_away": 0.4379,
@@ -1215,8 +1280,8 @@
    },
    "reasons": [
     "Gol attesi: Fortuna Sittard 1.33, AZ 1.60 (totale 2.93).",
-    "Asiatico ospite +2.5: 95 su 100, 8 punti sopra la media di riferimento (87 su 100).",
-    "Banda di incertezza: fra 91 e 98 su 100."
+    "Handicap -2 ospite: 84 su 100, 9 punti sopra la media di riferimento (75 su 100).",
+    "Banda di incertezza: fra 78 e 92 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1231,11 +1296,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 85,
-     "p_min": 62,
+     "S_min": 74,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 1,
     "truncated_mass": 1.552e-08
    },
@@ -1268,6 +1333,39 @@
    "match_id": 564641,
    "matchday": 2,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.15806,
+     "1x2_draw": 0.24631,
+     "1x2_home": 0.59563,
+     "dc_12": 0.75369,
+     "dc_1x": 0.84194,
+     "dc_x2": 0.40437,
+     "eh_-1_away": 0.40437,
+     "eh_1_home": 0.84194,
+     "mg_0_2": 0.56625,
+     "over_2.5": 0.43375,
+     "under_2.5": 0.56625
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 10,
+    "price_books": 10,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 5.45,
+     "1x2_draw": 3.62,
+     "1x2_home": 1.61,
+     "over_2.5": 2.18,
+     "under_2.5": 1.7
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.6535,
@@ -1310,12 +1408,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 69,
-     "p_min": 63,
+     "S_min": 63,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 6,
+    "n_candidates": 76,
+    "n_clusters": 5,
     "truncated_mass": 4.797e-08
    },
    "expected_goals": {
@@ -1351,13 +1449,11 @@
    "prediction": {
     "band_p5": 0.9123,
     "band_p95": 0.9754,
-    "cluster_members": [
-     "eh_2_home"
-    ],
-    "family": "handicap_asian",
-    "key": "ah_home_1.5",
-    "label": "Asiatico casa +1.5",
-    "p": 0.9445,
+    "cluster_members": [],
+    "family": "handicap_eu",
+    "key": "eh_2_home",
+    "label": "Handicap +2 casa",
+    "p": 0.9433,
     "p_raw": 0.9475,
     "reference": 0.8392,
     "runners_up": [
@@ -1403,32 +1499,32 @@
      {
       "band_p5": 0.7508,
       "band_p95": 0.9022,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.8109,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8049,
       "p_raw": 0.8294,
       "reference": 0.6915,
-      "score": 0.036625,
-      "shrink_alpha": 0.8662,
+      "score": 0.032823,
+      "shrink_alpha": 0.8224,
       "sigma": 0.0446
      },
      {
-      "band_p5": 0.9764,
-      "band_p95": 0.9955,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9874,
-      "p_raw": 0.9875,
-      "reference": 0.9315,
-      "score": 0.036166,
-      "shrink_alpha": 0.9971,
-      "sigma": 0.0061
+      "band_p5": 0.4869,
+      "band_p95": 0.716,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5629,
+      "p_raw": 0.5976,
+      "reference": 0.4573,
+      "score": 0.022369,
+      "shrink_alpha": 0.7529,
+      "sigma": 0.0681
      }
     ],
-    "score": 0.052574,
-    "shrink_alpha": 0.9721,
+    "score": 0.05122,
+    "shrink_alpha": 0.9614,
     "sigma": 0.0192
    },
    "raw_probabilities": {
@@ -1441,7 +1537,7 @@
    },
    "reasons": [
     "Gol attesi: Racing Club de Lens 1.76, AJ Auxerre 0.80 (totale 2.56).",
-    "Asiatico casa +1.5: 94 su 100, 11 punti sopra la media di riferimento (84 su 100).",
+    "Handicap +2 casa: 94 su 100, 10 punti sopra la media di riferimento (84 su 100).",
     "Banda di incertezza: fra 91 e 98 su 100."
    ],
    "silence": null,
@@ -1457,12 +1553,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 63,
-     "p_min": 61,
+     "S_min": 57,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 1.508e-08
    },
    "expected_goals": {
@@ -1494,12 +1590,44 @@
    "match_id": 558629,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.52783,
+     "1x2_draw": 0.2659,
+     "1x2_home": 0.20627,
+     "dc_12": 0.7341,
+     "dc_1x": 0.47217,
+     "dc_x2": 0.79373,
+     "eh_-1_away": 0.79373,
+     "eh_1_home": 0.47217,
+     "mg_0_2": 0.56703,
+     "over_2.5": 0.43297,
+     "under_2.5": 0.56703
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 1.86,
+     "1x2_draw": 3.5,
+     "1x2_home": 4.4,
+     "over_2.5": 2.11,
+     "under_2.5": 1.62
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.6698,
     "band_p95": 0.8633,
     "cluster_members": [
-     "ah_away_0.5",
      "eh_-1_away"
     ],
     "family": "double_chance",
@@ -1512,19 +1640,6 @@
      {
       "band_p5": 0.8564,
       "band_p95": 0.9615,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.9125,
-      "p_raw": 0.9188,
-      "reference": 0.8289,
-      "score": 0.028952,
-      "shrink_alpha": 0.93,
-      "sigma": 0.0311
-     },
-     {
-      "band_p5": 0.8564,
-      "band_p95": 0.9615,
       "family": "handicap_eu",
       "key": "eh_-2_away",
       "label": "Handicap -2 ospite",
@@ -1534,19 +1649,6 @@
       "score": 0.027249,
       "shrink_alpha": 0.9048,
       "sigma": 0.0311
-     },
-     {
-      "band_p5": 0.951,
-      "band_p95": 0.9919,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9767,
-      "p_raw": 0.9773,
-      "reference": 0.925,
-      "score": 0.025827,
-      "shrink_alpha": 0.988,
-      "sigma": 0.0125
      },
      {
       "band_p5": 0.6205,
@@ -1573,6 +1675,32 @@
       "score": 0.017636,
       "shrink_alpha": 0.8998,
       "sigma": 0.035
+     },
+     {
+      "band_p5": 0.7038,
+      "band_p95": 0.8623,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7731,
+      "p_raw": 0.7902,
+      "reference": 0.6895,
+      "score": 0.017293,
+      "shrink_alpha": 0.83,
+      "sigma": 0.0474
+     },
+     {
+      "band_p5": 0.4628,
+      "band_p95": 0.6697,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5193,
+      "p_raw": 0.563,
+      "reference": 0.4303,
+      "score": 0.015984,
+      "shrink_alpha": 0.6709,
+      "sigma": 0.0633
      }
     ],
     "score": 0.040264,
@@ -1605,12 +1733,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 60,
-     "p_min": 60,
+     "S_min": 54,
+     "p_min": 54,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 11,
+    "n_candidates": 76,
+    "n_clusters": 10,
     "truncated_mass": 8.054e-05
    },
    "expected_goals": {
@@ -1642,13 +1770,45 @@
    "match_id": 558632,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.06406,
+     "1x2_draw": 0.13049,
+     "1x2_home": 0.80546,
+     "dc_12": 0.86951,
+     "dc_1x": 0.93594,
+     "dc_x2": 0.19454,
+     "eh_-1_away": 0.19454,
+     "eh_1_home": 0.93594,
+     "mg_0_2": 0.41441,
+     "over_2.5": 0.58559,
+     "under_2.5": 0.41441
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 12.0,
+     "1x2_draw": 6.2,
+     "1x2_home": 1.24,
+     "over_2.5": 1.6,
+     "under_2.5": 2.14
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.8716,
     "band_p95": 0.9672,
     "cluster_members": [
-     "1x2_home",
-     "ah_home_-0.5"
+     "1x2_home"
     ],
     "family": "double_chance",
     "key": "dc_12",
@@ -1657,19 +1817,6 @@
     "p_raw": 0.926,
     "reference": 0.7276,
     "runners_up": [
-     {
-      "band_p5": 0.6101,
-      "band_p95": 0.8734,
-      "family": "handicap_asian",
-      "key": "ah_home_-1.5",
-      "label": "Asiatico casa -1.5",
-      "p": 0.5557,
-      "p_raw": 0.7538,
-      "reference": 0.1711,
-      "score": 0.377759,
-      "shrink_alpha": 0.6601,
-      "sigma": 0.0814
-     },
      {
       "band_p5": 0.6101,
       "band_p95": 0.8734,
@@ -1697,19 +1844,6 @@
       "sigma": 0.0174
      },
      {
-      "band_p5": 0.9351,
-      "band_p95": 0.9904,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.9631,
-      "p_raw": 0.9701,
-      "reference": 0.6658,
-      "score": 0.274123,
-      "shrink_alpha": 0.9769,
-      "sigma": 0.0174
-     },
-     {
       "band_p5": 0.709,
       "band_p95": 0.9223,
       "family": "combo",
@@ -1721,6 +1855,32 @@
       "score": 0.272667,
       "shrink_alpha": 0.6586,
       "sigma": 0.0651
+     },
+     {
+      "band_p5": 0.9351,
+      "band_p95": 0.9904,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.9603,
+      "p_raw": 0.9701,
+      "reference": 0.6658,
+      "score": 0.267261,
+      "shrink_alpha": 0.968,
+      "sigma": 0.0174
+     },
+     {
+      "band_p5": 0.7436,
+      "band_p95": 0.9359,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.7423,
+      "p_raw": 0.8556,
+      "reference": 0.3895,
+      "score": 0.256489,
+      "shrink_alpha": 0.7569,
+      "sigma": 0.0594
      }
     ],
     "score": 0.11045,
@@ -1753,11 +1913,11 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 79,
-     "p_min": 61,
+     "S_min": 70,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 2,
     "truncated_mass": 1.283e-07
    },
@@ -1790,6 +1950,39 @@
    "match_id": 560547,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.34398,
+     "1x2_draw": 0.25891,
+     "1x2_home": 0.39711,
+     "dc_12": 0.74109,
+     "dc_1x": 0.65602,
+     "dc_x2": 0.60289,
+     "eh_-1_away": 0.60289,
+     "eh_1_home": 0.65602,
+     "mg_0_2": 0.42193,
+     "over_2.5": 0.57807,
+     "under_2.5": 0.42193
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 2.8,
+     "1x2_draw": 3.6,
+     "1x2_home": 2.4,
+     "over_2.5": 1.59,
+     "under_2.5": 2.17
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.7787,
@@ -1846,12 +2039,12 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 68,
-     "p_min": 63,
+     "S_min": 61,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 5,
+    "n_candidates": 76,
+    "n_clusters": 4,
     "truncated_mass": 5.691e-09
    },
    "expected_goals": {
@@ -1885,42 +2078,16 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.937,
-    "band_p95": 0.9864,
+    "band_p5": 0.8227,
+    "band_p95": 0.94,
     "cluster_members": [],
-    "family": "handicap_asian",
-    "key": "ah_away_2.5",
-    "label": "Asiatico ospite +2.5",
-    "p": 0.9638,
-    "p_raw": 0.9655,
-    "reference": 0.8712,
+    "family": "handicap_eu",
+    "key": "eh_-2_away",
+    "label": "Handicap -2 ospite",
+    "p": 0.8726,
+    "p_raw": 0.8885,
+    "reference": 0.7513,
     "runners_up": [
-     {
-      "band_p5": 0.8227,
-      "band_p95": 0.94,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8767,
-      "p_raw": 0.8885,
-      "reference": 0.7513,
-      "score": 0.048844,
-      "shrink_alpha": 0.9141,
-      "sigma": 0.0348
-     },
-     {
-      "band_p5": 0.8227,
-      "band_p95": 0.94,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8726,
-      "p_raw": 0.8885,
-      "reference": 0.7513,
-      "score": 0.045372,
-      "shrink_alpha": 0.8839,
-      "sigma": 0.0348
-     },
      {
       "band_p5": 0.8377,
       "band_p95": 0.9535,
@@ -1959,11 +2126,24 @@
       "score": 0.036527,
       "shrink_alpha": 0.8113,
       "sigma": 0.0573
+     },
+     {
+      "band_p5": 0.6139,
+      "band_p95": 0.8061,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.6728,
+      "p_raw": 0.7157,
+      "reference": 0.5527,
+      "score": 0.030016,
+      "shrink_alpha": 0.737,
+      "sigma": 0.0573
      }
     ],
-    "score": 0.051425,
-    "shrink_alpha": 0.9822,
-    "sigma": 0.0153
+    "score": 0.045372,
+    "shrink_alpha": 0.8839,
+    "sigma": 0.0348
    },
    "raw_probabilities": {
     "1x2_away": 0.4547,
@@ -1975,8 +2155,8 @@
    },
    "reasons": [
     "Gol attesi: Sparta Rotterdam 1.09, FC Utrecht 1.46 (totale 2.55).",
-    "Asiatico ospite +2.5: 96 su 100, 9 punti sopra la media di riferimento (87 su 100).",
-    "Banda di incertezza: fra 94 e 99 su 100."
+    "Handicap -2 ospite: 87 su 100, 12 punti sopra la media di riferimento (75 su 100).",
+    "Banda di incertezza: fra 82 e 94 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1991,12 +2171,12 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 67,
-     "p_min": 63,
+     "S_min": 61,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 8,
+    "n_candidates": 76,
+    "n_clusters": 7,
     "truncated_mass": 4.479e-07
    },
    "expected_goals": {
@@ -2067,19 +2247,6 @@
       "sigma": 0.0807
      },
      {
-      "band_p5": 0.4588,
-      "band_p95": 0.7238,
-      "family": "handicap_asian",
-      "key": "ah_home_-0.5",
-      "label": "Asiatico casa -0.5",
-      "p": 0.5425,
-      "p_raw": 0.6005,
-      "reference": 0.4279,
-      "score": 0.026466,
-      "shrink_alpha": 0.6638,
-      "sigma": 0.0807
-     },
-     {
       "band_p5": 0.6953,
       "band_p95": 0.8833,
       "family": "double_chance",
@@ -2093,16 +2260,29 @@
       "sigma": 0.0577
      },
      {
+      "band_p5": 0.5562,
+      "band_p95": 0.7897,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6206,
+      "p_raw": 0.6784,
+      "reference": 0.5273,
+      "score": 0.017708,
+      "shrink_alpha": 0.6177,
+      "sigma": 0.0711
+     },
+     {
       "band_p5": 0.6953,
       "band_p95": 0.8833,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.7784,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7719,
       "p_raw": 0.8008,
       "reference": 0.692,
-      "score": 0.018625,
-      "shrink_alpha": 0.7945,
+      "score": 0.015827,
+      "shrink_alpha": 0.7344,
       "sigma": 0.0577
      }
     ],
@@ -2136,11 +2316,11 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 87,
-     "p_min": 62,
+     "S_min": 75,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 7.654e-09
    },
@@ -2173,6 +2353,39 @@
    "match_id": 564643,
    "matchday": 2,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.30455,
+     "1x2_draw": 0.28669,
+     "1x2_home": 0.40876,
+     "dc_12": 0.71331,
+     "dc_1x": 0.69545,
+     "dc_x2": 0.59124,
+     "eh_-1_away": 0.59124,
+     "eh_1_home": 0.69545,
+     "mg_0_2": 0.57609,
+     "over_2.5": 0.42391,
+     "under_2.5": 0.57609
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 10,
+    "price_books": 10,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 3.02,
+     "1x2_draw": 3.2,
+     "1x2_home": 2.3,
+     "over_2.5": 2.18,
+     "under_2.5": 1.65
+    }
+   },
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
@@ -2202,12 +2415,12 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 66,
-     "p_min": 62,
+     "S_min": 60,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 8,
+    "n_candidates": 76,
+    "n_clusters": 7,
     "truncated_mass": 8.826e-07
    },
    "expected_goals": {
@@ -2243,9 +2456,7 @@
    "prediction": {
     "band_p5": 0.4942,
     "band_p95": 0.7696,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -2264,32 +2475,6 @@
       "reference": 0.7011,
       "score": 0.022091,
       "shrink_alpha": 0.8105,
-      "sigma": 0.0574
-     },
-     {
-      "band_p5": 0.8755,
-      "band_p95": 0.9681,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9245,
-      "p_raw": 0.9292,
-      "reference": 0.8574,
-      "score": 0.021655,
-      "shrink_alpha": 0.934,
-      "sigma": 0.0302
-     },
-     {
-      "band_p5": 0.7261,
-      "band_p95": 0.9022,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.7923,
-      "p_raw": 0.8157,
-      "reference": 0.7011,
-      "score": 0.021264,
-      "shrink_alpha": 0.7958,
       "sigma": 0.0574
      },
      {
@@ -2317,6 +2502,32 @@
       "score": 0.019556,
       "shrink_alpha": 0.6016,
       "sigma": 0.0853
+     },
+     {
+      "band_p5": 0.7261,
+      "band_p95": 0.9022,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7854,
+      "p_raw": 0.8157,
+      "reference": 0.7011,
+      "score": 0.018074,
+      "shrink_alpha": 0.736,
+      "sigma": 0.0574
+     },
+     {
+      "band_p5": 0.5896,
+      "band_p95": 0.8134,
+      "family": "combo",
+      "key": "combo_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6488,
+      "p_raw": 0.7036,
+      "reference": 0.56,
+      "score": 0.016339,
+      "shrink_alpha": 0.6183,
+      "sigma": 0.071
      }
     ],
     "score": 0.028759,
@@ -2349,12 +2560,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 60,
-     "p_min": 61,
+     "S_min": 54,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 8.929e-09
    },
    "expected_goals": {
@@ -2386,12 +2597,44 @@
    "match_id": 558631,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.52044,
+     "1x2_draw": 0.28614,
+     "1x2_home": 0.19342,
+     "dc_12": 0.71386,
+     "dc_1x": 0.47956,
+     "dc_x2": 0.80658,
+     "eh_-1_away": 0.80658,
+     "eh_1_home": 0.47956,
+     "mg_0_2": 0.57971,
+     "over_2.5": 0.42029,
+     "under_2.5": 0.57971
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 1.87,
+     "1x2_draw": 3.4,
+     "1x2_home": 4.6,
+     "over_2.5": 2.15,
+     "under_2.5": 1.6
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.7368,
     "band_p95": 0.8739,
     "cluster_members": [
-     "ah_away_0.5",
      "eh_-1_away"
     ],
     "family": "double_chance",
@@ -2413,19 +2656,6 @@
       "score": 0.061601,
       "shrink_alpha": 0.8191,
       "sigma": 0.0493
-     },
-     {
-      "band_p5": 0.9043,
-      "band_p95": 0.9705,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.9357,
-      "p_raw": 0.9394,
-      "reference": 0.8289,
-      "score": 0.050483,
-      "shrink_alpha": 0.9668,
-      "sigma": 0.021
      },
      {
       "band_p5": 0.9043,
@@ -2454,17 +2684,30 @@
       "sigma": 0.0205
      },
      {
-      "band_p5": 0.9733,
-      "band_p95": 0.9946,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9854,
-      "p_raw": 0.9857,
-      "reference": 0.925,
-      "score": 0.038486,
-      "shrink_alpha": 0.9961,
-      "sigma": 0.0071
+      "band_p5": 0.4471,
+      "band_p95": 0.6567,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5103,
+      "p_raw": 0.5494,
+      "reference": 0.4303,
+      "score": 0.012932,
+      "shrink_alpha": 0.672,
+      "sigma": 0.0632
+     },
+     {
+      "band_p5": 0.6953,
+      "band_p95": 0.8538,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7601,
+      "p_raw": 0.7754,
+      "reference": 0.6895,
+      "score": 0.012226,
+      "shrink_alpha": 0.822,
+      "sigma": 0.0488
      }
     ],
     "score": 0.067434,
@@ -2497,12 +2740,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 83,
-     "p_min": 62,
+     "S_min": 72,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 3,
+    "n_candidates": 76,
+    "n_clusters": 2,
     "truncated_mass": 2.599e-10
    },
    "expected_goals": {
@@ -2534,6 +2777,39 @@
    "match_id": 558636,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.33053,
+     "1x2_draw": 0.31008,
+     "1x2_home": 0.3594,
+     "dc_12": 0.68992,
+     "dc_1x": 0.66947,
+     "dc_x2": 0.6406,
+     "eh_-1_away": 0.6406,
+     "eh_1_home": 0.66947,
+     "mg_0_2": 0.61705,
+     "over_2.5": 0.38295,
+     "under_2.5": 0.61705
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 2.85,
+     "1x2_draw": 3.15,
+     "1x2_home": 2.65,
+     "over_2.5": 2.29,
+     "under_2.5": 1.53
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.6095,
@@ -2558,19 +2834,6 @@
       "score": 0.008996,
       "shrink_alpha": 0.9013,
       "sigma": 0.0347
-     },
-     {
-      "band_p5": 0.9196,
-      "band_p95": 0.9814,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9562,
-      "p_raw": 0.957,
-      "reference": 0.925,
-      "score": 0.008141,
-      "shrink_alpha": 0.9724,
-      "sigma": 0.0191
      }
     ],
     "score": 0.012675,
@@ -2603,11 +2866,11 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 62,
+     "S_min": 76,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 1.168e-08
    },
@@ -2640,6 +2903,39 @@
    "match_id": 559716,
    "matchday": 1,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.29201,
+     "1x2_draw": 0.26966,
+     "1x2_home": 0.43833,
+     "dc_12": 0.73034,
+     "dc_1x": 0.70799,
+     "dc_x2": 0.56167,
+     "eh_-1_away": 0.56167,
+     "eh_1_home": 0.70799,
+     "mg_0_2": 0.45695,
+     "over_2.5": 0.54305,
+     "under_2.5": 0.45695
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 21,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 3.15,
+     "1x2_draw": 3.45,
+     "1x2_home": 2.25,
+     "over_2.5": 1.73,
+     "under_2.5": 1.96
+    }
+   },
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
@@ -2669,12 +2965,12 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 79,
-     "p_min": 63,
+     "S_min": 71,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 4,
+    "n_candidates": 76,
+    "n_clusters": 3,
     "truncated_mass": 5.286e-09
    },
    "expected_goals": {
@@ -2710,13 +3006,11 @@
    "prediction": {
     "band_p5": 0.7649,
     "band_p95": 0.9064,
-    "cluster_members": [
-     "eh_-2_away"
-    ],
-    "family": "handicap_asian",
-    "key": "ah_away_1.5",
-    "label": "Asiatico ospite +1.5",
-    "p": 0.8303,
+    "cluster_members": [],
+    "family": "handicap_eu",
+    "key": "eh_-2_away",
+    "label": "Handicap -2 ospite",
+    "p": 0.8264,
     "p_raw": 0.8423,
     "reference": 0.7536,
     "runners_up": [
@@ -2749,19 +3043,6 @@
      {
       "band_p5": 0.5398,
       "band_p95": 0.7498,
-      "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.6222,
-      "p_raw": 0.6487,
-      "reference": 0.5427,
-      "score": 0.012901,
-      "shrink_alpha": 0.7498,
-      "sigma": 0.0655
-     },
-     {
-      "band_p5": 0.5398,
-      "band_p95": 0.7498,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
@@ -2771,23 +3052,10 @@
       "score": 0.010652,
       "shrink_alpha": 0.6819,
       "sigma": 0.0655
-     },
-     {
-      "band_p5": 0.8992,
-      "band_p95": 0.9738,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9418,
-      "p_raw": 0.9434,
-      "reference": 0.9018,
-      "score": 0.010453,
-      "shrink_alpha": 0.9612,
-      "sigma": 0.0228
      }
     ],
-    "score": 0.017195,
-    "shrink_alpha": 0.8647,
+    "score": 0.015406,
+    "shrink_alpha": 0.8205,
     "sigma": 0.0449
    },
    "raw_probabilities": {
@@ -2800,7 +3068,7 @@
    },
    "reasons": [
     "Gol attesi: Toulouse FC 1.31, Olympique Lyonnais 1.41 (totale 2.72).",
-    "Asiatico ospite +1.5: 83 su 100, 8 punti sopra la media di riferimento (75 su 100).",
+    "Handicap -2 ospite: 83 su 100, 7 punti sopra la media di riferimento (75 su 100).",
     "Banda di incertezza: fra 76 e 91 su 100."
    ],
    "silence": null,
@@ -2816,12 +3084,12 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 72,
-     "p_min": 62,
+     "S_min": 66,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 5,
+    "n_candidates": 76,
+    "n_clusters": 4,
     "truncated_mass": 1.181e-07
    },
    "expected_goals": {
@@ -2853,12 +3121,44 @@
    "match_id": 554975,
    "matchday": 24,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.11817,
+     "1x2_draw": 0.20089,
+     "1x2_home": 0.68094,
+     "dc_12": 0.79911,
+     "dc_1x": 0.88183,
+     "dc_x2": 0.31906,
+     "eh_-1_away": 0.31906,
+     "eh_1_home": 0.88183,
+     "mg_0_2": 0.45512,
+     "over_2.5": 0.54488,
+     "under_2.5": 0.45512
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 15,
+    "price_books": 15,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 6.75,
+     "1x2_draw": 4.2,
+     "1x2_home": 1.41,
+     "over_2.5": 1.72,
+     "under_2.5": 2.02
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.7305,
     "band_p95": 0.9302,
     "cluster_members": [
-     "ah_home_0.5",
      "eh_1_home"
     ],
     "family": "double_chance",
@@ -2882,32 +3182,6 @@
       "sigma": 0.0955
      },
      {
-      "band_p5": 0.4598,
-      "band_p95": 0.7818,
-      "family": "handicap_asian",
-      "key": "ah_home_-0.5",
-      "label": "Asiatico casa -0.5",
-      "p": 0.5634,
-      "p_raw": 0.6262,
-      "reference": 0.4748,
-      "score": 0.015719,
-      "shrink_alpha": 0.585,
-      "sigma": 0.0955
-     },
-     {
-      "band_p5": 0.9007,
-      "band_p95": 0.9853,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9484,
-      "p_raw": 0.951,
-      "reference": 0.9006,
-      "score": 0.015192,
-      "shrink_alpha": 0.9477,
-      "sigma": 0.0266
-     },
-     {
       "band_p5": 0.9007,
       "band_p95": 0.9853,
       "family": "handicap_eu",
@@ -2921,17 +3195,17 @@
       "sigma": 0.0266
      },
      {
-      "band_p5": 0.9727,
-      "band_p95": 0.9978,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9878,
-      "p_raw": 0.988,
-      "reference": 0.9652,
-      "score": 0.01012,
-      "shrink_alpha": 0.9938,
-      "sigma": 0.009
+      "band_p5": 0.6917,
+      "band_p95": 0.9128,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7814,
+      "p_raw": 0.8065,
+      "reference": 0.7205,
+      "score": 0.009698,
+      "shrink_alpha": 0.7087,
+      "sigma": 0.0672
      }
     ],
     "score": 0.019965,
@@ -2964,12 +3238,12 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 68,
-     "p_min": 63,
+     "S_min": 62,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 3.454e-07
    },
    "expected_goals": {
@@ -3005,9 +3279,7 @@
    "prediction": {
     "band_p5": 0.4787,
     "band_p95": 0.7176,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -3015,19 +3287,6 @@
     "p_raw": 0.6042,
     "reference": 0.4473,
     "runners_up": [
-     {
-      "band_p5": 0.8808,
-      "band_p95": 0.9626,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9256,
-      "p_raw": 0.9293,
-      "reference": 0.8574,
-      "score": 0.02245,
-      "shrink_alpha": 0.9481,
-      "sigma": 0.0265
-     },
      {
       "band_p5": 0.8808,
       "band_p95": 0.9626,
@@ -3057,19 +3316,6 @@
      {
       "band_p5": 0.7204,
       "band_p95": 0.8853,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.7903,
-      "p_raw": 0.8092,
-      "reference": 0.7011,
-      "score": 0.02034,
-      "shrink_alpha": 0.8257,
-      "sigma": 0.0521
-     },
-     {
-      "band_p5": 0.7204,
-      "band_p95": 0.8853,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
@@ -3079,6 +3325,32 @@
       "score": 0.017693,
       "shrink_alpha": 0.7721,
       "sigma": 0.0521
+     },
+     {
+      "band_p5": 0.6057,
+      "band_p95": 0.8042,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.6811,
+      "p_raw": 0.7084,
+      "reference": 0.6052,
+      "score": 0.012388,
+      "shrink_alpha": 0.7354,
+      "sigma": 0.0629
+     },
+     {
+      "band_p5": 0.4887,
+      "band_p95": 0.7278,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5674,
+      "p_raw": 0.6121,
+      "reference": 0.4916,
+      "score": 0.011493,
+      "shrink_alpha": 0.6286,
+      "sigma": 0.0806
      }
     ],
     "score": 0.025852,
@@ -3111,12 +3383,12 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 57,
-     "p_min": 61,
+     "S_min": 51,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 5.374e-08
    },
    "expected_goals": {
@@ -3148,12 +3420,44 @@
    "match_id": 564645,
    "matchday": 2,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.60203,
+     "1x2_draw": 0.22313,
+     "1x2_home": 0.17484,
+     "dc_12": 0.77687,
+     "dc_1x": 0.39797,
+     "dc_x2": 0.82516,
+     "eh_-1_away": 0.82516,
+     "eh_1_home": 0.39797,
+     "mg_0_2": 0.43998,
+     "over_2.5": 0.56002,
+     "under_2.5": 0.43998
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 10,
+    "price_books": 10,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 1.6,
+     "1x2_draw": 3.98,
+     "1x2_home": 4.97,
+     "over_2.5": 1.7,
+     "under_2.5": 2.12
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.7053,
     "band_p95": 0.8738,
     "cluster_members": [
-     "ah_away_0.5",
      "eh_-1_away"
     ],
     "family": "double_chance",
@@ -3163,19 +3467,6 @@
     "p_raw": 0.8007,
     "reference": 0.5395,
     "runners_up": [
-     {
-      "band_p5": 0.8799,
-      "band_p95": 0.9679,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.9241,
-      "p_raw": 0.9311,
-      "reference": 0.7934,
-      "score": 0.064951,
-      "shrink_alpha": 0.9493,
-      "sigma": 0.0262
-     },
      {
       "band_p5": 0.8799,
       "band_p95": 0.9679,
@@ -3203,19 +3494,6 @@
       "sigma": 0.0282
      },
      {
-      "band_p5": 0.9625,
-      "band_p95": 0.9936,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9808,
-      "p_raw": 0.9813,
-      "reference": 0.9059,
-      "score": 0.047368,
-      "shrink_alpha": 0.9927,
-      "sigma": 0.0097
-     },
-     {
       "band_p5": 0.654,
       "band_p95": 0.8455,
       "family": "team_goals",
@@ -3227,6 +3505,32 @@
       "score": 0.041181,
       "shrink_alpha": 0.7624,
       "sigma": 0.0585
+     },
+     {
+      "band_p5": 0.5102,
+      "band_p95": 0.7106,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5511,
+      "p_raw": 0.6129,
+      "reference": 0.4167,
+      "score": 0.036464,
+      "shrink_alpha": 0.6848,
+      "sigma": 0.0613
+     },
+     {
+      "band_p5": 0.7555,
+      "band_p95": 0.8878,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.8083,
+      "p_raw": 0.8255,
+      "reference": 0.7009,
+      "score": 0.029953,
+      "shrink_alpha": 0.8619,
+      "sigma": 0.042
      }
     ],
     "score": 0.102354,
@@ -3259,12 +3563,12 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 63,
-     "p_min": 60,
+     "S_min": 57,
+     "p_min": 54,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 8,
     "truncated_mass": 2.64e-05
    },
    "expected_goals": {
@@ -3301,8 +3605,7 @@
     "band_p5": 0.8459,
     "band_p95": 0.9514,
     "cluster_members": [
-     "1x2_home",
-     "ah_home_-0.5"
+     "1x2_home"
     ],
     "family": "double_chance",
     "key": "dc_12",
@@ -3323,32 +3626,6 @@
       "score": 0.207219,
       "shrink_alpha": 0.9673,
       "sigma": 0.0219
-     },
-     {
-      "band_p5": 0.9157,
-      "band_p95": 0.9842,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.9478,
-      "p_raw": 0.9573,
-      "reference": 0.692,
-      "score": 0.205506,
-      "shrink_alpha": 0.9642,
-      "sigma": 0.0219
-     },
-     {
-      "band_p5": 0.5401,
-      "band_p95": 0.824,
-      "family": "handicap_asian",
-      "key": "ah_home_-1.5",
-      "label": "Asiatico casa -1.5",
-      "p": 0.5136,
-      "p_raw": 0.6918,
-      "reference": 0.2225,
-      "score": 0.201533,
-      "shrink_alpha": 0.6203,
-      "sigma": 0.0887
      },
      {
       "band_p5": 0.9157,
@@ -3375,6 +3652,32 @@
       "score": 0.155231,
       "shrink_alpha": 0.5916,
       "sigma": 0.0751
+     },
+     {
+      "band_p5": 0.677,
+      "band_p95": 0.9038,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6925,
+      "p_raw": 0.8107,
+      "reference": 0.4277,
+      "score": 0.142642,
+      "shrink_alpha": 0.6913,
+      "sigma": 0.07
+     },
+     {
+      "band_p5": 0.9031,
+      "band_p95": 0.9805,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.9413,
+      "p_raw": 0.9516,
+      "reference": 0.7517,
+      "score": 0.127023,
+      "shrink_alpha": 0.9484,
+      "sigma": 0.0245
      }
     ],
     "score": 0.076111,
@@ -3407,11 +3710,11 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 61,
+     "S_min": 76,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 2.389e-09
    },
@@ -3444,6 +3747,39 @@
    "match_id": 554976,
    "matchday": 24,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.27346,
+     "1x2_draw": 0.28021,
+     "1x2_home": 0.44633,
+     "dc_12": 0.71979,
+     "dc_1x": 0.72654,
+     "dc_x2": 0.55367,
+     "eh_-1_away": 0.55367,
+     "eh_1_home": 0.72654,
+     "mg_0_2": 0.54662,
+     "over_2.5": 0.45338,
+     "under_2.5": 0.54662
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 15,
+    "price_books": 15,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 3.22,
+     "1x2_draw": 3.15,
+     "1x2_home": 2.07,
+     "over_2.5": 2.05,
+     "under_2.5": 1.73
+    }
+   },
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
@@ -3473,12 +3809,12 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 62,
-     "p_min": 62,
+     "S_min": 56,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 5,
+    "n_candidates": 76,
+    "n_clusters": 4,
     "truncated_mass": 1.881e-09
    },
    "expected_goals": {
@@ -3510,12 +3846,44 @@
    "match_id": 554974,
    "matchday": 24,
    "model_weight": 1.0,
+   "odds": {
+    "fetched": "cache",
+    "market_p": {
+     "1x2_away": 0.40113,
+     "1x2_draw": 0.28661,
+     "1x2_home": 0.31226,
+     "dc_12": 0.71339,
+     "dc_1x": 0.59887,
+     "dc_x2": 0.68774,
+     "eh_-1_away": 0.68774,
+     "eh_1_home": 0.59887,
+     "mg_0_2": 0.53826,
+     "over_2.5": 0.46174,
+     "under_2.5": 0.53826
+    },
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 14,
+    "price_books": 14,
+    "price_scope": "eu",
+    "prices": {
+     "1x2_away": 2.3,
+     "1x2_draw": 3.12,
+     "1x2_home": 2.89,
+     "over_2.5": 2.01,
+     "under_2.5": 1.75
+    }
+   },
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.6084,
     "band_p95": 0.7991,
     "cluster_members": [
-     "ah_away_0.5",
      "eh_-1_away"
     ],
     "family": "double_chance",
@@ -3525,19 +3893,6 @@
     "p_raw": 0.7032,
     "reference": 0.5252,
     "runners_up": [
-     {
-      "band_p5": 0.8216,
-      "band_p95": 0.9386,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.8753,
-      "p_raw": 0.8851,
-      "reference": 0.7786,
-      "score": 0.030893,
-      "shrink_alpha": 0.9079,
-      "sigma": 0.0361
-     },
      {
       "band_p5": 0.8216,
       "band_p95": 0.9386,
@@ -3563,19 +3918,6 @@
       "score": 0.02779,
       "shrink_alpha": 0.7176,
       "sigma": 0.0657
-     },
-     {
-      "band_p5": 0.9361,
-      "band_p95": 0.9865,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9642,
-      "p_raw": 0.9652,
-      "reference": 0.9138,
-      "score": 0.020331,
-      "shrink_alpha": 0.9813,
-      "sigma": 0.0157
      },
      {
       "band_p5": 0.8442,
@@ -3613,7 +3955,7 @@
    "utc_date": "2026-08-22T23:30:00Z"
   }
  ],
- "generated_at": "2026-08-11T16:41:26Z",
+ "generated_at": "2026-08-12T00:30:14Z",
  "schema_version": 1,
  "silence_count": 7,
  "total": 30

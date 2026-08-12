@@ -63,8 +63,8 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
             <tr>
               <th scope="col">Pronostico</th>
               <th scope="col">Probabilità</th>
-              <th scope="col">Quota equa</th>
-              <th scope="col">Quota di mercato</th>
+              <th scope="col">La nostra</th>
+              <th scope="col">Il mercato</th>
             </tr>
           </thead>
           {gruppi.map((gruppo) => (
@@ -94,17 +94,19 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
                       {suCento(mercato.p)}
                       <span className="tabella__unita"> su 100</span>
                     </td>
-                    <td className="num" data-etichetta="Quota equa">
-                      {formattaQuota(q.equa)}
+                    <td className="num" data-etichetta="La nostra">
+                      {formattaQuota(q.nostra)}
                     </td>
-                    <td className="num" data-etichetta="Mercato">
+                    <td className="num" data-etichetta="Il mercato">
                       {q.mercato !== null ? (
                         formattaQuota(q.mercato)
                       ) : (
                         <span aria-hidden="true">—</span>
                       )}
                       {q.mercato === null ? (
-                        <span className="solo-lettori">non quotato</span>
+                        <span className="solo-lettori">
+                          il mercato non determina questa scommessa
+                        </span>
                       ) : null}
                     </td>
                   </tr>
@@ -119,8 +121,10 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
         abbiamo raggruppati in {fixture.diagnostics.n_clusters} famiglie di esiti che si
         muovono insieme. Qui c’è il migliore di ogni famiglia: mostrarli tutti e{' '}
         {fixture.diagnostics.n_candidates} sarebbe lo stesso mercato scritto in venti modi.
-        La colonna «mercato» è vuota dove la nostra fonte gratuita di quote non copre quel
-        tipo di scommessa, che è la maggior parte dei casi.
+        La colonna «il mercato» è la stessa quota equa calcolata sulle quote degli
+        operatori, col margine tolto: è vuota dove le quote gratuite non determinano quella
+        scommessa — gol di squadra ed entrambe segnano, per esempio, non li determina
+        nessuno dei mercati che possiamo leggere.
       </p>
     </section>
   );

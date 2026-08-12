@@ -1,10 +1,16 @@
 """Test del riferimento quando ci sono le quote.
 
-Copre il bug piu' costoso trovato girando `finalize` su dati veri: "Asiatico
-casa -0.5" e "Vittoria casa" sono lo **stesso identico evento**, e venivano
-confrontati con due riferimenti diversi — il primo col base rate storico, il
-secondo con la quota sgonfiata. L'argmax sceglieva sistematicamente il
-riferimento piu' comodo, cioe' fabbricava vantaggio da un cambio di nome.
+Copre il bug piu' costoso trovato girando `finalize` su dati veri: due nomi
+dello STESSO evento venivano confrontati con due riferimenti diversi — uno col
+base rate storico, l'altro con la quota sgonfiata — e l'argmax sceglieva
+sistematicamente il riferimento piu' comodo, cioe' fabbricava vantaggio da un
+cambio di nome.
+
+Il caso che lo fece scoprire era «Asiatico casa -0.5» contro «Vittoria casa».
+L'handicap asiatico e' stato tolto dal catalogo il 12 agosto 2026, ma il bug
+NON riguardava quella famiglia: riguarda qualunque coppia di alias. Restano a
+sorvegliarlo `eh_1_home` = `dc_1x` e `mg_0_2` = `under_2.5`, che sono aliasi
+esattamente nello stesso modo.
 """
 
 from __future__ import annotations
@@ -30,10 +36,6 @@ class TestAlias:
     @pytest.mark.parametrize(
         ("alias", "originale"),
         [
-            ("ah_home_-0.5", "1x2_home"),
-            ("ah_away_-0.5", "1x2_away"),
-            ("ah_home_0.5", "dc_1x"),
-            ("ah_away_0.5", "dc_x2"),
             ("eh_1_home", "dc_1x"),
             ("mg_0_2", "under_2.5"),
         ],
@@ -47,8 +49,19 @@ class TestAlias:
         assert refs[alias] == pytest.approx(refs[originale])
 
     def test_l_alias_prende_il_mercato_non_il_base_rate(self):
+        """`mg_0_2` e' «meno di tre gol», cioe' `under_2.5`: deve prendere la
+        quota, non la media storica dei multigol."""
         refs = market_references(QUOTED)
-        assert refs["ah_home_-0.5"] == pytest.approx(0.58)
+        assert refs["mg_0_2"] == pytest.approx(0.45)
+
+    def test_l_handicap_asiatico_non_e_piu_nel_catalogo(self):
+        """Tolto il 12 agosto 2026 perche' il pubblico non lo legge (vedi
+        markets.py). Senza questo test rientrerebbe dalla finestra la prima
+        volta che qualcuno ripristina una riga di catalogo senza contesto."""
+        chiavi = {d.key for d in catalog(12)}
+        famiglie = {d.family for d in catalog(12)}
+        assert "handicap_asian" not in famiglie
+        assert not [k for k in chiavi if k.startswith(("ah_home_", "ah_away_"))]
 
 
 class TestUnioni:
@@ -98,7 +111,7 @@ class TestIntegrazioneConLaSelezione:
         from pronostici.model.selection import directional_score
 
         refs = market_references(QUOTED)
-        p = 0.6432  # la stessa p̃: e' lo stesso evento
-        assert directional_score(p, refs["ah_home_-0.5"]) == pytest.approx(
-            directional_score(p, refs["1x2_home"])
+        p = 0.8632  # la stessa p̃: e' lo stesso evento
+        assert directional_score(p, refs["eh_1_home"]) == pytest.approx(
+            directional_score(p, refs["dc_1x"])
         )

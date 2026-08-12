@@ -10,11 +10,11 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 86,
-     "p_min": 62,
+     "S_min": 74,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 1,
     "truncated_mass": 1.655e-08
    },
@@ -89,12 +89,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 67,
-     "p_min": 62,
+     "S_min": 61,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 8,
+    "n_candidates": 76,
+    "n_clusters": 7,
     "truncated_mass": 3.552e-06
    },
    "expected_goals": {
@@ -165,19 +165,6 @@
       "sigma": 0.0873
      },
      {
-      "band_p5": 0.505,
-      "band_p95": 0.7839,
-      "family": "handicap_asian",
-      "key": "ah_home_-0.5",
-      "label": "Asiatico casa -0.5",
-      "p": 0.5655,
-      "p_raw": 0.6507,
-      "reference": 0.4217,
-      "score": 0.041733,
-      "shrink_alpha": 0.6281,
-      "sigma": 0.0873
-     },
-     {
       "band_p5": 0.6323,
       "band_p95": 0.8543,
       "family": "combo",
@@ -202,6 +189,19 @@
       "score": 0.033741,
       "shrink_alpha": 0.787,
       "sigma": 0.0618
+     },
+     {
+      "band_p5": 0.8651,
+      "band_p95": 0.9715,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9172,
+      "p_raw": 0.9278,
+      "reference": 0.8329,
+      "score": 0.0303,
+      "shrink_alpha": 0.8885,
+      "sigma": 0.034
      }
     ],
     "score": 0.054111,
@@ -234,12 +234,12 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 61,
-     "p_min": 61,
+     "S_min": 55,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 7,
+    "n_candidates": 76,
+    "n_clusters": 6,
     "truncated_mass": 1.556e-08
    },
    "expected_goals": {
@@ -276,7 +276,6 @@
     "band_p5": 0.6908,
     "band_p95": 0.865,
     "cluster_members": [
-     "ah_away_0.5",
      "eh_-1_away"
     ],
     "family": "double_chance",
@@ -286,19 +285,6 @@
     "p_raw": 0.7909,
     "reference": 0.6066,
     "runners_up": [
-     {
-      "band_p5": 0.8795,
-      "band_p95": 0.964,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.9247,
-      "p_raw": 0.9301,
-      "reference": 0.8289,
-      "score": 0.039295,
-      "shrink_alpha": 0.9469,
-      "sigma": 0.0268
-     },
      {
       "band_p5": 0.6897,
       "band_p95": 0.8605,
@@ -326,19 +312,6 @@
       "sigma": 0.0268
      },
      {
-      "band_p5": 0.9643,
-      "band_p95": 0.9932,
-      "family": "handicap_asian",
-      "key": "ah_away_2.5",
-      "label": "Asiatico ospite +2.5",
-      "p": 0.9814,
-      "p_raw": 0.9818,
-      "reference": 0.925,
-      "score": 0.032164,
-      "shrink_alpha": 0.9926,
-      "sigma": 0.0098
-     },
-     {
       "band_p5": 0.8952,
       "band_p95": 0.9714,
       "family": "team_goals",
@@ -350,6 +323,32 @@
       "score": 0.028997,
       "shrink_alpha": 0.9394,
       "sigma": 0.0266
+     },
+     {
+      "band_p5": 0.7072,
+      "band_p95": 0.8633,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7734,
+      "p_raw": 0.791,
+      "reference": 0.6895,
+      "score": 0.017445,
+      "shrink_alpha": 0.827,
+      "sigma": 0.0479
+     },
+     {
+      "band_p5": 0.4573,
+      "band_p95": 0.6791,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5212,
+      "p_raw": 0.5679,
+      "reference": 0.4303,
+      "score": 0.016688,
+      "shrink_alpha": 0.6612,
+      "sigma": 0.0647
      }
     ],
     "score": 0.052644,
@@ -382,12 +381,12 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 62,
-     "p_min": 62,
+     "S_min": 56,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 9,
     "truncated_mass": 6.015e-06
    },
    "expected_goals": {
@@ -423,9 +422,7 @@
    "prediction": {
     "band_p5": 0.6269,
     "band_p95": 0.8466,
-    "cluster_members": [
-     "ah_away_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_away",
     "label": "Vittoria ospite",
@@ -444,19 +441,6 @@
       "reference": 0.5759,
       "score": 0.186212,
       "shrink_alpha": 0.8931,
-      "sigma": 0.0411
-     },
-     {
-      "band_p5": 0.814,
-      "band_p95": 0.9449,
-      "family": "handicap_asian",
-      "key": "ah_away_0.5",
-      "label": "Asiatico ospite +0.5",
-      "p": 0.8547,
-      "p_raw": 0.8914,
-      "reference": 0.5759,
-      "score": 0.181914,
-      "shrink_alpha": 0.8839,
       "sigma": 0.0411
      },
      {
@@ -488,15 +472,28 @@
      {
       "band_p5": 0.9282,
       "band_p95": 0.9863,
-      "family": "handicap_asian",
-      "key": "ah_away_1.5",
-      "label": "Asiatico ospite +1.5",
-      "p": 0.9594,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.9575,
       "p_raw": 0.9644,
       "reference": 0.7777,
-      "score": 0.132456,
-      "shrink_alpha": 0.9733,
+      "score": 0.128848,
+      "shrink_alpha": 0.963,
       "sigma": 0.0188
+     },
+     {
+      "band_p5": 0.6869,
+      "band_p95": 0.8759,
+      "family": "combo",
+      "key": "combo_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.6927,
+      "p_raw": 0.7912,
+      "reference": 0.4427,
+      "score": 0.127178,
+      "shrink_alpha": 0.7174,
+      "sigma": 0.0567
      }
     ],
     "score": 0.214264,
@@ -521,7 +518,7 @@
    "utc_date": "2026-09-04T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:24:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 4

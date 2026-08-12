@@ -10,11 +10,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 61,
+     "S_min": 76,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 9.899e-09
    },
@@ -76,11 +76,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 82,
-     "p_min": 62,
+     "S_min": 72,
+     "p_min": 56,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 0,
     "truncated_mass": 5.962e-08
    },
@@ -142,11 +142,11 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 76,
-     "p_min": 61,
+     "S_min": 65,
+     "p_min": 55,
      "sigma_max": 0
     },
-    "n_candidates": 88,
+    "n_candidates": 76,
     "n_clusters": 4,
     "truncated_mass": 7.016e-10
    },
@@ -220,19 +220,6 @@
      {
       "band_p5": 0.8738,
       "band_p95": 0.965,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.9215,
-      "p_raw": 0.9239,
-      "reference": 0.8817,
-      "score": 0.008512,
-      "shrink_alpha": 0.9439,
-      "sigma": 0.0276
-     },
-     {
-      "band_p5": 0.8738,
-      "band_p95": 0.965,
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
@@ -274,12 +261,12 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 59,
-     "p_min": 60,
+     "S_min": 53,
+     "p_min": 54,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 9,
     "truncated_mass": 4.455e-09
    },
    "expected_goals": {
@@ -352,19 +339,6 @@
      {
       "band_p5": 0.8464,
       "band_p95": 0.9523,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.8904,
-      "p_raw": 0.9049,
-      "reference": 0.7066,
-      "score": 0.098012,
-      "shrink_alpha": 0.9272,
-      "sigma": 0.0318
-     },
-     {
-      "band_p5": 0.8464,
-      "band_p95": 0.9523,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
@@ -387,6 +361,19 @@
       "score": 0.081671,
       "shrink_alpha": 0.6578,
       "sigma": 0.0531
+     },
+     {
+      "band_p5": 0.9678,
+      "band_p95": 0.9952,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.983,
+      "p_raw": 0.9838,
+      "reference": 0.8817,
+      "score": 0.073878,
+      "shrink_alpha": 0.992,
+      "sigma": 0.0086
      }
     ],
     "score": 0.16425,
@@ -411,7 +398,7 @@
    "utc_date": "2026-09-02T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:24:25Z",
  "schema_version": 1,
  "silence_count": 2,
  "total": 4

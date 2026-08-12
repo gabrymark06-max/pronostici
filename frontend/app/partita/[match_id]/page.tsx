@@ -19,7 +19,12 @@ import {
 } from '@/lib/dati';
 import { recordDiFascia } from '@/lib/fascia';
 import { dataLunga, ora, testoPulito } from '@/lib/formato';
-import { formattaQuota, fraseConfronto, quoteDelPronostico } from '@/lib/quote';
+import {
+  formattaQuota,
+  fraseConfronto,
+  fraseSportello,
+  quoteDelPronostico,
+} from '@/lib/quote';
 import { MARCHIO, righeDefinizione, SOPRA_LA_PIEGA } from '@/lib/testi';
 import { tace, type Fixture } from '@/lib/tipi';
 
@@ -154,25 +159,36 @@ export default async function PaginaPartita({ params }: Props) {
               {/* ② La probabilità, con la riga di definizione operativa. */}
               <BarraProbabilita pronostico={fixture.prediction} />
 
-              {/* ③ Le quote. La equa c'è sempre; quella di mercato quasi mai,
-                  e quando c'è porta il confronto in parole. */}
+              {/* ③ LE DUE QUOTE, PARI A PARI. La nostra c'è sempre; quella del
+                  mercato c'è sugli undici mercati che le quote determinano in
+                  modo esatto. Il confronto è fra due quote EQUE — la loro col
+                  margine tolto — perché confrontare la nostra quota equa con
+                  un prezzo lordo farebbe sembrare il mercato sistematicamente
+                  piu' avaro di quanto sia. Il prezzo lordo compare sotto, come
+                  terza riga, quando lo conosciamo: e' l'unico dei tre numeri
+                  che qualcuno puo' davvero giocare. */}
               {quote ? (
                 <div className="quote">
                   <div className="quote__cella">
-                    <p className="label">Quota equa</p>
-                    <p className="quote__valore">{formattaQuota(quote.equa)}</p>
+                    <p className="label">La nostra quota equa</p>
+                    <p className="quote__valore">{formattaQuota(quote.nostra)}</p>
                     <p className="quote__nota">
-                      È 1 diviso la probabilità. Sotto questo prezzo la scommessa perde
-                      valore, sopra lo guadagna.
+                      È 1 diviso la probabilità che diamo noi. Sotto questo prezzo la
+                      scommessa perde valore, sopra lo guadagna.
                     </p>
                   </div>
 
                   <div className="quote__cella">
-                    <p className="label">Quota di mercato</p>
+                    <p className="label">La stessa, secondo il mercato</p>
                     {quote.mercato !== null ? (
                       <>
                         <p className="quote__valore">{formattaQuota(quote.mercato)}</p>
                         <p className="quote__nota">{fraseConfronto(quote)}</p>
+                        {quote.prezzo !== null ? (
+                          <p className="quote__nota quote__nota--sportello">
+                            {fraseSportello(quote)}
+                          </p>
+                        ) : null}
                       </>
                     ) : (
                       <>
@@ -180,9 +196,10 @@ export default async function PaginaPartita({ params }: Props) {
                           —
                         </p>
                         <p className="quote__nota">
-                          La nostra fonte gratuita di quote copre solo esito finale e
-                          over/under. Su questo tipo di scommessa non abbiamo un prezzo, e
-                          non ne inventiamo uno.
+                          Le quote gratuite che leggiamo — esito finale e over/under —
+                          determinano in modo esatto undici scommesse, e questa non è fra
+                          quelle. Un numero derivato per somiglianza sarebbe inventato, e
+                          non lo inventiamo.
                         </p>
                       </>
                     )}

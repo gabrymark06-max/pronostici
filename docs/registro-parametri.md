@@ -11,6 +11,89 @@ Questo file è quella data. Ogni voce dice **cosa** è cambiato, **quando**, e
 
 ---
 
+## 2026-08-12 — l'handicap asiatico esce dal catalogo
+
+**Cosa cambia:** la famiglia `handicap_asian` non viene più calcolata. Non è
+solo esclusa dalla selezione come over/under: è proprio fuori dal catalogo dei
+mercati, quindi non compare nemmeno fra i mercati alternativi della scheda.
+
+**Perché:** non è una decisione statistica, ed è quella giusta lo stesso. Il
+proprietario, che è anche il primo lettore, l'ha detta in una riga: «non lo
+conosco e non mi piace». Su 207 pronostici pubblicati, 36 erano asiatici — il
+17 per cento della produzione detto in una forma che chi la riceve non sa
+leggere. Un numero corretto scritto in una lingua sbagliata non è un
+pronostico.
+
+**Non si perde informazione.** Le linee binarie asiatiche sono esattamente
+equivalenti a mercati che restano: `ah_home_-0.5` è la vittoria casa,
+`ah_home_+1.5` è un handicap europeo. Il raggruppamento in famiglie già le
+trattava come lo stesso evento; togliendole, la scelta cade sulla formulazione
+che il lettore conosce. L'handicap **europeo** resta: «Handicap -1 casa» è la
+lingua delle schedine italiane.
+
+**Effetto misurato sulla produzione:** 205 pronostici rigenerati, tasso di
+silenzio al 28,0 % (dentro la banda 15–30 % del protocollo). Le famiglie si
+ridistribuiscono su gol di squadra (84), doppia chance (46), 1X2 (35),
+handicap europeo (27), entrambe segnano (9).
+
+**Righe precedenti al cambiamento:** 293, di cui **33 su partite già
+cominciate** — fra queste le 14 con esito — che **non sono state toccate**. Le
+260 righe rimosse riguardavano tutte partite non ancora giocate, tutte in fase
+preliminare, nessuna con un verdetto: rimuoverle non cancella nessuna prova e
+non sposta di un bit i numeri di `accuracy.json`, che si calcolano sulle sole
+righe giudicate. Lo script che l'ha fatto è
+`scripts/migrazione_2026_08_12_handicap_asiatico.py` e dichiara le tre
+condizioni che una riga deve soddisfare per essere rimossa.
+
+**Cosa resta visibile:** tre pronostici asiatici sulle partite del 9 agosto,
+tutti e tre già giudicati e tutti e tre usciti. Restano perché sono stati
+davvero pubblicati e davvero giudicati: riscriverli è precisamente ciò che
+questo prodotto rimprovera agli altri.
+
+**Backtest:** rifatto. Il numero pubblicato prima del 12 agosto (86 su 100 su
+4127 pronostici) era stato misurato con l'handicap asiatico nel catalogo, e
+togliendo una famiglia cambia quale mercato viene scelto anche su partite il
+cui pronostico era già un altro.
+
+---
+
+## 2026-08-12 — i prezzi di mercato si attaccano fuori da `finalize`
+
+**Cosa cambia:** un job nuovo, `jobs/quote`, attacca le quote alle partite dei
+prossimi quattordici giorni senza toccare pronostico, fase o registro. Il
+campo `odds` guadagna `prices` (i prezzi lordi) e `market_p` (le probabilità
+sgonfiate, estese a tutti i mercati che le quote determinano in modo esatto).
+
+**Perché:** la colonna «mercato» del sito era vuota su **205 pronostici su
+205**, per tre cause sovrapposte. Le quote si prendevano solo dentro la
+finestra di `finalize` (10 partite su 283); la fonte gratuita quota 1X2 e
+Over/Under mentre il pronostico scelto era sempre un altro mercato; e le
+probabilità sgonfiate non venivano nemmeno salvate.
+
+**Perché un job separato e non una finestra più larga.** `finalize` prende una
+decisione irripetibile e va eseguito il più tardi possibile, quando le quote
+sono più informative. Allargarne la finestra avrebbe riempito la colonna
+peggiorando la decisione. Un prezzo è informazione e si riscrive ogni giorno;
+una decisione si prende una volta sola.
+
+**Effetto misurato:** da 0 a 21 pronostici su 205 con un confronto di mercato,
+e da 10 a 60 partite con un prezzo. Il resto sono gol di squadra ed entrambe
+segnano, che nessuna quota gratuita determina — e non si derivano per
+somiglianza.
+
+**Costo:** venti crediti al giorno con dieci campionati attivi, contro i 500
+mensili del piano gratuito. Sopra il tetto entra in funzione la scala di
+degradazione già esistente: prima escono i campionati minori, poi il mercato
+dei totali.
+
+**Effetto collaterale corretto:** `--dry-run` faceva chiamate di rete vere
+senza poi salvare il contatore. Il contatore locale divergeva da quello del
+fornitore, e la divergenza metteva in pausa il job — cioè un dry run poteva
+spegnere le quote in produzione. Ora il contatore si salva sempre, e
+`--reconcile` riallinea e toglie la pausa quando serve.
+
+---
+
 ## 2026-08-11 — la famiglia over/under esce dalla selezione
 
 **Cosa cambia:** over/under non può più essere il pronostico consigliato.

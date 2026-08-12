@@ -10,12 +10,12 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 76,
-     "p_min": 63,
+     "S_min": 68,
+     "p_min": 57,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 6,
+    "n_candidates": 76,
+    "n_clusters": 5,
     "truncated_mass": 5.932e-08
    },
    "expected_goals": {
@@ -62,19 +62,6 @@
      {
       "band_p5": 0.87,
       "band_p95": 0.9683,
-      "family": "handicap_asian",
-      "key": "ah_home_1.5",
-      "label": "Asiatico casa +1.5",
-      "p": 0.92,
-      "p_raw": 0.9239,
-      "reference": 0.8574,
-      "score": 0.0186,
-      "shrink_alpha": 0.941,
-      "sigma": 0.0284
-     },
-     {
-      "band_p5": 0.87,
-      "band_p95": 0.9683,
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
@@ -84,19 +71,6 @@
       "score": 0.017681,
       "shrink_alpha": 0.9194,
       "sigma": 0.0284
-     },
-     {
-      "band_p5": 0.9566,
-      "band_p95": 0.9931,
-      "family": "handicap_asian",
-      "key": "ah_home_2.5",
-      "label": "Asiatico casa +2.5",
-      "p": 0.9781,
-      "p_raw": 0.9784,
-      "reference": 0.9415,
-      "score": 0.015749,
-      "shrink_alpha": 0.9908,
-      "sigma": 0.0109
      },
      {
       "band_p5": 0.6904,
@@ -112,16 +86,42 @@
       "sigma": 0.0562
      },
      {
+      "band_p5": 0.8542,
+      "band_p95": 0.964,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.9122,
+      "p_raw": 0.9176,
+      "reference": 0.8626,
+      "score": 0.011666,
+      "shrink_alpha": 0.9023,
+      "sigma": 0.0345
+     },
+     {
+      "band_p5": 0.43,
+      "band_p95": 0.6916,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5228,
+      "p_raw": 0.5568,
+      "reference": 0.4473,
+      "score": 0.011446,
+      "shrink_alpha": 0.6894,
+      "sigma": 0.0797
+     },
+     {
       "band_p5": 0.6904,
       "band_p95": 0.8818,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.771,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7659,
       "p_raw": 0.7882,
       "reference": 0.7011,
-      "score": 0.012276,
-      "shrink_alpha": 0.8026,
+      "score": 0.010507,
+      "shrink_alpha": 0.7441,
       "sigma": 0.0562
      }
     ],
@@ -155,12 +155,12 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 62,
-     "p_min": 60,
+     "S_min": 56,
+     "p_min": 54,
      "sigma_max": 0
     },
-    "n_candidates": 88,
-    "n_clusters": 10,
+    "n_candidates": 76,
+    "n_clusters": 9,
     "truncated_mass": 1.156e-05
    },
    "expected_goals": {
@@ -196,9 +196,7 @@
    "prediction": {
     "band_p5": 0.7298,
     "band_p95": 0.9031,
-    "cluster_members": [
-     "ah_home_-0.5"
-    ],
+    "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
@@ -217,19 +215,6 @@
       "reference": 0.692,
       "score": 0.169483,
       "shrink_alpha": 0.9629,
-      "sigma": 0.0233
-     },
-     {
-      "band_p5": 0.893,
-      "band_p95": 0.9715,
-      "family": "handicap_asian",
-      "key": "ah_home_0.5",
-      "label": "Asiatico casa +0.5",
-      "p": 0.9282,
-      "p_raw": 0.9382,
-      "reference": 0.692,
-      "score": 0.167981,
-      "shrink_alpha": 0.9594,
       "sigma": 0.0233
      },
      {
@@ -270,6 +255,19 @@
       "score": 0.132017,
       "shrink_alpha": 0.7283,
       "sigma": 0.064
+     },
+     {
+      "band_p5": 0.896,
+      "band_p95": 0.9711,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.932,
+      "p_raw": 0.9408,
+      "reference": 0.7517,
+      "score": 0.112313,
+      "shrink_alpha": 0.9537,
+      "sigma": 0.0231
      }
     ],
     "score": 0.224009,
@@ -294,7 +292,7 @@
    "utc_date": "2026-08-14T19:15:00Z"
   }
  ],
- "generated_at": "2026-08-11T15:55:25Z",
+ "generated_at": "2026-08-12T00:24:25Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 2

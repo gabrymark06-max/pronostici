@@ -55,9 +55,18 @@ Tutti i mercati derivano dalla **stessa** matrice di probabilità congiunta dei 
 
 ## Mercati
 
-1X2 · doppia chance · over/under (ogni linea) · BTTS · handicap europeo e asiatico · multigol · combo · risultato esatto · gol casa/ospite · over/under primo tempo e HT/FT.
+1X2 · doppia chance · over/under (ogni linea) · BTTS · handicap europeo · multigol · combo · risultato esatto · gol casa/ospite · over/under primo tempo e HT/FT.
 
 Marcatori, cartellini, corner e tiri **non** sono coperti: le fonti gratuite non espongono i dati per giocatore e per evento necessari, e preferiamo non stimarli male.
+
+### L'handicap asiatico è stato tolto (12 agosto 2026)
+
+Non per una ragione statistica: perché il pubblico non lo legge. Un numero
+corretto scritto in una forma che chi lo riceve non capisce non è un
+pronostico. Le linee binarie asiatiche erano comunque **equivalenti** a mercati
+che restano — «Asiatico casa -0.5» è la vittoria casa — quindi non si è perso
+nulla se non una formulazione. L'handicap **europeo** resta: è la lingua delle
+schedine italiane.
 
 ### Over/under si calcola, ma non si consiglia
 

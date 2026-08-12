@@ -104,20 +104,30 @@ def catalog(max_goals: int) -> tuple[MarketDef, ...]:
             ),
         ]
 
-    # 6 - Handicap asiatico, solo linee a mezzo gol: senza rimborso sono
-    #     eventi binari veri e possono entrare fra i candidati.
-    for line in ASIAN_LINES_BINARY:
-        sign = "+" if line > 0 else ""
-        out += [
-            MarketDef(
-                f"ah_home_{line}", "handicap_asian",
-                f"Asiatico casa {sign}{line}", margin + line > 0,
-            ),
-            MarketDef(
-                f"ah_away_{line}", "handicap_asian",
-                f"Asiatico ospite {sign}{line}", -margin + line > 0,
-            ),
-        ]
+    # 6 - HANDICAP ASIATICO: RIMOSSO IL 12 AGOSTO 2026.
+    #
+    # Non e' una decisione statistica ma di pubblico, ed e' quella giusta. Il
+    # proprietario, che e' anche il primo lettore, ha detto: «non lo conosco e
+    # non mi piace». Un pronostico che il lettore non sa leggere non e' un
+    # pronostico: e' un numero corretto scritto in una lingua che non parla.
+    # Su 207 pronostici pubblicati, 36 erano asiatici - il 17 per cento della
+    # produzione detto in una forma incomprensibile a chi la riceve.
+    #
+    # Non si perde informazione. Le linee binarie asiatiche (+-0.5, +-1.5,
+    # +-2.5) sono ESATTAMENTE equivalenti a esiti che restano nel catalogo:
+    # `ah_home_-0.5` e' la vittoria casa, `ah_home_+1.5` e' «la casa non perde
+    # con due gol di scarto», cioe' un handicap europeo. Il raggruppamento in
+    # famiglie gia' le trattava come lo stesso evento; togliendole, la scelta
+    # cade sulla formulazione che il lettore conosce invece che su quella che
+    # non conosce.
+    #
+    # L'handicap EUROPEO resta: «Handicap -1 casa» e' la lingua delle schedine
+    # italiane, ed e' la stessa cosa detta in modo leggibile.
+    #
+    # `ASIAN_LINES_BINARY` resta definita e resta usata da
+    # `tests/test_matrix_totals.py`, che verifica la coerenza della matrice dei
+    # gol su quelle soglie: quella verifica riguarda la matrice, non il
+    # catalogo, e non ha ragione di sparire con i mercati.
 
     # 7 - Multigol
     for lo, hi in MULTIGOAL_RANGES:
