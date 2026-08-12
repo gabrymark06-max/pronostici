@@ -125,6 +125,8 @@ interface FixtureBase {
   competition: CodiceCompetizione;
   utc_date: string;
   matchday: number | null;
+  /** La fase del torneo, quando c'è: `SUPER_CUP`, `FINAL`, `LAST_16`… */
+  stage?: string | null;
   home: Squadra;
   away: Squadra;
   phase: Fase;

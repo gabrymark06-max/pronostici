@@ -13,12 +13,19 @@ const NOMI_FAMIGLIA: Record<string, string> = {
   double_chance: 'Doppia chance',
   over_under: 'Over / Under',
   team_goals: 'Gol di squadra',
-  handicap_asian: 'Handicap asiatico',
-  handicap_eu: 'Handicap europeo',
+  handicap_eu: 'Handicap',
   multigoal: 'Multigol',
-  btts: 'Entrambe segnano',
-  combo: 'Combo',
+  btts: 'Goal / NoGoal',
+  combo: 'Combo esito + Over/Under',
+  combo_dc: 'Combo doppia chance + Over/Under',
+  combo_gol: 'Combo esito + Goal/NoGoal',
+  combo_dc_gol: 'Combo doppia chance + Goal/NoGoal',
+  combo_gol_ou: 'Combo Goal/NoGoal + Over/Under',
   correct_score: 'Risultato esatto',
+  /* Tolto dal catalogo il 12 agosto 2026. Il nome resta perche' resta nelle
+     partite di quel giorno e prima, che sono gia' state giudicate e non si
+     riscrivono: senza questa riga comparirebbero come «handicap asian». */
+  handicap_asian: 'Handicap asiatico',
 };
 
 export function nomeFamiglia(chiave: string): string {

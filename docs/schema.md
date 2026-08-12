@@ -35,6 +35,7 @@ Un file per giorno. È quello che la home legge.
 | `match_id` | int | identificativo football-data, stabile |
 | `competition` | string | codice di `competitions.py` |
 | `utc_date` | string | ISO 8601 con `Z` |
+| `stage` | string \| null | fase del torneo: `SUPER_CUP`, `FINAL`, `LAST_16`… Il frontend la mostra AL POSTO del nome della competizione quando c'è, così una Supercoppa archiviata sotto `CL` non si presenta come «Champions League» |
 | `matchday` | int \| null | |
 | `home`, `away` | `{name, tla, crest}` | `crest` è una URL di logo |
 | `phase` | `"preliminary"` \| `"definitive"` | |

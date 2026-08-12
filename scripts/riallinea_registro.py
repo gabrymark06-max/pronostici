@@ -1,14 +1,21 @@
-"""Migrazione una tantum — 12 agosto 2026, rimozione dell'handicap asiatico.
+"""Riallinea il registro dopo un cambio di catalogo o di parametri.
 
-    python scripts/migrazione_2026_08_12_handicap_asiatico.py --dry-run
-    python scripts/migrazione_2026_08_12_handicap_asiatico.py
+    python scripts/riallinea_registro.py --dry-run
+    python scripts/riallinea_registro.py
+    # poi, sempre:
+    python -m pronostici.jobs.retrain --force
+    python -m pronostici.jobs.score --days 30
 
-COSA E' SUCCESSO. L'handicap asiatico e' stato tolto dal catalogo dei mercati
-(`model/markets.py`, sezione 6). Togliere una famiglia non cambia solo i
-pronostici che ERANO asiatici: le linee asiatiche entravano nei gruppi di
-mercati correlati, quindi cambia anche quale rappresentante viene scelto in
-partite il cui pronostico era gia' un altro. Rigenerare i pronostici e' quindi
-necessario su tutte le partite future, non solo sulle 24 asiatiche.
+QUANDO SERVE. Ogni volta che cambia CIO' CHE IL MODELLO PUO' SCEGLIERE: una
+famiglia di mercati che entra o esce, i base rate rifittati, una soglia di
+selezione spostata. Non basta cambiare i pronostici che appartenevano alla
+famiglia toccata: i mercati entrano in gruppi di eventi correlati, e togliere o
+aggiungere un membro cambia quale rappresentante vince anche in partite il cui
+pronostico era gia' un altro.
+
+Usato il 12 agosto 2026 due volte nella stessa giornata: alla rimozione
+dell'handicap asiatico e all'ingresso delle quattro famiglie di combo con
+over/under riammesso alla selezione.
 
 IL PROBLEMA CHE QUESTO SCRIPT RISOLVE. `ledger.append` ignora le righe con un
 `prediction_id` gia' presente — e' cio' che rende i job idempotenti. Ottimo
@@ -28,12 +35,15 @@ Quindi si rimuovono SOLO le righe che soddisfano tutte e tre le condizioni:
   2. calcio d'inizio nel futuro — la partita non e' nemmeno cominciata;
   3. fase preliminare — il definitivo si scrive una volta sola e non si rifa'.
 
-Al 12 agosto 2026 erano 260 righe su 293. Le 33 restanti — fra cui le 14 con
-esito — non vengono toccate, e i numeri di `accuracy.json`, che si calcolano
-sulle sole righe giudicate, restano identici al bit.
+Alla prima esecuzione del 12 agosto 2026 erano 260 righe su 293. Le 33
+restanti — fra cui le 14 con esito — non vengono toccate, e i numeri di
+`accuracy.json`, che si calcolano sulle sole righe giudicate, restano identici
+al bit.
 
-Dopo questo script va rieseguito `python -m pronostici.jobs.score --days 30`,
-che riscrive i preliminari col catalogo nuovo.
+Dopo questo script vanno rieseguiti `retrain --force` (i base rate sono
+calcolati dal catalogo: senza rifit i mercati nuovi vengono scartati in
+silenzio perche' non hanno un riferimento) e `score`, che riscrive i
+preliminari.
 """
 
 from __future__ import annotations

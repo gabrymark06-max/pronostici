@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { AvvisoOverUnder } from '@/components/AvvisoOverUnder';
 import { Bandiera } from '@/components/Bandiera';
 import { BarraProbabilita } from '@/components/BarraProbabilita';
 import { BloccoRevisione } from '@/components/BloccoRevisione';
@@ -9,7 +10,7 @@ import { ChipProvenienza } from '@/components/ChipProvenienza';
 import { Crest } from '@/components/Crest';
 import { QuadroNumeri, ragioniResidue } from '@/components/QuadroNumeri';
 import { TuttiIPronostici } from '@/components/TuttiIPronostici';
-import { nomeCampionato } from '@/lib/campionati';
+import { titoloCompetizione } from '@/lib/campionati';
 import {
   leggiAccuracy,
   leggiBacktest,
@@ -107,7 +108,7 @@ export default async function PaginaPartita({ params }: Props) {
           <p className="partita__contesto">
             <Bandiera competizione={fixture.competition} />
             <span className="label">
-              {nomeCampionato(fixture.competition)}
+              {titoloCompetizione(fixture.competition, fixture.stage)}
               {fixture.matchday != null ? ` · Giornata ${fixture.matchday}` : ''}
             </span>
             <span className="partita__quando">
@@ -155,6 +156,8 @@ export default async function PaginaPartita({ params }: Props) {
                   standard, già appresi altrove: non si traducono e non si
                   abbelliscono. */}
               <p className="partita__mercato">{fixture.prediction.label}</p>
+
+              {fixture.prediction.family === 'over_under' ? <AvvisoOverUnder /> : null}
 
               {/* ② La probabilità, con la riga di definizione operativa. */}
               <BarraProbabilita pronostico={fixture.prediction} />

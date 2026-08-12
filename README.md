@@ -55,9 +55,22 @@ Tutti i mercati derivano dalla **stessa** matrice di probabilità congiunta dei 
 
 ## Mercati
 
-1X2 · doppia chance · over/under (ogni linea) · BTTS · handicap europeo · multigol · combo · risultato esatto · gol casa/ospite · over/under primo tempo e HT/FT.
+**114 mercati per partita**, tutti derivati dalla stessa matrice:
+
+1X2 · doppia chance · over/under (ogni linea) · Goal/NoGoal · handicap · multigol · gol casa/ospite · risultato esatto · over/under primo tempo e HT/FT.
+
+E cinque famiglie di **combo**: esito + Over/Under · doppia chance + Over/Under · esito + Goal/NoGoal · doppia chance + Goal/NoGoal · Goal/NoGoal + Over/Under.
 
 Marcatori, cartellini, corner e tiri **non** sono coperti: le fonti gratuite non espongono i dati per giocatore e per evento necessari, e preferiamo non stimarli male.
+
+### Over/Under si consiglia, ma con un avviso (12 agosto 2026)
+
+Il backtest ha misurato che sui **gol totali** il modello non batte la
+frequenza storica del campionato. Su richiesta del proprietario over/under è
+tornato consigliabile — ma ogni pronostico di quella famiglia porta accanto,
+in lista e sulla scheda, l'avviso che su quel mercato non abbiamo dimostrato un
+vantaggio. Nella pratica non vince quasi mai: su 192 pronostici rigenerati,
+zero.
 
 ### L'handicap asiatico è stato tolto (12 agosto 2026)
 

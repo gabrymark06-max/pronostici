@@ -59,3 +59,38 @@ export function paeseDi(codice: string): string | null {
 export function nomeCampionato(codice: string): string {
   return NOMI_COMPETIZIONE[codice] ?? codice;
 }
+
+/**
+ * LA FASE DEL TORNEO, quando la competizione ne ha una.
+ *
+ * Serve a non chiamare «Champions League» una Supercoppa. La Supercoppa entra
+ * sotto `CL` per una ragione tecnica — è lì che vivono i parametri di attacco e
+ * difesa delle due squadre, stimati sulle loro partite europee — ma il lettore
+ * non deve pagare per una scelta di modellazione: vede il nome della partita
+ * che sta guardando.
+ *
+ * Le chiavi sono quelle di football-data, più `SUPER_CUP` che è nostra (loro
+ * non espongono la Supercoppa affatto).
+ */
+const NOMI_FASE: Record<string, string> = {
+  SUPER_CUP: 'Supercoppa UEFA',
+  FINAL: 'Finale',
+  SEMI_FINALS: 'Semifinali',
+  QUARTER_FINALS: 'Quarti di finale',
+  LAST_16: 'Ottavi di finale',
+  PLAYOFFS: 'Play-off',
+  PLAY_OFFS: 'Play-off',
+  LEAGUE_STAGE: null as unknown as string,
+  GROUP_STAGE: null as unknown as string,
+  REGULAR_SEASON: null as unknown as string,
+};
+
+/**
+ * Come si chiama questa partita: la fase se ne ha una che valga la pena
+ * nominare, altrimenti il campionato. La fase «girone» non si mostra perché
+ * dire «Champions League · Fase campionato» aggiunge parole e non informazione.
+ */
+export function titoloCompetizione(codice: string, fase?: string | null): string {
+  const nome = fase ? NOMI_FASE[fase] : undefined;
+  return nome || nomeCampionato(codice);
+}

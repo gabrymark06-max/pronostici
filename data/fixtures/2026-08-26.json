@@ -10,13 +10,13 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 54,
-     "p_min": 55,
+     "S_min": 81,
+     "p_min": 85,
      "sigma_max": 0
     },
-    "n_candidates": 76,
-    "n_clusters": 9,
-    "truncated_mass": 3.506e-06
+    "n_candidates": 114,
+    "n_clusters": 11,
+    "truncated_mass": 3.513e-06
    },
    "expected_goals": {
     "away": 0.854,
@@ -29,12 +29,12 @@
     "ht_under_0.5": 0.2246,
     "ht_under_1.5": 0.56,
     "ht_under_2.5": 0.8105,
-    "htft_11": 0.5088,
+    "htft_11": 0.509,
     "htft_12": 0.0082,
-    "htft_1X": 0.0333,
+    "htft_1X": 0.0332,
     "htft_21": 0.0355,
     "htft_22": 0.0528,
-    "htft_2X": 0.0333,
+    "htft_2X": 0.0332,
     "htft_X1": 0.2025,
     "htft_X2": 0.0396,
     "htft_XX": 0.086
@@ -52,6 +52,7 @@
     "band_p5": 0.6391,
     "band_p95": 0.8349,
     "cluster_members": [
+     "combodc_12_over_1.5",
      "hg_over_1.5",
      "combo_1_over_1.5"
     ],
@@ -59,7 +60,7 @@
     "key": "1x2_home",
     "label": "Vittoria casa",
     "p": 0.6826,
-    "p_raw": 0.7421,
+    "p_raw": 0.7422,
     "reference": 0.4605,
     "runners_up": [
      {
@@ -68,11 +69,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8812,
-      "p_raw": 0.8959,
-      "reference": 0.7101,
-      "score": 0.084251,
-      "shrink_alpha": 0.9207,
+      "p": 0.8813,
+      "p_raw": 0.896,
+      "reference": 0.7102,
+      "score": 0.084208,
+      "shrink_alpha": 0.9205,
       "sigma": 0.0349
      },
      {
@@ -81,25 +82,25 @@
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8742,
-      "p_raw": 0.8959,
-      "reference": 0.7101,
-      "score": 0.076767,
-      "shrink_alpha": 0.8832,
+      "p": 0.8743,
+      "p_raw": 0.896,
+      "reference": 0.7102,
+      "score": 0.076715,
+      "shrink_alpha": 0.883,
       "sigma": 0.0349
      },
      {
       "band_p5": 0.6829,
       "band_p95": 0.8531,
-      "family": "combo",
-      "key": "combo_1x_over_1.5",
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7192,
-      "p_raw": 0.7783,
+      "p": 0.7076,
+      "p_raw": 0.7784,
       "reference": 0.5393,
-      "score": 0.067999,
-      "shrink_alpha": 0.7527,
-      "sigma": 0.0518
+      "score": 0.059232,
+      "shrink_alpha": 0.7039,
+      "sigma": 0.0519
      },
      {
       "band_p5": 0.8747,
@@ -109,9 +110,9 @@
       "label": "Casa Over 0.5",
       "p": 0.9144,
       "p_raw": 0.9212,
-      "reference": 0.7998,
-      "score": 0.049658,
-      "shrink_alpha": 0.9438,
+      "reference": 0.7996,
+      "score": 0.049808,
+      "shrink_alpha": 0.9437,
       "sigma": 0.0256
      },
      {
@@ -123,20 +124,20 @@
       "p": 0.9665,
       "p_raw": 0.9681,
       "reference": 0.8903,
-      "score": 0.039567,
+      "score": 0.039647,
       "shrink_alpha": 0.9787,
-      "sigma": 0.0141
+      "sigma": 0.0142
      }
     ],
-    "score": 0.100326,
-    "shrink_alpha": 0.7889,
-    "sigma": 0.0615
+    "score": 0.100328,
+    "shrink_alpha": 0.7884,
+    "sigma": 0.0616
    },
    "raw_probabilities": {
-    "1x2_away": 0.1041,
-    "1x2_draw": 0.1539,
-    "1x2_home": 0.7421,
-    "btts_yes": 0.5252,
+    "1x2_away": 0.104,
+    "1x2_draw": 0.1538,
+    "1x2_home": 0.7422,
+    "btts_yes": 0.5251,
     "over_2.5": 0.6648,
     "under_2.5": 0.3352
    },
@@ -147,10 +148,11 @@
    ],
    "silence": null,
    "source": "model_only",
+   "stage": null,
    "utc_date": "2026-08-26T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-12T00:24:25Z",
+ "generated_at": "2026-08-12T01:14:36Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1

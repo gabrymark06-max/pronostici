@@ -50,6 +50,9 @@ def build_payload(
     payload: dict[str, Any] = {
         "match_id": match.match_id,
         "competition": match.competition,
+        # La fase del torneo, solo quando c'e': il frontend la mostra al posto
+        # del nome della competizione. Vedi `archive.Match.stage`.
+        "stage": match.stage,
         "utc_date": match.utc_date,
         "matchday": match.matchday,
         "home": {
@@ -152,6 +155,7 @@ def upsert_day(
             old_rank = PHASE_RANK.get(old.get("phase", ""), 0)
             if new_rank < old_rank:
                 continue  # mai retrocedere il definitivo a preliminare
+            entry = _conserva_campi_altrui(old, entry)
         merged[match_id] = entry
 
     fixtures = sorted(
@@ -177,6 +181,31 @@ def upsert_day(
     if existing and _same_content(existing, payload):
         return False
     return write_json(day_path(day), payload)
+
+
+# I campi che una partita porta ma che NON appartengono al job che la scrive.
+# `score` costruisce il payload dal solo modello e non sa niente di quote o di
+# risultati: senza questa lista, la sua scrittura notturna cancellava i prezzi
+# che `jobs.quote` aveva attaccato la mattina prima. Il guasto era invisibile
+# nella pipeline reale — `quote` gira alle 10:00 e li rimetteva — e si vedeva
+# solo eseguendo `score` a mano, cioe' esattamente quando qualcuno guarda.
+#
+# La regola generale: chi riscrive una partita conserva cio' che non e' suo.
+CAMPI_DI_ALTRI = ("odds", "result", "outcome")
+
+
+def _conserva_campi_altrui(vecchio: dict, nuovo: dict) -> dict:
+    """Riporta nel nuovo payload i campi che il chiamante non possiede.
+
+    Solo se il nuovo non li porta: chi li porta li sta aggiornando davvero, e
+    ha la precedenza.
+    """
+    mancanti = {
+        campo: vecchio[campo]
+        for campo in CAMPI_DI_ALTRI
+        if campo in vecchio and nuovo.get(campo) is None
+    }
+    return {**nuovo, **mancanti} if mancanti else nuovo
 
 
 def _same_content(a: dict, b: dict) -> bool:

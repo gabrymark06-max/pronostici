@@ -1492,3 +1492,57 @@
   border-block-start: 1px solid var(--edge);
   color: var(--ink-3);
 }
+
+/* --------------------------------------------------------------------------
+   L'AVVISO. Una sola forma in tutto il prodotto, per una sola cosa: un
+   pronostico su un mercato in cui non abbiamo dimostrato vantaggio. Usa
+   `--warn`, che non compare da nessun'altra parte, e porta sempre il glifo
+   INSIEME alla parola: il colore non veicola mai un significato da solo.
+   -------------------------------------------------------------------------- */
+.avviso {
+  display: flex;
+  align-items: start;
+  gap: var(--s-3);
+  margin-block: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-left: 3px solid var(--warn);
+  background: var(--surface-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+.avviso strong { color: var(--ink); }
+
+.avviso__marca {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 20px;
+  block-size: 20px;
+  border: 1.5px solid var(--warn);
+  color: var(--warn);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* In lista non c'e' spazio per una frase: resta il marchio del debito, e la
+   frase intera sta sulla scheda a un clic di distanza. */
+.avviso--riga {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  margin: 0;
+  padding: 1px var(--s-2);
+  border: 1px solid var(--warn);
+  border-left-width: 1px;
+  background: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--warn);
+  max-width: none;
+}

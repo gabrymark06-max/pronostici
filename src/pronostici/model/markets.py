@@ -1,4 +1,4 @@
-"""Gli undici mercati, tutti come maschere sulla stessa matrice.
+"""I mercati, tutti come maschere sulla stessa matrice.
 
 Un mercato qui e' un **evento binario** descritto da una maschera booleana
 sulla griglia (gol_casa, gol_ospite). Da questo discendono gratis due cose:
@@ -138,13 +138,35 @@ def catalog(max_goals: int) -> tuple[MarketDef, ...]:
             )
         )
 
-    # 8 - Combo esito + totale
-    for res_key, res_label, res_mask in (
+    # 8 - LE COMBO, in quattro famiglie separate.
+    #
+    # Prima erano una famiglia sola, e mescolava esiti secchi (1, 2) con doppie
+    # chance (1X, X2). Non e' un dettaglio di catalogazione: la famiglia e'
+    # l'unita' su cui si misura il `tau` dello shrinkage, e mettere insieme
+    # cose con variabilita' diversa fa stimare un tau che non descrive nessuna
+    # delle due. Separandole, ognuna prende la propria taratura dal backtest.
+    #
+    # Le linee restano 1.5 e 2.5. Aggiungere 3.5 avrebbe fatto crescere il
+    # catalogo di un altro terzo per coprire scommesse che quasi nessuno gioca,
+    # e OGNI candidato in piu' costa: vedi la nota sulla maledizione
+    # dell'ottimizzatore in fondo a questa sezione.
+    ESITI = (
         ("1", "1", margin > 0),
-        ("x2", "X2", margin <= 0),
+        ("x", "X", margin == 0),
         ("2", "2", margin < 0),
+    )
+    DOPPIE = (
         ("1x", "1X", margin >= 0),
-    ):
+        ("12", "12", margin != 0),
+        ("x2", "X2", margin <= 0),
+    )
+    GOL = (
+        ("gol", "Goal", both),
+        ("nogol", "NoGoal", ~both),
+    )
+
+    # 8a - Esito + totale
+    for res_key, res_label, res_mask in ESITI:
         for line in (1.5, 2.5):
             out += [
                 MarketDef(
@@ -154,6 +176,57 @@ def catalog(max_goals: int) -> tuple[MarketDef, ...]:
                 MarketDef(
                     f"combo_{res_key}_under_{line}", "combo",
                     f"{res_label} + Under {line}", res_mask & (total < line),
+                ),
+            ]
+
+    # 8b - Doppia chance + totale
+    for dc_key, dc_label, dc_mask in DOPPIE:
+        for line in (1.5, 2.5):
+            out += [
+                MarketDef(
+                    f"combodc_{dc_key}_over_{line}", "combo_dc",
+                    f"{dc_label} + Over {line}", dc_mask & (total > line),
+                ),
+                MarketDef(
+                    f"combodc_{dc_key}_under_{line}", "combo_dc",
+                    f"{dc_label} + Under {line}", dc_mask & (total < line),
+                ),
+            ]
+
+    # 8c - Esito + Goal/NoGoal
+    for res_key, res_label, res_mask in ESITI:
+        for gol_key, gol_label, gol_mask in GOL:
+            out.append(
+                MarketDef(
+                    f"combog_{res_key}_{gol_key}", "combo_gol",
+                    f"{res_label} + {gol_label}", res_mask & gol_mask,
+                )
+            )
+
+    # 8d - Doppia chance + Goal/NoGoal
+    for dc_key, dc_label, dc_mask in DOPPIE:
+        for gol_key, gol_label, gol_mask in GOL:
+            out.append(
+                MarketDef(
+                    f"combodcg_{dc_key}_{gol_key}", "combo_dc_gol",
+                    f"{dc_label} + {gol_label}", dc_mask & gol_mask,
+                )
+            )
+
+    # 8e - Goal/NoGoal + totale. E' la «combo gol/over» delle schedine, e come
+    #      le altre e' una CONGIUNZIONE: vince se si avverano entrambe le
+    #      condizioni. «Goal + Under 2.5» vale quindi esattamente 1-1, che e'
+    #      il motivo per cui e' una delle scommesse piu' giocate d'Italia.
+    for gol_key, gol_label, gol_mask in GOL:
+        for line in (1.5, 2.5):
+            out += [
+                MarketDef(
+                    f"combogo_{gol_key}_over_{line}", "combo_gol_ou",
+                    f"{gol_label} + Over {line}", gol_mask & (total > line),
+                ),
+                MarketDef(
+                    f"combogo_{gol_key}_under_{line}", "combo_gol_ou",
+                    f"{gol_label} + Under {line}", gol_mask & (total < line),
                 ),
             ]
 

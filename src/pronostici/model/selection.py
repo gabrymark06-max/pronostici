@@ -55,11 +55,20 @@ TAU_DEFAULT = 0.08
 # non porta informazione. La ricalibrazione logistica in-sample - un limite
 # superiore, quindi ottimistico - guadagna 0,0024 nats sul base rate.
 #
-# Il rimedio del protocollo 4.2 non e' abbassare il criterio: e' restringere lo
-# scope. Over/under resta calcolato, resta mostrato, resta confrontato con le
-# quote; semplicemente non puo' piu' essere il consiglio. Undici mercati di cui
-# ci fidiamo, non dodici di cui uno no.
-NON_SELECTABLE_FAMILIES = frozenset({"over_under"})
+# --- RIAMMESSA IL 12 AGOSTO 2026, SU RICHIESTA ESPLICITA ---------------------
+#
+# Il proprietario ha chiesto che over/under torni consigliabile, conoscendo
+# questo risultato. E' una sua decisione e va rispettata; ma la misura resta
+# quella, e allora il prodotto deve dirlo dove il pronostico compare. Il
+# frontend mostra un avviso dedicato su ogni pronostico di questa famiglia
+# (`components/AvvisoOverUnder.tsx`): senza quell'avviso il sito prometterebbe
+# una cosa che i suoi stessi numeri smentiscono, e la promessa del prodotto -
+# «ci facciamo misurare in pubblico» - varrebbe zero.
+#
+# L'insieme resta e resta usato: e' il parametro con cui il backtest riproduce
+# il braccio di confronto, e sara' il posto dove rimettere over/under se il
+# prossimo test storico confermasse il risultato negativo su piu' dati.
+NON_SELECTABLE_FAMILIES: frozenset[str] = frozenset()
 
 EPS = 1e-9
 

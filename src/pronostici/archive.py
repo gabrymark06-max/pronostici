@@ -50,6 +50,12 @@ class Match:
     venue: str | None
     referee: str | None
     first_seen: str
+    # La FASE del torneo, quando la competizione ne ha una: "FINAL",
+    # "SEMI_FINALS", "SUPER_CUP". Ha un default perche' le righe gia'
+    # archiviate non ce l'hanno, e `Match(**row)` deve continuare a costruirle.
+    # Serve a non chiamare «Champions League» una Supercoppa che entra sotto
+    # `CL` solo perche' e' li' che vivono i parametri delle due squadre.
+    stage: str | None = None
 
     @property
     def is_finished(self) -> bool:
@@ -107,6 +113,7 @@ def parse_match(payload: dict[str, Any], competition: str, season: int) -> Match
         venue=payload.get("venue"),
         referee=(referees[0].get("name") if referees else None),
         first_seen=datetime.now(UTC).strftime("%Y-%m-%d"),
+        stage=payload.get("stage"),
     )
 
 
@@ -122,17 +129,35 @@ def load_season(competition: str, season: int) -> list[Match]:
 
 
 def load_all(competition: str) -> list[Match]:
-    """Tutto lo storico archiviato di una competizione, ordinato per data."""
+    """Tutto lo storico di una competizione, ordinato per data.
+
+    Include le partite scritte a mano (`manuali.carica`), che coprono cio' che
+    la fonte gratuita non espone — oggi la sola Supercoppa UEFA. Il punto di
+    innesto e' qui e non nei singoli job perche' li' sarebbe quattro volte, e
+    la quarta volta prima o poi si dimentica: `score`, `quote`, `settle` e
+    `retrain` leggono tutti da questa funzione.
+
+    In caso di stesso `match_id` vince l'archivio: se un giorno la fonte
+    cominciasse a esporre una partita che avevamo inserito a mano, il dato
+    verificabile deve prendere il posto di quello battuto a tastiera senza che
+    nessuno debba accorgersene.
+    """
+    # Import locale: `manuali` importa `Match` da qui, e a livello di modulo
+    # sarebbe un ciclo.
+    from .manuali import carica as carica_manuali
+
+    matches: dict[int, Match] = {m.match_id: m for m in carica_manuali(competition)}
+
     directory = ARCHIVE_DIR / competition
-    if not directory.exists():
-        return []
-    matches: list[Match] = []
-    for file in sorted(directory.glob("*.json")):
-        payload = read_json(file, default=None)
-        if payload:
-            matches.extend(Match(**row) for row in payload["matches"])
-    matches.sort(key=lambda m: (m.utc_date, m.match_id))
-    return matches
+    if directory.exists():
+        for file in sorted(directory.glob("*.json")):
+            payload = read_json(file, default=None)
+            if payload:
+                for row in payload["matches"]:
+                    m = Match(**row)
+                    matches[m.match_id] = m
+
+    return sorted(matches.values(), key=lambda m: (m.utc_date, m.match_id))
 
 
 def merge_season(competition: str, season: int, incoming: Iterable[Match]) -> dict:

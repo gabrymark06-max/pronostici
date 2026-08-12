@@ -96,6 +96,44 @@ class TestUpsertDay:
         assert payload["total"] == 2
         assert {f["match_id"] for f in payload["fixtures"]} == {1, 2}
 
+    def test_lo_score_non_cancella_le_quote(self, data_dir):
+        """Il guasto del 12 agosto 2026, in una riga.
+
+        `jobs.quote` attacca i prezzi di mercato; `jobs.score` ricostruisce il
+        payload dal solo modello e non sa niente di quote. Senza la
+        conservazione dei campi altrui, la scrittura di `score` cancellava
+        sessanta partite di prezzi. Nella pipeline reale era invisibile —
+        `quote` gira sette ore dopo e li rimetteva — e si vedeva solo eseguendo
+        `score` a mano, cioe' esattamente quando qualcuno sta guardando.
+        """
+        quote = {"prices": {"1x2_home": 2.1}}
+        con_quote = {**entry(1, "preliminary", "Over 1.5"), "odds": quote}
+        fx.upsert_day(DAY, [con_quote], generated_at=NOW)
+
+        # `score` riscrive la stessa partita, senza `odds` nel payload.
+        fx.upsert_day(DAY, [entry(1, "preliminary", "1X")], generated_at=NOW)
+
+        fixture = fx.load_day(DAY)["fixtures"][0]
+        assert fixture["prediction"]["label"] == "1X", "il pronostico nuovo deve vincere"
+        assert fixture["odds"] == {"prices": {"1x2_home": 2.1}}, "le quote devono restare"
+
+    def test_chi_porta_le_quote_le_aggiorna(self, data_dir):
+        """La conservazione vale solo per chi NON possiede il campo: se il
+        payload nuovo porta `odds`, quello nuovo vince."""
+        prima = {"prices": {"1x2_home": 2.1}}
+        dopo = {"prices": {"1x2_home": 2.4}}
+        fx.upsert_day(
+            DAY,
+            [{**entry(1, "preliminary", "Over 1.5"), "odds": prima}],
+            generated_at=NOW,
+        )
+        fx.upsert_day(
+            DAY,
+            [{**entry(1, "preliminary", "Over 1.5"), "odds": dopo}],
+            generated_at=NOW,
+        )
+        assert fx.load_day(DAY)["fixtures"][0]["odds"]["prices"]["1x2_home"] == 2.4
+
     def test_ordinate_per_orario(self, data_dir):
         fx.upsert_day(
             DAY,

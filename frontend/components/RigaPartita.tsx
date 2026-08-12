@@ -4,6 +4,7 @@ import { formattaQuota, posizioneTacca, quoteDelPronostico } from '@/lib/quote';
 import { TAG_LISTA, vesteSilenzio } from '@/lib/testi';
 import { tace, type Fixture } from '@/lib/tipi';
 
+import { AvvisoOverUnder } from './AvvisoOverUnder';
 import { Crest } from './Crest';
 import { Misurino } from './Misurino';
 
@@ -100,6 +101,11 @@ export function RigaPartita({
               {/* Mai troncare il nome del mercato: è il contenuto. */}
               <span className="mercato__nome">{fixture.prediction.label}</span>
               {tag ? <span className="tag">{tag}</span> : null}
+              {/* Il debito di over/under si paga ACCANTO al pronostico, in
+                  lista come sulla scheda. Vedi AvvisoOverUnder. */}
+              {fixture.prediction.family === 'over_under' ? (
+                <AvvisoOverUnder compatto />
+              ) : null}
             </span>
 
             {/* A partita conclusa l'esito prende il posto del dato di fascia:

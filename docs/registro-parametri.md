@@ -11,7 +11,150 @@ Questo file è quella data. Ogni voce dice **cosa** è cambiato, **quando**, e
 
 ---
 
-## 2026-08-12 — l'handicap asiatico esce dal catalogo
+## 2026-08-12 (5) — `score` cancellava le quote
+
+**Cosa cambia:** `fixtures.upsert_day` conserva i campi che il chiamante non
+possiede (`odds`, `result`, `outcome`) quando il nuovo payload non li porta.
+
+**Il guasto:** `jobs.quote` attacca i prezzi di mercato; `jobs.score`
+ricostruisce il payload dal solo modello e non sa niente di quote. La sua
+scrittura cancellava sessanta partite di prezzi. Nella pipeline reale era
+**invisibile** — `score` gira alle 03:00 e `quote` alle 10:00, quindi i prezzi
+tornavano — e si vedeva solo eseguendo `score` a mano, cioè esattamente quando
+qualcuno sta guardando il sito.
+
+**Presidio:** due test in `tests/test_fixtures.py`, uno che verifica che le
+quote sopravvivano a un riscoring e uno che verifica che chi le porta le
+aggiorni davvero.
+
+---
+
+## 2026-08-12 (4) — la Supercoppa UEFA entra a mano
+
+**Cosa cambia:** esiste `data/manuali/<COMP>.json`, letto da
+`archive.load_all`, per le partite che la fonte gratuita non espone. Dentro
+c'è una sola partita: PSG–Aston Villa del 12 agosto 2026.
+
+**Perché una concessione del genere.** football-data gratuito dà tredici
+competizioni e la Supercoppa non c'è: la chiave, interrogata, il 13 agosto vede
+due partite in tutto il mondo, entrambe di Copa Libertadores. Ma la Supercoppa è
+l'unico caso in cui manca solo il CALENDARIO: si gioca fra la vincitrice di
+Champions e quella di Europa League, e di entrambe abbiamo lo storico europeo
+(PSG 34 partite di Champions in archivio, Aston Villa 12). Il modello sa
+valutarle; gli mancava di sapere che si incontrano.
+
+**Le qualificazioni alle coppe NON si risolvono così**, ed è stato detto
+all'utente: mettono in campo club di una cinquantina di campionati di cui non
+abbiamo una riga. Il calendario da solo non basta quando mancano i dati.
+
+**Le tre regole** che rendono accettabile una riga scritta a mano stanno in
+`src/pronostici/manuali.py`: fonte obbligatoria (senza, la riga viene scartata),
+stessa competizione dei parametri che la valutano (la Supercoppa entra come
+`CL`, perché è lì che le due squadre convivono in un unico fit), risultato
+scritto solo dopo che è successo.
+
+**Pronostico prodotto:** Handicap +2 casa, 89 su 100, banda 80–98.
+
+**Effetto collaterale:** `Match` guadagna il campo `stage`, così una Supercoppa
+archiviata sotto `CL` non si presenta al lettore come «Champions League». Il
+campo ha un default, quindi le righe già archiviate continuano a caricarsi.
+
+---
+
+## 2026-08-12 (3) — quattro famiglie di combo, over/under riammesso
+
+**Cosa cambia**, tutto su richiesta esplicita del proprietario:
+
+1. **Quattro famiglie di combo nuove.** Le combo erano una famiglia sola e
+   mescolava esiti secchi (1, 2) con doppie chance (1X, X2). Ora sono separate:
+   `combo` (esito + Over/Under), `combo_dc` (doppia chance + Over/Under),
+   `combo_gol` (esito + Goal/NoGoal), `combo_dc_gol` (doppia chance +
+   Goal/NoGoal), `combo_gol_ou` (Goal/NoGoal + Over/Under). Non è pignoleria di
+   catalogazione: la famiglia è l'unità su cui si misura il `τ` dello
+   shrinkage, e mettere insieme cose con variabilità diversa fa stimare un `τ`
+   che non descrive nessuna delle due.
+
+2. **Over/Under torna consigliabile.** `NON_SELECTABLE_FAMILIES` è ora vuoto.
+
+3. Il catalogo passa da 86 a **114 mercati** per partita.
+
+**Perché over/under, contro la misura.** Il backtest del 2026-08-11 aveva
+misurato che sui gol totali il modello non batte la frequenza storica del
+campionato (log loss 0,69919 contro 0,68856 su 5.018 partite, sette
+configurazioni). Il proprietario ha chiesto di riammetterlo conoscendo questo
+risultato: è la sua decisione. Il debito si paga in pagina, non in una nota:
+`components/AvvisoOverUnder.tsx` compare accanto a **ogni** pronostico di
+quella famiglia, in lista e sulla scheda, e dice che su quel mercato non
+abbiamo dimostrato un vantaggio. Senza quell'avviso il sito prometterebbe una
+cosa che i suoi stessi numeri smentiscono.
+
+**Effetto misurato.** Su 192 pronostici rigenerati: gol di squadra 82, doppia
+chance 43, 1X2 35, handicap 20, Goal/NoGoal 11, combo doppia chance 1,
+over/under **zero**. Cioè: riammesso, over/under non vince mai comunque — non
+ha abbastanza scarto direzionale dal riferimento per superare il proprio
+gruppo. La richiesta è stata eseguita e il risultato pratico è nullo, che è
+esattamente ciò che la misura prevedeva.
+
+**Silenzio:** 27 %, dentro la banda 15–30 % del protocollo.
+
+**Costo del catalogo più grande.** Ogni candidato in più aumenta la
+probabilità che il vincitore sia un caso fortunato (maledizione
+dell'ottimizzatore). Le difese esistono già — raggruppamento per correlazione
+esatta, punteggio direzionale, shrinkage — ma la misura la dà il backtest, che
+è stato rifatto con il catalogo nuovo.
+
+**Righe precedenti:** 295, di cui 33 su partite già cominciate — non toccate.
+Le 262 rimosse erano tutte preliminari su partite non ancora giocate, nessuna
+giudicata. Strumento: `scripts/riallinea_registro.py`, che ha sostituito lo
+script monouso del mattino perché la situazione si ripete a ogni cambio di
+catalogo.
+
+**Attenzione operativa scoperta qui:** i `base_rates` sono calcolati DAL
+catalogo. Senza `retrain --force` i mercati nuovi non hanno un riferimento e
+`build_candidates` li scarta in silenzio — `n_candidates` restava a 78 su 114 e
+nessuna combo compariva da nessuna parte. Ora è scritto nel docstring dello
+script di riallineamento.
+
+---
+
+## 2026-08-12 (2) — i prezzi di mercato si attaccano fuori da `finalize`
+
+**Cosa cambia:** un job nuovo, `jobs/quote`, attacca le quote alle partite dei
+prossimi quattordici giorni senza toccare pronostico, fase o registro. Il
+campo `odds` guadagna `prices` (i prezzi lordi) e `market_p` (le probabilità
+sgonfiate, estese a tutti i mercati che le quote determinano in modo esatto).
+
+**Perché:** la colonna «mercato» del sito era vuota su **205 pronostici su
+205**, per tre cause sovrapposte. Le quote si prendevano solo dentro la
+finestra di `finalize` (10 partite su 283); la fonte gratuita quota 1X2 e
+Over/Under mentre il pronostico scelto era sempre un altro mercato; e le
+probabilità sgonfiate non venivano nemmeno salvate.
+
+**Perché un job separato e non una finestra più larga.** `finalize` prende una
+decisione irripetibile e va eseguito il più tardi possibile, quando le quote
+sono più informative. Allargarne la finestra avrebbe riempito la colonna
+peggiorando la decisione. Un prezzo è informazione e si riscrive ogni giorno;
+una decisione si prende una volta sola.
+
+**Effetto misurato:** da 0 a 21 pronostici su 205 con un confronto di mercato,
+e da 10 a 60 partite con un prezzo. Il resto sono gol di squadra ed entrambe
+segnano, che nessuna quota gratuita determina — e non si derivano per
+somiglianza.
+
+**Costo:** venti crediti al giorno con dieci campionati attivi, contro i 500
+mensili del piano gratuito. Sopra il tetto entra in funzione la scala di
+degradazione già esistente: prima escono i campionati minori, poi il mercato
+dei totali.
+
+**Effetto collaterale corretto:** `--dry-run` faceva chiamate di rete vere
+senza poi salvare il contatore. Il contatore locale divergeva da quello del
+fornitore, e la divergenza metteva in pausa il job — cioè un dry run poteva
+spegnere le quote in produzione. Ora il contatore si salva sempre, e
+`--reconcile` riallinea e toglie la pausa quando serve.
+
+---
+
+## 2026-08-12 (1) — l'handicap asiatico esce dal catalogo
 
 **Cosa cambia:** la famiglia `handicap_asian` non viene più calcolata. Non è
 solo esclusa dalla selezione come over/under: è proprio fuori dal catalogo dei
@@ -54,43 +197,6 @@ questo prodotto rimprovera agli altri.
 4127 pronostici) era stato misurato con l'handicap asiatico nel catalogo, e
 togliendo una famiglia cambia quale mercato viene scelto anche su partite il
 cui pronostico era già un altro.
-
----
-
-## 2026-08-12 — i prezzi di mercato si attaccano fuori da `finalize`
-
-**Cosa cambia:** un job nuovo, `jobs/quote`, attacca le quote alle partite dei
-prossimi quattordici giorni senza toccare pronostico, fase o registro. Il
-campo `odds` guadagna `prices` (i prezzi lordi) e `market_p` (le probabilità
-sgonfiate, estese a tutti i mercati che le quote determinano in modo esatto).
-
-**Perché:** la colonna «mercato» del sito era vuota su **205 pronostici su
-205**, per tre cause sovrapposte. Le quote si prendevano solo dentro la
-finestra di `finalize` (10 partite su 283); la fonte gratuita quota 1X2 e
-Over/Under mentre il pronostico scelto era sempre un altro mercato; e le
-probabilità sgonfiate non venivano nemmeno salvate.
-
-**Perché un job separato e non una finestra più larga.** `finalize` prende una
-decisione irripetibile e va eseguito il più tardi possibile, quando le quote
-sono più informative. Allargarne la finestra avrebbe riempito la colonna
-peggiorando la decisione. Un prezzo è informazione e si riscrive ogni giorno;
-una decisione si prende una volta sola.
-
-**Effetto misurato:** da 0 a 21 pronostici su 205 con un confronto di mercato,
-e da 10 a 60 partite con un prezzo. Il resto sono gol di squadra ed entrambe
-segnano, che nessuna quota gratuita determina — e non si derivano per
-somiglianza.
-
-**Costo:** venti crediti al giorno con dieci campionati attivi, contro i 500
-mensili del piano gratuito. Sopra il tetto entra in funzione la scala di
-degradazione già esistente: prima escono i campionati minori, poi il mercato
-dei totali.
-
-**Effetto collaterale corretto:** `--dry-run` faceva chiamate di rete vere
-senza poi salvare il contatore. Il contatore locale divergeva da quello del
-fornitore, e la divergenza metteva in pausa il job — cioè un dry run poteva
-spegnere le quote in produzione. Ora il contatore si salva sempre, e
-`--reconcile` riallinea e toglie la pausa quando serve.
 
 ---
 

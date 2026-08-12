@@ -23,6 +23,9 @@ LEAGUES_DIR = DATA / "leagues"
 FIXTURES_DIR = DATA / "fixtures"
 LEDGER_DIR = DATA / "ledger"
 CACHE_DIR = DATA / "cache"  # in .gitignore: risposte grezze, non e' il ledger
+# Partite scritte a mano, per cio' che la fonte gratuita non espone. Versionate
+# nel repo come tutto il resto: vedi `manuali.py` per le regole.
+MANUALI_DIR = DATA / "manuali"
 TEST_FIXTURES_DIR = ROOT / "tests" / "fixtures"
 
 
