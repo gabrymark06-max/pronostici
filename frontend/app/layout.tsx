@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Archivo, DM_Mono, Instrument_Sans } from 'next/font/google';
 import Script from 'next/script';
 
+import { Piede } from '@/components/Piede';
 import { Testata } from '@/components/Testata';
 import { giornoDiApertura } from '@/lib/dati';
 import { MARCHIO, PAYOFF } from '@/lib/testi';
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Testata giornoApertura={apertura} />
         <main id="contenuto">{children}</main>
+        <Piede />
       </body>
     </html>
   );

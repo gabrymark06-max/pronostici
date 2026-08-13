@@ -1,32 +1,40 @@
 import type { Metadata } from 'next';
 
+import { CorpoSchedine } from '@/components/CorpoSchedine';
 import { giornoDiApertura } from '@/lib/dati';
-import { dataLunga } from '@/lib/formato';
 import { MARCHIO } from '@/lib/testi';
 
 /**
- * `/pronostico-del-giorno/` rimanda al giorno piu' recente disponibile.
+ * `/pronostico-del-giorno/` MOSTRA le schedine del giorno piu' recente.
  *
- * Stessa meccanica di `/`: in export statico non esiste un redirect di server,
- * quindi si usa il refresh nel <head> — che funziona senza JavaScript — piu' un
- * link visibile come ripiego. Il canonical punta al giorno, cosi' la pagina
- * datata resta l'unica indicizzata e non si crea contenuto duplicato.
+ * Non e' un rimando. La versione precedente lo era — refresh nel <head> piu' un
+ * link visibile — ed era sbagliata proprio perche' questa e' la prima voce
+ * della barra: chi ci clicca deve trovare i pronostici, non una pagina bianca
+ * con sopra scritto dove sono. Un rimando va bene sulla radice, dove nessuno
+ * arriva per leggere; qui no.
  *
- * La barra di navigazione punta QUI e non al giorno: l'indirizzo senza data e'
- * quello che si condivide e che si mette nei preferiti, e deve continuare a
- * voler dire «oggi» anche fra un mese.
+ * Il canonical punta comunque alla pagina DATATA: il contenuto e' lo stesso, e
+ * l'indirizzo con la data e' quello che continuera' a valere anche domani.
+ * Questo indirizzo senza data resta quello da condividere e da mettere nei
+ * preferiti, perche' deve voler dire «oggi» anche fra un mese.
  */
 export function generateMetadata(): Metadata {
   const giorno = giornoDiApertura();
-  if (!giorno) return { title: `Pronostico del giorno — ${MARCHIO}` };
+  const titolo = 'Pronostico del giorno';
+  const descrizione =
+    'Due schedine costruite sui pronostici di oggi: un raddoppio a due partite e una ' +
+    'multipla che arriva a 5,00 con il minor numero di partite possibile. Con scritto ' +
+    'quante volte su cento escono tutte intere.';
+
   return {
-    title: 'Pronostico del giorno',
-    alternates: { canonical: `/pronostico-del-giorno/${giorno}/` },
-    other: { refresh: `0; url=/pronostico-del-giorno/${giorno}/` },
+    title: titolo,
+    description: descrizione,
+    ...(giorno ? { alternates: { canonical: `/pronostico-del-giorno/${giorno}/` } } : {}),
+    openGraph: { title: titolo, description: descrizione, type: 'website', siteName: MARCHIO },
   };
 }
 
-export default function RimandoSchedine() {
+export default function PronosticoDelGiorno() {
   const giorno = giornoDiApertura();
 
   if (!giorno) {
@@ -40,15 +48,5 @@ export default function RimandoSchedine() {
     );
   }
 
-  return (
-    <div className="colonna colonna--lista">
-      <div className="giorno-vuoto">
-        <p>
-          <a href={`/pronostico-del-giorno/${giorno}/`}>
-            Vai al pronostico di {dataLunga(giorno)} →
-          </a>
-        </p>
-      </div>
-    </div>
-  );
+  return <CorpoSchedine data={giorno} />;
 }

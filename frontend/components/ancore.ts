@@ -11,17 +11,10 @@ export function ancoraCampionato(codice: string): string {
   return `campionato-${codice.toLowerCase()}`;
 }
 
-/** Il blocco in fondo che spiega il punteggio, il silenzio e la quota equa. */
-export const ANCORA_FUNZIONAMENTO = 'come-funziona';
-
-/**
- * Il blocco in fondo con quanti pronostici sono usciti.
- *
- * Si chiama «registro» e non «rendimento» per una ragione di prodotto, non di
- * gusto: `rendimento` e' nella lista delle parole vietate del guardiano
- * (scripts/check-parole-vietate.mjs) insieme a ROI, profitto e puntata. Sono
- * tutte parole che promettono un guadagno, e questo sito non ne promette
- * nessuno. «Registro» dice cosa c'e' davvero: un elenco di cose scritte prima
- * e non modificate dopo.
- */
-export const ANCORA_REGISTRO = 'registro';
+/* LE ANCORE DEL PIEDE NON ESISTONO PIU'.
+   «Come funziona» e il registro erano due sezioni in fondo alla lista,
+   raggiunte da due `href="#..."`. Adesso sono due pagine con un indirizzo
+   proprio — /come-funziona/ e /progressi/ — e una costante che tenesse in vita
+   il vecchio salto sarebbe solo un modo di non accorgersi che nessuno la usa
+   piu'. Restano le ancore che descrivono qualcosa che sta davvero DENTRO una
+   pagina, come quella di campionato qui sopra. */

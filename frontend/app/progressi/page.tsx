@@ -1,40 +1,47 @@
 import type { Metadata } from 'next';
 
+import {
+  GraficoCalibrazione,
+  GraficoCampionati,
+  GraficoCurva,
+  type BarraCampionato,
+  type PuntoCalibrazione,
+} from '@/components/grafici';
 import { leggiAccuracy, leggiBacktest } from '@/lib/dati';
 import { intero, suCento } from '@/lib/formato';
-import { etichettaFascia, FASCE, MARCHIO, NOMI_COMPETIZIONE, REPO } from '@/lib/testi';
+import { etichettaFascia, FASCE, MARCHIO, NOMI_COMPETIZIONE } from '@/lib/testi';
 
 /**
  * I PROGRESSI — la pagina che un sito di pronostici di solito non ha.
  *
- * Fino a ieri questi numeri stavano in fondo alla lista, dietro un'ancora. Li
- * portiamo su una pagina propria per una ragione che non e' di navigazione:
- * una cosa raggiungibile solo scorrendo fino in fondo e' una cosa che stai
- * nascondendo, e questi sono i numeri su cui il prodotto chiede di essere
- * giudicato. Se stanno in fondo, sembra che ce li abbiano strappati.
+ * LA REGOLA CHE GOVERNA TUTTO: `accuracy.json` (il registro dal vivo) e
+ * `backtest.json` (la prova storica) NON SI MESCOLANO MAI. Non entrano nella
+ * stessa frase, non si sommano, non si mediano, e non finiscono nello stesso
+ * grafico. Sono blocchi separati, ognuno con il proprio `n` scritto accanto.
  *
- * LA REGOLA CHE GOVERNA TUTTA LA PAGINA: `accuracy.json` (il registro dal
- * vivo) e `backtest.json` (la prova storica) NON SI MESCOLANO MAI. Non entrano
- * nella stessa frase, non si sommano, non si mediano. Sono due sezioni, ognuna
- * con il proprio `n` scritto accanto.
+ * IL NUMERO GRANDE E' QUELLO STORICO, e non e' modestia: dal vivo abbiamo poche
+ * decine di pronostici conclusi, e a quel campione un tasso oscilla di venti
+ * punti per puro caso. Metterlo grande sarebbe fare quello che fanno i siti che
+ * scrivono «oltre il 75 per cento» senza dire su quante partite — e questa
+ * pagina esiste per essere il contrario di quelli.
  *
- * IL NUMERO GRANDE E' QUELLO STORICO, e non e' modestia. Dal vivo abbiamo poche
- * decine di pronostici conclusi: a quel campione un tasso oscilla di venti
- * punti per puro caso. Metterlo grande sarebbe fare esattamente quello che
- * fanno i siti che scrivono «oltre il 75 per cento» senza dire su quante
- * partite — e questa pagina esiste per essere il contrario di quelli.
+ * L'IMPAGINAZIONE E' A GRIGLIA, larga quanto la pagina. La versione precedente
+ * incolonnava tutto in una striscia stretta a sinistra e lasciava due terzi
+ * dello schermo vuoti: su una pagina fatta di confronti — dichiarato contro
+ * uscito, campionato contro campionato — quello che si vuole e' avere i pezzi
+ * ACCANTO, non uno sotto l'altro a mille pixel di distanza.
  */
 export const metadata: Metadata = {
   title: 'Progressi — quanti ne abbiamo presi',
   description:
-    'Il registro completo: la prova storica su migliaia di pronostici, il conteggio dal vivo ' +
-    'da quando il sito pubblica, e come si distribuisce per fascia di probabilità e per ' +
-    'campionato. Ogni pronostico è scritto prima della partita e non si modifica dopo.',
+    'Il registro completo: la prova storica su migliaia di pronostici, quanto la nostra ' +
+    'probabilità dichiarata somiglia a quella che si è avverata, il conto campionato per ' +
+    'campionato, e il conteggio dal vivo da quando il sito pubblica.',
   alternates: { canonical: '/progressi/' },
   openGraph: {
     title: 'Progressi — quanti ne abbiamo presi',
     description:
-      'La prova storica, il registro dal vivo, e la distribuzione per fascia e per campionato.',
+      'La prova storica, la calibrazione, il conto per campionato e il registro dal vivo.',
     type: 'website',
     siteName: MARCHIO,
   },
@@ -57,31 +64,62 @@ export default function PaginaProgressi() {
       0) * 100,
   );
 
-  const campionati = Object.entries(backtest.per_competition)
+  const calibrazione: PuntoCalibrazione[] = FASCE.map((chiave) => {
+    const f = backtest.buckets[chiave];
+    if (!f || typeof f.hit_rate !== 'number' || typeof f.mean_p !== 'number') return null;
+    return {
+      etichetta: etichettaFascia(chiave),
+      dichiarato: f.mean_p,
+      uscito: f.hit_rate,
+      n: f.n,
+    };
+  }).filter((p): p is PuntoCalibrazione => p !== null);
+
+  const campionati: BarraCampionato[] = Object.entries(backtest.per_competition)
     .filter(([, v]) => v.with_prediction > 0)
-    .sort((a, b) => b[1].with_prediction - a[1].with_prediction);
+    .sort((a, b) => b[1].with_prediction - a[1].with_prediction)
+    .map(([codice, v]) => ({
+      nome: NOMI_COMPETIZIONE[codice] ?? codice,
+      uscito: v.hit_rate,
+      n: v.with_prediction,
+    }));
+
+  const curva = backtest.silence.curve.map((p) => ({ x: p.s_min, y: p.silence_rate }));
+
+  /* Lo scarto medio fra dichiarato e uscito, in punti su cento. E' il numero
+     che riassume il grafico della calibrazione in una cifra sola, ed e' quello
+     che va guardato PRIMA del tasso: un modello tarato male non diventa buono
+     perche' prende tanto. */
+  const scarto =
+    calibrazione.length > 0
+      ? Math.round(
+          (calibrazione.reduce((acc, p) => acc + Math.abs(p.uscito - p.dichiarato) * p.n, 0) /
+            calibrazione.reduce((acc, p) => acc + p.n, 0)) *
+            100,
+        )
+      : null;
 
   return (
-    <div className="colonna colonna--lista progressi">
+    <div className="colonna colonna--pagina progressi">
       <header className="progressi__testata">
         <h1 className="titolo-sezione">Quanti ne abbiamo presi</h1>
         <p className="progressi__lettura">
           Ogni pronostico è scritto prima della partita, con la data, e non si modifica dopo.
-          Questa pagina è il conto di come è andata. Nessun numero qui dentro è una media di
-          due cose diverse: la prova storica e il conteggio dal vivo restano separati, ognuno
-          con scritto su quante partite è calcolato.
+          Questa pagina è il conto di come è andata. Nessun numero qui dentro è una media di due
+          cose diverse: la prova storica e il conteggio dal vivo restano separati, ognuno con
+          scritto su quante partite è calcolato.
         </p>
       </header>
 
       {/* ---------------------------------------------------------------- */}
-      {/* LA PROVA STORICA                                                  */}
+      {/* PRIMA FILA: il numero grande, la calibrazione, il silenzio        */}
       {/* ---------------------------------------------------------------- */}
-      <section className="progressi__blocco">
-        <h2 className="label">
-          <span className="bersaglio" aria-hidden="true" /> La prova storica
-        </h2>
+      <h2 className="label progressi__occhiello">
+        <span className="bersaglio" aria-hidden="true" /> La prova storica
+      </h2>
 
-        <div className="registro__perno">
+      <div className="griglia-progressi">
+        <section className="carta carta--perno">
           <p className="cifra">{suCento(backtest.skill.hit_rate)}</p>
           <p className="registro__unita">su 100 pronostici usciti</p>
           <p className="registro__fonte">
@@ -90,21 +128,28 @@ export default function PaginaProgressi() {
             {backtest.window.to.split('-').reverse().join('/')}. Il modello non ha mai visto il
             risultato prima di scrivere il pronostico.
           </p>
-        </div>
+        </section>
 
-        <div className="scorrevole">
-          <table className="tabella tabella--progressi">
+        <section className="carta">
+          <h3 className="carta__titolo">Quanto ci somigliamo</h3>
+          <p className="carta__occhiello">
+            In orizzontale quello che avevamo detto, in verticale quello che è successo. La
+            diagonale è la perfezione. <strong>Sopra è un errore quanto sotto:</strong> la
+            bravura non è stare in alto, è stare sulla riga.
+          </p>
+          <GraficoCalibrazione punti={calibrazione} />
+          <table className="tabella tabella--minuta">
             <caption className="solo-lettori">
-              Pronostici usciti per fascia di probabilità, prova storica
+              Dichiarato, uscito e casi per ogni fascia di probabilità
             </caption>
             <thead>
               <tr>
                 <th scope="col">Fascia</th>
                 <th scope="col" className="num">
-                  Dichiarato
+                  Detto
                 </th>
                 <th scope="col" className="num">
-                  Usciti
+                  Fatto
                 </th>
                 <th scope="col" className="num">
                   Casi
@@ -112,159 +157,123 @@ export default function PaginaProgressi() {
               </tr>
             </thead>
             <tbody>
-              {FASCE.map((chiave) => {
-                const f = backtest.buckets[chiave];
-                if (!f || typeof f.hit_rate !== 'number') return null;
-                return (
-                  <tr key={chiave}>
-                    <th scope="row">{etichettaFascia(chiave)}</th>
-                    <td className="num" data-etichetta="Dichiarato">
-                      {suCento(f.mean_p ?? 0)}
-                    </td>
-                    <td className="num registro__uscite" data-etichetta="Usciti">
-                      {suCento(f.hit_rate)}
-                    </td>
-                    <td className="num" data-etichetta="Casi">
-                      {intero(f.n)}
-                    </td>
-                  </tr>
-                );
-              })}
+              {calibrazione.map((p) => (
+                <tr key={p.etichetta}>
+                  <th scope="row">{p.etichetta}</th>
+                  <td className="num" data-etichetta="Detto">
+                    {suCento(p.dichiarato)}
+                  </td>
+                  <td className="num registro__uscite" data-etichetta="Fatto">
+                    {suCento(p.uscito)}
+                  </td>
+                  <td className="num" data-etichetta="Casi">
+                    {intero(p.n)}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
-        </div>
-        <p className="progressi__nota">
-          «Dichiarato» è quello che avevamo detto, «usciti» quello che è successo. Le due
-          colonne devono <strong>somigliarsi</strong>: è questo che rende il numero
-          verificabile, non quanto è alto. Un modello che dichiara 80 e ne prende 95 non è
-          bravo, è tarato male — e lo sarebbe anche al contrario.
-        </p>
-      </section>
+          {scarto !== null ? (
+            <p className="carta__nota">
+              Scarto medio fra detto e fatto:{' '}
+              <strong>
+                {scarto} {scarto === 1 ? 'punto' : 'punti'} su 100
+              </strong>
+              . È il numero da guardare per primo — prima del tasso.
+            </p>
+          ) : null}
+        </section>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* PER CAMPIONATO                                                    */}
-      {/* ---------------------------------------------------------------- */}
-      {campionati.length > 0 ? (
-        <section className="progressi__blocco">
-          <h2 className="label">
-            <span className="bersaglio" aria-hidden="true" /> Campionato per campionato
-          </h2>
-          <p className="progressi__lettura">
-            Lo stesso modello non funziona uguale ovunque. Dove il campione è piccolo il tasso
-            balla, e la colonna dei casi serve a saperlo prima di leggere quella accanto.
+        <section className="carta">
+          <h3 className="carta__titolo">Quanto stiamo zitti</h3>
+          <p className="carta__occhiello">
+            Su circa {silenzioSuCento} partite su 100 non diciamo niente. Non è un numero
+            scelto per fare scena: è il punto in cui questa curva è stata tagliata, e la curva
+            è tutta qui.
           </p>
-          <div className="scorrevole">
-            <table className="tabella tabella--progressi">
-              <caption className="solo-lettori">
-                Pronostici usciti per campionato, prova storica
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Campionato</th>
-                  <th scope="col" className="num">
-                    Usciti
-                  </th>
-                  <th scope="col" className="num">
-                    Casi
-                  </th>
-                  <th scope="col" className="num">
-                    In silenzio
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {campionati.map(([codice, v]) => (
-                  <tr key={codice}>
-                    <th scope="row">{NOMI_COMPETIZIONE[codice] ?? codice}</th>
-                    <td className="num registro__uscite" data-etichetta="Usciti">
-                      {suCento(v.hit_rate)}
-                    </td>
-                    <td className="num" data-etichetta="Casi">
-                      {intero(v.with_prediction)}
-                    </td>
-                    <td className="num" data-etichetta="In silenzio">
-                      {suCento(v.silence_rate)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="progressi__nota">
-            «In silenzio» è quante volte su cento non abbiamo detto niente su quel campionato.
-            Sul totale è {silenzioSuCento} su 100: circa una partita su{' '}
-            {Math.max(2, Math.round(100 / Math.max(1, silenzioSuCento)))}.
+          <GraficoCurva
+            punti={curva}
+            scelto={backtest.silence.chosen_s_min}
+            etichettaX="soglia →"
+          />
+          <p className="carta__nota">
+            Più a destra si taglia, più si tace. Il taglio segnato è quello in uso: sotto
+            quella soglia il nostro modello dice quasi la stessa cosa del mercato, e un
+            pronostico senza niente da aggiungere è rumore.
           </p>
         </section>
-      ) : null}
+      </div>
 
       {/* ---------------------------------------------------------------- */}
-      {/* DAL VIVO                                                          */}
+      {/* SECONDA FILA: campionati e dal vivo, affiancati                   */}
       {/* ---------------------------------------------------------------- */}
-      <section className="progressi__blocco progressi__blocco--vivo">
-        <h2 className="label">
-          <span className="bersaglio" aria-hidden="true" /> Dal vivo, da quando il sito pubblica
-        </h2>
+      <div className="griglia-progressi griglia-progressi--due">
+        {campionati.length > 0 ? (
+          <section className="carta">
+            <h3 className="carta__titolo">Campionato per campionato</h3>
+            <p className="carta__occhiello">
+              Lo stesso modello non funziona uguale ovunque. La barra è quanti ne abbiamo
+              presi; il filo sottile sotto è quanto pesa quel campionato rispetto al più
+              popolato. Dove il filo è corto, il numero sopra balla.
+            </p>
+            <GraficoCampionati barre={campionati} />
+          </section>
+        ) : null}
 
-        {conclusi > 0 && usciti !== null ? (
-          <>
+        <section className="carta carta--vivo">
+          <h3 className="carta__titolo">Dal vivo, da quando il sito pubblica</h3>
+
+          {conclusi > 0 && usciti !== null ? (
+            <>
+              <p className="progressi__vivo">
+                <strong>
+                  {usciti} su {conclusi}
+                </strong>{' '}
+                pronostici conclusi sono usciti.
+              </p>
+              <p className="carta__nota carta__nota--avviso">
+                {conclusi} è troppo poco per leggerci qualcosa, e lo diciamo prima che tu lo
+                legga. A questo campione anche un modello che non sa niente può centrarne quasi
+                tutti, e uno che sa qualcosa può sbagliarne diversi di fila. Il numero comincia
+                a dire qualcosa intorno ai {intero(bersaglio)} conclusi: fino ad allora vale la
+                prova storica qui sopra.
+              </p>
+            </>
+          ) : (
             <p className="progressi__vivo">
-              <strong>
-                {usciti} su {conclusi}
-              </strong>{' '}
-              pronostici conclusi sono usciti.
+              Nessun pronostico è ancora arrivato a fine partita. Il conteggio comincia con il
+              primo risultato.
             </p>
-            <p className="progressi__nota progressi__nota--avviso">
-              {conclusi} è troppo poco per leggerci qualcosa, e lo diciamo prima che tu lo
-              legga. A questo campione anche un modello che non sa niente può centrarne quasi
-              tutti, e uno che sa qualcosa può sbagliarne diversi di fila. Il numero comincia a
-              dire qualcosa intorno ai {intero(bersaglio)} conclusi: fino ad allora vale la
-              prova storica qui sopra.
-            </p>
-          </>
-        ) : (
-          <p className="progressi__vivo">
-            Nessun pronostico è ancora arrivato a fine partita. Il conteggio comincia con il
-            primo risultato.
-          </p>
-        )}
+          )}
 
-        {/* L'AVANZAMENTO VERSO IL CAMPIONE UTILE.
-            Non e' una barra di caricamento: e' la distanza che manca perche' il
-            numero dal vivo diventi leggibile. Metterla qui e' l'unico modo
-            onesto di rispondere alla domanda «quando posso fidarmi». */}
-        <div className="avanzamento">
-          <p className="avanzamento__testa">
-            <span className="label">Verso un campione leggibile</span>
-            <span className="num">
-              {intero(pubblicati)} / {intero(bersaglio)}
-            </span>
-          </p>
-          <div
-            className="avanzamento__pista"
-            role="img"
-            aria-label={`${intero(pubblicati)} pronostici pubblicati su ${intero(bersaglio)}`}
-          >
+          {/* L'AVANZAMENTO VERSO IL CAMPIONE UTILE. Non e' una barra di
+              caricamento: e' la distanza che manca perche' il numero dal vivo
+              diventi leggibile, ed e' l'unica risposta onesta a «quando posso
+              fidarmi». */}
+          <div className="avanzamento">
+            <p className="avanzamento__testa">
+              <span className="label">Verso un campione leggibile</span>
+              <span className="num">
+                {intero(pubblicati)} / {intero(bersaglio)}
+              </span>
+            </p>
             <div
-              className="avanzamento__pieno"
-              style={{ inlineSize: `${(avanzamento * 100).toFixed(1)}%` }}
-            />
+              className="avanzamento__pista"
+              role="img"
+              aria-label={`${intero(pubblicati)} pronostici pubblicati su ${intero(bersaglio)}`}
+            >
+              <div
+                className="avanzamento__pieno"
+                style={{ inlineSize: `${(avanzamento * 100).toFixed(1)}%` }}
+              />
+            </div>
+            <p className="carta__nota">
+              Pronostici <em>pubblicati</em>, non ancora tutti conclusi: gli altri riguardano
+              partite che devono ancora giocarsi.
+            </p>
           </div>
-          <p className="progressi__nota">
-            Pronostici <em>pubblicati</em>, non ancora tutti conclusi: gli altri riguardano
-            partite che devono ancora giocarsi.
-          </p>
-        </div>
-
-        <p className="progressi__nota">
-          Ogni pronostico è scritto prima della partita in un registro pubblico, e non si
-          modifica dopo.{' '}
-          <a href={REPO} rel="noopener noreferrer" target="_blank">
-            Il registro e il codice sono su GitHub
-          </a>
-          , e chiunque può rifare questi conti da sé.
-        </p>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

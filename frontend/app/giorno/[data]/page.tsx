@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 
 import { BloccoCampionato } from '@/components/BloccoCampionato';
 import { Calendario } from '@/components/Calendario';
-import { Fondo } from '@/components/Fondo';
 import { rangoCompetizione } from '@/lib/campionati';
 import {
   finestraGiorni,
@@ -152,8 +151,6 @@ export default async function PaginaGiorno({ params }: Props) {
           </div>
         </div>
       )}
-
-      <Fondo accuracy={accuracy} backtest={backtest} />
     </>
   );
 }

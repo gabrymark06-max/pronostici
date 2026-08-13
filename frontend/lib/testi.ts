@@ -329,7 +329,6 @@ export const MARCHIO = 'CENTRO';
 /** La riga che accompagna il nome nel titolo del sito e nei metadati. */
 export const PAYOFF = 'un pronostico per partita, e il silenzio quando non c’è';
 
-export const REPO = 'https://github.com/GabrieleMarchesini2006/pronostici';
 
 export const GIOCO_RESPONSABILE = {
   testo: 'Telefono verde per le dipendenze da gioco d’azzardo, Istituto Superiore di Sanità: 800 558822',

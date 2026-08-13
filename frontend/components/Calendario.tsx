@@ -12,9 +12,13 @@ import { dataLunga, pezziGiorno } from '@/lib/formato';
  * sono il cromo, e restano visibili mentre la lista scorre. È la meccanica dei
  * tabelloni di risultati, dove il primo gesto è sempre «che giorno guardo».
  *
- * Ogni casella porta tre cose: la sigla del giorno, il numero, e QUANTE
- * PARTITE ci sono. La terza è ciò che trasforma il calendario da elenco di
- * destinazioni in informazione — dice anche dove vale la pena andare.
+ * Ogni casella porta la sigla del giorno e il numero, e basta.
+ *
+ * C'ERA ANCHE IL CONTEGGIO DELLE PARTITE, ed è stato tolto. L'idea era che
+ * dicesse dove vale la pena andare; l'effetto era una terza riga di cifre
+ * piccole sotto ogni casella, in un controllo che deve leggersi di sfuggita e
+ * al volo. Il conteggio resta dove serve davvero — nel nome accessibile della
+ * casella, per chi la pagina la ascolta invece di guardarla.
  *
  * IERI / OGGI / DOMANI. Sono le tre parole che chi apre un tabellone cerca per
  * prime, e la sigla del giorno della settimana non le sostituisce. Non si
@@ -95,9 +99,6 @@ export function Calendario({
                   </span>
                   <span className="rail__numero" aria-hidden="true">
                     {numero}
-                  </span>
-                  <span className="rail__conteggio" aria-hidden="true">
-                    {giorno.total === 0 ? '—' : giorno.total}
                   </span>
                 </a>
               </li>

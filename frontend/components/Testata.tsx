@@ -1,4 +1,3 @@
-import { ANCORA_FUNZIONAMENTO } from './ancore';
 import { Marchio } from './Marchio';
 import { TemaToggle } from './TemaToggle';
 
@@ -15,12 +14,13 @@ import { TemaToggle } from './TemaToggle';
  * filetto: sotto i ~64px una barra non ha spazio per un marchio letto come
  * marchio, e diventa un bordo dello schermo.
  *
- * LE VOCI SONO CINQUE E SONO TUTTE VERE. Non c'è un menu inventato per
- * riempire, e nessuna porta a una pagina che non esiste ancora: «Pronostico
- * del giorno» sono le due schedine, «Tutte le partite» è la lista, «Progressi»
- * è il registro completo, «Come funziona» è l'ancora in fondo alla lista,
- * «Codice» è il repository pubblico. Il numero verde e la riga sulla gratuità
- * stanno nel piede, che è il posto in cui si guardano davvero.
+ * LE VOCI SONO QUATTRO E SONO TUTTE PAGINE VERE. Non c'è un menu inventato
+ * per riempire, e nessuna è un salto dentro un'altra pagina: «Pronostico del
+ * giorno» sono le due schedine, «Tutte le partite» è la lista, «Progressi» è
+ * il registro completo, «Come funziona» è la spiegazione. Ognuna ha il suo
+ * indirizzo, che è quello che serve per mandarla a qualcuno. Il numero verde e
+ * la riga sulla gratuità stanno nel piede, che è il posto in cui si guardano
+ * davvero.
  *
  * PERCHÉ NON C'È «ACCEDI». L'impianto di questa barra viene dai siti di
  * pronostici che fanno la stessa cosa, e tutti hanno il bottone dell'accesso
@@ -31,7 +31,7 @@ import { TemaToggle } from './TemaToggle';
  *
  * NESSUN HAMBURGER A NESSUNA LARGHEZZA. Sotto i 768px la barra tiene marchio e
  * comandi sul primo livello e fa scorrere le voci orizzontalmente sul secondo:
- * cinque voci non si nascondono dietro un bottone.
+ * quattro voci non si nascondono dietro un bottone.
  */
 export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
   const casa = giornoApertura ? `/giorno/${giornoApertura}/` : '/';
@@ -60,22 +60,9 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
             <span className="voce__nome">Progressi</span>
           </a>
 
-          <a className="voce" href={`${casa}#${ANCORA_FUNZIONAMENTO}`}>
+          <a className="voce" href="/come-funziona/">
             <IconaDomanda />
             <span className="voce__nome">Come funziona</span>
-          </a>
-
-          <a
-            className="voce voce--esterna"
-            href="https://github.com/GabrieleMarchesini2006/pronostici"
-            rel="noopener noreferrer"
-            target="_blank"
-            /* Il nome accessibile comincia col testo visibile (WCAG 2.5.3):
-               chi usa il comando vocale dice «clicca Codice». */
-            aria-label="Codice — codice e registro pubblici, si apre in una nuova scheda"
-          >
-            <IconaCodice />
-            <span className="voce__nome">Codice</span>
           </a>
         </nav>
 
@@ -146,15 +133,6 @@ function IconaRegistro() {
       <path d="M10 20V8" />
       <path d="M16 20v-5" />
       <path d="M22 20V4" />
-    </svg>
-  );
-}
-
-function IconaCodice() {
-  return (
-    <svg {...COMUNI} strokeLinejoin="miter">
-      <path d="M9 7l-5 5 5 5" />
-      <path d="M15 7l5 5-5 5" />
     </svg>
   );
 }

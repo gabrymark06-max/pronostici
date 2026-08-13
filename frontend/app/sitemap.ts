@@ -11,15 +11,17 @@ const BASE = 'https://pronostici.example';
  * Il sito ha quattro tipi di pagina: la giornata, la partita, il pronostico
  * del giorno e i progressi.
  *
- * GLI INDIRIZZI SENZA DATA NON ENTRANO. `/pronostico-del-giorno/` e' un
- * rimando con `refresh` nel <head> e il suo canonical punta al giorno: metterlo
- * qui accanto alla pagina datata sarebbe dichiarare due indirizzi per lo stesso
- * contenuto. Ci sta solo `/`, che e' la radice e va dichiarata comunque.
+ * `/pronostico-del-giorno/` C'E', e con la priorita' piu' alta dopo la radice:
+ * non e' piu' un rimando, mostra i pronostici, ed e' l'indirizzo che la gente
+ * condivide. Il suo canonical punta alla pagina datata, che e' il modo corretto
+ * di dire «stesso contenuto, ma l'indirizzo buono a lungo termine e' quello».
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const fisse: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: 'daily', priority: 1 },
     { url: `${BASE}/progressi/`, changeFrequency: 'daily', priority: 0.8 },
+    { url: `${BASE}/come-funziona/`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/pronostico-del-giorno/`, changeFrequency: 'daily', priority: 0.9 },
   ];
 
   const giorni = giorniDisponibili();

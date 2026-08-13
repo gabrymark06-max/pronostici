@@ -2553,8 +2553,20 @@
   .gamba__esito { grid-area: esito; text-align: start; }
 }
 
+
 /* --------------------------------------------------------------------------
-   I PROGRESSI.
+   I PROGRESSI — a griglia, larghi quanto la pagina.
+
+   La versione precedente incolonnava tutto in una striscia stretta a sinistra
+   e lasciava due terzi dello schermo vuoti. Su una pagina fatta di CONFRONTI
+   — dichiarato contro uscito, campionato contro campionato — quello che serve
+   e' avere i pezzi accanto: uno sotto l'altro, a mille pixel di distanza, il
+   confronto va fatto a memoria.
+
+   Le carte sono tutte della stessa famiglia (lastra `--surface`, filetto,
+   titolo, occhiello, disegno, numeri) e si dispongono su tre colonne dai
+   1100px, due dagli 800, una sotto. Nessuna carta cambia forma: cambia solo
+   quante ne stanno in fila.
    -------------------------------------------------------------------------- */
 .progressi__testata {
   margin-block: var(--s-7) var(--s-6);
@@ -2562,56 +2574,229 @@
 
 .progressi__lettura {
   margin-block-start: var(--s-3);
-  max-width: 42rem;
+  max-width: 46rem;
   font-size: var(--fs-body);
   line-height: var(--lh-prose);
   color: var(--ink-2);
 }
 
-.progressi__blocco {
-  margin-block-end: var(--s-8);
-  padding-block-start: var(--s-5);
-  border-block-start: 1px solid var(--edge);
+.progressi__occhiello {
+  margin-block: var(--s-7) var(--s-4);
 }
 
-.progressi__blocco .registro__perno {
-  margin-block: var(--s-4) var(--s-5);
-  max-width: 32rem;
+.griglia-progressi {
+  display: grid;
+  gap: var(--s-5);
+  margin-block-end: var(--s-6);
+  /* LE CARTE SI DIMENSIONANO SUL PROPRIO CONTENUTO.
+     Con lo stiramento predefinito una carta corta accanto a una lunga veniva
+     tirata fino alla stessa altezza, e dentro restava un buco verticale di
+     trecento pixel — cioe' esattamente il difetto che questa griglia doveva
+     risolvere, ripresentato dall'altro lato. */
+  align-items: start;
 }
 
-.tabella--progressi {
-  width: 100%;
-  max-width: 42rem;
+@media (min-width: 800px) {
+  .griglia-progressi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-.tabella--progressi thead th + th { text-align: end; }
+/* A tre colonne il perno resta stretto: e' una cifra sola, e allargarlo
+   significherebbe solo aggiungere vuoto intorno a un numero. */
+@media (min-width: 1100px) {
+  .griglia-progressi { grid-template-columns: 0.8fr 1.2fr 1.2fr; }
+  .griglia-progressi--due { grid-template-columns: 1.4fr 1fr; }
+}
 
-.progressi__nota {
-  margin-block-start: var(--s-3);
-  max-width: 42rem;
+.carta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  min-width: 0;
+}
+
+.carta--perno {
+  background: var(--surface-2);
+  justify-content: flex-start;
+}
+
+/* Il blocco dal vivo porta il filetto d'avvertimento a sinistra: e' l'unico
+   numero della pagina che va letto con una riserva, e la riserva si vede
+   prima del numero. */
+.carta--vivo {
+  border-inline-start: 3px solid var(--warn);
+}
+
+.carta__titolo {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 110;
+  font-weight: 700;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-title);
+  color: var(--ink);
+}
+
+.carta__occhiello {
   font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+.carta__nota {
+  margin-block-start: auto;
+  padding-block-start: var(--s-3);
+  border-block-start: 1px solid var(--edge);
+  font-size: var(--fs-micro);
   line-height: var(--lh-body);
   color: var(--ink-3);
 }
 
-.progressi__nota--avviso {
-  padding-inline-start: var(--s-4);
-  border-inline-start: 3px solid var(--warn);
+.carta__nota--avviso {
+  color: var(--ink-2);
 }
 
 .progressi__vivo {
-  margin-block: var(--s-4) 0;
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--ink);
 }
 
-/* L'AVANZAMENTO — pista e pieno, la stessa lingua del misurino della
+/* --------------------------------------------------------------------------
+   I DISEGNI.
+
+   Tavolozza dei token e nient'altro: l'inchiostro per il dato, il verde solo
+   dove il sito lo usa gia', il vermiglio solo dove il prodotto decide. Nessuna
+   scala di colori categorici — sarebbe un secondo sistema visivo dentro il
+   primo.
+   -------------------------------------------------------------------------- */
+.grafico {
+  inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+.grafico__griglia {
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+
+/* La diagonale non e' un dato, e' il bersaglio: tratteggiata, come ogni cosa
+   che in questo sito non e' misurata. */
+.grafico__diagonale {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+/* L'errore si legge come LUNGHEZZA — dal punto giu' fino alla diagonale —
+   invece che come distanza da stimare a occhio. */
+.grafico__errore {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+}
+
+.grafico__punto {
+  fill: var(--prob-fill);
+}
+
+.grafico__punto--scelto {
+  fill: var(--segnale);
+}
+
+.grafico__linea {
+  fill: none;
+  stroke: var(--prob-fill);
+  stroke-width: 2;
+}
+
+.grafico__scelto {
+  stroke: var(--segnale);
+  stroke-width: 1;
+}
+
+.grafico__tacca {
+  fill: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+/* --------------------------------------------------------------------------
+   LE BARRE DEI CAMPIONATI.
+   -------------------------------------------------------------------------- */
+.barre {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-3);
+}
+
+.barra-riga {
+  display: grid;
+  grid-template-columns: minmax(5rem, 8rem) 1fr 2.5rem 3rem;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.barra-riga__nome {
+  font-family: var(--font-text);
+  font-variation-settings: 'wdth' var(--wdth-stretta);
+  font-size: var(--fs-body-s);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barra-riga__pista {
+  position: relative;
+  display: block;
+  block-size: 14px;
+  background: var(--prob-track);
+}
+
+.barra-riga__pieno {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  block-size: 9px;
+  background: var(--prob-fill);
+}
+
+/* Il filo del peso: quanti casi ci sono dietro quella barra, rispetto al
+   campionato piu' popolato. Sta SOTTO e piu' sottile, cosi' non si confonde
+   con il tasso — sono due grandezze diverse sulla stessa riga, e la seconda
+   serve a sapere quanto fidarsi della prima. */
+.barra-riga__peso {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  block-size: 3px;
+  background: var(--ink-3);
+}
+
+.barra-riga__valore {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--outcome-yes);
+  text-align: end;
+}
+
+.barra-riga__n {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  text-align: end;
+}
+
+/* --------------------------------------------------------------------------
+   L'AVANZAMENTO — pista e pieno, la stessa lingua del misurino della
    probabilita'. Non ha una tacca perche' qui non c'e' un secondo numero da
-   confrontare: c'e' una distanza da percorrere. */
+   confrontare: c'e' una distanza da percorrere.
+   -------------------------------------------------------------------------- */
 .avanzamento {
-  margin-block: var(--s-6) var(--s-4);
-  max-width: 42rem;
+  margin-block-start: var(--s-5);
 }
 
 .avanzamento__testa {
@@ -2638,56 +2823,20 @@
   background: var(--prob-fill);
 }
 
-@media (max-width: 559px) {
-  .tabella--progressi,
-  .tabella--progressi tbody,
-  .tabella--progressi tr {
-    display: block;
-  }
-  .tabella--progressi thead { display: none; }
-  .tabella--progressi tbody tr {
-    padding-block: var(--s-3);
-    border-block-end: 1px solid var(--edge);
-  }
-  .tabella--progressi tbody th {
-    display: block;
-    padding: 0 0 var(--s-2);
-    border: 0;
-  }
-  .tabella--progressi td {
-    display: inline-flex;
-    align-items: baseline;
-    gap: var(--s-2);
-    padding: 2px 0;
-    margin-inline-end: var(--s-4);
-    border: 0;
-    text-align: start;
-  }
-  .tabella--progressi td::before {
-    content: attr(data-etichetta);
-    font-family: var(--font-text);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: var(--ls-label);
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+/* La tavola dentro una carta e' un appoggio ai numeri del disegno, non la
+   protagonista: corpo minuto e nessun filetto pesante. */
+.tabella--minuta {
+  width: 100%;
+  font-size: var(--fs-micro);
 }
 
-/* A barra stretta la testata va a capo e il perno finisce su una riga sua: con
-   `text-align: end` su un blocco largo quanto il suo contenuto il numero
-   sembrava centrato, che nel resto del sito non e' un allineamento che esiste.
-   Sulla riga propria si allinea a sinistra come tutto il resto. */
-@media (max-width: 559px) {
-  .schedina__perno {
-    text-align: start;
-  }
-}
+.tabella--minuta thead th + th { text-align: end; }
+.tabella--minuta th,
+.tabella--minuta td { padding-block: var(--s-2); }
 
-/* Il contenitore scorrevole porta un filetto ai due lati per dire che c'e'
-   altro da vedere. Qui la tavola e' stretta e il contenitore no, quindi il
-   filetto destro finiva staccato dalla tavola, in mezzo al vuoto, a mille
-   pixel dall'ultima colonna. Il contenitore si stringe sulla tavola. */
-.progressi__blocco .scorrevole {
-  max-width: 42rem;
+/* --------------------------------------------------------------------------
+   COME FUNZIONA — la pagina.
+   -------------------------------------------------------------------------- */
+.come-funziona {
+  padding-block: var(--s-7) var(--s-8);
 }
