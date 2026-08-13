@@ -1482,31 +1482,200 @@
 
 /* --- Il piede ------------------------------------------------------------ */
 
+/* --------------------------------------------------------------------------
+   IL PIEDE.
+
+   Tre colonne di larghezza DIVERSA e deliberata — identita', pagine, gioco
+   responsabile — e non tre colonne uguali. Tre celle equidistanti sono la
+   forma che ha qualunque piede di qualunque sito: qui la prima e' larga
+   perche' porta il marchio e due frasi, e le altre due sono strette perche'
+   portano elenchi corti.
+
+   Il fondo e' `--ground`, piu' scuro della lastra della lista: il piede e' la
+   fine della pagina e deve leggersi come una battuta d'arresto, non come
+   un'altra sezione di contenuto.
+   -------------------------------------------------------------------------- */
 .piede {
-  background: var(--surface);
+  margin-block-start: var(--s-9);
+  background: var(--ground);
   border-block-start: 1px solid var(--edge);
-  padding-block: var(--s-7);
 }
 
-/* Il limite di misura sta sulle RIGHE, non sul contenitore: messo sul
-   contenitore sostituiva il `max-width` della colonna e, con `margin-inline:
-   auto` ereditato, spostava tutto il piede al centro di 1440px mentre il resto
-   della pagina comincia a sinistra. */
-.piede__interno { display: grid; gap: var(--s-3); }
-.piede__riga, .piede__marchio { max-width: var(--w-prose); }
+.piede__interno {
+  display: grid;
+  gap: var(--s-6);
+  padding-block: var(--s-8) var(--s-7);
+}
 
-.piede__marchio {
+@media (min-width: 860px) {
+  .piede__interno {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: var(--s-7);
+  }
+}
+
+/* --- L'identita' ------------------------------------------------------- */
+.piede__identita {
+  position: relative;
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  /* Il glifo grande deborda dai limiti della colonna: si ritaglia qui invece
+     di far crescere la pagina in orizzontale. */
+  overflow: hidden;
+}
+
+.piede__payoff {
   font-family: var(--font-display);
-  font-variation-settings: 'wdth' var(--wdth-espansa);
-  font-weight: 700;
-  font-size: var(--fs-marchio);
-  letter-spacing: var(--ls-logo);
-  text-transform: uppercase;
+  font-variation-settings: 'wdth' 110;
+  font-weight: 600;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-title);
+  color: var(--ink);
+  max-width: 22ch;
+}
+
+.piede__gratuita {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+/* IL BERSAGLIO ALLA SCALA PIU' GRANDE — quarta e ultima ricorrenza del segno
+   firma, dopo il marchio, il punto elenco dei titoli e la tacca del misurino.
+   Tenuto sul filo del filetto (`--edge`) perche' deve farsi notare solo dopo
+   che hai finito di leggere: un elemento decorativo che si vede prima del
+   testo e' un errore, uno che non si vede mai e' inutile.
+
+   INTERO, NON TAGLIATO. Il primo tentativo lo faceva debordare dalla colonna
+   contando sul ritaglio: il risultato era un quadrato mozzato che cadeva nel
+   corridoio fra due colonne e si leggeva come un disegno rotto, non come una
+   filigrana. Un segno riconoscibile va mostrato intero o non va mostrato:
+   qui sta tutto dentro lo spazio che la colonna gia' lascia vuoto a destra
+   del testo, ed e' proprio quel vuoto a dargli il posto. */
+.piede__filigrana {
+  position: absolute;
+  inset-block-end: 0;
+  /* Staccata dal bordo destro della colonna piu' del corridoio che la separa
+     dalla colonna accanto: a 24px sembrava appartenere all'elenco di fianco. */
+  inset-inline-end: var(--s-8);
+  inline-size: 8rem;
+  block-size: 8rem;
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.piede__filigrana-centro {
+  fill: var(--edge);
+  stroke: none;
+}
+
+.piede__identita > *:not(.piede__filigrana) {
+  position: relative;
+  z-index: 1;
+}
+
+/* SOTTO I 1100px NON C'E' IL VUOTO CHE LE SERVE.
+   A colonna stretta finirebbe sotto le due frasi invece che accanto, e un
+   segno grande dietro un testo e' esattamente il tipo di decorazione che
+   rende un paragrafo piu' difficile da leggere in cambio di niente. */
+@media (max-width: 1099px) {
+  .piede__filigrana { display: none; }
+}
+
+/* --- Le colonne di servizio -------------------------------------------- */
+.piede__colonna {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+}
+
+.piede__titolo {
+  color: var(--ink-3);
+  margin-block-end: var(--s-1);
+}
+
+.piede__voci {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.piede__voci a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  text-decoration: none;
+  /* Il filetto sotto compare al passaggio e al fuoco, come le voci della barra
+     in alto: e' la stessa affordance, quindi lo stesso gesto. */
+  border-block-end: 2px solid transparent;
+}
+
+.piede__voci a:hover {
+  color: var(--ink);
+  border-block-end-color: var(--segnale);
+}
+
+.piede__voci a:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.piede__riga {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: 40ch;
+}
+
+.piede__eta {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-body-s);
   color: var(--ink);
 }
 
-.piede__riga { font-size: var(--fs-body-s); line-height: var(--lh-body); color: var(--ink-2); }
-.piede__riga--minuta { font-size: var(--fs-micro); color: var(--ink-3); }
+/* IL BOLLO DELL'ETA' e' l'unico pieno di colore del piede. Il segnale sta dove
+   il prodotto decide qualcosa, e «non sotto i diciotto» e' l'unica cosa che
+   questo sito decide per chi legge invece che per se'. */
+.piede__bollo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.6rem;
+  padding: 2px var(--s-2);
+  background: var(--segnale);
+  color: var(--segnale-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* --- La chiusura -------------------------------------------------------- */
+.piede__chiusura {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-6);
+  justify-content: space-between;
+  padding-block: var(--s-4) var(--s-6);
+  border-block-start: 1px solid var(--edge);
+}
+
+.piede__minuta {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
 
 /* La terza riga della cella delle quote: il prezzo lordo. Rientra e si stacca,
    perche' e' un numero di natura diversa dai due sopra — quello ha il margine
