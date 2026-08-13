@@ -38,8 +38,8 @@ async def app_e_db(ambiente):
 
     PgUUID.load_dialect_impl = lambda self, dialect: dialect.type_descriptor(types.CHAR(36))  # type: ignore[assignment]
 
-    from centro_conti import db as modulo_db
-    from centro_conti.modelli import Base
+    from centro_profili import db as modulo_db
+    from centro_profili.modelli import Base
 
     motore = create_async_engine("sqlite+aiosqlite:///:memory:")
     fabbrica = async_sessionmaker(motore, expire_on_commit=False)
@@ -48,8 +48,8 @@ async def app_e_db(ambiente):
 
     modulo_db.Sessione = fabbrica  # type: ignore[assignment]
 
-    from centro_conti.main import crea
-    from centro_conti.rotte.conti import svuota_limiti
+    from centro_profili.main import crea
+    from centro_profili.rotte.profili import svuota_limiti
 
     # I limitatori vivono nel modulo e sopravvivono all'app: senza questo, i
     # tentativi falliti di una prova chiuderebbero fuori quella dopo.

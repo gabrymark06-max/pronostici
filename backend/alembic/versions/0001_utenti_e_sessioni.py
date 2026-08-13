@@ -70,7 +70,35 @@ def upgrade() -> None:
     op.create_index("ix_sessioni_scade", "sessioni", ["scade"])
 
 
+    op.create_table(
+        "gettoni_email",
+        sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
+        sa.Column(
+            "utente_id",
+            postgresql.UUID(as_uuid=True),
+            sa.ForeignKey("utenti.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
+        sa.Column("tipo", sa.String(16), nullable=False),
+        # L'hash del gettone, mai il gettone. Vedi `modelli.GettoneEmail`.
+        sa.Column("impronta", sa.String(64), nullable=False),
+        sa.Column(
+            "creato", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()
+        ),
+        sa.Column("scade", sa.DateTime(timezone=True), nullable=False),
+    )
+    op.create_index("ix_gettoni_email_utente_id", "gettoni_email", ["utente_id"])
+    # Unico: e' la chiave con cui si cerca il gettone presentato, e due righe
+    # con la stessa impronta renderebbero ambiguo quale consumare.
+    op.create_index(
+        "ix_gettoni_email_impronta", "gettoni_email", ["impronta"], unique=True
+    )
+
+
 def downgrade() -> None:
+    op.drop_index("ix_gettoni_email_impronta", table_name="gettoni_email")
+    op.drop_index("ix_gettoni_email_utente_id", table_name="gettoni_email")
+    op.drop_table("gettoni_email")
     op.drop_index("ix_sessioni_scade", table_name="sessioni")
     op.drop_index("ix_sessioni_utente_id", table_name="sessioni")
     op.drop_table("sessioni")

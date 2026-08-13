@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 
-import { conto, ErroreConto, type Utente } from '@/lib/conto';
+import { MINIMO_PASSWORD, profilo, ErroreProfilo, type Utente } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
 
@@ -51,27 +51,27 @@ const TESTI = {
     titolo: 'Entra',
     bottone: 'Entra',
     inCorso: 'Sto entrando…',
-    altro: 'Non hai un conto?',
+    altro: 'Non hai un profilo?',
     altroLink: '/registrati/',
     altroTesto: 'Creane uno',
   },
   registrazione: {
-    titolo: 'Crea un conto',
-    bottone: 'Crea il conto',
-    inCorso: 'Sto creando il conto…',
-    altro: 'Hai già un conto?',
+    titolo: 'Crea un profilo',
+    bottone: 'Crea il profilo',
+    inCorso: 'Sto creando il profilo…',
+    altro: 'Hai già un profilo?',
     altroLink: '/accedi/',
     altroTesto: 'Entra',
   },
 } as const;
 
-export function ModuloConto({ modo }: { modo: Modo }) {
+export function ModuloProfilo({ modo }: { modo: Modo }) {
   const t = TESTI[modo];
   const router = useRouter();
   const { aggiorna } = useSessione();
 
   const [inCorso, setInCorso] = useState(false);
-  const [errore, setErrore] = useState<ErroreConto | null>(null);
+  const [errore, setErrore] = useState<ErroreProfilo | null>(null);
 
   async function invia(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -87,15 +87,15 @@ export function ModuloConto({ modo }: { modo: Modo }) {
     try {
       const u: Utente =
         modo === 'accesso'
-          ? await conto.accesso({ email, password })
-          : await conto.registrazione({ email, nome, password });
+          ? await profilo.accesso({ email, password })
+          : await profilo.registrazione({ email, nome, password });
       aggiorna(u);
-      router.push('/conto/');
+      router.push('/profilo/');
     } catch (err) {
-      const e2 = err instanceof ErroreConto ? err : null;
+      const e2 = err instanceof ErroreProfilo ? err : null;
       setErrore(
         e2 ??
-          new ErroreConto('errore_sconosciuto', 'Qualcosa non ha funzionato. Riprova.', 0),
+          new ErroreProfilo('errore_sconosciuto', 'Qualcosa non ha funzionato. Riprova.', 0),
       );
       // La password si svuota SEMPRE dopo un errore, anche quando il problema
       // era la rete: se qualcuno guarda lo schermo alle spalle, un campo pieno
@@ -170,15 +170,11 @@ export function ModuloConto({ modo }: { modo: Modo }) {
              gestori di password «non funzionano» su tanti siti. */
           autoComplete={modo === 'registrazione' ? 'new-password' : 'current-password'}
           required
-          minLength={modo === 'registrazione' ? 12 : 1}
+          minLength={modo === 'registrazione' ? MINIMO_PASSWORD : 1}
           aria-invalid={suPassword || undefined}
         />
         {modo === 'registrazione' ? (
-          <span className="modulo__aiuto">
-            Almeno 12 caratteri. Niente obbligo di maiuscole o simboli: quelle regole
-            producono <em>Password1!</em> e non servono a niente. Una frase che ricordi è
-            più forte e più facile.
-          </span>
+          <span className="modulo__aiuto">Almeno {MINIMO_PASSWORD} caratteri.</span>
         ) : null}
       </label>
 
@@ -190,11 +186,17 @@ export function ModuloConto({ modo }: { modo: Modo }) {
         {t.altro} <a href={t.altroLink}>{t.altroTesto}</a>
       </p>
 
+      {modo === 'accesso' ? (
+        <p className="modulo__altro">
+          <a href="/recupero/">Password dimenticata?</a>
+        </p>
+      ) : null}
+
       {modo === 'registrazione' ? (
         <p className="modulo__patto">
-          Un conto serve a ritrovare le tue cose. <strong>Non cambia i pronostici</strong>: sono
+          Un profilo serve a ritrovare le tue cose. <strong>Non cambia i pronostici</strong>: sono
           gli stessi per tutti, pubblici, e restano leggibili senza registrarsi. Non mandiamo
-          posta pubblicitaria e non cediamo l’indirizzo a nessuno. Puoi chiudere il conto
+          posta pubblicitaria e non cediamo l’indirizzo a nessuno. Puoi chiudere il profilo
           quando vuoi, e sparisce davvero.
         </p>
       ) : null}

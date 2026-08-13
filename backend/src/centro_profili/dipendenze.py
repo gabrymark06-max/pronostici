@@ -35,8 +35,8 @@ COOKIE_RINNOVO = "centro_rinnovo"
 # meno viaggia, meno occasioni ci sono di intercettarlo. Ma stringerlo troppo
 # lo rende inutile, e qui era stato stretto troppo.
 #
-# Era `/conti/rinnovo`, cioe' la rotta che lo consuma. Il browser mandava il
-# cookie SOLO li', quindi `/conti/uscita` non lo vedeva mai: cancellava i
+# Era `/profili/rinnovo`, cioe' la rotta che lo consuma. Il browser mandava il
+# cookie SOLO li', quindi `/profili/uscita` non lo vedeva mai: cancellava i
 # cookie dal browser e lasciava la riga in `sessioni` viva per trenta giorni.
 # «Esci» sembrava funzionare — sparisci dalla pagina — e non invalidava
 # niente. Chi avesse copiato quel gettone sarebbe rimasto dentro.
@@ -45,10 +45,10 @@ COOKIE_RINNOVO = "centro_rinnovo"
 # dopo l'uscita e prova a rientrare. E' esattamente il difetto che una prova
 # «esci e verifica che sparisca dalla pagina» non avrebbe mai visto.
 #
-# `/conti` e' il prefisso piu' stretto che copre le tre rotte che il gettone
+# `/profili` e' il prefisso piu' stretto che copre le tre rotte che il gettone
 # gli serve davvero — rinnovo, uscita, sessioni — e continua a tenerlo fuori
 # da `/salute`, `/openapi.json` e dalla documentazione.
-PERCORSO_RINNOVO = "/conti"
+PERCORSO_RINNOVO = "/profili"
 
 
 def _comuni() -> dict:
@@ -117,7 +117,7 @@ async def utente_corrente(
 
     utente = await db.get(Utente, id_utente)
     if utente is None or not utente.attivo:
-        # Il conto e' stato chiuso mentre il gettone era ancora valido. Non e'
+        # Il profilo e' stato chiuso mentre il gettone era ancora valido. Non e'
         # un caso raro: la finestra e' di quindici minuti.
         raise non_autenticato
 

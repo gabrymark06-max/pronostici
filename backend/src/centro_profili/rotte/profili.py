@@ -1,14 +1,14 @@
-"""Le rotte dei conti.
+"""Le rotte dei profili.
 
-    POST /conti/registrazione   crea il conto e ti fa entrare
-    POST /conti/accesso         entra
-    POST /conti/rinnovo         rinnova i gettoni (rotazione)
-    POST /conti/uscita          esce da questo browser
-    POST /conti/uscita-ovunque  chiude tutte le sessioni
-    GET  /conti/io              chi sono
-    GET  /conti/sessioni        dove sono collegato
-    POST /conti/password        cambia password
-    POST /conti/chiusura        chiude il conto e cancella tutto
+    POST /profili/registrazione   crea il profilo e ti fa entrare
+    POST /profili/accesso         entra
+    POST /profili/rinnovo         rinnova i gettoni (rotazione)
+    POST /profili/uscita          esce da questo browser
+    POST /profili/uscita-ovunque  chiude tutte le sessioni
+    GET  /profili/io              chi sono
+    GET  /profili/sessioni        dove sono collegato
+    POST /profili/password        cambia password
+    POST /profili/chiusura        chiude il profilo e cancella tutto
 
 TRE DECISIONI CHE VALGONO PIU' DEL CODICE.
 
@@ -23,7 +23,7 @@ TRE DECISIONI CHE VALGONO PIU' DEL CODICE.
    dal lato opposto. Risponde come se fosse andata bene e, quando la casella
    esiste gia', il posto dove va detto e' un messaggio a quella casella — cosa
    che si potra' fare quando ci sara' un servizio di posta. Finche' non c'e',
-   il conto non viene creato e chi ha davvero sbagliato se ne accorge provando
+   il profilo non viene creato e chi ha davvero sbagliato se ne accorge provando
    ad accedere. E' l'unico punto in cui questa API e' meno chiara di quanto
    vorrebbe, ed e' un debito scritto, non nascosto.
 
@@ -39,7 +39,8 @@ from __future__ import annotations
 
 import logging
 import uuid
-from datetime import UTC, datetime
+from dataclasses import replace
+from datetime import UTC, datetime, timedelta
 from typing import Annotated
 
 from fastapi import APIRouter, Cookie, Depends, Request, Response, status
@@ -47,7 +48,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .. import sicurezza
+from .. import posta, sicurezza
 from ..db import sessione
 from ..dipendenze import (
     agente,
@@ -59,20 +60,23 @@ from ..dipendenze import (
 from ..errori import ErroreApi
 from ..impostazioni import impostazioni
 from ..limiti import Limitatore
+from ..modelli import GettoneEmail, Utente
 from ..modelli import Sessione as SessioneDb
-from ..modelli import Utente
 from ..schemi import (
     AccessoIn,
     CambioPasswordIn,
-    ChiusuraContoIn,
+    ChiusuraProfiloIn,
+    ConfermaRecuperoIn,
+    ConfermaVerificaIn,
     Fatto,
+    RecuperoIn,
     RegistrazioneIn,
     SessioneOut,
     UtenteOut,
 )
 
-log = logging.getLogger("centro.conti")
-rotte = APIRouter(prefix="/conti", tags=["conti"])
+log = logging.getLogger("centro.profili")
+rotte = APIRouter(prefix="/profili", tags=["profili"])
 
 _imp = impostazioni()
 # I limitatori sono di MODULO, non dell'applicazione, ed e' voluto: devono
@@ -81,12 +85,23 @@ _imp = impostazioni()
 # l'altra, e per questo `svuota_limiti()` esiste ed e' chiamata dalle prove.
 _limite_accesso = Limitatore(_imp.tentativi_accesso, _imp.finestra_limite_s)
 _limite_registrazione = Limitatore(_imp.tentativi_registrazione, _imp.finestra_limite_s)
+_limite_posta = Limitatore(_imp.tentativi_posta, _imp.finestra_limite_s)
+
+# L'elenco esiste perche' `svuota_limiti()` non se ne dimentichi uno.
+_LIMITATORI = (_limite_accesso, _limite_registrazione, _limite_posta)
 
 
 def svuota_limiti() -> None:
-    """Solo per le prove. In esercizio non la chiama nessuno."""
-    _limite_accesso._storia.clear()
-    _limite_registrazione._storia.clear()
+    """Solo per le prove. In esercizio non la chiama nessuno.
+
+    DEVE ELENCARE TUTTI I LIMITATORI. `_limite_posta` e' stato aggiunto dopo e
+    qui era stato dimenticato: le prove del recupero password fallivano a
+    grappolo, e da sole passavano — il classico guasto che si prende per
+    fragilita' delle prove invece che per quello che e', cioe' uno stato di
+    modulo che sopravvive.
+    """
+    for limitatore in _LIMITATORI:
+        limitatore._storia.clear()
 
 
 def _con_fuso(quando: datetime) -> datetime:
@@ -135,7 +150,7 @@ async def _apri_sessione(
     "/registrazione",
     response_model=UtenteOut,
     status_code=status.HTTP_201_CREATED,
-    summary="Crea un conto e apre subito la sessione",
+    summary="Crea un profilo e apre subito la sessione",
 )
 async def registrazione(
     dati: RegistrazioneIn,
@@ -168,12 +183,19 @@ async def registrazione(
             status.HTTP_409_CONFLICT,
             "registrazione_non_completata",
             "Non è stato possibile completare la registrazione con questi dati. "
-            "Se hai già un conto con questa email, prova ad accedere.",
+            "Se hai già un profilo con questa email, prova ad accedere.",
         ) from None
 
     await _apri_sessione(db, utente, risposta, agente(richiesta))
     utente.ultimo_accesso = datetime.now(UTC)
-    log.info("conto creato", extra={"utente": str(utente.id)})
+
+    # L'email di conferma parte SUBITO, e se la spedizione fallisce la
+    # registrazione riesce lo stesso: il profilo esiste, e il messaggio si puo'
+    # chiedere di nuovo dalla pagina del profilo. Vedi `posta.spedisci`, che
+    # non alza mai.
+    await _spedisci_verifica(db, utente)
+
+    log.info("profilo creato", extra={"utente": str(utente.id)})
     return utente
 
 
@@ -323,7 +345,7 @@ async def uscita_ovunque(
 
 
 # ------------------------------------------------------------------ #
-# Il conto                                                           #
+# Il profilo                                                           #
 # ------------------------------------------------------------------ #
 
 
@@ -407,16 +429,16 @@ async def cambio_password(
     return Fatto()
 
 
-@rotte.post("/chiusura", response_model=Fatto, summary="Chiudi il conto")
+@rotte.post("/chiusura", response_model=Fatto, summary="Chiudi il profilo")
 async def chiusura(
-    dati: ChiusuraContoIn,
+    dati: ChiusuraProfiloIn,
     risposta: Response,
     db: Annotated[AsyncSession, Depends(sessione)],
     utente: Annotated[Utente, Depends(utente_corrente)],
 ) -> Fatto:
     """CANCELLA DAVVERO, non disattiva.
 
-    Un conto «chiuso» che resta in tabella con un flag e' un archivio di dati
+    Un profilo «chiuso» che resta in tabella con un flag e' un archivio di dati
     personali che nessuno ha piu' motivo di conservare, ed e' esattamente la
     cosa che il GDPR chiama trattamento senza base giuridica. Le sessioni se ne
     vanno con lui per la cascata sulla chiave esterna.
@@ -430,5 +452,197 @@ async def chiusura(
     id_perso = str(utente.id)
     await db.delete(utente)
     togli_cookie(risposta)
-    log.info("conto chiuso", extra={"utente": id_perso})
+    log.info("profilo chiuso", extra={"utente": id_perso})
+    return Fatto()
+
+
+# ------------------------------------------------------------------ #
+# La posta: verifica dell'indirizzo e recupero della password        #
+# ------------------------------------------------------------------ #
+#
+# DUE ROTTE CHE NON DICONO MAI SE UN INDIRIZZO ESISTE. `/recupero` risponde
+# sempre allo stesso modo, che il profilo ci sia o no. E' la stessa decisione
+# dell'accesso, applicata al punto in cui verrebbe piu' comodo tradirla: un
+# «questa email non risulta» qui regalerebbe a chiunque un modo di verificare
+# indirizzi uno per uno, senza nemmeno provare una password.
+#
+# IL GETTONE VIVE UNA VOLTA SOLA. Consumato, la riga sparisce. Un collegamento
+# di recupero che funziona due volte e' un collegamento che funziona ancora
+# quando l'email e' gia' stata letta da qualcun altro.
+#
+# CHIEDERNE UNO NUOVO CANCELLA IL VECCHIO. Due collegamenti vivi insieme
+# raddoppiano la finestra in cui uno rubato apre, e non servono a niente.
+
+
+ORE_GETTONE = _imp.ore_gettone_email
+
+
+async def _crea_gettone(db: AsyncSession, utente: Utente, tipo: str) -> str:
+    """Il gettone in chiaro, da mettere nell'email. Nel database va l'impronta."""
+    await db.execute(
+        delete(GettoneEmail).where(
+            GettoneEmail.utente_id == utente.id, GettoneEmail.tipo == tipo
+        )
+    )
+    grezzo, impronta_gettone = sicurezza.gettone_email()
+    db.add(
+        GettoneEmail(
+            utente_id=utente.id,
+            tipo=tipo,
+            impronta=impronta_gettone,
+            scade=datetime.now(UTC) + timedelta(hours=ORE_GETTONE),
+        )
+    )
+    return grezzo
+
+
+async def _consuma_gettone(db: AsyncSession, grezzo: str, tipo: str) -> Utente | None:
+    """L'utente del gettone, e il gettone sparisce. `None` se non vale."""
+    riga = (
+        await db.execute(
+            select(GettoneEmail).where(
+                GettoneEmail.impronta == sicurezza.impronta_di(grezzo),
+                GettoneEmail.tipo == tipo,
+            )
+        )
+    ).scalar_one_or_none()
+    if riga is None:
+        return None
+
+    scaduto = _con_fuso(riga.scade) < datetime.now(UTC)
+    utente = await db.get(Utente, riga.utente_id)
+    # Si cancella comunque: se e' scaduto non serve piu', se e' buono e' stato
+    # usato adesso. In entrambi i casi non deve restare.
+    await db.delete(riga)
+    if scaduto or utente is None or not utente.attivo:
+        return None
+    return utente
+
+
+async def _spedisci_verifica(db: AsyncSession, utente: Utente) -> None:
+    grezzo = await _crea_gettone(db, utente, "verifica")
+    m = posta.messaggio_verifica(
+        utente.nome, f"{_imp.sito}/verifica/?g={grezzo}", ORE_GETTONE
+    )
+    await posta.spedisci(replace(m, a=utente.email))
+
+
+@rotte.post(
+    "/verifica/invio",
+    response_model=Fatto,
+    summary="Rispedisci l'email di conferma dell'indirizzo",
+)
+async def invio_verifica(
+    db: Annotated[AsyncSession, Depends(sessione)],
+    utente: Annotated[Utente, Depends(utente_corrente)],
+) -> Fatto:
+    if utente.email_verificata:
+        raise ErroreApi(
+            status.HTTP_409_CONFLICT,
+            "email_gia_verificata",
+            "Questo indirizzo è già confermato.",
+        )
+    chiave = f"verifica|{utente.id}"
+    passa, attesa = _limite_posta.consentito(chiave)
+    if not passa:
+        raise _troppi(attesa)
+    _limite_posta.segna(chiave)
+    await _spedisci_verifica(db, utente)
+    return Fatto()
+
+
+@rotte.post("/verifica", response_model=UtenteOut, summary="Conferma l'indirizzo")
+async def verifica(
+    dati: ConfermaVerificaIn,
+    db: Annotated[AsyncSession, Depends(sessione)],
+) -> Utente:
+    """NON richiede di essere collegati.
+
+    Chi apre il collegamento puo' averlo aperto sul telefono, o in un altro
+    browser, o dopo giorni. Chiedergli di accedere prima di poter confermare
+    l'indirizzo e' un giro a vuoto: il gettone e' gia' la prova che quella
+    casella e' sua, che e' esattamente la cosa che stiamo verificando.
+    """
+    utente = await _consuma_gettone(db, dati.gettone, "verifica")
+    if utente is None:
+        raise ErroreApi(
+            status.HTTP_400_BAD_REQUEST,
+            "gettone_non_valido",
+            "Questo collegamento non vale più. "
+            "Chiedine un altro dalla pagina del tuo profilo.",
+        )
+    utente.email_verificata = True
+    log.info("email verificata", extra={"utente": str(utente.id)})
+    return utente
+
+
+@rotte.post(
+    "/recupero", response_model=Fatto, summary="Chiedi di reimpostare la password"
+)
+async def recupero(
+    dati: RecuperoIn,
+    richiesta: Request,
+    db: Annotated[AsyncSession, Depends(sessione)],
+) -> Fatto:
+    """Risponde SEMPRE allo stesso modo, che il profilo esista o no."""
+    chiave = f"recupero|{impronta(richiesta)}"
+    passa, attesa = _limite_posta.consentito(chiave)
+    if not passa:
+        raise _troppi(attesa)
+    _limite_posta.segna(chiave)
+
+    utente = (
+        await db.execute(select(Utente).where(Utente.email == dati.email))
+    ).scalar_one_or_none()
+
+    if utente is not None and utente.attivo:
+        grezzo = await _crea_gettone(db, utente, "recupero")
+        m = posta.messaggio_recupero(
+            utente.nome, f"{_imp.sito}/recupero/conferma/?g={grezzo}", ORE_GETTONE
+        )
+        await posta.spedisci(replace(m, a=utente.email))
+        log.info("recupero chiesto", extra={"utente": str(utente.id)})
+    else:
+        log.info("recupero su indirizzo sconosciuto", extra={"impronta": chiave})
+
+    return Fatto()
+
+
+@rotte.post(
+    "/recupero/conferma",
+    response_model=Fatto,
+    summary="Scegli la password nuova con il gettone ricevuto",
+)
+async def conferma_recupero(
+    dati: ConfermaRecuperoIn,
+    risposta: Response,
+    db: Annotated[AsyncSession, Depends(sessione)],
+) -> Fatto:
+    utente = await _consuma_gettone(db, dati.gettone, "recupero")
+    if utente is None:
+        raise ErroreApi(
+            status.HTTP_400_BAD_REQUEST,
+            "gettone_non_valido",
+            "Questo collegamento non vale più. "
+            "Chiedine un altro dalla pagina di accesso.",
+        )
+
+    utente.hash_password = sicurezza.cifra(dati.password_nuova)
+
+    # STESSA COSA DEL CAMBIO PASSWORD, e per la stessa ragione: chi reimposta
+    # la password lo fa quasi sempre perche' teme che qualcuno sia entrato.
+    # Tutte le sessioni cadono, e con la generazione cadono anche i gettoni
+    # d'accesso gia' emessi.
+    await db.execute(delete(SessioneDb).where(SessioneDb.utente_id == utente.id))
+    utente.generazione += 1
+
+    # NON si apre una sessione qui. Chi ha reimpostato deve entrare con la
+    # password nuova: e' la prova che se l'e' segnata, e se il collegamento
+    # fosse stato intercettato l'intruso non si troverebbe comunque una
+    # sessione aperta in mano.
+    togli_cookie(risposta)
+
+    # L'indirizzo risulta confermato per forza: il gettone e' arrivato li'.
+    utente.email_verificata = True
+    log.info("password reimpostata", extra={"utente": str(utente.id)})
     return Fatto()

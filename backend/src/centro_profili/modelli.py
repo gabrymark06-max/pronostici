@@ -117,3 +117,40 @@ class Sessione(Base):
     agente: Mapped[str | None] = mapped_column(String(200), nullable=True)
 
     utente: Mapped[Utente] = relationship(back_populates="sessioni")
+
+
+class GettoneEmail(Base):
+    """Un gettone spedito per posta: conferma dell'indirizzo, o recupero password.
+
+    NON SI CONSERVA IL GETTONE, SI CONSERVA IL SUO HASH. Vale la stessa ragione
+    delle password: chi leggesse questa tabella — una copia di sicurezza finita
+    nel posto sbagliato, un accesso al database — potrebbe altrimenti prendere
+    il gettone di recupero di chiunque e cambiargli la password. Con l'hash non
+    ci fa niente.
+
+    E' SHA-256 E NON ARGON2, e non e' una svista. Argon2 e' lento apposta,
+    perche' le password sono corte e indovinabili. Questi gettoni sono 32 byte
+    casuali: non esiste dizionario che li contenga, non c'e' niente da
+    rallentare, e un hash lento qui vorrebbe dire mezzo secondo di CPU su ogni
+    clic in un'email.
+
+    UNA RIGA PER TIPO, PER UTENTE. Chiedere un secondo recupero cancella il
+    primo: due collegamenti vivi contemporaneamente raddoppiano la finestra in
+    cui uno rubato funziona, e non servono a niente.
+    """
+
+    __tablename__ = "gettoni_email"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    utente_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("utenti.id", ondelete="CASCADE"), index=True
+    )
+    # `verifica` oppure `recupero`.
+    tipo: Mapped[str] = mapped_column(String(16), nullable=False)
+    impronta: Mapped[str] = mapped_column(String(64), unique=True, index=True, nullable=False)
+    creato: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    scade: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)

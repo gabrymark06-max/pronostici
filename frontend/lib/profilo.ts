@@ -1,5 +1,5 @@
 /**
- * IL CLIENTE DELL'API DEI CONTI.
+ * IL CLIENTE DELL'API DEI PROFILI.
  *
  * COSA NON CAMBIA. Il sito resta un export statico: le pagine dei pronostici
  * si costruiscono la notte, non chiamano niente, e reggono qualunque traffico.
@@ -17,18 +17,18 @@
  * codice, mai sul testo: il testo puo' cambiare, il codice no.
  */
 
-/** L'indirizzo dell'API, deciso in fase di build. Vuoto = conti spenti. */
-export const API = process.env.NEXT_PUBLIC_API_CONTI ?? '';
+/** L'indirizzo dell'API, deciso in fase di build. Vuoto = profili spenti. */
+export const API = process.env.NEXT_PUBLIC_API_PROFILI ?? '';
 
 /**
- * I conti si accendono solo se qualcuno ha configurato l'indirizzo.
+ * I profili si accendono solo se qualcuno ha configurato l'indirizzo.
  *
  * Senza, il sito si costruisce e funziona esattamente come prima: niente voce
- * «Accedi», niente pagine dei conti negli indirizzi pubblicati. E' l'unico modo
+ * «Accedi», niente pagine dei profili negli indirizzi pubblicati. E' l'unico modo
  * di aggiungere un servizio che puo' non esserci senza mettere in pagina bottoni
  * che non fanno niente.
  */
-export const CONTI_ACCESI = API !== '';
+export const PROFILI_ACCESI = API !== '';
 
 export interface Utente {
   id: string;
@@ -47,14 +47,14 @@ export interface SessioneAperta {
   corrente: boolean;
 }
 
-export class ErroreConto extends Error {
+export class ErroreProfilo extends Error {
   constructor(
     readonly codice: string,
     messaggio: string,
     readonly stato: number,
   ) {
     super(messaggio);
-    this.name = 'ErroreConto';
+    this.name = 'ErroreProfilo';
   }
 }
 
@@ -73,9 +73,9 @@ async function chiama<T>(percorso: string, opzioni: RequestInit = {}): Promise<T
       headers: { 'Content-Type': 'application/json', ...(opzioni.headers ?? {}) },
     });
   } catch {
-    throw new ErroreConto(
+    throw new ErroreProfilo(
       CODICE_RETE,
-      'Non riesco a raggiungere il servizio dei conti. Il sito funziona lo stesso: sono solo i conti a essere irraggiungibili.',
+      'Non riesco a raggiungere il servizio dei profili. Il sito funziona lo stesso: sono solo i profili a essere irraggiungibili.',
       0,
     );
   }
@@ -91,7 +91,7 @@ async function chiama<T>(percorso: string, opzioni: RequestInit = {}): Promise<T
 
   if (!risposta.ok) {
     const e = (corpo as { errore?: { codice?: string; dettaglio?: string } } | null)?.errore;
-    throw new ErroreConto(
+    throw new ErroreProfilo(
       e?.codice ?? 'errore_sconosciuto',
       e?.dettaglio ?? 'Qualcosa non ha funzionato. Riprova.',
       risposta.status,
@@ -106,32 +106,62 @@ const invia = (percorso: string, dati?: unknown) =>
     body: dati === undefined ? undefined : JSON.stringify(dati),
   });
 
-export const conto = {
-  registrazione: (dati: { email: string; nome: string; password: string }) =>
-    invia('/conti/registrazione', dati),
+/** Il minimo, uguale a quello del backend (`schemi.MINIMO_PASSWORD`). */
+export const MINIMO_PASSWORD = 10;
 
-  accesso: (dati: { email: string; password: string }) => invia('/conti/accesso', dati),
+export const profilo = {
+  registrazione: (dati: { email: string; nome: string; password: string }) =>
+    invia('/profili/registrazione', dati),
+
+  accesso: (dati: { email: string; password: string }) => invia('/profili/accesso', dati),
 
   /** Chiamata al caricamento di ogni pagina: e' quella che riaccende la sessione
    *  quando il gettone d'accesso e' scaduto ma quello di rinnovo no. */
-  rinnovo: () => invia('/conti/rinnovo'),
+  rinnovo: () => invia('/profili/rinnovo'),
 
-  io: () => chiama<Utente>('/conti/io'),
+  io: () => chiama<Utente>('/profili/io'),
 
-  uscita: () => chiama<{ fatto: boolean }>('/conti/uscita', { method: 'POST' }),
+  uscita: () => chiama<{ fatto: boolean }>('/profili/uscita', { method: 'POST' }),
 
-  uscitaOvunque: () => chiama<{ fatto: boolean }>('/conti/uscita-ovunque', { method: 'POST' }),
+  uscitaOvunque: () => chiama<{ fatto: boolean }>('/profili/uscita-ovunque', { method: 'POST' }),
 
-  sessioni: () => chiama<SessioneAperta[]>('/conti/sessioni'),
+  sessioni: () => chiama<SessioneAperta[]>('/profili/sessioni'),
 
   cambioPassword: (dati: { password_attuale: string; password_nuova: string }) =>
-    chiama<{ fatto: boolean }>('/conti/password', {
+    chiama<{ fatto: boolean }>('/profili/password', {
       method: 'POST',
       body: JSON.stringify(dati),
     }),
 
   chiusura: (dati: { password: string }) =>
-    chiama<{ fatto: boolean }>('/conti/chiusura', {
+    chiama<{ fatto: boolean }>('/profili/chiusura', {
+      method: 'POST',
+      body: JSON.stringify(dati),
+    }),
+
+  /* --- La posta --------------------------------------------------------- */
+
+  /** Rispedisce il messaggio di conferma dell'indirizzo. */
+  rinviaVerifica: () =>
+    chiama<{ fatto: boolean }>('/profili/verifica/invio', { method: 'POST' }),
+
+  /** Conferma l'indirizzo con il gettone dell'email. Non serve essere collegati. */
+  verifica: (gettone: string) =>
+    chiama<Utente>('/profili/verifica', {
+      method: 'POST',
+      body: JSON.stringify({ gettone }),
+    }),
+
+  /** Chiede il collegamento per reimpostare la password.
+   *  Risponde sempre allo stesso modo, che il profilo esista o no. */
+  recupero: (email: string) =>
+    chiama<{ fatto: boolean }>('/profili/recupero', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    }),
+
+  confermaRecupero: (dati: { gettone: string; password_nuova: string }) =>
+    chiama<{ fatto: boolean }>('/profili/recupero/conferma', {
       method: 'POST',
       body: JSON.stringify(dati),
     }),
@@ -147,16 +177,16 @@ export const conto = {
  *
  * Restituisce `null` invece di alzare: «non sei collegato» non e' un guasto, e
  * ogni chiamante dovrebbe intercettarlo per non mostrare un errore rosso a chi
- * sta semplicemente leggendo il sito senza conto.
+ * sta semplicemente leggendo il sito senza profilo.
  */
 export async function chiSono(): Promise<Utente | null> {
-  if (!CONTI_ACCESI) return null;
+  if (!PROFILI_ACCESI) return null;
   try {
-    return await conto.io();
+    return await profilo.io();
   } catch (e) {
-    if (e instanceof ErroreConto && e.codice === CODICE_RETE) return null;
+    if (e instanceof ErroreProfilo && e.codice === CODICE_RETE) return null;
     try {
-      return await conto.rinnovo();
+      return await profilo.rinnovo();
     } catch {
       return null;
     }

@@ -23,7 +23,7 @@ class Impostazioni(BaseSettings):
     )
 
     # --- Identita' del servizio ------------------------------------------- #
-    nome: str = "Centro — conti"
+    nome: str = "Centro — profili"
     ambiente: Literal["sviluppo", "produzione"] = "sviluppo"
 
     # --- Dati -------------------------------------------------------------- #
@@ -65,10 +65,43 @@ class Impostazioni(BaseSettings):
     cookie_secure: bool = False
     cookie_dominio: str | None = None
 
+    # --- Posta -------------------------------------------------------------- #
+    #
+    # `finta` scrive il messaggio nei log invece di spedirlo, e questo e' il
+    # PREDEFINITO di proposito: un servizio che crede di spedire e non spedisce
+    # lascia le persone ad aspettare una email che non arrivera' mai, e nessun
+    # log dice niente perche' non c'e' stato nessun errore. La finta e' una
+    # scelta esplicita che si vede a ogni messaggio; `smtp` si accende a mano
+    # quando ci sono le credenziali.
+    posta_modo: Literal["finta", "smtp"] = "finta"
+    posta_da: str = "Centro <no-reply@localhost>"
+    smtp_host: str = "localhost"
+    smtp_porta: int = 587
+    smtp_utente: str = ""
+    smtp_password: str = ""
+
+    # L'indirizzo del SITO, non dell'API: e' quello che finisce nei
+    # collegamenti dentro le email, e chi li apre deve atterrare sul sito.
+    sito: str = "http://localhost:4330"
+
+    ore_gettone_email: int = 24
+
     # --- Limiti ------------------------------------------------------------- #
     tentativi_accesso: int = 8
     tentativi_registrazione: int = 5
+    # Le rotte che SPEDISCONO vanno strette molto piu' delle altre: senza, un
+    # indirizzo qualunque diventa il bersaglio di una valanga di email partite
+    # dal nostro dominio, e a rimetterci e' la reputazione del mittente.
+    tentativi_posta: int = 3
     finestra_limite_s: int = 900
+
+    @field_validator("sito")
+    @classmethod
+    def _senza_barra_finale(cls, v: str) -> str:
+        # I collegamenti si compongono con `f"{sito}/verifica/..."`: con la
+        # barra finale verrebbe un doppio slash, che alcuni server servono e
+        # altri no.
+        return v.rstrip("/")
 
     @field_validator("origini", mode="before")
     @classmethod

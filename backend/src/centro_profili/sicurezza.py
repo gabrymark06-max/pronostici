@@ -14,6 +14,8 @@ cronometro, e non costa niente evitarla.
 
 from __future__ import annotations
 
+import hashlib
+import secrets
 import uuid
 from contextlib import suppress
 from datetime import UTC, datetime, timedelta
@@ -110,3 +112,29 @@ def leggi(gettone: str, atteso: Tipo) -> dict:
     if corpo.get("tipo") != atteso:
         raise GettoneNonValido(f"gettone di tipo {corpo.get('tipo')!r}, atteso {atteso!r}")
     return corpo
+
+
+# --------------------------------------------------------------------------- #
+# I gettoni che viaggiano per posta                                           #
+# --------------------------------------------------------------------------- #
+
+
+def gettone_email() -> tuple[str, str]:
+    """`(gettone, impronta)`.
+
+    Il gettone finisce nell'email, l'impronta nel database. Chi legge il
+    database non puo' risalire al gettone; chi presenta il gettone si ritrova
+    con la stessa impronta e si fa riconoscere.
+
+    `token_urlsafe(32)` sono 256 bit di casualita' da `secrets`, che e' il
+    generatore crittografico — non `random`, che e' prevedibile e serve ad
+    altro. Quarantatre caratteri stanno in un indirizzo senza codifica.
+    """
+    grezzo = secrets.token_urlsafe(32)
+    return grezzo, impronta_di(grezzo)
+
+
+def impronta_di(gettone: str) -> str:
+    """SHA-256 in esadecimale. Vedi il commento su `modelli.GettoneEmail`:
+    qui non serve un hash lento, perche' non c'e' niente da indovinare."""
+    return hashlib.sha256(gettone.encode("utf-8")).hexdigest()

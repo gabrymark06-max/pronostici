@@ -1,7 +1,7 @@
-"""Le prove dei conti.
+"""Le prove dei profili.
 
 Non provano che il codice giri: provano le DECISIONI. Ogni cosa scritta nel
-commento in testa a `rotte/conti.py` ha qui sotto una prova che fallisce se
+commento in testa a `rotte/profili.py` ha qui sotto una prova che fallisce se
 qualcuno la disfa senza accorgersene — l'errore d'accesso indistinguibile, la
 rotazione del gettone, il cambio password che caccia fuori gli altri.
 """
@@ -15,7 +15,7 @@ BUONA = "una-password-lunga-e-varia"
 
 async def registra(cliente, email="tizio@esempio.it", nome="Tizio", password=BUONA):
     return await cliente.post(
-        "/conti/registrazione", json={"email": email, "nome": nome, "password": password}
+        "/profili/registrazione", json={"email": email, "nome": nome, "password": password}
     )
 
 
@@ -52,7 +52,7 @@ async def test_email_normalizzata(cliente):
     r = await registra(cliente, email="  Tizio@Esempio.IT  ")
     assert r.status_code == 201
     assert r.json()["email"] == "tizio@esempio.it"
-    # E il maiuscolo non permette un secondo conto sulla stessa casella.
+    # E il maiuscolo non permette un secondo profilo sulla stessa casella.
     doppione = await registra(cliente, email="TIZIO@ESEMPIO.IT")
     assert doppione.status_code == 409
 
@@ -69,7 +69,12 @@ async def test_email_gia_presa_non_viene_confermata(cliente):
 
 
 @pytest.mark.parametrize(
-    "password", ["corta", "aaaaaaaaaaaaaaaa", "12345678901"]
+    "password",
+    [
+        "corta",             # sotto il minimo di dieci
+        "nove-cara",         # nove: uno sotto, il caso che conta
+        "aaaaaaaaaaaaaaaa",  # lunga ma con un carattere solo
+    ],
 )
 async def test_password_deboli_rifiutate(cliente, password):
     r = await registra(cliente, password=password)
@@ -79,7 +84,7 @@ async def test_password_deboli_rifiutate(cliente, password):
 
 async def test_errore_di_validazione_ha_la_stessa_busta(cliente):
     """FastAPI ne userebbe una sua: qui deve essere quella di tutti."""
-    r = await cliente.post("/conti/registrazione", json={"email": "non-una-email"})
+    r = await cliente.post("/profili/registrazione", json={"email": "non-una-email"})
     assert r.status_code == 422
     assert set(r.json()["errore"]) >= {"codice", "dettaglio"}
 
@@ -92,7 +97,7 @@ async def test_errore_di_validazione_ha_la_stessa_busta(cliente):
 async def test_accesso_riuscito(cliente):
     await registra(cliente)
     r = await cliente.post(
-        "/conti/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
+        "/profili/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
     )
     assert r.status_code == 200
     assert r.json()["ultimo_accesso"] is not None
@@ -102,10 +107,10 @@ async def test_utente_inesistente_e_password_sbagliata_sono_indistinguibili(clie
     """DECISIONE 1: la stessa risposta, parola per parola."""
     await registra(cliente)
     inesistente = await cliente.post(
-        "/conti/accesso", json={"email": "nessuno@esempio.it", "password": BUONA}
+        "/profili/accesso", json={"email": "nessuno@esempio.it", "password": BUONA}
     )
     sbagliata = await cliente.post(
-        "/conti/accesso", json={"email": "tizio@esempio.it", "password": "un-altra-password"}
+        "/profili/accesso", json={"email": "tizio@esempio.it", "password": "un-altra-password"}
     )
     assert inesistente.status_code == sbagliata.status_code == 401
     assert inesistente.json() == sbagliata.json()
@@ -116,10 +121,10 @@ async def test_troppi_tentativi_chiudono_fuori(cliente):
     await registra(cliente)
     for _ in range(8):
         await cliente.post(
-            "/conti/accesso", json={"email": "tizio@esempio.it", "password": "sbagliata-1"}
+            "/profili/accesso", json={"email": "tizio@esempio.it", "password": "sbagliata-1"}
         )
     r = await cliente.post(
-        "/conti/accesso", json={"email": "tizio@esempio.it", "password": "sbagliata-1"}
+        "/profili/accesso", json={"email": "tizio@esempio.it", "password": "sbagliata-1"}
     )
     assert r.status_code == 429
     assert r.json()["errore"]["codice"] == "troppi_tentativi"
@@ -130,7 +135,7 @@ async def test_il_limite_non_conta_gli_accessi_riusciti(cliente):
     await registra(cliente)
     for _ in range(12):
         r = await cliente.post(
-            "/conti/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
+            "/profili/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
         )
         assert r.status_code == 200, "un accesso riuscito non deve consumare tentativi"
 
@@ -141,14 +146,14 @@ async def test_il_limite_non_conta_gli_accessi_riusciti(cliente):
 
 
 async def test_io_richiede_l_accesso(cliente):
-    r = await cliente.get("/conti/io")
+    r = await cliente.get("/profili/io")
     assert r.status_code == 401
     assert r.json()["errore"]["codice"] == "non_autenticato"
 
 
 async def test_io_dopo_l_accesso(cliente):
     await registra(cliente)
-    r = await cliente.get("/conti/io")
+    r = await cliente.get("/profili/io")
     assert r.status_code == 200
     assert r.json()["email"] == "tizio@esempio.it"
 
@@ -159,7 +164,7 @@ async def test_il_gettone_di_rinnovo_non_vale_come_accesso(cliente):
     rinnovo = cliente.cookies["centro_rinnovo"]
     cliente.cookies.clear()
     cliente.cookies.set("centro_accesso", rinnovo)
-    r = await cliente.get("/conti/io")
+    r = await cliente.get("/profili/io")
     assert r.status_code == 401
 
 
@@ -168,13 +173,13 @@ async def test_rinnovo_ruota_il_gettone(cliente):
     await registra(cliente)
     vecchio = cliente.cookies["centro_rinnovo"]
 
-    r = await cliente.post("/conti/rinnovo")
+    r = await cliente.post("/profili/rinnovo")
     assert r.status_code == 200
     assert cliente.cookies["centro_rinnovo"] != vecchio
 
     # Il vecchio, riproposto, non entra.
     cliente.cookies.set("centro_rinnovo", vecchio)
-    r = await cliente.post("/conti/rinnovo")
+    r = await cliente.post("/profili/rinnovo")
     assert r.status_code == 401
     assert r.json()["errore"]["codice"] == "sessione_scaduta"
 
@@ -182,23 +187,23 @@ async def test_rinnovo_ruota_il_gettone(cliente):
 async def test_uscita_invalida_la_sessione(cliente):
     await registra(cliente)
     rinnovo = cliente.cookies["centro_rinnovo"]
-    assert (await cliente.post("/conti/uscita")).status_code == 200
+    assert (await cliente.post("/profili/uscita")).status_code == 200
 
     # Anche riesumando il cookie a mano, quella sessione non esiste piu'.
     cliente.cookies.set("centro_rinnovo", rinnovo)
-    assert (await cliente.post("/conti/rinnovo")).status_code == 401
+    assert (await cliente.post("/profili/rinnovo")).status_code == 401
 
 
 async def test_uscita_funziona_anche_senza_sessione(cliente):
     """Non deve fallire quando il gettone era gia' marcio: chi clicca «esci»
     deve uscire, non ricevere un errore."""
-    assert (await cliente.post("/conti/uscita")).status_code == 200
+    assert (await cliente.post("/profili/uscita")).status_code == 200
 
 
 async def test_sessioni_elenca_e_segna_quella_corrente(cliente):
     await registra(cliente)
-    await cliente.post("/conti/rinnovo")
-    r = await cliente.get("/conti/sessioni")
+    await cliente.post("/profili/rinnovo")
+    r = await cliente.get("/profili/sessioni")
     assert r.status_code == 200
     righe = r.json()
     assert len(righe) == 1, "la rotazione non deve lasciare sessioni orfane"
@@ -213,7 +218,7 @@ async def test_sessioni_elenca_e_segna_quella_corrente(cliente):
 async def test_cambio_password_richiede_quella_attuale(cliente):
     await registra(cliente)
     r = await cliente.post(
-        "/conti/password",
+        "/profili/password",
         json={
             "password_attuale": "quella-sbagliata",
             "password_nuova": "una-nuova-lunghissima",
@@ -227,19 +232,19 @@ async def test_cambio_password_caccia_fuori_gli_altri(cliente, app_e_db):
     """E' il motivo per cui uno cambia la password."""
     await registra(cliente)
     altrove = cliente.cookies["centro_rinnovo"]  # un secondo browser, in finta
-    await cliente.post("/conti/rinnovo")  # il primo browser va avanti per conto suo
+    await cliente.post("/profili/rinnovo")  # il primo browser va avanti per conto suo
 
     r = await cliente.post(
-        "/conti/password",
+        "/profili/password",
         json={"password_attuale": BUONA, "password_nuova": "un-altra-password-lunga"},
     )
     assert r.status_code == 200
 
     # Chi ha cambiato resta dentro...
-    assert (await cliente.get("/conti/io")).status_code == 200
+    assert (await cliente.get("/profili/io")).status_code == 200
     # ...e la sessione dell'altro browser e' morta.
     cliente.cookies.set("centro_rinnovo", altrove)
-    assert (await cliente.post("/conti/rinnovo")).status_code == 401
+    assert (await cliente.post("/profili/rinnovo")).status_code == 401
 
 
 async def test_il_gettone_di_accesso_gia_emesso_smette_di_valere(cliente):
@@ -258,7 +263,7 @@ async def test_il_gettone_di_accesso_gia_emesso_smette_di_valere(cliente):
     vecchio_accesso = cliente.cookies["centro_accesso"]
 
     r = await cliente.post(
-        "/conti/password",
+        "/profili/password",
         json={"password_attuale": BUONA, "password_nuova": "un-altra-password-lunga"},
     )
     assert r.status_code == 200
@@ -266,18 +271,18 @@ async def test_il_gettone_di_accesso_gia_emesso_smette_di_valere(cliente):
     # Il browser dell'intruso ha solo il gettone d'accesso di prima.
     cliente.cookies.clear()
     cliente.cookies.set("centro_accesso", vecchio_accesso)
-    fuori = await cliente.get("/conti/io")
+    fuori = await cliente.get("/profili/io")
     assert fuori.status_code == 401, "il gettone d'accesso di prima non deve valere piu'"
 
 
 async def test_uscita_ovunque_invalida_anche_i_gettoni_di_accesso(cliente):
     await registra(cliente)
     vecchio_accesso = cliente.cookies["centro_accesso"]
-    assert (await cliente.post("/conti/uscita-ovunque")).status_code == 200
+    assert (await cliente.post("/profili/uscita-ovunque")).status_code == 200
 
     cliente.cookies.clear()
     cliente.cookies.set("centro_accesso", vecchio_accesso)
-    assert (await cliente.get("/conti/io")).status_code == 401
+    assert (await cliente.get("/profili/io")).status_code == 401
 
 
 async def test_chi_cambia_la_password_non_si_butta_fuori_da_solo(cliente):
@@ -286,27 +291,27 @@ async def test_chi_cambia_la_password_non_si_butta_fuori_da_solo(cliente):
     vecchio dello spartiacque."""
     await registra(cliente)
     r = await cliente.post(
-        "/conti/password",
+        "/profili/password",
         json={"password_attuale": BUONA, "password_nuova": "un-altra-password-lunga"},
     )
     assert r.status_code == 200
-    assert (await cliente.get("/conti/io")).status_code == 200
+    assert (await cliente.get("/profili/io")).status_code == 200
 
 
 async def test_la_password_nuova_funziona_e_la_vecchia_no(cliente):
     await registra(cliente)
     await cliente.post(
-        "/conti/password",
+        "/profili/password",
         json={"password_attuale": BUONA, "password_nuova": "un-altra-password-lunga"},
     )
-    await cliente.post("/conti/uscita")
+    await cliente.post("/profili/uscita")
 
     vecchia = await cliente.post(
-        "/conti/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
+        "/profili/accesso", json={"email": "tizio@esempio.it", "password": BUONA}
     )
     assert vecchia.status_code == 401
     nuova = await cliente.post(
-        "/conti/accesso",
+        "/profili/accesso",
         json={"email": "tizio@esempio.it", "password": "un-altra-password-lunga"},
     )
     assert nuova.status_code == 200
@@ -315,13 +320,13 @@ async def test_la_password_nuova_funziona_e_la_vecchia_no(cliente):
 async def test_chiusura_cancella_davvero(cliente, app_e_db):
     from sqlalchemy import func, select
 
-    from centro_conti.modelli import Sessione as SessioneDb
-    from centro_conti.modelli import Utente
+    from centro_profili.modelli import Sessione as SessioneDb
+    from centro_profili.modelli import Utente
 
     _, fabbrica = app_e_db
     await registra(cliente)
 
-    r = await cliente.post("/conti/chiusura", json={"password": BUONA})
+    r = await cliente.post("/profili/chiusura", json={"password": BUONA})
     assert r.status_code == 200
 
     async with fabbrica() as db:
@@ -329,7 +334,7 @@ async def test_chiusura_cancella_davvero(cliente, app_e_db):
         sessioni = (
             await db.execute(select(func.count()).select_from(SessioneDb))
         ).scalar_one()
-    assert quanti == 0, "il conto deve sparire, non restare disattivato"
+    assert quanti == 0, "il profilo deve sparire, non restare disattivato"
     assert sessioni == 0, "le sessioni devono seguirlo per cascata"
 
     # E la stessa email torna libera.
@@ -338,7 +343,7 @@ async def test_chiusura_cancella_davvero(cliente, app_e_db):
 
 async def test_chiusura_richiede_la_password(cliente):
     await registra(cliente)
-    r = await cliente.post("/conti/chiusura", json={"password": "non-e-questa"})
+    r = await cliente.post("/profili/chiusura", json={"password": "non-e-questa"})
     assert r.status_code == 403
 
 

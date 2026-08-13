@@ -16,7 +16,7 @@ from pydantic import ValidationError
 
 
 def _impostazioni(monkeypatch, **variabili):
-    from centro_conti import impostazioni as modulo
+    from centro_profili import impostazioni as modulo
 
     monkeypatch.setenv("DATABASE_URL", "sqlite+aiosqlite:///:memory:")
     monkeypatch.setenv("CHIAVE_JWT", "chiave-di-prova-lunga-abbastanza-per-passare")
@@ -52,7 +52,7 @@ def test_il_jolly_e_rifiutato(monkeypatch):
 
 
 def test_senza_chiave_non_parte(monkeypatch):
-    from centro_conti import impostazioni as modulo
+    from centro_profili import impostazioni as modulo
 
     monkeypatch.setenv("DATABASE_URL", "sqlite+aiosqlite:///:memory:")
     monkeypatch.delenv("CHIAVE_JWT", raising=False)
@@ -65,7 +65,7 @@ def test_senza_chiave_non_parte(monkeypatch):
 
 
 def test_chiave_troppo_corta_rifiutata(monkeypatch):
-    from centro_conti import impostazioni as modulo
+    from centro_profili import impostazioni as modulo
 
     monkeypatch.setenv("DATABASE_URL", "sqlite+aiosqlite:///:memory:")
     monkeypatch.setenv("CHIAVE_JWT", "corta")

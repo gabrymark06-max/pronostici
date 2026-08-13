@@ -11,7 +11,7 @@ l'email permetterebbe a una botnet di provare la stessa casella da mille
 indirizzi. Insieme reggono i due casi.
 
 STA IN MEMORIA, E QUESTO E' UN LIMITE DICHIARATO. Con piu' di un processo ogni
-processo ha il suo conto, e i tentativi effettivi si moltiplicano per il numero
+processo ha il suo profilo, e i tentativi effettivi si moltiplicano per il numero
 di processi. Va bene per un'istanza sola — che e' come parte questo servizio —
 e quando ne servira' una seconda questo modulo va spostato su Redis. E' scritto
 qui e non in un file di cose da fare perche' e' qui che verra' letto.

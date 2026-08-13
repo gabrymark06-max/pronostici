@@ -3,7 +3,7 @@
 PERCHE' UN SERVIZIO SEPARATO E NON UNA PARTE DEL SITO. Il sito e' un export
 statico: nessun runtime, nessuna chiave, e per questo non puo' rompersi sotto
 carico ne' consumare quote. Quella decisione (brief 11.2) regge il prodotto e
-non si tocca. I conti hanno bisogno di un server, quindi il server e' un'altra
+non si tocca. I profili hanno bisogno di un server, quindi il server e' un'altra
 cosa, con un altro indirizzo e un altro ciclo di vita: se questo servizio cade,
 il sito continua a funzionare e a pubblicare pronostici — si perde solo la
 possibilita' di accedere.
@@ -25,13 +25,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from .db import motore
 from .errori import Errore, registra_gestori
 from .impostazioni import impostazioni
-from .rotte.conti import rotte as rotte_conti
+from .rotte.profili import rotte as rotte_profili
 
 logging.basicConfig(
     level=logging.INFO,
     format='{"quando":"%(asctime)s","livello":"%(levelname)s","dove":"%(name)s","cosa":"%(message)s"}',
 )
-log = logging.getLogger("centro.conti")
+log = logging.getLogger("centro.profili")
 
 
 @asynccontextmanager
@@ -52,7 +52,7 @@ def crea() -> FastAPI:
     app = FastAPI(
         title=imp.nome,
         version="1.0.0",
-        summary="Conti del sito dei pronostici: registrazione, accesso, sessioni.",
+        summary="Profili del sito dei pronostici: registrazione, accesso, sessioni.",
         description=(
             "Ogni errore ha la stessa forma: "
             '`{"errore": {"codice": "...", "dettaglio": "..."}}`. '
@@ -94,7 +94,7 @@ def crea() -> FastAPI:
     )
 
     registra_gestori(app)
-    app.include_router(rotte_conti)
+    app.include_router(rotte_profili)
 
     @app.get("/salute", tags=["servizio"], summary="Il servizio è in piedi")
     async def salute() -> dict[str, str]:

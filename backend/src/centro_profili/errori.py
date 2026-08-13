@@ -29,7 +29,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-log = logging.getLogger("centro.conti")
+log = logging.getLogger("centro.profili")
 
 
 class CorpoErrore(BaseModel):

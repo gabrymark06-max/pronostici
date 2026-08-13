@@ -1,6 +1,6 @@
 import { Marchio } from './Marchio';
 import { TemaToggle } from './TemaToggle';
-import { VoceConto } from './VoceConto';
+import { VoceProfilo } from './VoceProfilo';
 
 /**
  * LA BARRA DI NAVIGAZIONE.
@@ -71,7 +71,7 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
           {/* Il conto PRIMA del tema: e' l'unico dei due che porta da qualche
               parte, e all'estremo destro va la cosa piu' importante — che nella
               barra e' sempre l'identita'. */}
-          <VoceConto />
+          <VoceProfilo />
           <TemaToggle />
         </div>
       </div>

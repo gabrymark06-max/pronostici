@@ -1,13 +1,13 @@
 'use client';
 
-import { CONTI_ACCESI } from '@/lib/conto';
+import { PROFILI_ACCESI } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
 
 /**
  * L'ULTIMA VOCE DELLA BARRA: «Accedi», oppure il tuo nome.
  *
- * NON C'E' QUANDO I CONTI SONO SPENTI. Se `NEXT_PUBLIC_API_CONTI` non e'
+ * NON C'E' QUANDO I PROFILI SONO SPENTI. Se `NEXT_PUBLIC_API_PROFILI` non e'
  * configurata il servizio non esiste, e un bottone «Accedi» che porta a un
  * modulo che non puo' funzionare e' peggio di nessun bottone.
  *
@@ -17,29 +17,29 @@ import { useSessione } from './Sessione';
  * saltare tutta la barra quando la risposta arriva, che e' uno spostamento di
  * layout su ogni pagina del sito.
  */
-export function VoceConto() {
+export function VoceProfilo() {
   const { utente, caricamento } = useSessione();
 
-  if (!CONTI_ACCESI) return null;
+  if (!PROFILI_ACCESI) return null;
 
   if (caricamento) {
-    return <span className="conto-voce conto-voce--attesa" aria-hidden="true" />;
+    return <span className="profilo-voce profilo-voce--attesa" aria-hidden="true" />;
   }
 
   if (!utente) {
     return (
-      <a className="conto-voce conto-voce--entra" href="/accedi/">
+      <a className="profilo-voce profilo-voce--entra" href="/accedi/">
         Accedi
       </a>
     );
   }
 
   return (
-    <a className="conto-voce" href="/conto/">
-      <span className="conto-voce__iniziale" aria-hidden="true">
+    <a className="profilo-voce" href="/profilo/">
+      <span className="profilo-voce__iniziale" aria-hidden="true">
         {utente.nome.slice(0, 1).toUpperCase()}
       </span>
-      <span className="conto-voce__nome">{utente.nome}</span>
+      <span className="profilo-voce__nome">{utente.nome}</span>
     </a>
   );
 }

@@ -45,7 +45,7 @@ def sql() -> str:
 
 
 def test_ogni_colonna_dei_modelli_esiste_nella_migrazione(sql: str) -> None:
-    from centro_conti.modelli import Base
+    from centro_profili.modelli import Base
 
     mancanti: list[str] = []
     for tabella in Base.metadata.tables.values():
@@ -66,7 +66,7 @@ def test_l_email_e_unica_nel_database(sql: str) -> None:
 
 
 def test_le_sessioni_seguono_l_utente_cancellato(sql: str) -> None:
-    """Senza la cascata, chiudere un conto lascerebbe sessioni orfane che
+    """Senza la cascata, chiudere un profilo lascerebbe sessioni orfane che
     permettono ancora di rinnovare."""
     assert "ON DELETE CASCADE" in sql
 

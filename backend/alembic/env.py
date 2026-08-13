@@ -11,8 +11,8 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from centro_conti.impostazioni import impostazioni
-from centro_conti.modelli import Base
+from centro_profili.impostazioni import impostazioni
+from centro_profili.modelli import Base
 
 config = context.config
 if config.config_file_name is not None:

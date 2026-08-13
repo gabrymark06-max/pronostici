@@ -3101,7 +3101,7 @@
    -------------------------------------------------------------------------- */
 
 /* --- La voce nella barra ------------------------------------------------ */
-.conto-voce {
+.profilo-voce {
   display: inline-flex;
   align-items: center;
   gap: var(--s-2);
@@ -3115,19 +3115,19 @@
   white-space: nowrap;
 }
 
-.conto-voce:hover {
+.profilo-voce:hover {
   color: var(--ink);
   border-color: var(--segnale);
 }
 
-.conto-voce:focus-visible {
+.profilo-voce:focus-visible {
   outline: var(--focus);
   outline-offset: 2px;
 }
 
 /* Lo spazio si tiene occupato mentre si carica: senza, la barra salta quando
    la risposta arriva, su ogni pagina del sito. */
-.conto-voce--attesa {
+.profilo-voce--attesa {
   border-color: transparent;
   inline-size: 6.5rem;
 }
@@ -3135,7 +3135,7 @@
 /* L'INIZIALE E' L'UNICO PIENO DI SEGNALE DELLA BARRA. Il colore sta dove il
    prodotto decide qualcosa, e «questo sei tu» e' l'unica cosa che la barra
    afferma sul lettore invece che sui dati. */
-.conto-voce__iniziale {
+.profilo-voce__iniziale {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3151,29 +3151,29 @@
 @media (max-width: 767px) {
   /* Sul telefono resta l'iniziale: il nome per esteso ruberebbe alla barra
      lo spazio che serve al marchio. */
-  .conto-voce__nome { display: none; }
-  .conto-voce { padding-inline: var(--s-2); }
-  .conto-voce--attesa { inline-size: 2.75rem; }
+  .profilo-voce__nome { display: none; }
+  .profilo-voce { padding-inline: var(--s-2); }
+  .profilo-voce--attesa { inline-size: 2.75rem; }
 }
 
 /* --- Le pagine dei conti ------------------------------------------------ */
-.pagina-conto {
+.pagina-profilo {
   padding-block: var(--s-8) var(--s-9);
   display: grid;
   gap: var(--s-6);
 }
 
-.pagina-conto__attesa,
-.pagina-conto__nota {
+.pagina-profilo__attesa,
+.pagina-profilo__nota {
   font-size: var(--fs-body-s);
   line-height: var(--lh-body);
   color: var(--ink-3);
   max-width: var(--w-prose);
 }
 
-.pagina-conto__fuori,
-.pagina-conto__dentro,
-.pagina-conto__testata {
+.pagina-profilo__fuori,
+.pagina-profilo__dentro,
+.pagina-profilo__testata {
   display: grid;
   gap: var(--s-4);
 }
@@ -3335,6 +3335,13 @@
   padding: var(--s-5);
   background: var(--surface);
   border: 1px solid var(--edge);
+}
+
+/* L'AVVISO NON E' UN ALLARME. Filetto laterale neutro, nessun colore: quello
+   che segnala e' importante ma non urgente, e spendere il segnale qui vorrebbe
+   dire non averlo piu' quando servira' davvero. */
+.riquadro--avviso {
+  border-inline-start: 3px solid var(--edge-strong);
 }
 
 .riquadro--pericolo {

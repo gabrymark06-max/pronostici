@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 
-import { chiSono, CONTI_ACCESI, conto, type Utente } from '@/lib/conto';
+import { chiSono, PROFILI_ACCESI, profilo, type Utente } from '@/lib/profilo';
 
 /**
  * CHI SEI, per tutta l'applicazione.
@@ -15,7 +15,7 @@ import { chiSono, CONTI_ACCESI, conto, type Utente } from '@/lib/conto';
  *
  * NON C'E' NESSUN DATO DELL'UTENTE IN `localStorage`. Sarebbe l'unico modo di
  * togliere quell'istante, e il prezzo sarebbe una copia dell'identita' che
- * resta li' dopo l'uscita, dopo la chiusura del conto, e su un computer
+ * resta li' dopo l'uscita, dopo la chiusura del profilo, e su un computer
  * condiviso. L'unica fonte di verita' e' il server.
  */
 
@@ -36,11 +36,11 @@ const Ctx = createContext<Contesto>({
 
 export function ProvinciaSessione({ children }: { children: ReactNode }) {
   const [utente, setUtente] = useState<Utente | null>(null);
-  // Se i conti sono spenti non si carica niente e non si aspetta niente.
-  const [caricamento, setCaricamento] = useState(CONTI_ACCESI);
+  // Se i profili sono spenti non si carica niente e non si aspetta niente.
+  const [caricamento, setCaricamento] = useState(PROFILI_ACCESI);
 
   useEffect(() => {
-    if (!CONTI_ACCESI) return;
+    if (!PROFILI_ACCESI) return;
     let vivo = true;
     chiSono()
       .then((u) => {
@@ -58,7 +58,7 @@ export function ProvinciaSessione({ children }: { children: ReactNode }) {
 
   const esci = useCallback(async () => {
     try {
-      await conto.uscita();
+      await profilo.uscita();
     } finally {
       // Si esce dalla pagina ANCHE se la chiamata fallisce. Il caso in cui
       // fallisce e' quello in cui la sessione era gia' morta, e lasciare lo

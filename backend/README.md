@@ -1,6 +1,6 @@
-# Centro — conti
+# Centro — profili
 
-Registrazione, accesso e sessioni per il sito dei pronostici. È un **servizio a
+Registrazione, accesso, sessioni, conferma dell'indirizzo e recupero della password per il sito dei pronostici. È un **servizio a
 sé**: gira su un altro indirizzo e ha un altro ciclo di vita rispetto al sito.
 
 ## Perché è separato
@@ -9,7 +9,7 @@ Il sito è un export statico — nessun runtime, nessuna chiave, nessuna chiamat
 a nessuno (decisione del brief 11.2). È quella scelta che gli permette di
 reggere qualunque traffico e di non consumare quote.
 
-I conti hanno bisogno di un server. Tenerli qui dentro significa che **se questo
+I profili hanno bisogno di un server. Tenerli qui dentro significa che **se questo
 servizio cade, il sito continua a pubblicare pronostici**: si perde solo la
 possibilità di accedere. La parte che può rompersi non deve poter portare giù
 quella che non può.
@@ -30,7 +30,7 @@ python -m venv .venv
 
 cp .env.example .env        # e riempi CHIAVE_JWT
 .venv/Scripts/python -m alembic upgrade head
-.venv/Scripts/python -m uvicorn centro_conti.main:app --reload --port 8000
+.venv/Scripts/python -m uvicorn centro_profili.main:app --reload --port 8000
 ```
 
 La documentazione interattiva è su <http://localhost:8000/documentazione>.
@@ -39,19 +39,19 @@ Il frontend va costruito con l'indirizzo dell'API:
 
 ```bash
 cd ../frontend
-echo "NEXT_PUBLIC_API_CONTI=http://localhost:8000" > .env.local
+echo "NEXT_PUBLIC_API_PROFILI=http://localhost:8000" > .env.local
 npm run build
 ```
 
-**Senza quella variabile i conti restano spenti** e il sito si costruisce
-esattamente come prima: niente voce «Accedi», niente pagine dei conti. È
+**Senza quella variabile i profili restano spenti** e il sito si costruisce
+esattamente come prima: niente voce «Accedi», niente pagine dei profili. È
 voluto — un bottone che porta a un modulo che non può funzionare è peggio di
 nessun bottone.
 
 ## Le prove
 
 ```bash
-.venv/Scripts/python -m pytest tests -q     # 40
+.venv/Scripts/python -m pytest tests -q     # 60
 .venv/Scripts/python -m ruff check src tests alembic
 ```
 
@@ -73,30 +73,46 @@ Sono spiegate per esteso nei commenti dei file. In breve:
 
 | Dove | Cosa | Perché |
 |---|---|---|
-| `rotte/conti.py` | L'errore d'accesso è identico che l'email esista o no, e con lo stesso tempo di risposta | Altrimenti si prova un elenco di indirizzi e si tiene quello che risponde «password sbagliata» |
-| `rotte/conti.py` | La registrazione non conferma se l'email è già presa | Direbbe la stessa cosa dal lato opposto |
-| `rotte/conti.py` | Il gettone di rinnovo ruota a ogni uso | Un gettone rubato e riusato non entra, oppure fa accorgere il proprietario |
+| `rotte/profili.py` | L'errore d'accesso è identico che l'email esista o no, e con lo stesso tempo di risposta | Altrimenti si prova un elenco di indirizzi e si tiene quello che risponde «password sbagliata» |
+| `rotte/profili.py` | La registrazione non conferma se l'email è già presa | Direbbe la stessa cosa dal lato opposto |
+| `rotte/profili.py` | Il gettone di rinnovo ruota a ogni uso | Un gettone rubato e riusato non entra, oppure fa accorgere il proprietario |
 | `modelli.py` | Ogni gettone porta una *generazione*; cambiare password la incrementa | Senza, i gettoni d'accesso già emessi restavano validi 15 minuti dopo il cambio password |
 | `dipendenze.py` | I gettoni stanno in cookie `httpOnly`, mai in `localStorage` | Una dipendenza compromessa leggerebbe `localStorage` e porterebbe via le sessioni di tutti |
 | `sicurezza.py` | Argon2id, non bcrypt | bcrypt tronca a 72 byte in silenzio |
-| `rotte/conti.py` | Chiudere il conto **cancella**, non disattiva | Un conto «chiuso» che resta in tabella è un archivio di dati personali che nessuno ha più motivo di tenere |
+| `rotte/profili.py` | Chiudere il profilo **cancella**, non disattiva | Un profilo «chiuso» che resta in tabella è un archivio di dati personali che nessuno ha più motivo di tenere |
 
 ## Limiti dichiarati
 
 **Il limitatore dei tentativi è in memoria** (`limiti.py`). Con più di un
-processo ogni processo ha il suo conto, e i tentativi effettivi si moltiplicano
+processo ogni processo ha il suo profilo, e i tentativi effettivi si moltiplicano
 per il numero di processi. Va bene per un'istanza sola — che è come parte
 questo servizio — e quando ne servirà una seconda quel modulo va spostato su
 Redis.
 
-**Non c'è verifica dell'email e non c'è recupero password.** Entrambe hanno
-bisogno di spedire posta, e questo progetto non ha ancora un servizio di
-spedizione. La colonna `email_verificata` esiste già in tabella perché
-aggiungerla dopo, su una tabella piena, sarebbe una migrazione in più.
+**La posta, in sviluppo, non parte davvero.** `POSTA_MODO=finta` (il
+predefinito) scrive il messaggio nei log — per intero, collegamento compreso —
+invece di spedirlo. Si prova così il giro completo senza un account SMTP e
+senza rischiare di spedire a qualcuno per sbaglio.
 
-Sono anche le **due cose che vanno fatte prima di far pagare qualcuno**: non si
-vende a un indirizzo che nessuno ha confermato, e un cliente che perde la
-password e non può recuperarla è un cliente perso e arrabbiato.
+È il predefinito **di proposito**, non un ripiego: un servizio che crede di
+spedire e non spedisce lascia le persone ad aspettare un'email che non
+arriverà, e nessun log dice niente perché non c'è stato nessun errore. Qui la
+finta si vede a ogni messaggio, e `smtp` si accende a mano.
+
+Per spedire davvero:
+
+```
+POSTA_MODO=smtp
+POSTA_DA=Centro <no-reply@il-tuo-dominio.it>
+SMTP_HOST=smtp.tuo-fornitore.it
+SMTP_PORTA=587
+SMTP_UTENTE=...
+SMTP_PASSWORD=...
+SITO=https://il-tuo-dominio.it
+```
+
+`SITO` è l'indirizzo del **sito**, non dell'API: è quello che finisce nei
+collegamenti dentro le email.
 
 ## In produzione
 
