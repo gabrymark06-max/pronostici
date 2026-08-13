@@ -2015,7 +2015,13 @@
   inset-block-start: var(--barra-h);
   z-index: 15;
   margin-block-start: var(--s-6);
-  padding-block: var(--s-3);
+  /* PIU' ARIA SOPRA CHE SOTTO, e non per simmetria rotta.
+     Incollata alla barra di navigazione questa diventava una seconda fila di
+     voci della stessa barra: due navigazioni con due significati diversi —
+     una porta ad altre pagine, l'altra si muove dentro questa — lette come
+     una sola. Lo stacco le separa. Sotto invece resta stretta, perche' sotto
+     c'e' il contenuto a cui appartiene. */
+  padding-block: var(--s-5) var(--s-3);
   border-block-start: 1px solid var(--edge);
   border-block-end: 1px solid var(--edge);
   background: var(--ground);
@@ -2024,9 +2030,11 @@
 
 /* Il salto porta il titolo sotto DUE barre sovrapposte: senza questo margine
    di sicurezza il titolo del blocco finisce nascosto dietro di esse, e chi
-   clicca atterra in mezzo al testo senza capire dove. */
+   clicca atterra in mezzo al testo senza capire dove.
+   Il valore segue l'altezza vera della barra dei blocchi — voce da 44px piu'
+   le sue spaziature e i due filetti — e va rimisurato se quella cambia. */
 .sezione[id] {
-  scroll-margin-block-start: calc(var(--barra-h) + 4rem);
+  scroll-margin-block-start: calc(var(--barra-h) + 6rem);
 }
 
 .blocchi__lista {
@@ -2058,6 +2066,41 @@
 .blocchi__voce:focus-visible {
   outline: var(--focus);
   outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   IL BLOCCO IN CUI SEI.
+
+   Stesso trattamento del giorno attivo del calendario — fondo vermiglio
+   pieno, inchiostro scuro sopra — perche' e' la stessa domanda: «dove sono».
+   Il sito ha UN colore e lo spende dove decide qualcosa (tokens, regola 1);
+   una voce di navigazione che dice dove ti trovi e' esattamente uno di quei
+   posti, ed e' un uso gia' stabilito, non uno nuovo.
+
+   SENZA JAVASCRIPT. La pagina della partita non ne carica, e non comincia
+   adesso per accendere un bottone. `:target` sa gia' quale blocco e' stato
+   raggiunto; `:has()` porta quell'informazione all'indietro, fino alla voce
+   che ci punta. Una regola per ancora: sono cinque, si leggono, e se un
+   giorno un'ancora sparisce la sua riga resta senza effetto invece di
+   accendere il bottone sbagliato.
+
+   COSA SUCCEDE SENZA `:has()`. Le voci restano come sono. Il salto funziona
+   lo stesso — e' un link a un'ancora, non dipende da niente di tutto questo —
+   e si perde solo l'evidenziazione. E' la degradazione giusta: nessuna
+   informazione va persa, solo un aiuto visivo.
+
+   AL PRIMO CARICAMENTO NESSUNA E' ACCESA, ed e' voluto: in cima alla pagina
+   non sei dentro nessun blocco, e accendere la prima direbbe una cosa falsa.
+   -------------------------------------------------------------------------- */
+:root:has(#pronostici:target) .blocchi__voce[href='#pronostici'],
+:root:has(#formazioni:target) .blocchi__voce[href='#formazioni'],
+:root:has(#arbitro:target) .blocchi__voce[href='#arbitro'],
+:root:has(#altri-mercati:target) .blocchi__voce[href='#altri-mercati'],
+:root:has(#giocatori:target) .blocchi__voce[href='#giocatori'] {
+  background: var(--segnale);
+  border-color: var(--segnale);
+  color: var(--segnale-ink);
+  font-weight: 600;
 }
 
 /* Il blocco raggiunto si annuncia: senza, dopo il salto non e' ovvio dove sei
