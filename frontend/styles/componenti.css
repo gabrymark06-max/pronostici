@@ -2318,3 +2318,376 @@
     font-size: 9px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   LE SCHEDINE DEL GIORNO.
+
+   Il problema di disegno qui e' uno solo, e non e' estetico: una schedina
+   nasconde per costruzione l'unica cosa che conta. Cinque gambe da 80 su 100
+   sembrano cinque scommesse tranquille, e insieme fanno 33 su 100. Il
+   trattamento visivo deve rendere quella caduta VISIBILE, non decorarla.
+
+   Da qui le tre scelte:
+     * il numero grande della testata e' la probabilita' della schedina intera,
+       nella stessa scala tipografica della cifra della scheda partita — cosi'
+       si legge come «quel» numero, quello su cui il sito si fa misurare;
+     * ogni gamba porta la SUA probabilita' in colonna, incolonnata con le
+       altre: la caduta si vede scorrendo, senza calcoli;
+     * la quota sta in fondo, in corpo normale. Non e' il titolo.
+   -------------------------------------------------------------------------- */
+.schedine__testata {
+  margin-block: var(--s-7) var(--s-5);
+}
+
+.schedine__lettura,
+.schedine__regola p {
+  margin-block-start: var(--s-3);
+  max-width: 42rem;
+  font-size: var(--fs-body);
+  line-height: var(--lh-prose);
+  color: var(--ink-2);
+}
+
+.schedina {
+  margin-block-end: var(--s-7);
+  border: 1px solid var(--edge);
+  background: var(--surface);
+}
+
+.schedina__testa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border-block-end: 1px solid var(--edge);
+}
+
+.schedina__occhiello {
+  margin-block-start: var(--s-2);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+}
+
+.schedina__perno {
+  text-align: end;
+}
+
+.schedina__unita {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-block-start: var(--s-2);
+}
+
+.schedina__gambe {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gamba + .gamba {
+  border-block-start: 1px solid var(--edge);
+}
+
+/* LA GRIGLIA DELLA GAMBA, colonne fisse come nella lista delle partite: ora,
+   squadre, mercato, probabilita', quota, esito. Incolonnate lungo tutta la
+   schedina, cosi' confrontare due gambe e' una lettura sola. */
+.gamba__link {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(8rem, 1fr) minmax(6rem, 1fr) 5.5rem 4rem 5.5rem;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: var(--tap-min);
+  padding: var(--s-3) var(--s-5);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.gamba__link:hover {
+  background: var(--surface-2);
+}
+
+.gamba__link:focus-visible {
+  outline: var(--focus);
+  outline-offset: -2px;
+}
+
+.gamba__ora {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+}
+
+.gamba__squadre {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gamba__squadra {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-text);
+  font-variation-settings: 'wdth' var(--wdth-stretta);
+  font-size: var(--fs-lista);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gamba__mercato {
+  font-family: var(--font-text);
+  font-variation-settings: 'wdth' var(--wdth-media);
+  font-size: var(--fs-body-s);
+  color: var(--ink);
+}
+
+.gamba__p {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' var(--wdth-piena);
+  font-weight: 600;
+  font-size: var(--fs-cifra-riga);
+  text-align: end;
+  white-space: nowrap;
+}
+
+.gamba__unita {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.gamba__quota {
+  font-family: var(--font-mono);
+  font-size: var(--fs-quota);
+  text-align: end;
+  color: var(--ink-2);
+}
+
+.gamba__esito {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  text-align: end;
+}
+
+.gamba__esito--si { color: var(--outcome-yes); }
+/* Una gamba sbagliata NON e' rossa: vale la regola 2 dei token, il mancato e'
+   neutro e lo dice la parola. */
+.gamba__esito--no { color: var(--outcome-no); }
+.gamba__esito--attesa { color: var(--ink-3); }
+
+.schedina__piede {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-block-start: 1px solid var(--edge);
+  background: var(--surface-2);
+}
+
+.schedina__quota strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-quota);
+}
+
+.schedina__mercato,
+.schedina__verdetto {
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+}
+
+.schedina__verdetto--uscita { color: var(--outcome-yes); }
+
+.schedina__nota {
+  padding: var(--s-4) var(--s-5);
+  border-block-start: 1px solid var(--edge);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+/* La schedina uscita porta un filetto laterale. E' lo stesso verde dei
+   pronostici centrati, l'unico colore che il sistema concede a un esito. */
+.schedina--uscita {
+  border-inline-start: 3px solid var(--outcome-yes);
+}
+
+.schedine__regola {
+  margin-block: var(--s-7) var(--s-8);
+  padding-block-start: var(--s-5);
+  border-block-start: 1px solid var(--edge);
+}
+
+.schedine__ipotesi {
+  font-size: var(--fs-body-s);
+  color: var(--ink-3);
+}
+
+/* SOTTO I 900px LA GAMBA SI IMPILA, come la tavola dei mercati e per la stessa
+   ragione: sei colonne di cui due testuali non stanno in 328px, e al 200 % di
+   corpo non ci starebbero nemmeno a 640. */
+@media (max-width: 899px) {
+  .gamba__link {
+    grid-template-columns: 3.5rem 1fr auto;
+    grid-template-areas:
+      'ora squadre p'
+      'ora mercato quota'
+      'ora esito esito';
+    row-gap: var(--s-1);
+    padding-block: var(--s-4);
+  }
+  .gamba__ora { grid-area: ora; align-self: start; }
+  .gamba__squadre { grid-area: squadre; }
+  .gamba__mercato { grid-area: mercato; }
+  .gamba__p { grid-area: p; }
+  .gamba__quota { grid-area: quota; }
+  .gamba__esito { grid-area: esito; text-align: start; }
+}
+
+/* --------------------------------------------------------------------------
+   I PROGRESSI.
+   -------------------------------------------------------------------------- */
+.progressi__testata {
+  margin-block: var(--s-7) var(--s-6);
+}
+
+.progressi__lettura {
+  margin-block-start: var(--s-3);
+  max-width: 42rem;
+  font-size: var(--fs-body);
+  line-height: var(--lh-prose);
+  color: var(--ink-2);
+}
+
+.progressi__blocco {
+  margin-block-end: var(--s-8);
+  padding-block-start: var(--s-5);
+  border-block-start: 1px solid var(--edge);
+}
+
+.progressi__blocco .registro__perno {
+  margin-block: var(--s-4) var(--s-5);
+  max-width: 32rem;
+}
+
+.tabella--progressi {
+  width: 100%;
+  max-width: 42rem;
+}
+
+.tabella--progressi thead th + th { text-align: end; }
+
+.progressi__nota {
+  margin-block-start: var(--s-3);
+  max-width: 42rem;
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+.progressi__nota--avviso {
+  padding-inline-start: var(--s-4);
+  border-inline-start: 3px solid var(--warn);
+}
+
+.progressi__vivo {
+  margin-block: var(--s-4) 0;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* L'AVANZAMENTO — pista e pieno, la stessa lingua del misurino della
+   probabilita'. Non ha una tacca perche' qui non c'e' un secondo numero da
+   confrontare: c'e' una distanza da percorrere. */
+.avanzamento {
+  margin-block: var(--s-6) var(--s-4);
+  max-width: 42rem;
+}
+
+.avanzamento__testa {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-block-end: var(--s-2);
+}
+
+.avanzamento__testa .num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+}
+
+.avanzamento__pista {
+  block-size: 10px;
+  background: var(--prob-track);
+}
+
+.avanzamento__pieno {
+  block-size: 100%;
+  background: var(--prob-fill);
+}
+
+@media (max-width: 559px) {
+  .tabella--progressi,
+  .tabella--progressi tbody,
+  .tabella--progressi tr {
+    display: block;
+  }
+  .tabella--progressi thead { display: none; }
+  .tabella--progressi tbody tr {
+    padding-block: var(--s-3);
+    border-block-end: 1px solid var(--edge);
+  }
+  .tabella--progressi tbody th {
+    display: block;
+    padding: 0 0 var(--s-2);
+    border: 0;
+  }
+  .tabella--progressi td {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    padding: 2px 0;
+    margin-inline-end: var(--s-4);
+    border: 0;
+    text-align: start;
+  }
+  .tabella--progressi td::before {
+    content: attr(data-etichetta);
+    font-family: var(--font-text);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+}
+
+/* A barra stretta la testata va a capo e il perno finisce su una riga sua: con
+   `text-align: end` su un blocco largo quanto il suo contenuto il numero
+   sembrava centrato, che nel resto del sito non e' un allineamento che esiste.
+   Sulla riga propria si allinea a sinistra come tutto il resto. */
+@media (max-width: 559px) {
+  .schedina__perno {
+    text-align: start;
+  }
+}
+
+/* Il contenitore scorrevole porta un filetto ai due lati per dire che c'e'
+   altro da vedere. Qui la tavola e' stretta e il contenitore no, quindi il
+   filetto destro finiva staccato dalla tavola, in mezzo al vuoto, a mille
+   pixel dall'ultima colonna. Il contenitore si stringe sulla tavola. */
+.progressi__blocco .scorrevole {
+  max-width: 42rem;
+}

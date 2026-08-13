@@ -34,11 +34,21 @@ export function Calendario({
   corrente,
   precedente,
   successivo,
+  /**
+   * La rotta su cui si muove il calendario, senza data e senza barre.
+   *
+   * La striscia dei giorni serve identica in due posti — la lista delle
+   * partite e il pronostico del giorno — e in ognuno deve restare DENTRO la
+   * propria sezione. Un calendario che dal pronostico del giorno ti sposta
+   * nella lista non e' un calendario: e' un'uscita mascherata da controllo.
+   */
+  base = '/giorno',
 }: {
   giorni: RiepilogoGiorno[];
   corrente: string;
   precedente: string | null;
   successivo: string | null;
+  base?: string;
 }) {
   const binario = useRef<HTMLUListElement>(null);
   const attivo = useRef<HTMLAnchorElement>(null);
@@ -61,7 +71,7 @@ export function Calendario({
   return (
     <nav className="rail" aria-label="Calendario">
       <div className="rail__interno colonna colonna--lista">
-        <Freccia data={precedente} verso="precedente" />
+        <Freccia data={precedente} verso="precedente" base={base} />
 
         <ul className="rail__binario" ref={binario}>
           {giorni.map((giorno) => {
@@ -73,7 +83,7 @@ export function Calendario({
                 <a
                   ref={attuale ? attivo : undefined}
                   className={`rail__giorno${parola ? ' rail__giorno--vicino' : ''}`}
-                  href={`/giorno/${giorno.data}/`}
+                  href={`${base}/${giorno.data}/`}
                   aria-current={attuale ? 'date' : undefined}
                   /* WCAG 2.5.3 «Label in Name»: il nome accessibile deve
                      COMINCIARE con il testo che si vede. Chi usa il comando
@@ -95,7 +105,7 @@ export function Calendario({
           })}
         </ul>
 
-        <Freccia data={successivo} verso="successivo" />
+        <Freccia data={successivo} verso="successivo" base={base} />
       </div>
     </nav>
   );
@@ -140,7 +150,15 @@ function etichettaConteggio(total: number): string {
  * L'estremo senza giorno non è un link morto: è un segno spento, fuori
  * dall'ordine di tabulazione e dichiarato come tale.
  */
-function Freccia({ data, verso }: { data: string | null; verso: 'precedente' | 'successivo' }) {
+function Freccia({
+  data,
+  verso,
+  base,
+}: {
+  data: string | null;
+  verso: 'precedente' | 'successivo';
+  base: string;
+}) {
   const glifo = verso === 'precedente' ? '‹' : '›';
 
   if (!data) {
@@ -154,7 +172,7 @@ function Freccia({ data, verso }: { data: string | null; verso: 'precedente' | '
   return (
     <a
       className="rail__freccia"
-      href={`/giorno/${data}/`}
+      href={`${base}/${data}/`}
       aria-label={`Giorno ${verso}, ${dataLunga(data)}`}
     >
       <span aria-hidden="true">{glifo}</span>

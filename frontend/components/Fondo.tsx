@@ -205,6 +205,12 @@ export function Fondo({
               </a>
               .
             </p>
+            {/* Qui sotto la lista c'e' il riassunto; il conto per fascia e per
+                campionato, e quanto manca perche' il numero dal vivo diventi
+                leggibile, stanno su una pagina propria. */}
+            <p className="vivo__registro">
+              <a href="/progressi/">Tutti i progressi, campionato per campionato →</a>
+            </p>
             </div>
           </div>
         </div>

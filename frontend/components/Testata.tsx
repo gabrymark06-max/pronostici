@@ -1,4 +1,4 @@
-import { ANCORA_FUNZIONAMENTO, ANCORA_REGISTRO } from './ancore';
+import { ANCORA_FUNZIONAMENTO } from './ancore';
 import { Marchio } from './Marchio';
 import { TemaToggle } from './TemaToggle';
 
@@ -15,15 +15,23 @@ import { TemaToggle } from './TemaToggle';
  * filetto: sotto i ~64px una barra non ha spazio per un marchio letto come
  * marchio, e diventa un bordo dello schermo.
  *
- * LE VOCI SONO QUATTRO E SONO TUTTE VERE. Non c'è un menu inventato per
- * riempire: «Oggi» porta al giorno di apertura, «Come funziona» e
- * «Registro» sono le due ancore in fondo alla pagina, «Codice» è il
- * repository pubblico. Il numero verde e la riga sulla gratuità stanno nel
- * piede, che è il posto in cui si guardano davvero.
+ * LE VOCI SONO CINQUE E SONO TUTTE VERE. Non c'è un menu inventato per
+ * riempire, e nessuna porta a una pagina che non esiste ancora: «Pronostico
+ * del giorno» sono le due schedine, «Tutte le partite» è la lista, «Progressi»
+ * è il registro completo, «Come funziona» è l'ancora in fondo alla lista,
+ * «Codice» è il repository pubblico. Il numero verde e la riga sulla gratuità
+ * stanno nel piede, che è il posto in cui si guardano davvero.
+ *
+ * PERCHÉ NON C'È «ACCEDI». L'impianto di questa barra viene dai siti di
+ * pronostici che fanno la stessa cosa, e tutti hanno il bottone dell'accesso
+ * all'estremo destro. Lì serve, perché lì i pronostici stanno dietro la
+ * registrazione. Qui non c'è niente da sbloccare: il registro è pubblico ed è
+ * l'unico argomento che il prodotto ha. Un bottone che non chiude niente
+ * costerebbe all'utente e non gli darebbe nulla.
  *
  * NESSUN HAMBURGER A NESSUNA LARGHEZZA. Sotto i 768px la barra tiene marchio e
  * comandi sul primo livello e fa scorrere le voci orizzontalmente sul secondo:
- * quattro voci non si nascondono dietro un bottone.
+ * cinque voci non si nascondono dietro un bottone.
  */
 export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
   const casa = giornoApertura ? `/giorno/${giornoApertura}/` : '/';
@@ -34,19 +42,27 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
         <Marchio href={casa} />
 
         <nav className="barra__voci" aria-label="Sezioni">
+          {/* L'indirizzo SENZA DATA, che è quello che si condivide e si mette
+              nei preferiti: deve voler dire «oggi» anche fra un mese. Rimanda
+              da sé al giorno pubblicato più recente. */}
+          <a className="voce" href="/pronostico-del-giorno/">
+            <IconaBersaglio />
+            <span className="voce__nome">Pronostico del giorno</span>
+          </a>
+
           <a className="voce" href={casa}>
             <IconaGiornata />
-            <span className="voce__nome">Oggi</span>
+            <span className="voce__nome">Tutte le partite</span>
+          </a>
+
+          <a className="voce" href="/progressi/">
+            <IconaRegistro />
+            <span className="voce__nome">Progressi</span>
           </a>
 
           <a className="voce" href={`${casa}#${ANCORA_FUNZIONAMENTO}`}>
-            <IconaBersaglio />
+            <IconaDomanda />
             <span className="voce__nome">Come funziona</span>
-          </a>
-
-          <a className="voce" href={`${casa}#${ANCORA_REGISTRO}`}>
-            <IconaRegistro />
-            <span className="voce__nome">Registro</span>
           </a>
 
           <a
@@ -105,6 +121,20 @@ function IconaBersaglio() {
       <path d="M3 3h18v18H3z" />
       <path d="M8 8h8v8H8z" />
       <path d="M11 11h2v2h-2z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/* «Come funziona» aveva il bersaglio, che ora è del pronostico del giorno: il
+   segno del marchio va a quello che il prodotto decide, non alla spiegazione.
+   Qui un punto interrogativo costruito con la stessa geometria ortogonale —
+   nessuna curva, come tutte le altre. */
+function IconaDomanda() {
+  return (
+    <svg {...COMUNI}>
+      <path d="M3 3h18v18H3z" />
+      <path d="M9 9V8h6v4h-3v2" />
+      <path d="M11 17h2v2h-2z" fill="currentColor" stroke="none" />
     </svg>
   );
 }

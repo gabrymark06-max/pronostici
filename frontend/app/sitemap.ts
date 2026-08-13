@@ -8,17 +8,30 @@ export const dynamic = 'force-static';
 const BASE = 'https://pronostici.example';
 
 /**
- * Il sito ha due tipi di pagina e basta: la giornata e la partita.
- * Le rotte `/come-funziona/` e `/come-stiamo-andando/` non esistono piu' e
- * non compaiono qui.
+ * Il sito ha quattro tipi di pagina: la giornata, la partita, il pronostico
+ * del giorno e i progressi.
+ *
+ * GLI INDIRIZZI SENZA DATA NON ENTRANO. `/pronostico-del-giorno/` e' un
+ * rimando con `refresh` nel <head> e il suo canonical punta al giorno: metterlo
+ * qui accanto alla pagina datata sarebbe dichiarare due indirizzi per lo stesso
+ * contenuto. Ci sta solo `/`, che e' la radice e va dichiarata comunque.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const fisse: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: 'daily', priority: 1 },
+    { url: `${BASE}/progressi/`, changeFrequency: 'daily', priority: 0.8 },
   ];
 
-  const giorni: MetadataRoute.Sitemap = giorniDisponibili().map((data) => ({
+  const giorni = giorniDisponibili();
+
+  const liste: MetadataRoute.Sitemap = giorni.map((data) => ({
     url: `${BASE}/giorno/${data}/`,
+    changeFrequency: 'daily',
+    priority: 0.7,
+  }));
+
+  const schedine: MetadataRoute.Sitemap = giorni.map((data) => ({
+    url: `${BASE}/pronostico-del-giorno/${data}/`,
     changeFrequency: 'daily',
     priority: 0.7,
   }));
@@ -29,5 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...fisse, ...giorni, ...partite];
+  return [...fisse, ...liste, ...schedine, ...partite];
 }
