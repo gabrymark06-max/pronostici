@@ -57,6 +57,93 @@ def _giorni(finestra: int, oggi: str) -> list[str]:
     return [(base + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(finestra + 1)]
 
 
+# DA MERCATO SOFASCORE ALLE NOSTRE CHIAVI.
+#
+# Solo cio' che si mappa SENZA INTERPRETARE. Sono quattro famiglie:
+#
+#   Full time            -> 1x2_home / 1x2_draw / 1x2_away
+#   Double chance        -> dc_1x / dc_x2 / dc_12
+#   Both teams to score  -> btts_yes / btts_no
+#   Match goals + linea  -> over_<L> / under_<L>
+#
+# Restano fuori, e non per pigrizia:
+#
+#   * «1st half» rimanda tre esiti di cui DUE si chiamano `X`. Un mercato che
+#     non sa nominare i propri esiti non si mappa: qualunque scelta sarebbe
+#     un'ipotesi su quale dei due sia il vero `1`;
+#   * handicap asiatico, calci d'angolo, cartellini, prima squadra a segnare:
+#     il nostro catalogo non ha la chiave corrispondente, quindi non c'e'
+#     niente contro cui confrontarli. Restano visibili in «altri mercati»,
+#     dove non fingono di essere paragonabili al nostro numero.
+_ESITI_1X2 = {"1": "1x2_home", "X": "1x2_draw", "2": "1x2_away"}
+_ESITI_DC = {"1X": "dc_1x", "X2": "dc_x2", "12": "dc_12"}
+_ESITI_BTTS = {"Yes": "btts_yes", "No": "btts_no"}
+# Le linee che il nostro catalogo conosce. Le altre (0,5, 6,5...) esistono su
+# Sofascore ma non da noi: mapparle creerebbe chiavi che nessuno legge.
+_LINEE_GOL = {"2.5", "3.5"}
+
+
+def _chiavi_del_mercato(mercato: dict) -> dict[str, float]:
+    """Le probabilita' implicite di un mercato, con le NOSTRE chiavi.
+
+    Vuoto quando il mercato non e' mappabile: e' il caso normale, non un
+    errore.
+    """
+    nome = (mercato.get("mercato") or "").strip()
+    linea = (mercato.get("linea") or "").strip()
+    fuori: dict[str, float] = {}
+
+    for esito in mercato.get("esiti") or []:
+        p = esito.get("probabilita_implicita")
+        if not isinstance(p, (int, float)) or not 0 < p < 1:
+            continue
+        nome_esito = (esito.get("esito") or "").strip()
+        chiave: str | None = None
+        if nome == "Full time":
+            chiave = _ESITI_1X2.get(nome_esito)
+        elif nome == "Double chance":
+            chiave = _ESITI_DC.get(nome_esito)
+        elif nome == "Both teams to score":
+            chiave = _ESITI_BTTS.get(nome_esito)
+        elif nome == "Match goals" and linea in _LINEE_GOL:
+            if nome_esito == "Over":
+                chiave = f"over_{linea}"
+            elif nome_esito == "Under":
+                chiave = f"under_{linea}"
+        if chiave:
+            fuori[chiave] = float(p)
+    return fuori
+
+
+def _market_p(quote: dict) -> dict[str, float]:
+    """Probabilita' di mercato SGONFIATE, dalle quote Sofascore.
+
+    La probabilita' implicita di un prezzo contiene il margine: su un mercato
+    completo le implicite sommano a piu' di 1 — 1,05 significa un margine del
+    cinque per cento. Dividere ognuna per la somma toglie il margine in modo
+    proporzionale, che e' la normalizzazione piu' semplice e l'unica difendibile
+    senza assumere come l'operatore distribuisce il margine fra gli esiti.
+    E' la stessa cosa che il progetto fa gia' sulle quote dell'altra fonte.
+
+    Un mercato con un solo esito leggibile NON si sgonfia: normalizzarlo
+    darebbe probabilita' 1, cioe' certezza, che e' l'opposto di quello che
+    quel prezzo dice.
+    """
+    fuori: dict[str, float] = {}
+    for mercato in quote.get("mercati") or []:
+        chiavi = _chiavi_del_mercato(mercato)
+        if len(chiavi) < 2:
+            continue
+        somma = sum(chiavi.values())
+        if not 0.9 < somma < 1.6:
+            # Somma implausibile: quote sospese, o un mercato incompleto letto
+            # a meta'. Meglio saltarlo che pubblicare un numero storto.
+            continue
+        for k, p in chiavi.items():
+            fuori[k] = round(p / somma, 5)
+    return fuori
+
+
 def _senza_ora(blocco: dict) -> dict:
     """Il blocco senza `letto`, per confrontare la sostanza e non il momento."""
     return {k: v for k, v in blocco.items() if k != "letto"}
@@ -121,6 +208,14 @@ def _blocco(
             "n_mercati": quote.get("n_mercati"),
             "mercati": quote.get("mercati", []),
         }
+        # Le stesse quote tradotte nelle nostre chiavi e sgonfiate: e' quello
+        # che riempie la colonna «il mercato» sulle partite che la fonte
+        # principale non copre. Sta in un campo suo, e non dentro `odds`,
+        # perche' la provenienza non si mescola: la pagina deve poter dire da
+        # dove viene il numero che mostra.
+        mp = _market_p(quote)
+        if mp:
+            blocco["market_p"] = mp
 
     mancanti = scheda.get("parti_mancanti")
     if isinstance(mancanti, dict) and mancanti:

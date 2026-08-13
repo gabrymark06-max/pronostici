@@ -205,6 +205,16 @@ export interface Sofascore {
   arbitro?: Arbitro;
   formazioni?: Formazioni;
   quote?: { n_mercati?: number; mercati: MercatoEsteso[] };
+  /**
+   * Le stesse quote tradotte nelle NOSTRE chiavi e sgonfiate del margine.
+   *
+   * Sta qui e non dentro `odds` apposta: le due fonti non si mescolano nello
+   * stesso campo, così la pagina può sempre dire da dove viene il numero che
+   * mostra. Copre le quattro famiglie che si mappano senza interpretare —
+   * esito finale, doppia chance, entrambe segnano, gol totali sopra e sotto
+   * 2,5 e 3,5.
+   */
+  market_p?: Record<string, number>;
   giocatori?: StimeGiocatori;
   parti_mancanti?: Record<string, string>;
 }

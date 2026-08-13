@@ -1,4 +1,3 @@
-import { suCento } from '@/lib/mercati-esteso';
 import type { GiocatoreStimato, StimeGiocatori } from '@/lib/tipi';
 
 /**
@@ -38,45 +37,59 @@ function Tabella({ titolo, giocatori }: { titolo: string; giocatori: GiocatoreSt
   return (
     <div className="giocatori__squadra">
       <h3 className="label giocatori__titolo">{titolo}</h3>
-      <div className="scorrevole">
-        <table className="tabella tabella--giocatori">
-          <thead>
-            <tr>
-              <th scope="col">Giocatore</th>
-              {COLONNE.map((c) => (
-                <th scope="col" key={c.chiave} title={c.titolo}>
-                  {c.testa}
+      {/* NIENTE `scorrevole`: la tavola ci sta.
+          Ci stava anche prima, se non fosse che «su 100» era ripetuto in ogni
+          cella — sei volte per riga, quarantadue per squadra. L'unita' e' la
+          stessa per tutte le colonne dei mercati, quindi si dice UNA volta
+          nell'intestazione e le celle tengono il solo numero. La larghezza
+          crolla e la barra di scorrimento sparisce. */}
+      <table className="tabella tabella--giocatori">
+        <thead>
+          <tr>
+            <th scope="col">Giocatore</th>
+            {COLONNE.map((c) => (
+              <th scope="col" className="num" key={c.chiave} title={c.titolo}>
+                {c.testa}
+                <span className="giocatori__unita">su 100</span>
+              </th>
+            ))}
+            <th scope="col" className="num">
+              Campione
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {giocatori.map((g) => {
+            const per = new Map(g.stime.map((s) => [s.mercato, s.p]));
+            return (
+              <tr key={g.id}>
+                <th scope="row">
+                  {g.nome}
+                  {g.ruolo ? <span className="giocatori__ruolo"> {g.ruolo}</span> : null}
                 </th>
-              ))}
-              <th scope="col">Su</th>
-            </tr>
-          </thead>
-          <tbody>
-            {giocatori.map((g) => {
-              const per = new Map(g.stime.map((s) => [s.mercato, s.p]));
-              return (
-                <tr key={g.id}>
-                  <th scope="row">
-                    {g.nome}
-                    {g.ruolo ? <span className="giocatori__ruolo"> {g.ruolo}</span> : null}
-                  </th>
-                  {COLONNE.map((c) => {
-                    const p = per.get(c.chiave);
-                    return (
-                      <td className="num" key={c.chiave}>
-                        {typeof p === 'number' ? suCento(p) : '—'}
-                      </td>
-                    );
-                  })}
-                  <td className="num giocatori__campione">
-                    {g.presenze != null ? `${g.presenze} partite` : '—'}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+                {COLONNE.map((c) => {
+                  const p = per.get(c.chiave);
+                  return (
+                    <td className="num" key={c.chiave} data-etichetta={c.testa}>
+                      {typeof p === 'number' ? (
+                        <>
+                          {Math.round(p * 100)}
+                          <span className="solo-lettori"> su 100</span>
+                        </>
+                      ) : (
+                        '—'
+                      )}
+                    </td>
+                  );
+                })}
+                <td className="num giocatori__campione" data-etichetta="Campione">
+                  {g.presenze != null ? `${g.presenze} partite` : '—'}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -93,7 +106,7 @@ export function SezioneGiocatori({
   if (stime.casa.length === 0 && stime.ospiti.length === 0) return null;
 
   return (
-    <section className="sezione giocatori" aria-labelledby="titolo-giocatori">
+    <section className="sezione giocatori" id="giocatori" aria-labelledby="titolo-giocatori">
       <h2 id="titolo-giocatori" className="label sezione__titolo">
         <span className="bersaglio" aria-hidden="true" /> I singoli giocatori
       </h2>

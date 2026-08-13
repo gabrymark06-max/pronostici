@@ -75,8 +75,12 @@ function TabellaMercato({ m }: { m: MercatoPronto }) {
           <thead>
             <tr>
               <th scope="col">Esito</th>
-              <th scope="col">Quota</th>
-              <th scope="col">Quanto la dà il prezzo</th>
+              <th scope="col" className="num">
+                Quota
+              </th>
+              <th scope="col" className="num">
+                Quanto la dà il prezzo
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -108,7 +112,7 @@ export function QuoteEstese({ mercati }: { mercati: MercatoEsteso[] }) {
   const resto = pronti.slice(APERTI);
 
   return (
-    <section className="sezione mercati" aria-labelledby="titolo-mercati">
+    <section className="sezione mercati" id="altri-mercati" aria-labelledby="titolo-mercati">
       <h2 id="titolo-mercati" className="label sezione__titolo">
         <span className="bersaglio" aria-hidden="true" /> Altri mercati
       </h2>

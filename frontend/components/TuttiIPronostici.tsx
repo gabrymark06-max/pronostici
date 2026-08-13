@@ -40,8 +40,29 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
     gruppi.unshift({ famiglia: pick.family, mercati: [pick] });
   }
 
+  /* Due assenze diverse che si scrivevano allo stesso modo.
+     Un trattino in colonna «il mercato» puo' voler dire due cose opposte: che
+     le quote ci sono ma non determinano QUELLA scommessa, oppure che per
+     questa partita non ne abbiamo affatto. La seconda riguarda l'intera
+     colonna e va detta una volta sotto la tavola, non ripetuta riga per riga
+     con la motivazione sbagliata. */
+  const secondarie = fixture.sofascore?.market_p ?? null;
+  const nessunaQuota = !fixture.odds?.market_p && !secondarie;
+
+  /* Se anche una sola riga viene dalla fonte secondaria la tavola lo dichiara
+     sotto, una volta: la provenienza di un numero non e' un dettaglio da
+     nascondere nel titolo di una cella.
+     Si calcola PRIMA di disegnare, non accumulando dentro il ciclo: React non
+     garantisce quando e quante volte il corpo di un render venga eseguito, e
+     una variabile che cresce durante il disegno e' un valore che dipende
+     dall'ordine. Qui la domanda e' semplice e la risposta si ottiene in una
+     riga. */
+  const usaSecondaria = gruppi.some((g) =>
+    g.mercati.some((m) => quoteDi(m, fixture.odds, secondarie).fonte === 'secondaria'),
+  );
+
   return (
-    <section className="sezione" aria-labelledby="titolo-tutti">
+    <section className="sezione" id="pronostici" aria-labelledby="titolo-tutti">
       <h2 id="titolo-tutti" className="label sezione__titolo">
         <span className="bersaglio" aria-hidden="true" /> Tutti i pronostici di questa partita
       </h2>
@@ -61,10 +82,20 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
           </caption>
           <thead>
             <tr>
+              {/* `num` non e' solo il carattere monospaziato: porta anche
+                  l'allineamento a destra. Senza, l'intestazione resta a
+                  sinistra mentre i suoi numeri stanno a destra, e a quel punto
+                  la colonna smette di leggersi come colonna. */}
               <th scope="col">Pronostico</th>
-              <th scope="col">Probabilità</th>
-              <th scope="col">La nostra</th>
-              <th scope="col">Il mercato</th>
+              <th scope="col" className="num">
+                Probabilità
+              </th>
+              <th scope="col" className="num">
+                La nostra
+              </th>
+              <th scope="col" className="num">
+                Il mercato
+              </th>
             </tr>
           </thead>
           {gruppi.map((gruppo) => (
@@ -75,7 +106,7 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
                 </th>
               </tr>
               {gruppo.mercati.map((mercato) => {
-                const q = quoteDi(mercato, fixture.odds);
+                const q = quoteDi(mercato, fixture.odds, secondarie);
                 const nostro = pick != null && mercato.key === pick.key;
                 return (
                   <tr key={mercato.key} className={nostro ? 'tabella__nostro' : undefined}>
@@ -105,7 +136,9 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
                       )}
                       {q.mercato === null ? (
                         <span className="solo-lettori">
-                          il mercato non determina questa scommessa
+                          {nessunaQuota
+                            ? 'per questa partita non abbiamo quote'
+                            : 'il mercato non determina questa scommessa'}
                         </span>
                       ) : null}
                     </td>
@@ -116,15 +149,39 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
           ))}
       </table>
 
+      {nessunaQuota ? (
+        <p className="sezione__nota sezione__nota--assenza">
+          <strong>La colonna «il mercato» è vuota su tutte le righe</strong> perché per questa
+          partita non abbiamo quote. La fonte principale copre una finestra di quattordici
+          giorni con un tetto di chiamate mensili, e la seconda non ha agganciato questa
+          partita. Non è un errore del calcolo, è una fonte che non arriva fin qui.
+        </p>
+      ) : null}
+
+      {usaSecondaria ? (
+        <p className="sezione__nota sezione__nota--fonte">
+          Dove la fonte principale non arriva usiamo una <strong>seconda fonte</strong>, che
+          aggrega più operatori. Copre quattro famiglie che si traducono senza interpretare:
+          esito finale, doppia chance, entrambe segnano, e i gol totali sopra e sotto 2,5 e
+          3,5. Il margine è tolto allo stesso modo. Sulle altre righe la colonna resta vuota
+          perché nessuna delle due fonti determina quella scommessa.
+        </p>
+      ) : null}
+
       <p className="sezione__nota">
         Su questa partita abbiamo calcolato {fixture.diagnostics.n_candidates} mercati e li
         abbiamo raggruppati in {fixture.diagnostics.n_clusters} famiglie di esiti che si
         muovono insieme. Qui c’è il migliore di ogni famiglia: mostrarli tutti e{' '}
         {fixture.diagnostics.n_candidates} sarebbe lo stesso mercato scritto in venti modi.
-        La colonna «il mercato» è la stessa quota equa calcolata sulle quote degli
-        operatori, col margine tolto: è vuota dove le quote gratuite non determinano quella
-        scommessa — gol di squadra ed entrambe segnano, per esempio, non li determina
-        nessuno dei mercati che possiamo leggere.
+        {nessunaQuota ? null : (
+          <>
+            {' '}
+            La colonna «il mercato» è la stessa quota equa calcolata sulle quote degli
+            operatori, col margine tolto: è vuota dove le quote gratuite non determinano
+            quella scommessa — gol di squadra ed entrambe segnano, per esempio, non li
+            determina nessuno dei mercati che possiamo leggere.
+          </>
+        )}
       </p>
     </section>
   );

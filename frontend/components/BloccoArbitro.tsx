@@ -26,7 +26,7 @@ export function BloccoArbitro({ arbitro, stadio }: { arbitro: Arbitro; stadio?: 
   const campioneSottile = partite > 0 && partite < PARTITE_SUFFICIENTI;
 
   return (
-    <section className="sezione arbitro" aria-labelledby="titolo-arbitro">
+    <section className="sezione arbitro" id="arbitro" aria-labelledby="titolo-arbitro">
       <h2 id="titolo-arbitro" className="label sezione__titolo">
         <span className="bersaglio" aria-hidden="true" /> L’arbitro
       </h2>

@@ -253,6 +253,40 @@ export default async function PaginaPartita({ params }: Props) {
 
         {revisioneSotto ? <BloccoRevisione fixture={fixture} /> : null}
 
+        {/* LA BARRA DEI BLOCCHI.
+            Sotto il pronostico la scheda è diventata lunga: mercati, campo,
+            arbitro, quote di un'altra fonte, giocatori. Scorrerla tutta per
+            capire cosa c'è dentro è il modo peggiore di scoprirlo.
+            Questi sono ancoraggi, non schede: nessun JavaScript, ogni blocco
+            resta nella pagina e raggiungibile, e chi arriva da una ricerca
+            trova il testo comunque. Le voci compaiono solo se il blocco che
+            indicano esiste per QUESTA partita — una voce che porta al vuoto è
+            peggio di una voce in meno. */}
+        {(() => {
+          const voci: { id: string; testo: string }[] = [
+            { id: 'pronostici', testo: 'Tutti i mercati' },
+          ];
+          if (fixture.sofascore?.formazioni) voci.push({ id: 'formazioni', testo: 'Formazioni' });
+          if (fixture.sofascore?.arbitro) voci.push({ id: 'arbitro', testo: 'Arbitro' });
+          if (fixture.sofascore?.quote?.mercati?.length)
+            voci.push({ id: 'altri-mercati', testo: 'Altri mercati' });
+          if (fixture.sofascore?.giocatori) voci.push({ id: 'giocatori', testo: 'Giocatori' });
+          if (voci.length < 2) return null;
+          return (
+            <nav className="blocchi" aria-label="I blocchi di questa partita">
+              <ul className="blocchi__lista">
+                {voci.map((v) => (
+                  <li key={v.id}>
+                    <a className="blocchi__voce" href={`#${v.id}`}>
+                      {v.testo}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          );
+        })()}
+
         <TuttiIPronostici fixture={fixture} />
 
         {/* IL CONTORNO, DOPO I PRONOSTICI E MAI PRIMA. Arbitro e mercati di
@@ -264,6 +298,8 @@ export default async function PaginaPartita({ params }: Props) {
             formazioni={fixture.sofascore.formazioni}
             casa={fixture.home.name}
             ospiti={fixture.away.name}
+            siglaCasa={fixture.home.tla}
+            siglaOspiti={fixture.away.tla}
           />
         ) : null}
 

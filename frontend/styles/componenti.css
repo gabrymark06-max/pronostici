@@ -1380,6 +1380,31 @@
   .registro { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: var(--s-8); }
 }
 
+/* TRE COLONNE SUGLI SCHERMI LARGHI: il numero, la tavola delle fasce e il
+   record dal vivo si leggono insieme.
+   Sono tre facce dello stesso fatto — quanto dichiariamo, come si distribuisce,
+   e cosa sta succedendo adesso — e su una riga sola il confronto e' immediato.
+   Sotto i 1200px tornano due colonne piu' una, perche' la tavola ha bisogno di
+   larghezza e stringerla la rende illeggibile. */
+/* Fra 900 e 1200px le colonne sono due e il vivo va a capo: li' occupa tutta
+   la riga, invece di stringersi nella prima traccia e diventare una colonna di
+   parole alta e sottile. */
+@media (min-width: 900px) {
+  .registro .vivo { grid-column: 1 / -1; }
+}
+
+@media (min-width: 1200px) {
+  .registro {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 1fr) minmax(0, 20rem);
+    gap: var(--s-6);
+  }
+  .registro .vivo {
+    grid-column: auto;
+    margin-block-start: 0;
+    max-width: none;
+  }
+}
+
 .registro__perno {
   padding: var(--s-5);
   background: var(--surface-2);
@@ -1775,12 +1800,76 @@
   white-space: nowrap;
 }
 
+/* NESSUNA LARGHEZZA MINIMA. Con l'unita' spostata in intestazione le celle
+   sono numeri di due cifre e la tavola ci sta senza scorrere. */
 .tabella--giocatori {
-  min-width: 44rem;
+  width: 100%;
 }
 
 .tabella--giocatori tbody th {
   white-space: nowrap;
+}
+
+.tabella--giocatori th,
+.tabella--giocatori td {
+  padding-inline: var(--s-2);
+}
+
+/* L'unita' sotto il nome della colonna: si dice una volta, in piccolo, e non
+   compete con i numeri. */
+.giocatori__unita {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-3);
+}
+
+/* SOTTO I 900px LA TAVOLA DIVENTA BLOCCHI, come gia' fa quella dei mercati.
+   Otto colonne su un telefono o scorrono o si schiacciano: qui ogni giocatore
+   diventa un blocchetto con il nome sopra e i sei numeri sotto, ognuno con la
+   sua etichetta. La struttura resta intatta per chi ascolta.
+   LA SOGLIA E' 900 E NON 760 PERCHE' LA MISURA LO HA IMPOSTO: a 768px la
+   tavola chiede 787px in una colonna da 707, e senza contenitore di
+   scorrimento quella differenza la pagava la PAGINA, che scorreva a 824. */
+@media (max-width: 899px) {
+  .tabella--giocatori,
+  .tabella--giocatori tbody,
+  .tabella--giocatori tr {
+    display: block;
+  }
+  .tabella--giocatori thead {
+    display: none;
+  }
+  .tabella--giocatori tbody tr {
+    padding-block: var(--s-3);
+    border-block-end: 1px solid var(--edge);
+  }
+  .tabella--giocatori tbody th {
+    display: block;
+    padding: 0 0 var(--s-2);
+    border: 0;
+  }
+  .tabella--giocatori td {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-1);
+    padding: 2px 0;
+    margin-inline-end: var(--s-4);
+    border: 0;
+    text-align: start;
+  }
+  .tabella--giocatori td::before {
+    content: attr(data-etichetta);
+    font-family: var(--font-text);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
 }
 
 /* Sotto i 900px la tabella scorre dentro il suo contenitore invece di
@@ -1791,9 +1880,89 @@
   .giocatori {
     padding-left: var(--s-3);
   }
-  .tabella--giocatori {
-    min-width: 38rem;
-  }
+}
+
+/* --------------------------------------------------------------------------
+   LA BARRA DEI BLOCCHI.
+
+   Sono ancoraggi, e devono SEMBRARE ancoraggi: non pulsanti pieni che
+   promettono di cambiare la pagina, ma etichette con un bordo che portano
+   piu' in basso. Il target e' 44px, che e' il minimo perche' un dito lo
+   prenda al primo colpo.
+
+   Scorre in orizzontale quando le voci non ci stanno, ed e' l'unico posto
+   della scheda dove uno scorrimento laterale e' giusto: sono cinque parole
+   corte, si vedono quasi tutte, e la scelta alternativa — mandarle a capo su
+   tre righe — occuperebbe piu' schermo di quello che fanno risparmiare.
+   -------------------------------------------------------------------------- */
+/* RESTA IN ALTO mentre si scorre, agganciata sotto la barra del sito: la
+   scheda partita e' lunga, e una guida che scompare al primo scroll serve solo
+   a chi non ne aveva bisogno.
+   Lo sfondo pieno non e' decorazione: senza, il contenuto le scorrerebbe
+   sotto restando leggibile attraverso. */
+.blocchi {
+  position: sticky;
+  inset-block-start: var(--barra-h);
+  z-index: 15;
+  margin-block-start: var(--s-6);
+  padding-block: var(--s-3);
+  border-block-start: 1px solid var(--edge);
+  border-block-end: 1px solid var(--edge);
+  background: var(--ground);
+  overflow-x: auto;
+}
+
+/* Il salto porta il titolo sotto DUE barre sovrapposte: senza questo margine
+   di sicurezza il titolo del blocco finisce nascosto dietro di esse, e chi
+   clicca atterra in mezzo al testo senza capire dove. */
+.sezione[id] {
+  scroll-margin-block-start: calc(var(--barra-h) + 4rem);
+}
+
+.blocchi__lista {
+  display: flex;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: max-content;
+}
+
+.blocchi__voce {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding-inline: var(--s-3);
+  border: 1px solid var(--edge-strong);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.blocchi__voce:hover {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+
+.blocchi__voce:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* Il blocco raggiunto si annuncia: senza, dopo il salto non e' ovvio dove sei
+   finito. Dura quanto una lettura, poi torna com'era. */
+.sezione:target {
+  animation: blocco-raggiunto 1.6s var(--ease);
+}
+
+@keyframes blocco-raggiunto {
+  from { background: var(--surface-2); }
+  to { background: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sezione:target { animation: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1897,11 +2066,24 @@
   bottom: var(--s-2);
 }
 
+/* L'etichetta della squadra sta in un angolo e il portiere al centro della
+   linea di porta: senza un tetto alla larghezza i due si toccano. Il nome e'
+   gia' abbreviato lato componente; questo e' la seconda rete. */
 .campo__nome-squadra {
   font-size: var(--fs-label);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-3);
+  max-width: 11rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Il portiere non ha vicini di riga: puo' prendersi piu' spazio, e cosi' il
+   suo nome non finisce sotto l'etichetta della squadra. */
+.campo__lato .campo__posto:first-child {
+  width: 7rem;
 }
 
 .campo__modulo {

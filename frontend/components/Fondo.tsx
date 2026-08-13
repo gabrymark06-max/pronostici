@@ -165,10 +165,13 @@ export function Fondo({
                 non quanto è alto.
               </p>
             </div>
-          </div>
 
-          {/* IL VIVO — separato, più piccolo, con il suo n e il suo avvertimento. */}
-          <div className="vivo">
+            {/* IL VIVO — terza colonna della griglia sugli schermi larghi.
+                Il numero storico, come si distribuisce e cosa sta succedendo
+                adesso sono tre facce dello stesso fatto: su una riga sola il
+                confronto è immediato, incolonnati uno sotto l'altro no.
+                Resta più piccolo e con il suo avvertimento. */}
+            <div className="vivo">
             <p className="label">Dal vivo, da quando il sito pubblica</p>
             {conclusiDalVivo > 0 && uscitiDalVivo !== null ? (
               <>
@@ -202,6 +205,7 @@ export function Fondo({
               </a>
               .
             </p>
+            </div>
           </div>
         </div>
       </section>

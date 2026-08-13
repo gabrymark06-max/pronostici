@@ -25,6 +25,26 @@ import type { Formazioni, GiocatoreInCampo, LatoFormazione } from '@/lib/tipi';
  * che non mostrarlo.
  */
 
+/**
+ * Il nome della squadra abbreviato quanto basta a non coprire il portiere.
+ *
+ * L'etichetta sta in un angolo del campo e il portiere al centro della linea
+ * di porta: «Paris Saint-Germain FC» arrivava a sovrapporsi al suo nome.
+ *
+ * Prima si tolgono i suffissi societari, che non aggiungono niente su un
+ * campo — nessuno guarda undici maglie e si chiede se sia una FC o una AFC.
+ * Se non basta si usa la sigla, che le partite gia' portano con se': meglio
+ * `PSG`, che chiunque legge, di un nome tagliato a meta' con i puntini.
+ */
+const SUFFISSI = /\s+(FC|AFC|CF|SC|AC|FK|BK|SK|CD|UD|SS|US|AS|IF|BV|SV)$/i;
+
+function abbreviaSquadra(nome: string, tla?: string): string {
+  const senzaSuffisso = nome.trim().replace(SUFFISSI, '').trim();
+  if (senzaSuffisso.length <= 18) return senzaSuffisso;
+  if (tla && tla.trim()) return tla.trim();
+  return senzaSuffisso;
+}
+
 /** Il cognome, che e' quello che si legge su una maglia. */
 function cognome(nome: string): string {
   const intero = nome.trim();
@@ -116,10 +136,12 @@ function collocare(lato: LatoFormazione, dallAlto: boolean): { posti: Posizionat
 function Lato({
   lato,
   squadra,
+  sigla,
   dallAlto,
 }: {
   lato: LatoFormazione;
   squadra: string;
+  sigla?: string;
   dallAlto: boolean;
 }) {
   const { posti, moduloOk } = collocare(lato, dallAlto);
@@ -128,7 +150,9 @@ function Lato({
   return (
     <>
       <p className={`campo__squadra ${dallAlto ? 'campo__squadra--alto' : 'campo__squadra--basso'}`}>
-        <span className="campo__nome-squadra">{squadra}</span>
+        <span className="campo__nome-squadra" title={squadra}>
+          {abbreviaSquadra(squadra, sigla)}
+        </span>
         {moduloOk && lato.modulo ? <span className="campo__modulo">{lato.modulo}</span> : null}
       </p>
       <ul className={`campo__lato ${dallAlto ? 'campo__lato--ospiti' : 'campo__lato--casa'}`}>
@@ -169,10 +193,14 @@ export function CampoFormazioni({
   formazioni,
   casa,
   ospiti,
+  siglaCasa,
+  siglaOspiti,
 }: {
   formazioni: Formazioni;
   casa: string;
   ospiti: string;
+  siglaCasa?: string;
+  siglaOspiti?: string;
 }) {
   const hoCasa = (formazioni.casa?.titolari?.length ?? 0) > 0;
   const hoOspiti = (formazioni.ospiti?.titolari?.length ?? 0) > 0;
@@ -181,7 +209,7 @@ export function CampoFormazioni({
   const quando = quandoLette(formazioni.ore_prima);
 
   return (
-    <section className="sezione formazioni" aria-labelledby="titolo-formazioni">
+    <section className="sezione formazioni" id="formazioni" aria-labelledby="titolo-formazioni">
       <h2 id="titolo-formazioni" className="label sezione__titolo">
         <span className="bersaglio" aria-hidden="true" /> Le formazioni
       </h2>
@@ -206,8 +234,12 @@ export function CampoFormazioni({
           <span className="campo__area campo__area--alto" />
           <span className="campo__area campo__area--basso" />
         </div>
-        {hoOspiti ? <Lato lato={formazioni.ospiti} squadra={ospiti} dallAlto /> : null}
-        {hoCasa ? <Lato lato={formazioni.casa} squadra={casa} dallAlto={false} /> : null}
+        {hoOspiti ? (
+          <Lato lato={formazioni.ospiti} squadra={ospiti} sigla={siglaOspiti} dallAlto />
+        ) : null}
+        {hoCasa ? (
+          <Lato lato={formazioni.casa} squadra={casa} sigla={siglaCasa} dallAlto={false} />
+        ) : null}
       </div>
     </section>
   );

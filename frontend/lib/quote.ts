@@ -53,6 +53,16 @@ export interface QuoteDelMercato {
   provenienza: 'it' | 'eu' | null;
   /** Quanti operatori compongono il consenso. */
   operatori: number;
+  /**
+   * DA DOVE VIENE il numero della colonna ②.
+   *
+   * `principale` è la fonte con licenza italiana su cui il progetto è
+   * costruito. `secondaria` è l'altra, usata solo dove la prima non arriva —
+   * copre 14 giorni e ha un tetto di chiamate, quindi su molte partite non
+   * c'è. Le due non si mescolano mai nella stessa cella, e la pagina lo dice:
+   * un numero senza provenienza è un numero di cui non si può discutere.
+   */
+  fonte: 'principale' | 'secondaria' | null;
 }
 
 /** `0.9153` → `1.09`. La sola forma in cui una quota equa entra in pagina. */
@@ -72,18 +82,31 @@ export function formattaQuota(q: number): string {
  * `dc_x2`), non quelle della fonte: la corrispondenza è già stata fatta nel
  * backend, e qui basta una lettura diretta.
  */
-export function quoteDi(mercato: Mercato, odds: Quote | null | undefined): QuoteDelMercato {
+export function quoteDi(
+  mercato: Mercato,
+  odds: Quote | null | undefined,
+  /** Le probabilità dell'altra fonte, usate SOLO dove la principale tace. */
+  secondarie?: Record<string, number> | null,
+): QuoteDelMercato {
   const pMercato = odds?.market_p?.[mercato.key];
   const prezzo = odds?.prices?.[mercato.key];
   const haMercato = typeof pMercato === 'number' && pMercato > 0 && pMercato < 1;
   const haPrezzo = typeof prezzo === 'number' && prezzo > 1;
 
+  /* La principale ha SEMPRE la precedenza, anche quando la secondaria
+     copre lo stesso mercato: è quella su cui il progetto si è fatto misurare,
+     e cambiare fonte a parità di disponibilità renderebbe due partite non
+     confrontabili fra loro. */
+  const pSecondaria = haMercato ? undefined : secondarie?.[mercato.key];
+  const haSecondaria = typeof pSecondaria === 'number' && pSecondaria > 0 && pSecondaria < 1;
+
   return {
     nostra: quotaEqua(mercato.p),
-    mercato: haMercato ? 1 / pMercato : null,
+    mercato: haMercato ? 1 / pMercato : haSecondaria ? 1 / pSecondaria : null,
     prezzo: haPrezzo ? prezzo : null,
     provenienza: haPrezzo ? (odds?.price_scope === 'it' ? 'it' : 'eu') : null,
     operatori: odds?.price_books ?? 0,
+    fonte: haMercato ? 'principale' : haSecondaria ? 'secondaria' : null,
   };
 }
 
