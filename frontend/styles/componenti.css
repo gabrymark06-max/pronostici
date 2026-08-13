@@ -2584,16 +2584,36 @@
   margin-block: var(--s-7) var(--s-4);
 }
 
+/* LE CARTE SI ALLINEANO A FASCE, non solo ai bordi.
+   -------------------------------------------------------------------------
+   DUE DIFETTI DIVERSI, e uno solo si vedeva a colpo d'occhio.
+
+   Il primo: le carte finivano a tre altezze diverse — 591, 982, 846 misurati.
+   Bordi inferiori a scaletta.
+
+   Il secondo, peggiore: i DISEGNI partivano a quote diverse dentro le rispet-
+   tive carte, 138 contro 162, perche' il testo sopra andava a capo un numero
+   di volte diverso. Due grafici affiancati con gli assi sfalsati di
+   ventiquattro pixel non si possono confrontare con l'occhio, che e' l'unica
+   ragione per cui stanno accanto.
+
+   Nessuno dei due si risolve con un'altezza minima indovinata a mano: quella
+   regge a una larghezza e salta alla successiva. Si risolve con `subgrid`,
+   che e' esattamente lo strumento per questo — le carte non definiscono le
+   proprie righe, ereditano quelle della griglia, e cosi' TESTA, CORPO e PIEDE
+   di tutte le carte di una fila stanno sulle stesse tre fasce. Il testo puo'
+   andare a capo quanto vuole: la fascia si adatta per tutti insieme.
+
+   Ogni carta deve quindi avere tutte e tre le parti, ed e' il motivo per cui
+   anche quella del numero grande adesso ha un titolo e una nota: non e'
+   simmetria per gusto, e' cio' che rende possibile l'allineamento.
+
+   SENZA `subgrid` si torna alla colonna flessibile di prima, che e' brutta ma
+   intera. */
 .griglia-progressi {
   display: grid;
   gap: var(--s-5);
   margin-block-end: var(--s-6);
-  /* LE CARTE SI DIMENSIONANO SUL PROPRIO CONTENUTO.
-     Con lo stiramento predefinito una carta corta accanto a una lunga veniva
-     tirata fino alla stessa altezza, e dentro restava un buco verticale di
-     trecento pixel — cioe' esattamente il difetto che questa griglia doveva
-     risolvere, ripresentato dall'altro lato. */
-  align-items: start;
 }
 
 @media (min-width: 800px) {
@@ -2610,16 +2630,51 @@
 .carta {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: var(--s-4);
   padding: var(--s-5);
   background: var(--surface);
   border: 1px solid var(--edge);
   min-width: 0;
 }
 
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 800px) {
+    .griglia-progressi {
+      /* testa · corpo · piede. Il corpo prende lo spazio che avanza, cosi' i
+         piedi restano incollati in fondo su tutta la fila. */
+      grid-template-rows: auto 1fr auto;
+    }
+    .carta {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: var(--s-4);
+    }
+  }
+}
+
+.carta__testa {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.carta__corpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
 .carta--perno {
   background: var(--surface-2);
-  justify-content: flex-start;
+}
+
+/* Il numero grande si appoggia in fondo al proprio corpo invece di galleggiare
+   in mezzo: la fascia del corpo e' alta quanto il disegno piu' alto della
+   fila, e una cifra centrata in trecento pixel di vuoto sembra persa. */
+.carta--perno .carta__corpo {
+  justify-content: flex-end;
 }
 
 /* Il blocco dal vivo porta il filetto d'avvertimento a sinistra: e' l'unico
@@ -2645,7 +2700,6 @@
 }
 
 .carta__nota {
-  margin-block-start: auto;
   padding-block-start: var(--s-3);
   border-block-start: 1px solid var(--edge);
   font-size: var(--fs-micro);
@@ -2653,7 +2707,11 @@
   color: var(--ink-3);
 }
 
-.carta__nota--avviso {
+/* L'avvertimento sta DENTRO il corpo, non nel piede: riguarda il numero che
+   ha sopra, e nel piede si sarebbe allineato con note che parlano d'altro. */
+.carta__avviso {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
   color: var(--ink-2);
 }
 

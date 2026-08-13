@@ -120,23 +120,33 @@ export default function PaginaProgressi() {
 
       <div className="griglia-progressi">
         <section className="carta carta--perno">
-          <p className="cifra">{suCento(backtest.skill.hit_rate)}</p>
-          <p className="registro__unita">su 100 pronostici usciti</p>
-          <p className="registro__fonte">
+          <div className="carta__testa">
+            <h3 className="carta__titolo">Quanti ne abbiamo presi</h3>
+            <p className="carta__occhiello">
+              In due stagioni di partite, ricalcolate una per una senza mai guardare il
+              risultato prima.
+            </p>
+          </div>
+          <div className="carta__corpo">
+            <p className="cifra">{suCento(backtest.skill.hit_rate)}</p>
+            <p className="registro__unita">su 100 pronostici usciti</p>
+          </div>
+          <p className="carta__nota">
             Su {intero(backtest.skill.n)} pronostici, dal{' '}
             {backtest.window.from.split('-').reverse().join('/')} al{' '}
-            {backtest.window.to.split('-').reverse().join('/')}. Il modello non ha mai visto il
-            risultato prima di scrivere il pronostico.
+            {backtest.window.to.split('-').reverse().join('/')}.
           </p>
         </section>
 
         <section className="carta">
-          <h3 className="carta__titolo">Quanto ci somigliamo</h3>
-          <p className="carta__occhiello">
-            In orizzontale quello che avevamo detto, in verticale quello che è successo. La
-            diagonale è la perfezione. <strong>Sopra è un errore quanto sotto:</strong> la
-            bravura non è stare in alto, è stare sulla riga.
-          </p>
+          <div className="carta__testa">
+            <h3 className="carta__titolo">Quanto ci somigliamo</h3>
+            <p className="carta__occhiello">
+              In orizzontale quello che avevamo detto, in verticale quello che è successo. La
+              diagonale è la perfezione. <strong>Sopra è un errore quanto sotto.</strong>
+            </p>
+          </div>
+          <div className="carta__corpo">
           <GraficoCalibrazione punti={calibrazione} />
           <table className="tabella tabella--minuta">
             <caption className="solo-lettori">
@@ -173,6 +183,7 @@ export default function PaginaProgressi() {
               ))}
             </tbody>
           </table>
+          </div>
           {scarto !== null ? (
             <p className="carta__nota">
               Scarto medio fra detto e fatto:{' '}
@@ -185,17 +196,20 @@ export default function PaginaProgressi() {
         </section>
 
         <section className="carta">
-          <h3 className="carta__titolo">Quanto stiamo zitti</h3>
-          <p className="carta__occhiello">
-            Su circa {silenzioSuCento} partite su 100 non diciamo niente. Non è un numero
-            scelto per fare scena: è il punto in cui questa curva è stata tagliata, e la curva
-            è tutta qui.
-          </p>
-          <GraficoCurva
-            punti={curva}
-            scelto={backtest.silence.chosen_s_min}
-            etichettaX="soglia →"
-          />
+          <div className="carta__testa">
+            <h3 className="carta__titolo">Quanto stiamo zitti</h3>
+            <p className="carta__occhiello">
+              Su circa {silenzioSuCento} partite su 100 non diciamo niente. Non è un numero
+              scelto per fare scena: è il punto in cui questa curva è stata tagliata.
+            </p>
+          </div>
+          <div className="carta__corpo">
+            <GraficoCurva
+              punti={curva}
+              scelto={backtest.silence.chosen_s_min}
+              etichettaX="soglia →"
+            />
+          </div>
           <p className="carta__nota">
             Più a destra si taglia, più si tace. Il taglio segnato è quello in uso: sotto
             quella soglia il nostro modello dice quasi la stessa cosa del mercato, e un
@@ -210,19 +224,35 @@ export default function PaginaProgressi() {
       <div className="griglia-progressi griglia-progressi--due">
         {campionati.length > 0 ? (
           <section className="carta">
-            <h3 className="carta__titolo">Campionato per campionato</h3>
-            <p className="carta__occhiello">
-              Lo stesso modello non funziona uguale ovunque. La barra è quanti ne abbiamo
-              presi; il filo sottile sotto è quanto pesa quel campionato rispetto al più
-              popolato. Dove il filo è corto, il numero sopra balla.
+            <div className="carta__testa">
+              <h3 className="carta__titolo">Campionato per campionato</h3>
+              <p className="carta__occhiello">
+                Lo stesso modello non funziona uguale ovunque. La barra è quanti ne abbiamo
+                presi; il filo sottile sotto è quanto pesa quel campionato rispetto al più
+                popolato.
+              </p>
+            </div>
+            <div className="carta__corpo">
+              <GraficoCampionati barre={campionati} />
+            </div>
+            <p className="carta__nota">
+              L’ordine è per numero di partite, non per tasso: mettere in cima chi ha il numero
+              più alto premierebbe i campionati con dieci casi, dove quel numero non vuol dire
+              niente. Dove il filo è corto, la cifra accanto balla.
             </p>
-            <GraficoCampionati barre={campionati} />
           </section>
         ) : null}
 
         <section className="carta carta--vivo">
-          <h3 className="carta__titolo">Dal vivo, da quando il sito pubblica</h3>
+          <div className="carta__testa">
+            <h3 className="carta__titolo">Dal vivo, da quando il sito pubblica</h3>
+            <p className="carta__occhiello">
+              I pronostici pubblicati da questo sito e già arrivati a fine partita. Sono pochi,
+              e il numero va letto sapendolo.
+            </p>
+          </div>
 
+          <div className="carta__corpo">
           {conclusi > 0 && usciti !== null ? (
             <>
               <p className="progressi__vivo">
@@ -231,7 +261,7 @@ export default function PaginaProgressi() {
                 </strong>{' '}
                 pronostici conclusi sono usciti.
               </p>
-              <p className="carta__nota carta__nota--avviso">
+              <p className="carta__avviso">
                 {conclusi} è troppo poco per leggerci qualcosa, e lo diciamo prima che tu lo
                 legga. A questo campione anche un modello che non sa niente può centrarne quasi
                 tutti, e uno che sa qualcosa può sbagliarne diversi di fila. Il numero comincia
@@ -267,11 +297,12 @@ export default function PaginaProgressi() {
                 style={{ inlineSize: `${(avanzamento * 100).toFixed(1)}%` }}
               />
             </div>
-            <p className="carta__nota">
-              Pronostici <em>pubblicati</em>, non ancora tutti conclusi: gli altri riguardano
-              partite che devono ancora giocarsi.
-            </p>
           </div>
+          </div>
+          <p className="carta__nota">
+            Sopra ci sono i pronostici <em>pubblicati</em>, non ancora tutti conclusi: gli altri
+            riguardano partite che devono ancora giocarsi.
+          </p>
         </section>
       </div>
     </div>
