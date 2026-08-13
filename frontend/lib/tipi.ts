@@ -114,6 +114,101 @@ export interface Quote {
   price_books?: number;
 }
 
+/* ------------------------------------------------------------------ */
+/* Il blocco `sofascore`: arbitro, formazioni, quote estese, giocatori. */
+/*                                                                      */
+/* Tutto qui dentro e' CONTORNO, mai il pronostico. Il tipo lo dice     */
+/* rendendolo un campo a se': niente in `Sofascore` puo' finire dentro  */
+/* `Pronostico`, e il compilatore lo impedisce.                         */
+/* ------------------------------------------------------------------ */
+
+export interface Arbitro {
+  nome: string;
+  paese?: string | null;
+  partite?: number | null;
+  gialli?: number | null;
+  rossi?: number | null;
+  gialli_per_partita?: number | null;
+}
+
+export interface GiocatoreInCampo {
+  id?: number;
+  nome: string;
+  maglia?: string;
+  ruolo?: string;
+  titolare?: boolean;
+}
+
+export interface LatoFormazione {
+  modulo?: string | null;
+  titolari: GiocatoreInCampo[];
+  panchina: GiocatoreInCampo[];
+}
+
+export interface Formazioni {
+  confermate: boolean;
+  /** Quante ore prima del fischio sono state lette. Distingue una previsione
+   *  a tre giorni da una probabile di un'ora prima: stesso campo `confermate`,
+   *  affidabilita' molto diversa. */
+  ore_prima?: number | null;
+  casa: LatoFormazione;
+  ospiti: LatoFormazione;
+}
+
+export interface EsitoEsteso {
+  esito: string;
+  frazionaria?: string;
+  decimale?: number;
+  probabilita_implicita?: number;
+}
+
+export interface MercatoEsteso {
+  mercato: string;
+  esiti: EsitoEsteso[];
+  somma_probabilita?: number;
+  margine_percento?: number;
+}
+
+export interface StimaGiocatore {
+  mercato: string;
+  etichetta: string;
+  p: number;
+  /** Da quale tasso viene, in chiaro. Serve a rendere il numero verificabile. */
+  base: string;
+}
+
+export interface GiocatoreStimato {
+  id: number;
+  nome: string;
+  ruolo?: string | null;
+  presenze?: number | null;
+  torneo?: string | null;
+  stime: StimaGiocatore[];
+}
+
+export interface StimeGiocatori {
+  /** Sempre `false` oggi. Esiste perche' il giorno in cui diventasse `true`
+   *  la pagina cambi da sola invece di restare a mentire. */
+  misurato: boolean;
+  nota: string;
+  moltiplicatore_arbitro?: number;
+  minuti_attesi_titolare?: number;
+  casa: GiocatoreStimato[];
+  ospiti: GiocatoreStimato[];
+}
+
+export interface Sofascore {
+  evento_id: number;
+  torneo?: string;
+  letto?: string;
+  stadio?: string;
+  arbitro?: Arbitro;
+  formazioni?: Formazioni;
+  quote?: { n_mercati?: number; mercati: MercatoEsteso[] };
+  giocatori?: StimeGiocatori;
+  parti_mancanti?: Record<string, string>;
+}
+
 export interface Risultato {
   home: number;
   away: number;
@@ -140,6 +235,7 @@ interface FixtureBase {
   transition?: Transizione | null;
   previous?: Precedente | null;
   odds?: Quote | null;
+  sofascore?: Sofascore | null;
   result?: Risultato | null;
   outcome?: 0 | 1 | null;
 }

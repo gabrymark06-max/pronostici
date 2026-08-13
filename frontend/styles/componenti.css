@@ -1546,3 +1546,440 @@
   color: var(--warn);
   max-width: none;
 }
+
+/* --------------------------------------------------------------------------
+   L'ARBITRO.
+
+   La cifra e il suo campione sono UNA riga sola, non un numero grande e una
+   nota piccola: la dimensione del testo comunica quanto pesa, e far sembrare
+   «2,70» piu' importante di «su 10 partite» sarebbe la stessa bugia che il
+   componente esiste per evitare. La cifra resta piu' grande perche' e' il
+   dato, ma l'unita' le sta accanto sulla stessa linea di base, non sotto.
+   -------------------------------------------------------------------------- */
+.arbitro__nome {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-variation-settings: 'wdth' var(--wdth-media);
+  line-height: var(--lh-title);
+  color: var(--ink);
+  margin: 0;
+}
+
+.arbitro__paese {
+  color: var(--ink-3);
+  font-size: var(--fs-body);
+  font-variation-settings: 'wdth' var(--wdth-stretta);
+}
+
+.arbitro__cifra {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-block: var(--s-3) 0;
+}
+
+.arbitro__valore {
+  font-family: var(--font-mono);
+  font-size: var(--fs-cifra);
+  line-height: var(--lh-cifra);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.arbitro__unita {
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+}
+
+.arbitro__assente {
+  color: var(--ink-3);
+  font-size: var(--fs-body-s);
+  margin-block: var(--s-3) 0;
+  max-width: var(--w-prose);
+}
+
+/* Stesso trattamento dell'avviso su over/under: bordo a sinistra, colore di
+   avvertimento, nessun fondo pieno. Due debiti dichiarati devono somigliarsi,
+   altrimenti il lettore non impara a riconoscerli. */
+.arbitro__avviso {
+  display: flex;
+  gap: var(--s-2);
+  margin-block-start: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-left: var(--rel-stroke-w) solid var(--warn);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-prose);
+  max-width: var(--w-prose);
+}
+
+.arbitro__marca {
+  color: var(--warn);
+  font-weight: 700;
+  flex: none;
+}
+
+.arbitro__dettagli {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  margin-block-start: var(--s-5);
+}
+
+.arbitro__dettagli div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.arbitro__dettagli dt {
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.arbitro__dettagli dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   GLI ALTRI MERCATI.
+   -------------------------------------------------------------------------- */
+.mercato {
+  margin-block-start: var(--s-5);
+}
+
+.mercato__testa {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin: 0 0 var(--s-2);
+  flex-wrap: wrap;
+}
+
+.mercato__nome {
+  font-size: var(--fs-body);
+  color: var(--ink);
+  font-variation-settings: 'wdth' var(--wdth-media);
+}
+
+/* Il margine e' un dato di servizio: si legge se lo cerchi, non compete con
+   le quote. */
+.mercato__margine {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabella--mercato {
+  width: 100%;
+}
+
+/* La probabilita' implicita e' la colonna che si puo' fraintendere: resta
+   visibile ma piu' tenue della quota, che invece e' un fatto. */
+.mercato__implicita {
+  color: var(--ink-3);
+}
+
+.mercati__altri {
+  margin-block-start: var(--s-5);
+  border-block-start: 1px solid var(--edge);
+  padding-block-start: var(--s-4);
+}
+
+.mercati__altri > summary {
+  cursor: pointer;
+  min-height: var(--tap-min);
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+}
+
+.mercati__altri > summary:hover {
+  color: var(--ink);
+}
+
+.mercati__altri > summary:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   I SINGOLI GIOCATORI.
+
+   Questa sezione deve SEMBRARE diversa dai pronostici misurati, non solo
+   dirlo. Il trattamento: nessun accento, tutto sui grigi, e un bordo laterale
+   tratteggiato che percorre l'intera sezione. Il tratteggio e' il segnale —
+   nel resto del sito ogni bordo e' pieno, e una linea interrotta si legge
+   come «provvisorio» senza bisogno di una parola.
+
+   Il colore da solo non basterebbe mai (nessun significato affidato al solo
+   colore): la dichiarazione a parole viene prima della tabella, e il
+   tratteggio la ripete a chi torna sulla pagina piu' tardi.
+   -------------------------------------------------------------------------- */
+.giocatori {
+  border-left: var(--rel-stroke-w) dashed var(--edge-strong);
+  padding-left: var(--s-4);
+}
+
+.giocatori__dichiarazione {
+  display: flex;
+  gap: var(--s-2);
+  margin-block: 0 var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-left: var(--rel-stroke-w) solid var(--warn);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-prose);
+  max-width: var(--w-prose);
+}
+
+.giocatori__marca {
+  color: var(--warn);
+  font-weight: 700;
+  flex: none;
+}
+
+.giocatori__squadra {
+  margin-block-start: var(--s-5);
+}
+
+.giocatori__titolo {
+  margin-block-end: var(--s-2);
+  color: var(--ink-2);
+}
+
+.giocatori__ruolo {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+}
+
+/* Il campione e' la colonna che dice quanto fidarsi: tenue ma presente, mai
+   nascosta. */
+.giocatori__campione {
+  color: var(--ink-3);
+  font-size: var(--fs-micro);
+  white-space: nowrap;
+}
+
+.tabella--giocatori {
+  min-width: 44rem;
+}
+
+.tabella--giocatori tbody th {
+  white-space: nowrap;
+}
+
+/* Sotto i 900px la tabella scorre dentro il suo contenitore invece di
+   allargare la pagina: la regola di questo sito e' che il corpo non scorre
+   mai in orizzontale. `.scorrevole` fa il lavoro, qui si toglie solo il
+   rientro perche' il bordo tratteggiato mangia gia' spazio. */
+@media (max-width: 899px) {
+  .giocatori {
+    padding-left: var(--s-3);
+  }
+  .tabella--giocatori {
+    min-width: 38rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   IL CAMPO.
+
+   Verticale, proporzione fissa, posizioni in percentuale: si ridimensiona da
+   solo e non serve misurare niente a runtime.
+
+   L'erba NON e' verde. Il verde di un campo su fondo scuro fa a pugni con la
+   tavolozza del sito e sposta l'attenzione sul contenitore invece che sui
+   nomi, che sono il dato. Restano i grigi di sistema piu' le linee, che sono
+   l'unica cosa che serve a leggere il disegno come un campo.
+   -------------------------------------------------------------------------- */
+.formazioni__stato {
+  margin-block: 0 var(--s-4);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+.formazioni__stato.is-probabili strong {
+  color: var(--warn);
+}
+
+.formazioni__stato.is-ufficiali strong {
+  color: var(--ink);
+}
+
+.campo {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  margin-inline: auto;
+  aspect-ratio: 3 / 4;
+  background: var(--surface-2);
+  border: 1px solid var(--edge);
+  overflow: hidden;
+}
+
+.campo__erba {
+  position: absolute;
+  inset: 0;
+}
+
+.campo__meta,
+.campo__cerchio,
+.campo__area {
+  position: absolute;
+  border: 1px solid var(--edge);
+}
+
+.campo__meta {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0;
+  border-width: 0 0 1px;
+}
+
+.campo__cerchio {
+  left: 50%;
+  top: 50%;
+  width: 26%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.campo__area {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52%;
+  height: 13%;
+}
+
+.campo__area--alto {
+  top: 0;
+  border-top: 0;
+}
+
+.campo__area--basso {
+  bottom: 0;
+  border-bottom: 0;
+}
+
+.campo__squadra {
+  position: absolute;
+  left: var(--s-3);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  margin: 0;
+  z-index: 1;
+}
+
+.campo__squadra--alto {
+  top: var(--s-2);
+}
+
+.campo__squadra--basso {
+  bottom: var(--s-2);
+}
+
+.campo__nome-squadra {
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.campo__modulo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-2);
+}
+
+.campo__lato {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.campo__posto {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 5.5rem;
+  text-align: center;
+}
+
+/* Il pallino con il numero. Il lato ospite lo distingue col contorno pieno
+   invece che col riempimento: due squadre non si distinguono per colore, che
+   sarebbe l'unico segnale, ma per forma. */
+.campo__maglia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.campo__lato--casa .campo__maglia {
+  background: var(--segnale);
+  color: var(--segnale-ink);
+}
+
+.campo__lato--ospiti .campo__maglia {
+  background: var(--surface);
+  border: 1px solid var(--edge-strong);
+  color: var(--ink);
+}
+
+.campo__cognome {
+  display: block;
+  font-size: 10px;
+  line-height: 1.15;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.campo__lato--ospiti .campo__posto {
+  flex-direction: column-reverse;
+}
+
+/* Sotto i 420px i nomi si toccherebbero: si stringe il posto e si accorcia il
+   pallino. Il campo resta leggibile perche' i nomi vanno a capo invece di
+   essere tagliati. */
+@media (max-width: 419px) {
+  .campo__posto {
+    width: 4.2rem;
+  }
+  .campo__maglia {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  .campo__cognome {
+    font-size: 9px;
+  }
+}

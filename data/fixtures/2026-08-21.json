@@ -10,13 +10,13 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
-     "p_min": 84,
+     "S_min": 100,
+     "p_min": 85,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 7,
-    "truncated_mass": 2.941e-07
+    "truncated_mass": 2.94e-07
    },
    "expected_goals": {
     "away": 1.465,
@@ -24,10 +24,10 @@
    },
    "half_time": {
     "ht_over_0.5": 0.7851,
-    "ht_over_1.5": 0.4548,
+    "ht_over_1.5": 0.4547,
     "ht_over_2.5": 0.2007,
     "ht_under_0.5": 0.2149,
-    "ht_under_1.5": 0.5452,
+    "ht_under_1.5": 0.5453,
     "ht_under_2.5": 0.7993,
     "htft_11": 0.321,
     "htft_12": 0.0235,
@@ -94,7 +94,7 @@
     "key": "hg_over_1.5",
     "label": "Casa Over 1.5",
     "p": 0.5607,
-    "p_raw": 0.6054,
+    "p_raw": 0.6053,
     "reference": 0.4568,
     "runners_up": [
      {
@@ -106,35 +106,9 @@
       "p": 0.8594,
       "p_raw": 0.8681,
       "reference": 0.779,
-      "score": 0.020838,
-      "shrink_alpha": 0.9025,
+      "score": 0.020842,
+      "shrink_alpha": 0.9027,
       "sigma": 0.0344
-     },
-     {
-      "band_p5": 0.5733,
-      "band_p95": 0.7493,
-      "family": "combo_gol_ou",
-      "key": "combogo_gol_over_1.5",
-      "label": "Goal + Over 1.5",
-      "p": 0.6241,
-      "p_raw": 0.6628,
-      "reference": 0.538,
-      "score": 0.015127,
-      "shrink_alpha": 0.6899,
-      "sigma": 0.0536
-     },
-     {
-      "band_p5": 0.4679,
-      "band_p95": 0.6823,
-      "family": "combo_gol_ou",
-      "key": "combogo_gol_over_2.5",
-      "label": "Goal + Over 2.5",
-      "p": 0.5181,
-      "p_raw": 0.5744,
-      "reference": 0.4334,
-      "score": 0.014448,
-      "shrink_alpha": 0.6006,
-      "sigma": 0.0652
      },
      {
       "band_p5": 0.5733,
@@ -142,12 +116,25 @@
       "family": "btts",
       "key": "btts_yes",
       "label": "Entrambe segnano",
-      "p": 0.6195,
+      "p": 0.6194,
       "p_raw": 0.6628,
       "reference": 0.538,
-      "score": 0.013544,
-      "shrink_alpha": 0.6531,
+      "score": 0.013519,
+      "shrink_alpha": 0.6525,
       "sigma": 0.0536
+     },
+     {
+      "band_p5": 0.5018,
+      "band_p95": 0.6708,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5542,
+      "p_raw": 0.587,
+      "reference": 0.4777,
+      "score": 0.011718,
+      "shrink_alpha": 0.6996,
+      "sigma": 0.0539
      },
      {
       "band_p5": 0.7996,
@@ -161,10 +148,23 @@
       "score": 0.011687,
       "shrink_alpha": 0.6943,
       "sigma": 0.0374
+     },
+     {
+      "band_p5": 0.5225,
+      "band_p95": 0.7204,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5957,
+      "p_raw": 0.6309,
+      "reference": 0.5292,
+      "score": 0.008938,
+      "shrink_alpha": 0.6535,
+      "sigma": 0.0599
      }
     ],
-    "score": 0.021619,
-    "shrink_alpha": 0.6991,
+    "score": 0.021638,
+    "shrink_alpha": 0.6995,
     "sigma": 0.0688
    },
    "raw_probabilities": {
@@ -194,13 +194,13 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
+     "S_min": 97,
      "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 6,
-    "truncated_mass": 2.206e-07
+    "n_clusters": 7,
+    "truncated_mass": 2.203e-07
    },
    "expected_goals": {
     "away": 1.147,
@@ -213,14 +213,14 @@
     "ht_under_0.5": 0.2544,
     "ht_under_1.5": 0.6027,
     "ht_under_2.5": 0.841,
-    "htft_11": 0.3601,
+    "htft_11": 0.36,
     "htft_12": 0.0165,
     "htft_1X": 0.0474,
     "htft_21": 0.0344,
     "htft_22": 0.117,
     "htft_2X": 0.0474,
     "htft_X1": 0.179,
-    "htft_X2": 0.0791,
+    "htft_X2": 0.0792,
     "htft_XX": 0.1191
    },
    "home": {
@@ -272,21 +272,21 @@
     "family": "team_goals",
     "key": "hg_over_1.5",
     "label": "Casa Over 1.5",
-    "p": 0.5354,
-    "p_raw": 0.5917,
+    "p": 0.5355,
+    "p_raw": 0.5916,
     "reference": 0.4233,
     "runners_up": [
      {
       "band_p5": 0.4521,
-      "band_p95": 0.6979,
+      "band_p95": 0.698,
       "family": "1x2",
       "key": "1x2_home",
       "label": "Vittoria casa",
       "p": 0.539,
-      "p_raw": 0.5707,
+      "p_raw": 0.5706,
       "reference": 0.4605,
-      "score": 0.012352,
-      "shrink_alpha": 0.7123,
+      "score": 0.01236,
+      "shrink_alpha": 0.7129,
       "sigma": 0.0755
      },
      {
@@ -295,12 +295,25 @@
       "family": "combo_dc",
       "key": "combodc_12_over_1.5",
       "label": "12 + Over 1.5",
-      "p": 0.6251,
-      "p_raw": 0.6509,
+      "p": 0.6261,
+      "p_raw": 0.6508,
       "reference": 0.5522,
-      "score": 0.0109,
-      "shrink_alpha": 0.7387,
+      "score": 0.011219,
+      "shrink_alpha": 0.7496,
       "sigma": 0.0476
+     },
+     {
+      "band_p5": 0.5519,
+      "band_p95": 0.7571,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.61,
+      "p_raw": 0.6531,
+      "reference": 0.5393,
+      "score": 0.010165,
+      "shrink_alpha": 0.6209,
+      "sigma": 0.0643
      },
      {
       "band_p5": 0.7973,
@@ -312,21 +325,8 @@
       "p_raw": 0.8609,
       "reference": 0.7996,
       "score": 0.009898,
-      "shrink_alpha": 0.8846,
+      "shrink_alpha": 0.8849,
       "sigma": 0.0378
-     },
-     {
-      "band_p5": 0.5519,
-      "band_p95": 0.7571,
-      "family": "combo_dc",
-      "key": "combodc_1x_over_1.5",
-      "label": "1X + Over 1.5",
-      "p": 0.6084,
-      "p_raw": 0.6532,
-      "reference": 0.5393,
-      "score": 0.009721,
-      "shrink_alpha": 0.607,
-      "sigma": 0.0644
      },
      {
       "band_p5": 0.6944,
@@ -337,19 +337,19 @@
       "p": 0.7706,
       "p_raw": 0.7839,
       "reference": 0.7102,
-      "score": 0.009289,
-      "shrink_alpha": 0.8199,
-      "sigma": 0.0557
+      "score": 0.00929,
+      "shrink_alpha": 0.8203,
+      "sigma": 0.0556
      }
     ],
-    "score": 0.025358,
-    "shrink_alpha": 0.6659,
+    "score": 0.025398,
+    "shrink_alpha": 0.6666,
     "sigma": 0.0742
    },
    "raw_probabilities": {
     "1x2_away": 0.2161,
-    "1x2_draw": 0.2132,
-    "1x2_home": 0.5707,
+    "1x2_draw": 0.2133,
+    "1x2_home": 0.5706,
     "btts_yes": 0.5837,
     "over_2.5": 0.6078,
     "under_2.5": 0.3922
@@ -365,7 +365,7 @@
    "utc_date": "2026-08-21T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-12T01:14:36Z",
+ "generated_at": "2026-08-12T11:54:39Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 2

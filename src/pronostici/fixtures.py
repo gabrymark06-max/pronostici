@@ -191,7 +191,10 @@ def upsert_day(
 # solo eseguendo `score` a mano, cioe' esattamente quando qualcuno guarda.
 #
 # La regola generale: chi riscrive una partita conserva cio' che non e' suo.
-CAMPI_DI_ALTRI = ("odds", "result", "outcome")
+# `sofascore` porta formazioni, arbitro e quote estese, scritte da
+# `jobs.sofascore`. Vale la stessa storia delle quote: `score` gira alle 03:00 e
+# le riscriverebbe via ogni notte.
+CAMPI_DI_ALTRI = ("odds", "result", "outcome", "sofascore")
 
 
 def _conserva_campi_altrui(vecchio: dict, nuovo: dict) -> dict:

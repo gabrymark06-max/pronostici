@@ -3,6 +3,16 @@
 .env.local
 *.key
 
+# Cache di Sofascore. Fuori dal repository per due ragioni, e la seconda è
+# quella che conta:
+#
+#   1. è cache con scadenza a sette giorni, rigenerabile in pochi minuti: in
+#      un repository sarebbe rumore a ogni esecuzione;
+#   2. sono statistiche di stagione di centinaia di giocatori prese da una
+#      fonte terza, e questo repository è PUBBLICO. Mostrarne qualche numero
+#      su una pagina è una cosa; ripubblicare l'archivio è un'altra.
+data/sofascore/
+
 # Python
 __pycache__/
 *.py[cod]

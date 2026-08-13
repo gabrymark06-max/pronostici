@@ -3,6 +3,10 @@ import { notFound } from 'next/navigation';
 
 import { AvvisoOverUnder } from '@/components/AvvisoOverUnder';
 import { Bandiera } from '@/components/Bandiera';
+import { BloccoArbitro } from '@/components/BloccoArbitro';
+import { CampoFormazioni } from '@/components/CampoFormazioni';
+import { QuoteEstese } from '@/components/QuoteEstese';
+import { SezioneGiocatori } from '@/components/SezioneGiocatori';
 import { BarraProbabilita } from '@/components/BarraProbabilita';
 import { BloccoRevisione } from '@/components/BloccoRevisione';
 import { BloccoSilenzio } from '@/components/BloccoSilenzio';
@@ -250,6 +254,37 @@ export default async function PaginaPartita({ params }: Props) {
         {revisioneSotto ? <BloccoRevisione fixture={fixture} /> : null}
 
         <TuttiIPronostici fixture={fixture} />
+
+        {/* IL CONTORNO, DOPO I PRONOSTICI E MAI PRIMA. Arbitro e mercati di
+            un'altra fonte sono informazione utile, non nostre stime: stanno
+            sotto tutto cio' su cui ci facciamo misurare, cosi' l'ordine della
+            pagina dice da solo che peso hanno. */}
+        {fixture.sofascore?.formazioni ? (
+          <CampoFormazioni
+            formazioni={fixture.sofascore.formazioni}
+            casa={fixture.home.name}
+            ospiti={fixture.away.name}
+          />
+        ) : null}
+
+        {fixture.sofascore?.arbitro ? (
+          <BloccoArbitro
+            arbitro={fixture.sofascore.arbitro}
+            stadio={fixture.sofascore.stadio}
+          />
+        ) : null}
+
+        {fixture.sofascore?.quote?.mercati?.length ? (
+          <QuoteEstese mercati={fixture.sofascore.quote.mercati} />
+        ) : null}
+
+        {fixture.sofascore?.giocatori ? (
+          <SezioneGiocatori
+            stime={fixture.sofascore.giocatori}
+            casa={fixture.home.name}
+            ospiti={fixture.away.name}
+          />
+        ) : null}
       </div>
     </>
   );

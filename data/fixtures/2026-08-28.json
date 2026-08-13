@@ -10,34 +10,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 111,
-     "p_min": 87,
+     "S_min": 112,
+     "p_min": 88,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
-    "truncated_mass": 3.662e-08
+    "n_clusters": 2,
+    "truncated_mass": 3.959e-08
    },
    "expected_goals": {
-    "away": 1.046,
-    "home": 1.715
+    "away": 1.05,
+    "home": 1.727
    },
    "half_time": {
-    "ht_over_0.5": 0.7105,
-    "ht_over_1.5": 0.3517,
-    "ht_over_2.5": 0.1292,
-    "ht_under_0.5": 0.2895,
-    "ht_under_1.5": 0.6483,
-    "ht_under_2.5": 0.8708,
-    "htft_11": 0.3291,
+    "ht_over_0.5": 0.7125,
+    "ht_over_1.5": 0.3541,
+    "ht_over_2.5": 0.1308,
+    "ht_under_0.5": 0.2875,
+    "ht_under_1.5": 0.6459,
+    "ht_under_2.5": 0.8692,
+    "htft_11": 0.3307,
     "htft_12": 0.0149,
     "htft_1X": 0.0478,
-    "htft_21": 0.0278,
-    "htft_22": 0.1285,
+    "htft_21": 0.0281,
+    "htft_22": 0.1281,
     "htft_2X": 0.0478,
-    "htft_X1": 0.1735,
-    "htft_X2": 0.0873,
-    "htft_XX": 0.1433
+    "htft_X1": 0.1736,
+    "htft_X2": 0.0868,
+    "htft_XX": 0.1422
    },
    "home": {
     "crest": "https://crests.football-data.org/677.png",
@@ -49,57 +49,44 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.61,
-    "band_p95": 0.8048,
+    "band_p5": 0.6148,
+    "band_p95": 0.8036,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.6901,
-    "p_raw": 0.7191,
+    "p": 0.69,
+    "p_raw": 0.7177,
     "reference": 0.6052,
     "runners_up": [
      {
-      "band_p5": 0.8579,
-      "band_p95": 0.9541,
+      "band_p5": 0.8617,
+      "band_p95": 0.9514,
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
-      "p": 0.908,
-      "p_raw": 0.9128,
+      "p": 0.9088,
+      "p_raw": 0.9133,
       "reference": 0.8574,
-      "score": 0.011752,
-      "shrink_alpha": 0.9132,
-      "sigma": 0.0296
-     },
-     {
-      "band_p5": 0.846,
-      "band_p95": 0.9509,
-      "family": "team_goals",
-      "key": "ag_under_2.5",
-      "label": "Ospite Under 2.5",
-      "p": 0.9043,
-      "p_raw": 0.9086,
-      "reference": 0.8626,
-      "score": 0.008066,
-      "shrink_alpha": 0.9053,
-      "sigma": 0.0339
+      "score": 0.01214,
+      "shrink_alpha": 0.9199,
+      "sigma": 0.0284
      }
     ],
-    "score": 0.015565,
-    "shrink_alpha": 0.7454,
-    "sigma": 0.0612
+    "score": 0.015519,
+    "shrink_alpha": 0.7536,
+    "sigma": 0.06
    },
    "raw_probabilities": {
-    "1x2_away": 0.2337,
-    "1x2_draw": 0.2379,
-    "1x2_home": 0.5284,
-    "btts_yes": 0.5238,
-    "over_2.5": 0.5178,
-    "under_2.5": 0.4822
+    "1x2_away": 0.2322,
+    "1x2_draw": 0.2374,
+    "1x2_home": 0.5304,
+    "btts_yes": 0.5271,
+    "over_2.5": 0.5216,
+    "under_2.5": 0.4784
    },
    "reasons": [
-    "Gol attesi: FC Groningen 1.71, Fortuna Sittard 1.05 (totale 2.76).",
+    "Gol attesi: FC Groningen 1.73, Fortuna Sittard 1.05 (totale 2.78).",
     "Ospite Under 1.5: 69 su 100, 8 punti sopra la media di riferimento (61 su 100).",
     "Banda di incertezza: fra 61 e 80 su 100."
    ],
@@ -117,12 +104,12 @@
    "competition": "BL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 83,
-     "p_min": 81,
+     "S_min": 85,
+     "p_min": 82,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 11,
+    "n_clusters": 12,
     "truncated_mass": 4.839e-05
    },
    "expected_goals": {
@@ -162,7 +149,7 @@
     "family": "team_goals",
     "key": "hg_over_1.5",
     "label": "Casa Over 1.5",
-    "p": 0.7713,
+    "p": 0.7714,
     "p_raw": 0.8395,
     "reference": 0.484,
     "runners_up": [
@@ -172,11 +159,11 @@
       "family": "1x2",
       "key": "1x2_home",
       "label": "Vittoria casa",
-      "p": 0.6824,
+      "p": 0.6825,
       "p_raw": 0.7542,
       "reference": 0.4216,
-      "score": 0.138228,
-      "shrink_alpha": 0.7843,
+      "score": 0.138331,
+      "shrink_alpha": 0.7846,
       "sigma": 0.0623
      },
      {
@@ -188,35 +175,9 @@
       "p": 0.9574,
       "p_raw": 0.9615,
       "reference": 0.7852,
-      "score": 0.120918,
-      "shrink_alpha": 0.9765,
+      "score": 0.120933,
+      "shrink_alpha": 0.9766,
       "sigma": 0.0162
-     },
-     {
-      "band_p5": 0.6046,
-      "band_p95": 0.8186,
-      "family": "combo",
-      "key": "combo_1_over_1.5",
-      "label": "1 + Over 1.5",
-      "p": 0.587,
-      "p_raw": 0.7213,
-      "reference": 0.3465,
-      "score": 0.119862,
-      "shrink_alpha": 0.6416,
-      "sigma": 0.0676
-     },
-     {
-      "band_p5": 0.5384,
-      "band_p95": 0.7779,
-      "family": "combo",
-      "key": "combo_1_over_2.5",
-      "label": "1 + Over 2.5",
-      "p": 0.5171,
-      "p_raw": 0.6681,
-      "reference": 0.284,
-      "score": 0.119737,
-      "shrink_alpha": 0.607,
-      "sigma": 0.0727
      },
      {
       "band_p5": 0.7545,
@@ -224,16 +185,42 @@
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7641,
+      "p": 0.7673,
       "p_raw": 0.8392,
       "reference": 0.5383,
-      "score": 0.109271,
-      "shrink_alpha": 0.7504,
+      "score": 0.112518,
+      "shrink_alpha": 0.7609,
       "sigma": 0.0461
+     },
+     {
+      "band_p5": 0.634,
+      "band_p95": 0.8377,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.6027,
+      "p_raw": 0.7433,
+      "reference": 0.3722,
+      "score": 0.108768,
+      "shrink_alpha": 0.6212,
+      "sigma": 0.0643
+     },
+     {
+      "band_p5": 0.8103,
+      "band_p95": 0.935,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.8632,
+      "p_raw": 0.8827,
+      "reference": 0.6748,
+      "score": 0.094026,
+      "shrink_alpha": 0.9062,
+      "sigma": 0.0383
      }
     ],
-    "score": 0.173319,
-    "shrink_alpha": 0.8083,
+    "score": 0.173455,
+    "shrink_alpha": 0.8086,
     "sigma": 0.051
    },
    "raw_probabilities": {
@@ -263,7 +250,7 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 93,
+     "S_min": 94,
      "p_min": 88,
      "sigma_max": 0
     },
@@ -323,8 +310,8 @@
       "p": 0.8149,
       "p_raw": 0.8501,
       "reference": 0.6576,
-      "score": 0.060913,
-      "shrink_alpha": 0.8169,
+      "score": 0.060959,
+      "shrink_alpha": 0.8172,
       "sigma": 0.0496
      },
      {
@@ -333,11 +320,11 @@
       "family": "1x2",
       "key": "1x2_home",
       "label": "Vittoria casa",
-      "p": 0.5669,
+      "p": 0.567,
       "p_raw": 0.6318,
       "reference": 0.4069,
-      "score": 0.051841,
-      "shrink_alpha": 0.7115,
+      "score": 0.051891,
+      "shrink_alpha": 0.7119,
       "sigma": 0.0756
      },
      {
@@ -346,11 +333,11 @@
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
-      "p": 0.9581,
+      "p": 0.9582,
       "p_raw": 0.9616,
       "reference": 0.8615,
-      "score": 0.051812,
-      "shrink_alpha": 0.966,
+      "score": 0.05183,
+      "shrink_alpha": 0.9661,
       "sigma": 0.018
      },
      {
@@ -362,8 +349,8 @@
       "p": 0.9637,
       "p_raw": 0.9661,
       "reference": 0.8849,
-      "score": 0.040321,
-      "shrink_alpha": 0.9701,
+      "score": 0.040326,
+      "shrink_alpha": 0.9702,
       "sigma": 0.0184
      },
      {
@@ -375,13 +362,13 @@
       "p": 0.8047,
       "p_raw": 0.8231,
       "reference": 0.7243,
-      "score": 0.017362,
-      "shrink_alpha": 0.8131,
+      "score": 0.017375,
+      "shrink_alpha": 0.8134,
       "sigma": 0.0502
      }
     ],
-    "score": 0.06653,
-    "shrink_alpha": 0.8775,
+    "score": 0.066559,
+    "shrink_alpha": 0.8777,
     "sigma": 0.0444
    },
    "raw_probabilities": {
@@ -411,7 +398,7 @@
    "competition": "FL1",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 96,
+     "S_min": 97,
      "p_min": 88,
      "sigma_max": 0
     },
@@ -456,7 +443,7 @@
     "family": "handicap_eu",
     "key": "eh_-2_away",
     "label": "Handicap -2 ospite",
-    "p": 0.8723,
+    "p": 0.8724,
     "p_raw": 0.8907,
     "reference": 0.7536,
     "runners_up": [
@@ -469,8 +456,8 @@
       "p": 0.886,
       "p_raw": 0.9008,
       "reference": 0.7726,
-      "score": 0.042626,
-      "shrink_alpha": 0.8845,
+      "score": 0.042647,
+      "shrink_alpha": 0.8847,
       "sigma": 0.0379
      },
      {
@@ -482,8 +469,8 @@
       "p": 0.6811,
       "p_raw": 0.7211,
       "reference": 0.5427,
-      "score": 0.039738,
-      "shrink_alpha": 0.7757,
+      "score": 0.03977,
+      "shrink_alpha": 0.776,
       "sigma": 0.0639
      },
      {
@@ -492,11 +479,11 @@
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.6663,
+      "p": 0.6664,
       "p_raw": 0.7211,
       "reference": 0.5427,
-      "score": 0.031537,
-      "shrink_alpha": 0.6927,
+      "score": 0.031619,
+      "shrink_alpha": 0.6935,
       "sigma": 0.0639
      },
      {
@@ -508,13 +495,13 @@
       "p": 0.6572,
       "p_raw": 0.7057,
       "reference": 0.5432,
-      "score": 0.026795,
-      "shrink_alpha": 0.7017,
+      "score": 0.026826,
+      "shrink_alpha": 0.7021,
       "sigma": 0.0683
      }
     ],
-    "score": 0.043656,
-    "shrink_alpha": 0.8659,
+    "score": 0.043709,
+    "shrink_alpha": 0.8663,
     "sigma": 0.0377
    },
    "raw_probabilities": {
@@ -601,11 +588,11 @@
       "family": "1x2",
       "key": "1x2_away",
       "label": "Vittoria ospite",
-      "p": 0.5052,
+      "p": 0.5053,
       "p_raw": 0.566,
       "reference": 0.3165,
-      "score": 0.076463,
-      "shrink_alpha": 0.7566,
+      "score": 0.076524,
+      "shrink_alpha": 0.7569,
       "sigma": 0.0674
      },
      {
@@ -617,8 +604,8 @@
       "p": 0.9227,
       "p_raw": 0.9323,
       "reference": 0.7777,
-      "score": 0.07604,
-      "shrink_alpha": 0.9378,
+      "score": 0.076086,
+      "shrink_alpha": 0.938,
       "sigma": 0.0247
      },
      {
@@ -627,11 +614,11 @@
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.712,
+      "p": 0.7121,
       "p_raw": 0.7659,
       "reference": 0.5382,
-      "score": 0.063286,
-      "shrink_alpha": 0.7634,
+      "score": 0.063344,
+      "shrink_alpha": 0.7638,
       "sigma": 0.0583
      },
      {
@@ -640,11 +627,11 @@
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.9227,
+      "p": 0.9228,
       "p_raw": 0.9318,
       "reference": 0.7953,
-      "score": 0.061897,
-      "shrink_alpha": 0.9335,
+      "score": 0.061915,
+      "shrink_alpha": 0.9337,
       "sigma": 0.028
      },
      {
@@ -653,16 +640,16 @@
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5486,
+      "p": 0.5507,
       "p_raw": 0.6046,
       "reference": 0.4426,
-      "score": 0.022597,
-      "shrink_alpha": 0.6547,
+      "score": 0.023482,
+      "shrink_alpha": 0.6674,
       "sigma": 0.0581
      }
     ],
-    "score": 0.080855,
-    "shrink_alpha": 0.8537,
+    "score": 0.080897,
+    "shrink_alpha": 0.8539,
     "sigma": 0.0492
    },
    "raw_probabilities": {
@@ -698,28 +685,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.371e-08
+    "truncated_mass": 1.38e-08
    },
    "expected_goals": {
     "away": 1.23,
-    "home": 1.567
+    "home": 1.568
    },
    "half_time": {
-    "ht_over_0.5": 0.7191,
-    "ht_over_1.5": 0.3624,
-    "ht_over_2.5": 0.136,
-    "ht_under_0.5": 0.2809,
-    "ht_under_1.5": 0.6376,
-    "ht_under_2.5": 0.864,
-    "htft_11": 0.2748,
+    "ht_over_0.5": 0.7192,
+    "ht_over_1.5": 0.3626,
+    "ht_over_2.5": 0.1361,
+    "ht_under_0.5": 0.2808,
+    "ht_under_1.5": 0.6374,
+    "ht_under_2.5": 0.8639,
+    "htft_11": 0.275,
     "htft_12": 0.0192,
     "htft_1X": 0.0515,
     "htft_21": 0.0261,
-    "htft_22": 0.1728,
+    "htft_22": 0.1726,
     "htft_2X": 0.0515,
-    "htft_X1": 0.1507,
-    "htft_X2": 0.1075,
-    "htft_XX": 0.1459
+    "htft_X1": 0.1508,
+    "htft_X2": 0.1074,
+    "htft_XX": 0.1458
    },
    "home": {
     "crest": "https://crests.football-data.org/404.png",
@@ -732,12 +719,12 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3021,
+    "1x2_away": 0.3018,
     "1x2_draw": 0.2467,
-    "1x2_home": 0.4513,
-    "btts_yes": 0.5486,
-    "over_2.5": 0.5252,
-    "under_2.5": 0.4748
+    "1x2_home": 0.4515,
+    "btts_yes": 0.5488,
+    "over_2.5": 0.5255,
+    "under_2.5": 0.4745
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
@@ -760,16 +747,16 @@
    "diagnostics": {
     "filter_bites": {
      "S_min": 77,
-     "p_min": 86,
+     "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 11,
-    "truncated_mass": 7.439e-06
+    "n_clusters": 12,
+    "truncated_mass": 7.442e-06
    },
    "expected_goals": {
     "away": 2.784,
-    "home": 0.735
+    "home": 0.736
    },
    "half_time": {
     "ht_over_0.5": 0.7941,
@@ -804,7 +791,7 @@
     "family": "1x2",
     "key": "1x2_away",
     "label": "Vittoria ospite",
-    "p": 0.7131,
+    "p": 0.7133,
     "p_raw": 0.7938,
     "reference": 0.3076,
     "runners_up": [
@@ -817,8 +804,8 @@
       "p": 0.9082,
       "p_raw": 0.9251,
       "reference": 0.5726,
-      "score": 0.277627,
-      "shrink_alpha": 0.952,
+      "score": 0.277637,
+      "shrink_alpha": 0.9521,
       "sigma": 0.0267
      },
      {
@@ -830,22 +817,9 @@
       "p": 0.8998,
       "p_raw": 0.9251,
       "reference": 0.5726,
-      "score": 0.261258,
-      "shrink_alpha": 0.9282,
+      "score": 0.261395,
+      "shrink_alpha": 0.9284,
       "sigma": 0.0267
-     },
-     {
-      "band_p5": 0.601,
-      "band_p95": 0.8059,
-      "family": "combo",
-      "key": "combo_2_over_1.5",
-      "label": "2 + Over 1.5",
-      "p": 0.543,
-      "p_raw": 0.7093,
-      "reference": 0.2231,
-      "score": 0.240387,
-      "shrink_alpha": 0.6579,
-      "sigma": 0.0652
      },
      {
       "band_p5": 0.6543,
@@ -853,11 +827,11 @@
       "family": "team_goals",
       "key": "ag_over_1.5",
       "label": "Ospite Over 1.5",
-      "p": 0.6572,
-      "p_raw": 0.7595,
+      "p": 0.6574,
+      "p_raw": 0.7596,
       "reference": 0.3433,
-      "score": 0.203985,
-      "shrink_alpha": 0.7542,
+      "score": 0.20421,
+      "shrink_alpha": 0.7546,
       "sigma": 0.0598
      },
      {
@@ -870,21 +844,34 @@
       "p_raw": 0.9796,
       "reference": 0.7778,
       "score": 0.17207,
-      "shrink_alpha": 0.9898,
+      "shrink_alpha": 0.9899,
       "sigma": 0.0097
+     },
+     {
+      "band_p5": 0.7214,
+      "band_p95": 0.8832,
+      "family": "combo_dc",
+      "key": "combodc_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.7119,
+      "p_raw": 0.8087,
+      "reference": 0.4259,
+      "score": 0.167129,
+      "shrink_alpha": 0.7471,
+      "sigma": 0.0479
      }
     ],
-    "score": 0.346819,
-    "shrink_alpha": 0.8341,
+    "score": 0.347015,
+    "shrink_alpha": 0.8343,
     "sigma": 0.053
    },
    "raw_probabilities": {
     "1x2_away": 0.7938,
-    "1x2_draw": 0.1313,
+    "1x2_draw": 0.1312,
     "1x2_home": 0.0749,
     "btts_yes": 0.4824,
-    "over_2.5": 0.6772,
-    "under_2.5": 0.3228
+    "over_2.5": 0.6773,
+    "under_2.5": 0.3227
    },
    "reasons": [
     "Gol attesi: Rio Ave FC 0.74, Sporting Clube de Portugal 2.78 (totale 3.52).",
@@ -911,17 +898,17 @@
     },
     "n_candidates": 114,
     "n_clusters": 5,
-    "truncated_mass": 2.884e-08
+    "truncated_mass": 2.882e-08
    },
    "expected_goals": {
     "away": 1.675,
     "home": 1.25
    },
    "half_time": {
-    "ht_over_0.5": 0.7186,
+    "ht_over_0.5": 0.7185,
     "ht_over_1.5": 0.3617,
     "ht_over_2.5": 0.1355,
-    "ht_under_0.5": 0.2814,
+    "ht_under_0.5": 0.2815,
     "ht_under_1.5": 0.6383,
     "ht_under_2.5": 0.8645,
     "htft_11": 0.1605,
@@ -953,7 +940,7 @@
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
     "p": 0.6788,
-    "p_raw": 0.7126,
+    "p_raw": 0.7125,
     "reference": 0.5395,
     "runners_up": [
      {
@@ -962,10 +949,10 @@
       "family": "team_goals",
       "key": "ag_over_0.5",
       "label": "Ospite Over 0.5",
-      "p": 0.7919,
-      "p_raw": 0.8077,
+      "p": 0.7918,
+      "p_raw": 0.8076,
       "reference": 0.7009,
-      "score": 0.021161,
+      "score": 0.021152,
       "shrink_alpha": 0.852,
       "sigma": 0.0437
      },
@@ -975,11 +962,11 @@
       "family": "handicap_eu",
       "key": "eh_-2_away",
       "label": "Handicap -2 ospite",
-      "p": 0.8676,
+      "p": 0.8677,
       "p_raw": 0.8782,
       "reference": 0.7934,
-      "score": 0.018674,
-      "shrink_alpha": 0.8756,
+      "score": 0.018694,
+      "shrink_alpha": 0.8761,
       "sigma": 0.0361
      },
      {
@@ -988,11 +975,11 @@
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5099,
+      "p": 0.5118,
       "p_raw": 0.5652,
       "reference": 0.4168,
-      "score": 0.017558,
-      "shrink_alpha": 0.6271,
+      "score": 0.018277,
+      "shrink_alpha": 0.64,
       "sigma": 0.0617
      },
      {
@@ -1004,20 +991,20 @@
       "p": 0.8576,
       "p_raw": 0.866,
       "reference": 0.8074,
-      "score": 0.008711,
-      "shrink_alpha": 0.8554,
+      "score": 0.008717,
+      "shrink_alpha": 0.8556,
       "sigma": 0.0431
      }
     ],
-    "score": 0.040186,
-    "shrink_alpha": 0.8049,
+    "score": 0.040209,
+    "shrink_alpha": 0.8052,
     "sigma": 0.0585
    },
    "raw_probabilities": {
     "1x2_away": 0.4726,
     "1x2_draw": 0.2399,
-    "1x2_home": 0.2874,
-    "btts_yes": 0.5726,
+    "1x2_home": 0.2875,
+    "btts_yes": 0.5725,
     "over_2.5": 0.5564,
     "under_2.5": 0.4436
    },
@@ -1032,7 +1019,7 @@
    "utc_date": "2026-08-28T19:30:00Z"
   }
  ],
- "generated_at": "2026-08-12T01:14:36Z",
+ "generated_at": "2026-08-12T11:54:39Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 8

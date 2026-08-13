@@ -10,7 +10,7 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 81,
+     "S_min": 82,
      "p_min": 87,
      "sigma_max": 0
     },
@@ -65,11 +65,11 @@
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.8499,
+      "p": 0.85,
       "p_raw": 0.8738,
       "reference": 0.5931,
-      "score": 0.156118,
-      "shrink_alpha": 0.915,
+      "score": 0.156168,
+      "shrink_alpha": 0.9151,
       "sigma": 0.0362
      },
      {
@@ -78,11 +78,11 @@
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.8388,
+      "p": 0.8389,
       "p_raw": 0.8738,
       "reference": 0.5931,
-      "score": 0.141442,
-      "shrink_alpha": 0.8752,
+      "score": 0.141604,
+      "shrink_alpha": 0.8757,
       "sigma": 0.0362
      },
      {
@@ -91,11 +91,11 @@
       "family": "team_goals",
       "key": "hg_under_0.5",
       "label": "Casa Under 0.5",
-      "p": 0.5026,
+      "p": 0.5027,
       "p_raw": 0.5805,
       "reference": 0.2757,
-      "score": 0.114843,
-      "shrink_alpha": 0.7445,
+      "score": 0.114951,
+      "shrink_alpha": 0.7448,
       "sigma": 0.0614
      },
      {
@@ -104,11 +104,11 @@
       "family": "1x2",
       "key": "1x2_away",
       "label": "Vittoria ospite",
-      "p": 0.5553,
+      "p": 0.5554,
       "p_raw": 0.6275,
       "reference": 0.3233,
-      "score": 0.113597,
-      "shrink_alpha": 0.7625,
+      "score": 0.113686,
+      "shrink_alpha": 0.7628,
       "sigma": 0.0663
      },
      {
@@ -120,13 +120,13 @@
       "p": 0.968,
       "p_raw": 0.9706,
       "reference": 0.8214,
-      "score": 0.10394,
-      "shrink_alpha": 0.9823,
+      "score": 0.10396,
+      "shrink_alpha": 0.9824,
       "sigma": 0.0129
      }
     ],
-    "score": 0.16535,
-    "shrink_alpha": 0.9003,
+    "score": 0.165421,
+    "shrink_alpha": 0.9005,
     "sigma": 0.0349
    },
    "raw_probabilities": {
@@ -157,24 +157,24 @@
    "diagnostics": {
     "filter_bites": {
      "S_min": 80,
-     "p_min": 86,
+     "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 10,
-    "truncated_mass": 1.045e-10
+    "truncated_mass": 1.043e-10
    },
    "expected_goals": {
     "away": 0.725,
     "home": 1.041
    },
    "half_time": {
-    "ht_over_0.5": 0.5348,
-    "ht_over_1.5": 0.1788,
-    "ht_over_2.5": 0.0426,
-    "ht_under_0.5": 0.4652,
-    "ht_under_1.5": 0.8212,
-    "ht_under_2.5": 0.9574,
+    "ht_over_0.5": 0.5347,
+    "ht_over_1.5": 0.1787,
+    "ht_over_2.5": 0.0425,
+    "ht_under_0.5": 0.4653,
+    "ht_under_1.5": 0.8213,
+    "ht_under_2.5": 0.9575,
     "htft_11": 0.2341,
     "htft_12": 0.0089,
     "htft_1X": 0.04,
@@ -183,7 +183,7 @@
     "htft_2X": 0.04,
     "htft_X1": 0.1756,
     "htft_X2": 0.1113,
-    "htft_XX": 0.2466
+    "htft_XX": 0.2467
    },
    "home": {
     "crest": "https://crests.football-data.org/79.png",
@@ -195,30 +195,28 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5846,
-    "band_p95": 0.7477,
-    "cluster_members": [
-     "combogo_nogol_under_2.5"
-    ],
-    "family": "btts",
-    "key": "btts_no",
-    "label": "Non entrambe segnano",
-    "p": 0.5954,
-    "p_raw": 0.6715,
-    "reference": 0.4495,
+    "band_p5": 0.9326,
+    "band_p95": 0.9843,
+    "cluster_members": [],
+    "family": "over_under",
+    "key": "under_4.5",
+    "label": "Under 4.5",
+    "p": 0.9565,
+    "p_raw": 0.9639,
+    "reference": 0.8681,
     "runners_up": [
      {
-      "band_p5": 0.9326,
-      "band_p95": 0.9843,
-      "family": "over_under",
-      "key": "under_4.5",
-      "label": "Under 4.5",
-      "p": 0.9564,
-      "p_raw": 0.9639,
-      "reference": 0.8681,
-      "score": 0.04447,
-      "shrink_alpha": 0.922,
-      "sigma": 0.0164
+      "band_p5": 0.5846,
+      "band_p95": 0.7477,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5953,
+      "p_raw": 0.6716,
+      "reference": 0.4495,
+      "score": 0.042714,
+      "shrink_alpha": 0.6566,
+      "sigma": 0.0532
      },
      {
       "band_p5": 0.7507,
@@ -226,11 +224,11 @@
       "family": "team_goals",
       "key": "ag_under_1.5",
       "label": "Ospite Under 1.5",
-      "p": 0.8084,
+      "p": 0.8085,
       "p_raw": 0.8344,
       "reference": 0.6821,
-      "score": 0.040345,
-      "shrink_alpha": 0.8295,
+      "score": 0.040375,
+      "shrink_alpha": 0.8296,
       "sigma": 0.0475
      },
      {
@@ -239,11 +237,11 @@
       "family": "combo_dc",
       "key": "combodc_1x_under_2.5",
       "label": "1X + Under 2.5",
-      "p": 0.5101,
-      "p_raw": 0.5703,
+      "p": 0.5124,
+      "p_raw": 0.5704,
       "reference": 0.3844,
-      "score": 0.03242,
-      "shrink_alpha": 0.676,
+      "score": 0.033598,
+      "shrink_alpha": 0.6881,
       "sigma": 0.0554
      },
      {
@@ -255,8 +253,8 @@
       "p": 0.9002,
       "p_raw": 0.9095,
       "reference": 0.8074,
-      "score": 0.03232,
-      "shrink_alpha": 0.9087,
+      "score": 0.032362,
+      "shrink_alpha": 0.909,
       "sigma": 0.0332
      },
      {
@@ -268,27 +266,27 @@
       "p": 0.854,
       "p_raw": 0.8942,
       "reference": 0.7506,
-      "score": 0.031991,
+      "score": 0.032014,
       "shrink_alpha": 0.7199,
       "sigma": 0.0352
      }
     ],
-    "score": 0.042776,
-    "shrink_alpha": 0.6572,
-    "sigma": 0.0532
+    "score": 0.04449,
+    "shrink_alpha": 0.9221,
+    "sigma": 0.0164
    },
    "raw_probabilities": {
     "1x2_away": 0.2507,
     "1x2_draw": 0.3273,
     "1x2_home": 0.422,
-    "btts_yes": 0.3285,
+    "btts_yes": 0.3284,
     "over_2.5": 0.261,
     "under_2.5": 0.739
    },
    "reasons": [
     "Gol attesi: CA Osasuna 1.04, Getafe CF 0.72 (totale 1.77).",
-    "Non entrambe segnano: 60 su 100, 15 punti sopra la media di riferimento (45 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Under 4.5: 96 su 100, 9 punti sopra la media di riferimento (87 su 100).",
+    "Banda di incertezza: fra 93 e 98 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -304,7 +302,7 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 78,
+     "S_min": 80,
      "p_min": 84,
      "sigma_max": 0
     },
@@ -353,7 +351,7 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.7473,
+    "p": 0.7474,
     "p_raw": 0.8125,
     "reference": 0.4274,
     "runners_up": [
@@ -363,11 +361,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.9155,
+      "p": 0.9156,
       "p_raw": 0.9276,
       "reference": 0.6924,
-      "score": 0.146639,
-      "shrink_alpha": 0.9486,
+      "score": 0.146673,
+      "shrink_alpha": 0.9487,
       "sigma": 0.0277
      },
      {
@@ -379,8 +377,8 @@
       "p": 0.9096,
       "p_raw": 0.9276,
       "reference": 0.6924,
-      "score": 0.137476,
-      "shrink_alpha": 0.9232,
+      "score": 0.137585,
+      "shrink_alpha": 0.9235,
       "sigma": 0.0277
      },
      {
@@ -392,7 +390,7 @@
       "p": 0.947,
       "p_raw": 0.953,
       "reference": 0.752,
-      "score": 0.13642,
+      "score": 0.136441,
       "shrink_alpha": 0.97,
       "sigma": 0.0184
      },
@@ -402,11 +400,11 @@
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7716,
+      "p": 0.7748,
       "p_raw": 0.8472,
       "reference": 0.5277,
-      "score": 0.127163,
-      "shrink_alpha": 0.7634,
+      "score": 0.130754,
+      "shrink_alpha": 0.7734,
       "sigma": 0.0445
      },
      {
@@ -415,16 +413,16 @@
       "family": "combo_dc",
       "key": "combodc_1x_over_2.5",
       "label": "1X + Over 2.5",
-      "p": 0.547,
+      "p": 0.552,
       "p_raw": 0.7058,
       "reference": 0.3435,
-      "score": 0.086406,
-      "shrink_alpha": 0.5616,
+      "score": 0.090675,
+      "shrink_alpha": 0.5755,
       "sigma": 0.0707
      }
     ],
-    "score": 0.210907,
-    "shrink_alpha": 0.8307,
+    "score": 0.211049,
+    "shrink_alpha": 0.831,
     "sigma": 0.0536
    },
    "raw_probabilities": {
@@ -459,7 +457,7 @@
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
+    "n_clusters": 4,
     "truncated_mass": 2.248e-08
    },
    "expected_goals": {
@@ -493,7 +491,7 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6782,
+    "band_p5": 0.6781,
     "band_p95": 0.8469,
     "cluster_members": [
      "eh_1_home"
@@ -514,8 +512,8 @@
       "p": 0.9107,
       "p_raw": 0.9148,
       "reference": 0.8615,
-      "score": 0.011391,
-      "shrink_alpha": 0.923,
+      "score": 0.011399,
+      "shrink_alpha": 0.9233,
       "sigma": 0.0277
      },
      {
@@ -527,13 +525,26 @@
       "p": 0.7878,
       "p_raw": 0.801,
       "reference": 0.7243,
-      "score": 0.010661,
-      "shrink_alpha": 0.828,
+      "score": 0.010668,
+      "shrink_alpha": 0.8283,
       "sigma": 0.0478
+     },
+     {
+      "band_p5": 0.6367,
+      "band_p95": 0.819,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7167,
+      "p_raw": 0.7337,
+      "reference": 0.6576,
+      "score": 0.008004,
+      "shrink_alpha": 0.7765,
+      "sigma": 0.0563
      }
     ],
-    "score": 0.01375,
-    "shrink_alpha": 0.8401,
+    "score": 0.013758,
+    "shrink_alpha": 0.8404,
     "sigma": 0.0518
    },
    "raw_probabilities": {
@@ -563,8 +574,8 @@
    "competition": "PL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 88,
-     "p_min": 88,
+     "S_min": 90,
+     "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -608,7 +619,7 @@
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.7176,
+    "p": 0.7177,
     "p_raw": 0.7664,
     "reference": 0.5382,
     "runners_up": [
@@ -621,8 +632,8 @@
       "p": 0.9246,
       "p_raw": 0.9323,
       "reference": 0.7953,
-      "score": 0.063981,
-      "shrink_alpha": 0.9434,
+      "score": 0.063997,
+      "shrink_alpha": 0.9435,
       "sigma": 0.0257
      },
      {
@@ -631,11 +642,11 @@
       "family": "handicap_eu",
       "key": "eh_-2_away",
       "label": "Handicap -2 ospite",
-      "p": 0.9113,
+      "p": 0.9114,
       "p_raw": 0.9219,
       "reference": 0.7777,
-      "score": 0.063028,
-      "shrink_alpha": 0.9271,
+      "score": 0.063072,
+      "shrink_alpha": 0.9273,
       "sigma": 0.0269
      },
      {
@@ -644,11 +655,11 @@
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.7414,
+      "p": 0.7415,
       "p_raw": 0.7726,
       "reference": 0.5759,
-      "score": 0.0594,
-      "shrink_alpha": 0.8415,
+      "score": 0.059433,
+      "shrink_alpha": 0.8417,
       "sigma": 0.0516
      },
      {
@@ -657,11 +668,11 @@
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.7285,
+      "p": 0.7286,
       "p_raw": 0.7726,
       "reference": 0.5759,
-      "score": 0.050161,
-      "shrink_alpha": 0.7757,
+      "score": 0.050258,
+      "shrink_alpha": 0.7764,
       "sigma": 0.0516
      },
      {
@@ -670,16 +681,16 @@
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5104,
+      "p": 0.5118,
       "p_raw": 0.5504,
       "reference": 0.4426,
-      "score": 0.009254,
-      "shrink_alpha": 0.6288,
+      "score": 0.009643,
+      "shrink_alpha": 0.642,
       "sigma": 0.0615
      }
     ],
-    "score": 0.067572,
-    "shrink_alpha": 0.7863,
+    "score": 0.067629,
+    "shrink_alpha": 0.7866,
     "sigma": 0.0546
    },
    "raw_probabilities": {
@@ -714,8 +725,8 @@
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 9,
-    "truncated_mass": 2.241e-06
+    "n_clusters": 10,
+    "truncated_mass": 2.244e-06
    },
    "expected_goals": {
     "away": 0.697,
@@ -723,11 +734,11 @@
    },
    "half_time": {
     "ht_over_0.5": 0.7483,
-    "ht_over_1.5": 0.401,
-    "ht_over_2.5": 0.1615,
+    "ht_over_1.5": 0.4011,
+    "ht_over_2.5": 0.1616,
     "ht_under_0.5": 0.2517,
-    "ht_under_1.5": 0.599,
-    "ht_under_2.5": 0.8385,
+    "ht_under_1.5": 0.5989,
+    "ht_under_2.5": 0.8384,
     "htft_11": 0.5206,
     "htft_12": 0.0059,
     "htft_1X": 0.0296,
@@ -754,8 +765,8 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.6948,
-    "p_raw": 0.7592,
+    "p": 0.6949,
+    "p_raw": 0.7593,
     "reference": 0.4605,
     "runners_up": [
      {
@@ -764,11 +775,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8996,
+      "p": 0.8997,
       "p_raw": 0.9129,
       "reference": 0.7102,
-      "score": 0.10627,
-      "shrink_alpha": 0.9347,
+      "score": 0.106301,
+      "shrink_alpha": 0.9348,
       "sigma": 0.0314
      },
      {
@@ -777,11 +788,11 @@
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8932,
+      "p": 0.8933,
       "p_raw": 0.9129,
       "reference": 0.7102,
-      "score": 0.09821,
-      "shrink_alpha": 0.9032,
+      "score": 0.098302,
+      "shrink_alpha": 0.9036,
       "sigma": 0.0314
      },
      {
@@ -790,25 +801,12 @@
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.6116,
-      "p_raw": 0.7024,
+      "p": 0.6117,
+      "p_raw": 0.7025,
       "reference": 0.4233,
-      "score": 0.071496,
-      "shrink_alpha": 0.6745,
+      "score": 0.0716,
+      "shrink_alpha": 0.6748,
       "sigma": 0.0728
-     },
-     {
-      "band_p5": 0.5293,
-      "band_p95": 0.7691,
-      "family": "combo",
-      "key": "combo_1_over_1.5",
-      "label": "1 + Over 1.5",
-      "p": 0.5229,
-      "p_raw": 0.6547,
-      "reference": 0.3402,
-      "score": 0.070137,
-      "shrink_alpha": 0.5811,
-      "sigma": 0.0768
      },
      {
       "band_p5": 0.9555,
@@ -819,22 +817,35 @@
       "p": 0.9756,
       "p_raw": 0.9768,
       "reference": 0.8903,
-      "score": 0.052542,
+      "score": 0.05255,
       "shrink_alpha": 0.9859,
       "sigma": 0.0115
+     },
+     {
+      "band_p5": 0.7675,
+      "band_p95": 0.9068,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.8197,
+      "p_raw": 0.844,
+      "reference": 0.6821,
+      "score": 0.048391,
+      "shrink_alpha": 0.85,
+      "sigma": 0.0441
      }
     ],
-    "score": 0.11195,
-    "shrink_alpha": 0.7843,
+    "score": 0.112032,
+    "shrink_alpha": 0.7845,
     "sigma": 0.0623
    },
    "raw_probabilities": {
     "1x2_away": 0.0871,
     "1x2_draw": 0.1536,
-    "1x2_home": 0.7592,
+    "1x2_home": 0.7593,
     "btts_yes": 0.4542,
-    "over_2.5": 0.6115,
-    "under_2.5": 0.3885
+    "over_2.5": 0.6116,
+    "under_2.5": 0.3884
    },
    "reasons": [
     "Gol attesi: FC Barcelona 2.49, Rayo Vallecano de Madrid 0.70 (totale 3.18).",
@@ -900,7 +911,7 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.5968,
+    "p": 0.5969,
     "p_raw": 0.6485,
     "reference": 0.4274,
     "runners_up": [
@@ -910,11 +921,11 @@
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8347,
+      "p": 0.8348,
       "p_raw": 0.8511,
       "reference": 0.6924,
-      "score": 0.053417,
-      "shrink_alpha": 0.8971,
+      "score": 0.053438,
+      "shrink_alpha": 0.8973,
       "sigma": 0.0402
      },
      {
@@ -923,11 +934,11 @@
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8273,
+      "p": 0.8274,
       "p_raw": 0.8511,
       "reference": 0.6924,
-      "score": 0.047614,
-      "shrink_alpha": 0.8504,
+      "score": 0.047679,
+      "shrink_alpha": 0.8509,
       "sigma": 0.0402
      },
      {
@@ -939,8 +950,8 @@
       "p": 0.9504,
       "p_raw": 0.9532,
       "reference": 0.8662,
-      "score": 0.038956,
-      "shrink_alpha": 0.9673,
+      "score": 0.038968,
+      "shrink_alpha": 0.9674,
       "sigma": 0.0176
      },
      {
@@ -952,8 +963,8 @@
       "p": 0.8541,
       "p_raw": 0.8661,
       "reference": 0.752,
-      "score": 0.031328,
-      "shrink_alpha": 0.8953,
+      "score": 0.031342,
+      "shrink_alpha": 0.8955,
       "sigma": 0.0358
      },
      {
@@ -962,21 +973,21 @@
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.5466,
+      "p": 0.5467,
       "p_raw": 0.6016,
       "reference": 0.4285,
-      "score": 0.028095,
-      "shrink_alpha": 0.6823,
+      "score": 0.028129,
+      "shrink_alpha": 0.6827,
       "sigma": 0.0715
      }
     ],
-    "score": 0.057846,
-    "shrink_alpha": 0.7662,
+    "score": 0.057886,
+    "shrink_alpha": 0.7665,
     "sigma": 0.0656
    },
    "raw_probabilities": {
     "1x2_away": 0.1489,
-    "1x2_draw": 0.2026,
+    "1x2_draw": 0.2025,
     "1x2_home": 0.6485,
     "btts_yes": 0.4919,
     "over_2.5": 0.5498,
@@ -993,7 +1004,7 @@
    "utc_date": "2026-08-31T19:45:00Z"
   }
  ],
- "generated_at": "2026-08-12T01:14:36Z",
+ "generated_at": "2026-08-12T11:54:39Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 7
