@@ -5,9 +5,8 @@ import {
   manifestoCrest,
   riepilogoGiorni,
 } from '@/lib/dati';
-import { dataLunga, suCento } from '@/lib/formato';
-import { formattaQuota } from '@/lib/quote';
-import { QUOTA_MULTIPLA, QUOTA_RADDOPPIO, schedineDelGiorno } from '@/lib/schedine';
+import { dataLunga } from '@/lib/formato';
+import { schedineDelGiorno } from '@/lib/schedine';
 
 import { Calendario } from './Calendario';
 import { Schedina } from './Schedina';
@@ -73,36 +72,6 @@ export function CorpoSchedine({ data }: { data: string }) {
           <>
             {raddoppio ? <Schedina schedina={raddoppio} crest={crest} /> : null}
             {multipla ? <Schedina schedina={multipla} crest={crest} /> : null}
-
-            <section className="schedine__regola">
-              <h2 className="label">
-                <span className="bersaglio" aria-hidden="true" /> Come sono scelte
-              </h2>
-              <p>
-                Fra le {candidate} partite di {dataLunga(data)} su cui ci siamo esposti — le
-                altre le abbiamo lasciate in silenzio, e un silenzio non entra in una schedina
-                — <strong>il raddoppio</strong> è la coppia con la probabilità più alta fra
-                quelle che arrivano comunque a {formattaQuota(QUOTA_RADDOPPIO)}, e{' '}
-                <strong>la multipla</strong> è il minor numero di partite che arriva a{' '}
-                {formattaQuota(QUOTA_MULTIPLA)}, presa nella composizione più probabile di
-                quella lunghezza.
-              </p>
-              <p>
-                <strong>Perché il minor numero.</strong> A parità di quota la probabilità è
-                identica: una multipla a {formattaQuota(QUOTA_MULTIPLA)} vale{' '}
-                {suCento(1 / QUOTA_MULTIPLA)} su 100 con due partite rischiose come con dieci
-                sicure — è aritmetica, non bravura. Quello che cambia con le gambe in più è
-                l’errore del modello che si accumula, e le cose che possono andare storte in
-                modi che il modello non vede. Quindi meno gambe, a parità di tutto il resto.
-              </p>
-              <p className="schedine__ipotesi">
-                Moltiplicare le probabilità vale se le partite sono indipendenti. Sono partite
-                diverse — mai due mercati della stessa, che indipendenti non sarebbero per
-                niente — ma restano la stessa giornata e a volte lo stesso campionato. È
-                un’ipotesi ragionevole, non un fatto, ed è giusto che tu lo sappia leggendo il
-                numero grande.
-              </p>
-            </section>
           </>
         )}
       </div>
