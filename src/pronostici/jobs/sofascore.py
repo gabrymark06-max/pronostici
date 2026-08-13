@@ -78,9 +78,23 @@ def _giorni(finestra: int, oggi: str) -> list[str]:
 _ESITI_1X2 = {"1": "1x2_home", "X": "1x2_draw", "2": "1x2_away"}
 _ESITI_DC = {"1X": "dc_1x", "X2": "dc_x2", "12": "dc_12"}
 _ESITI_BTTS = {"Yes": "btts_yes", "No": "btts_no"}
-# Le linee che il nostro catalogo conosce. Le altre (0,5, 6,5...) esistono su
-# Sofascore ma non da noi: mapparle creerebbe chiavi che nessuno legge.
-_LINEE_GOL = {"2.5", "3.5"}
+# Le linee che il nostro catalogo conosce, cioe' `markets.OU_LINES`. Sofascore
+# arriva fino a 8,5: quelle oltre la nostra ultima linea non si mappano perche'
+# non avremmo un nostro numero da metterci accanto.
+_LINEE_GOL = {"0.5", "1.5", "2.5", "3.5", "4.5"}
+
+# QUANTE VOLTE UN MERCATO COPRE LO SPAZIO DEGLI ESITI.
+#
+# Quasi ovunque una volta: 1, X e 2 sono alternative, e le loro probabilita'
+# implicite sommano a 1 piu' il margine. La doppia chance no. 1X, X2 e 12
+# contengono OGNUNA due dei tre esiti, quindi lo spazio e' coperto DUE volte e
+# la somma equa vale 2, non 1.
+#
+# Questo mancava, e costava caro: il controllo di plausibilita' scartava ogni
+# doppia chance come «somma implausibile» — 2,05 non sta fra 0,9 e 1,6 — e la
+# famiglia piu' popolata della tavola restava senza quote di mercato su tutte
+# le partite che la fonte principale non copriva.
+_COPERTURA = {"Double chance": 2.0}
 
 
 def _chiavi_del_mercato(mercato: dict) -> dict[str, float]:
@@ -128,19 +142,24 @@ def _market_p(quote: dict) -> dict[str, float]:
     Un mercato con un solo esito leggibile NON si sgonfia: normalizzarlo
     darebbe probabilita' 1, cioe' certezza, che e' l'opposto di quello che
     quel prezzo dice.
+
+    La somma equa non e' sempre 1: vedi `_COPERTURA`. Il bersaglio della
+    normalizzazione e' la copertura del mercato, e la fascia di plausibilita'
+    si sposta con lei invece di essere una coppia di numeri fissi.
     """
     fuori: dict[str, float] = {}
     for mercato in quote.get("mercati") or []:
         chiavi = _chiavi_del_mercato(mercato)
         if len(chiavi) < 2:
             continue
+        copertura = _COPERTURA.get((mercato.get("mercato") or "").strip(), 1.0)
         somma = sum(chiavi.values())
-        if not 0.9 < somma < 1.6:
+        if not 0.9 * copertura < somma < 1.6 * copertura:
             # Somma implausibile: quote sospese, o un mercato incompleto letto
             # a meta'. Meglio saltarlo che pubblicare un numero storto.
             continue
         for k, p in chiavi.items():
-            fuori[k] = round(p / somma, 5)
+            fuori[k] = round(p / (somma / copertura), 5)
     return fuori
 
 

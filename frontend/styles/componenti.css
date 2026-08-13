@@ -1710,6 +1710,116 @@
   width: 100%;
 }
 
+/* SOTTO I 560px ANCHE QUESTA TAVOLA SI IMPILA.
+   Tre colonne di cui una si chiama «Quanto la dà il prezzo» e una contiene un
+   nome di squadra intero — «Sporting CP» — non stanno in 343px: sfondavano di
+   un pixel e mezzo, che basta a far comparire lo scorrimento orizzontale su
+   TUTTA la pagina. La versione precedente lo risolveva con un contenitore
+   scorrevole; questa lo risolve togliendo il problema invece di nasconderlo
+   dietro un gesto. Stesso meccanismo di `.tabella--mercati`: le intestazioni
+   rientrano dentro le celle da `data-etichetta`. */
+@media (max-width: 559px) {
+  .tabella--mercato,
+  .tabella--mercato tbody,
+  .tabella--mercato tr {
+    display: block;
+  }
+  .tabella--mercato thead {
+    display: none;
+  }
+  .tabella--mercato tbody tr {
+    padding-block: var(--s-3);
+    border-block-end: 1px solid var(--edge);
+  }
+  .tabella--mercato tbody th {
+    display: block;
+    padding: 0 0 var(--s-2);
+    border: 0;
+  }
+  .tabella--mercato td {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    padding: 2px 0;
+    margin-inline-end: var(--s-4);
+    border: 0;
+    text-align: start;
+  }
+  .tabella--mercato td::before {
+    content: attr(data-etichetta);
+    font-family: var(--font-text);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   LA SCALA DELLE LINEE.
+
+   «Gol totali» non e' un mercato: sono nove mercati sulla stessa domanda, uno
+   per linea. Stampati uno sotto l'altro erano nove blocchi identici in cui la
+   sola cosa che li distingueva — sopra quanti gol? — non compariva. Qui
+   diventano una scala: la linea in prima colonna, gli esiti in colonna, e
+   l'occhio scende lungo i numeri come su una lavagna vera.
+
+   La quota e la sua probabilita' stanno nella STESSA cella, una sopra l'altra:
+   sono due letture dello stesso prezzo, e separarle in due colonne avrebbe
+   raddoppiato la larghezza per non dire niente di piu'.
+   -------------------------------------------------------------------------- */
+.tabella--linee {
+  width: 100%;
+}
+
+.tabella--linee td {
+  /* Le due righe della cella non si sovrappongono al bordo. */
+  padding-block: var(--s-2);
+  vertical-align: top;
+}
+
+/* La linea e' l'ancora della riga: e' quella che si cerca scorrendo, quindi e'
+   l'unica cosa in colonna che non sia tenue. */
+.linee__linea {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.linee__quota {
+  display: block;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.linee__implicita {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* SOTTO I 560px LA COLONNA DEL MARGINE ESCE.
+   Non e' un dato che si legge riga per riga: e' lo stesso numero, piu' o meno,
+   su tutte le linee, e la sezione lo spiega gia' a parole. Tenerlo su un
+   telefono costava una colonna intera e faceva accartocciare le quote, che
+   invece sono il motivo per cui si guarda questa tavola.
+   `display: none` toglie la colonna a TUTTI, anche a chi ascolta, e va bene
+   cosi': la pagina stretta dev'essere la stessa pagina per tutti. Nascondere
+   solo agli occhi e lasciarla nel documento darebbe due contenuti diversi
+   sotto lo stesso indirizzo. */
+@media (max-width: 559px) {
+  .tabella--linee th:last-child,
+  .tabella--linee td:last-child {
+    display: none;
+  }
+}
+
 /* La probabilita' implicita e' la colonna che si puo' fraintendere: resta
    visibile ma piu' tenue della quota, che invece e' un fatto. */
 .mercato__implicita {

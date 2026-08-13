@@ -164,6 +164,16 @@ export interface EsitoEsteso {
 
 export interface MercatoEsteso {
   mercato: string;
+  /**
+   * LA LINEA, quando il mercato ne ha una: `"2.5"` per i gol totali, `"9.5"`
+   * per i calci d'angolo.
+   *
+   * Senza, «Oltre» non vuol dire niente — non si sa sopra cosa — e la fonte
+   * manda NOVE mercati «Match goals» identici nel nome, distinti solo da
+   * questo campo. È il campo che li rende leggibili e che li tiene separati
+   * uno dall'altro.
+   */
+  linea?: string | null;
   esiti: EsitoEsteso[];
   somma_probabilita?: number;
   margine_percento?: number;

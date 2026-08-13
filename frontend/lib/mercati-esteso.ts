@@ -30,6 +30,30 @@ const NOMI: Record<string, string> = {
   'Cards in match': 'Cartellini nella partita',
 };
 
+/**
+ * QUANTE VOLTE UN MERCATO COPRE LO SPAZIO DEGLI ESITI.
+ *
+ * Quasi ovunque una volta: 1, X e 2 sono alternative, e le probabilita' che i
+ * loro prezzi esprimono sommano a 100 su 100 piu' il margine. La doppia chance
+ * no. 1X, X2 e 12 contengono OGNUNA due dei tre esiti, quindi lo spazio e'
+ * coperto DUE volte e la somma equa vale 200, non 100.
+ *
+ * Senza questa riga la pagina scriveva «somma 210 su 100 — 110 è il margine»
+ * su ogni doppia chance: un numero vero letto con il metro sbagliato, che
+ * accusava l'operatore di un margine dieci volte quello reale. Il margine e'
+ * 10, e si vede dividendo per la copertura.
+ *
+ * La stessa tabella sta in `jobs/sofascore.py`, dove decide se il mercato e'
+ * plausibile. Sono due usi dello stesso fatto, in due linguaggi.
+ */
+const COPERTURA: Record<string, number> = {
+  'Double chance': 2,
+};
+
+export function copertura(originale: string): number {
+  return COPERTURA[originale.trim()] ?? 1;
+}
+
 /** Gli esiti dentro i mercati. Le sigle 1, X, 2 restano come sono. */
 const ESITI: Record<string, string> = {
   Yes: 'Sì',
@@ -37,6 +61,9 @@ const ESITI: Record<string, string> = {
   Draw: 'Pareggio',
   Home: 'Casa',
   Away: 'Ospiti',
+  Over: 'Oltre',
+  Under: 'Sotto',
+  'No goal': 'Nessuna',
   '1': '1',
   X: 'X',
   '2': '2',
@@ -86,4 +113,15 @@ export function nomeEsito(originale: string): string | null {
  */
 export function suCento(p: number): string {
   return `${Math.round(p * 100)} su 100`;
+}
+
+/**
+ * La linea di un mercato come la si scrive in italiano: `"2.5"` → `"2,5"`.
+ *
+ * Arriva come stringa dalla fonte e come stringa resta. Trasformarla in numero
+ * per riformattarla farebbe perdere la distinzione fra `"2"` e `"2.0"`, che
+ * sull'handicap asiatico sono due mercati diversi.
+ */
+export function linea(grezza: string): string {
+  return grezza.trim().replace('.', ',');
 }
