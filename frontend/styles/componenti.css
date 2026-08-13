@@ -3090,3 +3090,328 @@
 .come-funziona {
   padding-block: var(--s-7) var(--s-8);
 }
+
+/* --------------------------------------------------------------------------
+   I CONTI — la voce nella barra, i moduli, la pagina del conto.
+
+   Il registro visivo e' quello del resto del sito e non quello dei moduli di
+   accesso che si vedono in giro: niente riquadro fluttuante al centro dello
+   schermo, niente ombre, niente angoli arrotondati. Un modulo qui e' una
+   colonna di campi su una lastra, esattamente come una tavola di dati.
+   -------------------------------------------------------------------------- */
+
+/* --- La voce nella barra ------------------------------------------------ */
+.conto-voce {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: var(--tap-min);
+  padding-inline: var(--s-3);
+  border: 1px solid var(--edge-strong);
+  color: var(--ink-2);
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.conto-voce:hover {
+  color: var(--ink);
+  border-color: var(--segnale);
+}
+
+.conto-voce:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* Lo spazio si tiene occupato mentre si carica: senza, la barra salta quando
+   la risposta arriva, su ogni pagina del sito. */
+.conto-voce--attesa {
+  border-color: transparent;
+  inline-size: 6.5rem;
+}
+
+/* L'INIZIALE E' L'UNICO PIENO DI SEGNALE DELLA BARRA. Il colore sta dove il
+   prodotto decide qualcosa, e «questo sei tu» e' l'unica cosa che la barra
+   afferma sul lettore invece che sui dati. */
+.conto-voce__iniziale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  background: var(--segnale);
+  color: var(--segnale-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  /* Sul telefono resta l'iniziale: il nome per esteso ruberebbe alla barra
+     lo spazio che serve al marchio. */
+  .conto-voce__nome { display: none; }
+  .conto-voce { padding-inline: var(--s-2); }
+  .conto-voce--attesa { inline-size: 2.75rem; }
+}
+
+/* --- Le pagine dei conti ------------------------------------------------ */
+.pagina-conto {
+  padding-block: var(--s-8) var(--s-9);
+  display: grid;
+  gap: var(--s-6);
+}
+
+.pagina-conto__attesa,
+.pagina-conto__nota {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+  max-width: var(--w-prose);
+}
+
+.pagina-conto__fuori,
+.pagina-conto__dentro,
+.pagina-conto__testata {
+  display: grid;
+  gap: var(--s-4);
+}
+
+/* --- Il modulo ---------------------------------------------------------- */
+.modulo {
+  display: grid;
+  gap: var(--s-4);
+  max-width: 26rem;
+}
+
+.modulo--dentro { max-width: none; }
+
+.modulo__campo {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.modulo__etichetta {
+  font-family: var(--font-text);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* IL BORDO E' SOTTO, NON INTORNO. Un riquadro completo attorno a ogni campo
+   ripete quattro filetti per campo su una pagina che ne ha quattro: la lastra
+   fa gia' da contenitore, e la riga sotto basta a dire «qui si scrive». */
+.modulo__casella {
+  min-height: var(--tap-min);
+  padding: var(--s-2) var(--s-3);
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-block-end-width: 2px;
+  border-block-end-color: var(--edge-strong);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 1rem; /* MAI sotto 16px: sotto, iOS ingrandisce la pagina al fuoco */
+  inline-size: 100%;
+}
+
+.modulo__casella:focus-visible {
+  outline: var(--focus);
+  outline-offset: 1px;
+  border-block-end-color: var(--segnale);
+}
+
+/* Il campo sbagliato si segna con il BORDO E con il messaggio sopra, mai col
+   solo colore: chi non distingue i rossi deve poterlo capire lo stesso. */
+.modulo__casella[aria-invalid='true'] {
+  border-block-end-color: var(--segnale);
+}
+
+.modulo__aiuto {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+.modulo__errore,
+.modulo__esito {
+  padding: var(--s-3);
+  border-inline-start: 3px solid var(--segnale);
+  background: var(--surface-2);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* Quando il guasto e' NOSTRO — il servizio non risponde — il filetto e' neutro:
+   il segnale indica una decisione del prodotto, e «siamo giu' noi» non e' una
+   cosa che l'utente ha sbagliato. */
+.modulo__errore--nostro {
+  border-inline-start-color: var(--edge-strong);
+}
+
+.modulo__esito {
+  border-inline-start-color: var(--outcome-yes);
+}
+
+.modulo__altro,
+.modulo__patto {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+.modulo__patto {
+  padding-block-start: var(--s-4);
+  border-block-start: 1px solid var(--edge);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+}
+
+.modulo__coppia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+/* --- I bottoni d'azione -------------------------------------------------- */
+
+/* SI CHIAMANO `azione` E NON `bottone` PER UNA RAGIONE PRECISA: `.bottone`
+   ESISTE GIA' in questo foglio (riga ~155) ed e' l'interruttore del tema.
+   Definendola una seconda volta qui in fondo le mie regole vincevano per
+   ordine di cascata e riscrivevano il selettore del tema — che infatti si era
+   allargato a 114px e faceva sfondare la barra a 375px.
+   Trovato misurando la pagina, non leggendola. */
+.azione {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding-inline: var(--s-4);
+  border: 1px solid var(--edge-strong);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--fs-body-s);
+  font-weight: 600;
+  cursor: pointer;
+  justify-self: start;
+}
+
+.azione:hover { border-color: var(--segnale); }
+
+.azione:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.azione--piena {
+  background: var(--segnale);
+  border-color: var(--segnale);
+  color: var(--segnale-ink);
+}
+
+/* IL BOTTONE PERICOLOSO NON E' ROSSO, E' NUDO. Nella tavolozza il rosso e' il
+   marchio (tokens, regola 2: «una sconfitta non e' rossa»), e usarlo qui
+   direbbe «premi qui» invece di «attento». Il peso lo porta il contorno
+   tratteggiato, che nel resto del sito segna sempre qualcosa di diverso. */
+.azione--pericolo {
+  border-style: dashed;
+  border-color: var(--ink-3);
+  color: var(--ink);
+}
+
+.azione--pericolo:hover {
+  border-color: var(--ink);
+  background: var(--surface-2);
+}
+
+/* --- I riquadri della pagina del conto ---------------------------------- */
+.riquadro {
+  display: grid;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--edge);
+}
+
+.riquadro--pericolo {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--ink-3);
+}
+
+.riquadro p {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+.dati {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+}
+
+.dati > div {
+  display: grid;
+  gap: 2px;
+}
+
+.dati dt {
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.dati dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--fs-body-s);
+}
+
+@media (min-width: 600px) {
+  .dati { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* --- Le sessioni aperte -------------------------------------------------- */
+.sessioni {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--edge);
+  border: 1px solid var(--edge);
+}
+
+.sessioni__riga {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-3);
+  padding: var(--s-3);
+  background: var(--surface-2);
+  font-size: var(--fs-body-s);
+}
+
+.sessioni__agente { color: var(--ink); }
+
+.sessioni__quando {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+}
+
+.sessioni__questa {
+  margin-inline-start: auto;
+  padding: 1px var(--s-2);
+  background: var(--segnale);
+  color: var(--segnale-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+}

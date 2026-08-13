@@ -3,6 +3,7 @@ import { Archivo, DM_Mono, Instrument_Sans } from 'next/font/google';
 import Script from 'next/script';
 
 import { Piede } from '@/components/Piede';
+import { ProvinciaSessione } from '@/components/Sessione';
 import { Testata } from '@/components/Testata';
 import { giornoDiApertura } from '@/lib/dati';
 import { MARCHIO, PAYOFF } from '@/lib/testi';
@@ -115,9 +116,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="salta-al-contenuto" href="#contenuto">
           Salta al contenuto
         </a>
-        <Testata giornoApertura={apertura} />
-        <main id="contenuto">{children}</main>
-        <Piede />
+        {/* LA SESSIONE AVVOLGE TUTTO, barra compresa: la voce «Accedi» sta
+            nella barra e deve sapere chi sei quanto la pagina del conto.
+            Quando i conti sono spenti questo componente non fa nessuna
+            chiamata e non aspetta niente — il sito resta quello di prima. */}
+        <ProvinciaSessione>
+          <Testata giornoApertura={apertura} />
+          <main id="contenuto">{children}</main>
+          <Piede />
+        </ProvinciaSessione>
       </body>
     </html>
   );
