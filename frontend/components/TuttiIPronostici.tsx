@@ -162,9 +162,8 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
         <p className="sezione__nota sezione__nota--fonte">
           Dove la fonte principale non arriva usiamo una <strong>seconda fonte</strong>, che
           aggrega più operatori. Copre quattro famiglie che si traducono senza interpretare:
-          esito finale, doppia chance, entrambe segnano, e i gol totali sopra e sotto 2,5 e
-          3,5. Il margine è tolto allo stesso modo. Sulle altre righe la colonna resta vuota
-          perché nessuna delle due fonti determina quella scommessa.
+          esito finale, doppia chance, entrambe segnano, e i gol totali su tutte le linee da
+          0,5 a 4,5. Il margine è tolto allo stesso modo.
         </p>
       ) : null}
 
@@ -177,12 +176,28 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
           <>
             {' '}
             La colonna «il mercato» è la stessa quota equa calcolata sulle quote degli
-            operatori, col margine tolto: è vuota dove le quote gratuite non determinano
-            quella scommessa — gol di squadra ed entrambe segnano, per esempio, non li
-            determina nessuno dei mercati che possiamo leggere.
+            operatori, col margine tolto.
           </>
         )}
       </p>
+
+      {nessunaQuota ? null : (
+        /* PERCHE' QUELLE RIGHE SONO VUOTE, con i nomi veri.
+           Prima qui c'era una frase che dava «gol di squadra ed entrambe
+           segnano» come esempi di cio' che le fonti non determinano. Entrambe
+           segnano ora e' coperto, e la frase era rimasta a dire il falso. Le
+           famiglie scoperte sono tre e si chiamano per nome: un trattino con
+           accanto il motivo e' un dato, un trattino da solo e' un buco. */
+        <p className="sezione__nota">
+          <strong>Tre famiglie restano senza quota di mercato</strong>, e non per una nostra
+          scelta: <em>gol di squadra</em>, <em>handicap</em> e le <em>combo</em>. Nessuna delle
+          fonti gratuite che possiamo leggere quota quanti gol segna una singola squadra;
+          l’handicap ci arriva solo in versione asiatica, che è un’altra scommessa e non si
+          può scrivere sotto il nome di questa. Ricavarle dal nostro stesso modello
+          riempirebbe la colonna con il nostro numero travestito da mercato, e il confronto
+          diventerebbe noi contro noi stessi.
+        </p>
+      )}
     </section>
   );
 }

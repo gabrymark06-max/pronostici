@@ -176,3 +176,52 @@ Due bonus non previsti: i **loghi delle squadre** arrivano gratis (niente da pro
 
 - **Corner / cartellini / tiri** → serve una seconda fonte via scraping (FBref, Sofascore). Sblocca i mercati ma introduce fragilità e una zona grigia rispetto ai ToS.
 - **Quote** → the-odds-api ha un piano gratuito (nell'ordine di 500 richieste/mese, da verificare). Con quello il confronto col mercato torna possibile, entro un budget di chiamate stretto.
+
+---
+
+## API-Football, verificata il 13 agosto 2026 — non utilizzabile
+
+Cercata per riempire l'unico buco rimasto nella colonna «il mercato» della
+tavola dei pronostici: **gol di squadra** (45 righe su 101), **handicap
+europeo** (19) e **combo** (3). Sofascore quelle non le quota, e derivarle dal
+nostro modello sarebbe metterci il nostro numero travestito da mercato.
+
+**Il catalogo ha esattamente quello che serve.** Su 338 tipi di scommessa
+dichiarati, e su una partita reale letta per intero — 59 mercati da 13
+operatori:
+
+| id | nome | copre |
+|---|---|---|
+| 16 | Total - Home | `hg_over_*`, `hg_under_*` |
+| 17 | Total - Away | `ag_over_*`, `ag_under_*` |
+| 9 | Handicap Result | handicap europeo a tre esiti |
+| 25 | Result/Total Goals | le combo esito + over/under |
+| 12 | Double Chance | doppia chance |
+
+Copertura misurata su 30 partite quotate: `Total - Home` e `Total - Away` su
+27, `Handicap Result` su 29, `Result/Total Goals` su 26.
+
+**E non ne possiamo usare niente.** Il piano gratuito ha due limiti che si
+moltiplicano:
+
+1. **Finestra di tre giorni sulle date.** Il 13 agosto la risposta e' testuale:
+   `Free plans do not have access to this date, try from 2026-08-12 to
+   2026-08-14`.
+2. **Stagioni dal 2022 al 2024 sulle nostre competizioni.** Interrogando
+   direttamente Eredivisie (88), Primeira Liga (94), Championship (40), Liga
+   (140) e Brasileirao (71) per il 14 agosto, tutte e cinque rispondono
+   `Free plans do not have access to this season, try from 2022 to 2024`.
+
+Il secondo limite e' quello che chiude la porta: le quote della stagione in
+corso, sul piano gratuito, esistono solo per un insieme di campionati minori.
+Lette TUTTE le pagine del 14 agosto — 30 partite in 20 campionati, dalla
+Division 2 svedese alla Super League uzbeka — **nessuna delle nostre**.
+
+Quindi non e' un problema di budget di chiamate (4 su 100 usate per accertarlo)
+ne' di mappatura: e' il catalogo di campionati del piano. Le due cose che
+servirebbero — la stagione in corso sui campionati veri — sono entrambe a
+pagamento, e sono lo stesso muro visto da due lati.
+
+**Conseguenza:** quelle 67 righe restano senza quota di mercato finche' non
+compare una fonte gratuita che quoti i gol di squadra. La tavola lo dice invece
+di lasciare trattini muti.
