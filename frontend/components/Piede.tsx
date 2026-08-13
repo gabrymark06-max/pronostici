@@ -1,6 +1,7 @@
-import { GIOCO_RESPONSABILE, GRATUITA, MARCHIO, PAYOFF } from '@/lib/testi';
+import { GIOCO_RESPONSABILE, GRATUITA, MARCHIO, PAYOFF, POSTA } from '@/lib/testi';
 
 import { Marchio } from './Marchio';
+import { Profili } from './Profili';
 
 /**
  * IL PIEDE — su ogni pagina, e con dentro solo cose vere.
@@ -10,32 +11,30 @@ import { Marchio } from './Marchio';
  * l'eta' minima, il gioco responsabile e il copyright. Di loro si prende la
  * MECCANICA, che e' buona e che la gente sa gia' leggere.
  *
- * QUATTRO COSE CHE NON CI SONO, e per cui non e' una versione ridotta di
- * quel piede ma una versione onesta:
+ * DUE COSE CHE NON CI SONO, e per cui non e' una versione ridotta di quel
+ * piede ma una versione onesta:
  *
- *  1. NIENTE ICONE SOCIAL. Questo prodotto non ha un account da nessuna parte.
- *     Quattro cerchi che portano alla pagina d'accesso di un social sono la
- *     cosa piu' facile da mettere in un piede e la piu' facile da smascherare.
- *  2. NIENTE «CHI SIAMO» E «CONTATTO» finche' non c'e' una pagina dietro. Un
+ *  1. NIENTE «CHI SIAMO» E «CONTATTO» finche' non c'e' una pagina dietro. Un
  *     piede pieno di voci morte fa sembrare il sito piu' grande per tre
  *     secondi e meno serio per sempre.
- *  3. NIENTE INDIRIZZO DI POSTA inventato, e nemmeno uno personale messo li'
- *     senza che il proprietario l'abbia deciso: un indirizzo in un piede
- *     pubblico ci resta, e lo raccolgono le macchine prima delle persone.
- *  4. NIENTE RAGIONE SOCIALE. «©2026 Tal dei Tali LLC, Delaware» sotto un sito
+ *  2. NIENTE RAGIONE SOCIALE. «©2026 Tal dei Tali LLC, Delaware» sotto un sito
  *     che non e' una societa' non e' un dettaglio di stile: e' una cosa falsa
  *     scritta nel punto in cui si scrivono le cose vere.
+ *
+ * I PROFILI E L'INDIRIZZO DI POSTA CI SONO, e sono quelli veri di chi il sito
+ * lo fa — dati dal proprietario, non dedotti. Restano nella colonna
+ * dell'identita' e non in cima al piede: qui non sono un invito a seguire un
+ * marchio, sono il modo di raggiungere una persona.
  *
  * QUELLO CHE C'E' INVECE, e che quel piede non ha: la frase sulla gratuita' in
  * evidenza, e il gioco responsabile in una colonna sua invece che schiacciato
  * in fondo fra il copyright e l'email. E' l'informazione che puo' servire a
  * qualcuno davvero, e sta dove si guarda.
  *
- * L'ELEMENTO FIRMA. Il bersaglio del marchio torna qui come glifo grande e
- * tenue dietro la colonna dell'identita': e' lo stesso segno del logotipo, del
- * punto elenco dei titoli e della tacca del misurino, alla sua scala piu'
- * grande. Non e' decorazione — e' la quarta ricorrenza dello stesso segno, che
- * e' quello che rende un piede riconoscibile invece che generico.
+ * IL BERSAGLIO GRANDE NON C'E' PIU'. Riempiva il vuoto a destra della colonna
+ * dell'identita' con una filigrana; adesso quel vuoto lo occupano i profili e
+ * l'indirizzo di posta, che sono contenuto. Una decorazione che si contende lo
+ * spazio con qualcosa di utile perde, sempre.
  */
 
 /* L'anno si legge in fase di build. Il sito si ricostruisce ogni notte, quindi
@@ -54,22 +53,13 @@ export function Piede() {
     <footer className="piede">
       <div className="colonna colonna--pagina piede__interno">
         <div className="piede__identita">
-          {/* Il glifo grande dietro: decorativo e dichiarato tale. Sta sotto al
-              testo nell'ordine del documento perche' chi ascolta la pagina non
-              deve incontrare un elemento vuoto prima del marchio. */}
           <Marchio href="/" />
           <p className="piede__payoff">{PAYOFF}</p>
           <p className="piede__gratuita">{GRATUITA}</p>
-          <svg
-            className="piede__filigrana"
-            viewBox="0 0 32 32"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <rect x="1" y="1" width="30" height="30" />
-            <rect x="8" y="8" width="16" height="16" />
-            <rect className="piede__filigrana-centro" x="13" y="13" width="6" height="6" />
-          </svg>
+          <Profili />
+          <p className="piede__posta">
+            <a href={`mailto:${POSTA}`}>{POSTA}</a>
+          </p>
         </div>
 
         <nav className="piede__colonna" aria-label="Pagine del sito">
@@ -89,9 +79,18 @@ export function Piede() {
             <span className="piede__bollo">18+</span> Vietato ai minori.
           </p>
           <p className="piede__riga">
-            Il gioco d’azzardo può causare dipendenza. Se ti sta prendendo la mano, il numero
-            qui sotto è gratuito e anonimo.
+            Il gioco d’azzardo può causare dipendenza. Se ti sta prendendo la mano, questo
+            numero è gratuito e anonimo.
           </p>
+          {/* IL NUMERO PRIMA DEL NOME DEL SERVIZIO. Chi arriva qui in un brutto
+              momento cerca delle cifre da comporre, non il titolo dell'ente che
+              le gestisce: il numero e' grande, e la spiegazione sta sotto. */}
+          <p className="piede__numero">
+            <a href={`tel:+39${GIOCO_RESPONSABILE.numero.replace(/\s/g, '')}`}>
+              {GIOCO_RESPONSABILE.numero}
+            </a>
+          </p>
+          <p className="piede__orari">{GIOCO_RESPONSABILE.orari}</p>
           <p className="piede__riga">
             <a href={GIOCO_RESPONSABILE.href} rel="noopener noreferrer" target="_blank">
               {GIOCO_RESPONSABILE.testo}

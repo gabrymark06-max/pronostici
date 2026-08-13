@@ -330,10 +330,45 @@ export const MARCHIO = 'CENTRO';
 export const PAYOFF = 'un pronostico per partita, e il silenzio quando non c’è';
 
 
+/**
+ * IL TELEFONO VERDE, con il collegamento alla pagina che lo spiega.
+ *
+ * L'indirizzo precedente — `iss.it/dipendenze-da-gioco-d-azzardo` — era MORTO,
+ * e in un modo particolarmente cattivo: il sito dell'Istituto risponde 200
+ * anche sulle pagine che non esistono e serve un guscio JavaScript, quindi un
+ * controllo automatico dei collegamenti non se ne sarebbe mai accorto. Se ne
+ * accorge solo chi ci clicca, e qui chi ci clicca e' la persona che ha piu'
+ * bisogno che quel collegamento funzioni.
+ *
+ * Quello nuovo e' stato verificato con un browser vero, rendendo la pagina e
+ * cercandoci dentro il numero: e' la pagina di ISSalute dedicata proprio a
+ * questo numero verde, e riporta anche gli orari.
+ */
 export const GIOCO_RESPONSABILE = {
-  testo: 'Telefono verde per le dipendenze da gioco d’azzardo, Istituto Superiore di Sanità: 800 558822',
-  href: 'https://www.iss.it/dipendenze-da-gioco-d-azzardo',
+  numero: '800 558 822',
+  orari: 'dal lunedì al venerdì, dalle 10 alle 16',
+  testo: 'Telefono Verde Nazionale per le problematiche legate al gioco d’azzardo',
+  href: 'https://www.issalute.it/index.php/numeri-verdi/gioco-d-azzardo',
 };
+
+/**
+ * I PROFILI, con gli indirizzi RIPULITI dai parametri di condivisione.
+ *
+ * Arrivavano dal tasto «condividi» delle app, e portavano dietro `igsh`,
+ * `utm_source=qr`, `_t=ZN-98…`, `s=11`: identificativi della sessione da cui e'
+ * partita la condivisione. In un piede pubblico non servono a niente, invecchiano,
+ * e dicono a chiunque legga la barra degli indirizzi da quale schermo sono stati
+ * copiati. Restano gli indirizzi canonici dei profili, che sono anche gli unici
+ * che restano validi nel tempo.
+ */
+export const PROFILI: { nome: string; href: string }[] = [
+  { nome: 'Instagram', href: 'https://www.instagram.com/gabrielebuilds' },
+  { nome: 'TikTok', href: 'https://www.tiktok.com/@gabrielebuilds' },
+  { nome: 'X', href: 'https://x.com/gabrielebuilds' },
+  { nome: 'LinkedIn', href: 'https://www.linkedin.com/in/gabriele-marchesini-1a0b18423' },
+];
+
+export const POSTA = 'gabrymark06@gmail.com';
 
 export const GRATUITA =
   'Gratis, senza pubblicità, senza affiliazioni. Non guadagniamo se scommetti.';

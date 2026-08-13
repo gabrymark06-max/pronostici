@@ -1520,9 +1520,6 @@
   display: grid;
   gap: var(--s-3);
   align-content: start;
-  /* Il glifo grande deborda dai limiti della colonna: si ritaglia qui invece
-     di far crescere la pagina in orizzontale. */
-  overflow: hidden;
 }
 
 .piede__payoff {
@@ -1542,49 +1539,87 @@
   max-width: 34ch;
 }
 
-/* IL BERSAGLIO ALLA SCALA PIU' GRANDE — quarta e ultima ricorrenza del segno
-   firma, dopo il marchio, il punto elenco dei titoli e la tacca del misurino.
-   Tenuto sul filo del filetto (`--edge`) perche' deve farsi notare solo dopo
-   che hai finito di leggere: un elemento decorativo che si vede prima del
-   testo e' un errore, uno che non si vede mai e' inutile.
-
-   INTERO, NON TAGLIATO. Il primo tentativo lo faceva debordare dalla colonna
-   contando sul ritaglio: il risultato era un quadrato mozzato che cadeva nel
-   corridoio fra due colonne e si leggeva come un disegno rotto, non come una
-   filigrana. Un segno riconoscibile va mostrato intero o non va mostrato:
-   qui sta tutto dentro lo spazio che la colonna gia' lascia vuoto a destra
-   del testo, ed e' proprio quel vuoto a dargli il posto. */
-.piede__filigrana {
-  position: absolute;
-  inset-block-end: 0;
-  /* Staccata dal bordo destro della colonna piu' del corridoio che la separa
-     dalla colonna accanto: a 24px sembrava appartenere all'elenco di fianco. */
-  inset-inline-end: var(--s-8);
-  inline-size: 8rem;
-  block-size: 8rem;
-  fill: none;
-  stroke: var(--edge);
-  stroke-width: 1.5;
-  pointer-events: none;
-  z-index: 0;
+/* --- I profili e l'indirizzo di posta ----------------------------------- */
+.profili {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: var(--s-2) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.piede__filigrana-centro {
-  fill: var(--edge);
-  stroke: none;
+/* RIQUADRO E NON CERCHIO, e grande quanto il minimo tattile.
+   Il cerchio e' la forma che hanno i bottoni social di tutti i piedi del
+   mondo; qui tutto e' ortogonale — il marchio, le icone della barra, il
+   bersaglio — e un cerchio sarebbe l'unica curva della pagina messa sulla
+   cosa meno importante che c'e'. I 44px sono il bersaglio minimo: quelli del
+   piede da cui viene l'impianto ne misurano 40, e con il pollice si sbaglia. */
+.profilo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--tap-min);
+  block-size: var(--tap-min);
+  border: 1px solid var(--edge-strong);
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
 }
 
-.piede__identita > *:not(.piede__filigrana) {
-  position: relative;
-  z-index: 1;
+.profilo:hover {
+  color: var(--ink);
+  border-color: var(--segnale);
 }
 
-/* SOTTO I 1100px NON C'E' IL VUOTO CHE LE SERVE.
-   A colonna stretta finirebbe sotto le due frasi invece che accanto, e un
-   segno grande dietro un testo e' esattamente il tipo di decorazione che
-   rende un paragrafo piu' difficile da leggere in cambio di niente. */
-@media (max-width: 1099px) {
-  .piede__filigrana { display: none; }
+.profilo:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.profilo__segno {
+  inline-size: var(--icon-md);
+  block-size: var(--icon-md);
+}
+
+.piede__posta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--ink-2);
+}
+
+/* --- Il numero verde ---------------------------------------------------- */
+
+/* IL NUMERO E' UN NUMERO, e si legge come tale: cifre monospaziate, corpo
+   grande, incolonnabili. Chi arriva a questa riga in un brutto momento cerca
+   qualcosa da comporre — non il nome dell'ente che lo gestisce, che sta sotto
+   e piu' piccolo. */
+.piede__numero {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h2);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.piede__numero a {
+  color: var(--ink);
+  text-decoration: none;
+  border-block-end: 2px solid var(--edge-strong);
+}
+
+.piede__numero a:hover {
+  border-block-end-color: var(--segnale);
+}
+
+.piede__numero a:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+}
+
+.piede__orari {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
 }
 
 /* --- Le colonne di servizio -------------------------------------------- */
