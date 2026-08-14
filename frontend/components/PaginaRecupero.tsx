@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 
+import { useParametro } from '@/lib/indirizzo';
 import { ErroreProfilo, MINIMO_PASSWORD, profilo } from '@/lib/profilo';
 
 /**
@@ -106,29 +107,24 @@ export function ChiediRecupero() {
  * troverebbe comunque una sessione aperta in mano.
  */
 export function ConfermaRecupero() {
-  /* TRE STATI, NON DUE, e il terzo e' quello che conta.
-     `undefined` = non ancora letto, `null` = letto e assente, stringa = c'e'.
+  /* TRE VALORI, NON DUE, e il terzo e' quello che conta.
+     `undefined` = il browser non ha ancora parlato, `null` = ha parlato e il
+     codice non c'e', stringa = c'e'. La distinzione la garantisce la firma di
+     `useParametro`; qui si spiega perche' e' stata scritta cosi'.
 
-     Con due soli stati il valore iniziale era `null` e l'effetto ci rimetteva
-     `null` quando il codice mancava: React vede lo stesso valore, non
-     rirenderizza, e il ramo «manca il codice» non compariva MAI. Chi apriva
-     l'indirizzo senza codice si trovava davanti un modulo che, all'invio, non
-     faceva niente — la guardia `if (!gettone) return` lo fermava in silenzio.
-     Un modulo morto e' peggio di un errore.
+     Con due soli valori l'iniziale era `null` e la lettura ci rimetteva `null`
+     quando il codice mancava: React vede lo stesso valore, non rirenderizza, e
+     il ramo «manca il codice» non compariva MAI. Chi apriva l'indirizzo senza
+     codice si trovava davanti un modulo che, all'invio, non faceva niente — la
+     guardia `if (!gettone) return` lo fermava in silenzio. Un modulo morto e'
+     peggio di un errore.
 
      Trovato con il browser, non leggendo: e' il tipo di difetto che sul codice
      sembra corretto perche' il ramo c'e' ed e' scritto bene. */
-  const [gettone, setGettone] = useState<string | null | undefined>(undefined);
+  const gettone = useParametro('g');
   const [fatto, setFatto] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
   const [inCorso, setInCorso] = useState(false);
-  const letto = useRef(false);
-
-  useEffect(() => {
-    if (letto.current) return;
-    letto.current = true;
-    setGettone(new URLSearchParams(window.location.search).get('g'));
-  }, []);
 
   const inLettura = gettone === undefined;
 

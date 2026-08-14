@@ -106,7 +106,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${archivo.variable} ${instrument.variable} ${dmMono.variable}`}
       suppressHydrationWarning
     >
-      <body>
+      {/* ANCHE QUI, E NON PER LO STESSO MOTIVO DI <html>.
+
+          Su <html> serve a noi: lo script del tema aggiunge `data-theme` prima
+          dell'idratazione, quindi il client trova un attributo che il server
+          non aveva scritto.
+
+          Su <body> serve contro le ESTENSIONI del browser. ColorZilla scrive
+          `cz-shortcut-listen="true"`, i gestori di password e i traduttori
+          fanno cose simili, e lo fanno PRIMA che React parta: React vede un
+          attributo di troppo e getta un errore rosso a tutto schermo su un
+          sito che non ha niente che non va. L'errore non e' riproducibile da
+          noi — dipende da cosa ha installato chi guarda — e questa e' la
+          ragione per cui va tolto qui e non inseguito.
+
+          `suppressHydrationWarning` vale UN SOLO LIVELLO: copre gli attributi
+          di <body> e nient'altro. Dentro, ogni disallineamento vero continua
+          a essere segnalato. */}
+      <body suppressHydrationWarning>
         {/* `beforeInteractive` finisce nell'HTML iniziale ed è eseguito prima
             dell'idratazione. Con next/script invece di un <script> a mano,
             perché React non esegue gli script resi dai componenti. */}

@@ -327,6 +327,13 @@ function Chiusura({ onChiuso }: { onChiuso: () => void }) {
         password: String(new FormData(modulo).get('password') ?? ''),
       });
       onChiuso();
+      /* RICARICAMENTO VERO, non `router.push`, ed e' il punto della riga.
+         Il profilo e' appena stato cancellato: `push` cambierebbe pagina
+         lasciando in piedi la stessa applicazione, con la sua memoria — nome,
+         sessione, tutto cio' che i componenti hanno ancora in mano — e un
+         browser rimasto aperto continuerebbe a mostrare i resti di un profilo
+         che non esiste piu'. `location.href` butta via l'intero processo. */
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       location.href = '/';
     } catch (err) {
       setErrore(err instanceof ErroreProfilo ? err.message : 'Non ha funzionato.');

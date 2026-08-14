@@ -17,6 +17,7 @@ import { QuadroNumeri, ragioniResidue } from '@/components/QuadroNumeri';
 import { TuttiIPronostici } from '@/components/TuttiIPronostici';
 import { titoloCompetizione } from '@/lib/campionati';
 import {
+  COSTRUZIONE,
   leggiAccuracy,
   leggiBacktest,
   leggiPartita,
@@ -326,7 +327,7 @@ export default async function PaginaPartita({ params }: Props) {
         {/* IN FONDO, e non in cima: e' un'assenza, e un'assenza non deve
             prendere il posto di quello che c'e'. Chi scorre trova prima tutto
             il contorno disponibile e poi la spiegazione di cosa manca. */}
-        <CosaManca fixture={fixture} />
+        <CosaManca fixture={fixture} costruzione={COSTRUZIONE} />
       </div>
     </>
   );

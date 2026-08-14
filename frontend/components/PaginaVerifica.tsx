@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { useParametro } from '@/lib/indirizzo';
 import { ErroreProfilo, profilo } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
@@ -9,11 +10,15 @@ import { useSessione } from './Sessione';
 /**
  * DOVE ATTERRA CHI CLICCA IL COLLEGAMENTO NELL'EMAIL DI CONFERMA.
  *
- * IL GETTONE SI LEGGE DA `location`, non da `useSearchParams`. Su un export
+ * IL GETTONE SI LEGGE DA `location`, non da `useSearchParams`: su un export
  * statico i parametri della richiesta non esistono in fase di build, e
- * `useSearchParams` costringe l'intera pagina dentro un `<Suspense>` per
- * un'informazione che qui arriva comunque solo nel browser. Leggerlo dal
- * `window` e' piu' diretto e non cambia niente per chi guarda.
+ * `useSearchParams` costringerebbe l'intera pagina dentro un `<Suspense>` per
+ * un'informazione che qui arriva comunque solo nel browser. Il come sta in
+ * `lib/indirizzo`, insieme alla ragione per cui non e' un `useEffect`.
+ *
+ * L'ASSENZA DEL GETTONE NON E' UNO STATO DA IMPOSTARE, e' quello che si vede
+ * quando il gettone non c'e'. Prima era un `setState` dentro l'effetto: un
+ * secondo render per dire una cosa che si sapeva gia' al primo.
  *
  * SI CONFERMA DA SOLA, senza un bottone «conferma». Chi ha cliccato il
  * collegamento nell'email ha gia' espresso l'intenzione: chiedergli un secondo
@@ -25,24 +30,23 @@ import { useSessione } from './Sessione';
  * mostrerebbe l'errore del secondo. Sarebbe un guasto che si vede solo in
  * sviluppo, cioe' il tipo che si insegue per ore.
  */
+const SENZA_GETTONE =
+  'Questo indirizzo non porta nessun codice di conferma. Apri il collegamento ' +
+  'direttamente dall’email che ti abbiamo mandato.';
+
 export function PaginaVerifica() {
   const { aggiorna } = useSessione();
+  const gettone = useParametro('g');
   const [stato, setStato] = useState<'attesa' | 'fatto' | 'guasto'>('attesa');
   const [messaggio, setMessaggio] = useState('');
   const partito = useRef(false);
 
   useEffect(() => {
+    // `undefined` e' «il browser non ha ancora parlato», `null` e' «non c'e'».
+    // Nessuno dei due e' un gettone da spendere.
+    if (!gettone) return;
     if (partito.current) return;
     partito.current = true;
-
-    const gettone = new URLSearchParams(window.location.search).get('g');
-    if (!gettone) {
-      setStato('guasto');
-      setMessaggio(
-        'Questo indirizzo non porta nessun codice di conferma. Apri il collegamento direttamente dall’email che ti abbiamo mandato.',
-      );
-      return;
-    }
 
     profilo
       .verifica(gettone)
@@ -61,7 +65,21 @@ export function PaginaVerifica() {
             : 'Non ha funzionato. Riprova fra poco.',
         );
       });
-  }, [aggiorna]);
+  }, [aggiorna, gettone]);
+
+  if (gettone === null) {
+    return (
+      <div className="esito esito--fallito">
+        <h1 className="titolo-sezione">Non ha funzionato</h1>
+        <p>{SENZA_GETTONE}</p>
+        <p className="esito__azioni">
+          <a className="azione azione--piena" href="/profilo/">
+            Vai al tuo profilo
+          </a>
+        </p>
+      </div>
+    );
+  }
 
   if (stato === 'attesa') {
     return (

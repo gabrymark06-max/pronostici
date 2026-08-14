@@ -62,6 +62,20 @@ export function giorniDisponibili(): string[] {
     .sort();
 }
 
+/**
+ * L'ISTANTE IN CUI QUESTA VERSIONE DEL SITO E' STATA COSTRUITA.
+ *
+ * Su un export statico non esiste un «adesso» lato server: esiste solo questo,
+ * ed e' fermo fino alla ricostruzione della notte dopo. Averlo con un nome
+ * esplicito serve a non confonderlo con l'ora vera — sono due cose diverse, e
+ * scriverle entrambe `Date.now()` e' il modo in cui si confondono.
+ *
+ * Si usa per lo scatto iniziale di `usePassato`: l'HTML dice quello che era
+ * vero alla costruzione, e il browser corregge dopo, senza far lampeggiare
+ * niente a chi apre una partita di una settimana fa.
+ */
+export const COSTRUZIONE = Date.now();
+
 /** Il giorno da mostrare in home: oggi se esiste, altrimenti il primo dopo, altrimenti l'ultimo. */
 export function giornoDiApertura(): string | null {
   const giorni = giorniDisponibili();

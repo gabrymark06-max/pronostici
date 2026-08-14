@@ -1,3 +1,6 @@
+'use client';
+
+import { usePassato } from '@/lib/orologio';
 import type { Fixture } from '@/lib/tipi';
 
 /**
@@ -31,12 +34,31 @@ interface Mancante {
   quando: string;
 }
 
-export function CosaManca({ fixture }: { fixture: Fixture }) {
-  /* Una partita gia' cominciata non aspetta piu' niente. Il confronto e' con
-     l'ora del fischio, non con `result`: fra il fischio d'inizio e il
-     risultato passano due ore in cui non arriva comunque piu' nulla. */
-  const giocata = new Date(fixture.utc_date).getTime() <= Date.now();
-  if (giocata) return null;
+export function CosaManca({
+  fixture,
+  /* L'ora della costruzione, passata dalla pagina: qui dentro non si puo'
+     leggere, perche' `lib/dati` e' `server-only` e questo e' un componente
+     che gira nel browser. */
+  costruzione,
+}: {
+  fixture: Fixture;
+  costruzione: number;
+}) {
+  /* DUE CONTROLLI, E NON E' UNO DI TROPPO: rispondono a due domande diverse.
+
+     Il RISULTATO e' un fatto scritto nel file, e non ha bisogno di sapere che
+     ore sono: se c'e', la partita e' finita e archiviata, e questo blocco non
+     compare gia' nell'HTML. Sono la stragrande maggioranza dei casi.
+
+     L'OROLOGIO copre la sola finestra che il risultato non copre: le poche ore
+     fra il fischio d'inizio e il momento in cui il risultato entra nei dati.
+     Li' il file dice ancora «partita futura» ed e' l'ora a smentirlo. Il
+     confronto va fatto NEL BROWSER: qui in pagina un `Date.now()` darebbe
+     l'ora della costruzione notturna, non adesso, e una partita in corso
+     continuerebbe a promettere una formazione che non arrivera' piu'. */
+  const fischio = new Date(fixture.utc_date).getTime();
+  const giocata = usePassato(fischio, fischio <= costruzione);
+  if (fixture.result || giocata) return null;
 
   const s = fixture.sofascore;
   const mancano: Mancante[] = [];
