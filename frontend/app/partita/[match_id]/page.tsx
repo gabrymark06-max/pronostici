@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { AvvisoOverUnder } from '@/components/AvvisoOverUnder';
 import { Bandiera } from '@/components/Bandiera';
 import { BloccoArbitro } from '@/components/BloccoArbitro';
+import { CosaManca } from '@/components/CosaManca';
 import { CampoFormazioni } from '@/components/CampoFormazioni';
 import { QuoteEstese } from '@/components/QuoteEstese';
 import { SezioneGiocatori } from '@/components/SezioneGiocatori';
@@ -321,6 +322,11 @@ export default async function PaginaPartita({ params }: Props) {
             ospiti={fixture.away.name}
           />
         ) : null}
+
+        {/* IN FONDO, e non in cima: e' un'assenza, e un'assenza non deve
+            prendere il posto di quello che c'e'. Chi scorre trova prima tutto
+            il contorno disponibile e poi la spiegazione di cosa manca. */}
+        <CosaManca fixture={fixture} />
       </div>
     </>
   );

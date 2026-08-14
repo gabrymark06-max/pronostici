@@ -3476,3 +3476,55 @@
   line-height: var(--lh-body);
   color: var(--ink-2);
 }
+
+/* --------------------------------------------------------------------------
+   QUELLO CHE NON C'E' ANCORA.
+
+   Il trattamento e' quello del silenzio: nessun accento, grigi, e il bordo
+   laterale TRATTEGGIATO che nel resto del sito segna sempre «questo non e' un
+   nostro numero». Un'assenza dichiarata non deve somigliare a un contenuto.
+   -------------------------------------------------------------------------- */
+.manca {
+  border-inline-start: 2px dashed var(--edge-strong);
+  padding-inline-start: var(--s-4);
+}
+
+.manca__elenco {
+  display: grid;
+  gap: var(--s-3);
+  margin: var(--s-4) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.manca__voce {
+  display: grid;
+  gap: 2px;
+  padding-block-end: var(--s-3);
+  border-block-end: 1px solid var(--edge);
+}
+
+.manca__voce:last-child { border-block-end: 0; padding-block-end: 0; }
+
+.manca__cosa {
+  font-size: var(--fs-body-s);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.manca__quando {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+@media (min-width: 768px) {
+  /* Da 768px la coppia sta su una riga: «cosa» a sinistra in colonna fissa,
+     «quando» accanto. Sotto, incolonnate — la spiegazione e' lunga e su 375px
+     due colonne la ridurrebbero a una parola per riga. */
+  .manca__voce {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: var(--s-4);
+    align-items: baseline;
+  }
+}
