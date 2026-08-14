@@ -178,6 +178,25 @@ Le chiavi sono **gratuite**:
 
 Senza `ODDS_API_KEY` il sistema funziona lo stesso: degrada a "solo modello" e ogni scheda lo dichiara.
 
+### Accendere il sito
+
+```bash
+python scripts/sito.py
+```
+
+Poi si apre **http://localhost:3000**. CTRL+C nella stessa finestra spegne tutto.
+
+Il sito è fatto di due pezzi: le pagine (Next.js, porta 3000) e il servizio dei
+profili (FastAPI, porta 8000, il suo ambiente è in `backend/.venv`). Accenderne
+uno solo **non dà errore** — le pagine si vedono lo stesso, e il guasto salta
+fuori più tardi al momento di entrare. `scripts/sito.py` li accende insieme
+proprio per questo; se muore uno, spegne anche l'altro.
+
+Le due porte del sito in locale — `3000` per `npm run dev` e `4321` per
+`npm run start` sull'export statico — sono le sole origini che il backend
+accetta (`ORIGINI` in `backend/.env`). Su una porta diversa il browser blocca
+l'accesso prima ancora di arrivare all'API.
+
 ### I job
 
 ```bash

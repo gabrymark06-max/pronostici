@@ -92,7 +92,10 @@ def main() -> int:
     for nome, cosa, argomenti in ESSENZIALI:
         if not esegui(nome, cosa, argomenti):
             print(f"\nFERMO su «{nome}». I passi dopo dipendono da questo.")
-            print("Niente e' stato scritto a meta': ogni job scrive solo se arriva in fondo.")
+            print(
+                "Niente e' stato scritto a meta': "
+                "ogni job scrive solo se arriva in fondo."
+            )
             return 1
 
     saltati: list[str] = []

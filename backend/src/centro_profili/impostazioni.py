@@ -50,9 +50,13 @@ class Impostazioni(BaseSettings):
     # che `_origini_da_stringa` qui sotto potesse vederla. Con `NoDecode` il
     # valore grezzo arriva al validatore, che e' il posto in cui volevamo
     # deciderne la forma.
+    # Le due porte del sito in locale: 3000 e' `npm run dev`, 4321 e' l'export
+    # statico servito da `npm run start`. Sono due origini distinte per il
+    # browser, e vanno dichiarate entrambe o l'accesso funziona solo in una
+    # delle due modalita'.
     origini: Annotated[list[str], NoDecode] = [
-        "http://localhost:4330",
         "http://localhost:3000",
+        "http://localhost:4321",
     ]
 
     # --- Cookie -------------------------------------------------------------- #
@@ -82,7 +86,7 @@ class Impostazioni(BaseSettings):
 
     # L'indirizzo del SITO, non dell'API: e' quello che finisce nei
     # collegamenti dentro le email, e chi li apre deve atterrare sul sito.
-    sito: str = "http://localhost:4330"
+    sito: str = "http://localhost:3000"
 
     ore_gettone_email: int = 24
 
