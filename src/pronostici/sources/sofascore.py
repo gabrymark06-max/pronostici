@@ -232,11 +232,18 @@ def eventi_squadra(team_id: int, *, futuri: bool = True) -> list[EventoSofascore
     try:
         dati = http.eventi_squadra(team_id, futuri=futuri)
     except SofascoreNonDisponibile as exc:
-        # Un 404 qui NON e' un guasto: e' una squadra che Sofascore conosce ma
-        # per cui non espone il calendario (squadre dismesse, giovanili, doppioni
-        # d'archivio). Restituire una lista vuota fa fallire l'aggancio di quella
-        # partita sola, con il suo motivo; sollevare fermerebbe tutto il job.
-        if "404" in str(exc):
+        # NE' UN 404 NE' UNA FRENATA FERMANO IL GIRO.
+        #
+        # Un 404 e' una squadra che Sofascore conosce ma di cui non espone il
+        # calendario: dismesse, giovanili, doppioni d'archivio.
+        #
+        # Un 403 dopo i tentativi e' Sofascore che ci sta ancora frenando. Prima
+        # sollevava, e il job moriva buttando via TUTTE le partite gia' lette in
+        # quel giro: una frenata temporanea su una squadra costava l'intera
+        # giornata di formazioni. Adesso salta quella partita, che restera' fra
+        # le «non agganciate» con il suo motivo, e il resto si scrive.
+        motivo = str(exc)
+        if "404" in motivo or "403" in motivo or "429" in motivo:
             return []
         raise
     fuori: list[EventoSofascore] = []

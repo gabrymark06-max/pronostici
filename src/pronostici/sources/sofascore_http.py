@@ -28,10 +28,23 @@ voluto dire non sapere piu' quale delle due cose ha rotto qualcosa.
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any
 
 BASE = "https://api.sofascore.com/api/v1"
 TIMEOUT = 30
+
+# QUANTE VOLTE RIPROVARE, E QUANTO ASPETTARE.
+#
+# Sofascore risponde 403 quando lo si chiama troppo in fretta. Non e' un
+# blocco: e' una frenata, e passa da sola. Ma senza attesa il job moriva al
+# primo 403 e buttava via TUTTE le partite gia' lette in quel giro — che e' il
+# modo peggiore di reagire a un problema temporaneo.
+#
+# Le pause crescono: 2, poi 6, poi 18 secondi. Un ritmo che rallenta e' anche
+# la cosa educata da fare verso chi ci sta dicendo di rallentare.
+TENTATIVI = 3
+PAUSA_BASE = 2.0
 
 # Gli stessi valori predefiniti dei flag del CLI (`statistiche.go`), perche' i
 # numeri gia' pubblicati non cambino sotto i piedi al primo ricalcolo.
@@ -65,22 +78,45 @@ def _sessione():
 
 
 def prendi(percorso: str) -> Any:
-    """Una GET, e il JSON. Alza su tutto il resto."""
+    """Una GET, e il JSON.
+
+    RIPROVA SOLO SU CIO' CHE PUO' PASSARE DA SOLO: 403 e 429 sono una frenata,
+    i guasti di rete un incidente. Un 404 no — quello e' una risposta, e
+    riprovarla darebbe lo stesso 404 tre volte piu' lentamente.
+    """
     requests = _sessione()
-    try:
-        r = requests.get(f"{BASE}{percorso}", impersonate="chrome", timeout=TIMEOUT)
-    except Exception as exc:
-        raise SofascoreNonRaggiungibile(f"{percorso}: {exc}") from exc
-    if r.status_code == 404:
-        # Un 404 e' un'informazione, non un guasto: la squadra esiste ma non ha
-        # calendario, l'evento non ha ancora formazioni. Chi chiama decide.
-        raise SofascoreNonRaggiungibile(f"404 su {percorso}")
-    if r.status_code != 200:
-        raise SofascoreNonRaggiungibile(f"{r.status_code} su {percorso}")
-    try:
-        return r.json()
-    except Exception as exc:
-        raise SofascoreNonRaggiungibile(f"risposta non JSON su {percorso}") from exc
+    ultimo: str = ""
+
+    for tentativo in range(TENTATIVI):
+        if tentativo:
+            attesa = PAUSA_BASE * (3**(tentativo - 1))
+            log.info("Sofascore frena (%s): aspetto %.0fs", ultimo, attesa)
+            time.sleep(attesa)
+        try:
+            r = requests.get(f"{BASE}{percorso}", impersonate="chrome", timeout=TIMEOUT)
+        except Exception as exc:
+            ultimo = str(exc)[:80]
+            continue
+
+        if r.status_code == 404:
+            # Un 404 e' un'informazione, non un guasto: la squadra esiste ma non
+            # ha calendario, l'evento non ha ancora formazioni. Chi chiama decide,
+            # e non si riprova.
+            raise SofascoreNonRaggiungibile(f"404 su {percorso}")
+        if r.status_code in (403, 429):
+            ultimo = f"{r.status_code}"
+            continue
+        if r.status_code != 200:
+            raise SofascoreNonRaggiungibile(f"{r.status_code} su {percorso}")
+
+        try:
+            return r.json()
+        except Exception as exc:
+            raise SofascoreNonRaggiungibile(f"risposta non JSON su {percorso}") from exc
+
+    raise SofascoreNonRaggiungibile(
+        f"{ultimo or 'nessuna risposta'} su {percorso} dopo {TENTATIVI} tentativi"
+    )
 
 
 def _numero(v: Any) -> float:

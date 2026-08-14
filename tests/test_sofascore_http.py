@@ -253,3 +253,66 @@ def test_il_tasso_per_90_e_un_tasso_non_una_media_di_tassi(monkeypatch):
     v = h.statistiche_giocatore(1)
     assert v["gol"] == 10
     assert v["gol_per_90"] > 0.9
+
+
+# ------------------------------------------------------------------ #
+# La frenata                                                         #
+# ------------------------------------------------------------------ #
+
+
+class _Risposta:
+    def __init__(self, stato: int, corpo: dict | None = None):
+        self.status_code = stato
+        self._corpo = corpo or {}
+
+    def json(self):
+        return self._corpo
+
+
+def test_un_403_si_riprova_e_poi_passa(monkeypatch):
+    """Sofascore frena quando lo si chiama in fretta. E' temporaneo, e
+    arrendersi al primo colpo butta via il giro intero."""
+    risposte = [_Risposta(403), _Risposta(403), _Risposta(200, {"ok": True})]
+    chiamate = {"n": 0}
+
+    class FintoRequests:
+        @staticmethod
+        def get(*_, **__):
+            r = risposte[chiamate["n"]]
+            chiamate["n"] += 1
+            return r
+
+    monkeypatch.setattr(h, "_sessione", lambda: FintoRequests)
+    monkeypatch.setattr(h.time, "sleep", lambda _: None)
+
+    assert h.prendi("/qualcosa") == {"ok": True}
+    assert chiamate["n"] == 3
+
+
+def test_un_404_non_si_riprova(monkeypatch):
+    """Un 404 e' una risposta, non un incidente: riprovarlo darebbe lo stesso
+    404 tre volte piu' lentamente."""
+    chiamate = {"n": 0}
+
+    class FintoRequests:
+        @staticmethod
+        def get(*_, **__):
+            chiamate["n"] += 1
+            return _Risposta(404)
+
+    monkeypatch.setattr(h, "_sessione", lambda: FintoRequests)
+    with pytest.raises(h.SofascoreNonRaggiungibile, match="404"):
+        h.prendi("/qualcosa")
+    assert chiamate["n"] == 1
+
+
+def test_dopo_i_tentativi_si_arrende_dicendolo(monkeypatch):
+    class FintoRequests:
+        @staticmethod
+        def get(*_, **__):
+            return _Risposta(403)
+
+    monkeypatch.setattr(h, "_sessione", lambda: FintoRequests)
+    monkeypatch.setattr(h.time, "sleep", lambda _: None)
+    with pytest.raises(h.SofascoreNonRaggiungibile, match="tentativi"):
+        h.prendi("/qualcosa")
