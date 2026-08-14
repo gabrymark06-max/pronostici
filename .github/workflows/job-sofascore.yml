@@ -1,0 +1,120 @@
+name: job · sofascore
+
+# FORMAZIONI, ARBITRO E QUOTE ESTESE.
+#
+# PERCHE' ESISTE QUESTO FILE, e non e' una nota di colore. Fino al 14 agosto
+# 2026 questo job era l'unico della pipeline che NON girava qui: dipendeva da
+# un binario Go che stava solo su un portatile, e girava su un'attivita'
+# pianificata di Windows. A computer spento, formazioni e arbitro di quei
+# giorni erano persi per sempre — sono dati che esistono solo PRIMA del fischio
+# d'inizio e non si recuperano dopo, a differenza di un risultato.
+#
+# Adesso il trasporto e' `curl_cffi` (vedi `sources/sofascore_http.py`) e
+# questo job e' come tutti gli altri.
+#
+# DUE ESECUZIONI AL GIORNO, e le due ore sono scelte:
+#
+#   · 07:00 UTC — dopo la pipeline delle 03:00, quindi le partite di oggi ci
+#     sono gia'. Prende le probabili formazioni, che Sofascore pubblica con
+#     giorni d'anticipo (mediana misurata: 56 ore prima del fischio);
+#   · 17:00 UTC — a ridosso delle partite serali europee, per l'arbitro. Le
+#     designazioni escono tardi, e alle 07:00 quasi sempre non ci sono ancora:
+#     misurato, l'arbitro passa da 14 partite a 26 fra un giro e l'altro.
+#
+# NON SCRIVE MAI SU UNA PARTITA GIA' COMINCIATA: il job si ferma da solo al
+# fischio d'inizio, perche' dopo quelle non sono piu' informazioni pre-partita.
+#
+# SE SOFASCORE NON RISPONDE il job non fallisce la pipeline: le partite restano
+# senza contorno, che e' esattamente com'erano prima. Il pronostico non dipende
+# da qui — si calcola sul modello e sulle quote, e una formazione che manca non
+# lo cambia.
+
+on:
+  schedule:
+    # 07:00 e 17:00 UTC. In Italia d'estate sono le 09:00 e le 19:00.
+    - cron: "0 7 * * *"
+    - cron: "0 17 * * *"
+  workflow_call:
+    inputs:
+      window_days:
+        type: string
+        required: false
+        default: "4"
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: Quanti giorni avanti guardare
+        type: string
+        required: false
+        default: "4"
+      dry_run:
+        description: Calcola e riporta senza scrivere i fixture
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+# LO STESSO GRUPPO DEGLI ALTRI JOB DI DATI, e non e' un dettaglio: tutti
+# scrivono in `data/fixtures` e committano. Due che girano insieme finiscono
+# per sovrascriversi o per collidere sul push.
+concurrency:
+  group: pronostici-data
+  cancel-in-progress: false
+
+jobs:
+  sofascore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[sofascore]"
+
+      # L'ARCHIVIO DEI GIOCATORI NON STA NEL REPOSITORY — sono statistiche di
+      # terzi e il repository e' pubblico — ma senza di lui ogni esecuzione
+      # rifarebbe centinaia di chiamate per ricostruire gli stessi tassi. La
+      # cache lo tiene fra un giro e l'altro; se scade si rigenera da sola, piu'
+      # lentamente e senza sbagliare niente.
+      - name: Archivio dei giocatori
+        uses: actions/cache@v4
+        with:
+          path: data/sofascore/giocatori.json
+          key: sofascore-giocatori-${{ github.run_id }}
+          restore-keys: sofascore-giocatori-
+
+      - name: Formazioni, arbitro e quote
+        run: |
+          ARGS="--window-days ${{ inputs.window_days || '4' }}"
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python -m pronostici.jobs.sofascore $ARGS | tee "$RUNNER_TEMP/sofascore.json"
+
+      # LE STIME SUI GIOCATORI DIPENDONO DALLE FORMAZIONI: senza sapere chi
+      # gioca non si possono fare, quindi girano dopo e nello stesso giro.
+      # `|| true` perche' un guasto qui non deve impedire il commit di
+      # formazioni e arbitro, che sono gia' stati presi e valgono da soli.
+      - name: Stime sui giocatori
+        run: |
+          python -m pronostici.jobs.giocatori \
+            --window-days "${{ inputs.window_days || '4' }}" \
+            | tee "$RUNNER_TEMP/giocatori.json" || true
+
+      - name: Riepilogo
+        if: always()
+        run: |
+          for f in sofascore giocatori; do
+            [ -s "$RUNNER_TEMP/$f.json" ] || continue
+            echo "### $f" >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            tail -c 4000 "$RUNNER_TEMP/$f.json" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - uses: ./.github/actions/commit-data
+        with:
+          message: "dati: formazioni, arbitro e quote estese"
+          paths: data/fixtures data/sofascore/squadre.json

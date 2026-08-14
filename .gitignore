@@ -3,15 +3,19 @@
 .env.local
 *.key
 
-# Cache di Sofascore. Fuori dal repository per due ragioni, e la seconda è
-# quella che conta:
+# Cache di Sofascore — SOLO l'archivio dei giocatori.
 #
-#   1. è cache con scadenza a sette giorni, rigenerabile in pochi minuti: in
-#      un repository sarebbe rumore a ogni esecuzione;
-#   2. sono statistiche di stagione di centinaia di giocatori prese da una
-#      fonte terza, e questo repository è PUBBLICO. Mostrarne qualche numero
-#      su una pagina è una cosa; ripubblicare l'archivio è un'altra.
-data/sofascore/
+# Sono statistiche di stagione di centinaia di giocatori prese da una fonte
+# terza, e questo repository è PUBBLICO. Mostrarne qualche numero su una pagina
+# è una cosa; ripubblicare l'archivio è un'altra.
+data/sofascore/giocatori.json
+
+# `data/sofascore/squadre.json` INVECE ci sta, ed è una decisione presa quando
+# il job è passato su GitHub Actions. Sono 74 righe nome→identificativo: non è
+# un archivio di terzi, è la nostra tabella di corrispondenze. Fuori dal
+# repository ogni esecuzione su un runner pulito ripartirebbe da zero e
+# rifarebbe 74 ricerche per nome — più lento, e soprattutto più occasioni di
+# agganciare la squadra sbagliata.
 
 # Python
 __pycache__/

@@ -169,7 +169,12 @@ def _senza_ora(blocco: dict) -> dict:
 
 
 def _blocco(
-    scheda: dict, evento_id: int, torneo: str, as_of: str, *, ore_prima: float | None = None
+    scheda: dict,
+    evento_id: int,
+    torneo: str,
+    as_of: str,
+    *,
+    ore_prima: float | None = None,
 ) -> dict:
     """Riduce la scheda del CLI al blocco che finisce nel file.
 
@@ -268,7 +273,8 @@ def run(
 
     if not sf.disponibile():
         report["errore"] = (
-            f"binario Sofascore assente ({sf.percorso_cli()}): il job si spegne senza scrivere"
+            "trasporto Sofascore non disponibile (manca `curl_cffi`): "
+            "il job si spegne senza scrivere"
         )
         log.warning(report["errore"])
         report["seconds"] = round(time.monotonic() - started, 1)
@@ -293,7 +299,10 @@ def run(
 
             report["esaminate"] += 1
             aggancio = sf.aggancia(
-                entry["home"]["name"], entry["away"]["name"], entry["utc_date"], cache=cache
+                entry["home"]["name"],
+                entry["away"]["name"],
+                entry["utc_date"],
+                cache=cache,
             )
             time.sleep(PAUSA_S)
 
@@ -358,7 +367,9 @@ def run(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Formazioni, arbitro e quote estese da Sofascore")
+    parser = argparse.ArgumentParser(
+        description="Formazioni, arbitro e quote estese da Sofascore"
+    )
     parser.add_argument("--window-days", type=int, default=FINESTRA_DEFAULT)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--today", default=None)

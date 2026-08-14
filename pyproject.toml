@@ -7,6 +7,12 @@ dependencies = ["numpy>=1.26", "scipy>=1.11", "requests>=2.31"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.6"]
+# Solo il job `sofascore` ne ha bisogno: Sofascore risponde 403 a chi non
+# presenta l'impronta TLS di un browser, e `curl_cffi` è l'unica libreria che
+# la porta. Sta in un extra e non fra le dipendenze normali perché gli altri
+# job — ingest, score, quote — non chiamano Sofascore e non devono compilarsi
+# una libreria in più su ogni runner.
+sofascore = ["curl_cffi>=0.7"]
 
 [build-system]
 requires = ["setuptools>=68"]

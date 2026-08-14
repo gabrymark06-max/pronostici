@@ -118,7 +118,9 @@ def run(
 
     cache = _carica()
     base = datetime.strptime(oggi, "%Y-%m-%d").replace(tzinfo=UTC)
-    giorni = [(base + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(finestra + 1)]
+    giorni = [
+        (base + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(finestra + 1)
+    ]
     per_giorno: dict[str, list[dict]] = defaultdict(list)
     fatte = 0
 
@@ -144,7 +146,9 @@ def run(
             fatte += 1
 
             arb = blocco.get("arbitro") or {}
-            molt = moltiplicatore_arbitro(arb.get("gialli_per_partita"), arb.get("partite"))
+            molt = moltiplicatore_arbitro(
+                arb.get("gialli_per_partita"), arb.get("partite")
+            )
 
             squadre: dict[str, list[dict]] = {}
             for lato in ("casa", "ospiti"):
@@ -192,7 +196,8 @@ def run(
                 "giocatori": {
                     "misurato": False,
                     "nota": (
-                        "Stime non misurate: non esiste una quota di mercato su questi esiti "
+                        "Stime non misurate: non esiste una quota di mercato "
+                        "su questi esiti "
                         "ne' uno storico per verificarle. Non entrano nel registro."
                     ),
                     "moltiplicatore_arbitro": round(molt, 3),
@@ -214,12 +219,17 @@ def run(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Stime sui giocatori dalle formazioni probabili")
+    parser = argparse.ArgumentParser(
+        description="Stime sui giocatori dalle formazioni probabili"
+    )
     parser.add_argument("--window-days", type=int, default=FINESTRA_DEFAULT)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--today", default=None)
     parser.add_argument(
-        "--max-partite", type=int, default=None, help="limite di partite, per provare senza attendere"
+        "--max-partite",
+        type=int,
+        default=None,
+        help="limite di partite, per provare senza attendere",
     )
     args = parser.parse_args(argv)
 

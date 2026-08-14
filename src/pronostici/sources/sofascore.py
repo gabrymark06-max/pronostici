@@ -1,15 +1,20 @@
 """Sofascore come fonte di formazioni, arbitro, quote e statistiche giocatore.
 
-PERCHE' PASSA DA UN CLI E NON DA `requests`. L'API di Sofascore rifiuta i
-client HTTP normali con un 403 secco: risponde solo a chi presenta l'impronta
-TLS di un browser Chrome. Non e' un cookie di clearance e non e' una chiave,
-quindi non si aggira con un header. Il CLI `sofascore-pp-cli`, generato il 12
-agosto 2026 con il Printing Press, porta quel trasporto dentro di se': qui lo
-si invoca come sottoprocesso e se ne legge il JSON.
+IL TRASPORTO STA IN `sofascore_http.py`. Qui c'e' solo la parte che decide:
+quale squadra e' quale, quale evento corrisponde a quale nostra partita, e
+quando NON agganciare.
 
-Conseguenza operativa: **senza quel binario questa sorgente non funziona**, e
-lo dice invece di degradare in silenzio. Il percorso si sovrascrive con la
-variabile d'ambiente `SOFASCORE_CLI`.
+PERCHE' NON PASSA PIU' DA UN CLI. Fino al 14 agosto 2026 questa sorgente
+invocava `sofascore-pp-cli`, un binario Go che viveva solo sul portatile di chi
+ha scritto il progetto — non in questo repository, non pubblicato da nessuna
+parte. Conseguenza: questo job era l'unico che non poteva girare su GitHub
+Actions, e girava su un'attivita' pianificata di Windows. A computer spento,
+formazioni e arbitro di quei giorni erano persi per sempre: sono dati che
+esistono solo prima del fischio d'inizio.
+
+Adesso il trasporto e' `curl_cffi`, un pacchetto pip. L'impronta TLS di Chrome
+serve ancora — Sofascore risponde 403 a chi non ce l'ha, e non e' un header —
+ma adesso e' una dipendenza che si installa, non un binario che deve esistere.
 
 COSA NON FA. Non decide niente. Porta dentro dati grezzi e l'appaiamento con
 le nostre partite; il modello sui giocatori sta altrove, e la separazione fra
@@ -20,15 +25,13 @@ di questa sorgente.
 from __future__ import annotations
 
 import json
-import os
-import shutil
-import subprocess
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from ..matching import canonical, similarity
+from . import sofascore_http as http
 
 # Alias validi SOLO verso Sofascore, che chiama alcune squadre in modo che
 # nessuna similarita' puo' colmare. La regola e' la stessa di `matching.py`:
@@ -60,10 +63,6 @@ def _somiglianza(nostro: str, loro: str) -> float:
         return 1.0
     return similarity(a, b)
 
-# Il binario. Il default e' dove il Printing Press lo installa; la variabile
-# d'ambiente vince, cosi' un altro ambiente non deve toccare il codice.
-_DEFAULT_CLI = Path.home() / "printing-press" / "library" / "sofascore" / "sofascore-pp-cli"
-
 # Cache degli id squadra. Cercare per nome costa una chiamata e il risultato non
 # cambia mai: si risolve una volta e si tiene.
 CACHE_SQUADRE = Path("data/sofascore/squadre.json")
@@ -84,8 +83,9 @@ SOGLIA_SQUADRA = 0.55
 TIMEOUT = 60
 
 
-class SofascoreNonDisponibile(RuntimeError):
-    """Il binario non c'e' o non risponde. Rumoroso apposta."""
+# Lo stesso nome di prima: i job lo intercettano, e cambiarlo avrebbe voluto
+# dire toccarli entrambi per una cosa che per loro non e' cambiata.
+SofascoreNonDisponibile = http.SofascoreNonRaggiungibile
 
 
 @dataclass(frozen=True)
@@ -99,53 +99,18 @@ class EventoSofascore:
     torneo: str = ""
 
 
-def percorso_cli() -> Path:
-    scelto = os.environ.get("SOFASCORE_CLI", "").strip()
-    return Path(scelto) if scelto else _DEFAULT_CLI
-
-
 def disponibile() -> bool:
-    p = percorso_cli()
-    return p.exists() or shutil.which(str(p)) is not None
+    """`True` quando il trasporto e' installabile e la rete risponde.
 
-
-def _esegui(*args: str) -> Any:
-    """Invoca il CLI e restituisce il JSON di stdout.
-
-    stderr NON viene mescolato a stdout: il CLI ci scrive avvisi (per esempio
-    che una risposta non e' stata messa in cache) che non sono errori e che
-    romperebbero il parsing se finissero nel flusso dei dati.
+    Non prova la rete: prova solo che `curl_cffi` ci sia. Il job lo chiama
+    all'avvio per spegnersi con un messaggio invece di fallire trenta volte di
+    seguito su trenta partite.
     """
-    cli = percorso_cli()
-    if not disponibile():
-        raise SofascoreNonDisponibile(
-            f"binario Sofascore non trovato in {cli}. "
-            "Installalo con il Printing Press oppure indica il percorso in SOFASCORE_CLI."
-        )
     try:
-        esito = subprocess.run(
-            [str(cli), *args, "--json"],
-            capture_output=True,
-            text=True,
-            timeout=TIMEOUT,
-            encoding="utf-8",
-            errors="replace",
-        )
-    except subprocess.TimeoutExpired as exc:
-        raise SofascoreNonDisponibile(f"timeout dopo {TIMEOUT}s su: {' '.join(args)}") from exc
-    if esito.returncode != 0:
-        raise SofascoreNonDisponibile(
-            f"uscita {esito.returncode} su {' '.join(args)}: {(esito.stderr or '').strip()[:300]}"
-        )
-    testo = (esito.stdout or "").strip()
-    if not testo:
-        return None
-    try:
-        return json.loads(testo)
-    except json.JSONDecodeError as exc:
-        raise SofascoreNonDisponibile(
-            f"risposta non JSON su {' '.join(args)}: {testo[:200]}"
-        ) from exc
+        http._sessione()
+        return True
+    except http.SofascoreNonRaggiungibile:
+        return False
 
 
 def _srotola(payload: Any) -> Any:
@@ -208,10 +173,9 @@ def id_squadra(nome: str, *, cache: dict[str, int] | None = None) -> int | None:
     # scrive "Telstar 1963" e la ricerca di Sofascore su quella stringa non
     # trova nulla; su "telstar" trova subito. Le cifre e le sigle societarie
     # sono rumore per un motore di ricerca esattamente come lo sono per noi.
-    dati = _srotola(_esegui("ricerca", "tutto", "--query", _chiave(nome) or nome))
+    dati = http.ricerca(_chiave(nome) or nome)
 
     migliore_id: int | None = None
-    migliore_punteggio = 0.0
     migliore_chiave: tuple[float, int] = (0.0, -1)
     for voce in _elenco(dati, "results"):
         if not isinstance(voce, dict):
@@ -251,7 +215,7 @@ def id_squadra(nome: str, *, cache: dict[str, int] | None = None) -> int | None:
         chiave = (round(punteggio, 2), seguito)
         if chiave > migliore_chiave:
             migliore_chiave = chiave
-            migliore_punteggio, migliore_id = punteggio, int(ent["id"])
+            migliore_id = int(ent["id"])
 
     if migliore_id is None:
         return None
@@ -265,9 +229,8 @@ def id_squadra(nome: str, *, cache: dict[str, int] | None = None) -> int | None:
 def eventi_squadra(team_id: int, *, futuri: bool = True) -> list[EventoSofascore]:
     """Prossime (o ultime) partite di una squadra, gia' nella forma attesa
     da `matching.pair_events`."""
-    verso = "prossime" if futuri else "ultime"
     try:
-        dati = _srotola(_esegui("squadre", verso, str(team_id), "0"))
+        dati = http.eventi_squadra(team_id, futuri=futuri)
     except SofascoreNonDisponibile as exc:
         # Un 404 qui NON e' un guasto: e' una squadra che Sofascore conosce ma
         # per cui non espone il calendario (squadre dismesse, giovanili, doppioni
@@ -286,7 +249,7 @@ def eventi_squadra(team_id: int, *, futuri: bool = True) -> list[EventoSofascore
         fuori.append(
             EventoSofascore(
                 id=int(e.get("id", 0)),
-                commence_time=datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace(
+                commence_time=datetime.fromtimestamp(int(ts), UTC).isoformat().replace(
                     "+00:00", "Z"
                 ),
                 home_team=(e.get("homeTeam") or {}).get("name", ""),
@@ -308,15 +271,8 @@ def scheda(event_id: int) -> dict[str, Any]:
     Il CLI fa le tre richieste in parallelo e, se una fallisce, la dichiara in
     `parti_mancanti` invece di far sparire tutta la scheda.
     """
-    dati = _esegui("scheda", str(event_id))
+    dati = http.scheda(event_id)
     return dati if isinstance(dati, dict) else {}
-
-
-def rosa(team_id: int) -> list[dict[str, Any]]:
-    dati = _esegui("rosa", str(team_id))
-    if not isinstance(dati, dict):
-        return []
-    return dati.get("giocatori", []) or []
 
 
 def statistiche_giocatore(player_id: int) -> dict[str, Any]:
@@ -326,12 +282,12 @@ def statistiche_giocatore(player_id: int) -> dict[str, Any]:
     esiste ma non ha ancora un tasso, e restituire zeri lo farebbe sembrare uno
     che non segna mai.
     """
-    dati = _esegui("statistiche", str(player_id))
+    dati = http.statistiche_giocatore(player_id)
     return dati if isinstance(dati, dict) else {}
 
 
 def stagioni_giocatore(player_id: int) -> dict[str, Any]:
-    dati = _srotola(_esegui("giocatori", "stagioni", str(player_id)))
+    dati = http.stagioni_giocatore(player_id)
     return dati if isinstance(dati, dict) else {}
 
 
@@ -407,7 +363,9 @@ def aggancia(
             ancore.append((etichetta, tid))
     if not ancore:
         return Aggancio(
-            None, f"nessuna delle due squadre risolta su Sofascore: {nome_casa!r} / {nome_ospiti!r}"
+            None,
+            "nessuna delle due squadre risolta su Sofascore: "
+            f"{nome_casa!r} / {nome_ospiti!r}",
         )
 
     candidati: list[EventoSofascore] = []
@@ -439,7 +397,8 @@ def aggancia(
     if migliore_punteggio < SOGLIA_AVVERSARIO:
         return Aggancio(
             None,
-            f"orario compatibile ma squadre diverse: {migliore.home_team} - {migliore.away_team} "
+            "orario compatibile ma squadre diverse: "
+            f"{migliore.home_team} - {migliore.away_team} "
             f"(somiglianza {migliore_punteggio:.2f})",
         )
     return Aggancio(migliore.id, torneo=migliore.torneo)

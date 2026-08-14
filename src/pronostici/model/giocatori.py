@@ -90,7 +90,9 @@ def _p_almeno_uno(lam: float) -> float:
     return 1.0 - math.exp(-lam)
 
 
-def moltiplicatore_arbitro(gialli_per_partita: float | None, partite: int | None) -> float:
+def moltiplicatore_arbitro(
+    gialli_per_partita: float | None, partite: int | None
+) -> float:
     """Quanto l'arbitro alza o abbassa la probabilita' di cartellino.
 
     Contratto verso 1 con il campione, e con un tetto. Un arbitro a 2,7 gialli
@@ -124,7 +126,9 @@ def stime_giocatore(
     quota = minuti_attesi / 90.0
     fuori: list[Stima] = []
 
-    def aggiungi(chiave: str, mercato: str, etichetta: str, molt: float = 1.0) -> float | None:
+    def aggiungi(
+        chiave: str, mercato: str, etichetta: str, molt: float = 1.0
+    ) -> float | None:
         tasso = tassi.get(chiave)
         if tasso is None:
             return None
@@ -135,7 +139,10 @@ def stime_giocatore(
                 etichetta=etichetta,
                 p=round(_p_almeno_uno(lam), 4),
                 lambda_=round(lam, 4),
-                base=f"{tasso} {chiave.replace('_per_90', '')} per 90', {presenze} presenze",
+                base=(
+                    f"{tasso} {chiave.replace('_per_90', '')} per 90', "
+                    f"{presenze} presenze"
+                ),
             )
         )
         return lam
