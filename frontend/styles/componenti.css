@@ -3422,3 +3422,57 @@
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
 }
+
+/* --- L'avviso di conferma dell'indirizzo, e le pagine di esito ----------- */
+
+/* Un avviso, non un allarme: filetto laterale come i riquadri degli errori,
+   ma in ambra invece che nel segnale. Il vermiglio dice «qui il prodotto
+   decide qualcosa»; questo dice «c'e' una cosa in sospeso», che e' un'altra
+   temperatura. */
+.riquadro--avviso {
+  border-inline-start: 3px solid var(--warn);
+}
+
+.esito {
+  display: grid;
+  gap: var(--s-4);
+  padding-block: var(--s-6);
+}
+
+.esito p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--w-prose);
+}
+
+.esito__nota {
+  font-size: var(--fs-body-s);
+  color: var(--ink-3);
+}
+
+.esito__azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-block-start: var(--s-2);
+}
+
+/* IL TITOLO PORTA UN SEGNO, e il segno non e' un colore soltanto: chi non
+   distingue i verdi dai grigi deve capire lo stesso se e' andata bene. Il
+   filetto sopra cambia spessore oltre che tinta. */
+.esito--riuscito > .titolo-sezione {
+  padding-block-start: var(--s-4);
+  border-block-start: 3px solid var(--outcome-yes);
+}
+
+.esito--fallito > .titolo-sezione {
+  padding-block-start: var(--s-4);
+  border-block-start: 1px dashed var(--ink-3);
+}
+
+.modulo__intro {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}

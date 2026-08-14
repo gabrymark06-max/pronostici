@@ -1,18 +1,21 @@
 import type { Metadata } from 'next';
 
-import { ScegliPassword } from '@/components/Recupero';
+import { ConfermaRecupero } from '@/components/PaginaRecupero';
 
+/* `noindex`: sono pagine senza contenuto per chi non le sta usando, e
+   un'indicizzata «Password dimenticata» sul nome del sito sarebbe il risultato
+   sbagliato al posto dei pronostici. */
 export const metadata: Metadata = {
-  title: 'Scegli la password nuova',
-  description: 'Scegli una password nuova per il tuo profilo.',
+  title: 'Scegli una password nuova',
+  description: 'Scegli una password nuova con il collegamento ricevuto.',
   robots: { index: false, follow: false },
   alternates: { canonical: '/recupero/conferma/' },
 };
 
-export default function PaginaConfermaRecupero() {
+export default function Pagina() {
   return (
     <div className="colonna colonna--scheda pagina-profilo">
-      <ScegliPassword />
+      <ConfermaRecupero />
     </div>
   );
 }

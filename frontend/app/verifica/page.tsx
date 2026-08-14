@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 
-import { Verifica } from '@/components/Verifica';
+import { PaginaVerifica } from '@/components/PaginaVerifica';
 
+/* `noindex`: sono pagine senza contenuto per chi non le sta usando, e
+   un'indicizzata «Password dimenticata» sul nome del sito sarebbe il risultato
+   sbagliato al posto dei pronostici. */
 export const metadata: Metadata = {
   title: 'Conferma dell’indirizzo',
   description: 'Conferma il tuo indirizzo email.',
@@ -9,10 +12,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/verifica/' },
 };
 
-export default function PaginaVerifica() {
+export default function Pagina() {
   return (
     <div className="colonna colonna--scheda pagina-profilo">
-      <Verifica />
+      <PaginaVerifica />
     </div>
   );
 }
