@@ -18,7 +18,9 @@ COME SI USA. Apri il terminale in VS Code e scrivi:
 
     python scripts/giornata.py
 
-Ci mette qualche minuto. Alla fine dice cosa ha scritto e cosa fare dopo.
+Ci mette qualche minuto — buona parte e' l'attesa fra una chiamata e l'altra a
+football-data, che sul piano gratuito ne accetta dieci al minuto. Alla fine
+dice cosa ha scritto e cosa fare dopo.
 
 QUANDO GITHUB TORNA questo file non serve piu': i workflow ripartono da soli e
 rifanno la stessa cosa ogni notte.
@@ -39,7 +41,20 @@ RADICE = Path(__file__).resolve().parent.parent
 # `retrain` ha ricalcolato. Se uno salta, i successivi lavorerebbero su dati
 # vecchi senza dirlo.
 ESSENZIALI = [
-    ("ingest", "calendario e risultati", []),
+    # `--refresh` NON E' UN OPZIONALE, ed e' la differenza fra questo script e
+    # niente. La cache di football-data non scade mai: `get()` restituisce il
+    # file su disco se esiste, punto. Su GitHub la cosa non si nota perche'
+    # ogni esecuzione parte da una copia pulita del repository e `data/cache/`
+    # e' in `.gitignore` — la cache li' e' sempre vuota, e ogni giro scarica
+    # davvero.
+    #
+    # Sul tuo computer la cache resta, e senza questo argomento `ingest`
+    # rileggeva i file dell'8 agosto ogni volta: venti stagioni, «invariato»
+    # su tutte, UNA sola richiesta HTTP in tutto il giro. Da li' a cascata
+    # `settle` non aveva risultati da chiudere, `retrain` saltava ogni
+    # campionato, e il registro pubblico restava fermo mentre il giro
+    # sembrava riuscito. Un guasto silenzioso, che e' il tipo peggiore.
+    ("ingest", "calendario e risultati", ["--refresh"]),
     ("settle", "esiti delle partite finite", []),
     ("retrain", "riaddestramento dei modelli", []),
     ("score", "pronostici di oggi", []),
@@ -110,7 +125,11 @@ def main() -> int:
             f"Non sono riusciti: {', '.join(saltati)}. "
             "Il pronostico c'e' lo stesso — quelli sono contorno."
         )
-    print('\nAdesso salva:  git add data && git commit -m "dati: giornata"')
+    # PUNTO E VIRGOLA, NON `&&`. Questa riga si legge in PowerShell, e Windows
+    # PowerShell 5.1 — quello installato di serie — non conosce `&&`: risponde
+    # «Il token '&&' non è un separatore di istruzioni valido» e non esegue
+    # niente. Il `;` funziona in PowerShell, in cmd e in bash.
+    print('\nAdesso salva:  git add data; git commit -m "dati: giornata"')
     return 0
 
 

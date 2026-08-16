@@ -24,6 +24,30 @@ from .storage import read_json, write_json
 # Stati che football-data usa per una partita conclusa con un punteggio valido.
 FINISHED_STATES = {"FINISHED", "AWARDED"}
 
+# TUTTI gli stati che sappiamo leggere. Serve a distinguere «non e' ancora
+# finita» da «la fonte ha detto una cosa che non capiamo», che oggi si
+# comportano allo stesso modo — non si chiude niente — ma sono due situazioni
+# diverse: la prima passa da sola, la seconda no.
+#
+# Il caso e' reale, non teorico: il 16 agosto 2026 football-data ha risposto
+# con un ORARIO al posto dello stato — `"status": "2026-08-16 18:30:00Z"` — su
+# 147 partite di Brasileirao e Primeira Liga, tutte con il punteggio finale
+# gia' presente. Il codice faceva la cosa giusta (non chiudeva niente su uno
+# stato che non riconosce) ma in silenzio, e in silenzio un guasto della fonte
+# somiglia identico a un campionato che non ha ancora giocato.
+KNOWN_STATES = FINISHED_STATES | {
+    "SCHEDULED",
+    "TIMED",
+    "IN_PLAY",
+    "LIVE",
+    "PAUSED",
+    "EXTRA_TIME",
+    "PENALTY_SHOOTOUT",
+    "SUSPENDED",
+    "POSTPONED",
+    "CANCELLED",
+}
+
 
 @dataclass(frozen=True)
 class Match:
@@ -61,6 +85,29 @@ class Match:
     def is_finished(self) -> bool:
         return (
             self.status in FINISHED_STATES
+            and self.ft_home is not None
+            and self.ft_away is not None
+        )
+
+    @property
+    def stato_incomprensibile(self) -> bool:
+        """La fonte ha mandato uno stato che non sappiamo leggere, E il
+        punteggio finale c'e' gia'.
+
+        Le due condizioni insieme: uno stato ignoto su una partita senza
+        punteggio non blocca niente — non ci sarebbe comunque niente da
+        chiudere. Con il punteggio, invece, e' un esito che esiste e che noi
+        non stiamo registrando.
+
+        NON RENDE LA PARTITA CHIUDIBILE, e non deve. Il punteggio da solo non
+        distingue una partita finita da una in corso: football-data popola
+        `fullTime` — e perfino `winner` — anche mentre si gioca. Chiudere su
+        quel numero significherebbe scrivere nel registro pubblico l'esito di
+        una partita al 60', che e' il modo piu' rapido di rendere falso
+        l'unico documento su cui questo prodotto si regge.
+        """
+        return (
+            self.status not in KNOWN_STATES
             and self.ft_home is not None
             and self.ft_away is not None
         )

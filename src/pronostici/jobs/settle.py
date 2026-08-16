@@ -186,14 +186,26 @@ def run(
     codes = list(competitions or ACTIVE_CODES)
 
     finished: dict[int, object] = {}
+    # Le partite che la fonte ci sta descrivendo in un modo che non sappiamo
+    # leggere. Non entrano in `finished` — non si chiude niente su uno stato
+    # ignoto — ma vanno CONTATE, perche' altrimenti spariscono dentro
+    # `awaiting_result` insieme alle partite che semplicemente non si sono
+    # ancora giocate, e nessuno se ne accorge.
+    incomprensibili: dict[int, str] = {}
     for code in codes:
         for match in load_all(code):
             if match.is_finished:
                 finished[match.match_id] = match
+            elif match.stato_incomprensibile:
+                incomprensibili[match.match_id] = match.status
 
     all_rows = ledger.load_all_seasons()
     settled = 0
     missing_result = 0
+    # Solo quelle su cui avevamo pubblicato un pronostico: e' li' che uno stato
+    # illeggibile costa qualcosa, perche' e' un esito che il registro pubblico
+    # avrebbe dovuto registrare e non registra.
+    bloccate: dict[int, str] = {}
     per_season: dict[int, dict[str, dict]] = defaultdict(dict)
 
     for season, rows in all_rows.items():
@@ -203,6 +215,8 @@ def run(
             match = finished.get(row["match_id"])
             if match is None:
                 missing_result += 1
+                if row["match_id"] in incomprensibili:
+                    bloccate[row["match_id"]] = incomprensibili[row["match_id"]]
                 continue
             update = {
                 "ft_home": match.ft_home,
@@ -238,6 +252,11 @@ def run(
         "rows_settled": settled,
         "ledger_rows_changed": ledger_changed,
         "awaiting_result": missing_result,
+        # Sotto-insieme di `awaiting_result`, non un numero a parte: sono
+        # partite in attesa che NON si sbloccheranno da sole, perche' ad
+        # aspettare non c'e' il fischio finale ma una correzione della fonte.
+        "stato_illeggibile": len(bloccate),
+        "stato_illeggibile_esempi": dict(list(bloccate.items())[:5]),
         "accuracy_file_changed": accuracy_changed,
         "accuracy": accuracy["live"],
         "silence": accuracy["silence"],
