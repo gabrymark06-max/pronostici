@@ -10,34 +10,34 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
+     "S_min": 99,
      "p_min": 88,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 2,
-    "truncated_mass": 3.811e-08
+    "truncated_mass": 3.339e-08
    },
    "expected_goals": {
-    "away": 1.713,
-    "home": 1.34
+    "away": 1.689,
+    "home": 1.372
    },
    "half_time": {
-    "ht_over_0.5": 0.7501,
-    "ht_over_1.5": 0.4036,
-    "ht_over_2.5": 0.1633,
-    "ht_under_0.5": 0.2499,
-    "ht_under_1.5": 0.5964,
-    "ht_under_2.5": 0.8367,
-    "htft_11": 0.1756,
-    "htft_12": 0.0293,
-    "htft_1X": 0.0526,
-    "htft_21": 0.0213,
-    "htft_22": 0.2856,
-    "htft_2X": 0.0526,
-    "htft_X1": 0.1041,
-    "htft_X2": 0.1479,
-    "htft_XX": 0.131
+    "ht_over_0.5": 0.7512,
+    "ht_over_1.5": 0.4051,
+    "ht_over_2.5": 0.1644,
+    "ht_under_0.5": 0.2488,
+    "ht_under_1.5": 0.5949,
+    "ht_under_2.5": 0.8356,
+    "htft_11": 0.1832,
+    "htft_12": 0.0289,
+    "htft_1X": 0.053,
+    "htft_21": 0.0221,
+    "htft_22": 0.2769,
+    "htft_2X": 0.053,
+    "htft_X1": 0.1073,
+    "htft_X2": 0.1445,
+    "htft_XX": 0.1311
    },
    "home": {
     "crest": "https://crests.football-data.org/715.png",
@@ -82,62 +82,70 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7216,
-    "band_p95": 0.8891,
+    "band_p5": 0.7084,
+    "band_p95": 0.8854,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_over_0.5",
     "label": "Ospite Over 0.5",
-    "p": 0.7849,
-    "p_raw": 0.8113,
-    "reference": 0.6922,
+    "p": 0.7818,
+    "p_raw": 0.8074,
+    "reference": 0.6929,
     "runners_up": [
      {
-      "band_p5": 0.5692,
-      "band_p95": 0.8209,
+      "band_p5": 0.5376,
+      "band_p95": 0.7924,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6545,
-      "p_raw": 0.6956,
-      "reference": 0.5623,
-      "score": 0.017636,
-      "shrink_alpha": 0.6912,
-      "sigma": 0.0795
+      "p": 0.6475,
+      "p_raw": 0.685,
+      "reference": 0.5631,
+      "score": 0.014781,
+      "shrink_alpha": 0.6928,
+      "sigma": 0.0792
      },
      {
-      "band_p5": 0.5692,
-      "band_p95": 0.8209,
+      "band_p5": 0.5376,
+      "band_p95": 0.7924,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.6415,
-      "p_raw": 0.6956,
-      "reference": 0.5623,
-      "score": 0.012968,
-      "shrink_alpha": 0.5939,
-      "sigma": 0.0795
+      "p": 0.6357,
+      "p_raw": 0.685,
+      "reference": 0.5631,
+      "score": 0.01089,
+      "shrink_alpha": 0.5956,
+      "sigma": 0.0792
      }
     ],
-    "score": 0.021607,
-    "shrink_alpha": 0.7787,
-    "sigma": 0.0559
+    "score": 0.019803,
+    "shrink_alpha": 0.7768,
+    "sigma": 0.0562
    },
    "raw_probabilities": {
-    "1x2_away": 0.4622,
-    "1x2_draw": 0.2334,
-    "1x2_home": 0.3044,
-    "btts_yes": 0.5916,
-    "over_2.5": 0.5827,
-    "under_2.5": 0.4173
+    "1x2_away": 0.4501,
+    "1x2_draw": 0.2349,
+    "1x2_home": 0.315,
+    "btts_yes": 0.5961,
+    "over_2.5": 0.5846,
+    "under_2.5": 0.4154
    },
    "reasons": [
-    "Gol attesi: Cardiff City FC 1.34, Wrexham AFC 1.71 (totale 3.05).",
+    "Gol attesi: Cardiff City FC 1.37, Wrexham AFC 1.69 (totale 3.06).",
     "Ospite Over 0.5: 78 su 100, 9 punti sopra la media di riferimento (69 su 100).",
-    "Banda di incertezza: fra 72 e 89 su 100."
+    "Banda di incertezza: fra 71 e 89 su 100."
    ],
    "silence": null,
    "sofascore": {
+    "arbitro": {
+     "gialli": 417,
+     "gialli_per_partita": 2.98,
+     "nome": "Andrew Kitchen",
+     "paese": "England",
+     "partite": 140,
+     "rossi": 8
+    },
     "evento_id": 16391145,
     "formazioni": {
      "casa": {
@@ -187,16 +195,16 @@
         "titolare": true
        },
        {
-        "id": 1084268,
-        "maglia": "14",
-        "nome": "David Turnbull",
+        "id": 1101169,
+        "maglia": "10",
+        "nome": "Rubin Colwill",
         "ruolo": "M",
         "titolare": true
        },
        {
-        "id": 1002190,
-        "maglia": "11",
-        "nome": "Ollie Tanner",
+        "id": 999227,
+        "maglia": "8",
+        "nome": "Jack Moylan",
         "ruolo": "M",
         "titolare": true
        },
@@ -224,15 +232,15 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 53.4,
+     "ore_prima": 28.7,
      "ospiti": {
       "modulo": "3-5-2",
       "panchina": [],
       "titolari": [
        {
-        "id": 197428,
-        "maglia": "21",
-        "nome": "Danny Ward",
+        "id": 958718,
+        "maglia": "31",
+        "nome": "Anthony Patterson",
         "ruolo": "G",
         "titolare": true
        },
@@ -300,9 +308,9 @@
         "titolare": true
        },
        {
-        "id": 911710,
-        "maglia": "33",
-        "nome": "Nathan Broadhead",
+        "id": 881396,
+        "maglia": "7",
+        "nome": "Davis Keillor-Dunn",
         "ruolo": "F",
         "titolare": true
        }
@@ -333,7 +341,7 @@
          "base": "0.045 gialli per 90', 69 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0373
+         "p": 0.0518
         },
         {
          "base": "0.0 falli per 90', 69 presenze",
@@ -378,7 +386,7 @@
          "base": "0.384 gialli per 90', 7 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2769
+         "p": 0.3649
         },
         {
          "base": "1.368 falli per 90', 7 presenze",
@@ -423,7 +431,7 @@
          "base": "0.248 gialli per 90', 123 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1889
+         "p": 0.2541
         },
         {
          "base": "0.973 falli per 90', 123 presenze",
@@ -468,7 +476,7 @@
          "base": "0.152 gialli per 90', 58 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1205
+         "p": 0.1645
         },
         {
          "base": "1.097 falli per 90', 58 presenze",
@@ -513,7 +521,7 @@
          "base": "0.208 gialli per 90', 66 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1611
+         "p": 0.218
         },
         {
          "base": "0.934 falli per 90', 66 presenze",
@@ -558,7 +566,7 @@
          "base": "1.074 gialli per 90', 8 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.5962
+         "p": 0.7191
         },
         {
          "base": "1.376 falli per 90', 8 presenze",
@@ -582,94 +590,94 @@
        "torneo": "EFL Cup + Football League Trophy"
       },
       {
-       "id": 1084268,
-       "nome": "David Turnbull",
-       "presenze": 74,
+       "id": 1101169,
+       "nome": "Rubin Colwill",
+       "presenze": 108,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.532 gol per 90', 74 presenze",
+         "base": "0.097 gol per 90', 108 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.3619
+         "p": 0.0786
         },
         {
-         "base": "0.236 assist per 90', 74 presenze",
+         "base": "0.178 assist per 90', 108 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1807
+         "p": 0.1396
         },
         {
-         "base": "0.161 gialli per 90', 74 presenze",
+         "base": "0.144 gialli per 90', 108 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1271
+         "p": 0.1565
         },
         {
-         "base": "0.968 falli per 90', 74 presenze",
+         "base": "1.364 falli per 90', 108 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.5584
+         "p": 0.6839
         },
         {
-         "base": "1.373 tiri_in_porta per 90', 74 presenze",
+         "base": "0.8 tiri_in_porta per 90', 108 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.6863
+         "p": 0.4911
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.4772
-        }
-       ],
-       "torneo": "Scottish Premiership + EFL Cup"
-      },
-      {
-       "id": 1002190,
-       "nome": "Ollie Tanner",
-       "presenze": 68,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.131 gol per 90', 68 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1047
-        },
-        {
-         "base": "0.121 assist per 90', 68 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0971
-        },
-        {
-         "base": "0.114 gialli per 90', 68 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.0918
-        },
-        {
-         "base": "1.583 falli per 90', 68 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7373
-        },
-        {
-         "base": "0.666 tiri_in_porta per 90', 68 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.4302
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1917
+         "p": 0.2072
         }
        ],
        "torneo": "EFL Cup + Championship"
+      },
+      {
+       "id": 999227,
+       "nome": "Jack Moylan",
+       "presenze": 80,
+       "ruolo": "M",
+       "stime": [
+        {
+         "base": "0.433 gol per 90', 80 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.3063
+        },
+        {
+         "base": "0.181 assist per 90', 80 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.1417
+        },
+        {
+         "base": "0.056 gialli per 90', 80 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.0641
+        },
+        {
+         "base": "0.751 falli per 90', 80 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.4696
+        },
+        {
+         "base": "1.184 tiri_in_porta per 90', 80 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.6321
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.4046
+        }
+       ],
+       "torneo": "EFL Cup + League One"
       },
       {
        "id": 1520800,
@@ -738,7 +746,7 @@
          "base": "0.156 gialli per 90', 53 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1234
+         "p": 0.1684
         },
         {
          "base": "1.249 falli per 90', 53 presenze",
@@ -783,7 +791,7 @@
          "base": "0.53 gialli per 90', 15 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.3608
+         "p": 0.4656
         },
         {
          "base": "2.908 falli per 90', 15 presenze",
@@ -809,44 +817,44 @@
      ],
      "minuti_attesi_titolare": 76,
      "misurato": false,
-     "moltiplicatore_arbitro": 1.0,
+     "moltiplicatore_arbitro": 1.4,
      "nota": "Stime non misurate: non esiste una quota di mercato su questi esiti ne' uno storico per verificarle. Non entrano nel registro.",
      "ospiti": [
       {
-       "id": 197428,
-       "nome": "Danny Ward",
-       "presenze": 12,
+       "id": 958718,
+       "nome": "Anthony Patterson",
+       "presenze": 106,
        "ruolo": "G",
        "stime": [
         {
-         "base": "0.0 gol per 90', 12 presenze",
+         "base": "0.0 gol per 90', 106 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
          "p": 0.0
         },
         {
-         "base": "0.0 assist per 90', 12 presenze",
+         "base": "0.0 assist per 90', 106 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
          "p": 0.0
         },
         {
-         "base": "0.0 gialli per 90', 12 presenze",
+         "base": "0.036 gialli per 90', 106 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0
+         "p": 0.0417
         },
         {
-         "base": "0.0 falli per 90', 12 presenze",
+         "base": "0.012 falli per 90', 106 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.0
+         "p": 0.0101
         },
         {
-         "base": "0.0 tiri_in_porta per 90', 12 presenze",
+         "base": "0.016 tiri_in_porta per 90', 106 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.0
+         "p": 0.0134
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
@@ -855,7 +863,7 @@
          "p": 0.0
         }
        ],
-       "torneo": "EFL Cup + FA Cup"
+       "torneo": "Championship + EFL Cup"
       },
       {
        "id": 829186,
@@ -879,7 +887,7 @@
          "base": "0.099 gialli per 90', 121 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0802
+         "p": 0.1105
         },
         {
          "base": "0.718 falli per 90', 121 presenze",
@@ -924,7 +932,7 @@
          "base": "0.115 gialli per 90', 129 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0925
+         "p": 0.1271
         },
         {
          "base": "0.791 falli per 90', 129 presenze",
@@ -969,7 +977,7 @@
          "base": "0.226 gialli per 90', 96 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1737
+         "p": 0.2345
         },
         {
          "base": "0.97 falli per 90', 96 presenze",
@@ -1014,7 +1022,7 @@
          "base": "0.138 gialli per 90', 6 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.11
+         "p": 0.1505
         },
         {
          "base": "1.122 falli per 90', 6 presenze",
@@ -1059,7 +1067,7 @@
          "base": "0.26 gialli per 90', 126 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1971
+         "p": 0.2646
         },
         {
          "base": "1.678 falli per 90', 126 presenze",
@@ -1104,7 +1112,7 @@
          "base": "0.108 gialli per 90', 112 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0872
+         "p": 0.1199
         },
         {
          "base": "0.615 falli per 90', 112 presenze",
@@ -1149,7 +1157,7 @@
          "base": "0.157 gialli per 90', 84 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1242
+         "p": 0.1694
         },
         {
          "base": "1.205 falli per 90', 84 presenze",
@@ -1194,7 +1202,7 @@
          "base": "0.238 gialli per 90', 18 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1821
+         "p": 0.2453
         },
         {
          "base": "1.062 falli per 90', 18 presenze",
@@ -1239,7 +1247,7 @@
          "base": "0.243 gialli per 90', 12 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1855
+         "p": 0.2497
         },
         {
          "base": "1.729 falli per 90', 12 presenze",
@@ -1263,88 +1271,88 @@
        "torneo": "EFL Cup + Football League Trophy"
       },
       {
-       "id": 911710,
-       "nome": "Nathan Broadhead",
-       "presenze": 102,
+       "id": 881396,
+       "nome": "Davis Keillor-Dunn",
+       "presenze": 13,
        "ruolo": "F",
        "stime": [
         {
-         "base": "0.402 gol per 90', 102 presenze",
+         "base": "0.381 gol per 90', 13 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.2878
+         "p": 0.2751
         },
         {
-         "base": "0.136 assist per 90', 102 presenze",
+         "base": "0.0 assist per 90', 13 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1085
+         "p": 0.0
         },
         {
-         "base": "0.042 gialli per 90', 102 presenze",
+         "base": "0.08 gialli per 90', 13 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0348
+         "p": 0.0902
         },
         {
-         "base": "0.67 falli per 90', 102 presenze",
+         "base": "0.381 falli per 90', 13 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.4321
+         "p": 0.2751
         },
         {
-         "base": "0.725 tiri_in_porta per 90', 102 presenze",
+         "base": "0.46 tiri_in_porta per 90', 13 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.4579
+         "p": 0.3219
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.3651
+         "p": 0.2751
         }
        ],
-       "torneo": "EFL Cup + Championship"
+       "torneo": "EFL Cup + Football League Trophy"
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.3383,
-     "1x2_draw": 0.26582,
-     "1x2_home": 0.39589,
-     "btts_no": 0.41118,
-     "btts_yes": 0.58882,
-     "dc_12": 0.72546,
-     "dc_1x": 0.66623,
-     "dc_x2": 0.60831,
-     "over_0.5": 0.92594,
-     "over_1.5": 0.77998,
-     "over_2.5": 0.54867,
-     "over_3.5": 0.34435,
-     "over_4.5": 0.1892,
-     "under_0.5": 0.07406,
-     "under_1.5": 0.22002,
-     "under_2.5": 0.45133,
-     "under_3.5": 0.65565,
-     "under_4.5": 0.8108
+     "1x2_away": 0.33842,
+     "1x2_draw": 0.27373,
+     "1x2_home": 0.38784,
+     "btts_no": 0.42338,
+     "btts_yes": 0.57662,
+     "dc_12": 0.72033,
+     "dc_1x": 0.66891,
+     "dc_x2": 0.61076,
+     "over_0.5": 0.92027,
+     "over_1.5": 0.7619,
+     "over_2.5": 0.52634,
+     "over_3.5": 0.31816,
+     "over_4.5": 0.17203,
+     "under_0.5": 0.07973,
+     "under_1.5": 0.2381,
+     "under_2.5": 0.47366,
+     "under_3.5": 0.68184,
+     "under_4.5": 0.82797
     },
     "quote": {
      "mercati": [
       {
        "esiti": [
         {
-         "decimale": 2.35,
+         "decimale": 2.4,
          "esito": "1",
-         "frazionaria": "27/20",
-         "probabilita_implicita": 0.4255
+         "frazionaria": "7/5",
+         "probabilita_implicita": 0.4167
         },
         {
-         "decimale": 3.5,
+         "decimale": 3.4,
          "esito": "X",
-         "frazionaria": "5/2",
-         "probabilita_implicita": 0.2857
+         "frazionaria": "12/5",
+         "probabilita_implicita": 0.2941
         },
         {
          "decimale": 2.75,
@@ -1353,9 +1361,9 @@
          "probabilita_implicita": 0.3636
         }
        ],
-       "margine_percento": 7.49,
+       "margine_percento": 7.44,
        "mercato": "Full time",
-       "somma_probabilita": 1.0749
+       "somma_probabilita": 1.0744
       },
       {
        "esiti": [
@@ -1372,15 +1380,15 @@
          "probabilita_implicita": 0.6522
         },
         {
-         "decimale": 1.29,
+         "decimale": 1.3,
          "esito": "12",
-         "frazionaria": "2/7",
-         "probabilita_implicita": 0.7778
+         "frazionaria": "3/10",
+         "probabilita_implicita": 0.7692
         }
        ],
-       "margine_percento": 114.42,
+       "margine_percento": 113.57,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1442
+       "somma_probabilita": 2.1357
       },
       {
        "esiti": [
@@ -1391,10 +1399,10 @@
          "probabilita_implicita": 0.3333
         },
         {
-         "decimale": 2.3,
+         "decimale": 2.25,
          "esito": "X",
-         "frazionaria": "13/10",
-         "probabilita_implicita": 0.4348
+         "frazionaria": "5/4",
+         "probabilita_implicita": 0.4444
         },
         {
          "decimale": 3.25,
@@ -1403,9 +1411,9 @@
          "probabilita_implicita": 0.3077
         }
        ],
-       "margine_percento": 7.58,
+       "margine_percento": 8.55,
        "mercato": "1st half",
-       "somma_probabilita": 1.0758
+       "somma_probabilita": 1.0855
       },
       {
        "esiti": [
@@ -1429,21 +1437,21 @@
       {
        "esiti": [
         {
-         "decimale": 1.57,
+         "decimale": 1.62,
          "esito": "Yes",
-         "frazionaria": "4/7",
-         "probabilita_implicita": 0.6364
+         "frazionaria": "8/13",
+         "probabilita_implicita": 0.619
         },
         {
-         "decimale": 2.25,
+         "decimale": 2.2,
          "esito": "No",
-         "frazionaria": "5/4",
-         "probabilita_implicita": 0.4444
+         "frazionaria": "6/5",
+         "probabilita_implicita": 0.4545
         }
        ],
-       "margine_percento": 8.08,
+       "margine_percento": 7.36,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0808
+       "somma_probabilita": 1.0736
       },
       {
        "esiti": [
@@ -1454,175 +1462,175 @@
          "probabilita_implicita": 0.9615
         },
         {
-         "decimale": 13.0,
+         "decimale": 12.0,
          "esito": "Under",
-         "frazionaria": "12/1",
-         "probabilita_implicita": 0.0769
+         "frazionaria": "11/1",
+         "probabilita_implicita": 0.0833
         }
        ],
        "linea": "0.5",
-       "margine_percento": 3.85,
+       "margine_percento": 4.49,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0385
+       "somma_probabilita": 1.0449
       },
       {
        "esiti": [
         {
-         "decimale": 1.22,
+         "decimale": 1.25,
          "esito": "Over",
-         "frazionaria": "2/9",
-         "probabilita_implicita": 0.8182
+         "frazionaria": "1/4",
+         "probabilita_implicita": 0.8
         },
         {
-         "decimale": 4.33,
+         "decimale": 4.0,
          "esito": "Under",
-         "frazionaria": "10/3",
-         "probabilita_implicita": 0.2308
+         "frazionaria": "3/1",
+         "probabilita_implicita": 0.25
         }
        ],
        "linea": "1.5",
-       "margine_percento": 4.9,
+       "margine_percento": 5.0,
        "mercato": "Match goals",
-       "somma_probabilita": 1.049
+       "somma_probabilita": 1.05
       },
       {
        "esiti": [
         {
-         "decimale": 1.73,
+         "decimale": 1.8,
          "esito": "Over",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
         },
         {
-         "decimale": 2.1,
+         "decimale": 2.0,
          "esito": "Under",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
         }
        ],
        "linea": "2.5",
-       "margine_percento": 5.51,
+       "margine_percento": 5.56,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0551
+       "somma_probabilita": 1.0556
       },
       {
        "esiti": [
         {
-         "decimale": 2.75,
+         "decimale": 3.0,
          "esito": "Over",
-         "frazionaria": "7/4",
-         "probabilita_implicita": 0.3636
+         "frazionaria": "2/1",
+         "probabilita_implicita": 0.3333
         },
         {
-         "decimale": 1.44,
+         "decimale": 1.4,
          "esito": "Under",
-         "frazionaria": "4/9",
-         "probabilita_implicita": 0.6923
+         "frazionaria": "2/5",
+         "probabilita_implicita": 0.7143
         }
        ],
        "linea": "3.5",
-       "margine_percento": 5.59,
+       "margine_percento": 4.76,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0559
+       "somma_probabilita": 1.0476
       },
       {
        "esiti": [
         {
-         "decimale": 5.0,
+         "decimale": 5.5,
          "esito": "Over",
-         "frazionaria": "4/1",
-         "probabilita_implicita": 0.2
+         "frazionaria": "9/2",
+         "probabilita_implicita": 0.1818
         },
         {
-         "decimale": 1.17,
+         "decimale": 1.14,
          "esito": "Under",
-         "frazionaria": "1/6",
-         "probabilita_implicita": 0.8571
+         "frazionaria": "1/7",
+         "probabilita_implicita": 0.875
         }
        ],
        "linea": "4.5",
-       "margine_percento": 5.71,
+       "margine_percento": 5.68,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0571
+       "somma_probabilita": 1.0568
       },
       {
        "esiti": [
         {
-         "decimale": 10.0,
+         "decimale": 11.0,
          "esito": "Over",
-         "frazionaria": "9/1",
-         "probabilita_implicita": 0.1
+         "frazionaria": "10/1",
+         "probabilita_implicita": 0.0909
         },
         {
-         "decimale": 1.06,
+         "decimale": 1.05,
          "esito": "Under",
-         "frazionaria": "1/16",
-         "probabilita_implicita": 0.9412
+         "frazionaria": "1/20",
+         "probabilita_implicita": 0.9524
         }
        ],
        "linea": "5.5",
-       "margine_percento": 4.12,
+       "margine_percento": 4.33,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0412
+       "somma_probabilita": 1.0433
       },
       {
        "esiti": [
         {
-         "decimale": 21.0,
+         "decimale": 23.0,
          "esito": "Over",
-         "frazionaria": "20/1",
-         "probabilita_implicita": 0.0476
+         "frazionaria": "22/1",
+         "probabilita_implicita": 0.0435
         },
         {
-         "decimale": 1.02,
+         "decimale": 1.01,
          "esito": "Under",
-         "frazionaria": "1/66",
-         "probabilita_implicita": 0.9851
+         "frazionaria": "1/80",
+         "probabilita_implicita": 0.9877
         }
        ],
        "linea": "6.5",
-       "margine_percento": 3.27,
+       "margine_percento": 3.11,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0327
+       "somma_probabilita": 1.0311
       },
       {
        "esiti": [
         {
-         "decimale": 41.0,
+         "decimale": 51.0,
          "esito": "Over",
-         "frazionaria": "40/1",
-         "probabilita_implicita": 0.0244
+         "frazionaria": "50/1",
+         "probabilita_implicita": 0.0196
         },
         {
          "decimale": 1.0,
          "esito": "Under",
-         "frazionaria": "1/250",
-         "probabilita_implicita": 0.996
+         "frazionaria": "1/500",
+         "probabilita_implicita": 0.998
         }
        ],
        "linea": "7.5",
-       "margine_percento": 2.04,
+       "margine_percento": 1.76,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0204
+       "somma_probabilita": 1.0176
       },
       {
        "esiti": [
         {
-         "decimale": 1.78,
+         "decimale": 1.8,
          "esito": "(0) Cardiff City",
-         "frazionaria": "31/40",
-         "probabilita_implicita": 0.5634
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
         },
         {
-         "decimale": 2.1,
+         "decimale": 2.05,
          "esito": "(-0) Wrexham",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
+         "frazionaria": "21/20",
+         "probabilita_implicita": 0.4878
         }
        ],
-       "margine_percento": 3.96,
+       "margine_percento": 4.34,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0396
+       "somma_probabilita": 1.0434
       },
       {
        "esiti": [
@@ -1667,16 +1675,16 @@
       {
        "esiti": [
         {
-         "decimale": 1.83,
+         "decimale": 1.91,
          "esito": "Cardiff City",
-         "frazionaria": "5/6",
-         "probabilita_implicita": 0.5455
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
         },
         {
-         "decimale": 13.0,
+         "decimale": 12.0,
          "esito": "No goal",
-         "frazionaria": "12/1",
-         "probabilita_implicita": 0.0769
+         "frazionaria": "11/1",
+         "probabilita_implicita": 0.0833
         },
         {
          "decimale": 2.0,
@@ -1685,13 +1693,14 @@
          "probabilita_implicita": 0.5
         }
        ],
-       "margine_percento": 12.24,
+       "margine_percento": 10.71,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1224
+       "somma_probabilita": 1.1071
       }
      ],
      "n_mercati": 17
     },
+    "stadio": "Cardiff City Stadium",
     "torneo": "Championship"
    },
    "source": "model_only",
@@ -1977,9 +1986,9 @@
         "titolare": true
        },
        {
-        "id": 881848,
-        "maglia": "4",
-        "nome": "Félix Torres",
+        "id": 128376,
+        "maglia": "25",
+        "nome": "Gabriel Mercado",
         "ruolo": "D",
         "titolare": true
        },
@@ -1991,9 +2000,9 @@
         "titolare": true
        },
        {
-        "id": 879902,
-        "maglia": "27",
-        "nome": "Paulinho Paula",
+        "id": 978563,
+        "maglia": "5",
+        "nome": "Rodrigo Villagra",
         "ruolo": "M",
         "titolare": true
        },
@@ -2035,7 +2044,7 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 57.4,
+     "ore_prima": 32.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -2258,49 +2267,49 @@
        "torneo": "Ligue 1 + Copa América"
       },
       {
-       "id": 881848,
-       "nome": "Félix Torres",
-       "presenze": 108,
+       "id": 128376,
+       "nome": "Gabriel Mercado",
+       "presenze": 65,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0.139 gol per 90', 108 presenze",
+         "base": "0.053 gol per 90', 65 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.1108
+         "p": 0.0438
         },
         {
-         "base": "0.0 assist per 90', 108 presenze",
+         "base": "0.0 assist per 90', 65 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
          "p": 0.0
         },
         {
-         "base": "0.181 gialli per 90', 108 presenze",
+         "base": "0.347 gialli per 90', 65 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1926
+         "p": 0.3365
         },
         {
-         "base": "1.064 falli per 90', 108 presenze",
+         "base": "1.006 falli per 90', 65 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.5928
+         "p": 0.5724
         },
         {
-         "base": "0.215 tiri_in_porta per 90', 108 presenze",
+         "base": "0.192 tiri_in_porta per 90', 65 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.166
+         "p": 0.1497
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1108
+         "p": 0.0438
         }
        ],
-       "torneo": "Liga MX, Apertura + Liga MX, Clausura"
+       "torneo": "Brasileirão Betano + Gaúcho"
       },
       {
        "id": 982405,
@@ -2348,49 +2357,49 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 879902,
-       "nome": "Paulinho Paula",
-       "presenze": 40,
+       "id": 978563,
+       "nome": "Rodrigo Villagra",
+       "presenze": 100,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.06 gol per 90', 40 presenze",
+         "base": "0.0 gol per 90', 100 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0494
+         "p": 0.0
         },
         {
-         "base": "0.06 assist per 90', 40 presenze",
+         "base": "0.042 assist per 90', 100 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0494
+         "p": 0.0348
         },
         {
-         "base": "0.548 gialli per 90', 40 presenze",
+         "base": "0.21 gialli per 90', 100 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.4768
+         "p": 0.2198
         },
         {
-         "base": "2.347 falli per 90', 40 presenze",
+         "base": "1.48 falli per 90', 100 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.8622
+         "p": 0.7134
         },
         {
-         "base": "0.319 tiri_in_porta per 90', 40 presenze",
+         "base": "0.091 tiri_in_porta per 90', 100 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.2361
+         "p": 0.074
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0964
+         "p": 0.0348
         }
        ],
-       "torneo": "Brasileirão Betano + Carioca"
+       "torneo": "Liga Profesional de Fútbol + Copa de la Liga Profesional"
       },
       {
        "id": 345113,
@@ -3120,16 +3129,16 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.15043,
-     "1x2_draw": 0.23505,
-     "1x2_home": 0.61452,
-     "btts_no": 0.5,
-     "btts_yes": 0.5,
-     "dc_12": 0.76399,
-     "dc_1x": 0.83001,
-     "dc_x2": 0.40599,
+     "1x2_away": 0.15666,
+     "1x2_draw": 0.24095,
+     "1x2_home": 0.60239,
+     "btts_no": 0.47997,
+     "btts_yes": 0.52003,
+     "dc_12": 0.7534,
+     "dc_1x": 0.83712,
+     "dc_x2": 0.40947,
      "over_0.5": 0.91287,
      "over_1.5": 0.7619,
      "over_2.5": 0.52634,
@@ -3146,27 +3155,27 @@
       {
        "esiti": [
         {
-         "decimale": 1.53,
+         "decimale": 1.56,
          "esito": "1",
-         "frazionaria": "53/100",
-         "probabilita_implicita": 0.6536
+         "frazionaria": "14/25",
+         "probabilita_implicita": 0.641
         },
         {
-         "decimale": 4.0,
+         "decimale": 3.9,
          "esito": "X",
-         "frazionaria": "3/1",
-         "probabilita_implicita": 0.25
+         "frazionaria": "29/10",
+         "probabilita_implicita": 0.2564
         },
         {
-         "decimale": 6.25,
+         "decimale": 6.0,
          "esito": "2",
-         "frazionaria": "21/4",
-         "probabilita_implicita": 0.16
+         "frazionaria": "5/1",
+         "probabilita_implicita": 0.1667
         }
        ],
-       "margine_percento": 6.36,
+       "margine_percento": 6.41,
        "mercato": "Full time",
-       "somma_probabilita": 1.0636
+       "somma_probabilita": 1.0641
       },
       {
        "esiti": [
@@ -3183,15 +3192,15 @@
          "probabilita_implicita": 0.4348
         },
         {
-         "decimale": 1.22,
+         "decimale": 1.25,
          "esito": "12",
-         "frazionaria": "2/9",
-         "probabilita_implicita": 0.8182
+         "frazionaria": "1/4",
+         "probabilita_implicita": 0.8
         }
        ],
-       "margine_percento": 114.19,
+       "margine_percento": 112.37,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1419
+       "somma_probabilita": 2.1237
       },
       {
        "esiti": [
@@ -3208,53 +3217,53 @@
          "probabilita_implicita": 0.4211
         },
         {
-         "decimale": 6.0,
+         "decimale": 5.5,
          "esito": "2",
-         "frazionaria": "5/1",
-         "probabilita_implicita": 0.1667
+         "frazionaria": "9/2",
+         "probabilita_implicita": 0.1818
         }
        ],
-       "margine_percento": 6.39,
+       "margine_percento": 7.91,
        "mercato": "1st half",
-       "somma_probabilita": 1.0639
+       "somma_probabilita": 1.0791
       },
       {
        "esiti": [
         {
-         "decimale": 1.18,
+         "decimale": 1.2,
          "esito": "1",
-         "frazionaria": "2/11",
-         "probabilita_implicita": 0.8462
+         "frazionaria": "1/5",
+         "probabilita_implicita": 0.8333
         },
         {
-         "decimale": 4.5,
+         "decimale": 4.33,
          "esito": "2",
-         "frazionaria": "7/2",
-         "probabilita_implicita": 0.2222
+         "frazionaria": "10/3",
+         "probabilita_implicita": 0.2308
+        }
+       ],
+       "margine_percento": 6.41,
+       "mercato": "Draw no bet",
+       "somma_probabilita": 1.0641
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.8,
+         "esito": "Yes",
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
+        },
+        {
+         "decimale": 1.95,
+         "esito": "No",
+         "frazionaria": "19/20",
+         "probabilita_implicita": 0.5128
         }
        ],
        "margine_percento": 6.84,
-       "mercato": "Draw no bet",
-       "somma_probabilita": 1.0684
-      },
-      {
-       "esiti": [
-        {
-         "decimale": 1.91,
-         "esito": "Yes",
-         "frazionaria": "10/11",
-         "probabilita_implicita": 0.5238
-        },
-        {
-         "decimale": 1.91,
-         "esito": "No",
-         "frazionaria": "10/11",
-         "probabilita_implicita": 0.5238
-        }
-       ],
-       "margine_percento": 4.76,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0476
+       "somma_probabilita": 1.0684
       },
       {
        "esiti": [
@@ -3379,22 +3388,22 @@
       {
        "esiti": [
         {
-         "decimale": 23.0,
+         "decimale": 21.0,
          "esito": "Over",
-         "frazionaria": "22/1",
-         "probabilita_implicita": 0.0435
+         "frazionaria": "20/1",
+         "probabilita_implicita": 0.0476
         },
         {
-         "decimale": 1.01,
+         "decimale": 1.02,
          "esito": "Under",
-         "frazionaria": "1/80",
-         "probabilita_implicita": 0.9877
+         "frazionaria": "1/66",
+         "probabilita_implicita": 0.9851
         }
        ],
        "linea": "6.5",
-       "margine_percento": 3.11,
+       "margine_percento": 3.27,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0311
+       "somma_probabilita": 1.0327
       },
       {
        "esiti": [
@@ -3419,41 +3428,41 @@
       {
        "esiti": [
         {
-         "decimale": 1.98,
+         "decimale": 2.03,
          "esito": "(-1) Internacional",
-         "frazionaria": "39/40",
-         "probabilita_implicita": 0.5063
+         "frazionaria": "41/40",
+         "probabilita_implicita": 0.4938
         },
         {
-         "decimale": 1.88,
+         "decimale": 1.83,
          "esito": "(1) Remo",
-         "frazionaria": "7/8",
-         "probabilita_implicita": 0.5333
+         "frazionaria": "33/40",
+         "probabilita_implicita": 0.5479
         }
        ],
-       "margine_percento": 3.97,
+       "margine_percento": 4.18,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0397
+       "somma_probabilita": 1.0418
       },
       {
        "esiti": [
         {
-         "decimale": 1.67,
+         "decimale": 1.83,
          "esito": "Over",
-         "frazionaria": "4/6",
-         "probabilita_implicita": 0.6
+         "frazionaria": "5/6",
+         "probabilita_implicita": 0.5455
         },
         {
-         "decimale": 2.1,
+         "decimale": 1.83,
          "esito": "Under",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
+         "frazionaria": "5/6",
+         "probabilita_implicita": 0.5455
         }
        ],
        "linea": "4.5",
-       "margine_percento": 7.62,
+       "margine_percento": 9.09,
        "mercato": "Cards in match",
-       "somma_probabilita": 1.0762
+       "somma_probabilita": 1.0909
       },
       {
        "esiti": [
@@ -3490,15 +3499,15 @@
          "probabilita_implicita": 0.0909
         },
         {
-         "decimale": 2.88,
+         "decimale": 2.75,
          "esito": "Remo",
-         "frazionaria": "15/8",
-         "probabilita_implicita": 0.3478
+         "frazionaria": "7/4",
+         "probabilita_implicita": 0.3636
         }
        ],
-       "margine_percento": 10.54,
+       "margine_percento": 12.12,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1054
+       "somma_probabilita": 1.1212
       }
      ],
      "n_mercati": 17
@@ -3511,7 +3520,7 @@
    "utc_date": "2026-08-17T23:00:00Z"
   }
  ],
- "generated_at": "2026-08-15T13:36:26Z",
+ "generated_at": "2026-08-16T14:18:03Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 3

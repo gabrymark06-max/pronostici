@@ -8570,34 +8570,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 97,
-     "p_min": 88,
+     "S_min": 96,
+     "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 7,
-    "truncated_mass": 2.569e-07
+    "truncated_mass": 2.762e-07
    },
    "expected_goals": {
-    "away": 0.939,
-    "home": 2.039
+    "away": 0.935,
+    "home": 2.052
    },
    "half_time": {
-    "ht_over_0.5": 0.7371,
-    "ht_over_1.5": 0.3859,
-    "ht_over_2.5": 0.1512,
-    "ht_under_0.5": 0.2629,
-    "ht_under_1.5": 0.6141,
-    "ht_under_2.5": 0.8488,
-    "htft_11": 0.4074,
-    "htft_12": 0.0116,
-    "htft_1X": 0.0425,
-    "htft_21": 0.0312,
-    "htft_22": 0.0903,
-    "htft_2X": 0.0425,
-    "htft_X1": 0.1896,
-    "htft_X2": 0.0636,
-    "htft_XX": 0.1212
+    "ht_over_0.5": 0.7378,
+    "ht_over_1.5": 0.3869,
+    "ht_over_2.5": 0.1519,
+    "ht_under_0.5": 0.2622,
+    "ht_under_1.5": 0.6131,
+    "ht_under_2.5": 0.8481,
+    "htft_11": 0.4104,
+    "htft_12": 0.0115,
+    "htft_1X": 0.0422,
+    "htft_21": 0.0313,
+    "htft_22": 0.089,
+    "htft_2X": 0.0422,
+    "htft_X1": 0.1903,
+    "htft_X2": 0.0627,
+    "htft_XX": 0.1203
    },
    "home": {
     "crest": "https://crests.football-data.org/678.png",
@@ -8609,98 +8609,98 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.9035,
-    "band_p95": 0.9719,
+    "band_p5": 0.5228,
+    "band_p95": 0.7348,
     "cluster_members": [],
-    "family": "handicap_eu",
-    "key": "eh_2_home",
-    "label": "Handicap +2 casa",
-    "p": 0.9389,
-    "p_raw": 0.9429,
-    "reference": 0.8563,
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5871,
+    "p_raw": 0.6288,
+    "reference": 0.4454,
     "runners_up": [
      {
-      "band_p5": 0.5095,
-      "band_p95": 0.7364,
-      "family": "1x2",
-      "key": "1x2_home",
-      "label": "Vittoria casa",
-      "p": 0.577,
-      "p_raw": 0.624,
-      "reference": 0.4467,
-      "score": 0.034081,
-      "shrink_alpha": 0.7348,
-      "sigma": 0.0714
-     },
-     {
-      "band_p5": 0.7568,
-      "band_p95": 0.8987,
+      "band_p5": 0.7637,
+      "band_p95": 0.9005,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8144,
-      "p_raw": 0.8312,
-      "reference": 0.7005,
-      "score": 0.033868,
-      "shrink_alpha": 0.8715,
-      "sigma": 0.0457
+      "p": 0.8197,
+      "p_raw": 0.8342,
+      "reference": 0.6978,
+      "score": 0.038806,
+      "shrink_alpha": 0.8935,
+      "sigma": 0.041
      },
      {
-      "band_p5": 0.6676,
-      "band_p95": 0.8357,
+      "band_p5": 0.9115,
+      "band_p95": 0.9726,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9408,
+      "p_raw": 0.9443,
+      "reference": 0.8534,
+      "score": 0.038056,
+      "shrink_alpha": 0.961,
+      "sigma": 0.0194
+     },
+     {
+      "band_p5": 0.6712,
+      "band_p95": 0.8381,
       "family": "team_goals",
       "key": "ag_under_1.5",
       "label": "Ospite Under 1.5",
-      "p": 0.7252,
-      "p_raw": 0.7578,
-      "reference": 0.6044,
-      "score": 0.032042,
-      "shrink_alpha": 0.7877,
-      "sigma": 0.0545
+      "p": 0.7278,
+      "p_raw": 0.7593,
+      "reference": 0.6014,
+      "score": 0.034981,
+      "shrink_alpha": 0.8004,
+      "sigma": 0.0524
      },
      {
-      "band_p5": 0.7568,
-      "band_p95": 0.8987,
+      "band_p5": 0.7637,
+      "band_p95": 0.9005,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8071,
-      "p_raw": 0.8312,
-      "reference": 0.7005,
-      "score": 0.029467,
-      "shrink_alpha": 0.8159,
-      "sigma": 0.0457
+      "p": 0.8131,
+      "p_raw": 0.8342,
+      "reference": 0.6978,
+      "score": 0.034536,
+      "shrink_alpha": 0.8457,
+      "sigma": 0.041
      },
      {
-      "band_p5": 0.8824,
-      "band_p95": 0.9628,
+      "band_p5": 0.8846,
+      "band_p95": 0.9637,
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.9244,
-      "p_raw": 0.9284,
-      "reference": 0.8613,
-      "score": 0.019426,
-      "shrink_alpha": 0.9403,
-      "sigma": 0.0264
+      "p": 0.9252,
+      "p_raw": 0.9292,
+      "reference": 0.8579,
+      "score": 0.02187,
+      "shrink_alpha": 0.9438,
+      "sigma": 0.0256
      }
     ],
-    "score": 0.034242,
-    "shrink_alpha": 0.9538,
-    "sigma": 0.0212
+    "score": 0.040384,
+    "shrink_alpha": 0.7727,
+    "sigma": 0.0645
    },
    "raw_probabilities": {
-    "1x2_away": 0.1688,
-    "1x2_draw": 0.2071,
-    "1x2_home": 0.624,
-    "btts_yes": 0.5226,
-    "over_2.5": 0.5674,
-    "under_2.5": 0.4326
+    "1x2_away": 0.1658,
+    "1x2_draw": 0.2054,
+    "1x2_home": 0.6288,
+    "btts_yes": 0.5233,
+    "over_2.5": 0.5703,
+    "under_2.5": 0.4297
    },
    "reasons": [
-    "Gol attesi: AFC Ajax 2.04, SC Heerenveen 0.94 (totale 2.98).",
-    "Handicap +2 casa: 94 su 100, 8 punti sopra la media di riferimento (86 su 100).",
-    "Banda di incertezza: fra 90 e 97 su 100."
+    "Gol attesi: AFC Ajax 2.05, SC Heerenveen 0.94 (totale 2.99).",
+    "Vittoria casa: 59 su 100, 14 punti sopra la media di riferimento (45 su 100).",
+    "Banda di incertezza: fra 52 e 73 su 100."
    ],
    "silence": null,
    "sofascore": {
@@ -8715,8 +8715,93 @@
     "evento_id": 16316781,
     "formazioni": {
      "casa": {
-      "modulo": "4-3-3",
-      "panchina": [],
+      "modulo": "4-2-3-1",
+      "panchina": [
+       {
+        "id": 843250,
+        "maglia": "26",
+        "nome": "Maarten Paes",
+        "ruolo": "G",
+        "titolare": false
+       },
+       {
+        "id": 1424337,
+        "maglia": "22",
+        "nome": "Joeri Heerkens",
+        "ruolo": "G",
+        "titolare": false
+       },
+       {
+        "id": 790989,
+        "maglia": "4",
+        "nome": "Ko Itakura",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1120315,
+        "maglia": "3",
+        "nome": "Anton Gaaei",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1470010,
+        "maglia": "36",
+        "nome": "Dies Janse",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 836673,
+        "maglia": "5",
+        "nome": "Owen Wijndal",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1597274,
+        "maglia": "7",
+        "nome": "Maher Carrizo",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 1563462,
+        "maglia": "24",
+        "nome": "Jorthy Mokio",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 1047227,
+        "maglia": "38",
+        "nome": "Marcos Leonardo",
+        "ruolo": "F",
+        "titolare": false
+       },
+       {
+        "id": 987734,
+        "maglia": "99",
+        "nome": "Tolu Arokodare",
+        "ruolo": "F",
+        "titolare": false
+       },
+       {
+        "id": 878599,
+        "maglia": "20",
+        "nome": "Oliver Valaker Edvardsen",
+        "ruolo": "F",
+        "titolare": false
+       },
+       {
+        "id": 226978,
+        "maglia": "8",
+        "nome": "Julian Brandt",
+        "ruolo": "F",
+        "titolare": false
+       }
+      ],
       "titolari": [
        {
         "id": 88625,
@@ -8768,13 +8853,6 @@
         "titolare": true
        },
        {
-        "id": 1155158,
-        "maglia": "10",
-        "nome": "Oscar Gloukh",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
         "id": 100386,
         "maglia": "23",
         "nome": "Steven Berghuis",
@@ -8782,26 +8860,118 @@
         "titolare": true
        },
        {
-        "id": 987734,
-        "maglia": "99",
-        "nome": "Tolu Arokodare",
-        "ruolo": "F",
+        "id": 1155158,
+        "maglia": "10",
+        "nome": "Oscar Gloukh",
+        "ruolo": "M",
         "titolare": true
        },
        {
-        "id": 226978,
-        "maglia": "8",
-        "nome": "Julian Brandt",
+        "id": 1931396,
+        "maglia": "68",
+        "nome": "Abdellah Ouazane",
+        "ruolo": "M",
+        "titolare": true
+       },
+       {
+        "id": 795761,
+        "maglia": "9",
+        "nome": "Kasper Dolberg",
         "ruolo": "F",
         "titolare": true
        }
       ]
      },
-     "confermate": false,
-     "ore_prima": 25.2,
+     "confermate": true,
+     "ore_prima": 0.5,
      "ospiti": {
-      "modulo": "4-1-4-1",
-      "panchina": [],
+      "modulo": "4-2-3-1",
+      "panchina": [
+       {
+        "id": 2213235,
+        "maglia": "30",
+        "nome": "Timo Schreuder",
+        "ruolo": "G",
+        "titolare": false
+       },
+       {
+        "id": 339339,
+        "maglia": "44",
+        "nome": "Andries Noppert",
+        "ruolo": "G",
+        "titolare": false
+       },
+       {
+        "id": 1129996,
+        "maglia": "28",
+        "nome": "Hristiyan Petrov",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1621035,
+        "maglia": "23",
+        "nome": "Darling Bladi",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1121247,
+        "maglia": "17",
+        "nome": "Nikolai Soyset Hopland",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 2679074,
+        "maglia": "41",
+        "nome": "Jimte Scholten",
+        "ruolo": "D",
+        "titolare": false
+       },
+       {
+        "id": 1425327,
+        "maglia": "36",
+        "nome": "Nolhan Courtens",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 1133678,
+        "maglia": "14",
+        "nome": "Levi Smans",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 1014408,
+        "maglia": "7",
+        "nome": "Maxence Rivera",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 794014,
+        "maglia": "8",
+        "nome": "Luuk Brouwers",
+        "ruolo": "M",
+        "titolare": false
+       },
+       {
+        "id": 2397194,
+        "maglia": "47",
+        "nome": "Kirayno Schaken",
+        "ruolo": "F",
+        "titolare": false
+       },
+       {
+        "id": 2142283,
+        "maglia": "29",
+        "nome": "Lanroy Machine",
+        "ruolo": "F",
+        "titolare": false
+       }
+      ],
       "titolari": [
        {
         "id": 1195719,
@@ -8811,16 +8981,9 @@
         "titolare": true
        },
        {
-        "id": 1129996,
-        "maglia": "28",
-        "nome": "Hristiyan Petrov",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 1132765,
-        "maglia": "3",
-        "nome": "Maas Willemsen",
+        "id": 1150061,
+        "maglia": "45",
+        "nome": "Oliver Braude",
         "ruolo": "D",
         "titolare": true
        },
@@ -8832,10 +8995,24 @@
         "titolare": true
        },
        {
+        "id": 1132765,
+        "maglia": "3",
+        "nome": "Maas Willemsen",
+        "ruolo": "D",
+        "titolare": true
+       },
+       {
         "id": 1064426,
         "maglia": "19",
         "nome": "Vasilios Zagaritis",
         "ruolo": "D",
+        "titolare": true
+       },
+       {
+        "id": 1627623,
+        "maglia": "16",
+        "nome": "Marcus Linday",
+        "ruolo": "M",
         "titolare": true
        },
        {
@@ -8849,13 +9026,6 @@
         "id": 1015627,
         "maglia": "20",
         "nome": "Jacob Trenskow",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1627623,
-        "maglia": "16",
-        "nome": "Marcus Linday",
         "ruolo": "M",
         "titolare": true
        },
@@ -9201,51 +9371,6 @@
        "torneo": "VriendenLoterij Eredivisie + Eerste Divisie"
       },
       {
-       "id": 1155158,
-       "nome": "Oscar Gloukh",
-       "presenze": 92,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.376 gol per 90', 92 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.272
-        },
-        {
-         "base": "0.272 assist per 90', 92 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.2052
-        },
-        {
-         "base": "0.056 gialli per 90', 92 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.0641
-        },
-        {
-         "base": "0.468 falli per 90', 92 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.3265
-        },
-        {
-         "base": "0.98 tiri_in_porta per 90', 92 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5629
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.4214
-        }
-       ],
-       "torneo": "UEFA Champions League + Austrian Bundesliga"
-      },
-      {
        "id": 100386,
        "nome": "Steven Berghuis",
        "presenze": 62,
@@ -9291,94 +9416,94 @@
        "torneo": "VriendenLoterij Eredivisie + UEFA Europa League"
       },
       {
-       "id": 987734,
-       "nome": "Tolu Arokodare",
-       "presenze": 139,
-       "ruolo": "F",
+       "id": 1155158,
+       "nome": "Oscar Gloukh",
+       "presenze": 92,
+       "ruolo": "M",
        "stime": [
         {
-         "base": "0.487 gol per 90', 139 presenze",
+         "base": "0.376 gol per 90', 92 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.3372
+         "p": 0.272
         },
         {
-         "base": "0.083 assist per 90', 139 presenze",
+         "base": "0.272 assist per 90', 92 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0677
+         "p": 0.2052
         },
         {
-         "base": "0.043 gialli per 90', 139 presenze",
+         "base": "0.056 gialli per 90', 92 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0496
+         "p": 0.0641
         },
         {
-         "base": "1.617 falli per 90', 139 presenze",
+         "base": "0.468 falli per 90', 92 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.7447
+         "p": 0.3265
         },
         {
-         "base": "1.443 tiri_in_porta per 90', 139 presenze",
+         "base": "0.98 tiri_in_porta per 90', 92 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.7043
+         "p": 0.5629
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.382
+         "p": 0.4214
         }
        ],
-       "torneo": "Pro League + Ligue 2"
+       "torneo": "UEFA Champions League + Austrian Bundesliga"
       },
       {
-       "id": 226978,
-       "nome": "Julian Brandt",
-       "presenze": 99,
+       "id": 795761,
+       "nome": "Kasper Dolberg",
+       "presenze": 36,
        "ruolo": "F",
        "stime": [
         {
-         "base": "0.313 gol per 90', 99 presenze",
+         "base": "0.187 gol per 90', 36 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.2323
+         "p": 0.1461
         },
         {
-         "base": "0.309 assist per 90', 99 presenze",
+         "base": "0.14 assist per 90', 36 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.2297
+         "p": 0.1115
         },
         {
-         "base": "0.029 gialli per 90', 99 presenze",
+         "base": "0.124 gialli per 90', 36 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0337
+         "p": 0.1364
         },
         {
-         "base": "0.359 falli per 90', 99 presenze",
+         "base": "1.276 falli per 90', 36 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.2615
+         "p": 0.6596
         },
         {
-         "base": "0.771 tiri_in_porta per 90', 99 presenze",
+         "base": "0.818 tiri_in_porta per 90', 36 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.4785
+         "p": 0.4988
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.4086
+         "p": 0.2413
         }
        ],
-       "torneo": "Bundesliga + DFB Pokal"
+       "torneo": "VriendenLoterij Eredivisie + UEFA Nations League"
       }
      ],
      "minuti_attesi_titolare": 76,
@@ -9432,94 +9557,49 @@
        "torneo": "VriendenLoterij Eredivisie + U21 Euro Qualification"
       },
       {
-       "id": 1129996,
-       "nome": "Hristiyan Petrov",
+       "id": 1150061,
+       "nome": "Oliver Braude",
        "presenze": 93,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0.037 gol per 90', 93 presenze",
+         "base": "0.0 gol per 90', 93 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0308
+         "p": 0.0
         },
         {
-         "base": "0.009 assist per 90', 93 presenze",
+         "base": "0.103 assist per 90', 93 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0076
+         "p": 0.0833
         },
         {
-         "base": "0.083 gialli per 90', 93 presenze",
+         "base": "0.252 gialli per 90', 93 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0935
+         "p": 0.2576
         },
         {
-         "base": "0.41 falli per 90', 93 presenze",
+         "base": "1.447 falli per 90', 93 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.2926
+         "p": 0.7053
         },
         {
-         "base": "0.178 tiri_in_porta per 90', 93 presenze",
+         "base": "0.091 tiri_in_porta per 90', 93 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1396
+         "p": 0.074
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0381
+         "p": 0.0833
         }
        ],
-       "torneo": "Parva Liga + VriendenLoterij Eredivisie"
-      },
-      {
-       "id": 1132765,
-       "nome": "Maas Willemsen",
-       "presenze": 64,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.055 gol per 90', 64 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0454
-        },
-        {
-         "base": "0.05 assist per 90', 64 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0413
-        },
-        {
-         "base": "0.11 gialli per 90', 64 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1219
-        },
-        {
-         "base": "0.699 falli per 90', 64 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4458
-        },
-        {
-         "base": "0.235 tiri_in_porta per 90', 64 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.18
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0848
-        }
-       ],
-       "torneo": "Eerste Divisie + VriendenLoterij Eredivisie"
+       "torneo": "VriendenLoterij Eredivisie"
       },
       {
        "id": 847072,
@@ -9567,6 +9647,51 @@
        "torneo": "VriendenLoterij Eredivisie + Eerste Divisie"
       },
       {
+       "id": 1132765,
+       "nome": "Maas Willemsen",
+       "presenze": 64,
+       "ruolo": "D",
+       "stime": [
+        {
+         "base": "0.055 gol per 90', 64 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.0454
+        },
+        {
+         "base": "0.05 assist per 90', 64 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.0413
+        },
+        {
+         "base": "0.11 gialli per 90', 64 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.1219
+        },
+        {
+         "base": "0.699 falli per 90', 64 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.4458
+        },
+        {
+         "base": "0.235 tiri_in_porta per 90', 64 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.18
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.0848
+        }
+       ],
+       "torneo": "Eerste Divisie + VriendenLoterij Eredivisie"
+      },
+      {
        "id": 1064426,
        "nome": "Vasilios Zagaritis",
        "presenze": 96,
@@ -9610,6 +9735,51 @@
         }
        ],
        "torneo": "VriendenLoterij Eredivisie + Serie B"
+      },
+      {
+       "id": 1627623,
+       "nome": "Marcus Linday",
+       "presenze": 76,
+       "ruolo": "M",
+       "stime": [
+        {
+         "base": "0.027 gol per 90', 76 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.0225
+        },
+        {
+         "base": "0.04 assist per 90', 76 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.0332
+        },
+        {
+         "base": "0.152 gialli per 90', 76 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.1645
+        },
+        {
+         "base": "0.722 falli per 90', 76 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.4565
+        },
+        {
+         "base": "0.159 tiri_in_porta per 90', 76 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.1256
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.055
+        }
+       ],
+       "torneo": "VriendenLoterij Eredivisie + Allsvenskan"
       },
       {
        "id": 961685,
@@ -9697,51 +9867,6 @@
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
          "p": 0.3657
-        }
-       ],
-       "torneo": "VriendenLoterij Eredivisie + Allsvenskan"
-      },
-      {
-       "id": 1627623,
-       "nome": "Marcus Linday",
-       "presenze": 76,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.027 gol per 90', 76 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0225
-        },
-        {
-         "base": "0.04 assist per 90', 76 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0332
-        },
-        {
-         "base": "0.152 gialli per 90', 76 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1645
-        },
-        {
-         "base": "0.722 falli per 90', 76 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4565
-        },
-        {
-         "base": "0.159 tiri_in_porta per 90', 76 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.1256
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.055
         }
        ],
        "torneo": "VriendenLoterij Eredivisie + Allsvenskan"
@@ -9883,26 +10008,26 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.13487,
-     "1x2_draw": 0.20972,
-     "1x2_home": 0.6554,
-     "btts_no": 0.39234,
-     "btts_yes": 0.60766,
-     "dc_12": 0.79221,
-     "dc_1x": 0.8511,
-     "dc_x2": 0.35669,
+     "1x2_away": 0.14527,
+     "1x2_draw": 0.19883,
+     "1x2_home": 0.6559,
+     "btts_no": 0.41118,
+     "btts_yes": 0.58882,
+     "dc_12": 0.7956,
+     "dc_1x": 0.84618,
+     "dc_x2": 0.35822,
      "over_0.5": 0.95391,
      "over_1.5": 0.85405,
      "over_2.5": 0.67254,
      "over_3.5": 0.48527,
-     "over_4.5": 0.27659,
+     "over_4.5": 0.29091,
      "under_0.5": 0.04609,
      "under_1.5": 0.14595,
      "under_2.5": 0.32746,
      "under_3.5": 0.51473,
-     "under_4.5": 0.72341
+     "under_4.5": 0.70909
     },
     "quote": {
      "mercati": [
@@ -9915,29 +10040,29 @@
          "probabilita_implicita": 0.6944
         },
         {
-         "decimale": 4.5,
+         "decimale": 4.75,
          "esito": "X",
-         "frazionaria": "7/2",
-         "probabilita_implicita": 0.2222
+         "frazionaria": "15/4",
+         "probabilita_implicita": 0.2105
         },
         {
-         "decimale": 7.0,
+         "decimale": 6.5,
          "esito": "2",
-         "frazionaria": "6/1",
-         "probabilita_implicita": 0.1429
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
         }
        ],
-       "margine_percento": 5.95,
+       "margine_percento": 5.88,
        "mercato": "Full time",
-       "somma_probabilita": 1.0595
+       "somma_probabilita": 1.0588
       },
       {
        "esiti": [
         {
-         "decimale": 1.1,
+         "decimale": 1.11,
          "esito": "1X",
-         "frazionaria": "1/10",
-         "probabilita_implicita": 0.9091
+         "frazionaria": "1/9",
+         "probabilita_implicita": 0.9
         },
         {
          "decimale": 2.63,
@@ -9952,9 +10077,9 @@
          "probabilita_implicita": 0.8462
         }
        ],
-       "margine_percento": 113.62,
+       "margine_percento": 112.71,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1362
+       "somma_probabilita": 2.1271
       },
       {
        "esiti": [
@@ -10003,21 +10128,21 @@
       {
        "esiti": [
         {
-         "decimale": 1.53,
+         "decimale": 1.57,
          "esito": "Yes",
-         "frazionaria": "8/15",
-         "probabilita_implicita": 0.6522
+         "frazionaria": "4/7",
+         "probabilita_implicita": 0.6364
         },
         {
-         "decimale": 2.38,
+         "decimale": 2.25,
          "esito": "No",
-         "frazionaria": "11/8",
-         "probabilita_implicita": 0.4211
+         "frazionaria": "5/4",
+         "probabilita_implicita": 0.4444
         }
        ],
-       "margine_percento": 7.32,
+       "margine_percento": 8.08,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0732
+       "somma_probabilita": 1.0808
       },
       {
        "esiti": [
@@ -10102,22 +10227,22 @@
       {
        "esiti": [
         {
-         "decimale": 3.4,
+         "decimale": 3.25,
          "esito": "Over",
-         "frazionaria": "12/5",
-         "probabilita_implicita": 0.2941
+         "frazionaria": "9/4",
+         "probabilita_implicita": 0.3077
         },
         {
-         "decimale": 1.3,
+         "decimale": 1.33,
          "esito": "Under",
-         "frazionaria": "3/10",
-         "probabilita_implicita": 0.7692
+         "frazionaria": "1/3",
+         "probabilita_implicita": 0.75
         }
        ],
        "linea": "4.5",
-       "margine_percento": 6.33,
+       "margine_percento": 5.77,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0633
+       "somma_probabilita": 1.0577
       },
       {
        "esiti": [
@@ -10142,81 +10267,81 @@
       {
        "esiti": [
         {
-         "decimale": 13.0,
+         "decimale": 11.0,
          "esito": "Over",
-         "frazionaria": "12/1",
-         "probabilita_implicita": 0.0769
+         "frazionaria": "10/1",
+         "probabilita_implicita": 0.0909
         },
         {
-         "decimale": 1.04,
+         "decimale": 1.05,
          "esito": "Under",
-         "frazionaria": "1/25",
-         "probabilita_implicita": 0.9615
+         "frazionaria": "1/20",
+         "probabilita_implicita": 0.9524
         }
        ],
        "linea": "6.5",
-       "margine_percento": 3.85,
+       "margine_percento": 4.33,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0385
+       "somma_probabilita": 1.0433
       },
       {
        "esiti": [
         {
-         "decimale": 23.0,
+         "decimale": 21.0,
          "esito": "Over",
-         "frazionaria": "22/1",
-         "probabilita_implicita": 0.0435
+         "frazionaria": "20/1",
+         "probabilita_implicita": 0.0476
         },
         {
-         "decimale": 1.01,
+         "decimale": 1.02,
          "esito": "Under",
-         "frazionaria": "1/80",
-         "probabilita_implicita": 0.9877
+         "frazionaria": "1/66",
+         "probabilita_implicita": 0.9851
         }
        ],
        "linea": "7.5",
-       "margine_percento": 3.11,
+       "margine_percento": 3.27,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0311
+       "somma_probabilita": 1.0327
       },
       {
        "esiti": [
         {
-         "decimale": 51.0,
+         "decimale": 41.0,
          "esito": "Over",
-         "frazionaria": "50/1",
-         "probabilita_implicita": 0.0196
+         "frazionaria": "40/1",
+         "probabilita_implicita": 0.0244
         },
         {
          "decimale": 1.0,
          "esito": "Under",
-         "frazionaria": "1/500",
-         "probabilita_implicita": 0.998
+         "frazionaria": "1/250",
+         "probabilita_implicita": 0.996
         }
        ],
        "linea": "8.5",
-       "margine_percento": 1.76,
+       "margine_percento": 2.04,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0176
+       "somma_probabilita": 1.0204
       },
       {
        "esiti": [
         {
-         "decimale": 1.9,
+         "decimale": 1.88,
          "esito": "(-1.25) AFC Ajax",
-         "frazionaria": "9/10",
-         "probabilita_implicita": 0.5263
+         "frazionaria": "7/8",
+         "probabilita_implicita": 0.5333
         },
         {
-         "decimale": 1.9,
+         "decimale": 1.93,
          "esito": "(1.25) SC Heerenveen",
-         "frazionaria": "9/10",
-         "probabilita_implicita": 0.5263
+         "frazionaria": "37/40",
+         "probabilita_implicita": 0.5195
         }
        ],
-       "margine_percento": 5.26,
+       "margine_percento": 5.28,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0526
+       "somma_probabilita": 1.0528
       },
       {
        "esiti": [
@@ -10288,28 +10413,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 8.631e-09
+    "truncated_mass": 6.874e-09
    },
    "expected_goals": {
-    "away": 1.126,
-    "home": 1.509
+    "away": 1.131,
+    "home": 1.478
    },
    "half_time": {
-    "ht_over_0.5": 0.6808,
-    "ht_over_1.5": 0.3162,
-    "ht_over_2.5": 0.1081,
-    "ht_under_0.5": 0.3192,
-    "ht_under_1.5": 0.6838,
-    "ht_under_2.5": 0.8919,
-    "htft_11": 0.2716,
-    "htft_12": 0.0175,
-    "htft_1X": 0.0497,
-    "htft_21": 0.0254,
-    "htft_22": 0.1566,
-    "htft_2X": 0.0497,
-    "htft_X1": 0.1637,
-    "htft_X2": 0.109,
-    "htft_XX": 0.1568
+    "ht_over_0.5": 0.6766,
+    "ht_over_1.5": 0.3115,
+    "ht_over_2.5": 0.1055,
+    "ht_under_0.5": 0.3234,
+    "ht_under_1.5": 0.6885,
+    "ht_under_2.5": 0.8945,
+    "htft_11": 0.2647,
+    "htft_12": 0.0177,
+    "htft_1X": 0.0498,
+    "htft_21": 0.0249,
+    "htft_22": 0.1603,
+    "htft_2X": 0.0498,
+    "htft_X1": 0.162,
+    "htft_X2": 0.1118,
+    "htft_XX": 0.159
    },
    "home": {
     "crest": "https://crests.football-data.org/80.png",
@@ -10355,21 +10480,29 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2852,
-    "1x2_draw": 0.2553,
-    "1x2_home": 0.4595,
-    "btts_yes": 0.5172,
-    "over_2.5": 0.4874,
-    "under_2.5": 0.5126
+    "1x2_away": 0.2919,
+    "1x2_draw": 0.2575,
+    "1x2_home": 0.4505,
+    "btts_yes": 0.5137,
+    "over_2.5": 0.4809,
+    "under_2.5": 0.5191
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: RCD Espanyol de Barcelona 1.51, Levante UD 1.13 (totale 2.63)."
+    "Gol attesi: RCD Espanyol de Barcelona 1.48, Levante UD 1.13 (totale 2.61)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "sofascore": {
+    "arbitro": {
+     "gialli": 180,
+     "gialli_per_partita": 3.75,
+     "nome": "Carlos Muniz Munoz",
+     "paese": "Spain",
+     "partite": 48,
+     "rossi": 10
+    },
     "evento_id": 16421053,
     "formazioni": {
      "casa": {
@@ -10392,7 +10525,7 @@
        },
        {
         "id": 892521,
-        "maglia": "5",
+        "maglia": "14",
         "nome": "Unai Núñez",
         "ruolo": "D",
         "titolare": true
@@ -10406,7 +10539,7 @@
        },
        {
         "id": 2065347,
-        "maglia": "3",
+        "maglia": "29",
         "nome": "Roger Hinojo",
         "ruolo": "D",
         "titolare": true
@@ -10434,14 +10567,14 @@
        },
        {
         "id": 1136863,
-        "maglia": "18",
+        "maglia": "22",
         "nome": "Álex Calatrava",
         "ruolo": "M",
         "titolare": true
        },
        {
         "id": 1514913,
-        "maglia": "33",
+        "maglia": "28",
         "nome": "Javier Hernández",
         "ruolo": "M",
         "titolare": true
@@ -10456,7 +10589,7 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 27.4,
+     "ore_prima": 2.7,
      "ospiti": {
       "modulo": "4-3-3",
       "panchina": [],
@@ -10565,7 +10698,7 @@
          "base": "0.006 gialli per 90', 89 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0051
+         "p": 0.0071
         },
         {
          "base": "0.009 falli per 90', 89 presenze",
@@ -10610,7 +10743,7 @@
          "base": "0.284 gialli per 90', 79 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2132
+         "p": 0.2852
         },
         {
          "base": "1.389 falli per 90', 79 presenze",
@@ -10655,7 +10788,7 @@
          "base": "0.295 gialli per 90', 65 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2205
+         "p": 0.2944
         },
         {
          "base": "1.049 falli per 90', 65 presenze",
@@ -10700,7 +10833,7 @@
          "base": "0.157 gialli per 90', 215 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1242
+         "p": 0.1694
         },
         {
          "base": "0.963 falli per 90', 215 presenze",
@@ -10745,7 +10878,7 @@
          "base": "0.219 gialli per 90', 63 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1688
+         "p": 0.2281
         },
         {
          "base": "1.242 falli per 90', 63 presenze",
@@ -10790,7 +10923,7 @@
          "base": "0.285 gialli per 90', 90 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2139
+         "p": 0.286
         },
         {
          "base": "0.993 falli per 90', 90 presenze",
@@ -10835,7 +10968,7 @@
          "base": "0.3 gialli per 90', 126 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2238
+         "p": 0.2986
         },
         {
          "base": "1.048 falli per 90', 126 presenze",
@@ -10880,7 +11013,7 @@
          "base": "0.216 gialli per 90', 107 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1667
+         "p": 0.2254
         },
         {
          "base": "1.364 falli per 90', 107 presenze",
@@ -10925,7 +11058,7 @@
          "base": "0.362 gialli per 90', 50 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2634
+         "p": 0.3482
         },
         {
          "base": "1.991 falli per 90', 50 presenze",
@@ -10970,7 +11103,7 @@
          "base": "0.103 gialli per 90', 62 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0833
+         "p": 0.1146
         },
         {
          "base": "1.484 falli per 90', 62 presenze",
@@ -10996,7 +11129,7 @@
      ],
      "minuti_attesi_titolare": 76,
      "misurato": false,
-     "moltiplicatore_arbitro": 1.0,
+     "moltiplicatore_arbitro": 1.4,
      "nota": "Stime non misurate: non esiste una quota di mercato su questi esiti ne' uno storico per verificarle. Non entrano nel registro.",
      "ospiti": [
       {
@@ -11066,7 +11199,7 @@
          "base": "0.2 gialli per 90', 139 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1554
+         "p": 0.2106
         },
         {
          "base": "0.653 falli per 90', 139 presenze",
@@ -11111,7 +11244,7 @@
          "base": "0.326 gialli per 90', 106 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2406
+         "p": 0.3198
         },
         {
          "base": "1.311 falli per 90', 106 presenze",
@@ -11156,7 +11289,7 @@
          "base": "0.221 gialli per 90', 95 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1702
+         "p": 0.2299
         },
         {
          "base": "1.33 falli per 90', 95 presenze",
@@ -11201,7 +11334,7 @@
          "base": "0.188 gialli per 90', 80 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1468
+         "p": 0.1993
         },
         {
          "base": "1.01 falli per 90', 80 presenze",
@@ -11246,7 +11379,7 @@
          "base": "0.239 gialli per 90', 121 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1828
+         "p": 0.2461
         },
         {
          "base": "1.308 falli per 90', 121 presenze",
@@ -11291,7 +11424,7 @@
          "base": "0.168 gialli per 90', 33 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1323
+         "p": 0.1801
         },
         {
          "base": "1.056 falli per 90', 33 presenze",
@@ -11336,7 +11469,7 @@
          "base": "0.151 gialli per 90', 118 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1197
+         "p": 0.1635
         },
         {
          "base": "1.484 falli per 90', 118 presenze",
@@ -11381,7 +11514,7 @@
          "base": "0.141 gialli per 90', 127 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1123
+         "p": 0.1535
         },
         {
          "base": "1.63 falli per 90', 127 presenze",
@@ -11426,7 +11559,7 @@
          "base": "0.414 gialli per 90', 20 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.295
+         "p": 0.387
         },
         {
          "base": "0.828 falli per 90', 20 presenze",
@@ -11451,24 +11584,24 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.24375,
-     "1x2_draw": 0.29252,
-     "1x2_home": 0.46373,
-     "btts_no": 0.52003,
-     "btts_yes": 0.47997,
-     "dc_12": 0.70459,
-     "dc_1x": 0.75156,
-     "dc_x2": 0.54385,
+     "1x2_away": 0.26322,
+     "1x2_draw": 0.2961,
+     "1x2_home": 0.44069,
+     "btts_no": 0.5,
+     "btts_yes": 0.5,
+     "dc_12": 0.69471,
+     "dc_1x": 0.73687,
+     "dc_x2": 0.56842,
      "over_0.5": 0.88074,
      "over_1.5": 0.70119,
-     "over_2.5": 0.45133,
+     "over_2.5": 0.43101,
      "over_3.5": 0.2381,
      "over_4.5": 0.11926,
      "under_0.5": 0.11926,
      "under_1.5": 0.29881,
-     "under_2.5": 0.54867,
+     "under_2.5": 0.56899,
      "under_3.5": 0.7619,
      "under_4.5": 0.88074
     },
@@ -11477,115 +11610,115 @@
       {
        "esiti": [
         {
-         "decimale": 2.05,
+         "decimale": 2.15,
          "esito": "1",
+         "frazionaria": "23/20",
+         "probabilita_implicita": 0.4651
+        },
+        {
+         "decimale": 3.2,
+         "esito": "X",
+         "frazionaria": "11/5",
+         "probabilita_implicita": 0.3125
+        },
+        {
+         "decimale": 3.6,
+         "esito": "2",
+         "frazionaria": "13/5",
+         "probabilita_implicita": 0.2778
+        }
+       ],
+       "margine_percento": 5.54,
+       "mercato": "Full time",
+       "somma_probabilita": 1.0554
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.29,
+         "esito": "1X",
+         "frazionaria": "2/7",
+         "probabilita_implicita": 0.7778
+        },
+        {
+         "decimale": 1.67,
+         "esito": "X2",
+         "frazionaria": "4/6",
+         "probabilita_implicita": 0.6
+        },
+        {
+         "decimale": 1.36,
+         "esito": "12",
+         "frazionaria": "4/11",
+         "probabilita_implicita": 0.7333
+        }
+       ],
+       "margine_percento": 111.11,
+       "mercato": "Double chance",
+       "somma_probabilita": 2.1111
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 2.88,
+         "esito": "1",
+         "frazionaria": "15/8",
+         "probabilita_implicita": 0.3478
+        },
+        {
+         "decimale": 2.05,
+         "esito": "X",
          "frazionaria": "21/20",
          "probabilita_implicita": 0.4878
         },
         {
-         "decimale": 3.25,
-         "esito": "X",
-         "frazionaria": "9/4",
-         "probabilita_implicita": 0.3077
-        },
-        {
-         "decimale": 3.9,
+         "decimale": 4.0,
          "esito": "2",
-         "frazionaria": "29/10",
-         "probabilita_implicita": 0.2564
+         "frazionaria": "3/1",
+         "probabilita_implicita": 0.25
         }
        ],
-       "margine_percento": 5.19,
-       "mercato": "Full time",
-       "somma_probabilita": 1.0519
-      },
-      {
-       "esiti": [
-        {
-         "decimale": 1.25,
-         "esito": "1X",
-         "frazionaria": "1/4",
-         "probabilita_implicita": 0.8
-        },
-        {
-         "decimale": 1.73,
-         "esito": "X2",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
-        },
-        {
-         "decimale": 1.33,
-         "esito": "12",
-         "frazionaria": "1/3",
-         "probabilita_implicita": 0.75
-        }
-       ],
-       "margine_percento": 112.89,
-       "mercato": "Double chance",
-       "somma_probabilita": 2.1289
-      },
-      {
-       "esiti": [
-        {
-         "decimale": 2.63,
-         "esito": "1",
-         "frazionaria": "13/8",
-         "probabilita_implicita": 0.381
-        },
-        {
-         "decimale": 2.1,
-         "esito": "X",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
-        },
-        {
-         "decimale": 4.33,
-         "esito": "2",
-         "frazionaria": "10/3",
-         "probabilita_implicita": 0.2308
-        }
-       ],
-       "margine_percento": 8.79,
+       "margine_percento": 8.56,
        "mercato": "1st half",
-       "somma_probabilita": 1.0879
+       "somma_probabilita": 1.0856
       },
       {
        "esiti": [
         {
-         "decimale": 1.4,
+         "decimale": 1.5,
          "esito": "1",
-         "frazionaria": "2/5",
-         "probabilita_implicita": 0.7143
+         "frazionaria": "1/2",
+         "probabilita_implicita": 0.6667
         },
         {
-         "decimale": 2.75,
+         "decimale": 2.5,
          "esito": "2",
-         "frazionaria": "7/4",
-         "probabilita_implicita": 0.3636
+         "frazionaria": "6/4",
+         "probabilita_implicita": 0.4
         }
        ],
-       "margine_percento": 7.79,
+       "margine_percento": 6.67,
        "mercato": "Draw no bet",
-       "somma_probabilita": 1.0779
+       "somma_probabilita": 1.0667
       },
       {
        "esiti": [
         {
-         "decimale": 1.95,
+         "decimale": 1.91,
          "esito": "Yes",
-         "frazionaria": "19/20",
-         "probabilita_implicita": 0.5128
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
         },
         {
-         "decimale": 1.8,
+         "decimale": 1.91,
          "esito": "No",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
         }
        ],
-       "margine_percento": 6.84,
+       "margine_percento": 4.76,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0684
+       "somma_probabilita": 1.0476
       },
       {
        "esiti": [
@@ -11630,22 +11763,22 @@
       {
        "esiti": [
         {
-         "decimale": 2.1,
+         "decimale": 2.2,
          "esito": "Over",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
+         "frazionaria": "6/5",
+         "probabilita_implicita": 0.4545
         },
         {
-         "decimale": 1.73,
+         "decimale": 1.67,
          "esito": "Under",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
+         "frazionaria": "4/6",
+         "probabilita_implicita": 0.6
         }
        ],
        "linea": "2.5",
-       "margine_percento": 5.51,
+       "margine_percento": 5.45,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0551
+       "somma_probabilita": 1.0545
       },
       {
        "esiti": [
@@ -11730,21 +11863,41 @@
       {
        "esiti": [
         {
-         "decimale": 2.05,
-         "esito": "(-0.5) Espanyol",
-         "frazionaria": "21/20",
-         "probabilita_implicita": 0.4878
+         "decimale": 1.85,
+         "esito": "(-0.25) Espanyol",
+         "frazionaria": "17/20",
+         "probabilita_implicita": 0.5405
         },
         {
-         "decimale": 1.8,
-         "esito": "(0.5) Levante UD",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "decimale": 2.0,
+         "esito": "(0.25) Levante UD",
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
         }
        ],
-       "margine_percento": 4.34,
+       "margine_percento": 4.05,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0434
+       "somma_probabilita": 1.0405
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.8,
+         "esito": "Over",
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
+        },
+        {
+         "decimale": 1.91,
+         "esito": "Under",
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
+        }
+       ],
+       "linea": "4.5",
+       "margine_percento": 7.94,
+       "mercato": "Cards in match",
+       "somma_probabilita": 1.0794
       },
       {
        "esiti": [
@@ -11769,31 +11922,32 @@
       {
        "esiti": [
         {
-         "decimale": 1.73,
+         "decimale": 1.8,
          "esito": "Espanyol",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
         },
         {
-         "decimale": 8.5,
+         "decimale": 8.0,
          "esito": "No goal",
-         "frazionaria": "15/2",
-         "probabilita_implicita": 0.1176
+         "frazionaria": "7/1",
+         "probabilita_implicita": 0.125
         },
         {
-         "decimale": 2.4,
+         "decimale": 2.3,
          "esito": "Levante UD",
-         "frazionaria": "7/5",
-         "probabilita_implicita": 0.4167
+         "frazionaria": "13/10",
+         "probabilita_implicita": 0.4348
         }
        ],
-       "margine_percento": 11.33,
+       "margine_percento": 11.53,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1133
+       "somma_probabilita": 1.1153
       }
      ],
-     "n_mercati": 15
+     "n_mercati": 16
     },
+    "stadio": "RCDE Stadium",
     "torneo": "LaLiga"
    },
    "source": "model_only",
@@ -11958,7 +12112,7 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 27.4,
+     "ore_prima": 2.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -13043,23 +13197,23 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.25997,
-     "1x2_draw": 0.28355,
-     "1x2_home": 0.45649,
+     "1x2_away": 0.23415,
+     "1x2_draw": 0.27545,
+     "1x2_home": 0.4904,
      "btts_no": 0.52003,
      "btts_yes": 0.47997,
-     "dc_12": 0.70888,
-     "dc_1x": 0.73516,
-     "dc_x2": 0.55595,
-     "over_0.5": 0.89362,
-     "over_1.5": 0.68751,
+     "dc_12": 0.71787,
+     "dc_1x": 0.7636,
+     "dc_x2": 0.51853,
+     "over_0.5": 0.8881,
+     "over_1.5": 0.70909,
      "over_2.5": 0.44739,
      "over_3.5": 0.25002,
      "over_4.5": 0.11926,
-     "under_0.5": 0.10638,
-     "under_1.5": 0.31249,
+     "under_0.5": 0.1119,
+     "under_1.5": 0.29091,
      "under_2.5": 0.55261,
      "under_3.5": 0.74998,
      "under_4.5": 0.88074
@@ -13069,60 +13223,60 @@
       {
        "esiti": [
         {
-         "decimale": 2.05,
+         "decimale": 1.91,
          "esito": "1",
-         "frazionaria": "21/20",
-         "probabilita_implicita": 0.4878
+         "frazionaria": "91/100",
+         "probabilita_implicita": 0.5236
         },
         {
-         "decimale": 3.3,
+         "decimale": 3.4,
          "esito": "X",
-         "frazionaria": "23/10",
-         "probabilita_implicita": 0.303
+         "frazionaria": "12/5",
+         "probabilita_implicita": 0.2941
         },
         {
-         "decimale": 3.6,
+         "decimale": 4.0,
          "esito": "2",
-         "frazionaria": "13/5",
-         "probabilita_implicita": 0.2778
+         "frazionaria": "3/1",
+         "probabilita_implicita": 0.25
         }
        ],
-       "margine_percento": 6.86,
+       "margine_percento": 6.77,
        "mercato": "Full time",
-       "somma_probabilita": 1.0686
+       "somma_probabilita": 1.0677
       },
       {
        "esiti": [
         {
-         "decimale": 1.29,
+         "decimale": 1.22,
          "esito": "1X",
-         "frazionaria": "2/7",
-         "probabilita_implicita": 0.7778
+         "frazionaria": "2/9",
+         "probabilita_implicita": 0.8182
         },
         {
-         "decimale": 1.7,
+         "decimale": 1.8,
          "esito": "X2",
-         "frazionaria": "7/10",
-         "probabilita_implicita": 0.5882
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
         },
         {
-         "decimale": 1.33,
+         "decimale": 1.3,
          "esito": "12",
-         "frazionaria": "1/3",
-         "probabilita_implicita": 0.75
+         "frazionaria": "3/10",
+         "probabilita_implicita": 0.7692
         }
        ],
-       "margine_percento": 111.6,
+       "margine_percento": 114.3,
        "mercato": "Double chance",
-       "somma_probabilita": 2.116
+       "somma_probabilita": 2.143
       },
       {
        "esiti": [
         {
-         "decimale": 2.75,
+         "decimale": 2.6,
          "esito": "1",
-         "frazionaria": "7/4",
-         "probabilita_implicita": 0.3636
+         "frazionaria": "8/5",
+         "probabilita_implicita": 0.3846
         },
         {
          "decimale": 2.1,
@@ -13131,34 +13285,34 @@
          "probabilita_implicita": 0.4762
         },
         {
-         "decimale": 4.33,
+         "decimale": 4.5,
          "esito": "2",
-         "frazionaria": "10/3",
-         "probabilita_implicita": 0.2308
+         "frazionaria": "7/2",
+         "probabilita_implicita": 0.2222
         }
        ],
-       "margine_percento": 7.06,
+       "margine_percento": 8.3,
        "mercato": "1st half",
-       "somma_probabilita": 1.0706
+       "somma_probabilita": 1.083
       },
       {
        "esiti": [
         {
-         "decimale": 1.5,
+         "decimale": 1.4,
          "esito": "1",
-         "frazionaria": "1/2",
-         "probabilita_implicita": 0.6667
+         "frazionaria": "2/5",
+         "probabilita_implicita": 0.7143
         },
         {
-         "decimale": 2.5,
+         "decimale": 2.75,
          "esito": "2",
-         "frazionaria": "6/4",
-         "probabilita_implicita": 0.4
+         "frazionaria": "7/4",
+         "probabilita_implicita": 0.3636
         }
        ],
-       "margine_percento": 6.67,
+       "margine_percento": 7.79,
        "mercato": "Draw no bet",
-       "somma_probabilita": 1.0667
+       "somma_probabilita": 1.0779
       },
       {
        "esiti": [
@@ -13188,36 +13342,36 @@
          "probabilita_implicita": 0.9333
         },
         {
-         "decimale": 9.0,
+         "decimale": 8.5,
          "esito": "Under",
-         "frazionaria": "8/1",
-         "probabilita_implicita": 0.1111
+         "frazionaria": "15/2",
+         "probabilita_implicita": 0.1176
         }
        ],
        "linea": "0.5",
-       "margine_percento": 4.44,
+       "margine_percento": 5.1,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0444
+       "somma_probabilita": 1.051
       },
       {
        "esiti": [
         {
-         "decimale": 1.36,
+         "decimale": 1.33,
          "esito": "Over",
-         "frazionaria": "4/11",
-         "probabilita_implicita": 0.7333
+         "frazionaria": "1/3",
+         "probabilita_implicita": 0.75
         },
         {
-         "decimale": 3.0,
+         "decimale": 3.25,
          "esito": "Under",
-         "frazionaria": "2/1",
-         "probabilita_implicita": 0.3333
+         "frazionaria": "9/4",
+         "probabilita_implicita": 0.3077
         }
        ],
        "linea": "1.5",
-       "margine_percento": 6.67,
+       "margine_percento": 5.77,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0667
+       "somma_probabilita": 1.0577
       },
       {
        "esiti": [
@@ -13322,49 +13476,49 @@
       {
        "esiti": [
         {
-         "decimale": 1.8,
-         "esito": "(-0.25) FC Arouca",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "decimale": 1.98,
+         "esito": "(-0.5) FC Arouca",
+         "frazionaria": "39/40",
+         "probabilita_implicita": 0.5063
         },
         {
-         "decimale": 2.05,
-         "esito": "(0.25) Moreirense",
-         "frazionaria": "21/20",
-         "probabilita_implicita": 0.4878
+         "decimale": 1.88,
+         "esito": "(0.5) Moreirense",
+         "frazionaria": "7/8",
+         "probabilita_implicita": 0.5333
         }
        ],
-       "margine_percento": 4.34,
+       "margine_percento": 3.97,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0434
+       "somma_probabilita": 1.0397
       },
       {
        "esiti": [
         {
-         "decimale": 1.8,
+         "decimale": 2.0,
          "esito": "Over",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
         },
-        {
-         "decimale": 1.91,
-         "esito": "Under",
-         "frazionaria": "10/11",
-         "probabilita_implicita": 0.5238
-        }
-       ],
-       "linea": "8.5",
-       "margine_percento": 7.94,
-       "mercato": "Corners 2-Way",
-       "somma_probabilita": 1.0794
-      },
-      {
-       "esiti": [
         {
          "decimale": 1.73,
-         "esito": "FC Arouca",
+         "esito": "Under",
          "frazionaria": "8/11",
          "probabilita_implicita": 0.5789
+        }
+       ],
+       "linea": "9.5",
+       "margine_percento": 7.89,
+       "mercato": "Corners 2-Way",
+       "somma_probabilita": 1.0789
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.67,
+         "esito": "FC Arouca",
+         "frazionaria": "4/6",
+         "probabilita_implicita": 0.6
         },
         {
          "decimale": 8.5,
@@ -13373,10 +13527,10 @@
          "probabilita_implicita": 0.1176
         },
         {
-         "decimale": 2.38,
+         "decimale": 2.5,
          "esito": "Moreirense",
-         "frazionaria": "11/8",
-         "probabilita_implicita": 0.4211
+         "frazionaria": "6/4",
+         "probabilita_implicita": 0.4
         }
        ],
        "margine_percento": 11.76,
@@ -13619,9 +13773,9 @@
         "titolare": true
        },
        {
-        "id": 1112908,
-        "maglia": "4",
-        "nome": "Alan Saldivia",
+        "id": 839095,
+        "maglia": "46",
+        "nome": "Carlos Cuesta",
         "ruolo": "D",
         "titolare": true
        },
@@ -13640,13 +13794,6 @@
         "titolare": true
        },
        {
-        "id": 268419,
-        "maglia": "8",
-        "nome": "Jair",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
         "id": 840398,
         "maglia": "3",
         "nome": "Tchê Tchê",
@@ -13654,16 +13801,9 @@
         "titolare": true
        },
        {
-        "id": 1105970,
-        "maglia": "28",
-        "nome": "Adson",
-        "ruolo": "F",
-        "titolare": true
-       },
-       {
-        "id": 329303,
-        "maglia": "23",
-        "nome": "Thiago Mendes",
+        "id": 268419,
+        "maglia": "8",
+        "nome": "Jair",
         "ruolo": "M",
         "titolare": true
        },
@@ -13675,16 +13815,30 @@
         "titolare": true
        },
        {
-        "id": 927308,
-        "maglia": "9",
-        "nome": "Facundo Colidio",
+        "id": 329303,
+        "maglia": "23",
+        "nome": "Thiago Mendes",
+        "ruolo": "M",
+        "titolare": true
+       },
+       {
+        "id": 1160386,
+        "maglia": "11",
+        "nome": "Andrés Gómez",
+        "ruolo": "M",
+        "titolare": true
+       },
+       {
+        "id": 840291,
+        "maglia": "7",
+        "nome": "David",
         "ruolo": "F",
         "titolare": true
        }
       ]
      },
      "confermate": false,
-     "ore_prima": 29.4,
+     "ore_prima": 4.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -13697,17 +13851,17 @@
         "titolare": true
        },
        {
-        "id": 2075078,
-        "maglia": "27",
-        "nome": "Davi Fernandes Cavalcante Ribeiro",
-        "ruolo": "M",
+        "id": 840119,
+        "maglia": "18",
+        "nome": "Igor Vinícius",
+        "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 940699,
-        "maglia": "98",
-        "nome": "Adonis Frías",
-        "ruolo": "D",
+        "id": 242213,
+        "maglia": "15",
+        "nome": "Willian Arão",
+        "ruolo": "M",
         "titolare": true
        },
        {
@@ -13862,49 +14016,49 @@
        "torneo": "Brasileirão Betano + Carioca"
       },
       {
-       "id": 1112908,
-       "nome": "Alan Saldivia",
-       "presenze": 70,
+       "id": 839095,
+       "nome": "Carlos Cuesta",
+       "presenze": 97,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0 gol per 90', 70 presenze",
+         "base": "0.04 gol per 90', 97 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
+         "p": 0.0332
+        },
+        {
+         "base": "0.0 assist per 90', 97 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
          "p": 0.0
         },
         {
-         "base": "0.014 assist per 90', 70 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0118
-        },
-        {
-         "base": "0.246 gialli per 90', 70 presenze",
+         "base": "0.27 gialli per 90', 97 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2524
+         "p": 0.2733
         },
         {
-         "base": "1.101 falli per 90', 70 presenze",
+         "base": "1.094 falli per 90', 97 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.6053
+         "p": 0.603
         },
         {
-         "base": "0.137 tiri_in_porta per 90', 70 presenze",
+         "base": "0.112 tiri_in_porta per 90', 97 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1092
+         "p": 0.0902
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0118
+         "p": 0.0332
         }
        ],
-       "torneo": "Liga de Primera + CONMEBOL Libertadores"
+       "torneo": "Pro League + Primera A"
       },
       {
        "id": 1191278,
@@ -13997,51 +14151,6 @@
        "torneo": "Brasileirão Betano + Carioca"
       },
       {
-       "id": 268419,
-       "nome": "Jair",
-       "presenze": 27,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0 gol per 90', 27 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0
-        },
-        {
-         "base": "0 assist per 90', 27 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.538 gialli per 90', 27 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.4706
-        },
-        {
-         "base": "2.345 falli per 90', 27 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.862
-        },
-        {
-         "base": "0.041 tiri_in_porta per 90', 27 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.034
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0
-        }
-       ],
-       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
-      },
-      {
        "id": 840398,
        "nome": "Tchê Tchê",
        "presenze": 94,
@@ -14087,94 +14196,49 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 1105970,
-       "nome": "Adson",
-       "presenze": 56,
-       "ruolo": "F",
-       "stime": [
-        {
-         "base": "0.209 gol per 90', 56 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1618
-        },
-        {
-         "base": "0.188 assist per 90', 56 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1468
-        },
-        {
-         "base": "0.13 gialli per 90', 56 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1425
-        },
-        {
-         "base": "0.81 falli per 90', 56 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4954
-        },
-        {
-         "base": "0.848 tiri_in_porta per 90', 56 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5113
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.2848
-        }
-       ],
-       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
-      },
-      {
-       "id": 329303,
-       "nome": "Thiago Mendes",
-       "presenze": 123,
+       "id": 268419,
+       "nome": "Jair",
+       "presenze": 27,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.087 gol per 90', 123 presenze",
+         "base": "0 gol per 90', 27 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0708
+         "p": 0.0
         },
         {
-         "base": "0.046 assist per 90', 123 presenze",
+         "base": "0 assist per 90', 27 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0381
+         "p": 0.0
         },
         {
-         "base": "0.225 gialli per 90', 123 presenze",
+         "base": "0.538 gialli per 90', 27 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2336
+         "p": 0.4706
         },
         {
-         "base": "1.003 falli per 90', 123 presenze",
+         "base": "2.345 falli per 90', 27 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.5713
+         "p": 0.862
         },
         {
-         "base": "0.277 tiri_in_porta per 90', 123 presenze",
+         "base": "0.041 tiri_in_porta per 90', 27 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.2086
+         "p": 0.034
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1062
+         "p": 0.0
         }
        ],
-       "torneo": "Brasileirão Betano + Ligue 1"
+       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
       },
       {
        "id": 851285,
@@ -14222,49 +14286,139 @@
        "torneo": "Liga Portugal Betclic + CONMEBOL Sudamericana"
       },
       {
-       "id": 927308,
-       "nome": "Facundo Colidio",
-       "presenze": 69,
-       "ruolo": "F",
+       "id": 329303,
+       "nome": "Thiago Mendes",
+       "presenze": 123,
+       "ruolo": "M",
        "stime": [
         {
-         "base": "0.335 gol per 90', 69 presenze",
+         "base": "0.087 gol per 90', 123 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.2464
+         "p": 0.0708
         },
         {
-         "base": "0.18 assist per 90', 69 presenze",
+         "base": "0.046 assist per 90', 123 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.141
+         "p": 0.0381
         },
         {
-         "base": "0.197 gialli per 90', 69 presenze",
+         "base": "0.225 gialli per 90', 123 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2078
+         "p": 0.2336
         },
         {
-         "base": "1.336 falli per 90', 69 presenze",
+         "base": "1.003 falli per 90', 123 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.6764
+         "p": 0.5713
         },
         {
-         "base": "1.098 tiri_in_porta per 90', 69 presenze",
+         "base": "0.277 tiri_in_porta per 90', 123 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.6043
+         "p": 0.2086
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.3527
+         "p": 0.1062
         }
        ],
-       "torneo": "Liga Profesional de Fútbol + CONMEBOL Libertadores"
+       "torneo": "Brasileirão Betano + Ligue 1"
+      },
+      {
+       "id": 1160386,
+       "nome": "Andrés Gómez",
+       "presenze": 43,
+       "ruolo": "M",
+       "stime": [
+        {
+         "base": "0.161 gol per 90', 43 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.1271
+        },
+        {
+         "base": "0.14 assist per 90', 43 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.1115
+        },
+        {
+         "base": "0.322 gialli per 90', 43 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.3166
+        },
+        {
+         "base": "1.126 falli per 90', 43 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.6136
+        },
+        {
+         "base": "0.839 tiri_in_porta per 90', 43 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.5076
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.2244
+        }
+       ],
+       "torneo": "Brasileirão Betano + Copa Betano do Brasil"
+      },
+      {
+       "id": 840291,
+       "nome": "David",
+       "presenze": 74,
+       "ruolo": "F",
+       "stime": [
+        {
+         "base": "0.203 gol per 90', 74 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.1575
+        },
+        {
+         "base": "0.158 assist per 90', 74 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.1249
+        },
+        {
+         "base": "0.176 gialli per 90', 74 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.1879
+        },
+        {
+         "base": "1.23 falli per 90', 74 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.6461
+        },
+        {
+         "base": "0.659 tiri_in_porta per 90', 74 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.4268
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.2628
+        }
+       ],
+       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
       }
      ],
      "minuti_attesi_titolare": 76,
@@ -14318,94 +14472,94 @@
        "torneo": "Copa Betano do Brasil + Brasileirão Betano"
       },
       {
-       "id": 2075078,
-       "nome": "Davi Fernandes Cavalcante Ribeiro",
-       "presenze": 11,
-       "ruolo": "M",
+       "id": 840119,
+       "nome": "Igor Vinícius",
+       "presenze": 92,
+       "ruolo": "D",
        "stime": [
         {
-         "base": "0.157 gol per 90', 11 presenze",
+         "base": "0.0 gol per 90', 92 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.1242
+         "p": 0.0
         },
         {
-         "base": "0.157 assist per 90', 11 presenze",
+         "base": "0.129 assist per 90', 92 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1242
+         "p": 0.1032
         },
         {
-         "base": "0.157 gialli per 90', 11 presenze",
+         "base": "0.28 gialli per 90', 92 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1694
+         "p": 0.2818
         },
         {
-         "base": "2.035 falli per 90', 11 presenze",
+         "base": "1.253 falli per 90', 92 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.8207
+         "p": 0.6529
         },
         {
-         "base": "0.47 tiri_in_porta per 90', 11 presenze",
+         "base": "0.107 tiri_in_porta per 90', 92 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.3276
+         "p": 0.0864
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.2329
+         "p": 0.1032
         }
        ],
-       "torneo": "U20 Campeonato Brasileiro + U20 Copa Ibrachina"
+       "torneo": "Paulista Série A1 + Brasileirão Betano"
       },
       {
-       "id": 940699,
-       "nome": "Adonis Frías",
-       "presenze": 49,
-       "ruolo": "D",
+       "id": 242213,
+       "nome": "Willian Arão",
+       "presenze": 65,
+       "ruolo": "M",
        "stime": [
         {
-         "base": "0.033 gol per 90', 49 presenze",
+         "base": "0.122 gol per 90', 65 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0275
+         "p": 0.0979
         },
         {
-         "base": "0 assist per 90', 49 presenze",
+         "base": "0.0 assist per 90', 65 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
          "p": 0.0
         },
         {
-         "base": "0.214 gialli per 90', 49 presenze",
+         "base": "0.198 gialli per 90', 65 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2235
+         "p": 0.2087
         },
         {
-         "base": "0.813 falli per 90', 49 presenze",
+         "base": "1.166 falli per 90', 65 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.4967
+         "p": 0.6264
         },
         {
-         "base": "0.252 tiri_in_porta per 90', 49 presenze",
+         "base": "0.198 tiri_in_porta per 90', 65 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1917
+         "p": 0.154
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0275
+         "p": 0.0979
         }
        ],
-       "torneo": "CONMEBOL Sudamericana + Liga MX, Apertura"
+       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
        "id": 1888624,
@@ -14769,36 +14923,36 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.24059,
-     "1x2_draw": 0.26809,
-     "1x2_home": 0.49132,
+     "1x2_away": 0.23293,
+     "1x2_draw": 0.26619,
+     "1x2_home": 0.50089,
      "btts_no": 0.47997,
      "btts_yes": 0.52003,
-     "dc_12": 0.72916,
-     "dc_1x": 0.74998,
-     "dc_x2": 0.52086,
-     "over_0.5": 0.89938,
-     "over_1.5": 0.71832,
+     "dc_12": 0.72641,
+     "dc_1x": 0.76414,
+     "dc_x2": 0.50946,
+     "over_0.5": 0.90396,
+     "over_1.5": 0.72917,
      "over_2.5": 0.47366,
      "over_3.5": 0.27083,
-     "over_4.5": 0.13584,
-     "under_0.5": 0.10062,
-     "under_1.5": 0.28168,
+     "over_4.5": 0.14595,
+     "under_0.5": 0.09604,
+     "under_1.5": 0.27083,
      "under_2.5": 0.52634,
      "under_3.5": 0.72917,
-     "under_4.5": 0.86416
+     "under_4.5": 0.85405
     },
     "quote": {
      "mercati": [
       {
        "esiti": [
         {
-         "decimale": 1.91,
+         "decimale": 1.86,
          "esito": "1",
-         "frazionaria": "91/100",
-         "probabilita_implicita": 0.5236
+         "frazionaria": "43/50",
+         "probabilita_implicita": 0.5376
         },
         {
          "decimale": 3.5,
@@ -14807,29 +14961,29 @@
          "probabilita_implicita": 0.2857
         },
         {
-         "decimale": 3.9,
+         "decimale": 4.0,
          "esito": "2",
-         "frazionaria": "29/10",
-         "probabilita_implicita": 0.2564
+         "frazionaria": "3/1",
+         "probabilita_implicita": 0.25
         }
        ],
-       "margine_percento": 6.57,
+       "margine_percento": 7.33,
        "mercato": "Full time",
-       "somma_probabilita": 1.0657
+       "somma_probabilita": 1.0733
       },
       {
        "esiti": [
         {
-         "decimale": 1.25,
+         "decimale": 1.22,
          "esito": "1X",
-         "frazionaria": "1/4",
-         "probabilita_implicita": 0.8
+         "frazionaria": "2/9",
+         "probabilita_implicita": 0.8182
         },
         {
-         "decimale": 1.8,
+         "decimale": 1.83,
          "esito": "X2",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "frazionaria": "5/6",
+         "probabilita_implicita": 0.5455
         },
         {
          "decimale": 1.29,
@@ -14838,17 +14992,17 @@
          "probabilita_implicita": 0.7778
         }
        ],
-       "margine_percento": 113.33,
+       "margine_percento": 114.14,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1333
+       "somma_probabilita": 2.1414
       },
       {
        "esiti": [
         {
-         "decimale": 2.6,
+         "decimale": 2.5,
          "esito": "1",
-         "frazionaria": "8/5",
-         "probabilita_implicita": 0.3846
+         "frazionaria": "6/4",
+         "probabilita_implicita": 0.4
         },
         {
          "decimale": 2.2,
@@ -14857,34 +15011,34 @@
          "probabilita_implicita": 0.4545
         },
         {
-         "decimale": 4.33,
+         "decimale": 4.5,
          "esito": "2",
-         "frazionaria": "10/3",
-         "probabilita_implicita": 0.2308
+         "frazionaria": "7/2",
+         "probabilita_implicita": 0.2222
         }
        ],
-       "margine_percento": 6.99,
+       "margine_percento": 7.68,
        "mercato": "1st half",
-       "somma_probabilita": 1.0699
+       "somma_probabilita": 1.0768
       },
       {
        "esiti": [
         {
-         "decimale": 1.4,
+         "decimale": 1.36,
          "esito": "1",
-         "frazionaria": "2/5",
-         "probabilita_implicita": 0.7143
+         "frazionaria": "4/11",
+         "probabilita_implicita": 0.7333
         },
         {
-         "decimale": 2.75,
+         "decimale": 3.0,
          "esito": "2",
-         "frazionaria": "7/4",
-         "probabilita_implicita": 0.3636
+         "frazionaria": "2/1",
+         "probabilita_implicita": 0.3333
         }
        ],
-       "margine_percento": 7.79,
+       "margine_percento": 6.67,
        "mercato": "Draw no bet",
-       "somma_probabilita": 1.0779
+       "somma_probabilita": 1.0667
       },
       {
        "esiti": [
@@ -14914,36 +15068,36 @@
          "probabilita_implicita": 0.9412
         },
         {
-         "decimale": 9.5,
+         "decimale": 10.0,
          "esito": "Under",
-         "frazionaria": "17/2",
-         "probabilita_implicita": 0.1053
+         "frazionaria": "9/1",
+         "probabilita_implicita": 0.1
         }
        ],
        "linea": "0.5",
-       "margine_percento": 4.64,
+       "margine_percento": 4.12,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0464
+       "somma_probabilita": 1.0412
       },
       {
        "esiti": [
         {
-         "decimale": 1.33,
+         "decimale": 1.3,
          "esito": "Over",
-         "frazionaria": "1/3",
-         "probabilita_implicita": 0.75
+         "frazionaria": "3/10",
+         "probabilita_implicita": 0.7692
         },
         {
-         "decimale": 3.4,
+         "decimale": 3.5,
          "esito": "Under",
-         "frazionaria": "12/5",
-         "probabilita_implicita": 0.2941
+         "frazionaria": "5/2",
+         "probabilita_implicita": 0.2857
         }
        ],
        "linea": "1.5",
-       "margine_percento": 4.41,
+       "margine_percento": 5.49,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0441
+       "somma_probabilita": 1.0549
       },
       {
        "esiti": [
@@ -14988,22 +15142,22 @@
       {
        "esiti": [
         {
-         "decimale": 7.0,
+         "decimale": 6.5,
          "esito": "Over",
-         "frazionaria": "6/1",
-         "probabilita_implicita": 0.1429
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
         },
         {
-         "decimale": 1.1,
+         "decimale": 1.11,
          "esito": "Under",
-         "frazionaria": "1/10",
-         "probabilita_implicita": 0.9091
+         "frazionaria": "1/9",
+         "probabilita_implicita": 0.9
         }
        ],
        "linea": "4.5",
-       "margine_percento": 5.19,
+       "margine_percento": 5.38,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0519
+       "somma_probabilita": 1.0538
       },
       {
        "esiti": [
@@ -15048,41 +15202,41 @@
       {
        "esiti": [
         {
-         "decimale": 1.98,
+         "decimale": 1.93,
          "esito": "(-0.5) Vasco da Gama",
-         "frazionaria": "39/40",
-         "probabilita_implicita": 0.5063
+         "frazionaria": "37/40",
+         "probabilita_implicita": 0.5195
         },
         {
-         "decimale": 1.88,
+         "decimale": 1.93,
          "esito": "(0.5) Santos",
-         "frazionaria": "7/8",
-         "probabilita_implicita": 0.5333
+         "frazionaria": "37/40",
+         "probabilita_implicita": 0.5195
         }
        ],
-       "margine_percento": 3.97,
+       "margine_percento": 3.9,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0397
+       "somma_probabilita": 1.039
       },
       {
        "esiti": [
         {
-         "decimale": 1.73,
+         "decimale": 1.8,
          "esito": "Over",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
         },
         {
-         "decimale": 2.0,
+         "decimale": 1.91,
          "esito": "Under",
-         "frazionaria": "1/1",
-         "probabilita_implicita": 0.5
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
         }
        ],
        "linea": "4.5",
-       "margine_percento": 7.89,
+       "margine_percento": 7.94,
        "mercato": "Cards in match",
-       "somma_probabilita": 1.0789
+       "somma_probabilita": 1.0794
       },
       {
        "esiti": [
@@ -15148,34 +15302,34 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 114,
-     "p_min": 87,
+     "S_min": 113,
+     "p_min": 88,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 2.976e-08
+    "truncated_mass": 3.113e-08
    },
    "expected_goals": {
-    "away": 1.062,
-    "home": 1.684
+    "away": 1.034,
+    "home": 1.691
    },
    "half_time": {
-    "ht_over_0.5": 0.6958,
-    "ht_over_1.5": 0.3338,
-    "ht_over_2.5": 0.1184,
-    "ht_under_0.5": 0.3042,
-    "ht_under_1.5": 0.6662,
-    "ht_under_2.5": 0.8816,
-    "htft_11": 0.314,
-    "htft_12": 0.0157,
-    "htft_1X": 0.048,
-    "htft_21": 0.0282,
-    "htft_22": 0.1307,
-    "htft_2X": 0.048,
-    "htft_X1": 0.1768,
-    "htft_X2": 0.0928,
-    "htft_XX": 0.1456
+    "ht_over_0.5": 0.6924,
+    "ht_over_1.5": 0.3297,
+    "ht_over_2.5": 0.116,
+    "ht_under_0.5": 0.3076,
+    "ht_under_1.5": 0.6703,
+    "ht_under_2.5": 0.884,
+    "htft_11": 0.3194,
+    "htft_12": 0.0151,
+    "htft_1X": 0.0474,
+    "htft_21": 0.0281,
+    "htft_22": 0.1258,
+    "htft_2X": 0.0474,
+    "htft_X1": 0.1799,
+    "htft_X2": 0.0906,
+    "htft_XX": 0.1463
    },
    "home": {
     "crest": "https://crests.football-data.org/558.png",
@@ -15221,16 +15375,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2419,
-    "1x2_draw": 0.2412,
-    "1x2_home": 0.5169,
-    "btts_yes": 0.5254,
-    "over_2.5": 0.5149,
-    "under_2.5": 0.4851
+    "1x2_away": 0.2342,
+    "1x2_draw": 0.2404,
+    "1x2_home": 0.5254,
+    "btts_yes": 0.5183,
+    "over_2.5": 0.5098,
+    "under_2.5": 0.4902
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: RC Celta de Vigo 1.68, CA Osasuna 1.06 (totale 2.75)."
+    "Gol attesi: RC Celta de Vigo 1.69, CA Osasuna 1.03 (totale 2.73)."
    ],
    "silence": {
     "reason": "S_min"
@@ -15740,1102 +15894,19 @@
      "rossi": 71
     },
     "evento_id": 16450749,
-    "formazioni": {
-     "casa": {
-      "modulo": "3-4-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "id": 2592461,
-        "maglia": "31",
-        "nome": "Bernardo",
-        "ruolo": "G",
-        "titolare": true
-       },
-       {
-        "id": 965263,
-        "maglia": "14",
-        "nome": "Gustaf Lagerbielke",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 2445425,
-        "maglia": "6",
-        "nome": "Vitor Carvalho",
-        "ruolo": "C",
-        "titolare": true
-       },
-       {
-        "id": 1000192,
-        "maglia": "44",
-        "nome": "Adrian Bajrami",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 877918,
-        "maglia": "2",
-        "nome": "Victor Gómez",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1142613,
-        "maglia": "34",
-        "nome": "Demir Ege Tıknaz",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 6562,
-        "maglia": "8",
-        "nome": "João Moutinho",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1046794,
-        "maglia": "11",
-        "nome": "Gabriel Silva",
-        "ruolo": "F",
-        "titolare": true
-       },
-       {
-        "id": 1064842,
-        "maglia": "23",
-        "nome": "Denis Huseinbašić",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1031567,
-        "maglia": "10",
-        "nome": "Pau Víctor",
-        "ruolo": "F",
-        "titolare": true
-       },
-       {
-        "id": 314380,
-        "maglia": "21",
-        "nome": "Ricardo Horta",
-        "ruolo": "F",
-        "titolare": true
-       }
-      ]
-     },
-     "confermate": false,
-     "ore_prima": 29.9,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "id": 981586,
-        "maglia": "30",
-        "nome": "Lucão",
-        "ruolo": "G",
-        "titolare": true
-       },
-       {
-        "id": 97000,
-        "maglia": "47",
-        "nome": "Ricardo Esgaio",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 1114164,
-        "maglia": "4",
-        "nome": "Marvin Elimbi Gilbert",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 800348,
-        "maglia": "39",
-        "nome": "Jonathan Buatu",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 1477659,
-        "maglia": "45",
-        "nome": "David Moreira",
-        "ruolo": "D",
-        "titolare": true
-       },
-       {
-        "id": 1000566,
-        "maglia": "12",
-        "nome": "Andreas Lausen",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 989837,
-        "maglia": "5",
-        "nome": "Facundo Cáseres",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1410239,
-        "maglia": "20",
-        "nome": "Gil Martins",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1084746,
-        "maglia": "10",
-        "nome": "Santi García",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1032547,
-        "maglia": "11",
-        "nome": "Joelson Fernandes",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 352448,
-        "maglia": "23",
-        "nome": "Héctor Hernández",
-        "ruolo": "F",
-        "titolare": true
-       }
-      ]
-     }
-    },
-    "giocatori": {
-     "casa": [
-      {
-       "id": 965263,
-       "nome": "Gustaf Lagerbielke",
-       "presenze": 67,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.116 gol per 90', 67 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0933
-        },
-        {
-         "base": "0 assist per 90', 67 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.246 gialli per 90', 67 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2524
-        },
-        {
-         "base": "1.307 falli per 90', 67 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.6684
-        },
-        {
-         "base": "0.218 tiri_in_porta per 90', 67 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.1681
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0933
-        }
-       ],
-       "torneo": "Allsvenskan + Liga Portugal Betclic"
-      },
-      {
-       "id": 1000192,
-       "nome": "Adrian Bajrami",
-       "presenze": 55,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.07 gol per 90', 55 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0574
-        },
-        {
-         "base": "0.022 assist per 90', 55 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0184
-        },
-        {
-         "base": "0.129 gialli per 90', 55 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1414
-        },
-        {
-         "base": "0.673 falli per 90', 55 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4335
-        },
-        {
-         "base": "0.088 tiri_in_porta per 90', 55 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0716
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0747
-        }
-       ],
-       "torneo": "Liga Portugal 2 + Liga Portugal Betclic"
-      },
-      {
-       "id": 877918,
-       "nome": "Victor Gómez",
-       "presenze": 81,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.015 gol per 90', 81 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0126
-        },
-        {
-         "base": "0.193 assist per 90', 81 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1504
-        },
-        {
-         "base": "0.173 gialli per 90', 81 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.185
-        },
-        {
-         "base": "0.904 falli per 90', 81 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5339
-        },
-        {
-         "base": "0.196 tiri_in_porta per 90', 81 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.1525
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1611
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + UEFA Europa League"
-      },
-      {
-       "id": 1142613,
-       "nome": "Demir Ege Tıknaz",
-       "presenze": 70,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.071 gol per 90', 70 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0582
-        },
-        {
-         "base": "0.193 assist per 90', 70 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1504
-        },
-        {
-         "base": "0.399 gialli per 90', 70 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.3761
-        },
-        {
-         "base": "1.932 falli per 90', 70 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.8044
-        },
-        {
-         "base": "0.352 tiri_in_porta per 90', 70 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.2571
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1998
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Trendyol Süper Lig"
-      },
-      {
-       "id": 6562,
-       "nome": "João Moutinho",
-       "presenze": 44,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.018 gol per 90', 44 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0151
-        },
-        {
-         "base": "0.047 assist per 90', 44 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0389
-        },
-        {
-         "base": "0.059 gialli per 90', 44 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.0674
-        },
-        {
-         "base": "1.688 falli per 90', 44 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7596
-        },
-        {
-         "base": "0.067 tiri_in_porta per 90', 44 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.055
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0534
-        }
-       ],
-       "torneo": "UEFA Champions League + UEFA Europa League"
-      },
-      {
-       "id": 1046794,
-       "nome": "Gabriel Silva",
-       "presenze": 80,
-       "ruolo": "F",
-       "stime": [
-        {
-         "base": "0.211 gol per 90', 80 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1632
-        },
-        {
-         "base": "0.036 assist per 90', 80 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0299
-        },
-        {
-         "base": "0.135 gialli per 90', 80 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1475
-        },
-        {
-         "base": "1.657 falli per 90', 80 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7532
-        },
-        {
-         "base": "0.752 tiri_in_porta per 90', 80 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.4701
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1883
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Brasileirão Betano"
-      },
-      {
-       "id": 1064842,
-       "nome": "Denis Huseinbašić",
-       "presenze": 72,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.057 gol per 90', 72 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.047
-        },
-        {
-         "base": "0.1 assist per 90', 72 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.081
-        },
-        {
-         "base": "0.25 gialli per 90', 72 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2559
-        },
-        {
-         "base": "1.32 falli per 90', 72 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.672
-        },
-        {
-         "base": "0.129 tiri_in_porta per 90', 72 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.1032
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1242
-        }
-       ],
-       "torneo": "Bundesliga + DFB Pokal"
-      },
-      {
-       "id": 1031567,
-       "nome": "Pau Víctor",
-       "presenze": 39,
-       "ruolo": "F",
-       "stime": [
-        {
-         "base": "0.439 gol per 90', 39 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.3098
-        },
-        {
-         "base": "0.151 assist per 90', 39 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1197
-        },
-        {
-         "base": "0.251 gialli per 90', 39 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2568
-        },
-        {
-         "base": "1.355 falli per 90', 39 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.6815
-        },
-        {
-         "base": "0.928 tiri_in_porta per 90', 39 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5433
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.3924
-        }
-       ],
-       "torneo": "Copa del Rey + Liga Portugal Betclic"
-      },
-      {
-       "id": 314380,
-       "nome": "Ricardo Horta",
-       "presenze": 90,
-       "ruolo": "F",
-       "stime": [
-        {
-         "base": "0.393 gol per 90', 90 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.2824
-        },
-        {
-         "base": "0.224 assist per 90', 90 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1723
-        },
-        {
-         "base": "0.115 gialli per 90', 90 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1271
-        },
-        {
-         "base": "0.833 falli per 90', 90 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5051
-        },
-        {
-         "base": "0.96 tiri_in_porta per 90', 90 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5554
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.4061
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + UEFA Europa League"
-      }
-     ],
-     "minuti_attesi_titolare": 76,
-     "misurato": false,
-     "moltiplicatore_arbitro": 1.4,
-     "nota": "Stime non misurate: non esiste una quota di mercato su questi esiti ne' uno storico per verificarle. Non entrano nel registro.",
-     "ospiti": [
-      {
-       "id": 981586,
-       "nome": "Lucão",
-       "presenze": 26,
-       "ruolo": "G",
-       "stime": [
-        {
-         "base": "0 gol per 90', 26 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0
-        },
-        {
-         "base": "0 assist per 90', 26 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.187 gialli per 90', 26 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1983
-        },
-        {
-         "base": "0 falli per 90', 26 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.0
-        },
-        {
-         "base": "0 tiri_in_porta per 90', 26 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0
-        }
-       ],
-       "torneo": "Brasileirão Betano + Liga Portugal Betclic"
-      },
-      {
-       "id": 97000,
-       "nome": "Ricardo Esgaio",
-       "presenze": 59,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.018 gol per 90', 59 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0151
-        },
-        {
-         "base": "0.11 assist per 90', 59 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0887
-        },
-        {
-         "base": "0.213 gialli per 90', 59 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2226
-        },
-        {
-         "base": "1.067 falli per 90', 59 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5938
-        },
-        {
-         "base": "0.085 tiri_in_porta per 90', 59 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0693
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1025
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + UEFA Europa League"
-      },
-      {
-       "id": 1114164,
-       "nome": "Marvin Elimbi Gilbert",
-       "presenze": 70,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.028 gol per 90', 70 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0234
-        },
-        {
-         "base": "0 assist per 90', 70 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.28 gialli per 90', 70 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2818
-        },
-        {
-         "base": "1.266 falli per 90', 70 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.6567
-        },
-        {
-         "base": "0.094 tiri_in_porta per 90', 70 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0763
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0234
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Liga Portugal 2"
-      },
-      {
-       "id": 800348,
-       "nome": "Jonathan Buatu",
-       "presenze": 93,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.025 gol per 90', 93 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0209
-        },
-        {
-         "base": "0.027 assist per 90', 93 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0225
-        },
-        {
-         "base": "0.082 gialli per 90', 93 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.0924
-        },
-        {
-         "base": "0.814 falli per 90', 93 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4971
-        },
-        {
-         "base": "0.05 tiri_in_porta per 90', 93 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0413
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.043
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Pro League"
-      },
-      {
-       "id": 1477659,
-       "nome": "David Moreira",
-       "presenze": 34,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.0 gol per 90', 34 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0
-        },
-        {
-         "base": "0.0 assist per 90', 34 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.093 gialli per 90', 34 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1041
-        },
-        {
-         "base": "0.93 falli per 90', 34 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.544
-        },
-        {
-         "base": "0.031 tiri_in_porta per 90', 34 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0258
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Liga Portugal 2"
-      },
-      {
-       "id": 1000566,
-       "nome": "Andreas Lausen",
-       "presenze": 68,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.179 gol per 90', 68 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1403
-        },
-        {
-         "base": "0.136 assist per 90', 68 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1085
-        },
-        {
-         "base": "0.064 gialli per 90', 68 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.0729
-        },
-        {
-         "base": "0.909 falli per 90', 68 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5359
-        },
-        {
-         "base": "0.96 tiri_in_porta per 90', 68 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5554
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.2336
-        }
-       ],
-       "torneo": "Oddset Pokalen + Betinia Liga"
-      },
-      {
-       "id": 989837,
-       "nome": "Facundo Cáseres",
-       "presenze": 100,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.053 gol per 90', 100 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0438
-        },
-        {
-         "base": "0.067 assist per 90', 100 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.055
-        },
-        {
-         "base": "0.211 gialli per 90', 100 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2208
-        },
-        {
-         "base": "1.49 falli per 90', 100 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7158
-        },
-        {
-         "base": "0.096 tiri_in_porta per 90', 100 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0779
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0964
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + HNL"
-      },
-      {
-       "id": 1410239,
-       "nome": "Gil Martins",
-       "presenze": 25,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0 gol per 90', 25 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0
-        },
-        {
-         "base": "0 assist per 90', 25 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0
-        },
-        {
-         "base": "0.336 gialli per 90', 25 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.3278
-        },
-        {
-         "base": "2.268 falli per 90', 25 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.8527
-        },
-        {
-         "base": "0.42 tiri_in_porta per 90', 25 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.2986
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0
-        }
-       ],
-       "torneo": "Liga Portugal 2 + Liga Portugal Betclic"
-      },
-      {
-       "id": 1084746,
-       "nome": "Santi García",
-       "presenze": 62,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.203 gol per 90', 62 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1575
-        },
-        {
-         "base": "0.101 assist per 90', 62 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0818
-        },
-        {
-         "base": "0.266 gialli per 90', 62 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2698
-        },
-        {
-         "base": "1.66 falli per 90', 62 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7538
-        },
-        {
-         "base": "0.575 tiri_in_porta per 90', 62 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.3846
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.2264
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + LaLiga"
-      },
-      {
-       "id": 1032547,
-       "nome": "Joelson Fernandes",
-       "presenze": 94,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.084 gol per 90', 94 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0685
-        },
-        {
-         "base": "0.154 assist per 90', 94 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1219
-        },
-        {
-         "base": "0.285 gialli per 90', 94 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.286
-        },
-        {
-         "base": "1.603 falli per 90', 94 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.7417
-        },
-        {
-         "base": "0.644 tiri_in_porta per 90', 94 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.4195
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1821
-        }
-       ],
-       "torneo": "Liga Portugal Betclic + Trendyol Süper Lig"
-      },
-      {
-       "id": 352448,
-       "nome": "Héctor Hernández",
-       "presenze": 45,
-       "ruolo": "F",
-       "stime": [
-        {
-         "base": "0.54 gol per 90', 45 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.3662
-        },
-        {
-         "base": "0.068 assist per 90', 45 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0558
-        },
-        {
-         "base": "0.094 gialli per 90', 45 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1052
-        },
-        {
-         "base": "0.906 falli per 90', 45 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5347
-        },
-        {
-         "base": "1.071 tiri_in_porta per 90', 45 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.5952
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.4016
-        }
-       ],
-       "torneo": "Copa del Rey + Liga Portugal Betclic"
-      }
-     ]
-    },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.16139,
-     "1x2_draw": 0.24752,
-     "1x2_home": 0.59109,
      "btts_no": 0.52003,
      "btts_yes": 0.47997,
-     "dc_12": 0.75493,
-     "dc_1x": 0.82571,
-     "dc_x2": 0.41936,
-     "over_0.5": 0.91287,
+     "dc_12": 0.75837,
+     "dc_1x": 0.82946,
+     "dc_x2": 0.41217,
+     "over_0.5": 0.89938,
      "over_1.5": 0.73136,
      "over_2.5": 0.48685,
      "over_3.5": 0.27659,
      "over_4.5": 0.13584,
-     "under_0.5": 0.08713,
+     "under_0.5": 0.10062,
      "under_1.5": 0.26864,
      "under_2.5": 0.51315,
      "under_3.5": 0.72341,
@@ -16846,27 +15917,27 @@
       {
        "esiti": [
         {
-         "decimale": 1.57,
+         "decimale": 1.0,
          "esito": "1",
-         "frazionaria": "57/100",
-         "probabilita_implicita": 0.6369
+         "frazionaria": "0/1",
+         "probabilita_implicita": 1.0
         },
         {
-         "decimale": 3.75,
+         "decimale": 1.0,
          "esito": "X",
-         "frazionaria": "11/4",
-         "probabilita_implicita": 0.2667
+         "frazionaria": "0/1",
+         "probabilita_implicita": 1.0
         },
         {
-         "decimale": 5.75,
+         "decimale": 1.0,
          "esito": "2",
-         "frazionaria": "19/4",
-         "probabilita_implicita": 0.1739
+         "frazionaria": "0/1",
+         "probabilita_implicita": 1.0
         }
        ],
-       "margine_percento": 7.75,
+       "margine_percento": 200.0,
        "mercato": "Full time",
-       "somma_probabilita": 1.0775
+       "somma_probabilita": 3.0
       },
       {
        "esiti": [
@@ -16877,10 +15948,10 @@
          "probabilita_implicita": 0.875
         },
         {
-         "decimale": 2.25,
+         "decimale": 2.3,
          "esito": "X2",
-         "frazionaria": "5/4",
-         "probabilita_implicita": 0.4444
+         "frazionaria": "13/10",
+         "probabilita_implicita": 0.4348
         },
         {
          "decimale": 1.25,
@@ -16889,9 +15960,9 @@
          "probabilita_implicita": 0.8
         }
        ],
-       "margine_percento": 111.94,
+       "margine_percento": 110.98,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1194
+       "somma_probabilita": 2.1098
       },
       {
        "esiti": [
@@ -16908,34 +15979,34 @@
          "probabilita_implicita": 0.4444
         },
         {
-         "decimale": 5.5,
+         "decimale": 6.0,
          "esito": "2",
-         "frazionaria": "9/2",
-         "probabilita_implicita": 0.1818
+         "frazionaria": "5/1",
+         "probabilita_implicita": 0.1667
         }
        ],
-       "margine_percento": 8.08,
+       "margine_percento": 6.57,
        "mercato": "1st half",
-       "somma_probabilita": 1.0808
+       "somma_probabilita": 1.0657
       },
       {
        "esiti": [
         {
-         "decimale": 1.22,
+         "decimale": 1.2,
          "esito": "1",
-         "frazionaria": "2/9",
-         "probabilita_implicita": 0.8182
+         "frazionaria": "1/5",
+         "probabilita_implicita": 0.8333
         },
         {
-         "decimale": 4.0,
+         "decimale": 4.33,
          "esito": "2",
-         "frazionaria": "3/1",
-         "probabilita_implicita": 0.25
+         "frazionaria": "10/3",
+         "probabilita_implicita": 0.2308
         }
        ],
-       "margine_percento": 6.82,
+       "margine_percento": 6.41,
        "mercato": "Draw no bet",
-       "somma_probabilita": 1.0682
+       "somma_probabilita": 1.0641
       },
       {
        "esiti": [
@@ -16959,22 +16030,22 @@
       {
        "esiti": [
         {
-         "decimale": 1.05,
+         "decimale": 1.06,
          "esito": "Over",
-         "frazionaria": "1/20",
-         "probabilita_implicita": 0.9524
+         "frazionaria": "1/16",
+         "probabilita_implicita": 0.9412
         },
         {
-         "decimale": 11.0,
+         "decimale": 9.5,
          "esito": "Under",
-         "frazionaria": "10/1",
-         "probabilita_implicita": 0.0909
+         "frazionaria": "17/2",
+         "probabilita_implicita": 0.1053
         }
        ],
        "linea": "0.5",
-       "margine_percento": 4.33,
+       "margine_percento": 4.64,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0433
+       "somma_probabilita": 1.0464
       },
       {
        "esiti": [
@@ -17099,21 +16170,21 @@
       {
        "esiti": [
         {
-         "decimale": 1.8,
-         "esito": "(-0.75) Sporting Braga",
-         "frazionaria": "4/5",
-         "probabilita_implicita": 0.5556
+         "decimale": 2.1,
+         "esito": "(-1) Sporting Braga",
+         "frazionaria": "11/10",
+         "probabilita_implicita": 0.4762
         },
         {
-         "decimale": 2.05,
-         "esito": "(0.75) Gil Vicente",
-         "frazionaria": "21/20",
-         "probabilita_implicita": 0.4878
+         "decimale": 1.78,
+         "esito": "(1) Gil Vicente",
+         "frazionaria": "31/40",
+         "probabilita_implicita": 0.5634
         }
        ],
-       "margine_percento": 4.34,
+       "margine_percento": 3.96,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0434
+       "somma_probabilita": 1.0396
       },
       {
        "esiti": [
@@ -17429,7 +16500,7 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 31.9,
+     "ore_prima": 7.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -18514,16 +17585,16 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.50252,
-     "1x2_draw": 0.27491,
-     "1x2_home": 0.22256,
+     "1x2_away": 0.51333,
+     "1x2_draw": 0.26545,
+     "1x2_home": 0.22122,
      "btts_no": 0.47997,
      "btts_yes": 0.52003,
-     "dc_12": 0.72127,
-     "dc_1x": 0.51151,
-     "dc_x2": 0.76722,
+     "dc_12": 0.73384,
+     "dc_1x": 0.4942,
+     "dc_x2": 0.77196,
      "over_0.5": 0.90396,
      "over_1.5": 0.72917,
      "over_2.5": 0.47366,
@@ -18546,29 +17617,29 @@
          "probabilita_implicita": 0.2381
         },
         {
-         "decimale": 3.4,
+         "decimale": 3.5,
          "esito": "X",
-         "frazionaria": "12/5",
-         "probabilita_implicita": 0.2941
+         "frazionaria": "5/2",
+         "probabilita_implicita": 0.2857
         },
         {
-         "decimale": 1.86,
+         "decimale": 1.81,
          "esito": "2",
-         "frazionaria": "43/50",
-         "probabilita_implicita": 0.5376
+         "frazionaria": "81/100",
+         "probabilita_implicita": 0.5525
         }
        ],
-       "margine_percento": 6.98,
+       "margine_percento": 7.63,
        "mercato": "Full time",
-       "somma_probabilita": 1.0698
+       "somma_probabilita": 1.0763
       },
       {
        "esiti": [
         {
-         "decimale": 1.83,
+         "decimale": 1.91,
          "esito": "1X",
-         "frazionaria": "5/6",
-         "probabilita_implicita": 0.5455
+         "frazionaria": "10/11",
+         "probabilita_implicita": 0.5238
         },
         {
          "decimale": 1.22,
@@ -18577,15 +17648,15 @@
          "probabilita_implicita": 0.8182
         },
         {
-         "decimale": 1.3,
+         "decimale": 1.29,
          "esito": "12",
-         "frazionaria": "3/10",
-         "probabilita_implicita": 0.7692
+         "frazionaria": "2/7",
+         "probabilita_implicita": 0.7778
         }
        ],
-       "margine_percento": 113.29,
+       "margine_percento": 111.98,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1329
+       "somma_probabilita": 2.1198
       },
       {
        "esiti": [
@@ -18793,21 +17864,21 @@
       {
        "esiti": [
         {
-         "decimale": 1.93,
+         "decimale": 1.95,
          "esito": "(0.5) Mirassol",
-         "frazionaria": "37/40",
-         "probabilita_implicita": 0.5195
+         "frazionaria": "19/20",
+         "probabilita_implicita": 0.5128
         },
         {
-         "decimale": 1.93,
+         "decimale": 1.9,
          "esito": "(-0.5) Flamengo",
-         "frazionaria": "37/40",
-         "probabilita_implicita": 0.5195
+         "frazionaria": "9/10",
+         "probabilita_implicita": 0.5263
         }
        ],
-       "margine_percento": 3.9,
+       "margine_percento": 3.91,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.039
+       "somma_probabilita": 1.0391
       },
       {
        "esiti": [
@@ -18858,21 +17929,21 @@
          "probabilita_implicita": 0.4
         },
         {
-         "decimale": 9.5,
+         "decimale": 10.0,
          "esito": "No goal",
-         "frazionaria": "17/2",
-         "probabilita_implicita": 0.1053
+         "frazionaria": "9/1",
+         "probabilita_implicita": 0.1
         },
         {
-         "decimale": 1.67,
+         "decimale": 1.62,
          "esito": "Flamengo",
-         "frazionaria": "4/6",
-         "probabilita_implicita": 0.6
+         "frazionaria": "8/13",
+         "probabilita_implicita": 0.619
         }
        ],
-       "margine_percento": 10.53,
+       "margine_percento": 11.9,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1053
+       "somma_probabilita": 1.119
       }
      ],
      "n_mercati": 16
@@ -19092,16 +18163,16 @@
         "titolare": true
        },
        {
-        "id": 972373,
-        "maglia": "83",
-        "nome": "Jamerson",
+        "id": 980761,
+        "maglia": "13",
+        "nome": "Ramon",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 1188028,
-        "maglia": "88",
-        "nome": "Zé Vitor",
+        "id": 922575,
+        "maglia": "44",
+        "nome": "Gabriel Baralhas",
         "ruolo": "M",
         "titolare": true
        },
@@ -19143,7 +18214,7 @@
       ]
      },
      "confermate": false,
-     "ore_prima": 31.9,
+     "ore_prima": 7.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -19411,94 +18482,94 @@
        "torneo": "Brasileirão Betano + Paulista Série A1"
       },
       {
-       "id": 972373,
-       "nome": "Jamerson",
-       "presenze": 74,
+       "id": 980761,
+       "nome": "Ramon",
+       "presenze": 81,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0.03 gol per 90', 74 presenze",
+         "base": "0.063 gol per 90', 81 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.025
+         "p": 0.0518
         },
         {
-         "base": "0.064 assist per 90', 74 presenze",
+         "base": "0.008 assist per 90', 81 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0526
+         "p": 0.0067
         },
         {
-         "base": "0.17 gialli per 90', 74 presenze",
+         "base": "0.214 gialli per 90', 81 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1821
+         "p": 0.2235
         },
         {
-         "base": "0.86 falli per 90', 74 presenze",
+         "base": "1.499 falli per 90', 81 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.5163
+         "p": 0.718
         },
         {
-         "base": "0.199 tiri_in_porta per 90', 74 presenze",
+         "base": "0.14 tiri_in_porta per 90', 81 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1547
+         "p": 0.1115
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0763
+         "p": 0.0582
         }
        ],
-       "torneo": "Brasileirão Betano + Paranaense"
+       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 1188028,
-       "nome": "Zé Vitor",
-       "presenze": 57,
+       "id": 922575,
+       "nome": "Gabriel Baralhas",
+       "presenze": 96,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.125 gol per 90', 57 presenze",
+         "base": "0.091 gol per 90', 96 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.1002
+         "p": 0.074
         },
         {
-         "base": "0.019 assist per 90', 57 presenze",
+         "base": "0.101 assist per 90', 96 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0159
+         "p": 0.0818
         },
         {
-         "base": "0.437 gialli per 90', 57 presenze",
+         "base": "0.307 gialli per 90', 96 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.4035
+         "p": 0.3044
         },
         {
-         "base": "2.547 falli per 90', 57 presenze",
+         "base": "1.534 falli per 90', 96 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.8836
+         "p": 0.7262
         },
         {
-         "base": "0.458 tiri_in_porta per 90', 57 presenze",
+         "base": "0.39 tiri_in_porta per 90', 96 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.3207
+         "p": 0.2806
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1145
+         "p": 0.1497
         }
        ],
-       "torneo": "Brasileirão Betano + Paranaense"
+       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
       },
       {
        "id": 871032,
@@ -20228,36 +19299,36 @@
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.30422,
-     "1x2_draw": 0.28574,
-     "1x2_home": 0.41003,
-     "btts_no": 0.46668,
-     "btts_yes": 0.53332,
+     "1x2_away": 0.29484,
+     "1x2_draw": 0.28588,
+     "1x2_home": 0.41928,
+     "btts_no": 0.47997,
+     "btts_yes": 0.52003,
      "dc_12": 0.70765,
      "dc_1x": 0.69189,
      "dc_x2": 0.60046,
      "over_0.5": 0.90396,
-     "over_1.5": 0.72917,
+     "over_1.5": 0.71832,
      "over_2.5": 0.47366,
      "over_3.5": 0.27083,
-     "over_4.5": 0.14595,
+     "over_4.5": 0.13584,
      "under_0.5": 0.09604,
-     "under_1.5": 0.27083,
+     "under_1.5": 0.28168,
      "under_2.5": 0.52634,
      "under_3.5": 0.72917,
-     "under_4.5": 0.85405
+     "under_4.5": 0.86416
     },
     "quote": {
      "mercati": [
       {
        "esiti": [
         {
-         "decimale": 2.3,
+         "decimale": 2.25,
          "esito": "1",
-         "frazionaria": "13/10",
-         "probabilita_implicita": 0.4348
+         "frazionaria": "5/4",
+         "probabilita_implicita": 0.4444
         },
         {
          "decimale": 3.3,
@@ -20266,15 +19337,15 @@
          "probabilita_implicita": 0.303
         },
         {
-         "decimale": 3.1,
+         "decimale": 3.2,
          "esito": "2",
-         "frazionaria": "21/10",
-         "probabilita_implicita": 0.3226
+         "frazionaria": "11/5",
+         "probabilita_implicita": 0.3125
         }
        ],
-       "margine_percento": 6.04,
+       "margine_percento": 6.0,
        "mercato": "Full time",
-       "somma_probabilita": 1.0604
+       "somma_probabilita": 1.06
       },
       {
        "esiti": [
@@ -20304,65 +19375,65 @@
       {
        "esiti": [
         {
-         "decimale": 3.0,
+         "decimale": 2.88,
          "esito": "1",
-         "frazionaria": "2/1",
-         "probabilita_implicita": 0.3333
-        },
-        {
-         "decimale": 2.2,
-         "esito": "X",
-         "frazionaria": "6/5",
-         "probabilita_implicita": 0.4545
-        },
-        {
-         "decimale": 3.6,
-         "esito": "2",
-         "frazionaria": "13/5",
-         "probabilita_implicita": 0.2778
-        }
-       ],
-       "margine_percento": 6.57,
-       "mercato": "1st half",
-       "somma_probabilita": 1.0657
-      },
-      {
-       "esiti": [
-        {
-         "decimale": 1.67,
-         "esito": "1",
-         "frazionaria": "4/6",
-         "probabilita_implicita": 0.6
+         "frazionaria": "15/8",
+         "probabilita_implicita": 0.3478
         },
         {
          "decimale": 2.1,
-         "esito": "2",
+         "esito": "X",
          "frazionaria": "11/10",
          "probabilita_implicita": 0.4762
+        },
+        {
+         "decimale": 3.75,
+         "esito": "2",
+         "frazionaria": "11/4",
+         "probabilita_implicita": 0.2667
         }
        ],
-       "margine_percento": 7.62,
-       "mercato": "Draw no bet",
-       "somma_probabilita": 1.0762
+       "margine_percento": 9.07,
+       "mercato": "1st half",
+       "somma_probabilita": 1.0907
       },
       {
        "esiti": [
         {
-         "decimale": 1.75,
-         "esito": "Yes",
-         "frazionaria": "3/4",
-         "probabilita_implicita": 0.5714
+         "decimale": 1.62,
+         "esito": "1",
+         "frazionaria": "8/13",
+         "probabilita_implicita": 0.619
         },
         {
-         "decimale": 2.0,
-         "esito": "No",
-         "frazionaria": "1/1",
-         "probabilita_implicita": 0.5
+         "decimale": 2.2,
+         "esito": "2",
+         "frazionaria": "6/5",
+         "probabilita_implicita": 0.4545
         }
        ],
-       "margine_percento": 7.14,
+       "margine_percento": 7.36,
+       "mercato": "Draw no bet",
+       "somma_probabilita": 1.0736
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.8,
+         "esito": "Yes",
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
+        },
+        {
+         "decimale": 1.95,
+         "esito": "No",
+         "frazionaria": "19/20",
+         "probabilita_implicita": 0.5128
+        }
+       ],
+       "margine_percento": 6.84,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0714
+       "somma_probabilita": 1.0684
       },
       {
        "esiti": [
@@ -20387,22 +19458,22 @@
       {
        "esiti": [
         {
-         "decimale": 1.3,
+         "decimale": 1.33,
          "esito": "Over",
-         "frazionaria": "3/10",
-         "probabilita_implicita": 0.7692
+         "frazionaria": "1/3",
+         "probabilita_implicita": 0.75
         },
         {
-         "decimale": 3.5,
+         "decimale": 3.4,
          "esito": "Under",
-         "frazionaria": "5/2",
-         "probabilita_implicita": 0.2857
+         "frazionaria": "12/5",
+         "probabilita_implicita": 0.2941
         }
        ],
        "linea": "1.5",
-       "margine_percento": 5.49,
+       "margine_percento": 4.41,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0549
+       "somma_probabilita": 1.0441
       },
       {
        "esiti": [
@@ -20447,22 +19518,22 @@
       {
        "esiti": [
         {
-         "decimale": 6.5,
+         "decimale": 7.0,
          "esito": "Over",
-         "frazionaria": "11/2",
-         "probabilita_implicita": 0.1538
+         "frazionaria": "6/1",
+         "probabilita_implicita": 0.1429
         },
         {
-         "decimale": 1.11,
+         "decimale": 1.1,
          "esito": "Under",
-         "frazionaria": "1/9",
-         "probabilita_implicita": 0.9
+         "frazionaria": "1/10",
+         "probabilita_implicita": 0.9091
         }
        ],
        "linea": "4.5",
-       "margine_percento": 5.38,
+       "margine_percento": 5.19,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0538
+       "somma_probabilita": 1.0519
       },
       {
        "esiti": [
@@ -20507,21 +19578,21 @@
       {
        "esiti": [
         {
-         "decimale": 2.03,
+         "decimale": 2.0,
          "esito": "(-0.25) Vitória",
-         "frazionaria": "41/40",
-         "probabilita_implicita": 0.4938
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
         },
         {
-         "decimale": 1.83,
+         "decimale": 1.85,
          "esito": "(0.25) Botafogo",
-         "frazionaria": "33/40",
-         "probabilita_implicita": 0.5479
+         "frazionaria": "17/20",
+         "probabilita_implicita": 0.5405
         }
        ],
-       "margine_percento": 4.18,
+       "margine_percento": 4.05,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0418
+       "somma_probabilita": 1.0405
       },
       {
        "esiti": [
@@ -20578,15 +19649,15 @@
          "probabilita_implicita": 0.1053
         },
         {
-         "decimale": 2.1,
+         "decimale": 2.2,
          "esito": "Botafogo",
-         "frazionaria": "11/10",
-         "probabilita_implicita": 0.4762
+         "frazionaria": "6/5",
+         "probabilita_implicita": 0.4545
         }
        ],
-       "margine_percento": 12.69,
+       "margine_percento": 10.53,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1269
+       "somma_probabilita": 1.1053
       }
      ],
      "n_mercati": 16
@@ -20717,30 +19788,30 @@
         "titolare": true
        },
        {
-        "id": 931540,
-        "maglia": "2",
-        "nome": "Matheuzinho",
+        "id": 985809,
+        "maglia": "20",
+        "nome": "Pedro Milans",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 124737,
-        "maglia": "3",
-        "nome": "Gabriel Paulista",
+        "id": 148155,
+        "maglia": "5",
+        "nome": "André Ramalho",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 243181,
-        "maglia": "13",
-        "nome": "Gustavo Henrique",
+        "id": 1411150,
+        "maglia": "4",
+        "nome": "João Pedro Tchoca",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 981703,
-        "maglia": "21",
-        "nome": "Matheus Bidu",
+        "id": 311462,
+        "maglia": "26",
+        "nome": "Fabrizio Angileri",
         "ruolo": "D",
         "titolare": true
        },
@@ -20752,44 +19823,44 @@
         "titolare": true
        },
        {
-        "id": 866392,
-        "maglia": "14",
-        "nome": "Raniele",
+        "id": 795268,
+        "maglia": "23",
+        "nome": "Matheus Pereira",
         "ruolo": "M",
         "titolare": true
        },
        {
-        "id": 1199261,
-        "maglia": "7",
-        "nome": "Breno Bidon",
+        "id": 845178,
+        "maglia": "35",
+        "nome": "Charles",
         "ruolo": "M",
         "titolare": true
        },
        {
-        "id": 994454,
-        "maglia": "8",
-        "nome": "Rodrigo Garro",
-        "ruolo": "M",
-        "titolare": true
-       },
-       {
-        "id": 1396009,
-        "maglia": "37",
-        "nome": "Kaio César",
+        "id": 205508,
+        "maglia": "77",
+        "nome": "Jesse Lingard",
         "ruolo": "F",
         "titolare": true
        },
        {
-        "id": 866911,
-        "maglia": "18",
-        "nome": "Pedro Raul",
+        "id": 1922597,
+        "maglia": "56",
+        "nome": "Gui Negão",
         "ruolo": "F",
+        "titolare": true
+       },
+       {
+        "id": 1916131,
+        "maglia": "61",
+        "nome": "Dieguinho",
+        "ruolo": "M",
         "titolare": true
        }
       ]
      },
      "confermate": false,
-     "ore_prima": 32.9,
+     "ore_prima": 8.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -20816,23 +19887,23 @@
         "titolare": true
        },
        {
-        "id": 1498670,
-        "maglia": "34",
-        "nome": "Jonathan Jesus",
+        "id": 978638,
+        "maglia": "43",
+        "nome": "João Marcelo",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 1387300,
-        "maglia": "27",
-        "nome": "Gabriel Rojas",
+        "id": 260077,
+        "maglia": "25",
+        "nome": "Lucas Villalba",
         "ruolo": "D",
         "titolare": true
        },
        {
-        "id": 263477,
-        "maglia": "29",
-        "nome": "Lucas Romero",
+        "id": 2040561,
+        "maglia": "5",
+        "nome": "Zé Lucas",
         "ruolo": "M",
         "titolare": true
        },
@@ -20844,16 +19915,16 @@
         "titolare": true
        },
        {
-        "id": 1482431,
-        "maglia": "99",
-        "nome": "Keny Arroyo",
+        "id": 1397478,
+        "maglia": "67",
+        "nome": "João Costa",
         "ruolo": "M",
         "titolare": true
        },
        {
-        "id": 377238,
-        "maglia": "10",
-        "nome": "Matheus Pereira",
+        "id": 912786,
+        "maglia": "7",
+        "nome": "Matheus Henrique",
         "ruolo": "M",
         "titolare": true
        },
@@ -20865,9 +19936,9 @@
         "titolare": true
        },
        {
-        "id": 954888,
-        "maglia": "19",
-        "nome": "Kaio Jorge",
+        "id": 1099361,
+        "maglia": "97",
+        "nome": "Luciano Rodríguez",
         "ruolo": "F",
         "titolare": true
        }
@@ -20922,184 +19993,184 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 931540,
-       "nome": "Matheuzinho",
-       "presenze": 99,
+       "id": 985809,
+       "nome": "Pedro Milans",
+       "presenze": 96,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0.061 gol per 90', 99 presenze",
+         "base": "0.0 gol per 90', 96 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0502
+         "p": 0.0
         },
         {
-         "base": "0.111 assist per 90', 99 presenze",
+         "base": "0.057 assist per 90', 96 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0895
+         "p": 0.047
         },
         {
-         "base": "0.306 gialli per 90', 99 presenze",
+         "base": "0.084 gialli per 90', 96 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.3036
+         "p": 0.0945
         },
         {
-         "base": "0.938 falli per 90', 99 presenze",
+         "base": "0.732 falli per 90', 96 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.5471
+         "p": 0.4611
         },
         {
-         "base": "0.252 tiri_in_porta per 90', 99 presenze",
+         "base": "0.093 tiri_in_porta per 90', 96 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1917
+         "p": 0.0755
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1352
+         "p": 0.047
         }
        ],
-       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
+       "torneo": "Liga AUF Uruguaya + CONMEBOL Libertadores"
       },
       {
-       "id": 124737,
-       "nome": "Gabriel Paulista",
-       "presenze": 69,
+       "id": 148155,
+       "nome": "André Ramalho",
+       "presenze": 28,
        "ruolo": "D",
        "stime": [
         {
-         "base": "0.033 gol per 90', 69 presenze",
+         "base": "0.0 gol per 90', 28 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0275
+         "p": 0.0
         },
         {
-         "base": "0.009 assist per 90', 69 presenze",
+         "base": "0.031 assist per 90', 28 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0076
+         "p": 0.0258
         },
         {
-         "base": "0.222 gialli per 90', 69 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2308
-        },
-        {
-         "base": "0.65 falli per 90', 69 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.4224
-        },
-        {
-         "base": "0.082 tiri_in_porta per 90', 69 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.0669
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.0348
-        }
-       ],
-       "torneo": "LaLiga + Copa del Rey"
-      },
-      {
-       "id": 243181,
-       "nome": "Gustavo Henrique",
-       "presenze": 75,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.116 gol per 90', 75 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0933
-        },
-        {
-         "base": "0.029 assist per 90', 75 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0242
-        },
-        {
-         "base": "0.201 gialli per 90', 75 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2115
-        },
-        {
-         "base": "0.886 falli per 90', 75 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5268
-        },
-        {
-         "base": "0.396 tiri_in_porta per 90', 75 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.2842
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.1152
-        }
-       ],
-       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
-      },
-      {
-       "id": 981703,
-       "nome": "Matheus Bidu",
-       "presenze": 88,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.069 gol per 90', 88 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0566
-        },
-        {
-         "base": "0.098 assist per 90', 88 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0794
-        },
-        {
-         "base": "0.246 gialli per 90', 88 presenze",
+         "base": "0.246 gialli per 90', 28 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
          "p": 0.2524
         },
         {
-         "base": "1.134 falli per 90', 88 presenze",
+         "base": "1.01 falli per 90', 28 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.6162
+         "p": 0.5738
         },
         {
-         "base": "0.328 tiri_in_porta per 90', 88 presenze",
+         "base": "0.08 tiri_in_porta per 90', 28 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.2419
+         "p": 0.0653
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1315
+         "p": 0.0258
         }
        ],
-       "torneo": "Paulista Série A1 + Brasileirão Betano"
+       "torneo": "UEFA Europa League + UEFA Champions League"
+      },
+      {
+       "id": 1411150,
+       "nome": "João Pedro Tchoca",
+       "presenze": 30,
+       "ruolo": "D",
+       "stime": [
+        {
+         "base": "0.094 gol per 90', 30 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.0763
+        },
+        {
+         "base": "0.035 assist per 90', 30 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.0291
+        },
+        {
+         "base": "0.234 gialli per 90', 30 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.2417
+        },
+        {
+         "base": "1.152 falli per 90', 30 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.622
+        },
+        {
+         "base": "0.234 tiri_in_porta per 90', 30 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.1793
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.1032
+        }
+       ],
+       "torneo": "Brasileirão Betano + Paulista Série A1"
+      },
+      {
+       "id": 311462,
+       "nome": "Fabrizio Angileri",
+       "presenze": 50,
+       "ruolo": "D",
+       "stime": [
+        {
+         "base": "0.024 gol per 90', 50 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.0201
+        },
+        {
+         "base": "0.208 assist per 90', 50 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.1611
+        },
+        {
+         "base": "0.174 gialli per 90', 50 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.1859
+        },
+        {
+         "base": "0.985 falli per 90', 50 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.5647
+        },
+        {
+         "base": "0.234 tiri_in_porta per 90', 50 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.1793
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.1779
+        }
+       ],
+       "torneo": "Liga Profesional de Fútbol + CONMEBOL Libertadores"
       },
       {
        "id": 828839,
@@ -21147,229 +20218,229 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 866392,
-       "nome": "Raniele",
-       "presenze": 110,
+       "id": 795268,
+       "nome": "Matheus Pereira",
+       "presenze": 146,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.042 gol per 90', 110 presenze",
+         "base": "0.039 gol per 90', 146 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0348
+         "p": 0.0324
         },
         {
-         "base": "0.011 assist per 90', 110 presenze",
+         "base": "0.138 assist per 90', 146 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0092
+         "p": 0.11
         },
         {
-         "base": "0.259 gialli per 90', 110 presenze",
+         "base": "0.338 gialli per 90', 146 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2638
+         "p": 0.3294
         },
         {
-         "base": "1.651 falli per 90', 110 presenze",
+         "base": "1.501 falli per 90', 146 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.752
+         "p": 0.7185
         },
         {
-         "base": "0.2 tiri_in_porta per 90', 110 presenze",
+         "base": "0.284 tiri_in_porta per 90', 146 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1554
+         "p": 0.2132
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0438
+         "p": 0.1388
         }
        ],
-       "torneo": "Brasileirão Betano + Paulista Série A1"
+       "torneo": "Brasileirão Betano + LaLiga 2"
       },
       {
-       "id": 1199261,
-       "nome": "Breno Bidon",
-       "presenze": 95,
+       "id": 845178,
+       "nome": "Charles",
+       "presenze": 49,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.077 gol per 90', 95 presenze",
+         "base": "0.069 gol per 90', 49 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.063
+         "p": 0.0566
         },
         {
-         "base": "0.034 assist per 90', 95 presenze",
+         "base": "0.0 assist per 90', 49 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0283
+         "p": 0.0
         },
         {
-         "base": "0.276 gialli per 90', 95 presenze",
+         "base": "0.405 gialli per 90', 49 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2784
+         "p": 0.3805
         },
         {
-         "base": "1.949 falli per 90', 95 presenze",
+         "base": "2.516 falli per 90', 49 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.8071
+         "p": 0.8805
         },
         {
-         "base": "0.219 tiri_in_porta per 90', 95 presenze",
+         "base": "0.165 tiri_in_porta per 90', 49 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1688
+         "p": 0.1301
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.0895
+         "p": 0.0566
         }
        ],
-       "torneo": "Brasileirão Betano + Paulista Série A1"
+       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
       },
       {
-       "id": 994454,
-       "nome": "Rodrigo Garro",
-       "presenze": 95,
-       "ruolo": "M",
-       "stime": [
-        {
-         "base": "0.164 gol per 90', 95 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.1293
-        },
-        {
-         "base": "0.26 assist per 90', 95 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.1971
-        },
-        {
-         "base": "0.262 gialli per 90', 95 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.2664
-        },
-        {
-         "base": "1.23 falli per 90', 95 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.6461
-        },
-        {
-         "base": "0.786 tiri_in_porta per 90', 95 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.4851
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.301
-        }
-       ],
-       "torneo": "Brasileirão Betano + Paulista Série A1"
-      },
-      {
-       "id": 1396009,
-       "nome": "Kaio César",
-       "presenze": 57,
+       "id": 205508,
+       "nome": "Jesse Lingard",
+       "presenze": 55,
        "ruolo": "F",
        "stime": [
         {
-         "base": "0.189 gol per 90', 57 presenze",
+         "base": "0.239 gol per 90', 55 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.1475
-        },
-        {
-         "base": "0.239 assist per 90', 57 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
          "p": 0.1828
         },
         {
-         "base": "0.319 gialli per 90', 57 presenze",
+         "base": "0.072 assist per 90', 55 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.059
+        },
+        {
+         "base": "0.134 gialli per 90', 55 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.3142
+         "p": 0.1465
         },
         {
-         "base": "1.715 falli per 90', 57 presenze",
+         "base": "0.926 falli per 90', 55 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.765
+         "p": 0.5425
         },
         {
-         "base": "0.917 tiri_in_porta per 90', 57 presenze",
+         "base": "0.674 tiri_in_porta per 90', 55 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.539
+         "p": 0.434
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.3033
+         "p": 0.231
         }
        ],
-       "torneo": "Brasileirão Betano + Saudi Pro League"
+       "torneo": "Premier League + FA Cup"
       },
       {
-       "id": 866911,
-       "nome": "Pedro Raul",
-       "presenze": 80,
+       "id": 1922597,
+       "nome": "Gui Negão",
+       "presenze": 37,
        "ruolo": "F",
        "stime": [
         {
-         "base": "0.294 gol per 90', 80 presenze",
+         "base": "0.391 gol per 90', 37 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.2198
+         "p": 0.2812
         },
         {
-         "base": "0.034 assist per 90', 80 presenze",
+         "base": "0.043 assist per 90', 37 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0283
+         "p": 0.0357
         },
         {
-         "base": "0.228 gialli per 90', 80 presenze",
+         "base": "0.261 gialli per 90', 37 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.2363
+         "p": 0.2655
         },
         {
-         "base": "1.919 falli per 90', 80 presenze",
+         "base": "2.388 falli per 90', 37 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.8022
+         "p": 0.8669
         },
         {
-         "base": "1.098 tiri_in_porta per 90', 80 presenze",
+         "base": "0.608 tiri_in_porta per 90', 37 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.6043
+         "p": 0.4016
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.2419
+         "p": 0.3068
         }
        ],
-       "torneo": "Brasileirão Betano + Paulista Série A1"
+       "torneo": "Brasileirão Betano + U20 Campeonato Brasileiro"
+      },
+      {
+       "id": 1916131,
+       "nome": "Dieguinho",
+       "presenze": 38,
+       "ruolo": "M",
+       "stime": [
+        {
+         "base": "0.21 gol per 90', 38 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.1625
+        },
+        {
+         "base": "0.135 assist per 90', 38 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.1077
+        },
+        {
+         "base": "0.0 gialli per 90', 38 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.0
+        },
+        {
+         "base": "0.255 falli per 90', 38 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.1937
+        },
+        {
+         "base": "0.524 tiri_in_porta per 90', 38 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.3576
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.2527
+        }
+       ],
+       "torneo": "Brasileirão Betano + U20 Campeonato Brasileiro"
       }
      ],
      "minuti_attesi_titolare": 76,
@@ -21513,53 +20584,8 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 1498670,
-       "nome": "Jonathan Jesus",
-       "presenze": 39,
-       "ruolo": "D",
-       "stime": [
-        {
-         "base": "0.066 gol per 90', 39 presenze",
-         "etichetta": "Segna almeno un gol",
-         "mercato": "gol",
-         "p": 0.0542
-        },
-        {
-         "base": "0.025 assist per 90', 39 presenze",
-         "etichetta": "Almeno un assist",
-         "mercato": "assist",
-         "p": 0.0209
-        },
-        {
-         "base": "0.148 gialli per 90', 39 presenze",
-         "etichetta": "Prende un cartellino",
-         "mercato": "cartellino",
-         "p": 0.1605
-        },
-        {
-         "base": "1.041 falli per 90', 39 presenze",
-         "etichetta": "Commette almeno un fallo",
-         "mercato": "fallo",
-         "p": 0.5848
-        },
-        {
-         "base": "0.041 tiri_in_porta per 90', 39 presenze",
-         "etichetta": "Almeno un tiro in porta",
-         "mercato": "tiro_in_porta",
-         "p": 0.034
-        },
-        {
-         "base": "somma dei due tassi, trattati come indipendenti",
-         "etichetta": "Gol o assist",
-         "mercato": "gol_o_assist",
-         "p": 0.074
-        }
-       ],
-       "torneo": "Brasileirão Betano + Copa Betano do Brasil"
-      },
-      {
-       "id": 1387300,
-       "nome": "Gabriel Rojas",
+       "id": 978638,
+       "nome": "João Marcelo",
        "presenze": 61,
        "ruolo": "D",
        "stime": [
@@ -21570,82 +20596,127 @@
          "p": 0.0308
         },
         {
-         "base": "0.262 assist per 90', 61 presenze",
+         "base": "0.04 assist per 90', 61 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1985
+         "p": 0.0332
         },
         {
-         "base": "0.168 gialli per 90', 61 presenze",
+         "base": "0.094 gialli per 90', 61 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1801
+         "p": 0.1052
         },
         {
-         "base": "1.033 falli per 90', 61 presenze",
+         "base": "0.784 falli per 90', 61 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.582
+         "p": 0.4842
         },
         {
-         "base": "0.172 tiri_in_porta per 90', 61 presenze",
+         "base": "0.104 tiri_in_porta per 90', 61 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1352
+         "p": 0.0841
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.2231
+         "p": 0.063
         }
        ],
-       "torneo": "Liga Profesional de Fútbol + CONMEBOL Libertadores"
+       "torneo": "Brasileirão Betano + Mineiro, Módulo I"
       },
       {
-       "id": 263477,
-       "nome": "Lucas Romero",
-       "presenze": 103,
+       "id": 260077,
+       "nome": "Lucas Villalba",
+       "presenze": 108,
+       "ruolo": "D",
+       "stime": [
+        {
+         "base": "0.033 gol per 90', 108 presenze",
+         "etichetta": "Segna almeno un gol",
+         "mercato": "gol",
+         "p": 0.0275
+        },
+        {
+         "base": "0.05 assist per 90', 108 presenze",
+         "etichetta": "Almeno un assist",
+         "mercato": "assist",
+         "p": 0.0413
+        },
+        {
+         "base": "0.18 gialli per 90', 108 presenze",
+         "etichetta": "Prende un cartellino",
+         "mercato": "cartellino",
+         "p": 0.1917
+        },
+        {
+         "base": "1.037 falli per 90', 108 presenze",
+         "etichetta": "Commette almeno un fallo",
+         "mercato": "fallo",
+         "p": 0.5834
+        },
+        {
+         "base": "0.093 tiri_in_porta per 90', 108 presenze",
+         "etichetta": "Almeno un tiro in porta",
+         "mercato": "tiro_in_porta",
+         "p": 0.0755
+        },
+        {
+         "base": "somma dei due tassi, trattati come indipendenti",
+         "etichetta": "Gol o assist",
+         "mercato": "gol_o_assist",
+         "p": 0.0677
+        }
+       ],
+       "torneo": "Liga Profesional de Fútbol + Copa de la Liga Profesional"
+      },
+      {
+       "id": 2040561,
+       "nome": "Zé Lucas",
+       "presenze": 33,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.042 gol per 90', 103 presenze",
+         "base": "0.0 gol per 90', 33 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.0348
+         "p": 0.0
         },
         {
-         "base": "0.105 assist per 90', 103 presenze",
+         "base": "0.0 assist per 90', 33 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0848
+         "p": 0.0
         },
         {
-         "base": "0.302 gialli per 90', 103 presenze",
+         "base": "0.224 gialli per 90', 33 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.3002
+         "p": 0.2327
         },
         {
-         "base": "1.313 falli per 90', 103 presenze",
+         "base": "2.068 falli per 90', 33 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.67
+         "p": 0.8256
         },
         {
-         "base": "0.206 tiri_in_porta per 90', 103 presenze",
+         "base": "0.101 tiri_in_porta per 90', 33 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.1597
+         "p": 0.0818
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.1167
+         "p": 0.0
         }
        ],
-       "torneo": "Brasileirão Betano + CONMEBOL Sudamericana"
+       "torneo": "Brasileirão Betano + Copa do Nordeste"
       },
       {
        "id": 611876,
@@ -21693,94 +20764,94 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 1482431,
-       "nome": "Keny Arroyo",
-       "presenze": 17,
+       "id": 1397478,
+       "nome": "João Costa",
+       "presenze": 43,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.371 gol per 90', 17 presenze",
+         "base": "0.1 gol per 90', 43 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.269
+         "p": 0.081
         },
         {
-         "base": "0.0 assist per 90', 17 presenze",
+         "base": "0.15 assist per 90', 43 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.0
+         "p": 0.119
         },
         {
-         "base": "0.0 gialli per 90', 17 presenze",
+         "base": "0.317 gialli per 90', 43 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.0
+         "p": 0.3125
         },
         {
-         "base": "0.417 falli per 90', 17 presenze",
+         "base": "1.961 falli per 90', 43 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.2968
+         "p": 0.8091
         },
         {
-         "base": "0.371 tiri_in_porta per 90', 17 presenze",
+         "base": "0.284 tiri_in_porta per 90', 43 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.269
+         "p": 0.2132
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.269
+         "p": 0.1903
         }
        ],
-       "torneo": "CONMEBOL Libertadores + Copa Betano do Brasil"
+       "torneo": "Saudi Pro League + Brasileirão Betano"
       },
       {
-       "id": 377238,
-       "nome": "Matheus Pereira",
-       "presenze": 114,
+       "id": 912786,
+       "nome": "Matheus Henrique",
+       "presenze": 76,
        "ruolo": "M",
        "stime": [
         {
-         "base": "0.209 gol per 90', 114 presenze",
+         "base": "0.043 gol per 90', 76 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.1618
+         "p": 0.0357
         },
         {
-         "base": "0.204 assist per 90', 114 presenze",
+         "base": "0.0 assist per 90', 76 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1582
+         "p": 0.0
         },
         {
-         "base": "0.325 gialli per 90', 114 presenze",
+         "base": "0.386 gialli per 90', 76 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.319
+         "p": 0.3664
         },
         {
-         "base": "1.286 falli per 90', 114 presenze",
+         "base": "1.588 falli per 90', 76 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.6624
+         "p": 0.7384
         },
         {
-         "base": "0.886 tiri_in_porta per 90', 114 presenze",
+         "base": "0.255 tiri_in_porta per 90', 76 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.5268
+         "p": 0.1937
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.2944
+         "p": 0.0357
         }
        ],
-       "torneo": "Brasileirão Betano + Mineiro, Módulo I"
+       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
        "id": 1211632,
@@ -21828,72 +20899,72 @@
        "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
       },
       {
-       "id": 954888,
-       "nome": "Kaio Jorge",
-       "presenze": 89,
+       "id": 1099361,
+       "nome": "Luciano Rodríguez",
+       "presenze": 85,
        "ruolo": "F",
        "stime": [
         {
-         "base": "0.466 gol per 90', 89 presenze",
+         "base": "0.272 gol per 90', 85 presenze",
          "etichetta": "Segna almeno un gol",
          "mercato": "gol",
-         "p": 0.3253
+         "p": 0.2052
         },
         {
-         "base": "0.174 assist per 90', 89 presenze",
+         "base": "0.053 assist per 90', 85 presenze",
          "etichetta": "Almeno un assist",
          "mercato": "assist",
-         "p": 0.1366
+         "p": 0.0438
         },
         {
-         "base": "0.164 gialli per 90', 89 presenze",
+         "base": "0.239 gialli per 90', 85 presenze",
          "etichetta": "Prende un cartellino",
          "mercato": "cartellino",
-         "p": 0.1762
+         "p": 0.2461
         },
         {
-         "base": "1.125 falli per 90', 89 presenze",
+         "base": "1.119 falli per 90', 85 presenze",
          "etichetta": "Commette almeno un fallo",
          "mercato": "fallo",
-         "p": 0.6133
+         "p": 0.6113
         },
         {
-         "base": "1.165 tiri_in_porta per 90', 89 presenze",
+         "base": "1.22 tiri_in_porta per 90', 85 presenze",
          "etichetta": "Almeno un tiro in porta",
          "mercato": "tiro_in_porta",
-         "p": 0.6261
+         "p": 0.6431
         },
         {
          "base": "somma dei due tassi, trattati come indipendenti",
          "etichetta": "Gol o assist",
          "mercato": "gol_o_assist",
-         "p": 0.4175
+         "p": 0.24
         }
        ],
-       "torneo": "Brasileirão Betano + CONMEBOL Libertadores"
+       "torneo": "Liga AUF Uruguaya + CONMEBOL Libertadores"
       }
      ]
     },
-    "letto": "2026-08-15T13:35:51Z",
+    "letto": "2026-08-16T14:17:48Z",
     "market_p": {
-     "1x2_away": 0.27717,
-     "1x2_draw": 0.29451,
-     "1x2_home": 0.42833,
-     "btts_no": 0.53332,
-     "btts_yes": 0.46668,
-     "dc_12": 0.6913,
-     "dc_1x": 0.72515,
-     "dc_x2": 0.58355,
-     "over_0.5": 0.86416,
-     "over_1.5": 0.65565,
-     "over_2.5": 0.38984,
-     "over_3.5": 0.21052,
-     "over_4.5": 0.09604,
-     "under_0.5": 0.13584,
-     "under_1.5": 0.34435,
-     "under_2.5": 0.61016,
-     "under_3.5": 0.78948,
-     "under_4.5": 0.90396
+     "1x2_away": 0.2714,
+     "1x2_draw": 0.29686,
+     "1x2_home": 0.43175,
+     "btts_no": 0.55752,
+     "btts_yes": 0.44248,
+     "dc_12": 0.68851,
+     "dc_1x": 0.73029,
+     "dc_x2": 0.58119,
+     "over_0.5": 0.85405,
+     "over_1.5": 0.63635,
+     "over_2.5": 0.37499,
+     "over_3.5": 0.1892,
+     "over_4.5": 0.08713,
+     "under_0.5": 0.14595,
+     "under_1.5": 0.36365,
+     "under_2.5": 0.62501,
+     "under_3.5": 0.8108,
+     "under_4.5": 0.91287
     },
     "quote": {
      "mercati": [
@@ -21912,23 +20983,23 @@
          "probabilita_implicita": 0.3125
         },
         {
-         "decimale": 3.4,
+         "decimale": 3.5,
          "esito": "2",
-         "frazionaria": "12/5",
-         "probabilita_implicita": 0.2941
+         "frazionaria": "5/2",
+         "probabilita_implicita": 0.2857
         }
        ],
-       "margine_percento": 6.12,
+       "margine_percento": 5.28,
        "mercato": "Full time",
-       "somma_probabilita": 1.0612
+       "somma_probabilita": 1.0528
       },
       {
        "esiti": [
         {
-         "decimale": 1.3,
+         "decimale": 1.29,
          "esito": "1X",
-         "frazionaria": "3/10",
-         "probabilita_implicita": 0.7692
+         "frazionaria": "2/7",
+         "probabilita_implicita": 0.7778
         },
         {
          "decimale": 1.62,
@@ -21943,9 +21014,9 @@
          "probabilita_implicita": 0.7333
         }
        ],
-       "margine_percento": 112.16,
+       "margine_percento": 113.02,
        "mercato": "Double chance",
-       "somma_probabilita": 2.1216
+       "somma_probabilita": 2.1302
       },
       {
        "esiti": [
@@ -21956,179 +21027,179 @@
          "probabilita_implicita": 0.3333
         },
         {
-         "decimale": 2.0,
+         "decimale": 1.95,
          "esito": "X",
-         "frazionaria": "1/1",
-         "probabilita_implicita": 0.5
+         "frazionaria": "20/21",
+         "probabilita_implicita": 0.5122
         },
         {
-         "decimale": 4.0,
+         "decimale": 4.33,
          "esito": "2",
-         "frazionaria": "3/1",
-         "probabilita_implicita": 0.25
+         "frazionaria": "10/3",
+         "probabilita_implicita": 0.2308
         }
        ],
-       "margine_percento": 8.33,
+       "margine_percento": 7.63,
        "mercato": "1st half",
-       "somma_probabilita": 1.0833
+       "somma_probabilita": 1.0763
       },
       {
        "esiti": [
         {
-         "decimale": 1.57,
+         "decimale": 1.53,
          "esito": "1",
-         "frazionaria": "4/7",
-         "probabilita_implicita": 0.6364
+         "frazionaria": "8/15",
+         "probabilita_implicita": 0.6522
         },
         {
-         "decimale": 2.25,
+         "decimale": 2.38,
          "esito": "2",
-         "frazionaria": "5/4",
-         "probabilita_implicita": 0.4444
+         "frazionaria": "11/8",
+         "probabilita_implicita": 0.4211
         }
        ],
-       "margine_percento": 8.08,
+       "margine_percento": 7.32,
        "mercato": "Draw no bet",
-       "somma_probabilita": 1.0808
+       "somma_probabilita": 1.0732
       },
       {
        "esiti": [
         {
-         "decimale": 2.0,
+         "decimale": 2.1,
          "esito": "Yes",
-         "frazionaria": "1/1",
-         "probabilita_implicita": 0.5
+         "frazionaria": "11/10",
+         "probabilita_implicita": 0.4762
         },
         {
-         "decimale": 1.75,
+         "decimale": 1.67,
          "esito": "No",
-         "frazionaria": "3/4",
-         "probabilita_implicita": 0.5714
+         "frazionaria": "4/6",
+         "probabilita_implicita": 0.6
         }
        ],
-       "margine_percento": 7.14,
+       "margine_percento": 7.62,
        "mercato": "Both teams to score",
-       "somma_probabilita": 1.0714
+       "somma_probabilita": 1.0762
       },
       {
        "esiti": [
         {
-         "decimale": 1.1,
+         "decimale": 1.11,
          "esito": "Over",
-         "frazionaria": "1/10",
-         "probabilita_implicita": 0.9091
+         "frazionaria": "1/9",
+         "probabilita_implicita": 0.9
         },
         {
-         "decimale": 7.0,
+         "decimale": 6.5,
          "esito": "Under",
-         "frazionaria": "6/1",
-         "probabilita_implicita": 0.1429
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
         }
        ],
        "linea": "0.5",
-       "margine_percento": 5.19,
+       "margine_percento": 5.38,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0519
+       "somma_probabilita": 1.0538
       },
       {
        "esiti": [
         {
-         "decimale": 1.44,
+         "decimale": 1.5,
          "esito": "Over",
-         "frazionaria": "4/9",
-         "probabilita_implicita": 0.6923
+         "frazionaria": "1/2",
+         "probabilita_implicita": 0.6667
         },
         {
-         "decimale": 2.75,
+         "decimale": 2.63,
          "esito": "Under",
-         "frazionaria": "7/4",
-         "probabilita_implicita": 0.3636
+         "frazionaria": "13/8",
+         "probabilita_implicita": 0.381
         }
        ],
        "linea": "1.5",
-       "margine_percento": 5.59,
+       "margine_percento": 4.76,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0559
+       "somma_probabilita": 1.0476
       },
       {
        "esiti": [
         {
-         "decimale": 2.4,
+         "decimale": 2.5,
          "esito": "Over",
-         "frazionaria": "7/5",
-         "probabilita_implicita": 0.4167
+         "frazionaria": "6/4",
+         "probabilita_implicita": 0.4
         },
         {
-         "decimale": 1.53,
+         "decimale": 1.5,
          "esito": "Under",
-         "frazionaria": "8/15",
-         "probabilita_implicita": 0.6522
+         "frazionaria": "1/2",
+         "probabilita_implicita": 0.6667
         }
        ],
        "linea": "2.5",
-       "margine_percento": 6.88,
+       "margine_percento": 6.67,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0688
+       "somma_probabilita": 1.0667
       },
       {
        "esiti": [
         {
-         "decimale": 4.5,
+         "decimale": 5.0,
          "esito": "Over",
-         "frazionaria": "7/2",
-         "probabilita_implicita": 0.2222
+         "frazionaria": "4/1",
+         "probabilita_implicita": 0.2
         },
         {
-         "decimale": 1.2,
+         "decimale": 1.17,
          "esito": "Under",
-         "frazionaria": "1/5",
-         "probabilita_implicita": 0.8333
+         "frazionaria": "1/6",
+         "probabilita_implicita": 0.8571
         }
        ],
        "linea": "3.5",
-       "margine_percento": 5.56,
+       "margine_percento": 5.71,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0556
+       "somma_probabilita": 1.0571
       },
       {
        "esiti": [
         {
-         "decimale": 10.0,
+         "decimale": 11.0,
          "esito": "Over",
-         "frazionaria": "9/1",
-         "probabilita_implicita": 0.1
+         "frazionaria": "10/1",
+         "probabilita_implicita": 0.0909
         },
         {
-         "decimale": 1.06,
+         "decimale": 1.05,
          "esito": "Under",
-         "frazionaria": "1/16",
-         "probabilita_implicita": 0.9412
+         "frazionaria": "1/20",
+         "probabilita_implicita": 0.9524
         }
        ],
        "linea": "4.5",
-       "margine_percento": 4.12,
+       "margine_percento": 4.33,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0412
+       "somma_probabilita": 1.0433
       },
       {
        "esiti": [
         {
-         "decimale": 21.0,
+         "decimale": 23.0,
          "esito": "Over",
-         "frazionaria": "20/1",
-         "probabilita_implicita": 0.0476
+         "frazionaria": "22/1",
+         "probabilita_implicita": 0.0435
         },
         {
-         "decimale": 1.02,
+         "decimale": 1.01,
          "esito": "Under",
-         "frazionaria": "1/66",
-         "probabilita_implicita": 0.9851
+         "frazionaria": "1/80",
+         "probabilita_implicita": 0.9877
         }
        ],
        "linea": "5.5",
-       "margine_percento": 3.27,
+       "margine_percento": 3.11,
        "mercato": "Match goals",
-       "somma_probabilita": 1.0327
+       "somma_probabilita": 1.0311
       },
       {
        "esiti": [
@@ -22153,41 +21224,41 @@
       {
        "esiti": [
         {
-         "decimale": 1.95,
+         "decimale": 1.93,
          "esito": "(-0.25) Corinthians",
-         "frazionaria": "19/20",
-         "probabilita_implicita": 0.5128
+         "frazionaria": "37/40",
+         "probabilita_implicita": 0.5195
         },
         {
-         "decimale": 1.9,
+         "decimale": 1.93,
          "esito": "(0.25) Cruzeiro",
-         "frazionaria": "9/10",
-         "probabilita_implicita": 0.5263
+         "frazionaria": "37/40",
+         "probabilita_implicita": 0.5195
         }
        ],
-       "margine_percento": 3.91,
+       "margine_percento": 3.9,
        "mercato": "Asian handicap",
-       "somma_probabilita": 1.0391
+       "somma_probabilita": 1.039
       },
       {
        "esiti": [
         {
-         "decimale": 1.73,
+         "decimale": 1.83,
          "esito": "Over",
-         "frazionaria": "8/11",
-         "probabilita_implicita": 0.5789
+         "frazionaria": "5/6",
+         "probabilita_implicita": 0.5455
         },
         {
-         "decimale": 2.0,
+         "decimale": 1.83,
          "esito": "Under",
-         "frazionaria": "1/1",
-         "probabilita_implicita": 0.5
+         "frazionaria": "5/6",
+         "probabilita_implicita": 0.5455
         }
        ],
        "linea": "5.5",
-       "margine_percento": 7.89,
+       "margine_percento": 9.09,
        "mercato": "Cards in match",
-       "somma_probabilita": 1.0789
+       "somma_probabilita": 1.0909
       },
       {
        "esiti": [
@@ -22218,21 +21289,21 @@
          "probabilita_implicita": 0.5455
         },
         {
-         "decimale": 7.0,
+         "decimale": 6.5,
          "esito": "No goal",
-         "frazionaria": "6/1",
-         "probabilita_implicita": 0.1429
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
         },
         {
-         "decimale": 2.3,
+         "decimale": 2.38,
          "esito": "Cruzeiro",
-         "frazionaria": "13/10",
-         "probabilita_implicita": 0.4348
+         "frazionaria": "11/8",
+         "probabilita_implicita": 0.4211
         }
        ],
-       "margine_percento": 12.31,
+       "margine_percento": 12.04,
        "mercato": "First team to score",
-       "somma_probabilita": 1.1231
+       "somma_probabilita": 1.1204
       }
      ],
      "n_mercati": 16
@@ -22245,7 +21316,7 @@
    "utc_date": "2026-08-16T22:30:00Z"
   }
  ],
- "generated_at": "2026-08-15T13:36:26Z",
+ "generated_at": "2026-08-16T14:18:03Z",
  "schema_version": 1,
  "silence_count": 8,
  "total": 16

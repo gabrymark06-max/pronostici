@@ -10,34 +10,34 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 98,
+     "S_min": 97,
      "p_min": 88,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 4,
-    "truncated_mass": 2.118e-09
+    "truncated_mass": 1.304e-09
    },
    "expected_goals": {
-    "away": 0.815,
-    "home": 1.341
+    "away": 0.872,
+    "home": 1.287
    },
    "half_time": {
-    "ht_over_0.5": 0.6073,
-    "ht_over_1.5": 0.2402,
-    "ht_over_2.5": 0.0687,
-    "ht_under_0.5": 0.3927,
-    "ht_under_1.5": 0.7598,
-    "ht_under_2.5": 0.9313,
-    "htft_11": 0.2851,
-    "htft_12": 0.0108,
-    "htft_1X": 0.0434,
-    "htft_21": 0.0198,
-    "htft_22": 0.1199,
-    "htft_2X": 0.0434,
-    "htft_X1": 0.1862,
-    "htft_X2": 0.0968,
-    "htft_XX": 0.1946
+    "ht_over_0.5": 0.6068,
+    "ht_over_1.5": 0.2398,
+    "ht_over_2.5": 0.0685,
+    "ht_under_0.5": 0.3932,
+    "ht_under_1.5": 0.7602,
+    "ht_under_2.5": 0.9315,
+    "htft_11": 0.2648,
+    "htft_12": 0.0121,
+    "htft_1X": 0.0447,
+    "htft_21": 0.0194,
+    "htft_22": 0.1342,
+    "htft_2X": 0.0447,
+    "htft_X1": 0.1772,
+    "htft_X2": 0.1061,
+    "htft_XX": 0.1968
    },
    "home": {
     "crest": "https://crests.football-data.org/87.png",
@@ -49,72 +49,72 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7265,
-    "band_p95": 0.869,
+    "band_p5": 0.4963,
+    "band_p95": 0.664,
     "cluster_members": [],
-    "family": "team_goals",
-    "key": "ag_under_1.5",
-    "label": "Ospite Under 1.5",
-    "p": 0.785,
-    "p_raw": 0.8027,
-    "reference": 0.6821,
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.5408,
+    "p_raw": 0.5851,
+    "reference": 0.4494,
     "runners_up": [
      {
-      "band_p5": 0.5053,
-      "band_p95": 0.6754,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.5482,
-      "p_raw": 0.5942,
-      "reference": 0.4495,
-      "score": 0.019549,
-      "shrink_alpha": 0.6821,
-      "sigma": 0.0502
-     },
-     {
-      "band_p5": 0.915,
-      "band_p95": 0.9741,
+      "band_p5": 0.6923,
+      "band_p95": 0.8598,
       "family": "team_goals",
-      "key": "ag_under_2.5",
-      "label": "Ospite Under 2.5",
-      "p": 0.9474,
-      "p_raw": 0.9488,
-      "reference": 0.9022,
-      "score": 0.013725,
-      "shrink_alpha": 0.9704,
-      "sigma": 0.0183
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7636,
+      "p_raw": 0.7825,
+      "reference": 0.6828,
+      "score": 0.015899,
+      "shrink_alpha": 0.8105,
+      "sigma": 0.0507
      },
      {
-      "band_p5": 0.8783,
-      "band_p95": 0.966,
+      "band_p5": 0.8823,
+      "band_p95": 0.9641,
       "family": "over_under",
       "key": "under_4.5",
       "label": "Under 4.5",
-      "p": 0.917,
-      "p_raw": 0.9292,
-      "reference": 0.8681,
-      "score": 0.011818,
-      "shrink_alpha": 0.8003,
-      "sigma": 0.0282
+      "p": 0.9188,
+      "p_raw": 0.9294,
+      "reference": 0.8684,
+      "score": 0.012655,
+      "shrink_alpha": 0.8266,
+      "sigma": 0.0258
+     },
+     {
+      "band_p5": 0.8967,
+      "band_p95": 0.9711,
+      "family": "team_goals",
+      "key": "ag_under_2.5",
+      "label": "Ospite Under 2.5",
+      "p": 0.938,
+      "p_raw": 0.9398,
+      "reference": 0.9024,
+      "score": 0.008176,
+      "shrink_alpha": 0.9523,
+      "sigma": 0.0235
      }
     ],
-    "score": 0.026213,
-    "shrink_alpha": 0.8531,
-    "sigma": 0.0435
+    "score": 0.016779,
+    "shrink_alpha": 0.6736,
+    "sigma": 0.0512
    },
    "raw_probabilities": {
-    "1x2_away": 0.2298,
-    "1x2_draw": 0.2819,
-    "1x2_home": 0.4883,
-    "btts_yes": 0.4058,
-    "over_2.5": 0.365,
-    "under_2.5": 0.635
+    "1x2_away": 0.2542,
+    "1x2_draw": 0.2858,
+    "1x2_home": 0.4601,
+    "btts_yes": 0.4149,
+    "over_2.5": 0.3654,
+    "under_2.5": 0.6346
    },
    "reasons": [
-    "Gol attesi: Rayo Vallecano de Madrid 1.34, Deportivo Alavés 0.82 (totale 2.16).",
-    "Ospite Under 1.5: 78 su 100, 10 punti sopra la media di riferimento (68 su 100).",
-    "Banda di incertezza: fra 73 e 87 su 100."
+    "Gol attesi: Rayo Vallecano de Madrid 1.29, Deportivo Alavés 0.87 (totale 2.16).",
+    "Non entrambe segnano: 54 su 100, 9 punti sopra la media di riferimento (45 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
@@ -122,7 +122,7 @@
    "utc_date": "2026-08-20T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-12T11:54:39Z",
+ "generated_at": "2026-08-16T14:17:46Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1
