@@ -10,34 +10,34 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 81,
-     "p_min": 85,
+     "S_min": 83,
+     "p_min": 86,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 11,
-    "truncated_mass": 3.51e-06
+    "n_clusters": 12,
+    "truncated_mass": 2.626e-06
    },
    "expected_goals": {
-    "away": 0.854,
-    "home": 2.592
+    "away": 0.826,
+    "home": 2.523
    },
    "half_time": {
-    "ht_over_0.5": 0.7754,
-    "ht_over_1.5": 0.44,
-    "ht_over_2.5": 0.1895,
-    "ht_under_0.5": 0.2246,
-    "ht_under_1.5": 0.56,
-    "ht_under_2.5": 0.8105,
-    "htft_11": 0.509,
-    "htft_12": 0.0082,
-    "htft_1X": 0.0332,
-    "htft_21": 0.0355,
-    "htft_22": 0.0528,
-    "htft_2X": 0.0332,
-    "htft_X1": 0.2025,
-    "htft_X2": 0.0396,
-    "htft_XX": 0.086
+    "ht_over_0.5": 0.7654,
+    "ht_over_1.5": 0.4253,
+    "ht_over_2.5": 0.1787,
+    "ht_under_0.5": 0.2346,
+    "ht_under_1.5": 0.5747,
+    "ht_under_2.5": 0.8213,
+    "htft_11": 0.5027,
+    "htft_12": 0.0079,
+    "htft_1X": 0.0333,
+    "htft_21": 0.0344,
+    "htft_22": 0.0529,
+    "htft_2X": 0.0333,
+    "htft_X1": 0.2052,
+    "htft_X2": 0.0403,
+    "htft_XX": 0.09
    },
    "home": {
     "crest": "https://crests.football-data.org/86.png",
@@ -48,22 +48,22 @@
    "matchday": 1,
    "model_weight": 1.0,
    "odds": {
-    "fetched": "stale_cache",
+    "fetched": "network",
     "market_p": {
-     "1x2_away": 0.12242,
-     "1x2_draw": 0.17473,
-     "1x2_home": 0.70285,
-     "dc_12": 0.82527,
-     "dc_1x": 0.87758,
-     "dc_x2": 0.29715,
-     "eh_-1_away": 0.29715,
-     "eh_1_home": 0.87758,
+     "1x2_away": 0.12306,
+     "1x2_draw": 0.17902,
+     "1x2_home": 0.69792,
+     "dc_12": 0.82098,
+     "dc_1x": 0.87694,
+     "dc_x2": 0.30208,
+     "eh_-1_away": 0.30208,
+     "eh_1_home": 0.87694,
      "mg_0_2": 0.37723,
-     "mg_0_3": 0.58912,
+     "mg_0_3": 0.60483,
      "over_2.5": 0.62277,
-     "over_3.5": 0.41088,
+     "over_3.5": 0.39517,
      "under_2.5": 0.37723,
-     "under_3.5": 0.58912
+     "under_3.5": 0.60483
     },
     "markets": [
      "1x2_away",
@@ -74,125 +74,486 @@
      "under_2.5",
      "under_3.5"
     ],
-    "n_bookmakers": 15,
-    "price_books": 15,
-    "price_scope": "eu",
+    "n_bookmakers": 18,
+    "price_books": 1,
+    "price_scope": "it",
     "prices": {
-     "1x2_away": 7.11,
-     "1x2_draw": 5.1,
-     "1x2_home": 1.39,
-     "over_2.5": 1.53,
-     "over_3.5": 2.25,
-     "under_2.5": 2.4,
-     "under_3.5": 1.62
+     "1x2_away": 6.6,
+     "1x2_draw": 5.0,
+     "1x2_home": 1.42,
+     "over_3.5": 2.22,
+     "under_3.5": 1.56
     }
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6502,
-    "band_p95": 0.8113,
-    "cluster_members": [
-     "1x2_home",
-     "hg_over_1.5",
-     "combo_1_over_1.5"
-    ],
-    "family": "combo_dc",
-    "key": "combodc_12_over_1.5",
-    "label": "12 + Over 1.5",
-    "p": 0.6831,
-    "p_raw": 0.7342,
-    "reference": 0.5522,
+    "band_p5": 0.6337,
+    "band_p95": 0.8235,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6814,
+    "p_raw": 0.7377,
+    "reference": 0.4616,
     "runners_up": [
      {
-      "band_p5": 0.8294,
-      "band_p95": 0.945,
+      "band_p5": 0.6031,
+      "band_p95": 0.8115,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6309,
+      "p_raw": 0.711,
+      "reference": 0.4253,
+      "score": 0.085379,
+      "shrink_alpha": 0.7197,
+      "sigma": 0.0655
+     },
+     {
+      "band_p5": 0.8356,
+      "band_p95": 0.9423,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8813,
-      "p_raw": 0.896,
-      "reference": 0.7102,
-      "score": 0.084279,
-      "shrink_alpha": 0.9208,
-      "sigma": 0.0349
+      "p": 0.8827,
+      "p_raw": 0.8957,
+      "reference": 0.7122,
+      "score": 0.084191,
+      "shrink_alpha": 0.9293,
+      "sigma": 0.0328
      },
      {
-      "band_p5": 0.8294,
-      "band_p95": 0.945,
+      "band_p5": 0.8356,
+      "band_p95": 0.9423,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8744,
-      "p_raw": 0.896,
-      "reference": 0.7102,
-      "score": 0.076856,
-      "shrink_alpha": 0.8837,
-      "sigma": 0.0349
+      "p": 0.8765,
+      "p_raw": 0.8957,
+      "reference": 0.7122,
+      "score": 0.077512,
+      "shrink_alpha": 0.8957,
+      "sigma": 0.0328
      },
      {
-      "band_p5": 0.6829,
-      "band_p95": 0.8531,
+      "band_p5": 0.68,
+      "band_p95": 0.8499,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7104,
-      "p_raw": 0.7783,
-      "reference": 0.5393,
-      "score": 0.061279,
-      "shrink_alpha": 0.7156,
-      "sigma": 0.0519
+      "p": 0.7021,
+      "p_raw": 0.7682,
+      "reference": 0.5415,
+      "score": 0.053894,
+      "shrink_alpha": 0.7082,
+      "sigma": 0.0528
      },
      {
-      "band_p5": 0.8747,
-      "band_p95": 0.9558,
+      "band_p5": 0.8692,
+      "band_p95": 0.9537,
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.9144,
-      "p_raw": 0.9212,
-      "reference": 0.7996,
-      "score": 0.049805,
-      "shrink_alpha": 0.9438,
-      "sigma": 0.0256
-     },
-     {
-      "band_p5": 0.9398,
-      "band_p95": 0.9867,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9665,
-      "p_raw": 0.9682,
-      "reference": 0.8903,
-      "score": 0.039674,
-      "shrink_alpha": 0.9789,
-      "sigma": 0.0141
+      "p": 0.9084,
+      "p_raw": 0.9155,
+      "reference": 0.8018,
+      "score": 0.042754,
+      "shrink_alpha": 0.9378,
+      "sigma": 0.027
      }
     ],
-    "score": 0.035794,
-    "shrink_alpha": 0.7195,
-    "sigma": 0.0514
+    "score": 0.098228,
+    "shrink_alpha": 0.7962,
+    "sigma": 0.0602
    },
    "raw_probabilities": {
-    "1x2_away": 0.104,
-    "1x2_draw": 0.1538,
-    "1x2_home": 0.7422,
-    "btts_yes": 0.525,
-    "over_2.5": 0.6648,
-    "under_2.5": 0.3352
+    "1x2_away": 0.1043,
+    "1x2_draw": 0.158,
+    "1x2_home": 0.7377,
+    "btts_yes": 0.5112,
+    "over_2.5": 0.6456,
+    "under_2.5": 0.3544
    },
    "reasons": [
-    "Gol attesi: Real Madrid CF 2.59, Real Sociedad de Fútbol 0.85 (totale 3.45).",
-    "12 + Over 1.5: 68 su 100, 13 punti sopra la media di riferimento (55 su 100).",
-    "Banda di incertezza: fra 65 e 81 su 100."
+    "Gol attesi: Real Madrid CF 2.52, Real Sociedad de Fútbol 0.83 (totale 3.35).",
+    "Vittoria casa: 68 su 100, 22 punti sopra la media di riferimento (46 su 100).",
+    "Banda di incertezza: fra 63 e 82 su 100."
    ],
    "silence": null,
+   "sofascore": {
+    "evento_id": 16421051,
+    "letto": "2026-08-22T15:31:13Z",
+    "market_p": {
+     "1x2_away": 0.14262,
+     "1x2_draw": 0.18546,
+     "1x2_home": 0.67192,
+     "btts_no": 0.46668,
+     "btts_yes": 0.53332,
+     "dc_12": 0.82003,
+     "dc_1x": 0.86108,
+     "dc_x2": 0.31889,
+     "over_0.5": 0.94316,
+     "over_1.5": 0.8108,
+     "over_2.5": 0.61984,
+     "over_3.5": 0.4126,
+     "over_4.5": 0.2381,
+     "under_0.5": 0.05684,
+     "under_1.5": 0.1892,
+     "under_2.5": 0.38016,
+     "under_3.5": 0.5874,
+     "under_4.5": 0.7619
+    },
+    "quote": {
+     "mercati": [
+      {
+       "esiti": [
+        {
+         "decimale": 1.38,
+         "esito": "1",
+         "frazionaria": "19/50",
+         "probabilita_implicita": 0.7246
+        },
+        {
+         "decimale": 5.0,
+         "esito": "X",
+         "frazionaria": "4/1",
+         "probabilita_implicita": 0.2
+        },
+        {
+         "decimale": 6.5,
+         "esito": "2",
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
+        }
+       ],
+       "margine_percento": 7.85,
+       "mercato": "Full time",
+       "somma_probabilita": 1.0785
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.11,
+         "esito": "1X",
+         "frazionaria": "1/9",
+         "probabilita_implicita": 0.9
+        },
+        {
+         "decimale": 3.0,
+         "esito": "X2",
+         "frazionaria": "2/1",
+         "probabilita_implicita": 0.3333
+        },
+        {
+         "decimale": 1.17,
+         "esito": "12",
+         "frazionaria": "1/6",
+         "probabilita_implicita": 0.8571
+        }
+       ],
+       "margine_percento": 109.05,
+       "mercato": "Double chance",
+       "somma_probabilita": 2.0905
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.8,
+         "esito": "1",
+         "frazionaria": "4/5",
+         "probabilita_implicita": 0.5556
+        },
+        {
+         "decimale": 2.63,
+         "esito": "X",
+         "frazionaria": "13/8",
+         "probabilita_implicita": 0.381
+        },
+        {
+         "decimale": 6.5,
+         "esito": "2",
+         "frazionaria": "11/2",
+         "probabilita_implicita": 0.1538
+        }
+       ],
+       "margine_percento": 9.04,
+       "mercato": "1st half",
+       "somma_probabilita": 1.0904
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.14,
+         "esito": "1",
+         "frazionaria": "1/7",
+         "probabilita_implicita": 0.875
+        },
+        {
+         "decimale": 5.5,
+         "esito": "2",
+         "frazionaria": "9/2",
+         "probabilita_implicita": 0.1818
+        }
+       ],
+       "margine_percento": 5.68,
+       "mercato": "Draw no bet",
+       "somma_probabilita": 1.0568
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.75,
+         "esito": "Yes",
+         "frazionaria": "3/4",
+         "probabilita_implicita": 0.5714
+        },
+        {
+         "decimale": 2.0,
+         "esito": "No",
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
+        }
+       ],
+       "margine_percento": 7.14,
+       "mercato": "Both teams to score",
+       "somma_probabilita": 1.0714
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.02,
+         "esito": "Over",
+         "frazionaria": "1/40",
+         "probabilita_implicita": 0.9756
+        },
+        {
+         "decimale": 17.0,
+         "esito": "Under",
+         "frazionaria": "16/1",
+         "probabilita_implicita": 0.0588
+        }
+       ],
+       "linea": "0.5",
+       "margine_percento": 3.44,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0344
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.17,
+         "esito": "Over",
+         "frazionaria": "1/6",
+         "probabilita_implicita": 0.8571
+        },
+        {
+         "decimale": 5.0,
+         "esito": "Under",
+         "frazionaria": "4/1",
+         "probabilita_implicita": 0.2
+        }
+       ],
+       "linea": "1.5",
+       "margine_percento": 5.71,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0571
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.53,
+         "esito": "Over",
+         "frazionaria": "8/15",
+         "probabilita_implicita": 0.6522
+        },
+        {
+         "decimale": 2.5,
+         "esito": "Under",
+         "frazionaria": "6/4",
+         "probabilita_implicita": 0.4
+        }
+       ],
+       "linea": "2.5",
+       "margine_percento": 5.22,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0522
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 2.3,
+         "esito": "Over",
+         "frazionaria": "13/10",
+         "probabilita_implicita": 0.4348
+        },
+        {
+         "decimale": 1.62,
+         "esito": "Under",
+         "frazionaria": "8/13",
+         "probabilita_implicita": 0.619
+        }
+       ],
+       "linea": "3.5",
+       "margine_percento": 5.38,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0538
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 4.0,
+         "esito": "Over",
+         "frazionaria": "3/1",
+         "probabilita_implicita": 0.25
+        },
+        {
+         "decimale": 1.25,
+         "esito": "Under",
+         "frazionaria": "1/4",
+         "probabilita_implicita": 0.8
+        }
+       ],
+       "linea": "4.5",
+       "margine_percento": 5.0,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.05
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 7.0,
+         "esito": "Over",
+         "frazionaria": "6/1",
+         "probabilita_implicita": 0.1429
+        },
+        {
+         "decimale": 1.1,
+         "esito": "Under",
+         "frazionaria": "1/10",
+         "probabilita_implicita": 0.9091
+        }
+       ],
+       "linea": "5.5",
+       "margine_percento": 5.19,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0519
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 15.0,
+         "esito": "Over",
+         "frazionaria": "14/1",
+         "probabilita_implicita": 0.0667
+        },
+        {
+         "decimale": 1.03,
+         "esito": "Under",
+         "frazionaria": "1/33",
+         "probabilita_implicita": 0.9706
+        }
+       ],
+       "linea": "6.5",
+       "margine_percento": 3.73,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0373
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 26.0,
+         "esito": "Over",
+         "frazionaria": "25/1",
+         "probabilita_implicita": 0.0385
+        },
+        {
+         "decimale": 1.01,
+         "esito": "Under",
+         "frazionaria": "1/100",
+         "probabilita_implicita": 0.9901
+        }
+       ],
+       "linea": "7.5",
+       "margine_percento": 2.86,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0286
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 51.0,
+         "esito": "Over",
+         "frazionaria": "50/1",
+         "probabilita_implicita": 0.0196
+        },
+        {
+         "decimale": 1.0,
+         "esito": "Under",
+         "frazionaria": "1/500",
+         "probabilita_implicita": 0.998
+        }
+       ],
+       "linea": "8.5",
+       "margine_percento": 1.76,
+       "mercato": "Match goals",
+       "somma_probabilita": 1.0176
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.85,
+         "esito": "(-1.25) Real Madrid",
+         "frazionaria": "17/20",
+         "probabilita_implicita": 0.5405
+        },
+        {
+         "decimale": 2.0,
+         "esito": "(1.25) Real Sociedad",
+         "frazionaria": "1/1",
+         "probabilita_implicita": 0.5
+        }
+       ],
+       "margine_percento": 4.05,
+       "mercato": "Asian handicap",
+       "somma_probabilita": 1.0405
+      },
+      {
+       "esiti": [
+        {
+         "decimale": 1.36,
+         "esito": "Real Madrid",
+         "frazionaria": "4/11",
+         "probabilita_implicita": 0.7333
+        },
+        {
+         "decimale": 19.0,
+         "esito": "No goal",
+         "frazionaria": "18/1",
+         "probabilita_implicita": 0.0526
+        },
+        {
+         "decimale": 3.0,
+         "esito": "Real Sociedad",
+         "frazionaria": "2/1",
+         "probabilita_implicita": 0.3333
+        }
+       ],
+       "margine_percento": 11.93,
+       "mercato": "First team to score",
+       "somma_probabilita": 1.1193
+      }
+     ],
+     "n_mercati": 16
+    },
+    "torneo": "LaLiga"
+   },
    "source": "model_only",
    "stage": null,
    "utc_date": "2026-08-26T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-14T11:54:13Z",
+ "generated_at": "2026-08-22T15:51:50Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1
