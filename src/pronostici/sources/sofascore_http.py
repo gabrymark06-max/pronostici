@@ -59,6 +59,52 @@ class SofascoreNonRaggiungibile(RuntimeError):
     """Rete assente, 403, o risposta illeggibile. Rumorosa apposta."""
 
 
+class SofascoreCiBlocca(RuntimeError):
+    """Non e' una frenata: e' un muro, e insistere non lo abbatte.
+
+    NON eredita da `SofascoreNonRaggiungibile`, ed e' deliberato. Chi chiama
+    cattura quella per partita e prosegue col giro — giusto, quando a mancare
+    e' una scheda sola. Qui non manca una scheda: manca l'accesso, e proseguire
+    vuol dire ripetere lo stesso muro per ogni partita che resta. Restando
+    fuori da quella gerarchia questa attraversa i `except` esistenti e ferma il
+    giro, che e' l'unica reazione sensata.
+    """
+
+
+# QUANDO SMETTERE DI PROVARE.
+#
+# Il 403 di cui sopra passa da solo, e per quello bastano i tre tentativi. Ma
+# esiste un altro 403 che non passa mai: `api.sofascore.com` risponde
+# `{"error": {"code": 403, "reason": "challenge"}}` a chi non esegue
+# JavaScript. Il 22 e il 23 agosto 2026 il job e' stato ucciso due volte dal
+# timeout di 25 minuti senza scrivere niente, perche' pagava otto secondi di
+# attese per ognuna delle centinaia di richieste di un giro.
+#
+# Tre richieste di fila esaurite tutte sul 403 non sono piu' una frenata: e'
+# quel muro. Si smette dopo ~24 secondi invece che dopo 25 minuti, e si dice
+# perche'. Una risposta qualunque che arrivi davvero — anche un 404 — dimostra
+# che il muro non c'e' e azzera il conto.
+BLOCCHI_PER_ARRENDERSI = 3
+MURO = (
+    "Sofascore rifiuta ogni richiesta ({ultimo}): {quanti} di fila esaurite "
+    "su {tentativi} tentativi.\n"
+    "Il corpo della risposta dice `reason: challenge`, e non e' l'impronta "
+    "TLS: `curl_cffi` c'e', e provate una per una nessuna delle firme "
+    "disponibili passa. Non e' nemmeno l'IP: `www.sofascore.com` risponde "
+    "200 dalla stessa macchina nello stesso istante — e' solo `api.` a "
+    "essere protetto, e la challenge vuole JavaScript, che qui non gira.\n"
+    "Rilanciare non serve, da nessuna rete. Serve un trasporto che esegua "
+    "la pagina, oppure una fonte diversa per formazioni e arbitro."
+)
+_falliti_di_fila = 0
+
+
+def azzera_blocco() -> None:
+    """Rimette a zero il contatore del muro. Serve ai test, e a chi rilancia."""
+    global _falliti_di_fila
+    _falliti_di_fila = 0
+
+
 def _sessione():
     """La sessione `curl_cffi`, importata QUI e non in testa al modulo.
 
@@ -101,7 +147,8 @@ def prendi(percorso: str) -> Any:
         if r.status_code == 404:
             # Un 404 e' un'informazione, non un guasto: la squadra esiste ma non
             # ha calendario, l'evento non ha ancora formazioni. Chi chiama decide,
-            # e non si riprova.
+            # e non si riprova. Ed e' una risposta vera: il muro non c'e'.
+            azzera_blocco()
             raise SofascoreNonRaggiungibile(f"404 su {percorso}")
         if r.status_code in (403, 429):
             ultimo = f"{r.status_code}"
@@ -110,9 +157,25 @@ def prendi(percorso: str) -> Any:
             raise SofascoreNonRaggiungibile(f"{r.status_code} su {percorso}")
 
         try:
-            return r.json()
+            corpo = r.json()
         except Exception as exc:
             raise SofascoreNonRaggiungibile(f"risposta non JSON su {percorso}") from exc
+        azzera_blocco()
+        return corpo
+
+    global _falliti_di_fila
+    if ultimo in ("403", "429"):
+        _falliti_di_fila += 1
+        if _falliti_di_fila >= BLOCCHI_PER_ARRENDERSI:
+            raise SofascoreCiBlocca(
+                MURO.format(
+                    ultimo=ultimo,
+                    quanti=_falliti_di_fila,
+                    tentativi=TENTATIVI,
+                )
+            )
+    else:
+        azzera_blocco()
 
     raise SofascoreNonRaggiungibile(
         f"{ultimo or 'nessuna risposta'} su {percorso} dopo {TENTATIVI} tentativi"

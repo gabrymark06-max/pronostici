@@ -86,6 +86,9 @@ TIMEOUT = 60
 # Lo stesso nome di prima: i job lo intercettano, e cambiarlo avrebbe voluto
 # dire toccarli entrambi per una cosa che per loro non e' cambiata.
 SofascoreNonDisponibile = http.SofascoreNonRaggiungibile
+# Il muro, riesportato con lo stesso nome del trasporto: i job importano
+# `sources.sofascore`, non `sofascore_http`.
+SofascoreCiBlocca = http.SofascoreCiBlocca
 
 
 @dataclass(frozen=True)

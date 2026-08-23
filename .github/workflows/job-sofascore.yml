@@ -29,6 +29,21 @@ name: job · sofascore
 # da qui — si calcola sul modello e sulle quote, e una formazione che manca non
 # lo cambia.
 
+# STATO AL 23 AGOSTO 2026: LA FONTE E' CHIUSA.
+#
+# `api.sofascore.com` risponde `{"error": {"code": 403, "reason": "challenge"}}`
+# a chiunque non esegua JavaScript. Non e' l'impronta TLS (nessuna delle firme
+# di `curl_cffi` passa) e non e' l'IP (`www.sofascore.com` risponde 200 dalla
+# stessa macchina nello stesso momento): e' una challenge davanti al solo
+# sottodominio `api.`. Il giro adesso si arrende in ~30 secondi con quel
+# messaggio, invece di farsi uccidere dal timeout dopo 25 minuti.
+#
+# IL CRON RESTA ACCESO APPOSTA. Il job sara' rosso ogni giorno finche' la fonte
+# non torna raggiungibile, e va bene cosi': formazioni e arbitro esistono solo
+# prima del fischio d'inizio e non si recuperano dopo, quindi il fatto che li
+# stiamo perdendo deve restare visibile. Spegnere la sveglia non rimette i dati
+# al loro posto — li fa solo mancare in silenzio.
+
 on:
   schedule:
     # 07:00 e 17:00 UTC. In Italia d'estate sono le 09:00 e le 19:00.
@@ -68,7 +83,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
+      # LA PUNTA DEL RAMO, NON IL COMMIT CHE HA INNESCATO LA RUN.
+      #
+      # Senza `ref`, `checkout` si pianta sul commit di partenza: in una catena
+      # ogni job leggerebbe `data/` com'era prima che il precedente scrivesse,
+      # e il commento di `daily.yml` — «ognuno legge cio' che il precedente ha
+      # scritto» — sarebbe falso. Con due job che toccano lo stesso file il
+      # rebase finale non ha nemmeno una base comune sensata e fallisce.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

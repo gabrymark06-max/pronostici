@@ -376,7 +376,19 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
-    report = run(finestra=args.window_days, dry_run=args.dry_run, oggi=args.today)
+    try:
+        report = run(
+            finestra=args.window_days, dry_run=args.dry_run, oggi=args.today
+        )
+    except sf.SofascoreCiBlocca as exc:
+        # Il giro si ferma qui, e la CI diventa rossa. Non e' pessimismo: i
+        # dati pre-partita non si recuperano dopo il fischio, quindi un giro
+        # perso va visto adesso, non scoperto fra un mese guardando i buchi.
+        log.error("%s", exc)
+        report = {"errore": str(exc), "agganciate": 0, "days_written": []}
+        json.dump(report, sys.stdout, ensure_ascii=False, indent=2)
+        sys.stdout.write("\n")
+        return 1
     json.dump(report, sys.stdout, ensure_ascii=False, indent=2)
     sys.stdout.write("\n")
     return 0 if not report.get("errore") else 1
