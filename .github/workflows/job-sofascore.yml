@@ -44,11 +44,19 @@ name: job · sofascore
 # passa al browser solo quando il muro e' confermato — se Sofascore riapre la
 # porta si torna a `curl_cffi` da soli, senza toccare niente.
 #
-# SU QUESTO RUNNER NON E' ANCORA PROVATO. Serve un Chrome, e il token e' legato
-# all'IP: se Sofascore non ne emette uno per gli indirizzi da datacenter, non
-# basterebbe installarlo. Finche' non e' verificato, il job qui fallisce in ~30
-# secondi con la diagnosi scritta, e il giro va lanciato a mano da una
-# macchina con Chrome: `python -m pronostici.jobs.sofascore`.
+# SU QUESTO RUNNER NON FUNZIONA, ED E' STATO PROVATO. Chrome parte davvero
+# sotto `xvfb-run` e il ripiego scatta come deve, ma la pagina non riceve
+# nessun `X-Captcha` entro 45 secondi: il token e' legato all'IP e Sofascore
+# non ne emette per gli indirizzi da datacenter. Non e' una configurazione da
+# sistemare, e' il loro criterio.
+#
+# La riga con `xvfb-run` resta perche' e' corretta e costa niente: se un
+# giorno passassimo da un IP residenziale — un proxy, un runner self-hosted —
+# funzionerebbe senza toccare altro.
+#
+# NEL FRATTEMPO IL GIRO SI FA DA CASA: `python scripts/giornata.py` rifa
+# l'intera pipeline, sofascore compreso, e committa nel registro come farebbe
+# questo job.
 #
 # IL CRON RESTA ACCESO APPOSTA: formazioni e arbitro esistono solo prima del
 # fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
