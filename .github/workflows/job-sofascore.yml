@@ -119,11 +119,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -e ".[sofascore]"
+      # NIENTE `actions/setup-python` QUI, e non e' una semplificazione.
+      #
+      # Quell'action scarica Python e poi lancia `setup.ps1`; su questa
+      # macchina PowerShell rifiuta di eseguire script non firmati — la stessa
+      # politica predefinita che ha fatto scrivere `scripts/giornata.py` in
+      # Python invece che in `.ps1`. Il runner di casa ha gia' Python 3.12, e
+      # usarlo evita di allentare un'impostazione di sistema per un job.
+      #
+      # L'ambiente sta FUORI dal repository e si riusa fra un giro e l'altro:
+      # dentro, un `pip install -e` ripunterebbe l'installazione editable di
+      # chi lavora sulla macchina alla cartella di lavoro del runner.
+      - name: Ambiente Python
+        shell: bash
+        run: |
+          VENV="$HOME/.pronostici/venv-job"
+          [ -x "$VENV/Scripts/python.exe" ] || py -3.12 -m venv "$VENV"
+          "$VENV/Scripts/python.exe" -m pip install -q --upgrade pip
+          "$VENV/Scripts/python.exe" -m pip install -q -e ".[sofascore]"
+          echo "PY=$VENV/Scripts/python.exe" >> "$GITHUB_ENV"
 
       # L'ARCHIVIO DEI GIOCATORI NON STA NEL REPOSITORY — sono statistiche di
       # terzi e il repository e' pubblico — ma senza di lui ogni esecuzione
@@ -156,7 +170,7 @@ jobs:
           # utente vera, quindi Chrome ha gia' un desktop su cui aprirsi. Ed e'
           # un Chrome normale, senza flag di automazione — con quelli la
           # challenge di Sofascore non passa.
-          python -m pronostici.jobs.sofascore $ARGS             | tee "$RUNNER_TEMP/sofascore.json"
+          "$PY" -m pronostici.jobs.sofascore $ARGS             | tee "$RUNNER_TEMP/sofascore.json"
 
       # LE STIME SUI GIOCATORI DIPENDONO DALLE FORMAZIONI: senza sapere chi
       # gioca non si possono fare, quindi girano dopo e nello stesso giro.
@@ -169,12 +183,16 @@ jobs:
         # qualunque cosa il job dica.
         shell: bash
         run: |
-          python -m pronostici.jobs.giocatori \
+          "$PY" -m pronostici.jobs.giocatori \
             --window-days "${{ inputs.window_days || '4' }}" \
             | tee "$RUNNER_TEMP/giocatori.json" || true
 
       - name: Riepilogo
         if: always()
+        # Dichiarata perche' su un runner Windows il default e'
+        # PowerShell, e questo passo e' bash: senza, fallisce sulla
+        # prima riga.
+        shell: bash
         run: |
           for f in sofascore giocatori; do
             [ -s "$RUNNER_TEMP/$f.json" ] || continue
