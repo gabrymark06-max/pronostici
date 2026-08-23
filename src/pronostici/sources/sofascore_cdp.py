@@ -51,6 +51,16 @@ log = logging.getLogger(__name__)
 PORTA = int(os.environ.get("SOFASCORE_CDP_PORT", "9222"))
 ORIGINE = "https://www.sofascore.com"
 PAGINA = f"{ORIGINE}/football"
+
+# DOVE SI PARCHEGGIA DOPO AVER PRESO IL TOKEN.
+#
+# Il sito e' un'applicazione a pagina singola: cambia rotta da sola mentre
+# lavoriamo, e ogni cambio butta via il contesto JavaScript in cui girano le
+# nostre `fetch` — CDP risponde «Inspected target navigated or closed» e il
+# giro muore a meta'. Un file statico dello stesso dominio risolve entrambe le
+# cose: l'origine resta quella giusta, quindi le chiamate sono same-origin e i
+# cookie valgono, ma non c'e' nessuna applicazione che si muova sotto di noi.
+PARCHEGGIO = f"{ORIGINE}/robots.txt"
 PROFILO = Path.home() / ".pronostici" / "chrome-sofascore"
 
 # Quanto aspettare che Chrome apra la porta di debug, e che la pagina faccia le
@@ -58,6 +68,19 @@ PROFILO = Path.home() / ".pronostici" / "chrome-sofascore"
 # lo regali.
 ATTESA_AVVIO_S = 30
 ATTESA_TOKEN_S = 45
+
+# QUANDO ARRIVA UN 403 DAL BROWSER.
+#
+# Non e' il muro di prima — quello si riconosce perche' non passa mai niente.
+# Qui il token c'e' ed e' valido: e' la quota per IP che si e' esaurita, e si
+# vede perche' anche le chiamate che funzionavano un minuto fa cominciano a
+# rispondere 403 insieme.
+#
+# Misurato il 23 agosto 2026: un giro intero passa senza problemi, sei giri di
+# fila no. Le cadenze vere sono due al giorno, quindi in esercizio il caso non
+# si presenta; ma un rilancio a mano dopo un errore non deve mandare all'aria
+# il giro successivo. Si aspetta, si rinnova il token, si riprova.
+ATTESE_403_S = (20, 60)
 
 # I posti dove Chrome sta su Windows, piu' quello che si porta dietro
 # `agent-browser` — se il progetto lo usa gia' per il QA, e' inutile chiedere
@@ -73,6 +96,16 @@ CANDIDATI = (
 
 class ChromeNonDisponibile(RuntimeError):
     """Non c'e' un Chrome da guidare, o non si e' fatto guidare."""
+
+
+class ContestoPerso(RuntimeError):
+    """La scheda su cui stavamo lavorando non e' piu' quella di prima.
+
+    Succede da sola: il sito e' un'applicazione a pagina singola e cambia
+    rotta mentre lavoriamo, e ogni cambio butta via il contesto JavaScript in
+    cui le nostre `fetch` giravano. Non e' un guasto, e' un rinvio: si torna
+    sulla pagina e si ricomincia da li'.
+    """
 
 
 def _trova_chrome() -> str:
@@ -205,7 +238,16 @@ class _Canale:
                 "returnByValue": True,
             },
         )
-        risultato = self.attendi(atteso).get("result", {})
+        messaggio = self.attendi(atteso)
+        # CDP risponde in tre modi diversi, e vanno distinti: un errore del
+        # protocollo (`error`) non e' un'eccezione nella pagina
+        # (`exceptionDetails`), e nessuno dei due e' un risultato. Confonderli
+        # significa vedere «risposta illeggibile» al posto della causa vera —
+        # per esempio «Cannot find context with specified id», che vuol dire
+        # che la pagina ha cambiato rotta sotto di noi.
+        if "error" in messaggio:
+            raise ContestoPerso(messaggio["error"].get("message", "errore CDP"))
+        risultato = messaggio.get("result", {})
         if risultato.get("exceptionDetails"):
             testo = risultato["exceptionDetails"].get("text", "errore nella pagina")
             raise RuntimeError(f"CDP: {testo}")
@@ -250,6 +292,7 @@ class Sessione:
                     if k.lower() in ("x-captcha", "x-requested-with")
                 }
                 log.info("Token di Sofascore catturato.")
+                self._parcheggia()
                 return
         raise ChromeNonDisponibile(
             "La pagina di Sofascore non ha prodotto nessun token entro "
@@ -257,22 +300,54 @@ class Sessione:
             "guarda se mostra le partite."
         )
 
+    def _parcheggia(self) -> None:
+        """Sposta la scheda su una pagina che non si muove.
+
+        Il token e' gia' in mano: da qui in avanti l'applicazione non serve
+        piu', e restarci significherebbe solo farsi cambiare il contesto sotto
+        i piedi al primo cambio di rotta.
+        """
+        self._canale.comando("Page.navigate", {"url": PARCHEGGIO})
+        atteso = PARCHEGGIO.rsplit("/", 1)[-1]
+        scadenza = time.monotonic() + 15
+        while time.monotonic() < scadenza:
+            # Durante la navigazione il contesto muore e rinasce: qui le
+            # eccezioni sono il decorso normale, non un guasto.
+            with contextlib.suppress(Exception):
+                if self._canale.valuta("location.pathname").endswith(atteso):
+                    return
+            time.sleep(0.5)
+        log.warning("Non sono riuscito a parcheggiare: resto sull'applicazione.")
+
     def prendi(self, percorso: str) -> Any:
         """Una GET dall'interno della pagina, con gli header del sito.
 
         Restituisce `(stato, corpo)`: la traduzione in eccezioni la fa chi
         chiama, perche' le regole su 404 e 403 stanno gia' scritte li'.
         """
-        for tentativo in (1, 2):
-            stato, corpo = self._chiama(percorso)
-            # Un 403 dopo che funzionava vuol dire token scaduto: si rinnova
-            # una volta sola, poi si riferisce l'esito qualunque sia.
-            if stato == 403 and tentativo == 1:
-                log.info("403: il token e' scaduto, lo rinnovo.")
+        ultimo: tuple[int, Any] = (0, None)
+        for numero, attesa in enumerate((0, *ATTESE_403_S)):
+            if attesa:
+                log.info("403 dal browser: aspetto %ds e rinnovo il token.", attesa)
+                time.sleep(attesa)
                 self._rinnova()
+            try:
+                ultimo = self._chiama(percorso)
+            except ContestoPerso as exc:
+                if numero == len(ATTESE_403_S):
+                    raise
+                log.info("La pagina e' cambiata sotto di noi (%s): ci torno.", exc)
+                self._riaggancia()
                 continue
-            return stato, corpo
-        return stato, corpo
+            if ultimo[0] != 403:
+                return ultimo
+        return ultimo
+
+    def _riaggancia(self) -> None:
+        """Riapre il canale sulla scheda buona e ripesca il token."""
+        self._canale.chiudi()
+        self._canale = _Canale(_scheda()["webSocketDebuggerUrl"])
+        self._rinnova()
 
     def _chiama(self, percorso: str) -> tuple[int, Any]:
         indirizzo = json.dumps(f"{ORIGINE}/api/v1{percorso}")
