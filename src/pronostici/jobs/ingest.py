@@ -18,7 +18,11 @@ from datetime import UTC, datetime
 
 from ..archive import merge_season, parse_match
 from ..competitions import ACTIVE_CODES, get
-from ..sources.football_data import FootballDataClient, FootballDataError
+from ..sources.football_data import (
+    FootballDataClient,
+    FootballDataError,
+    MissingApiKey,
+)
 
 log = logging.getLogger("ingest")
 
@@ -49,9 +53,15 @@ def run(
                 payload = client.competition_matches(
                     code, season=season, refresh=refresh
                 )
+            except MissingApiKey:
+                # Senza chiave fallirebbero tutte e venti allo stesso modo:
+                # inutile insistere venti volte per poi uscire verdi. Sale, e
+                # `main` la trasforma in un job rosso.
+                raise
             except FootballDataError as exc:
-                # Una stagione fuori finestra risponde 403: non e' un guasto,
-                # e' il limite del piano. Il job prosegue.
+                # Una stagione fuori finestra risponde 403, una coppa non
+                # ancora pubblicata risponde 404: non sono guasti, sono il
+                # limite del piano. Il job prosegue.
                 log.warning("%s %s non disponibile: %s", code, season, exc)
                 errors.append({"competition": code, "season": season, "error": str(exc)})
                 continue
@@ -91,9 +101,22 @@ def main(argv: list[str] | None = None) -> int:
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     seasons = args.seasons or default_seasons()
-    report = run(
-        args.competitions, seasons, offline=args.offline, refresh=args.refresh
-    )
+    try:
+        report = run(
+            args.competitions, seasons, offline=args.offline, refresh=args.refresh
+        )
+    except MissingApiKey as exc:
+        # Rosso, non verde. Il rapporto esce lo stesso perche' chi legge la CI
+        # legge questo, non il traceback.
+        print(
+            json.dumps(
+                {"fatal": str(exc), "seasons": [], "errors": [], "changed": False},
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
+        log.error("%s", exc)
+        return 1
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0
 

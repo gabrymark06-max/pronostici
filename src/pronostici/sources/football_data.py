@@ -44,6 +44,17 @@ class CacheMiss(FootballDataError):
     """Richiesto un endpoint non in cache mentre offline=True."""
 
 
+class MissingApiKey(FootballDataError):
+    """La chiave non c'e' affatto: nessuna richiesta puo' partire.
+
+    Ha una classe sua perche' va distinta dagli altri errori della fonte. Un
+    403 su una stagione fuori finestra o un 404 su una coppa non ancora
+    pubblicata sono normali, e il job deve proseguire; una chiave mancante non
+    e' un caso da tollerare: significa che *niente* verra' scaricato, e un job
+    che finisce verde dopo aver scaricato zero partite e' peggio di uno rosso.
+    """
+
+
 @dataclass
 class RateLimitObservation:
     """Cosa il server ha detto davvero sul rate limit, per misurarlo."""
@@ -87,7 +98,7 @@ class FootballDataClient:
     def _headers(self) -> dict[str, str]:
         settings = get_settings()
         if not settings.has_football_data:
-            raise FootballDataError(
+            raise MissingApiKey(
                 "FOOTBALL_DATA_API_KEY non impostata. In sviluppo va in .env, "
                 "in CI nei GitHub Actions Secrets."
             )
