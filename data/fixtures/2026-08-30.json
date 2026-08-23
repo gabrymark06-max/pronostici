@@ -10,34 +10,34 @@
    "competition": "DED",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 86,
+     "S_min": 83,
      "p_min": 84,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 8,
-    "truncated_mass": 6.553e-07
+    "n_clusters": 9,
+    "truncated_mass": 1.084e-06
    },
    "expected_goals": {
-    "away": 2.213,
-    "home": 1.614
+    "away": 2.318,
+    "home": 1.68
    },
    "half_time": {
-    "ht_over_0.5": 0.8206,
-    "ht_over_1.5": 0.5124,
-    "ht_over_2.5": 0.2476,
-    "ht_under_0.5": 0.1794,
-    "ht_under_1.5": 0.4876,
-    "ht_under_2.5": 0.7524,
-    "htft_11": 0.1661,
-    "htft_12": 0.0395,
-    "htft_1X": 0.0529,
-    "htft_21": 0.0256,
-    "htft_22": 0.3293,
-    "htft_2X": 0.0529,
-    "htft_X1": 0.0898,
-    "htft_X2": 0.146,
-    "htft_XX": 0.0979
+    "ht_over_0.5": 0.8331,
+    "ht_over_1.5": 0.5342,
+    "ht_over_2.5": 0.2667,
+    "ht_under_0.5": 0.1669,
+    "ht_under_1.5": 0.4658,
+    "ht_under_2.5": 0.7333,
+    "htft_11": 0.1653,
+    "htft_12": 0.0415,
+    "htft_1X": 0.0528,
+    "htft_21": 0.0265,
+    "htft_22": 0.336,
+    "htft_2X": 0.0528,
+    "htft_X1": 0.0876,
+    "htft_X2": 0.1449,
+    "htft_XX": 0.0925
    },
    "home": {
     "crest": "https://crests.football-data.org/676.png",
@@ -49,98 +49,98 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8224,
-    "band_p95": 0.9356,
+    "band_p5": 0.8372,
+    "band_p95": 0.941,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_over_0.5",
     "label": "Ospite Over 0.5",
-    "p": 0.8706,
-    "p_raw": 0.8859,
-    "reference": 0.7156,
+    "p": 0.8824,
+    "p_raw": 0.8971,
+    "reference": 0.7159,
     "runners_up": [
      {
-      "band_p5": 0.5155,
-      "band_p95": 0.759,
+      "band_p5": 0.5417,
+      "band_p95": 0.774,
       "family": "team_goals",
       "key": "ag_over_1.5",
       "label": "Ospite Over 1.5",
-      "p": 0.5668,
-      "p_raw": 0.643,
-      "reference": 0.3996,
-      "score": 0.056743,
-      "shrink_alpha": 0.6871,
-      "sigma": 0.0708
+      "p": 0.5873,
+      "p_raw": 0.6675,
+      "reference": 0.4022,
+      "score": 0.069465,
+      "shrink_alpha": 0.6977,
+      "sigma": 0.0691
      },
      {
-      "band_p5": 0.6156,
-      "band_p95": 0.8139,
+      "band_p5": 0.5992,
+      "band_p95": 0.8118,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6818,
-      "p_raw": 0.7159,
-      "reference": 0.5551,
-      "score": 0.033523,
-      "shrink_alpha": 0.788,
-      "sigma": 0.0617
+      "p": 0.6797,
+      "p_raw": 0.7176,
+      "reference": 0.5567,
+      "score": 0.031562,
+      "shrink_alpha": 0.7641,
+      "sigma": 0.0661
      },
      {
-      "band_p5": 0.7946,
-      "band_p95": 0.9269,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.847,
-      "p_raw": 0.8638,
-      "reference": 0.7516,
-      "score": 0.027052,
-      "shrink_alpha": 0.8498,
-      "sigma": 0.0404
+      "band_p5": 0.563,
+      "band_p95": 0.7265,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.6065,
+      "p_raw": 0.6512,
+      "reference": 0.4834,
+      "score": 0.030492,
+      "shrink_alpha": 0.7334,
+      "sigma": 0.0496
      },
      {
-      "band_p5": 0.6156,
-      "band_p95": 0.8139,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.669,
-      "p_raw": 0.7159,
-      "reference": 0.5551,
-      "score": 0.026969,
-      "shrink_alpha": 0.7083,
-      "sigma": 0.0617
-     },
-     {
-      "band_p5": 0.539,
-      "band_p95": 0.7438,
+      "band_p5": 0.5409,
+      "band_p95": 0.751,
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5738,
-      "p_raw": 0.6428,
-      "reference": 0.4589,
-      "score": 0.026512,
-      "shrink_alpha": 0.6249,
-      "sigma": 0.0638
+      "p": 0.5777,
+      "p_raw": 0.6537,
+      "reference": 0.4608,
+      "score": 0.027407,
+      "shrink_alpha": 0.6059,
+      "sigma": 0.0664
+     },
+     {
+      "band_p5": 0.5992,
+      "band_p95": 0.8118,
+      "family": "handicap_eu",
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.666,
+      "p_raw": 0.7176,
+      "reference": 0.5567,
+      "score": 0.024816,
+      "shrink_alpha": 0.6791,
+      "sigma": 0.0661
      }
     ],
-    "score": 0.068861,
-    "shrink_alpha": 0.9104,
-    "sigma": 0.0329
+    "score": 0.080817,
+    "shrink_alpha": 0.9193,
+    "sigma": 0.0311
    },
    "raw_probabilities": {
-    "1x2_away": 0.5134,
-    "1x2_draw": 0.2025,
-    "1x2_home": 0.2841,
-    "btts_yes": 0.7053,
-    "over_2.5": 0.7301,
-    "under_2.5": 0.2699
+    "1x2_away": 0.5215,
+    "1x2_draw": 0.1961,
+    "1x2_home": 0.2824,
+    "btts_yes": 0.7247,
+    "over_2.5": 0.7561,
+    "under_2.5": 0.2439
    },
    "reasons": [
-    "Gol attesi: FC Utrecht 1.61, PSV 2.21 (totale 3.83).",
-    "Ospite Over 0.5: 87 su 100, 16 punti sopra la media di riferimento (72 su 100).",
-    "Banda di incertezza: fra 82 e 94 su 100."
+    "Gol attesi: FC Utrecht 1.68, PSV 2.32 (totale 4.00).",
+    "Ospite Over 0.5: 88 su 100, 17 punti sopra la media di riferimento (72 su 100).",
+    "Banda di incertezza: fra 84 e 94 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -2157,7 +2157,7 @@
    "utc_date": "2026-08-30T19:30:00Z"
   }
  ],
- "generated_at": "2026-08-23T12:10:05Z",
+ "generated_at": "2026-08-23T12:22:17Z",
  "schema_version": 1,
  "silence_count": 4,
  "total": 17

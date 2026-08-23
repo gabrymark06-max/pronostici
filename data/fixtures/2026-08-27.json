@@ -11,33 +11,33 @@
    "diagnostics": {
     "filter_bites": {
      "S_min": 81,
-     "p_min": 85,
+     "p_min": 84,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 10,
-    "truncated_mass": 6.65e-06
+    "truncated_mass": 9.721e-06
    },
    "expected_goals": {
-    "away": 0.797,
-    "home": 2.754
+    "away": 0.79,
+    "home": 2.856
    },
    "half_time": {
-    "ht_over_0.5": 0.7851,
-    "ht_over_1.5": 0.4547,
-    "ht_over_2.5": 0.2006,
-    "ht_under_0.5": 0.2149,
-    "ht_under_1.5": 0.5453,
-    "ht_under_2.5": 0.7994,
-    "htft_11": 0.5441,
-    "htft_12": 0.0067,
-    "htft_1X": 0.0295,
-    "htft_21": 0.0348,
-    "htft_22": 0.0425,
-    "htft_2X": 0.0295,
-    "htft_X1": 0.2034,
-    "htft_X2": 0.0326,
-    "htft_XX": 0.0769
+    "ht_over_0.5": 0.7938,
+    "ht_over_1.5": 0.4683,
+    "ht_over_2.5": 0.2112,
+    "ht_under_0.5": 0.2062,
+    "ht_under_1.5": 0.5317,
+    "ht_under_2.5": 0.7888,
+    "htft_11": 0.5604,
+    "htft_12": 0.0063,
+    "htft_1X": 0.0281,
+    "htft_21": 0.035,
+    "htft_22": 0.0391,
+    "htft_2X": 0.0281,
+    "htft_X1": 0.2016,
+    "htft_X2": 0.0299,
+    "htft_XX": 0.0717
    },
    "home": {
     "crest": "https://crests.football-data.org/81.png",
@@ -87,8 +87,8 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6808,
-    "band_p95": 0.8639,
+    "band_p5": 0.6944,
+    "band_p95": 0.8772,
     "cluster_members": [
      "combodc_12_over_1.5",
      "hg_over_1.5",
@@ -97,92 +97,92 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.7183,
-    "p_raw": 0.777,
-    "reference": 0.4616,
+    "p": 0.7279,
+    "p_raw": 0.791,
+    "reference": 0.4601,
     "runners_up": [
      {
-      "band_p5": 0.8629,
-      "band_p95": 0.9558,
+      "band_p5": 0.8665,
+      "band_p95": 0.9616,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.9037,
-      "p_raw": 0.9149,
-      "reference": 0.7122,
-      "score": 0.109813,
-      "shrink_alpha": 0.9448,
-      "sigma": 0.0287
+      "p": 0.9094,
+      "p_raw": 0.9213,
+      "reference": 0.7112,
+      "score": 0.118542,
+      "shrink_alpha": 0.9434,
+      "sigma": 0.0291
      },
      {
-      "band_p5": 0.8629,
-      "band_p95": 0.9558,
+      "band_p5": 0.8665,
+      "band_p95": 0.9616,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8983,
-      "p_raw": 0.9149,
-      "reference": 0.7122,
-      "score": 0.102711,
-      "shrink_alpha": 0.9179,
-      "sigma": 0.0287
+      "p": 0.9036,
+      "p_raw": 0.9213,
+      "reference": 0.7112,
+      "score": 0.110611,
+      "shrink_alpha": 0.9158,
+      "sigma": 0.0291
      },
      {
-      "band_p5": 0.719,
-      "band_p95": 0.8852,
+      "band_p5": 0.7263,
+      "band_p95": 0.8964,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7308,
-      "p_raw": 0.8029,
-      "reference": 0.5415,
-      "score": 0.075743,
-      "shrink_alpha": 0.7241,
-      "sigma": 0.0508
+      "p": 0.7374,
+      "p_raw": 0.8161,
+      "reference": 0.5402,
+      "score": 0.082393,
+      "shrink_alpha": 0.7148,
+      "sigma": 0.052
      },
      {
-      "band_p5": 0.8903,
-      "band_p95": 0.968,
+      "band_p5": 0.8948,
+      "band_p95": 0.9721,
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.9256,
-      "p_raw": 0.9321,
-      "reference": 0.8018,
-      "score": 0.060002,
-      "shrink_alpha": 0.9499,
-      "sigma": 0.0241
+      "p": 0.9311,
+      "p_raw": 0.938,
+      "reference": 0.8011,
+      "score": 0.066973,
+      "shrink_alpha": 0.9495,
+      "sigma": 0.0242
      },
      {
-      "band_p5": 0.954,
-      "band_p95": 0.9899,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9745,
-      "p_raw": 0.9756,
-      "reference": 0.891,
-      "score": 0.050257,
-      "shrink_alpha": 0.9878,
-      "sigma": 0.0107
+      "band_p5": 0.5236,
+      "band_p95": 0.7801,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.5003,
+      "p_raw": 0.6505,
+      "reference": 0.3333,
+      "score": 0.059158,
+      "shrink_alpha": 0.5265,
+      "sigma": 0.078
      }
     ],
-    "score": 0.135202,
-    "shrink_alpha": 0.814,
-    "sigma": 0.0568
+    "score": 0.147551,
+    "shrink_alpha": 0.8094,
+    "sigma": 0.0577
    },
    "raw_probabilities": {
-    "1x2_away": 0.0851,
-    "1x2_draw": 0.1379,
-    "1x2_home": 0.777,
-    "btts_yes": 0.5081,
-    "over_2.5": 0.6826,
-    "under_2.5": 0.3174
+    "1x2_away": 0.0787,
+    "1x2_draw": 0.1303,
+    "1x2_home": 0.791,
+    "btts_yes": 0.5086,
+    "over_2.5": 0.6988,
+    "under_2.5": 0.3012
    },
    "reasons": [
-    "Gol attesi: FC Barcelona 2.75, Athletic Club 0.80 (totale 3.55).",
-    "Vittoria casa: 72 su 100, 26 punti sopra la media di riferimento (46 su 100).",
-    "Banda di incertezza: fra 68 e 86 su 100."
+    "Gol attesi: FC Barcelona 2.86, Athletic Club 0.79 (totale 3.65).",
+    "Vittoria casa: 73 su 100, 27 punti sopra la media di riferimento (46 su 100).",
+    "Banda di incertezza: fra 69 e 88 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -190,7 +190,7 @@
    "utc_date": "2026-08-27T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-23T12:05:04Z",
+ "generated_at": "2026-08-23T12:22:17Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 1
