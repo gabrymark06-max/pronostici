@@ -58,8 +58,16 @@ on:
 permissions:
   contents: write
 
+# GRUPPO PROPRIO, NON `pronostici-data`.
+#
+# `odds.yml` chiama questo workflow tenendo gia' occupato `pronostici-data`.
+# Se anche il chiamato chiede lo stesso gruppo, aspetta un lucchetto che ha in
+# mano il suo stesso chiamante: il job non parte mai, e GitHub lo segna come
+# fallito senza nemmeno crearlo — la run resta senza il job `quote`, con il
+# solo `finalize` verde. E' la stessa ragione per cui `job-finalize.yml` e
+# `job-ingest.yml` hanno gia' un gruppo loro.
 concurrency:
-  group: pronostici-data
+  group: pronostici-quote
   cancel-in-progress: false
 
 jobs:
