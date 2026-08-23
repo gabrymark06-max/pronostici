@@ -31,6 +31,17 @@ import logging
 import time
 from typing import Any
 
+# ATTENZIONE, 23 agosto 2026: IL SITO NON USA PIU' QUESTO HOST.
+#
+# Guardando il traffico di `www.sofascore.com` con un browser vero, le sue
+# chiamate dati vanno a `https://www.sofascore.com/api/v1/...` — stesso
+# percorso, host diverso. `api.sofascore.com` e' l'indirizzo di prima.
+#
+# Non e' stato cambiato qui perche' oggi rispondono 403 tutti e due allo stesso
+# modo, quindi la sostituzione non e' verificabile: si cambierebbe una costante
+# sperando, e la prossima persona non saprebbe se il valore nuovo e' provato o
+# indovinato. Quando l'accesso torna, provare prima `www.` — e' quello che usa
+# il sito.
 BASE = "https://api.sofascore.com/api/v1"
 TIMEOUT = 30
 
@@ -88,13 +99,17 @@ BLOCCHI_PER_ARRENDERSI = 3
 MURO = (
     "Sofascore rifiuta ogni richiesta ({ultimo}): {quanti} di fila esaurite "
     "su {tentativi} tentativi.\n"
-    "Il corpo della risposta dice `reason: challenge`, e non e' l'impronta "
-    "TLS: `curl_cffi` c'e', e provate una per una nessuna delle firme "
-    "disponibili passa. Non e' nemmeno l'IP: `www.sofascore.com` risponde "
-    "200 dalla stessa macchina nello stesso istante — e' solo `api.` a "
-    "essere protetto, e la challenge vuole JavaScript, che qui non gira.\n"
-    "Rilanciare non serve, da nessuna rete. Serve un trasporto che esegua "
-    "la pagina, oppure una fonte diversa per formazioni e arbitro."
+    "Il corpo dice `reason: challenge`. Non e' l'impronta TLS: nessuna "
+    "delle firme di `curl_cffi` passa. Non e' il trasporto: non passa "
+    "nemmeno un Chrome vero guidato da `agent-browser`, ne' navigando "
+    "l'endpoint, ne' con una `fetch` dall'interno del sito gia' aperto.\n"
+    "LA PROVA CHE NON E' CODICE NOSTRO: aperto `www.sofascore.com` in quel "
+    "browser, le chiamate che fa il sito stesso tornano 403 e la pagina "
+    "dice «There are no events today». E' rotto il loro sito, da qui.\n"
+    "Prima di scrivere altro codice: aprire Sofascore in un browser "
+    "normale. Se mostra le partite il blocco e' sull'automazione; se dice "
+    "anche li' che non ci sono eventi, e' su questa rete e puo' passare "
+    "da solo."
 )
 _falliti_di_fila = 0
 

@@ -29,20 +29,27 @@ name: job · sofascore
 # da qui — si calcola sul modello e sulle quote, e una formazione che manca non
 # lo cambia.
 
-# STATO AL 23 AGOSTO 2026: LA FONTE E' CHIUSA.
+# STATO AL 23 AGOSTO 2026: LA FONTE E' CHIUSA, E NON DIPENDE DA NOI.
 #
-# `api.sofascore.com` risponde `{"error": {"code": 403, "reason": "challenge"}}`
-# a chiunque non esegua JavaScript. Non e' l'impronta TLS (nessuna delle firme
-# di `curl_cffi` passa) e non e' l'IP (`www.sofascore.com` risponde 200 dalla
-# stessa macchina nello stesso momento): e' una challenge davanti al solo
-# sottodominio `api.`. Il giro adesso si arrende in ~30 secondi con quel
-# messaggio, invece di farsi uccidere dal timeout dopo 25 minuti.
+# L'API risponde `{"error": {"code": 403, "reason": "challenge"}}`. Provato,
+# in quest'ordine: tutte le firme TLS di `curl_cffi` (nessuna passa), un
+# Chrome vero guidato da `agent-browser` sull'endpoint, e una `fetch` fatta
+# dall'interno di `www.sofascore.com` gia' aperto in quel Chrome. Tutte 403.
 #
-# IL CRON RESTA ACCESO APPOSTA. Il job sara' rosso ogni giorno finche' la fonte
-# non torna raggiungibile, e va bene cosi': formazioni e arbitro esistono solo
-# prima del fischio d'inizio e non si recuperano dopo, quindi il fatto che li
-# stiamo perdendo deve restare visibile. Spegnere la sveglia non rimette i dati
-# al loro posto — li fa solo mancare in silenzio.
+# La prova che il problema non e' nel nostro codice: in quel browser il sito
+# di Sofascore e' rotto anche per se stesso — le chiamate che fa da solo
+# tornano 403 e la pagina dice «There are no events today».
+#
+# Scoperto per strada: il sito ha spostato l'API su `www.sofascore.com/api/v1`
+# e non usa piu' `api.sofascore.com`. Vedi la nota su `BASE` in
+# `sources/sofascore_http.py`.
+#
+# IL CRON RESTA ACCESO APPOSTA. Il job sara' rosso ogni giorno finche' la
+# fonte non torna, e va bene cosi': formazioni e arbitro esistono solo prima
+# del fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
+# perdendo deve restare visibile. Spegnere la sveglia non rimette i dati al
+# loro posto — li fa solo mancare in silenzio. Il giro ora si arrende in ~30
+# secondi invece di farsi uccidere dal timeout dopo 25 minuti.
 
 on:
   schedule:
