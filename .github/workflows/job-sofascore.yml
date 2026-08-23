@@ -44,19 +44,17 @@ name: job · sofascore
 # passa al browser solo quando il muro e' confermato — se Sofascore riapre la
 # porta si torna a `curl_cffi` da soli, senza toccare niente.
 #
-# SU QUESTO RUNNER NON FUNZIONA, ED E' STATO PROVATO. Chrome parte davvero
+# SUI RUNNER DI GITHUB NON FUNZIONA, ED E' STATO PROVATO. Chrome parte davvero
 # sotto `xvfb-run` e il ripiego scatta come deve, ma la pagina non riceve
 # nessun `X-Captcha` entro 45 secondi: il token e' legato all'IP e Sofascore
 # non ne emette per gli indirizzi da datacenter. Non e' una configurazione da
 # sistemare, e' il loro criterio.
 #
-# La riga con `xvfb-run` resta perche' e' corretta e costa niente: se un
-# giorno passassimo da un IP residenziale — un proxy, un runner self-hosted —
-# funzionerebbe senza toccare altro.
-#
-# NEL FRATTEMPO IL GIRO SI FA DA CASA: `python scripts/giornata.py` rifa
-# l'intera pipeline, sofascore compreso, e committa nel registro come farebbe
-# questo job.
+# PER QUESTO IL JOB GIRA SU UN RUNNER DI CASA (etichetta `casa`). Il cron parte
+# da GitHub come tutti gli altri, ma l'esecuzione avviene su una macchina con
+# IP residenziale, e il commit finisce nel registro pubblico come sempre. E'
+# l'unico job cosi': gli altri restano su `ubuntu-latest` perche' funzionano, e
+# non devono dipendere da un computer acceso.
 #
 # IL CRON RESTA ACCESO APPOSTA: formazioni e arbitro esistono solo prima del
 # fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
@@ -98,7 +96,17 @@ concurrency:
 
 jobs:
   sofascore:
-    runs-on: ubuntu-latest
+    # A CASA, E SOLO QUESTO JOB.
+    #
+    # Il token di Sofascore e' legato all'IP e loro non ne emettono per gli
+    # indirizzi da datacenter: provato, il runner di GitHub non ne riceve
+    # nessuno. Su una macchina con IP residenziale e Chrome, invece, il giro
+    # funziona. Tutti gli altri job restano su `ubuntu-latest`: girano gia', e
+    # non e' giusto che dipendano da un computer acceso.
+    #
+    # Se la macchina e' spenta il job resta in coda e lo raccoglie quando
+    # torna. Dopo 24 ore GitHub lo lascia cadere.
+    runs-on: [self-hosted, casa]
     timeout-minutes: 25
     steps:
       # LA PUNTA DEL RAMO, NON IL COMMIT CHE HA INNESCATO LA RUN.
@@ -129,11 +137,12 @@ jobs:
           key: sofascore-giocatori-${{ github.run_id }}
           restore-keys: sofascore-giocatori-
 
-      - name: Chrome per il trasporto di riserva
+      - name: Chrome c'e'?
         shell: bash
         run: |
-          which google-chrome || which chromium-browser || echo "NESSUN CHROME"
-          google-chrome --version || true
+          C="/c/Program Files/Google/Chrome/Application/chrome.exe"
+          [ -f "$C" ] || { echo "::error::Chrome non trovato in $C"; exit 1; }
+          echo "trovato: $C"
       - name: Formazioni, arbitro e quote
         # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
         # con il python in pipe a `tee` il codice di uscita che conta e'
@@ -143,12 +152,11 @@ jobs:
         run: |
           ARGS="--window-days ${{ inputs.window_days || '4' }}"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
-          # `xvfb-run` perche' il trasporto di riserva guida un Chrome vero e il
-          # runner non ha uno schermo. Non e' un vezzo: con i flag di
-          # automazione — quelli che si usano per farlo girare senza — la
-          # challenge di Sofascore non passa, quindi serve un Chrome normale
-          # davanti a un display finto.
-          xvfb-run -a python -m pronostici.jobs.sofascore $ARGS             | tee "$RUNNER_TEMP/sofascore.json"
+          # Niente `xvfb-run`: il runner di casa gira dentro una sessione
+          # utente vera, quindi Chrome ha gia' un desktop su cui aprirsi. Ed e'
+          # un Chrome normale, senza flag di automazione — con quelli la
+          # challenge di Sofascore non passa.
+          python -m pronostici.jobs.sofascore $ARGS             | tee "$RUNNER_TEMP/sofascore.json"
 
       # LE STIME SUI GIOCATORI DIPENDONO DALLE FORMAZIONI: senza sapere chi
       # gioca non si possono fare, quindi girano dopo e nello stesso giro.
