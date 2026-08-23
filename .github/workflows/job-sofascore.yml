@@ -121,6 +121,11 @@ jobs:
           key: sofascore-giocatori-${{ github.run_id }}
           restore-keys: sofascore-giocatori-
 
+      - name: Chrome per il trasporto di riserva
+        shell: bash
+        run: |
+          which google-chrome || which chromium-browser || echo "NESSUN CHROME"
+          google-chrome --version || true
       - name: Formazioni, arbitro e quote
         # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
         # con il python in pipe a `tee` il codice di uscita che conta e'
@@ -130,7 +135,12 @@ jobs:
         run: |
           ARGS="--window-days ${{ inputs.window_days || '4' }}"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
-          python -m pronostici.jobs.sofascore $ARGS | tee "$RUNNER_TEMP/sofascore.json"
+          # `xvfb-run` perche' il trasporto di riserva guida un Chrome vero e il
+          # runner non ha uno schermo. Non e' un vezzo: con i flag di
+          # automazione — quelli che si usano per farlo girare senza — la
+          # challenge di Sofascore non passa, quindi serve un Chrome normale
+          # davanti a un display finto.
+          xvfb-run -a python -m pronostici.jobs.sofascore $ARGS             | tee "$RUNNER_TEMP/sofascore.json"
 
       # LE STIME SUI GIOCATORI DIPENDONO DALLE FORMAZIONI: senza sapere chi
       # gioca non si possono fare, quindi girano dopo e nello stesso giro.
