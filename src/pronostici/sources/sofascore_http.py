@@ -99,19 +99,29 @@ BLOCCHI_PER_ARRENDERSI = 3
 MURO = (
     "Sofascore rifiuta ogni richiesta ({ultimo}): {quanti} di fila esaurite "
     "su {tentativi} tentativi.\n"
-    "Il corpo dice `reason: challenge`. Non e' l'impronta TLS: nessuna "
-    "delle firme di `curl_cffi` passa. Non e' il trasporto: non passa "
-    "nemmeno un Chrome vero guidato da `agent-browser`, ne' navigando "
-    "l'endpoint, ne' con una `fetch` dall'interno del sito gia' aperto.\n"
-    "LA PROVA CHE NON E' CODICE NOSTRO: aperto `www.sofascore.com` in quel "
-    "browser, le chiamate che fa il sito stesso tornano 403 e la pagina "
-    "dice «There are no events today». E' rotto il loro sito, da qui.\n"
-    "Prima di scrivere altro codice: aprire Sofascore in un browser "
-    "normale. Se mostra le partite il blocco e' sull'automazione; se dice "
-    "anche li' che non ci sono eventi, e' su questa rete e puo' passare "
-    "da solo."
+    "Il sito manda due header che da qui non possiamo produrre: `X-Captcha` "
+    "— un JWT firmato da loro, legato all'IP e valido circa un'ora — e "
+    "`X-Requested-With`. Il token non si puo' nemmeno riusare fuori: preso "
+    "dal browser e passato a `curl_cffi` resta 403, perche' e' legato "
+    "anche alla connessione che lo ha ottenuto.\n"
+    "La strada che funziona e' `sofascore_cdp`: le stesse chiamate fatte "
+    "da dentro un Chrome vero. Qui non e' stata praticabile."
 )
 _falliti_di_fila = 0
+
+# QUALE STRADA SI STA USANDO.
+#
+# Si parte sempre da `curl_cffi`, che costa una frazione. Quando scatta il muro
+# non si molla: si passa al browser, una volta sola, e il resto del giro va da
+# li'. Se Sofascore riapre la porta, la strada economica torna a funzionare da
+# sola, senza toccare niente.
+_via_browser = False
+
+
+def azzera_trasporto() -> None:
+    """Rimette la strada economica. Serve ai test, e a chi rilancia."""
+    global _via_browser
+    _via_browser = False
 
 
 def azzera_blocco() -> None:
@@ -145,6 +155,11 @@ def prendi(percorso: str) -> Any:
     i guasti di rete un incidente. Un 404 no — quello e' una risposta, e
     riprovarla darebbe lo stesso 404 tre volte piu' lentamente.
     """
+    if _via_browser:
+        from . import sofascore_cdp as cdp
+
+        return _dal_browser(cdp.sessione(), percorso)
+
     requests = _sessione()
     ultimo: str = ""
 
@@ -182,19 +197,50 @@ def prendi(percorso: str) -> Any:
     if ultimo in ("403", "429"):
         _falliti_di_fila += 1
         if _falliti_di_fila >= BLOCCHI_PER_ARRENDERSI:
-            raise SofascoreCiBlocca(
-                MURO.format(
-                    ultimo=ultimo,
-                    quanti=_falliti_di_fila,
-                    tentativi=TENTATIVI,
-                )
-            )
+            return _passa_al_browser(percorso, ultimo)
     else:
         azzera_blocco()
 
     raise SofascoreNonRaggiungibile(
         f"{ultimo or 'nessuna risposta'} su {percorso} dopo {TENTATIVI} tentativi"
     )
+
+
+def _passa_al_browser(percorso: str, ultimo: str) -> Any:
+    """Il muro e' confermato: si prova la strada che lo attraversa.
+
+    Non e' un ripiego silenzioso. Se il browser non c'e', l'errore che esce e'
+    quello del muro, con dentro la diagnosi e il motivo per cui nemmeno questa
+    strada era percorribile.
+    """
+    global _via_browser
+    from . import sofascore_cdp as cdp
+
+    try:
+        sessione = cdp.sessione()
+    except cdp.ChromeNonDisponibile as exc:
+        raise SofascoreCiBlocca(
+            MURO.format(ultimo=ultimo, quanti=_falliti_di_fila, tentativi=TENTATIVI)
+            + chr(10)
+            + f"Motivo: {exc}"
+        ) from exc
+
+    log.info("Passo al browser: da qui in poi il giro va da li'.")
+    _via_browser = True
+    azzera_blocco()
+    return _dal_browser(sessione, percorso)
+
+
+def _dal_browser(sessione: Any, percorso: str) -> Any:
+    """Traduce la risposta del browser nelle stesse regole di `prendi`."""
+    stato, corpo = sessione.prendi(percorso)
+    if stato == 404:
+        raise SofascoreNonRaggiungibile(f"404 su {percorso}")
+    if stato != 200:
+        raise SofascoreNonRaggiungibile(f"{stato} su {percorso} (browser)")
+    if corpo is None:
+        raise SofascoreNonRaggiungibile(f"risposta non JSON su {percorso} (browser)")
+    return corpo
 
 
 def _numero(v: Any) -> float:

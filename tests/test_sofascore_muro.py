@@ -57,10 +57,12 @@ def test_tre_richieste_murate_fermano_il_giro(monkeypatch):
         with pytest.raises(http.SofascoreNonRaggiungibile):
             http.prendi("/evento/1")
 
+    # Senza un browser da guidare (vedi `niente_browser` nel conftest) il
+    # passaggio non e' possibile, e quello che esce e' il muro.
     with pytest.raises(http.SofascoreCiBlocca) as errore:
         http.prendi("/evento/1")
 
-    assert "challenge" in str(errore.value)
+    assert "X-Captcha" in str(errore.value)
     # Tre richieste da tre tentativi: non una di piu'.
     assert stato["chiamate"] == http.BLOCCHI_PER_ARRENDERSI * http.TENTATIVI
 
@@ -86,6 +88,7 @@ def test_una_risposta_vera_azzera_il_conto(monkeypatch):
     assert not isinstance(errore.value, http.SofascoreCiBlocca), (
         "dopo una risposta buona il conto riparte da zero"
     )
+    assert http._falliti_di_fila == 1
 
 
 def test_anche_un_404_dimostra_che_il_muro_non_ce(monkeypatch):

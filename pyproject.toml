@@ -12,7 +12,10 @@ dev = ["pytest>=8", "ruff>=0.6"]
 # la porta. Sta in un extra e non fra le dipendenze normali perché gli altri
 # job — ingest, score, quote — non chiamano Sofascore e non devono compilarsi
 # una libreria in più su ogni runner.
-sofascore = ["curl_cffi>=0.7"]
+# `websocket-client` e' il trasporto di riserva (`sources/sofascore_cdp.py`):
+# parla CDP con un Chrome vero, che dal 23 agosto 2026 e' l'unico modo di
+# superare la challenge davanti all'API.
+sofascore = ["curl_cffi>=0.7", "websocket-client>=1.7"]
 
 [build-system]
 requires = ["setuptools>=68"]

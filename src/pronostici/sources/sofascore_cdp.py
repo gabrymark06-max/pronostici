@@ -1,0 +1,317 @@
+"""Trasporto di riserva: le stesse chiamate, ma fatte da dentro un Chrome vero.
+
+PERCHE' ESISTE. Dal 23 agosto 2026 `api.sofascore.com` risponde
+`{"error": {"code": 403, "reason": "challenge"}}` a `curl_cffi`. La diagnosi,
+per esclusione:
+
+* non e' l'impronta TLS — provate tutte e 53 le firme di `curl_cffi`, nessuna
+  passa;
+* non e' l'IP — il sito aperto in un browser normale, sulla stessa macchina e
+  nello stesso momento, mostra le partite;
+* non e' il browser in se' — un Chrome guidato con i flag di automazione
+  prende 403 anche lui, e la pagina di Sofascore resta vuota;
+* non sono i cookie — quelli del sito, passati a `curl_cffi`, non cambiano
+  niente.
+
+E' che il sito manda **due header** che noi non mandavamo:
+
+* `X-Captcha`, un JWT firmato da loro, **legato all'IP** e valido circa
+  un'ora;
+* `X-Requested-With`, un valore corto che accompagna il primo.
+
+Con quei due header, e la richiesta partita da dentro la pagina, `/event/{id}`
+torna 200. Con quei due header ma la richiesta fatta da `curl_cffi`, resta 403:
+il token e' legato anche alla connessione che lo ha ottenuto, quindi non si
+puo' portare fuori. Da qui la forma di questo modulo — il browser non serve
+per *leggere* la pagina, serve per *essere* la connessione autorizzata.
+
+COSA NON RISOLVE. Serve un Chrome installato, quindi su un runner di GitHub
+questo non parte cosi' com'e'. Il token e' inoltre legato all'IP: se Sofascore
+non ne emette uno per gli indirizzi da datacenter, non basterebbe nemmeno
+installarci Chrome. Va provato, non dato per scontato.
+"""
+
+from __future__ import annotations
+
+import contextlib
+import json
+import logging
+import os
+import shutil
+import socket
+import subprocess
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+log = logging.getLogger(__name__)
+
+PORTA = int(os.environ.get("SOFASCORE_CDP_PORT", "9222"))
+ORIGINE = "https://www.sofascore.com"
+PAGINA = f"{ORIGINE}/football"
+PROFILO = Path.home() / ".pronostici" / "chrome-sofascore"
+
+# Quanto aspettare che Chrome apra la porta di debug, e che la pagina faccia le
+# sue prime chiamate: il token si cattura da quelle, non c'e' un endpoint che
+# lo regali.
+ATTESA_AVVIO_S = 30
+ATTESA_TOKEN_S = 45
+
+# I posti dove Chrome sta su Windows, piu' quello che si porta dietro
+# `agent-browser` — se il progetto lo usa gia' per il QA, e' inutile chiedere
+# all'utente di installarne un altro.
+CANDIDATI = (
+    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+)
+
+
+class ChromeNonDisponibile(RuntimeError):
+    """Non c'e' un Chrome da guidare, o non si e' fatto guidare."""
+
+
+def _trova_chrome() -> str:
+    scelto = os.environ.get("SOFASCORE_CHROME")
+    if scelto and Path(scelto).exists():
+        return scelto
+    for c in CANDIDATI:
+        if Path(c).exists():
+            return c
+    for nome in ("google-chrome", "chromium", "chrome"):
+        trovato = shutil.which(nome)
+        if trovato:
+            return trovato
+    for c in sorted((Path.home() / ".agent-browser" / "browsers").glob("*/*/chrome*")):
+        if c.is_file():
+            return str(c)
+    raise ChromeNonDisponibile(
+        "Serve Google Chrome per raggiungere Sofascore, e non l'ho trovato. "
+        "Installalo, oppure indica il percorso in SOFASCORE_CHROME."
+    )
+
+
+def _porta_viva(porta: int) -> bool:
+    with socket.socket() as s:
+        s.settimeout(0.5)
+        return s.connect_ex(("127.0.0.1", porta)) == 0
+
+
+def _avvia_chrome() -> subprocess.Popen | None:
+    """Apre Chrome sulla pagina di Sofascore, se non ce n'e' gia' uno in ascolto.
+
+    I flag sono i minimi che servono, e nessuno di questi lo marchia come
+    automatico: quello e' esattamente il punto — con `--enable-automation` la
+    challenge non passa.
+    """
+    if _porta_viva(PORTA):
+        log.info("Chrome gia' in ascolto sulla porta %d: lo riuso.", PORTA)
+        return None
+
+    PROFILO.mkdir(parents=True, exist_ok=True)
+    argomenti = [
+        _trova_chrome(),
+        f"--remote-debugging-port={PORTA}",
+        # Senza questo, Chrome rifiuta la connessione WebSocket da 127.0.0.1.
+        "--remote-allow-origins=*",
+        "--no-first-run",
+        "--no-default-browser-check",
+        f"--user-data-dir={PROFILO}",
+        PAGINA,
+    ]
+    log.info("Avvio Chrome per Sofascore (profilo in %s).", PROFILO)
+    proc = subprocess.Popen(
+        argomenti, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    )
+    scadenza = time.monotonic() + ATTESA_AVVIO_S
+    while time.monotonic() < scadenza:
+        if _porta_viva(PORTA):
+            return proc
+        time.sleep(0.5)
+    proc.terminate()
+    raise ChromeNonDisponibile(
+        f"Chrome non ha aperto la porta {PORTA} entro {ATTESA_AVVIO_S}s."
+    )
+
+
+def _scheda() -> dict:
+    try:
+        grezzo = urllib.request.urlopen(
+            f"http://127.0.0.1:{PORTA}/json", timeout=10
+        ).read()
+    except urllib.error.URLError as exc:
+        raise ChromeNonDisponibile(
+            f"CDP non risponde sulla porta {PORTA}: {exc}"
+        ) from exc
+    pagine = [t for t in json.loads(grezzo) if t.get("type") == "page"]
+    if not pagine:
+        raise ChromeNonDisponibile("Chrome e' aperto ma non ha nessuna scheda.")
+    # Se una scheda e' gia' su Sofascore e' quella giusta: ha il contesto.
+    for t in pagine:
+        if "sofascore.com" in t.get("url", ""):
+            return t
+    return pagine[0]
+
+
+class _Canale:
+    """Il minimo di CDP che serve: valutare espressioni e leggere le richieste."""
+
+    def __init__(self, url: str):
+        try:
+            import websocket  # type: ignore[import-untyped]
+        except ImportError as exc:  # pragma: no cover
+            raise ChromeNonDisponibile(
+                "manca `websocket-client`. Installalo con: "
+                'pip install -e ".[sofascore]"'
+            ) from exc
+        self._ws = websocket.create_connection(
+            url, timeout=90, origin="", suppress_origin=True
+        )
+        self._n = 0
+
+    def comando(self, metodo: str, parametri: dict | None = None) -> int:
+        self._n += 1
+        self._ws.send(
+            json.dumps({"id": self._n, "method": metodo, "params": parametri or {}})
+        )
+        return self._n
+
+    def attendi(self, atteso: int) -> dict:
+        while True:
+            messaggio = json.loads(self._ws.recv())
+            if messaggio.get("id") == atteso:
+                return messaggio
+
+    def eventi(self, secondi: float):
+        """Gli eventi CDP che arrivano entro la finestra, uno alla volta."""
+        scadenza = time.monotonic() + secondi
+        while time.monotonic() < scadenza:
+            self._ws.settimeout(2)
+            try:
+                yield json.loads(self._ws.recv())
+            except Exception:
+                continue
+
+    def valuta(self, espressione: str) -> Any:
+        atteso = self.comando(
+            "Runtime.evaluate",
+            {
+                "expression": espressione,
+                "awaitPromise": True,
+                "returnByValue": True,
+            },
+        )
+        risultato = self.attendi(atteso).get("result", {})
+        if risultato.get("exceptionDetails"):
+            testo = risultato["exceptionDetails"].get("text", "errore nella pagina")
+            raise RuntimeError(f"CDP: {testo}")
+        return risultato.get("result", {}).get("value")
+
+    def chiudi(self) -> None:
+        with contextlib.suppress(Exception):
+            self._ws.close()
+
+
+class Sessione:
+    """Un Chrome aperto su Sofascore, con i suoi header validi.
+
+    Si tiene viva per tutto il giro: il token dura circa un'ora e le richieste
+    di un giro sono centinaia, quindi riaprire il browser ogni volta
+    costerebbe piu' del giro stesso.
+    """
+
+    def __init__(self) -> None:
+        self._proc = _avvia_chrome()
+        self._canale = _Canale(_scheda()["webSocketDebuggerUrl"])
+        self._intestazioni: dict[str, str] = {}
+        self._rinnova()
+
+    def _rinnova(self) -> None:
+        """Ricarica la pagina e cattura gli header dalle sue stesse chiamate.
+
+        Non c'e' un endpoint che dia il token: lo si vede solo passare. Quindi
+        si guarda il traffico che la pagina genera da sola all'avvio.
+        """
+        self._canale.comando("Network.enable")
+        self._canale.comando("Page.enable")
+        self._canale.comando("Page.navigate", {"url": PAGINA})
+        for evento in self._canale.eventi(ATTESA_TOKEN_S):
+            if evento.get("method") != "Network.requestWillBeSent":
+                continue
+            intestazioni = evento["params"]["request"].get("headers", {})
+            if "X-Captcha" in intestazioni:
+                self._intestazioni = {
+                    k: v
+                    for k, v in intestazioni.items()
+                    if k.lower() in ("x-captcha", "x-requested-with")
+                }
+                log.info("Token di Sofascore catturato.")
+                return
+        raise ChromeNonDisponibile(
+            "La pagina di Sofascore non ha prodotto nessun token entro "
+            f"{ATTESA_TOKEN_S}s. Aprila a mano nel Chrome che si e' avviato e "
+            "guarda se mostra le partite."
+        )
+
+    def prendi(self, percorso: str) -> Any:
+        """Una GET dall'interno della pagina, con gli header del sito.
+
+        Restituisce `(stato, corpo)`: la traduzione in eccezioni la fa chi
+        chiama, perche' le regole su 404 e 403 stanno gia' scritte li'.
+        """
+        for tentativo in (1, 2):
+            stato, corpo = self._chiama(percorso)
+            # Un 403 dopo che funzionava vuol dire token scaduto: si rinnova
+            # una volta sola, poi si riferisce l'esito qualunque sia.
+            if stato == 403 and tentativo == 1:
+                log.info("403: il token e' scaduto, lo rinnovo.")
+                self._rinnova()
+                continue
+            return stato, corpo
+        return stato, corpo
+
+    def _chiama(self, percorso: str) -> tuple[int, Any]:
+        indirizzo = json.dumps(f"{ORIGINE}/api/v1{percorso}")
+        intestazioni = json.dumps(self._intestazioni)
+        # Stato e corpo tornano in una stringa sola separati da NUL: `fetch`
+        # non puo' restituire due valori, e un byte che non compare mai nel
+        # JSON e' il separatore piu' sicuro.
+        espressione = (
+            f"fetch({indirizzo}, {{headers: {intestazioni}}})"
+            f".then(r => r.text().then(t => r.status + {json.dumps(chr(0))} + t))"
+        )
+        grezzo = self._canale.valuta(espressione)
+        if not isinstance(grezzo, str) or "\u0000" not in grezzo:
+            raise RuntimeError(f"risposta CDP illeggibile su {percorso}")
+        stato, _, testo = grezzo.partition("\u0000")
+        try:
+            return int(stato), json.loads(testo) if testo else None
+        except ValueError:
+            return int(stato), None
+
+    def chiudi(self) -> None:
+        self._canale.chiudi()
+        if self._proc is not None:
+            self._proc.terminate()
+
+
+_sessione: Sessione | None = None
+
+
+def sessione() -> Sessione:
+    """La sessione del processo, aperta alla prima richiesta."""
+    global _sessione
+    if _sessione is None:
+        _sessione = Sessione()
+    return _sessione
+
+
+def chiudi() -> None:
+    global _sessione
+    if _sessione is not None:
+        _sessione.chiudi()
+        _sessione = None

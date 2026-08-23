@@ -29,27 +29,30 @@ name: job · sofascore
 # da qui — si calcola sul modello e sulle quote, e una formazione che manca non
 # lo cambia.
 
-# STATO AL 23 AGOSTO 2026: LA FONTE E' CHIUSA, E NON DIPENDE DA NOI.
+# 23 AGOSTO 2026: L'API HA MESSO UN LUCCHETTO, E LA CHIAVE E' UN BROWSER.
 #
-# L'API risponde `{"error": {"code": 403, "reason": "challenge"}}`. Provato,
-# in quest'ordine: tutte le firme TLS di `curl_cffi` (nessuna passa), un
-# Chrome vero guidato da `agent-browser` sull'endpoint, e una `fetch` fatta
-# dall'interno di `www.sofascore.com` gia' aperto in quel Chrome. Tutte 403.
+# Da quel giorno l'API risponde `{"error": {"code": 403, "reason": "challenge"}}`
+# a `curl_cffi`. Il sito manda due header che noi non mandavamo: `X-Captcha`,
+# un JWT firmato da loro legato all'IP e valido circa un'ora, e
+# `X-Requested-With`. Il token non si puo' nemmeno riusare fuori: preso dal
+# browser e passato a `curl_cffi` resta 403, perche' e' legato anche alla
+# connessione che lo ha ottenuto.
 #
-# La prova che il problema non e' nel nostro codice: in quel browser il sito
-# di Sofascore e' rotto anche per se stesso — le chiamate che fa da solo
-# tornano 403 e la pagina dice «There are no events today».
+# `sources/sofascore_cdp.py` fa le stesse chiamate da dentro un Chrome vero, e
+# il giro torna a funzionare: 23 partite agganciate, 21 con formazioni, in 46
+# secondi. `sources/sofascore_http.py` prova sempre prima la strada economica e
+# passa al browser solo quando il muro e' confermato — se Sofascore riapre la
+# porta si torna a `curl_cffi` da soli, senza toccare niente.
 #
-# Scoperto per strada: il sito ha spostato l'API su `www.sofascore.com/api/v1`
-# e non usa piu' `api.sofascore.com`. Vedi la nota su `BASE` in
-# `sources/sofascore_http.py`.
+# SU QUESTO RUNNER NON E' ANCORA PROVATO. Serve un Chrome, e il token e' legato
+# all'IP: se Sofascore non ne emette uno per gli indirizzi da datacenter, non
+# basterebbe installarlo. Finche' non e' verificato, il job qui fallisce in ~30
+# secondi con la diagnosi scritta, e il giro va lanciato a mano da una
+# macchina con Chrome: `python -m pronostici.jobs.sofascore`.
 #
-# IL CRON RESTA ACCESO APPOSTA. Il job sara' rosso ogni giorno finche' la
-# fonte non torna, e va bene cosi': formazioni e arbitro esistono solo prima
-# del fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
-# perdendo deve restare visibile. Spegnere la sveglia non rimette i dati al
-# loro posto — li fa solo mancare in silenzio. Il giro ora si arrende in ~30
-# secondi invece di farsi uccidere dal timeout dopo 25 minuti.
+# IL CRON RESTA ACCESO APPOSTA: formazioni e arbitro esistono solo prima del
+# fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
+# perdendo deve restare visibile.
 
 on:
   schedule:
