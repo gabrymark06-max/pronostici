@@ -67,6 +67,11 @@ jobs:
           # Meta' della quota mensile. Se lo tocchiamo c'e' un bug, non un
           # picco di traffico: il sito non ha un runtime da cui chiamare.
           ODDS_CREDIT_CAP: "250"
+        # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
+        # con il python in pipe a `tee` il codice di uscita che conta e'
+        # quello di `tee`, sempre zero. Senza questa riga il job resta verde
+        # qualunque cosa il job dica.
+        shell: bash
         run: |
           ARGS="--window-hours ${{ inputs.window_hours || '36' }}"
           [ -n "${{ inputs.competitions }}" ] && ARGS="$ARGS --competitions ${{ inputs.competitions }}"

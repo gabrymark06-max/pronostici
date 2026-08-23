@@ -112,6 +112,11 @@ jobs:
           restore-keys: sofascore-giocatori-
 
       - name: Formazioni, arbitro e quote
+        # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
+        # con il python in pipe a `tee` il codice di uscita che conta e'
+        # quello di `tee`, sempre zero. Senza questa riga il job resta verde
+        # qualunque cosa il job dica.
+        shell: bash
         run: |
           ARGS="--window-days ${{ inputs.window_days || '4' }}"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
@@ -122,6 +127,11 @@ jobs:
       # `|| true` perche' un guasto qui non deve impedire il commit di
       # formazioni e arbitro, che sono gia' stati presi e valgono da soli.
       - name: Stime sui giocatori
+        # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
+        # con il python in pipe a `tee` il codice di uscita che conta e'
+        # quello di `tee`, sempre zero. Senza questa riga il job resta verde
+        # qualunque cosa il job dica.
+        shell: bash
         run: |
           python -m pronostici.jobs.giocatori \
             --window-days "${{ inputs.window_days || '4' }}" \

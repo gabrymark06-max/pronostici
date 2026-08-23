@@ -56,6 +56,11 @@ jobs:
           cache: pip
       - run: pip install -e .
       - name: Retrain
+        # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
+        # con il python in pipe a `tee` il codice di uscita che conta e'
+        # quello di `tee`, sempre zero. Senza questa riga il job resta verde
+        # qualunque cosa il job dica.
+        shell: bash
         run: |
           ARGS=""
           [ -n "${{ inputs.competitions }}" ] && ARGS="$ARGS --competitions ${{ inputs.competitions }}"

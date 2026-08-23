@@ -98,6 +98,11 @@ jobs:
           # mercato dei totali), che e' il modo previsto di finire il mese senza
           # sbattere contro il muro del fornitore.
           ODDS_CREDIT_CAP: "450"
+        # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
+        # con il python in pipe a `tee` il codice di uscita che conta e'
+        # quello di `tee`, sempre zero. Senza questa riga il job resta verde
+        # qualunque cosa il job dica.
+        shell: bash
         run: |
           ARGS="--window-days ${{ inputs.window_days || '14' }}"
           [ -n "${{ inputs.competitions }}" ] && ARGS="$ARGS --competitions ${{ inputs.competitions }}"
