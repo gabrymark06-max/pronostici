@@ -57,7 +57,10 @@ DEGRADATION_LADDER = (
     "totals_market",  # 3. solo h2h
     "model_only",  # 4. solo modello, e la scheda lo dichiara
 )
-SECONDARY_LEAGUES = ("BSA", "ELC")
+# LE PRIME A CEDERE quando la quota stringe. Eredivisie e Primeira Liga si
+# aggiungono qui e non altrove: sono arrivate per ultime, e una copertura
+# nuova non deve poter togliere il prezzo a una che ce l'aveva gia'.
+SECONDARY_LEAGUES = ("BSA", "ELC", "DED", "PPL")
 
 
 class OddsUnavailable(RuntimeError):

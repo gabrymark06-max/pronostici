@@ -75,7 +75,19 @@ class Settings:
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     _load_dotenv()
-    raw_cap = os.environ.get("ODDS_CREDIT_CAP", "250").strip() or "250"
+    # QUATTROCENTO, non 250 e non 500.
+    #
+    # Il piano gratuito ne da' 500 al mese. Il tetto nostro sta sotto
+    # apposta: e' quello che fa scattare la scala di degradazione mentre c'e'
+    # ancora margine, invece di lasciare che sia il fornitore a dire di no a
+    # meta' di un giro.
+    #
+    # Era 250, ed e' salito con Eredivisie e Primeira Liga: due campionati in
+    # piu' sono circa il 25% di richieste in piu', e a 250 sarebbero entrati
+    # togliendo il prezzo a qualcun altro. Misurato ad agosto 2026: 146
+    # crediti in diciassette giorni, con la pipeline ferma per meta' del
+    # tempo.
+    raw_cap = os.environ.get("ODDS_CREDIT_CAP", "400").strip() or "400"
     try:
         cap = int(raw_cap)
     except ValueError as exc:  # configurazione errata: meglio forte e subito

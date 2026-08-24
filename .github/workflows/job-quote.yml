@@ -93,11 +93,9 @@ jobs:
       - name: Quote
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-          # 450 su 500. Il margine e' piccolo apposta: sotto il tetto entra in
-          # funzione la scala di degradazione (prima i campionati minori, poi il
-          # mercato dei totali), che e' il modo previsto di finire il mese senza
-          # sbattere contro il muro del fornitore.
-          ODDS_CREDIT_CAP: "450"
+          # Il tetto non si scrive qui: sta in `config.py`, perche' questo job e
+          # `finalize` contano sullo stesso file e avere due numeri diversi
+          # spegneva il secondo in silenzio. Vedi il commento in job-finalize.
         # `shell: bash` e non il default, che e' `bash -e` senza `pipefail`:
         # con il python in pipe a `tee` il codice di uscita che conta e'
         # quello di `tee`, sempre zero. Senza questa riga il job resta verde

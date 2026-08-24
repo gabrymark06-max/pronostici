@@ -23,8 +23,14 @@ COMPETITIONS: tuple[Competition, ...] = (
     Competition("PD", "La Liga", "soccer_spain_la_liga", 20),
     Competition("BL1", "Bundesliga", "soccer_germany_bundesliga", 18),
     Competition("FL1", "Ligue 1", "soccer_france_ligue_one", 18),
-    Competition("DED", "Eredivisie", None, 18),
-    Competition("PPL", "Primeira Liga", None, 18),
+    # DUE LEGHE CHE ERANO «SOLO MODELLO PER SEMPRE», e non lo sono piu'.
+    # La decisione risaliva a quando the-odds-api non le copriva. Il 25
+    # agosto 2026 il suo catalogo le da' entrambe attive, verificato
+    # chiamando `/v4/sports` (che non costa crediti): senza chiave, le loro
+    # partite restavano senza nessun prezzo di mercato e il pronostico si
+    # reggeva sul solo modello.
+    Competition("DED", "Eredivisie", "soccer_netherlands_eredivisie", 18),
+    Competition("PPL", "Primeira Liga", "soccer_portugal_primeira_liga", 18),
     Competition("ELC", "Championship", "soccer_efl_champ", 24),
     Competition("BSA", "Brasileirao", "soccer_brazil_campeonato", 20),
     Competition("CL", "Champions League", "soccer_uefa_champs_league", 36),
