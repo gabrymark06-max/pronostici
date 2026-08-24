@@ -167,3 +167,73 @@ jobs:
           echo "### Pubblicato" >> "$GITHUB_STEP_SUMMARY"
           echo "$INDIRIZZO" >> "$GITHUB_STEP_SUMMARY"
           echo "Pubblicato su $INDIRIZZO"
+
+  pagine:
+    needs: build
+    # Solo quando NON c'e' un hosting collegato: se un giorno arrivano i
+    # segreti di Vercel — che e' la scelta del brief, §11.2 — pubblica quello e
+    # questo si fa da parte. Nel frattempo il registro pubblico e' pubblico
+    # davvero, senza dipendere da nessun account di terzi.
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: C'e' gia' un hosting collegato?
+        id: hosting
+        shell: bash
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "salta=si" >> "$GITHUB_OUTPUT"
+            echo "Vercel e' configurato: Pages si fa da parte." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "salta=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.hosting.outputs.salta == 'no'
+        run: npm ci
+
+      # IL PREFISSO NON E' FACOLTATIVO QUI.
+      #
+      # Pages serve da `utente.github.io/nome-repo/`, quindi ogni percorso
+      # radicato va spostato sotto quel prefisso: senza, si ottiene una pagina
+      # che si carica e poi non porta da nessuna parte, con i loghi rotti.
+      # `NEXT_PUBLIC_SITO` evita che il sitemap dichiari il dominio segnaposto.
+      - if: steps.hosting.outputs.salta == 'no'
+        name: Build ed export statico
+        env:
+          NEXT_PUBLIC_PREFISSO: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_SITO: https://${{ github.repository_owner }}.github.io
+        run: npm run build
+
+      - if: steps.hosting.outputs.salta == 'no'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/out
+      - if: steps.hosting.outputs.salta == 'no'
+        id: deploy
+        uses: actions/deploy-pages@v4
