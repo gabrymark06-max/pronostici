@@ -3,119 +3,120 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/1771.png",
+    "name": "Cruzeiro EC",
+    "tla": "CRU"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 95,
+     "p_min": 87,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 4.591e-09
+   },
+   "expected_goals": {
+    "away": 1.409,
+    "home": 1.239
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6958,
+    "ht_over_1.5": 0.3338,
+    "ht_over_2.5": 0.1184,
+    "ht_under_0.5": 0.3042,
+    "ht_under_1.5": 0.6662,
+    "ht_under_2.5": 0.8816,
+    "htft_11": 0.1904,
+    "htft_12": 0.0232,
+    "htft_1X": 0.0514,
+    "htft_21": 0.0197,
+    "htft_22": 0.2427,
+    "htft_2X": 0.0514,
+    "htft_X1": 0.1203,
+    "htft_X2": 0.1438,
+    "htft_XX": 0.1572
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1780.png",
+    "name": "CR Vasco da Gama",
+    "tla": "VAS"
+   },
+   "match_id": 554989,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5544,
+    "band_p95": 0.7717,
+    "cluster_members": [
+     "eh_-1_away"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.6359,
+    "p_raw": 0.6695,
+    "reference": 0.5272,
+    "runners_up": [
+     {
+      "band_p5": 0.7783,
+      "band_p95": 0.9188,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8436,
+      "p_raw": 0.857,
+      "reference": 0.7804,
+      "score": 0.012615,
+      "shrink_alpha": 0.8248,
+      "sigma": 0.0443
+     },
+     {
+      "band_p5": 0.6712,
+      "band_p95": 0.8267,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7375,
+      "p_raw": 0.7511,
+      "reference": 0.6718,
+      "score": 0.010173,
+      "shrink_alpha": 0.8285,
+      "sigma": 0.0477
+     }
+    ],
+    "score": 0.024107,
+    "shrink_alpha": 0.7642,
+    "sigma": 0.066
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.4096,
+    "1x2_draw": 0.2599,
+    "1x2_home": 0.3305,
+    "btts_yes": 0.5295,
+    "over_2.5": 0.4912,
+    "under_2.5": 0.5088
+   },
+   "reasons": [
+    "Gol attesi: CR Vasco da Gama 1.24, Cruzeiro EC 1.41 (totale 2.65).",
+    "X2 (pareggio o ospite): 64 su 100, 11 punti sopra la media di riferimento (53 su 100).",
+    "Banda di incertezza: fra 55 e 77 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T00:20:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/674.png",
     "name": "PSV",
     "tla": "PSV"
    },
    "competition": "DED",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "3-4-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Vasilios Barkas"
-       },
-       {
-        "maglia": "2",
-        "nome": "Siebe Horemans"
-       },
-       {
-        "maglia": "3",
-        "nome": "Matisse Didden"
-       },
-       {
-        "maglia": "21",
-        "nome": "N. Ogidi Nwankwo"
-       },
-       {
-        "maglia": "23",
-        "nome": "Niklas Vesterlund"
-       },
-       {
-        "maglia": "20",
-        "nome": "Dani de Wit"
-       },
-       {
-        "maglia": "34",
-        "nome": "Davy van den Berg"
-       },
-       {
-        "maglia": "92",
-        "nome": "Arthur Zagre"
-       },
-       {
-        "maglia": "11",
-        "nome": "Ángel Alarcón"
-       },
-       {
-        "maglia": "18",
-        "nome": "Artem Stepanov"
-       },
-       {
-        "maglia": "10",
-        "nome": "Yoann Cathline"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 133.5,
-     "ospiti": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "32",
-        "nome": "Matej Kovar"
-       },
-       {
-        "maglia": "8",
-        "nome": "Sergino Dest"
-       },
-       {
-        "maglia": "6",
-        "nome": "Ryan Flamingo"
-       },
-       {
-        "maglia": "4",
-        "nome": "Armando Obispo"
-       },
-       {
-        "maglia": "17",
-        "nome": "Mauro Junior"
-       },
-       {
-        "maglia": "20",
-        "nome": "Guus Til"
-       },
-       {
-        "maglia": "24",
-        "nome": "Kodai Sano"
-       },
-       {
-        "maglia": "31",
-        "nome": "Noah Fernandez"
-       },
-       {
-        "maglia": "5",
-        "nome": "Ivan Perisic"
-       },
-       {
-        "maglia": "9",
-        "nome": "Ricardo Pepi"
-       },
-       {
-        "maglia": "7",
-        "nome": "Ruben van Bommel"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 83,
@@ -252,7 +253,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T10:15:00Z"
   },
   {
@@ -262,114 +263,6 @@
     "tla": "HEE"
    },
    "competition": "DED",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-4-1-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "31",
-        "nome": "Karst de Leeuw"
-       },
-       {
-        "maglia": "22",
-        "nome": "Per van Loon"
-       },
-       {
-        "maglia": "3",
-        "nome": "Finn Stam"
-       },
-       {
-        "maglia": "4",
-        "nome": "Justin Hoogma"
-       },
-       {
-        "maglia": "24",
-        "nome": "Nathan Tjoe-A-On"
-       },
-       {
-        "maglia": "50",
-        "nome": "Eser Gurbuz"
-       },
-       {
-        "maglia": "2",
-        "nome": "Alessandro Ciranni"
-       },
-       {
-        "maglia": "8",
-        "nome": "Kasper Boogaard"
-       },
-       {
-        "maglia": "7",
-        "nome": "Jaden Slory"
-       },
-       {
-        "maglia": "19",
-        "nome": "Uriël van Aalst"
-       },
-       {
-        "maglia": "9",
-        "nome": "Devin Haen"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 135.7,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "22",
-        "nome": "Bernt Klaverboer"
-       },
-       {
-        "maglia": "45",
-        "nome": "Oliver Braude"
-       },
-       {
-        "maglia": "4",
-        "nome": "Sam Kersten"
-       },
-       {
-        "maglia": "3",
-        "nome": "Maas Willemsen"
-       },
-       {
-        "maglia": "19",
-        "nome": "Vasilios Zagaritis"
-       },
-       {
-        "maglia": "16",
-        "nome": "Marcus Linday"
-       },
-       {
-        "maglia": "6",
-        "nome": "Dirk Proper"
-       },
-       {
-        "maglia": "20",
-        "nome": "Jacob Trenskow"
-       },
-       {
-        "maglia": "10",
-        "nome": "Ringo Meerveld"
-       },
-       {
-        "maglia": "7",
-        "nome": "Maxence Rivera"
-       },
-       {
-        "maglia": "9",
-        "nome": "Dylan Vente"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 89,
@@ -506,7 +399,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T12:30:00Z"
   },
   {
@@ -516,114 +409,6 @@
     "tla": "ADO"
    },
    "competition": "DED",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Tjark Ernst"
-       },
-       {
-        "maglia": "26",
-        "nome": "Givairo Read"
-       },
-       {
-        "maglia": "4",
-        "nome": "Tsuyoshi Watanabe"
-       },
-       {
-        "maglia": "6",
-        "nome": "Jerry St. Juste"
-       },
-       {
-        "maglia": "35",
-        "nome": "Mika Mármol"
-       },
-       {
-        "maglia": "8",
-        "nome": "Gjivai Zechiël"
-       },
-       {
-        "maglia": "34",
-        "nome": "Charles Vanhoutte"
-       },
-       {
-        "maglia": "10",
-        "nome": "Luciano Valente"
-       },
-       {
-        "maglia": "23",
-        "nome": "Anis Hadj Moussa"
-       },
-       {
-        "maglia": "9",
-        "nome": "Ayase Ueda"
-       },
-       {
-        "maglia": "27",
-        "nome": "Gaoussou Diarra"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 135.7,
-     "ospiti": {
-      "modulo": "4-4-2",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Kilian Nikièma"
-       },
-       {
-        "maglia": "2",
-        "nome": "Othniël Raterink"
-       },
-       {
-        "maglia": "3",
-        "nome": "Pascal Mulder"
-       },
-       {
-        "maglia": "15",
-        "nome": "Milan Hokke"
-       },
-       {
-        "maglia": "18",
-        "nome": "Sekou Sylla"
-       },
-       {
-        "maglia": "7",
-        "nome": "Daryl van Mieghem"
-       },
-       {
-        "maglia": "8",
-        "nome": "Jan Zamburek"
-       },
-       {
-        "maglia": "25",
-        "nome": "Juho Kilo"
-       },
-       {
-        "maglia": "27",
-        "nome": "Nigel Thomas"
-       },
-       {
-        "maglia": "11",
-        "nome": "Evan Rottier"
-       },
-       {
-        "maglia": "46",
-        "nome": "Yannick Eduardo"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 98,
@@ -762,7 +547,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T12:30:00Z"
   },
   {
@@ -772,114 +557,6 @@
     "tla": "NIC"
    },
    "competition": "FL1",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Kevin Trapp"
-       },
-       {
-        "maglia": "17",
-        "nome": "Adama Camara"
-       },
-       {
-        "maglia": "42",
-        "nome": "Diego Coppola"
-       },
-       {
-        "maglia": "5",
-        "nome": "Moustapha Mbow"
-       },
-       {
-        "maglia": "6",
-        "nome": "Otavio"
-       },
-       {
-        "maglia": "23",
-        "nome": "Rudy Matondo"
-       },
-       {
-        "maglia": "33",
-        "nome": "Pierre Lees-Melou"
-       },
-       {
-        "maglia": "10",
-        "nome": "Ilan Kebbal"
-       },
-       {
-        "maglia": "7",
-        "nome": "Pablo Pagis"
-       },
-       {
-        "maglia": "27",
-        "nome": "Moses Simon"
-       },
-       {
-        "maglia": "9",
-        "nome": "Lassine Sinayoko"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 136.2,
-     "ospiti": {
-      "modulo": "3-4-2-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "23",
-        "nome": "Yehvann Diouf"
-       },
-       {
-        "maglia": "33",
-        "nome": "Antoine Mendy"
-       },
-       {
-        "maglia": "55",
-        "nome": "Y. Ndayishimiye"
-       },
-       {
-        "maglia": "35",
-        "nome": "Xavier Mandza"
-       },
-       {
-        "maglia": "92",
-        "nome": "Jonathan Clauss"
-       },
-       {
-        "maglia": "39",
-        "nome": "Djibril Coulibaly"
-       },
-       {
-        "maglia": "87",
-        "nome": "Everton"
-       },
-       {
-        "maglia": "26",
-        "nome": "Melvin Bard"
-       },
-       {
-        "maglia": "7",
-        "nome": "Gauthier Hein"
-       },
-       {
-        "maglia": "10",
-        "nome": "Sofiane Diop"
-       },
-       {
-        "maglia": "44",
-        "nome": "Zoumana Diallo"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 113,
@@ -983,7 +660,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T13:00:00Z"
   },
   {
@@ -993,144 +670,36 @@
     "tla": "FUL"
    },
    "competition": "PL",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "22",
-        "nome": "Robin Roefs"
-       },
-       {
-        "maglia": "12",
-        "nome": "Thomas Meunier"
-       },
-       {
-        "maglia": "5",
-        "nome": "Daniel Ballard"
-       },
-       {
-        "maglia": "13",
-        "nome": "Luke O'Nien"
-       },
-       {
-        "maglia": "17",
-        "nome": "Reinildo Mandava"
-       },
-       {
-        "maglia": "27",
-        "nome": "Noah Sadiki"
-       },
-       {
-        "maglia": "34",
-        "nome": "Granit Xhaka"
-       },
-       {
-        "maglia": "32",
-        "nome": "Trai Hume"
-       },
-       {
-        "maglia": "28",
-        "nome": "Enzo Le Fée"
-       },
-       {
-        "maglia": "10",
-        "nome": "Nilson Angulo"
-       },
-       {
-        "maglia": "9",
-        "nome": "Brian Brobbey"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 136.2,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Bernd Leno"
-       },
-       {
-        "maglia": "21",
-        "nome": "Timothy Castagne"
-       },
-       {
-        "maglia": "3",
-        "nome": "Calvin Bassey"
-       },
-       {
-        "maglia": "4",
-        "nome": "Jorge Cuenca"
-       },
-       {
-        "maglia": "33",
-        "nome": "Antonee Robinson"
-       },
-       {
-        "maglia": "24",
-        "nome": "Joshua King"
-       },
-       {
-        "maglia": "16",
-        "nome": "Sander Berge"
-       },
-       {
-        "maglia": "14",
-        "nome": "Oscar Bobb"
-       },
-       {
-        "maglia": "17",
-        "nome": "Alex Iwobi"
-       },
-       {
-        "maglia": "8",
-        "nome": "César Palacios"
-       },
-       {
-        "maglia": "7",
-        "nome": "Gonzalo García"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
-     "p_min": 87,
+     "S_min": 100,
+     "p_min": 88,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 7,
-    "truncated_mass": 5.193e-10
+    "n_clusters": 2,
+    "truncated_mass": 6.883e-10
    },
    "expected_goals": {
-    "away": 1.068,
-    "home": 1.16
+    "away": 1.084,
+    "home": 1.191
    },
    "half_time": {
-    "ht_over_0.5": 0.6337,
-    "ht_over_1.5": 0.2659,
-    "ht_over_2.5": 0.0811,
-    "ht_under_0.5": 0.3663,
-    "ht_under_1.5": 0.7341,
-    "ht_under_2.5": 0.9189,
-    "htft_11": 0.218,
-    "htft_12": 0.0158,
-    "htft_1X": 0.048,
-    "htft_21": 0.0175,
-    "htft_22": 0.1881,
-    "htft_2X": 0.048,
-    "htft_X1": 0.1434,
-    "htft_X2": 0.1284,
-    "htft_XX": 0.1926
+    "ht_over_0.5": 0.6418,
+    "ht_over_1.5": 0.2741,
+    "ht_over_2.5": 0.0853,
+    "ht_under_0.5": 0.3582,
+    "ht_under_1.5": 0.7259,
+    "ht_under_2.5": 0.9147,
+    "htft_11": 0.2221,
+    "htft_12": 0.0162,
+    "htft_1X": 0.0485,
+    "htft_21": 0.0182,
+    "htft_22": 0.1878,
+    "htft_2X": 0.0485,
+    "htft_X1": 0.1438,
+    "htft_X2": 0.1269,
+    "htft_XX": 0.188
    },
    "home": {
     "crest": "https://crests.football-data.org/71.png",
@@ -1176,101 +745,49 @@
    "phase": "preliminary",
    "prediction": {
     "band_p5": 0.8008,
-    "band_p95": 0.947,
+    "band_p95": 0.9474,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_2.5",
     "label": "Casa Under 2.5",
-    "p": 0.8698,
-    "p_raw": 0.8845,
-    "reference": 0.7939,
+    "p": 0.8644,
+    "p_raw": 0.878,
+    "reference": 0.7941,
     "runners_up": [
      {
       "band_p5": 0.5472,
-      "band_p95": 0.7951,
+      "band_p95": 0.7961,
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.6274,
-      "p_raw": 0.6782,
-      "reference": 0.5338,
-      "score": 0.017869,
-      "shrink_alpha": 0.6484,
-      "sigma": 0.0772
-     },
-     {
-      "band_p5": 0.4623,
-      "band_p95": 0.6453,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.5145,
-      "p_raw": 0.5583,
-      "reference": 0.441,
-      "score": 0.010884,
-      "shrink_alpha": 0.6268,
-      "sigma": 0.0567
-     },
-     {
-      "band_p5": 0.8678,
-      "band_p95": 0.9606,
-      "family": "over_under",
-      "key": "under_4.5",
-      "label": "Under 4.5",
-      "p": 0.9079,
-      "p_raw": 0.9215,
-      "reference": 0.8596,
-      "score": 0.010791,
-      "shrink_alpha": 0.7803,
-      "sigma": 0.0299
-     },
-     {
-      "band_p5": 0.7214,
-      "band_p95": 0.8847,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.7549,
-      "p_raw": 0.8115,
-      "reference": 0.6886,
-      "score": 0.010713,
-      "shrink_alpha": 0.5394,
-      "sigma": 0.0521
-     },
-     {
-      "band_p5": 0.5018,
-      "band_p95": 0.7198,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.5121,
-      "p_raw": 0.6162,
-      "reference": 0.4433,
-      "score": 0.009524,
-      "shrink_alpha": 0.3982,
-      "sigma": 0.0693
+      "p": 0.6202,
+      "p_raw": 0.667,
+      "reference": 0.5332,
+      "score": 0.015416,
+      "shrink_alpha": 0.6506,
+      "sigma": 0.0769
      }
     ],
-    "score": 0.019611,
-    "shrink_alpha": 0.8371,
-    "sigma": 0.0463
+    "score": 0.016684,
+    "shrink_alpha": 0.8382,
+    "sigma": 0.0461
    },
    "raw_probabilities": {
-    "1x2_away": 0.3345,
-    "1x2_draw": 0.2863,
-    "1x2_home": 0.3791,
-    "btts_yes": 0.4417,
-    "over_2.5": 0.3838,
-    "under_2.5": 0.6162
+    "1x2_away": 0.3322,
+    "1x2_draw": 0.2839,
+    "1x2_home": 0.3839,
+    "btts_yes": 0.4522,
+    "over_2.5": 0.3962,
+    "under_2.5": 0.6038
    },
    "reasons": [
-    "Gol attesi: Sunderland AFC 1.16, Fulham FC 1.07 (totale 2.23).",
-    "Casa Under 2.5: 87 su 100, 8 punti sopra la media di riferimento (79 su 100).",
+    "Gol attesi: Sunderland AFC 1.19, Fulham FC 1.08 (totale 2.28).",
+    "Casa Under 2.5: 86 su 100, 7 punti sopra la media di riferimento (79 su 100).",
     "Banda di incertezza: fra 80 e 95 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T13:00:00Z"
   },
   {
@@ -1280,114 +797,6 @@
     "tla": "BHA"
    },
    "competition": "PL",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "3-4-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Robert Sanchez"
-       },
-       {
-        "maglia": "34",
-        "nome": "Josh Acheampong"
-       },
-       {
-        "maglia": "23",
-        "nome": "Maxence Lacroix"
-       },
-       {
-        "maglia": "6",
-        "nome": "Levi Colwill"
-       },
-       {
-        "maglia": "27",
-        "nome": "Malo Gusto"
-       },
-       {
-        "maglia": "24",
-        "nome": "Reece James"
-       },
-       {
-        "maglia": "45",
-        "nome": "Roméo Lavia"
-       },
-       {
-        "maglia": "21",
-        "nome": "Jorrel Hato"
-       },
-       {
-        "maglia": "10",
-        "nome": "Cole Palmer"
-       },
-       {
-        "maglia": "20",
-        "nome": "João Pedro"
-       },
-       {
-        "maglia": "17",
-        "nome": "Morgan Rogers"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 136.2,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Bart Verbruggen"
-       },
-       {
-        "maglia": "27",
-        "nome": "Mats Wieffer"
-       },
-       {
-        "maglia": "44",
-        "nome": "Luka Vuskovic"
-       },
-       {
-        "maglia": "21",
-        "nome": "Olivier Boscagli"
-       },
-       {
-        "maglia": "5",
-        "nome": "Lewis Dunk"
-       },
-       {
-        "maglia": "13",
-        "nome": "Pascal Groß"
-       },
-       {
-        "maglia": "26",
-        "nome": "Yasin Ayari"
-       },
-       {
-        "maglia": "25",
-        "nome": "Diego Gomez"
-       },
-       {
-        "maglia": "8",
-        "nome": "Jack Hinshelwood"
-       },
-       {
-        "maglia": "29",
-        "nome": "Maxim De Cuyper"
-       },
-       {
-        "maglia": "10",
-        "nome": "Georginio Rutter"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 114,
@@ -1396,28 +805,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.423e-08
+    "truncated_mass": 1.979e-08
    },
    "expected_goals": {
-    "away": 1.297,
-    "home": 1.565
+    "away": 1.317,
+    "home": 1.613
    },
    "half_time": {
-    "ht_over_0.5": 0.7249,
-    "ht_over_1.5": 0.3698,
-    "ht_over_2.5": 0.1407,
-    "ht_under_0.5": 0.2751,
-    "ht_under_1.5": 0.6302,
-    "ht_under_2.5": 0.8593,
-    "htft_11": 0.2639,
-    "htft_12": 0.0208,
-    "htft_1X": 0.0523,
-    "htft_21": 0.0265,
-    "htft_22": 0.1834,
-    "htft_2X": 0.0523,
-    "htft_X1": 0.1462,
-    "htft_X2": 0.1122,
-    "htft_XX": 0.1426
+    "ht_over_0.5": 0.7334,
+    "ht_over_1.5": 0.3809,
+    "ht_over_2.5": 0.148,
+    "ht_under_0.5": 0.2666,
+    "ht_under_1.5": 0.6191,
+    "ht_under_2.5": 0.852,
+    "htft_11": 0.2698,
+    "htft_12": 0.0212,
+    "htft_1X": 0.0525,
+    "htft_21": 0.0274,
+    "htft_22": 0.1817,
+    "htft_2X": 0.0525,
+    "htft_X1": 0.1466,
+    "htft_X2": 0.11,
+    "htft_XX": 0.1384
    },
    "home": {
     "crest": "https://crests.football-data.org/61.png",
@@ -1463,22 +872,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3183,
-    "1x2_draw": 0.2448,
-    "1x2_home": 0.4369,
-    "btts_yes": 0.5662,
-    "over_2.5": 0.5421,
-    "under_2.5": 0.4579
+    "1x2_away": 0.3144,
+    "1x2_draw": 0.2418,
+    "1x2_home": 0.4438,
+    "btts_yes": 0.5781,
+    "over_2.5": 0.5575,
+    "under_2.5": 0.4425
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Chelsea FC 1.57, Brighton & Hove Albion FC 1.30 (totale 2.86)."
+    "Gol attesi: Chelsea FC 1.61, Brighton & Hove Albion FC 1.32 (totale 2.93)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T13:00:00Z"
   },
   {
@@ -1488,114 +897,6 @@
     "tla": "BRE"
    },
    "competition": "PL",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "3-4-2-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "James Trafford"
-       },
-       {
-        "maglia": "15",
-        "nome": "Jaka Bijol"
-       },
-       {
-        "maglia": "6",
-        "nome": "Joe Rodon"
-       },
-       {
-        "maglia": "5",
-        "nome": "Tarik Muharemovic"
-       },
-       {
-        "maglia": "2",
-        "nome": "Jayden Bogle"
-       },
-       {
-        "maglia": "18",
-        "nome": "Anton Stach"
-       },
-       {
-        "maglia": "4",
-        "nome": "Ethan Ampadu"
-       },
-       {
-        "maglia": "24",
-        "nome": "James Justin"
-       },
-       {
-        "maglia": "11",
-        "nome": "Brenden Aaronson"
-       },
-       {
-        "maglia": "17",
-        "nome": "Harry Wilson"
-       },
-       {
-        "maglia": "9",
-        "nome": "D. Calvert-Lewin"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 136.2,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Caoimhin Kelleher"
-       },
-       {
-        "maglia": "33",
-        "nome": "Michael Kayode"
-       },
-       {
-        "maglia": "20",
-        "nome": "Kristoffer Ajer"
-       },
-       {
-        "maglia": "22",
-        "nome": "Nathan Collins"
-       },
-       {
-        "maglia": "23",
-        "nome": "Keane Lewis-Potter"
-       },
-       {
-        "maglia": "8",
-        "nome": "Mathias Jensen"
-       },
-       {
-        "maglia": "18",
-        "nome": "Mamadou Sangare"
-       },
-       {
-        "maglia": "11",
-        "nome": "Dango Ouattara"
-       },
-       {
-        "maglia": "27",
-        "nome": "Vitaly Janelt"
-       },
-       {
-        "maglia": "7",
-        "nome": "Kevin Schade"
-       },
-       {
-        "maglia": "9",
-        "nome": "Igor Thiago"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 114,
@@ -1604,28 +905,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 7.629e-09
+    "truncated_mass": 7.504e-09
    },
    "expected_goals": {
-    "away": 1.4,
-    "home": 1.42
+    "away": 1.385,
+    "home": 1.429
    },
    "half_time": {
-    "ht_over_0.5": 0.7196,
-    "ht_over_1.5": 0.3631,
-    "ht_over_2.5": 0.1364,
-    "ht_under_0.5": 0.2804,
-    "ht_under_1.5": 0.6369,
-    "ht_under_2.5": 0.8636,
-    "htft_11": 0.2239,
-    "htft_12": 0.0232,
-    "htft_1X": 0.0528,
-    "htft_21": 0.0236,
-    "htft_22": 0.218,
-    "htft_2X": 0.0528,
-    "htft_X1": 0.131,
-    "htft_X2": 0.1285,
-    "htft_XX": 0.1462
+    "ht_over_0.5": 0.719,
+    "ht_over_1.5": 0.3623,
+    "ht_over_2.5": 0.1359,
+    "ht_under_0.5": 0.281,
+    "ht_under_1.5": 0.6377,
+    "ht_under_2.5": 0.8641,
+    "htft_11": 0.2275,
+    "htft_12": 0.0228,
+    "htft_1X": 0.0527,
+    "htft_21": 0.0238,
+    "htft_22": 0.2143,
+    "htft_2X": 0.0527,
+    "htft_X1": 0.1326,
+    "htft_X2": 0.1269,
+    "htft_XX": 0.1466
    },
    "home": {
     "crest": "https://crests.football-data.org/341.png",
@@ -1671,22 +972,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3711,
-    "1x2_draw": 0.2495,
-    "1x2_home": 0.3794,
-    "btts_yes": 0.5615,
-    "over_2.5": 0.5314,
-    "under_2.5": 0.4686
+    "1x2_away": 0.3654,
+    "1x2_draw": 0.25,
+    "1x2_home": 0.3846,
+    "btts_yes": 0.56,
+    "over_2.5": 0.53,
+    "under_2.5": 0.47
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Leeds United FC 1.42, Brentford FC 1.40 (totale 2.82)."
+    "Gol attesi: Leeds United FC 1.43, Brentford FC 1.39 (totale 2.81)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T13:00:00Z"
   },
   {
@@ -1696,114 +997,6 @@
     "tla": "SVW"
    },
    "competition": "BL1",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Mio Backhaus"
-       },
-       {
-        "maglia": "29",
-        "nome": "Philipp Treu"
-       },
-       {
-        "maglia": "28",
-        "nome": "Matthias Ginter"
-       },
-       {
-        "maglia": "3",
-        "nome": "Philipp Lienhart"
-       },
-       {
-        "maglia": "30",
-        "nome": "Christian Günter"
-       },
-       {
-        "maglia": "8",
-        "nome": "Maximilian Eggestein"
-       },
-       {
-        "maglia": "16",
-        "nome": "Yannik Engelhardt"
-       },
-       {
-        "maglia": "19",
-        "nome": "Jan-Niklas Beste"
-       },
-       {
-        "maglia": "14",
-        "nome": "Yuito Suzuki"
-       },
-       {
-        "maglia": "32",
-        "nome": "Vincenzo Grifo"
-       },
-       {
-        "maglia": "31",
-        "nome": "Igor Matanovic"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 136.7,
-     "ospiti": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "30",
-        "nome": "Alexander Schlager"
-       },
-       {
-        "maglia": "33",
-        "nome": "Mick Schmetgens"
-       },
-       {
-        "maglia": "5",
-        "nome": "Amos Pieper"
-       },
-       {
-        "maglia": "32",
-        "nome": "Marco Friedl"
-       },
-       {
-        "maglia": "2",
-        "nome": "Olivier Deman"
-       },
-       {
-        "maglia": "6",
-        "nome": "Jens Stage"
-       },
-       {
-        "maglia": "15",
-        "nome": "Ludovit Reis"
-       },
-       {
-        "maglia": "14",
-        "nome": "Senne Lynen"
-       },
-       {
-        "maglia": "11",
-        "nome": "Justin Njinmah"
-       },
-       {
-        "maglia": "10",
-        "nome": "Niclas Füllkrug"
-       },
-       {
-        "maglia": "7",
-        "nome": "Samuel Mbangula"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 111,
@@ -1936,149 +1129,135 @@
   },
   {
    "away": {
+    "crest": "https://crests.football-data.org/1765.png",
+    "name": "Fluminense FC",
+    "tla": "FLU"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 102,
+     "p_min": 88,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 6.967e-10
+   },
+   "expected_goals": {
+    "away": 0.825,
+    "home": 1.22
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6012,
+    "ht_over_1.5": 0.2346,
+    "ht_over_2.5": 0.0661,
+    "ht_under_0.5": 0.3988,
+    "ht_under_1.5": 0.7654,
+    "ht_under_2.5": 0.9339,
+    "htft_11": 0.2646,
+    "htft_12": 0.0108,
+    "htft_1X": 0.0438,
+    "htft_21": 0.0173,
+    "htft_22": 0.1356,
+    "htft_2X": 0.0438,
+    "htft_X1": 0.1718,
+    "htft_X2": 0.1036,
+    "htft_XX": 0.2087
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1768.png",
+    "name": "CA Paranaense",
+    "tla": "CAP"
+   },
+   "match_id": 554980,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4944,
+    "band_p95": 0.7204,
+    "cluster_members": [],
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.5528,
+    "p_raw": 0.6124,
+    "reference": 0.4764,
+    "runners_up": [
+     {
+      "band_p5": 0.6896,
+      "band_p95": 0.8901,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7782,
+      "p_raw": 0.7987,
+      "reference": 0.7189,
+      "score": 0.009106,
+      "shrink_alpha": 0.7424,
+      "sigma": 0.0618
+     }
+    ],
+    "score": 0.01169,
+    "shrink_alpha": 0.5617,
+    "sigma": 0.0649
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2517,
+    "1x2_draw": 0.2973,
+    "1x2_home": 0.451,
+    "btts_yes": 0.3876,
+    "over_2.5": 0.3354,
+    "under_2.5": 0.6646
+   },
+   "reasons": [
+    "Gol attesi: CA Paranaense 1.22, Fluminense FC 0.83 (totale 2.05).",
+    "Non entrambe segnano: 55 su 100, 8 punti sopra la media di riferimento (48 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T14:00:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/9136.png",
     "name": "CF Estrela da Amadora",
     "tla": "AMA"
    },
    "competition": "PPL",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "3-4-2-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Renato Marin"
-       },
-       {
-        "maglia": "34",
-        "nome": "Léo Santos"
-       },
-       {
-        "maglia": "6",
-        "nome": "Matheus Dias"
-       },
-       {
-        "maglia": "38",
-        "nome": "Zé Vítor"
-       },
-       {
-        "maglia": "52",
-        "nome": "Wesley Gasolina"
-       },
-       {
-        "maglia": "28",
-        "nome": "Liziero"
-       },
-       {
-        "maglia": "22",
-        "nome": "Filipe Soares"
-       },
-       {
-        "maglia": "7",
-        "nome": "Markus Jensen"
-       },
-       {
-        "maglia": "8",
-        "nome": "Miguel Baeza"
-       },
-       {
-        "maglia": "10",
-        "nome": "Daniel Júnior"
-       },
-       {
-        "maglia": "99",
-        "nome": "Pablo Ruan"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 137.7,
-     "ospiti": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "24",
-        "nome": "Léo Linck"
-       },
-       {
-        "maglia": "17",
-        "nome": "Jefferson Encada"
-       },
-       {
-        "maglia": "5",
-        "nome": "Stefan Lekovic"
-       },
-       {
-        "maglia": "30",
-        "nome": "Luan Patrick"
-       },
-       {
-        "maglia": "55",
-        "nome": "Rafa Soares"
-       },
-       {
-        "maglia": "14",
-        "nome": "Lovro Zvonarek"
-       },
-       {
-        "maglia": "39",
-        "nome": "Eddy Doué"
-       },
-       {
-        "maglia": "8",
-        "nome": "Robinho"
-       },
-       {
-        "maglia": "99",
-        "nome": "Abraham Marcus"
-       },
-       {
-        "maglia": "37",
-        "nome": "Leandro Antonetti"
-       },
-       {
-        "maglia": "10",
-        "nome": "Ianis Stoica"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 108,
+     "S_min": 112,
      "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 1,
-    "truncated_mass": 2.935e-09
+    "truncated_mass": 3.865e-09
    },
    "expected_goals": {
-    "away": 0.936,
-    "home": 1.378
+    "away": 0.949,
+    "home": 1.411
    },
    "half_time": {
-    "ht_over_0.5": 0.6459,
-    "ht_over_1.5": 0.2783,
-    "ht_over_2.5": 0.0874,
-    "ht_under_0.5": 0.3541,
-    "ht_under_1.5": 0.7217,
-    "ht_under_2.5": 0.9126,
-    "htft_11": 0.2802,
-    "htft_12": 0.0131,
-    "htft_1X": 0.0465,
-    "htft_21": 0.0211,
-    "htft_22": 0.1404,
-    "htft_2X": 0.0465,
-    "htft_X1": 0.1699,
-    "htft_X2": 0.1015,
-    "htft_XX": 0.1808
+    "ht_over_0.5": 0.6536,
+    "ht_over_1.5": 0.2863,
+    "ht_over_2.5": 0.0917,
+    "ht_under_0.5": 0.3464,
+    "ht_under_1.5": 0.7137,
+    "ht_under_2.5": 0.9083,
+    "htft_11": 0.2851,
+    "htft_12": 0.0133,
+    "htft_1X": 0.0468,
+    "htft_21": 0.0217,
+    "htft_22": 0.1396,
+    "htft_2X": 0.0468,
+    "htft_X1": 0.1701,
+    "htft_X2": 0.1,
+    "htft_XX": 0.1764
    },
    "home": {
     "crest": "https://crests.football-data.org/5529.png",
@@ -2090,36 +1269,36 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6583,
-    "band_p95": 0.8437,
+    "band_p5": 0.6497,
+    "band_p95": 0.8457,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.7354,
-    "p_raw": 0.759,
-    "reference": 0.6536,
+    "p": 0.7294,
+    "p_raw": 0.7544,
+    "reference": 0.6541,
     "runners_up": [],
-    "score": 0.01546,
-    "shrink_alpha": 0.7759,
-    "sigma": 0.0564
+    "score": 0.013067,
+    "shrink_alpha": 0.751,
+    "sigma": 0.0604
    },
    "raw_probabilities": {
-    "1x2_away": 0.2581,
-    "1x2_draw": 0.2723,
-    "1x2_home": 0.4696,
-    "btts_yes": 0.4463,
-    "over_2.5": 0.4062,
-    "under_2.5": 0.5938
+    "1x2_away": 0.2556,
+    "1x2_draw": 0.2681,
+    "1x2_home": 0.4764,
+    "btts_yes": 0.4552,
+    "over_2.5": 0.4182,
+    "under_2.5": 0.5818
    },
    "reasons": [
-    "Gol attesi: CD Nacional 1.38, CF Estrela da Amadora 0.94 (totale 2.31).",
-    "Ospite Under 1.5: 74 su 100, 8 punti sopra la media di riferimento (65 su 100).",
-    "Banda di incertezza: fra 66 e 84 su 100."
+    "Gol attesi: CD Nacional 1.41, CF Estrela da Amadora 0.95 (totale 2.36).",
+    "Ospite Under 1.5: 73 su 100, 8 punti sopra la media di riferimento (65 su 100).",
+    "Banda di incertezza: fra 65 e 85 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T14:30:00Z"
   },
   {
@@ -2129,114 +1308,6 @@
     "tla": "AJA"
    },
    "competition": "DED",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Ronald Koeman Jr."
-       },
-       {
-        "maglia": "18",
-        "nome": "Gabi Caschili"
-       },
-       {
-        "maglia": "4",
-        "nome": "Abdelnour Soualhia"
-       },
-       {
-        "maglia": "43",
-        "nome": "Marvin Peersman"
-       },
-       {
-        "maglia": "2",
-        "nome": "Jeff Hardeveld"
-       },
-       {
-        "maglia": "17",
-        "nome": "Nils Rossen"
-       },
-       {
-        "maglia": "10",
-        "nome": "Tyrone Owusu"
-       },
-       {
-        "maglia": "7",
-        "nome": "Rui Mendes"
-       },
-       {
-        "maglia": "27",
-        "nome": "Patrick Brouwer"
-       },
-       {
-        "maglia": "11",
-        "nome": "Soufiane Hetli"
-       },
-       {
-        "maglia": "9",
-        "nome": "Jelani Seedorf"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 138.0,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "M. ter Stegen"
-       },
-       {
-        "maglia": "2",
-        "nome": "Lucas Rosa"
-       },
-       {
-        "maglia": "30",
-        "nome": "Aaron Bouwman"
-       },
-       {
-        "maglia": "15",
-        "nome": "Youri Baas"
-       },
-       {
-        "maglia": "12",
-        "nome": "Caio Henrique"
-       },
-       {
-        "maglia": "18",
-        "nome": "Davy Klaassen"
-       },
-       {
-        "maglia": "6",
-        "nome": "Youri Regeer"
-       },
-       {
-        "maglia": "23",
-        "nome": "Steven Berghuis"
-       },
-       {
-        "maglia": "10",
-        "nome": "Oscar Gloukh"
-       },
-       {
-        "maglia": "68",
-        "nome": "Abdellah Ouazane"
-       },
-       {
-        "maglia": "9",
-        "nome": "Kasper Dolberg"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 94,
@@ -2373,7 +1444,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T14:45:00Z"
   },
   {
@@ -2383,144 +1454,36 @@
     "tla": "IPS"
    },
    "competition": "PL",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Senne Lammens"
-       },
-       {
-        "maglia": "3",
-        "nome": "Noussair Mazraoui"
-       },
-       {
-        "maglia": "5",
-        "nome": "Harry Maguire"
-       },
-       {
-        "maglia": "26",
-        "nome": "Ayden Heaven"
-       },
-       {
-        "maglia": "23",
-        "nome": "Luke Shaw"
-       },
-       {
-        "maglia": "17",
-        "nome": "Andrey Santos"
-       },
-       {
-        "maglia": "18",
-        "nome": "Youri Tielemans"
-       },
-       {
-        "maglia": "19",
-        "nome": "Bryan Mbeumo"
-       },
-       {
-        "maglia": "8",
-        "nome": "Bruno Fernandes"
-       },
-       {
-        "maglia": "13",
-        "nome": "Patrick Dorgu"
-       },
-       {
-        "maglia": "10",
-        "nome": "Matheus Cunha"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 138.7,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "22",
-        "nome": "Kjell Scherpen"
-       },
-       {
-        "maglia": "26",
-        "nome": "Dara O'Shea"
-       },
-       {
-        "maglia": "2",
-        "nome": "Issa Diop"
-       },
-       {
-        "maglia": "24",
-        "nome": "Jacob Greaves"
-       },
-       {
-        "maglia": "3",
-        "nome": "Leif Davis"
-       },
-       {
-        "maglia": "32",
-        "nome": "Marcelino Núñez"
-       },
-       {
-        "maglia": "6",
-        "nome": "Sasa Lukic"
-       },
-       {
-        "maglia": "15",
-        "nome": "Issahaku Fatawu"
-       },
-       {
-        "maglia": "12",
-        "nome": "Daizen Maeda"
-       },
-       {
-        "maglia": "10",
-        "nome": "Julio Enciso"
-       },
-       {
-        "maglia": "13",
-        "nome": "Emersonn"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 87,
-     "p_min": 85,
+     "S_min": 86,
+     "p_min": 84,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 13,
-    "truncated_mass": 6.08e-06
+    "n_clusters": 11,
+    "truncated_mass": 5.97e-06
    },
    "expected_goals": {
-    "away": 0.903,
-    "home": 2.731
+    "away": 0.875,
+    "home": 2.726
    },
    "half_time": {
-    "ht_over_0.5": 0.8056,
-    "ht_over_1.5": 0.4873,
-    "ht_over_2.5": 0.2265,
-    "ht_under_0.5": 0.1944,
-    "ht_under_1.5": 0.5127,
-    "ht_under_2.5": 0.7735,
-    "htft_11": 0.5316,
-    "htft_12": 0.0083,
-    "htft_1X": 0.0331,
-    "htft_21": 0.0362,
-    "htft_22": 0.0531,
-    "htft_2X": 0.0331,
-    "htft_X1": 0.1894,
-    "htft_X2": 0.0368,
-    "htft_XX": 0.0784
+    "ht_over_0.5": 0.803,
+    "ht_over_1.5": 0.4829,
+    "ht_over_2.5": 0.223,
+    "ht_under_0.5": 0.197,
+    "ht_under_1.5": 0.5171,
+    "ht_under_2.5": 0.777,
+    "htft_11": 0.5362,
+    "htft_12": 0.0079,
+    "htft_1X": 0.0323,
+    "htft_21": 0.0354,
+    "htft_22": 0.051,
+    "htft_2X": 0.0323,
+    "htft_X1": 0.1907,
+    "htft_X2": 0.0357,
+    "htft_XX": 0.0785
    },
    "home": {
     "crest": "https://crests.football-data.org/66.png",
@@ -2565,102 +1528,106 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6224,
-    "band_p95": 0.8644,
-    "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.6645,
-    "p_raw": 0.7512,
-    "reference": 0.4271,
+    "band_p5": 0.6517,
+    "band_p95": 0.8418,
+    "cluster_members": [
+     "1x2_home",
+     "hg_over_1.5",
+     "combo_1_over_1.5"
+    ],
+    "family": "combo_dc",
+    "key": "combodc_12_over_1.5",
+    "label": "12 + Over 1.5",
+    "p": 0.7053,
+    "p_raw": 0.7539,
+    "reference": 0.5988,
     "runners_up": [
      {
-      "band_p5": 0.8163,
-      "band_p95": 0.9523,
+      "band_p5": 0.8245,
+      "band_p95": 0.9508,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.8729,
-      "p_raw": 0.8964,
-      "reference": 0.6849,
-      "score": 0.096336,
-      "shrink_alpha": 0.8888,
-      "sigma": 0.0421
+      "p": 0.8793,
+      "p_raw": 0.9008,
+      "reference": 0.6842,
+      "score": 0.104488,
+      "shrink_alpha": 0.9007,
+      "sigma": 0.0395
      },
      {
-      "band_p5": 0.8163,
-      "band_p95": 0.9523,
+      "band_p5": 0.8245,
+      "band_p95": 0.9508,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.8624,
-      "p_raw": 0.8964,
-      "reference": 0.6849,
-      "score": 0.08476,
-      "shrink_alpha": 0.8392,
-      "sigma": 0.0421
+      "p": 0.8695,
+      "p_raw": 0.9008,
+      "reference": 0.6842,
+      "score": 0.093083,
+      "shrink_alpha": 0.8556,
+      "sigma": 0.0395
      },
      {
-      "band_p5": 0.8787,
-      "band_p95": 0.967,
+      "band_p5": 0.8762,
+      "band_p95": 0.9664,
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.9206,
-      "p_raw": 0.9299,
-      "reference": 0.7703,
-      "score": 0.079709,
-      "shrink_alpha": 0.9416,
-      "sigma": 0.0261
+      "p": 0.9199,
+      "p_raw": 0.9297,
+      "reference": 0.7705,
+      "score": 0.078718,
+      "shrink_alpha": 0.9384,
+      "sigma": 0.0269
      },
      {
-      "band_p5": 0.6228,
-      "band_p95": 0.8543,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.664,
-      "p_raw": 0.7484,
-      "reference": 0.4662,
-      "score": 0.07928,
-      "shrink_alpha": 0.701,
-      "sigma": 0.0685
-     },
-     {
-      "band_p5": 0.9304,
-      "band_p95": 0.9894,
+      "band_p5": 0.9361,
+      "band_p95": 0.988,
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
-      "p": 0.9628,
-      "p_raw": 0.9668,
-      "reference": 0.8542,
-      "score": 0.064361,
-      "shrink_alpha": 0.9641,
-      "sigma": 0.0185
+      "p": 0.9657,
+      "p_raw": 0.969,
+      "reference": 0.8544,
+      "score": 0.068745,
+      "shrink_alpha": 0.971,
+      "sigma": 0.0166
+     },
+     {
+      "band_p5": 0.6901,
+      "band_p95": 0.8776,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.7149,
+      "p_raw": 0.7948,
+      "reference": 0.5473,
+      "score": 0.059194,
+      "shrink_alpha": 0.6771,
+      "sigma": 0.0568
      }
     ],
-    "score": 0.114153,
-    "shrink_alpha": 0.7324,
-    "sigma": 0.0719
+    "score": 0.024542,
+    "shrink_alpha": 0.6868,
+    "sigma": 0.0556
    },
    "raw_probabilities": {
-    "1x2_away": 0.1036,
-    "1x2_draw": 0.1452,
-    "1x2_home": 0.7512,
-    "btts_yes": 0.5451,
-    "over_2.5": 0.6963,
-    "under_2.5": 0.3037
+    "1x2_away": 0.0992,
+    "1x2_draw": 0.1444,
+    "1x2_home": 0.7564,
+    "btts_yes": 0.5364,
+    "over_2.5": 0.6914,
+    "under_2.5": 0.3086
    },
    "reasons": [
-    "Gol attesi: Manchester United FC 2.73, Ipswich Town FC 0.90 (totale 3.63).",
-    "Vittoria casa: 66 su 100, 24 punti sopra la media di riferimento (43 su 100).",
-    "Banda di incertezza: fra 62 e 86 su 100."
+    "Gol attesi: Manchester United FC 2.73, Ipswich Town FC 0.87 (totale 3.60).",
+    "12 + Over 1.5: 71 su 100, 11 punti sopra la media di riferimento (60 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T15:30:00Z"
   },
   {
@@ -2670,144 +1637,36 @@
     "tla": "COM"
    },
    "competition": "SA",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Alex Meret"
-       },
-       {
-        "maglia": "22",
-        "nome": "Giovanni Di Lorenzo"
-       },
-       {
-        "maglia": "13",
-        "nome": "Amir Rrahmani"
-       },
-       {
-        "maglia": "16",
-        "nome": "Rafa Marín"
-       },
-       {
-        "maglia": "37",
-        "nome": "Leonardo Spinazzola"
-       },
-       {
-        "maglia": "99",
-        "nome": "Andre Zambo Anguissa"
-       },
-       {
-        "maglia": "68",
-        "nome": "Stanislav Lobotka"
-       },
-       {
-        "maglia": "8",
-        "nome": "Scott McTominay"
-       },
-       {
-        "maglia": "21",
-        "nome": "Matteo Politano"
-       },
-       {
-        "maglia": "19",
-        "nome": "Rasmus Højlund"
-       },
-       {
-        "maglia": "27",
-        "nome": "Alisson Santos"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 139.7,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Jean Butez"
-       },
-       {
-        "maglia": "27",
-        "nome": "Yan Couto"
-       },
-       {
-        "maglia": "4",
-        "nome": "Jacobo Ramón"
-       },
-       {
-        "maglia": "99",
-        "nome": "Trevoh Chalobah"
-       },
-       {
-        "maglia": "3",
-        "nome": "Álex Valle"
-       },
-       {
-        "maglia": "6",
-        "nome": "Luis Milla"
-       },
-       {
-        "maglia": "5",
-        "nome": "Maximo Perrone"
-       },
-       {
-        "maglia": "17",
-        "nome": "Jesús Rodriguez"
-       },
-       {
-        "maglia": "10",
-        "nome": "Nico Paz"
-       },
-       {
-        "maglia": "20",
-        "nome": "Martin Baturina"
-       },
-       {
-        "maglia": "9",
-        "nome": "Anastasios Douvikas"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 114,
-     "p_min": 88,
+     "p_min": 89,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 9.308e-10
+    "truncated_mass": 9.371e-10
    },
    "expected_goals": {
-    "away": 1.043,
-    "home": 1.239
+    "away": 1.035,
+    "home": 1.241
    },
    "half_time": {
-    "ht_over_0.5": 0.6274,
-    "ht_over_1.5": 0.2595,
-    "ht_over_2.5": 0.078,
-    "ht_under_0.5": 0.3726,
-    "ht_under_1.5": 0.7405,
-    "ht_under_2.5": 0.922,
-    "htft_11": 0.2307,
-    "htft_12": 0.0158,
-    "htft_1X": 0.0479,
+    "ht_over_0.5": 0.6258,
+    "ht_over_1.5": 0.258,
+    "ht_over_2.5": 0.0772,
+    "ht_under_0.5": 0.3742,
+    "ht_under_1.5": 0.742,
+    "ht_under_2.5": 0.9228,
+    "htft_11": 0.232,
+    "htft_12": 0.0157,
+    "htft_1X": 0.0478,
     "htft_21": 0.0196,
-    "htft_22": 0.1698,
-    "htft_2X": 0.0479,
-    "htft_X1": 0.1565,
-    "htft_X2": 0.1244,
-    "htft_XX": 0.1875
+    "htft_22": 0.1679,
+    "htft_2X": 0.0478,
+    "htft_X1": 0.1576,
+    "htft_X2": 0.1237,
+    "htft_XX": 0.188
    },
    "home": {
     "crest": "https://crests.football-data.org/113.png",
@@ -2853,22 +1712,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3122,
-    "1x2_draw": 0.2807,
-    "1x2_home": 0.4071,
+    "1x2_away": 0.3088,
+    "1x2_draw": 0.282,
+    "1x2_home": 0.4092,
     "btts_yes": 0.4512,
-    "over_2.5": 0.398,
-    "under_2.5": 0.602
+    "over_2.5": 0.3965,
+    "under_2.5": 0.6035
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: SSC Napoli 1.24, Como 1907 1.04 (totale 2.28)."
+    "Gol attesi: SSC Napoli 1.24, Como 1907 1.03 (totale 2.28)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T16:30:00Z"
   },
   {
@@ -2886,28 +1745,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 1,
-    "truncated_mass": 1.013e-09
+    "truncated_mass": 1.064e-09
    },
    "expected_goals": {
-    "away": 1.157,
-    "home": 1.214
+    "away": 1.174,
+    "home": 1.211
    },
    "half_time": {
-    "ht_over_0.5": 0.6547,
-    "ht_over_1.5": 0.2875,
-    "ht_over_2.5": 0.0923,
-    "ht_under_0.5": 0.3453,
-    "ht_under_1.5": 0.7125,
-    "ht_under_2.5": 0.9077,
-    "htft_11": 0.216,
-    "htft_12": 0.0179,
-    "htft_1X": 0.0495,
+    "ht_over_0.5": 0.6574,
+    "ht_over_1.5": 0.2904,
+    "ht_over_2.5": 0.0938,
+    "ht_under_0.5": 0.3426,
+    "ht_under_1.5": 0.7096,
+    "ht_under_2.5": 0.9062,
+    "htft_11": 0.2135,
+    "htft_12": 0.0182,
+    "htft_1X": 0.0496,
     "htft_21": 0.0189,
-    "htft_22": 0.1982,
-    "htft_2X": 0.0495,
-    "htft_X1": 0.1395,
-    "htft_X2": 0.1309,
-    "htft_XX": 0.1795
+    "htft_22": 0.2019,
+    "htft_2X": 0.0496,
+    "htft_X1": 0.1377,
+    "htft_X2": 0.1321,
+    "htft_XX": 0.1783
    },
    "home": {
     "crest": "https://crests.football-data.org/6618.png",
@@ -2919,36 +1778,36 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.798,
-    "band_p95": 0.9356,
+    "band_p5": 0.7965,
+    "band_p95": 0.9418,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_2.5",
     "label": "Casa Under 2.5",
-    "p": 0.8636,
-    "p_raw": 0.8738,
-    "reference": 0.8058,
+    "p": 0.8631,
+    "p_raw": 0.8741,
+    "reference": 0.8061,
     "runners_up": [],
-    "score": 0.011613,
-    "shrink_alpha": 0.8493,
-    "sigma": 0.0442
+    "score": 0.011292,
+    "shrink_alpha": 0.838,
+    "sigma": 0.0461
    },
    "raw_probabilities": {
-    "1x2_away": 0.3483,
-    "1x2_draw": 0.2766,
-    "1x2_home": 0.3752,
-    "btts_yes": 0.4737,
-    "over_2.5": 0.421,
-    "under_2.5": 0.579
+    "1x2_away": 0.3538,
+    "1x2_draw": 0.2753,
+    "1x2_home": 0.3708,
+    "btts_yes": 0.4762,
+    "over_2.5": 0.4245,
+    "under_2.5": 0.5755
    },
    "reasons": [
-    "Gol attesi: Casa Pia AC 1.21, Moreirense FC 1.16 (totale 2.37).",
+    "Gol attesi: Casa Pia AC 1.21, Moreirense FC 1.17 (totale 2.38).",
     "Casa Under 2.5: 86 su 100, 6 punti sopra la media di riferimento (81 su 100).",
     "Banda di incertezza: fra 80 e 94 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T17:00:00Z"
   },
   {
@@ -2958,114 +1817,6 @@
     "tla": "TWE"
    },
    "competition": "DED",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-3-3",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Thijs Jansen"
-       },
-       {
-        "maglia": "27",
-        "nome": "Wiebe Kooistra"
-       },
-       {
-        "maglia": "4",
-        "nome": "Ismaël Baouf"
-       },
-       {
-        "maglia": "6",
-        "nome": "Jamal Amofa"
-       },
-       {
-        "maglia": "23",
-        "nome": "Lucas Jetten"
-       },
-       {
-        "maglia": "10",
-        "nome": "Rafik El Arguioui"
-       },
-       {
-        "maglia": "8",
-        "nome": "Nicky Souren"
-       },
-       {
-        "maglia": "9",
-        "nome": "Skye Vink"
-       },
-       {
-        "maglia": "29",
-        "nome": "Iwan Henstra"
-       },
-       {
-        "maglia": "7",
-        "nome": "Sami Bouhoudane"
-       },
-       {
-        "maglia": "11",
-        "nome": "Ilyes Hamache"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 141.2,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Lars Unnerstall"
-       },
-       {
-        "maglia": "28",
-        "nome": "Bart van Rooij"
-       },
-       {
-        "maglia": "3",
-        "nome": "Robin Propper"
-       },
-       {
-        "maglia": "43",
-        "nome": "Ruud Nijstad"
-       },
-       {
-        "maglia": "29",
-        "nome": "Aske Adelgaard"
-       },
-       {
-        "maglia": "6",
-        "nome": "Ramiz Zerrouki"
-       },
-       {
-        "maglia": "42",
-        "nome": "Daouda Weidmann"
-       },
-       {
-        "maglia": "7",
-        "nome": "Marko Pjaca"
-       },
-       {
-        "maglia": "11",
-        "nome": "Daan Rots"
-       },
-       {
-        "maglia": "27",
-        "nome": "Sondre Ørjasæter"
-       },
-       {
-        "maglia": "9",
-        "nome": "Wouter Weghorst"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 93,
@@ -3204,7 +1955,7 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T18:00:00Z"
   },
   {
@@ -3216,34 +1967,34 @@
    "competition": "SA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 106,
+     "S_min": 104,
      "p_min": 87,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 4,
-    "truncated_mass": 2.485e-09
+    "truncated_mass": 2.443e-09
    },
    "expected_goals": {
-    "away": 0.907,
-    "home": 1.359
+    "away": 0.884,
+    "home": 1.357
    },
    "half_time": {
-    "ht_over_0.5": 0.6249,
-    "ht_over_1.5": 0.2571,
-    "ht_over_2.5": 0.0768,
-    "ht_under_0.5": 0.3751,
-    "ht_under_1.5": 0.7429,
-    "ht_under_2.5": 0.9232,
-    "htft_11": 0.2742,
-    "htft_12": 0.0128,
-    "htft_1X": 0.0456,
-    "htft_21": 0.021,
-    "htft_22": 0.1339,
-    "htft_2X": 0.0456,
-    "htft_X1": 0.1776,
-    "htft_X2": 0.1037,
-    "htft_XX": 0.1855
+    "ht_over_0.5": 0.6202,
+    "ht_over_1.5": 0.2525,
+    "ht_over_2.5": 0.0745,
+    "ht_under_0.5": 0.3798,
+    "ht_under_1.5": 0.7475,
+    "ht_under_2.5": 0.9255,
+    "htft_11": 0.2772,
+    "htft_12": 0.0123,
+    "htft_1X": 0.0451,
+    "htft_21": 0.0208,
+    "htft_22": 0.1298,
+    "htft_2X": 0.0451,
+    "htft_X1": 0.1802,
+    "htft_X2": 0.1019,
+    "htft_XX": 0.1876
    },
    "home": {
     "crest": "https://crests.football-data.org/110.png",
@@ -3288,76 +2039,89 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6622,
-    "band_p95": 0.8569,
+    "band_p5": 0.6835,
+    "band_p95": 0.8592,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.7427,
-    "p_raw": 0.7693,
-    "reference": 0.6571,
+    "p": 0.7512,
+    "p_raw": 0.7779,
+    "reference": 0.6579,
     "runners_up": [
      {
-      "band_p5": 0.8792,
-      "band_p95": 0.9702,
+      "band_p5": 0.8917,
+      "band_p95": 0.971,
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.9302,
-      "p_raw": 0.9334,
-      "reference": 0.886,
-      "score": 0.011061,
-      "shrink_alpha": 0.9342,
-      "sigma": 0.0278
+      "p": 0.9345,
+      "p_raw": 0.9374,
+      "reference": 0.8863,
+      "score": 0.013352,
+      "shrink_alpha": 0.9426,
+      "sigma": 0.0259
      },
      {
-      "band_p5": 0.8617,
-      "band_p95": 0.953,
+      "band_p5": 0.8661,
+      "band_p95": 0.9553,
       "family": "handicap_eu",
       "key": "eh_2_home",
       "label": "Handicap +2 casa",
-      "p": 0.9078,
-      "p_raw": 0.9125,
-      "reference": 0.8603,
-      "score": 0.010463,
-      "shrink_alpha": 0.9094,
-      "sigma": 0.0303
+      "p": 0.912,
+      "p_raw": 0.9165,
+      "reference": 0.8607,
+      "score": 0.012376,
+      "shrink_alpha": 0.9184,
+      "sigma": 0.0286
      },
      {
-      "band_p5": 0.6588,
-      "band_p95": 0.8344,
+      "band_p5": 0.6661,
+      "band_p95": 0.8355,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.734,
-      "p_raw": 0.7473,
-      "reference": 0.6742,
-      "score": 0.008441,
-      "shrink_alpha": 0.8188,
-      "sigma": 0.0559
+      "p": 0.7402,
+      "p_raw": 0.754,
+      "reference": 0.6738,
+      "score": 0.010438,
+      "shrink_alpha": 0.8279,
+      "sigma": 0.0542
+     },
+     {
+      "band_p5": 0.6661,
+      "band_p95": 0.8355,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7346,
+      "p_raw": 0.754,
+      "reference": 0.6738,
+      "score": 0.008731,
+      "shrink_alpha": 0.7586,
+      "sigma": 0.0542
      }
     ],
-    "score": 0.017049,
-    "shrink_alpha": 0.7629,
-    "sigma": 0.0585
+    "score": 0.020378,
+    "shrink_alpha": 0.7771,
+    "sigma": 0.0562
    },
    "raw_probabilities": {
-    "1x2_away": 0.2527,
-    "1x2_draw": 0.2746,
-    "1x2_home": 0.4726,
-    "btts_yes": 0.4357,
-    "over_2.5": 0.3941,
-    "under_2.5": 0.6059
+    "1x2_away": 0.246,
+    "1x2_draw": 0.277,
+    "1x2_home": 0.477,
+    "btts_yes": 0.4286,
+    "over_2.5": 0.3872,
+    "under_2.5": 0.6128
    },
    "reasons": [
-    "Gol attesi: SS Lazio 1.36, Genoa CFC 0.91 (totale 2.27).",
-    "Ospite Under 1.5: 74 su 100, 9 punti sopra la media di riferimento (66 su 100).",
-    "Banda di incertezza: fra 66 e 86 su 100."
+    "Gol attesi: SS Lazio 1.36, Genoa CFC 0.88 (totale 2.24).",
+    "Ospite Under 1.5: 75 su 100, 9 punti sopra la media di riferimento (66 su 100).",
+    "Banda di incertezza: fra 68 e 86 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T18:45:00Z"
   },
   {
@@ -3367,114 +2131,6 @@
     "tla": "INT"
    },
    "competition": "SA",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Elia Caprile"
-       },
-       {
-        "maglia": "2",
-        "nome": "Zé Pedro"
-       },
-       {
-        "maglia": "14",
-        "nome": "Alessandro Deiola"
-       },
-       {
-        "maglia": "15",
-        "nome": "Juan Rodríguez"
-       },
-       {
-        "maglia": "33",
-        "nome": "Adam Obert"
-       },
-       {
-        "maglia": "4",
-        "nome": "Alessandro Romano"
-       },
-       {
-        "maglia": "6",
-        "nome": "Harry Winks"
-       },
-       {
-        "maglia": "8",
-        "nome": "Michel Adopo"
-       },
-       {
-        "maglia": "70",
-        "nome": "Daniel Maldini"
-       },
-       {
-        "maglia": "10",
-        "nome": "Jacopo Fazzini"
-       },
-       {
-        "maglia": "31",
-        "nome": "Paul Mendy"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 142.0,
-     "ospiti": {
-      "modulo": "3-5-2",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Josep Martinez"
-       },
-       {
-        "maglia": "31",
-        "nome": "Yann Aurel Bisseck"
-       },
-       {
-        "maglia": "25",
-        "nome": "Manuel Akanji"
-       },
-       {
-        "maglia": "95",
-        "nome": "Alessandro Bastoni"
-       },
-       {
-        "maglia": "17",
-        "nome": "Andy Diouf"
-       },
-       {
-        "maglia": "23",
-        "nome": "Nicolò Barella"
-       },
-       {
-        "maglia": "20",
-        "nome": "Hakan Calhanoglu"
-       },
-       {
-        "maglia": "7",
-        "nome": "Piotr Zielinski"
-       },
-       {
-        "maglia": "32",
-        "nome": "Federico Dimarco"
-       },
-       {
-        "maglia": "94",
-        "nome": "F. Pio Esposito"
-       },
-       {
-        "maglia": "10",
-        "nome": "Lautaro Martinez"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 79,
@@ -3483,28 +2139,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 13,
-    "truncated_mass": 1.608e-06
+    "truncated_mass": 1.661e-06
    },
    "expected_goals": {
-    "away": 2.41,
-    "home": 0.885
+    "away": 2.417,
+    "home": 0.9
    },
    "half_time": {
-    "ht_over_0.5": 0.7596,
-    "ht_over_1.5": 0.417,
-    "ht_over_2.5": 0.1727,
-    "ht_under_0.5": 0.2404,
-    "ht_under_1.5": 0.583,
-    "ht_under_2.5": 0.8273,
-    "htft_11": 0.0631,
-    "htft_12": 0.035,
-    "htft_1X": 0.0364,
-    "htft_21": 0.0094,
-    "htft_22": 0.4733,
-    "htft_2X": 0.0364,
-    "htft_X1": 0.0471,
-    "htft_X2": 0.2024,
-    "htft_XX": 0.0969
+    "ht_over_0.5": 0.7614,
+    "ht_over_1.5": 0.4196,
+    "ht_over_2.5": 0.1746,
+    "ht_under_0.5": 0.2386,
+    "ht_under_1.5": 0.5804,
+    "ht_under_2.5": 0.8254,
+    "htft_11": 0.0642,
+    "htft_12": 0.0354,
+    "htft_1X": 0.0368,
+    "htft_21": 0.0097,
+    "htft_22": 0.4715,
+    "htft_2X": 0.0368,
+    "htft_X1": 0.0477,
+    "htft_X2": 0.2017,
+    "htft_XX": 0.0964
    },
    "home": {
     "crest": "https://crests.football-data.org/104.png",
@@ -3549,102 +2205,102 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6019,
-    "band_p95": 0.8068,
+    "band_p5": 0.5922,
+    "band_p95": 0.8002,
     "cluster_members": [],
     "family": "1x2",
     "key": "1x2_away",
     "label": "Vittoria ospite",
-    "p": 0.6293,
-    "p_raw": 0.7079,
-    "reference": 0.3258,
+    "p": 0.6186,
+    "p_raw": 0.7045,
+    "reference": 0.3262,
     "runners_up": [
      {
-      "band_p5": 0.8083,
-      "band_p95": 0.9324,
+      "band_p5": 0.8047,
+      "band_p95": 0.9288,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.8515,
-      "p_raw": 0.8772,
-      "reference": 0.5941,
-      "score": 0.157203,
-      "shrink_alpha": 0.9094,
-      "sigma": 0.0375
+      "p": 0.8491,
+      "p_raw": 0.8751,
+      "reference": 0.5938,
+      "score": 0.15414,
+      "shrink_alpha": 0.9074,
+      "sigma": 0.038
      },
      {
-      "band_p5": 0.8083,
-      "band_p95": 0.9324,
+      "band_p5": 0.8047,
+      "band_p95": 0.9288,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.8397,
-      "p_raw": 0.8772,
-      "reference": 0.5941,
-      "score": 0.141609,
-      "shrink_alpha": 0.8676,
-      "sigma": 0.0375
+      "p": 0.8371,
+      "p_raw": 0.8751,
+      "reference": 0.5938,
+      "score": 0.138574,
+      "shrink_alpha": 0.8649,
+      "sigma": 0.038
      },
      {
-      "band_p5": 0.5826,
-      "band_p95": 0.7817,
+      "band_p5": 0.5752,
+      "band_p95": 0.7906,
       "family": "team_goals",
       "key": "ag_over_1.5",
       "label": "Ospite Over 1.5",
-      "p": 0.5984,
-      "p_raw": 0.6886,
-      "reference": 0.3429,
-      "score": 0.135431,
-      "shrink_alpha": 0.739,
-      "sigma": 0.0623
+      "p": 0.5822,
+      "p_raw": 0.6887,
+      "reference": 0.3421,
+      "score": 0.1199,
+      "shrink_alpha": 0.6928,
+      "sigma": 0.0699
      },
      {
-      "band_p5": 0.8589,
-      "band_p95": 0.9437,
+      "band_p5": 0.8551,
+      "band_p95": 0.9467,
       "family": "team_goals",
       "key": "ag_over_0.5",
       "label": "Ospite Over 0.5",
-      "p": 0.8935,
-      "p_raw": 0.9065,
-      "reference": 0.6957,
-      "score": 0.111845,
-      "shrink_alpha": 0.9387,
-      "sigma": 0.0268
+      "p": 0.8899,
+      "p_raw": 0.9061,
+      "reference": 0.6953,
+      "score": 0.10755,
+      "shrink_alpha": 0.9231,
+      "sigma": 0.0303
      },
      {
-      "band_p5": 0.6615,
-      "band_p95": 0.8217,
+      "band_p5": 0.6626,
+      "band_p95": 0.8289,
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.659,
-      "p_raw": 0.7468,
-      "reference": 0.4292,
-      "score": 0.106867,
-      "shrink_alpha": 0.7234,
-      "sigma": 0.0509
+      "p": 0.6455,
+      "p_raw": 0.747,
+      "reference": 0.4284,
+      "score": 0.095203,
+      "shrink_alpha": 0.6813,
+      "sigma": 0.0563
      }
     ],
-    "score": 0.192536,
-    "shrink_alpha": 0.7943,
-    "sigma": 0.0605
+    "score": 0.178754,
+    "shrink_alpha": 0.7729,
+    "sigma": 0.0644
    },
    "raw_probabilities": {
-    "1x2_away": 0.7079,
-    "1x2_draw": 0.1693,
-    "1x2_home": 0.1228,
-    "btts_yes": 0.5271,
-    "over_2.5": 0.6352,
-    "under_2.5": 0.3648
+    "1x2_away": 0.7045,
+    "1x2_draw": 0.1706,
+    "1x2_home": 0.1249,
+    "btts_yes": 0.5335,
+    "over_2.5": 0.6389,
+    "under_2.5": 0.3611
    },
    "reasons": [
-    "Gol attesi: Cagliari Calcio 0.89, FC Internazionale Milano 2.41 (totale 3.30).",
-    "Vittoria ospite: 63 su 100, 30 punti sopra la media di riferimento (33 su 100).",
-    "Banda di incertezza: fra 60 e 81 su 100."
+    "Gol attesi: Cagliari Calcio 0.90, FC Internazionale Milano 2.42 (totale 3.32).",
+    "Vittoria ospite: 62 su 100, 29 punti sopra la media di riferimento (33 su 100).",
+    "Banda di incertezza: fra 59 e 80 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T18:45:00Z"
   },
   {
@@ -3654,114 +2310,6 @@
     "tla": "MAR"
    },
    "competition": "FL1",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Lukas Hradecky"
-       },
-       {
-        "maglia": "2",
-        "nome": "Vanderson"
-       },
-       {
-        "maglia": "72",
-        "nome": "Sadibou Sane"
-       },
-       {
-        "maglia": "3",
-        "nome": "Eric Dier"
-       },
-       {
-        "maglia": "20",
-        "nome": "Flavio Nazinho"
-       },
-       {
-        "maglia": "15",
-        "nome": "Lamine Camara"
-       },
-       {
-        "maglia": "6",
-        "nome": "Denis Zakaria"
-       },
-       {
-        "maglia": "28",
-        "nome": "Mamadou Coulibaly"
-       },
-       {
-        "maglia": "10",
-        "nome": "Aleksandr Golovin"
-       },
-       {
-        "maglia": "17",
-        "nome": "Stanis Idumbo"
-       },
-       {
-        "maglia": "29",
-        "nome": "Paris Brunner"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 142.0,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "12",
-        "nome": "Jeffrey de Lange"
-       },
-       {
-        "maglia": "22",
-        "nome": "Timothy Weah"
-       },
-       {
-        "maglia": "4",
-        "nome": "CJ Egan-Riley"
-       },
-       {
-        "maglia": "19",
-        "nome": "Geoffrey Kondogbia"
-       },
-       {
-        "maglia": "33",
-        "nome": "Emerson"
-       },
-       {
-        "maglia": "8",
-        "nome": "Himad Abdelli"
-       },
-       {
-        "maglia": "23",
-        "nome": "P. Emil Højbjerg"
-       },
-       {
-        "maglia": "77",
-        "nome": "Amine Harit"
-       },
-       {
-        "maglia": "7",
-        "nome": "Angel Gomes"
-       },
-       {
-        "maglia": "14",
-        "nome": "Igor Paixão"
-       },
-       {
-        "maglia": "9",
-        "nome": "Amine Gouiri"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z"
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 92,
@@ -3936,8 +2484,221 @@
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/6685.png",
+    "name": "Santos FC",
+    "tla": "SAN"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 87,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.948e-08
+   },
+   "expected_goals": {
+    "away": 0.945,
+    "home": 1.623
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6848,
+    "ht_over_1.5": 0.3209,
+    "ht_over_2.5": 0.1108,
+    "ht_under_0.5": 0.3152,
+    "ht_under_1.5": 0.6791,
+    "ht_under_2.5": 0.8892,
+    "htft_11": 0.3281,
+    "htft_12": 0.0129,
+    "htft_1X": 0.0461,
+    "htft_21": 0.0253,
+    "htft_22": 0.1208,
+    "htft_2X": 0.0461,
+    "htft_X1": 0.1792,
+    "htft_X2": 0.0858,
+    "htft_XX": 0.1557
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1779.png",
+    "name": "SC Corinthians Paulista",
+    "tla": "COR"
+   },
+   "match_id": 554983,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.221,
+    "1x2_draw": 0.2491,
+    "1x2_home": 0.5299,
+    "btts_yes": 0.4844,
+    "over_2.5": 0.4711,
+    "under_2.5": 0.5289
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: SC Corinthians Paulista 1.62, Santos FC 0.95 (totale 2.57)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1770.png",
+    "name": "Botafogo FR",
+    "tla": "BOT"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 92,
+     "p_min": 88,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 8,
+    "truncated_mass": 5.094e-07
+   },
+   "expected_goals": {
+    "away": 0.878,
+    "home": 2.169
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7458,
+    "ht_over_1.5": 0.3976,
+    "ht_over_2.5": 0.1592,
+    "ht_under_0.5": 0.2542,
+    "ht_under_1.5": 0.6024,
+    "ht_under_2.5": 0.8408,
+    "htft_11": 0.4424,
+    "htft_12": 0.0099,
+    "htft_1X": 0.0393,
+    "htft_21": 0.0315,
+    "htft_22": 0.0756,
+    "htft_2X": 0.0393,
+    "htft_X1": 0.195,
+    "htft_X2": 0.0543,
+    "htft_XX": 0.1127
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1783.png",
+    "name": "CR Flamengo",
+    "tla": "FLA"
+   },
+   "match_id": 554984,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5466,
+    "band_p95": 0.7684,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6158,
+    "p_raw": 0.6642,
+    "reference": 0.4728,
+    "runners_up": [
+     {
+      "band_p5": 0.7766,
+      "band_p95": 0.9198,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.8435,
+      "p_raw": 0.8573,
+      "reference": 0.7369,
+      "score": 0.032642,
+      "shrink_alpha": 0.8853,
+      "sigma": 0.0428
+     },
+     {
+      "band_p5": 0.5057,
+      "band_p95": 0.755,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5629,
+      "p_raw": 0.6311,
+      "reference": 0.4412,
+      "score": 0.029727,
+      "shrink_alpha": 0.6407,
+      "sigma": 0.0786
+     },
+     {
+      "band_p5": 0.7766,
+      "band_p95": 0.9198,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8374,
+      "p_raw": 0.8573,
+      "reference": 0.7369,
+      "score": 0.028781,
+      "shrink_alpha": 0.8345,
+      "sigma": 0.0428
+     },
+     {
+      "band_p5": 0.8167,
+      "band_p95": 0.9341,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.8696,
+      "p_raw": 0.8799,
+      "reference": 0.7913,
+      "score": 0.020737,
+      "shrink_alpha": 0.8842,
+      "sigma": 0.038
+     },
+     {
+      "band_p5": 0.9202,
+      "band_p95": 0.9803,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.9522,
+      "p_raw": 0.9542,
+      "reference": 0.8982,
+      "score": 0.019402,
+      "shrink_alpha": 0.9629,
+      "sigma": 0.0189
+     }
+    ],
+    "score": 0.041161,
+    "shrink_alpha": 0.7472,
+    "sigma": 0.0692
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1427,
+    "1x2_draw": 0.1931,
+    "1x2_home": 0.6642,
+    "btts_yes": 0.5105,
+    "over_2.5": 0.5823,
+    "under_2.5": 0.4177
+   },
+   "reasons": [
+    "Gol attesi: CR Flamengo 2.17, Botafogo FR 0.88 (totale 3.05).",
+    "Vittoria casa: 62 su 100, 14 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 55 e 77 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T19:00:00Z"
   },
   {
    "away": {
@@ -3954,28 +2715,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.987e-08
+    "truncated_mass": 1.981e-08
    },
    "expected_goals": {
-    "away": 1.009,
-    "home": 1.626
+    "away": 1.026,
+    "home": 1.625
    },
    "half_time": {
-    "ht_over_0.5": 0.6795,
-    "ht_over_1.5": 0.3149,
-    "ht_over_2.5": 0.1074,
-    "ht_under_0.5": 0.3205,
-    "ht_under_1.5": 0.6851,
-    "ht_under_2.5": 0.8926,
-    "htft_11": 0.3107,
-    "htft_12": 0.0147,
-    "htft_1X": 0.0472,
-    "htft_21": 0.0268,
-    "htft_22": 0.1271,
-    "htft_2X": 0.0472,
-    "htft_X1": 0.1802,
-    "htft_X2": 0.0931,
-    "htft_XX": 0.153
+    "ht_over_0.5": 0.6822,
+    "ht_over_1.5": 0.3179,
+    "ht_over_2.5": 0.1091,
+    "ht_under_0.5": 0.3178,
+    "ht_under_1.5": 0.6821,
+    "ht_under_2.5": 0.8909,
+    "htft_11": 0.3083,
+    "htft_12": 0.015,
+    "htft_1X": 0.0476,
+    "htft_21": 0.0269,
+    "htft_22": 0.1298,
+    "htft_2X": 0.0476,
+    "htft_X1": 0.1784,
+    "htft_X2": 0.0942,
+    "htft_XX": 0.1523
    },
    "home": {
     "crest": "https://crests.football-data.org/558.png",
@@ -4021,22 +2782,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2373,
-    "1x2_draw": 0.2469,
-    "1x2_home": 0.5158,
-    "btts_yes": 0.5027,
-    "over_2.5": 0.4873,
-    "under_2.5": 0.5127
+    "1x2_away": 0.2422,
+    "1x2_draw": 0.2457,
+    "1x2_home": 0.5122,
+    "btts_yes": 0.5067,
+    "over_2.5": 0.4917,
+    "under_2.5": 0.5083
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: RC Celta de Vigo 1.63, Athletic Club 1.01 (totale 2.63)."
+    "Gol attesi: RC Celta de Vigo 1.63, Athletic Club 1.03 (totale 2.65)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T19:30:00Z"
   },
   {
@@ -4049,33 +2810,33 @@
    "diagnostics": {
     "filter_bites": {
      "S_min": 85,
-     "p_min": 88,
+     "p_min": 89,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 10,
-    "truncated_mass": 5.663e-10
+    "n_clusters": 9,
+    "truncated_mass": 5.22e-10
    },
    "expected_goals": {
-    "away": 0.824,
-    "home": 1.199
+    "away": 0.826,
+    "home": 1.191
    },
    "half_time": {
-    "ht_over_0.5": 0.5964,
-    "ht_over_1.5": 0.2302,
-    "ht_over_2.5": 0.0641,
-    "ht_under_0.5": 0.4036,
-    "ht_under_1.5": 0.7698,
-    "ht_under_2.5": 0.9359,
-    "htft_11": 0.2599,
+    "ht_over_0.5": 0.5958,
+    "ht_over_1.5": 0.2297,
+    "ht_over_2.5": 0.0638,
+    "ht_under_0.5": 0.4042,
+    "ht_under_1.5": 0.7703,
+    "ht_under_2.5": 0.9362,
+    "htft_11": 0.258,
     "htft_12": 0.0108,
     "htft_1X": 0.0437,
-    "htft_21": 0.0169,
-    "htft_22": 0.1372,
+    "htft_21": 0.0168,
+    "htft_22": 0.1385,
     "htft_2X": 0.0437,
-    "htft_X1": 0.1709,
-    "htft_X2": 0.1054,
-    "htft_XX": 0.2117
+    "htft_X1": 0.1698,
+    "htft_X2": 0.1061,
+    "htft_XX": 0.2125
    },
    "home": {
     "crest": "https://crests.football-data.org/5531.png",
@@ -4087,107 +2848,455 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7029,
-    "band_p95": 0.8793,
+    "band_p5": 0.7086,
+    "band_p95": 0.8813,
     "cluster_members": [],
     "family": "team_goals",
     "key": "ag_under_1.5",
     "label": "Ospite Under 1.5",
-    "p": 0.7696,
-    "p_raw": 0.7994,
-    "reference": 0.6536,
+    "p": 0.7709,
+    "p_raw": 0.7987,
+    "reference": 0.6541,
     "runners_up": [
      {
-      "band_p5": 0.7729,
-      "band_p95": 0.9174,
+      "band_p5": 0.7696,
+      "band_p95": 0.9185,
       "family": "over_under",
       "key": "under_3.5",
       "label": "Under 3.5",
-      "p": 0.7989,
-      "p_raw": 0.8505,
-      "reference": 0.7144,
-      "score": 0.018768,
-      "shrink_alpha": 0.6212,
-      "sigma": 0.044
+      "p": 0.7976,
+      "p_raw": 0.8515,
+      "reference": 0.7149,
+      "score": 0.01797,
+      "shrink_alpha": 0.6055,
+      "sigma": 0.0455
      },
      {
-      "band_p5": 0.9026,
-      "band_p95": 0.9772,
+      "band_p5": 0.9056,
+      "band_p95": 0.9778,
       "family": "team_goals",
       "key": "ag_under_2.5",
       "label": "Ospite Under 2.5",
-      "p": 0.9443,
-      "p_raw": 0.9468,
-      "reference": 0.8916,
-      "score": 0.017139,
-      "shrink_alpha": 0.9548,
-      "sigma": 0.0228
+      "p": 0.9444,
+      "p_raw": 0.9467,
+      "reference": 0.8918,
+      "score": 0.017096,
+      "shrink_alpha": 0.9582,
+      "sigma": 0.0219
      },
      {
-      "band_p5": 0.7729,
-      "band_p95": 0.9174,
+      "band_p5": 0.7696,
+      "band_p95": 0.9185,
       "family": "multigoal",
       "key": "mg_0_3",
       "label": "Multigol 0-3",
-      "p": 0.7894,
-      "p_raw": 0.8505,
-      "reference": 0.7144,
-      "score": 0.014637,
-      "shrink_alpha": 0.5512,
-      "sigma": 0.044
+      "p": 0.7879,
+      "p_raw": 0.8515,
+      "reference": 0.7149,
+      "score": 0.013883,
+      "shrink_alpha": 0.5346,
+      "sigma": 0.0455
      },
      {
-      "band_p5": 0.8009,
-      "band_p95": 0.937,
+      "band_p5": 0.7974,
+      "band_p95": 0.9388,
       "family": "team_goals",
       "key": "hg_under_2.5",
       "label": "Casa Under 2.5",
-      "p": 0.8676,
-      "p_raw": 0.8771,
-      "reference": 0.8058,
-      "score": 0.013357,
-      "shrink_alpha": 0.8657,
-      "sigma": 0.0413
+      "p": 0.8689,
+      "p_raw": 0.8788,
+      "reference": 0.8061,
+      "score": 0.013878,
+      "shrink_alpha": 0.8636,
+      "sigma": 0.0417
      },
      {
-      "band_p5": 0.5625,
-      "band_p95": 0.7762,
+      "band_p5": 0.5584,
+      "band_p95": 0.7783,
       "family": "over_under",
       "key": "under_2.5",
       "label": "Under 2.5",
-      "p": 0.5655,
-      "p_raw": 0.6706,
-      "reference": 0.4855,
-      "score": 0.012837,
-      "shrink_alpha": 0.4324,
-      "sigma": 0.0646
+      "p": 0.5644,
+      "p_raw": 0.6723,
+      "reference": 0.4862,
+      "score": 0.012254,
+      "shrink_alpha": 0.4203,
+      "sigma": 0.0662
      }
     ],
-    "score": 0.031822,
-    "shrink_alpha": 0.796,
-    "sigma": 0.0531
+    "score": 0.032281,
+    "shrink_alpha": 0.8077,
+    "sigma": 0.0512
    },
    "raw_probabilities": {
-    "1x2_away": 0.2553,
-    "1x2_draw": 0.2977,
-    "1x2_home": 0.4471,
-    "btts_yes": 0.3852,
-    "over_2.5": 0.3294,
-    "under_2.5": 0.6706
+    "1x2_away": 0.2573,
+    "1x2_draw": 0.2987,
+    "1x2_home": 0.444,
+    "btts_yes": 0.3847,
+    "over_2.5": 0.3277,
+    "under_2.5": 0.6723
    },
    "reasons": [
-    "Gol attesi: FC Famalicão 1.20, Gil Vicente FC 0.82 (totale 2.02).",
+    "Gol attesi: FC Famalicão 1.19, Gil Vicente FC 0.83 (totale 2.02).",
     "Ospite Under 1.5: 77 su 100, 12 punti sopra la media di riferimento (65 su 100).",
-    "Banda di incertezza: fra 70 e 88 su 100."
+    "Banda di incertezza: fra 71 e 88 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-30T19:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1772_large.png",
+    "name": "Chapecoense AF",
+    "tla": "CHA"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 98,
+     "p_min": 87,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 8,
+    "truncated_mass": 4.557e-07
+   },
+   "expected_goals": {
+    "away": 0.928,
+    "home": 2.147
+   },
+   "half_time": {
+    "ht_over_0.5": 0.749,
+    "ht_over_1.5": 0.402,
+    "ht_over_2.5": 0.1622,
+    "ht_under_0.5": 0.251,
+    "ht_under_1.5": 0.598,
+    "ht_under_2.5": 0.8378,
+    "htft_11": 0.4295,
+    "htft_12": 0.0109,
+    "htft_1X": 0.041,
+    "htft_21": 0.0322,
+    "htft_22": 0.0826,
+    "htft_2X": 0.041,
+    "htft_X1": 0.1911,
+    "htft_X2": 0.058,
+    "htft_XX": 0.1135
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1767.png",
+    "name": "Grêmio FBPA",
+    "tla": "FBP"
+   },
+   "match_id": 554985,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4936,
+    "band_p95": 0.7921,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5839,
+    "p_raw": 0.6463,
+    "reference": 0.4728,
+    "runners_up": [
+     {
+      "band_p5": 0.7371,
+      "band_p95": 0.9278,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.8235,
+      "p_raw": 0.8435,
+      "reference": 0.7369,
+      "score": 0.020998,
+      "shrink_alpha": 0.8121,
+      "sigma": 0.0572
+     },
+     {
+      "band_p5": 0.4596,
+      "band_p95": 0.7667,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5409,
+      "p_raw": 0.6227,
+      "reference": 0.4412,
+      "score": 0.019957,
+      "shrink_alpha": 0.5493,
+      "sigma": 0.095
+     },
+     {
+      "band_p5": 0.7371,
+      "band_p95": 0.9278,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.8156,
+      "p_raw": 0.8435,
+      "reference": 0.7369,
+      "score": 0.017207,
+      "shrink_alpha": 0.7385,
+      "sigma": 0.0572
+     },
+     {
+      "band_p5": 0.7883,
+      "band_p95": 0.9384,
+      "family": "team_goals",
+      "key": "hg_over_0.5",
+      "label": "Casa Over 0.5",
+      "p": 0.8606,
+      "p_raw": 0.8745,
+      "reference": 0.7913,
+      "score": 0.016019,
+      "shrink_alpha": 0.833,
+      "sigma": 0.047
+     },
+     {
+      "band_p5": 0.8937,
+      "band_p95": 0.9819,
+      "family": "handicap_eu",
+      "key": "eh_2_home",
+      "label": "Handicap +2 casa",
+      "p": 0.943,
+      "p_raw": 0.9467,
+      "reference": 0.8982,
+      "score": 0.012828,
+      "shrink_alpha": 0.9233,
+      "sigma": 0.0277
+     }
+    ],
+    "score": 0.024765,
+    "shrink_alpha": 0.6402,
+    "sigma": 0.0891
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1565,
+    "1x2_draw": 0.1971,
+    "1x2_home": 0.6463,
+    "btts_yes": 0.5215,
+    "over_2.5": 0.5861,
+    "under_2.5": 0.4139
+   },
+   "reasons": [
+    "Gol attesi: Grêmio FBPA 2.15, Chapecoense AF 0.93 (totale 3.07).",
+    "Vittoria casa: 58 su 100, 11 punti sopra la media di riferimento (47 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T21:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1769.png",
+    "name": "SE Palmeiras",
+    "tla": "PAL"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 92,
+     "p_min": 87,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 5,
+    "truncated_mass": 8.265e-09
+   },
+   "expected_goals": {
+    "away": 1.503,
+    "home": 1.125
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6931,
+    "ht_over_1.5": 0.3306,
+    "ht_over_2.5": 0.1165,
+    "ht_under_0.5": 0.3069,
+    "ht_under_1.5": 0.6694,
+    "ht_under_2.5": 0.8835,
+    "htft_11": 0.1607,
+    "htft_12": 0.0246,
+    "htft_1X": 0.05,
+    "htft_21": 0.0171,
+    "htft_22": 0.2766,
+    "htft_2X": 0.05,
+    "htft_X1": 0.1062,
+    "htft_X2": 0.1581,
+    "htft_XX": 0.1567
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4364.png",
+    "name": "Mirassol FC",
+    "tla": "MIR"
+   },
+   "match_id": 554986,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6023,
+    "band_p95": 0.8035,
+    "cluster_members": [
+     "eh_-1_away"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.6735,
+    "p_raw": 0.715,
+    "reference": 0.5272,
+    "runners_up": [
+     {
+      "band_p5": 0.813,
+      "band_p95": 0.9372,
+      "family": "handicap_eu",
+      "key": "eh_-2_away",
+      "label": "Handicap -2 ospite",
+      "p": 0.8704,
+      "p_raw": 0.8853,
+      "reference": 0.7804,
+      "score": 0.026691,
+      "shrink_alpha": 0.8581,
+      "sigma": 0.0391
+     },
+     {
+      "band_p5": 0.5632,
+      "band_p95": 0.7933,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.6495,
+      "p_raw": 0.6907,
+      "reference": 0.5588,
+      "score": 0.017037,
+      "shrink_alpha": 0.6878,
+      "sigma": 0.0707
+     },
+     {
+      "band_p5": 0.6888,
+      "band_p95": 0.8488,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7538,
+      "p_raw": 0.7722,
+      "reference": 0.6718,
+      "score": 0.016058,
+      "shrink_alpha": 0.8168,
+      "sigma": 0.0497
+     },
+     {
+      "band_p5": 0.8128,
+      "band_p95": 0.9462,
+      "family": "team_goals",
+      "key": "hg_under_2.5",
+      "label": "Casa Under 2.5",
+      "p": 0.8848,
+      "p_raw": 0.8923,
+      "reference": 0.8349,
+      "score": 0.009898,
+      "shrink_alpha": 0.8682,
+      "sigma": 0.0409
+     }
+    ],
+    "score": 0.044082,
+    "shrink_alpha": 0.7791,
+    "sigma": 0.0633
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.4583,
+    "1x2_draw": 0.2568,
+    "1x2_home": 0.285,
+    "btts_yes": 0.5175,
+    "over_2.5": 0.4862,
+    "under_2.5": 0.5138
+   },
+   "reasons": [
+    "Gol attesi: Mirassol FC 1.13, SE Palmeiras 1.50 (totale 2.63).",
+    "X2 (pareggio o ospite): 67 su 100, 15 punti sopra la media di riferimento (53 su 100).",
+    "Banda di incertezza: fra 60 e 80 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T21:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/6684.png",
+    "name": "SC Internacional",
+    "tla": "SCI"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 86,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.242e-08
+   },
+   "expected_goals": {
+    "away": 0.964,
+    "home": 1.561
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6786,
+    "ht_over_1.5": 0.3138,
+    "ht_over_2.5": 0.1067,
+    "ht_under_0.5": 0.3214,
+    "ht_under_1.5": 0.6862,
+    "ht_under_2.5": 0.8933,
+    "htft_11": 0.3127,
+    "htft_12": 0.0135,
+    "htft_1X": 0.0468,
+    "htft_21": 0.0245,
+    "htft_22": 0.1289,
+    "htft_2X": 0.0468,
+    "htft_X1": 0.1751,
+    "htft_X2": 0.0911,
+    "htft_XX": 0.1606
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1777.png",
+    "name": "EC Bahia",
+    "tla": "BAH"
+   },
+   "match_id": 554982,
+   "matchday": 25,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2354,
+    "1x2_draw": 0.2554,
+    "1x2_home": 0.5092,
+    "btts_yes": 0.4821,
+    "over_2.5": 0.4601,
+    "under_2.5": 0.5399
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: EC Bahia 1.56, SC Internacional 0.96 (totale 2.53)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-30T22:30:00Z"
   }
  ],
- "generated_at": "2026-08-24T20:46:01Z",
+ "generated_at": "2026-08-24T23:58:08Z",
  "schema_version": 1,
- "silence_count": 4,
- "total": 19
+ "silence_count": 6,
+ "total": 26
 }

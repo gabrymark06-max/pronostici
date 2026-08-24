@@ -3,553 +3,78 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/79.png",
+    "name": "CA Osasuna",
+    "tla": "OSA"
+   },
+   "competition": "PD",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 113,
+     "p_min": 86,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.641e-08
+   },
+   "expected_goals": {
+    "away": 0.971,
+    "home": 1.599
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6709,
+    "ht_over_1.5": 0.3052,
+    "ht_over_2.5": 0.1019,
+    "ht_under_0.5": 0.3291,
+    "ht_under_1.5": 0.6948,
+    "ht_under_2.5": 0.8981,
+    "htft_11": 0.3118,
+    "htft_12": 0.0139,
+    "htft_1X": 0.0465,
+    "htft_21": 0.0259,
+    "htft_22": 0.1236,
+    "htft_2X": 0.0465,
+    "htft_X1": 0.1825,
+    "htft_X2": 0.092,
+    "htft_XX": 0.1573
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/558.png",
+    "name": "RC Celta de Vigo",
+    "tla": "CEL"
+   },
+   "match_id": 564636,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2325,
+    "1x2_draw": 0.249,
+    "1x2_home": 0.5185,
+    "btts_yes": 0.4881,
+    "over_2.5": 0.4717,
+    "under_2.5": 0.5283
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: RC Celta de Vigo 1.60, CA Osasuna 0.97 (totale 2.57)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-08-27T18:30:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/77.png",
     "name": "Athletic Club",
     "tla": "ATH"
    },
    "competition": "PD",
-   "contorno": {
-    "formazioni": {
-     "casa": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Joan Garcia"
-       },
-       {
-        "maglia": "24",
-        "nome": "Eric Garcia"
-       },
-       {
-        "maglia": "15",
-        "nome": "Andreas Christensen"
-       },
-       {
-        "maglia": "18",
-        "nome": "Gerard Martin"
-       },
-       {
-        "maglia": "36",
-        "nome": "Xavi Espart"
-       },
-       {
-        "maglia": "22",
-        "nome": "Marc Bernal"
-       },
-       {
-        "maglia": "8",
-        "nome": "Pedri"
-       },
-       {
-        "maglia": "10",
-        "nome": "Lamine Yamal"
-       },
-       {
-        "maglia": "7",
-        "nome": "Fermin Lopez"
-       },
-       {
-        "maglia": "14",
-        "nome": "Karim Adeyemi"
-       },
-       {
-        "maglia": "11",
-        "nome": "Raphinha"
-       }
-      ]
-     },
-     "confermate": false,
-     "fonte": "sportsgambler",
-     "ore_prima": 70.2,
-     "ospiti": {
-      "modulo": "4-2-3-1",
-      "panchina": [],
-      "titolari": [
-       {
-        "maglia": "1",
-        "nome": "Unai Simon"
-       },
-       {
-        "maglia": "12",
-        "nome": "Jesus Areso"
-       },
-       {
-        "maglia": "5",
-        "nome": "Yeray Alvarez"
-       },
-       {
-        "maglia": "4",
-        "nome": "Aitor Paredes"
-       },
-       {
-        "maglia": "19",
-        "nome": "Adama Boiro"
-       },
-       {
-        "maglia": "24",
-        "nome": "Benat Gerenabarrena"
-       },
-       {
-        "maglia": "28",
-        "nome": "Peio Canales"
-       },
-       {
-        "maglia": "9",
-        "nome": "Inaki Williams"
-       },
-       {
-        "maglia": "8",
-        "nome": "Oihan Sancet"
-       },
-       {
-        "maglia": "7",
-        "nome": "Alex Berenguer"
-       },
-       {
-        "maglia": "11",
-        "nome": "Gorka Guruzeta"
-       }
-      ]
-     }
-    },
-    "letto": "2026-08-24T20:46:01Z",
-    "market_p": {
-     "btts_no": 0.4478,
-     "btts_yes": 0.5522,
-     "dc_12": 0.8314,
-     "dc_1x": 0.894,
-     "dc_x2": 0.2747,
-     "over_1.5": 0.868,
-     "over_1.75": 0.8414,
-     "over_2": 0.8283,
-     "over_2.25": 0.7418,
-     "over_2.5": 0.6646,
-     "over_2.75": 0.6234,
-     "over_3": 0.567,
-     "over_3.25": 0.4986,
-     "over_3.5": 0.4422,
-     "over_3.75": 0.3829,
-     "over_4": 0.3108,
-     "over_4.25": 0.2801,
-     "over_4.5": 0.2512,
-     "over_5.5": 0.1188,
-     "under_1.5": 0.132,
-     "under_1.75": 0.1586,
-     "under_2": 0.1717,
-     "under_2.25": 0.2582,
-     "under_2.5": 0.3354,
-     "under_2.75": 0.3766,
-     "under_3": 0.433,
-     "under_3.25": 0.5014,
-     "under_3.5": 0.5578,
-     "under_3.75": 0.6171,
-     "under_4": 0.6892,
-     "under_4.25": 0.7199,
-     "under_4.5": 0.7488,
-     "under_5.5": 0.8812
-    },
-    "quote": {
-     "mercati": [
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.1,
-         "esito": "1X",
-         "probabilita_implicita": 0.894
-        },
-        {
-         "decimale": 1.17,
-         "esito": "12",
-         "probabilita_implicita": 0.8314
-        },
-        {
-         "decimale": 3.0,
-         "esito": "X2",
-         "probabilita_implicita": 0.2747
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": null,
-       "margine_percento": 4.86,
-       "mercato": "Doppia chance",
-       "n_bookmaker": 3,
-       "somma_probabilita": 2.0971
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.13,
-         "esito": "Over",
-         "probabilita_implicita": 0.868
-        },
-        {
-         "decimale": 5.75,
-         "esito": "Under",
-         "probabilita_implicita": 0.132
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "1.5",
-       "margine_percento": 5.89,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0589
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.17,
-         "esito": "Over",
-         "probabilita_implicita": 0.8414
-        },
-        {
-         "decimale": 5.1,
-         "esito": "Under",
-         "probabilita_implicita": 0.1586
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "1.75",
-       "margine_percento": 5.44,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0544
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.18,
-         "esito": "Over",
-         "probabilita_implicita": 0.8283
-        },
-        {
-         "decimale": 4.7,
-         "esito": "Under",
-         "probabilita_implicita": 0.1717
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2",
-       "margine_percento": 6.02,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0602
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.31,
-         "esito": "Over",
-         "probabilita_implicita": 0.7418
-        },
-        {
-         "decimale": 3.4,
-         "esito": "Under",
-         "probabilita_implicita": 0.2582
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2.25",
-       "margine_percento": 5.75,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0575
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.45,
-         "esito": "Over",
-         "probabilita_implicita": 0.6646
-        },
-        {
-         "decimale": 2.7,
-         "esito": "Under",
-         "probabilita_implicita": 0.3354
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2.5",
-       "margine_percento": 6.0,
-       "mercato": "Gol totali",
-       "n_bookmaker": 3,
-       "somma_probabilita": 1.06
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.54,
-         "esito": "Over",
-         "probabilita_implicita": 0.6234
-        },
-        {
-         "decimale": 2.42,
-         "esito": "Under",
-         "probabilita_implicita": 0.3766
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2.75",
-       "margine_percento": 6.38,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0638
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.68,
-         "esito": "Over",
-         "probabilita_implicita": 0.567
-        },
-        {
-         "decimale": 2.15,
-         "esito": "Under",
-         "probabilita_implicita": 0.433
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "3",
-       "margine_percento": 6.04,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0604
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.92,
-         "esito": "Over",
-         "probabilita_implicita": 0.4986
-        },
-        {
-         "decimale": 1.9,
-         "esito": "Under",
-         "probabilita_implicita": 0.5014
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "3.25",
-       "margine_percento": 4.71,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0471
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 2.1,
-         "esito": "Over",
-         "probabilita_implicita": 0.4422
-        },
-        {
-         "decimale": 1.7,
-         "esito": "Under",
-         "probabilita_implicita": 0.5578
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "3.5",
-       "margine_percento": 6.44,
-       "mercato": "Gol totali",
-       "n_bookmaker": 3,
-       "somma_probabilita": 1.0644
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 2.39,
-         "esito": "Over",
-         "probabilita_implicita": 0.3829
-        },
-        {
-         "decimale": 1.55,
-         "esito": "Under",
-         "probabilita_implicita": 0.6171
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "3.75",
-       "margine_percento": 6.36,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0636
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 2.88,
-         "esito": "Over",
-         "probabilita_implicita": 0.3108
-        },
-        {
-         "decimale": 1.4,
-         "esito": "Under",
-         "probabilita_implicita": 0.6892
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "4",
-       "margine_percento": 6.21,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0621
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 3.15,
-         "esito": "Over",
-         "probabilita_implicita": 0.2801
-        },
-        {
-         "decimale": 1.35,
-         "esito": "Under",
-         "probabilita_implicita": 0.7199
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "4.25",
-       "margine_percento": 6.1,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.061
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 3.5,
-         "esito": "Over",
-         "probabilita_implicita": 0.2512
-        },
-        {
-         "decimale": 1.3,
-         "esito": "Under",
-         "probabilita_implicita": 0.7488
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "4.5",
-       "margine_percento": 5.49,
-       "mercato": "Gol totali",
-       "n_bookmaker": 3,
-       "somma_probabilita": 1.0549
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us"
-       ],
-       "esiti": [
-        {
-         "decimale": 6.25,
-         "esito": "Over",
-         "probabilita_implicita": 0.1188
-        },
-        {
-         "decimale": 1.11,
-         "esito": "Under",
-         "probabilita_implicita": 0.8812
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "5.5",
-       "margine_percento": 5.69,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0569
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.7,
-         "esito": "Sì",
-         "probabilita_implicita": 0.5522
-        },
-        {
-         "decimale": 2.05,
-         "esito": "No",
-         "probabilita_implicita": 0.4478
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": null,
-       "margine_percento": 7.6,
-       "mercato": "Entrambe segnano",
-       "n_bookmaker": 3,
-       "somma_probabilita": 1.076
-      }
-     ],
-     "n_mercati": 16
-    }
-   },
    "diagnostics": {
     "filter_bites": {
      "S_min": 81,
@@ -558,28 +83,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 10,
-    "truncated_mass": 1.143e-05
+    "truncated_mass": 1.267e-05
    },
    "expected_goals": {
-    "away": 0.752,
-    "home": 2.901
+    "away": 0.766,
+    "home": 2.93
    },
    "half_time": {
-    "ht_over_0.5": 0.7936,
-    "ht_over_1.5": 0.4679,
-    "ht_over_2.5": 0.211,
-    "ht_under_0.5": 0.2064,
-    "ht_under_1.5": 0.5321,
-    "ht_under_2.5": 0.789,
-    "htft_11": 0.573,
-    "htft_12": 0.0056,
-    "htft_1X": 0.0264,
-    "htft_21": 0.034,
-    "htft_22": 0.0351,
-    "htft_2X": 0.0264,
-    "htft_X1": 0.2029,
-    "htft_X2": 0.0274,
-    "htft_XX": 0.0691
+    "ht_over_0.5": 0.7978,
+    "ht_over_1.5": 0.4746,
+    "ht_over_2.5": 0.2163,
+    "ht_under_0.5": 0.2022,
+    "ht_under_1.5": 0.5254,
+    "ht_under_2.5": 0.7837,
+    "htft_11": 0.575,
+    "htft_12": 0.0057,
+    "htft_1X": 0.0265,
+    "htft_21": 0.0345,
+    "htft_22": 0.0353,
+    "htft_2X": 0.0265,
+    "htft_X1": 0.2013,
+    "htft_X2": 0.0273,
+    "htft_XX": 0.0678
    },
    "home": {
     "crest": "https://crests.football-data.org/81.png",
@@ -629,8 +154,8 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.713,
-    "band_p95": 0.8813,
+    "band_p5": 0.7039,
+    "band_p95": 0.8897,
     "cluster_members": [
      "combodc_12_over_1.5",
      "hg_over_1.5",
@@ -639,92 +164,92 @@
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.7443,
-    "p_raw": 0.8042,
-    "reference": 0.4597,
+    "p": 0.7419,
+    "p_raw": 0.8048,
+    "reference": 0.4588,
     "runners_up": [
      {
-      "band_p5": 0.8805,
-      "band_p95": 0.9644,
+      "band_p5": 0.8788,
+      "band_p95": 0.9655,
       "family": "double_chance",
       "key": "dc_1x",
       "label": "1X (casa o pareggio)",
-      "p": 0.9185,
-      "p_raw": 0.9285,
-      "reference": 0.7112,
-      "score": 0.131844,
-      "shrink_alpha": 0.9541,
-      "sigma": 0.0261
+      "p": 0.9175,
+      "p_raw": 0.9279,
+      "reference": 0.7118,
+      "score": 0.129737,
+      "shrink_alpha": 0.9517,
+      "sigma": 0.0268
      },
      {
-      "band_p5": 0.8805,
-      "band_p95": 0.9644,
+      "band_p5": 0.8788,
+      "band_p95": 0.9655,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.9136,
-      "p_raw": 0.9285,
-      "reference": 0.7112,
-      "score": 0.124502,
-      "shrink_alpha": 0.9314,
-      "sigma": 0.0261
+      "p": 0.9124,
+      "p_raw": 0.9279,
+      "reference": 0.7118,
+      "score": 0.122173,
+      "shrink_alpha": 0.9279,
+      "sigma": 0.0268
      },
      {
-      "band_p5": 0.7351,
-      "band_p95": 0.8981,
+      "band_p5": 0.7394,
+      "band_p95": 0.8997,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.7419,
-      "p_raw": 0.8226,
-      "reference": 0.5398,
-      "score": 0.086708,
-      "shrink_alpha": 0.7147,
-      "sigma": 0.052
+      "p": 0.7452,
+      "p_raw": 0.8258,
+      "reference": 0.5397,
+      "score": 0.089761,
+      "shrink_alpha": 0.7185,
+      "sigma": 0.0515
      },
      {
-      "band_p5": 0.8984,
-      "band_p95": 0.9724,
+      "band_p5": 0.9014,
+      "band_p95": 0.9736,
       "family": "team_goals",
       "key": "hg_over_0.5",
       "label": "Casa Over 0.5",
-      "p": 0.9336,
-      "p_raw": 0.9405,
-      "reference": 0.8007,
-      "score": 0.070369,
-      "shrink_alpha": 0.9508,
-      "sigma": 0.0239
+      "p": 0.9352,
+      "p_raw": 0.9421,
+      "reference": 0.8001,
+      "score": 0.07297,
+      "shrink_alpha": 0.9519,
+      "sigma": 0.0236
      },
      {
-      "band_p5": 0.9638,
-      "band_p95": 0.9918,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9798,
-      "p_raw": 0.9805,
-      "reference": 0.8895,
-      "score": 0.060366,
-      "shrink_alpha": 0.9914,
-      "sigma": 0.009
+      "band_p5": 0.5292,
+      "band_p95": 0.7898,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.5047,
+      "p_raw": 0.6634,
+      "reference": 0.3326,
+      "score": 0.062796,
+      "shrink_alpha": 0.5204,
+      "sigma": 0.079
      }
     ],
-    "score": 0.167377,
-    "shrink_alpha": 0.8261,
-    "sigma": 0.0546
+    "score": 0.165503,
+    "shrink_alpha": 0.8183,
+    "sigma": 0.056
    },
    "raw_probabilities": {
-    "1x2_away": 0.0715,
-    "1x2_draw": 0.1242,
-    "1x2_home": 0.8042,
-    "btts_yes": 0.494,
-    "over_2.5": 0.6996,
-    "under_2.5": 0.3004
+    "1x2_away": 0.0721,
+    "1x2_draw": 0.1232,
+    "1x2_home": 0.8048,
+    "btts_yes": 0.5007,
+    "over_2.5": 0.7071,
+    "under_2.5": 0.2929
    },
    "reasons": [
-    "Gol attesi: FC Barcelona 2.90, Athletic Club 0.75 (totale 3.65).",
+    "Gol attesi: FC Barcelona 2.93, Athletic Club 0.77 (totale 3.70).",
     "Vittoria casa: 74 su 100, 28 punti sopra la media di riferimento (46 su 100).",
-    "Banda di incertezza: fra 71 e 88 su 100."
+    "Banda di incertezza: fra 70 e 89 su 100."
    ],
    "silence": null,
    "sofascore": {
@@ -2285,12 +1810,12 @@
     "torneo": "LaLiga"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-08-27T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-24T20:46:01Z",
+ "generated_at": "2026-08-24T23:58:08Z",
  "schema_version": 1,
- "silence_count": 0,
- "total": 1
+ "silence_count": 1,
+ "total": 2
 }
