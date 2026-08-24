@@ -404,9 +404,24 @@ class Sessione:
             return int(stato), None
 
     def chiudi(self) -> None:
+        """Spegne il browser, ma solo se e' nostro.
+
+        Chiedere prima a Chrome di chiudersi da solo (`Browser.close`) e non
+        limitarsi a `terminate()`: Chrome apre un processo per scheda e per
+        servizio, e ammazzare il padre non sempre porta giu' i figli. Un
+        processo rimasto tiene la porta 9222, e il giro dopo ci si riattacca
+        credendo di aver avviato un browser nuovo — con la pagina dove l'aveva
+        lasciata e, se la quota era finita, con il muro gia' in piedi.
+        """
+        if self._proc is not None:
+            with contextlib.suppress(Exception):
+                self._canale.comando("Browser.close")
+                time.sleep(1)
         self._canale.chiudi()
         if self._proc is not None:
-            self._proc.terminate()
+            with contextlib.suppress(Exception):
+                self._proc.terminate()
+                self._proc.wait(timeout=10)
 
 
 _sessione: Sessione | None = None

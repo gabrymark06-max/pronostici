@@ -177,3 +177,22 @@ def test_la_quota_non_e_un_errore_da_saltare_per_partita():
     quota ne ereditasse, verrebbe inghiottita e il giro proseguirebbe a
     pagare le attese fino al timeout."""
     assert not issubclass(cdp.QuotaEsaurita, http.SofascoreNonRaggiungibile)
+
+
+def test_il_giro_spegne_il_browser_anche_se_finisce_male(monkeypatch):
+    """Trovato con due Chrome e due python di esecuzioni diverse ancora vivi
+    un'ora dopo: il giro nuovo si riattaccava al browser del giro vecchio,
+    con la pagina dove l'aveva lasciata."""
+    from pronostici.jobs import sofascore as job
+
+    chiuso = []
+    monkeypatch.setattr(job.sf, 'chiudi_trasporto', lambda: chiuso.append(True))
+
+    def _esplode(**_):
+        raise RuntimeError('il giro e` andato male')
+
+    monkeypatch.setattr(job, 'run', _esplode)
+    with pytest.raises(RuntimeError):
+        job.main(['--window-days', '1'])
+
+    assert chiuso == [True], 'il browser va spento anche quando il giro fallisce'

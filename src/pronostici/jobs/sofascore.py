@@ -377,6 +377,16 @@ def main(argv: list[str] | None = None) -> int:
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     try:
+        return _giro(args)
+    finally:
+        # Il browser va spento comunque, anche quando il giro finisce male:
+        # lasciarlo acceso significa che il giro dopo si riattacca a questo
+        # invece di avviarne uno pulito.
+        sf.chiudi_trasporto()
+
+
+def _giro(args) -> int:
+    try:
         report = run(
             finestra=args.window_days, dry_run=args.dry_run, oggi=args.today
         )

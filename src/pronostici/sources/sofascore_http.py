@@ -118,6 +118,21 @@ _falliti_di_fila = 0
 _via_browser = False
 
 
+def chiudi_trasporto() -> None:
+    """Spegne il browser, se ne era stato aperto uno.
+
+    Va chiamata alla fine di un giro. Senza, il Chrome avviato dal trasporto
+    resta vivo dopo che il job e' finito: tiene la porta 9222, e il giro
+    successivo ci si riattacca invece di avviarne uno pulito. Trovato con due
+    Chrome e due python di due esecuzioni diverse ancora in memoria un'ora
+    dopo, e il job nuovo appeso su quello vecchio.
+    """
+    from . import sofascore_cdp as cdp
+
+    cdp.chiudi()
+    azzera_trasporto()
+
+
 def azzera_trasporto() -> None:
     """Rimette la strada economica. Serve ai test, e a chi rilancia."""
     global _via_browser

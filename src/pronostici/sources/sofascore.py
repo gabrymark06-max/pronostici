@@ -95,6 +95,7 @@ SofascoreCiBlocca = http.SofascoreCiBlocca
 from . import sofascore_cdp as _cdp  # noqa: E402
 
 QuotaEsaurita = _cdp.QuotaEsaurita
+chiudi_trasporto = http.chiudi_trasporto
 
 
 @dataclass(frozen=True)
