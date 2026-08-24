@@ -16,8 +16,19 @@
  * scartati sale: e' un guasto rumoroso, che e' quello che vogliamo.
  */
 
-/** I dieci mercati che la fonte serve davvero, verificati sui dati. */
+/**
+ * I mercati che le fonti servono davvero, verificati sui dati.
+ *
+ * DUE VOCABOLARI, e non e' disordine. Le chiavi in inglese sono quelle di
+ * Sofascore, che ha riempito questo campo fino al 23 agosto 2026 e i cui dati
+ * restano nei file vecchi. Quelle in italiano sono di betexplorer, che lo
+ * riempie da allora — e sono gia' in italiano perche' il nome inglese di
+ * «entrambe segnano» contiene `score`, che `check-parole-vietate` blocca e fa
+ * bene a bloccare: quel testo finisce nel payload della pagina anche quando
+ * nessuno lo mostra.
+ */
 const NOMI: Record<string, string> = {
+  // Sofascore, fino al 23 agosto 2026.
   'Full time': 'Esito finale',
   'Double chance': 'Doppia chance',
   '1st half': 'Primo tempo',
@@ -28,6 +39,11 @@ const NOMI: Record<string, string> = {
   'First team to score': 'Prima squadra a segnare',
   'Corners 2-Way': 'Calci d’angolo',
   'Cards in match': 'Cartellini nella partita',
+  // betexplorer, da agosto 2026.
+  'Esito finale': 'Esito finale',
+  'Doppia chance': 'Doppia chance',
+  'Gol totali': 'Gol totali',
+  'Entrambe segnano': 'Entrambe le squadre segnano',
 };
 
 /**
@@ -48,6 +64,7 @@ const NOMI: Record<string, string> = {
  */
 const COPERTURA: Record<string, number> = {
   'Double chance': 2,
+  'Doppia chance': 2,
 };
 
 export function copertura(originale: string): number {
@@ -57,6 +74,9 @@ export function copertura(originale: string): number {
 /** Gli esiti dentro i mercati. Le sigle 1, X, 2 restano come sono. */
 const ESITI: Record<string, string> = {
   Yes: 'Sì',
+  // betexplorer manda gia' l'italiano: resta com'e', ma deve essere una
+  // chiave nota o il mercato viene scartato insieme agli sconosciuti.
+  Sì: 'Sì',
   No: 'No',
   Draw: 'Pareggio',
   Home: 'Casa',
