@@ -207,6 +207,40 @@ def load_all(competition: str) -> list[Match]:
     return sorted(matches.values(), key=lambda m: (m.utc_date, m.match_id))
 
 
+def _perche_aggiornare(nuovo: Match, vecchio: Match) -> str | None:
+    """Perche' un record archiviato va sostituito, o `None` se non va.
+
+    DUE RAGIONI, e per anni ne e' esistita una sola.
+
+    La prima e' il risultato: un record con i gol finali ne sa piu' di uno
+    senza, ed e' quello che misura `information_score`.
+
+    La seconda e' IL CALENDARIO, e mancava. `information_score` conta solo il
+    risultato, quindi una partita futura vale zero prima e zero dopo che la
+    fonte ne pubblichi l'orario: `0 > 0` e' falso, il record non si aggiornava
+    mai, e una partita vista una volta come «29 agosto, ora da definire»
+    restava a mezzanotte per sempre.
+
+    Misurato il 25 agosto 2026 su tutti e nove i campionati: 1938 partite
+    future su 2936 avevano in archivio un orario che football-data aveva gia'
+    corretto. Il sito mostrava l'ora sbagliata, e le quote del Brasileirao non
+    si agganciavano affatto — l'abbinamento con la fonte delle quote tollera
+    sei ore, e fra mezzanotte e un calcio d'inizio alle 23:00 ce ne sono
+    ventitre.
+
+    Su una partita GIA' CONCLUSA il calendario non si tocca: la fonte non
+    riprogramma il passato, e una data che cambia li' e' un errore di lettura,
+    non una notizia.
+    """
+    if nuovo.information_score > vecchio.information_score:
+        return "risultato"
+    if vecchio.status in FINISHED_STATES:
+        return None
+    if nuovo.utc_date != vecchio.utc_date or nuovo.status != vecchio.status:
+        return "calendario"
+    return None
+
+
 def merge_season(competition: str, season: int, incoming: Iterable[Match]) -> dict:
     """Fonde le partite nuove con quelle gia' archiviate.
 
@@ -214,18 +248,23 @@ def merge_season(competition: str, season: int, incoming: Iterable[Match]) -> di
     e' l'intera ragione per cui questo modulo esiste.
     """
     existing = {m.match_id: m for m in load_season(competition, season)}
-    added = updated = 0
+    added = updated = riprogrammate = 0
     for match in incoming:
         old = existing.get(match.match_id)
         if old is None:
             existing[match.match_id] = match
             added += 1
-        elif match.information_score > old.information_score:
-            # Si conserva la data di primo avvistamento: e' una prova.
-            existing[match.match_id] = Match(
-                **{**asdict(match), "first_seen": old.first_seen}
-            )
-            updated += 1
+            continue
+        motivo = _perche_aggiornare(match, old)
+        if motivo is None:
+            continue
+        # Si conserva la data di primo avvistamento: e' una prova.
+        existing[match.match_id] = Match(
+            **{**asdict(match), "first_seen": old.first_seen}
+        )
+        updated += 1
+        if motivo == "calendario":
+            riprogrammate += 1
 
     rows = [asdict(m) for m in sorted(existing.values(), key=lambda m: m.utc_date)]
     changed = write_json(
@@ -237,6 +276,7 @@ def merge_season(competition: str, season: int, incoming: Iterable[Match]) -> di
         "season": season,
         "added": added,
         "updated": updated,
+        "riprogrammate": riprogrammate,
         "total": len(rows),
         "file_changed": changed,
     }
