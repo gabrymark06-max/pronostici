@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { PannelloProfilo } from '@/components/PannelloProfilo';
+import { soloSeProfiliAccesi } from '@/lib/guardia-profili';
 
 export const metadata: Metadata = {
   title: 'Il tuo profilo',
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default function PaginaConto() {
+  soloSeProfiliAccesi();
+
   return (
     <div className="colonna colonna--scheda pagina-profilo">
       <PannelloProfilo />

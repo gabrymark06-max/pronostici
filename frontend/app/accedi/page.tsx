@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { ModuloProfilo } from '@/components/ModuloProfilo';
+import { soloSeProfiliAccesi } from '@/lib/guardia-profili';
 
 /**
  * `noindex` su tutte e tre le pagine dei profili.
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
 };
 
 export default function PaginaAccesso() {
+  soloSeProfiliAccesi();
+
   return (
     <div className="colonna colonna--scheda pagina-profilo">
       <ModuloProfilo modo="accesso" />
