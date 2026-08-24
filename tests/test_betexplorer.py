@@ -10,8 +10,11 @@ from __future__ import annotations
 from pronostici.sources import betexplorer as bx
 
 
-def _riga(quote: list[str], hcp: str = "E-1-2-0-0-0") -> str:
-    celle = "".join(f'<td data-hcp="{hcp}" data-odd="{q}"></td>' for q in quote)
+def _riga(quote: list[str], hcp: str = "E-1-2-0-0-0", bookie: str = "") -> str:
+    nome = bookie or f"book{len(quote)}{quote[0]}"
+    celle = "".join(
+        f'<td data-bookie="{nome}" data-hcp="{hcp}" data-odd="{q}"></td>' for q in quote
+    )
     return f"<tr>{celle}</tr>"
 
 
@@ -28,10 +31,36 @@ class TestLinea:
 
 
 class TestMediana:
-    def test_serve_un_minimo_di_bookmaker(self) -> None:
-        """Una mediana su due prezzi non e' una mediana."""
-        html = _riga(["2.00", "3.00", "4.00"]) + _riga(["2.10", "3.10", "4.10"])
+    def test_un_solo_operatore_non_e_un_mercato(self) -> None:
+        """Il prezzo di un bookmaker e' il suo, non quello del mercato."""
+        html = _riga(["2.00", "3.00", "4.00"], bookie="uno")
         assert bx._leggi_mercato(html, "Esito finale", ("1", "X", "2")) == []
+
+    def test_con_due_si_pubblica_perche_tre_sarebbe_unanimita(self) -> None:
+        """Dai runner di GitHub betexplorer mostra tre operatori in tutto.
+
+        Chiederne tre per pubblicare una linea vuol dire pretendere che tutti
+        e tre l'abbiano aperta: su Valencia-Betis cadevano cosi' tutte e sei le
+        linee dei gol totali, e la partita usciva con due mercati su otto.
+        """
+        html = _riga(["2.00", "3.00", "4.00"], bookie="uno") + _riga(
+            ["2.10", "3.10", "4.10"], bookie="due"
+        )
+        fuori = bx._leggi_mercato(html, "Esito finale", ("1", "X", "2"))
+        assert len(fuori) == 1
+        assert fuori[0]["n_bookmaker"] == 2
+
+    def test_i_nomi_dei_bookmaker_finiscono_nel_dato(self) -> None:
+        """Quali operatori si vedano dipende dall'IP di chi chiede.
+
+        In produzione sono americani, in locale italiani: senza i nomi il
+        lettore non puo' sapere di che mercato sta guardando i prezzi.
+        """
+        html = _riga(["2.00", "3.00", "4.00"], bookie="bet365.us") + _riga(
+            ["2.10", "3.10", "4.10"], bookie="stake.com"
+        )
+        fuori = bx._leggi_mercato(html, "Esito finale", ("1", "X", "2"))
+        assert fuori[0]["bookmaker"] == ["bet365.us", "stake.com"]
 
     def test_con_tre_bookmaker_si_pubblica(self) -> None:
         html = "".join(

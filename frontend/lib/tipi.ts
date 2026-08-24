@@ -172,10 +172,16 @@ export interface EsitoEsteso {
 export interface MercatoEsteso {
   /** Chi pubblica queste quote. `betexplorer` da agosto 2026. */
   fonte?: string;
-  /** Su quanti operatori e' calcolata la mediana. Meno di tre e il mercato
-   *  non viene pubblicato affatto: una mediana su due prezzi non e' una
-   *  mediana. */
+  /** Su quanti operatori è calcolata la mediana. Sotto due il mercato non
+   *  viene pubblicato: il prezzo di un bookmaker è il suo, non quello del
+   *  mercato. */
   n_bookmaker?: number;
+  /** Quali operatori. Non è un dettaglio: la lista che betexplorer mostra
+   *  dipende dall'IP di chi chiede, e in produzione — runner americani — sono
+   *  `bet365.us`, `betmgm.us`, `stake.com`, non gli operatori ADM che si
+   *  vedono provando da casa. Senza i nomi non si sa di che mercato sono i
+   *  prezzi. */
+  bookmaker?: string[];
   mercato: string;
   /**
    * LA LINEA, quando il mercato ne ha una: `"2.5"` per i gol totali, `"9.5"`

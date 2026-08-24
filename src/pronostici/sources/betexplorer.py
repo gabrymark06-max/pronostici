@@ -13,9 +13,18 @@ leggiamo tre, quelli che non abbiamo gia' da altrove (vedi `MERCATI`):
     ou    gol totali, ogni linea  <-    ha    draw no bet
     bts   entrambe segnano  <-          ah    handicap asiatico
 
-E i bookmaker sono quelli con licenza italiana — SNAI, Sisal, Eurobet,
-Lottomatica, GoldBet, Planetwin365 — che e' lo stesso `price_scope: "it"` che
-il progetto preferisce gia' per le quote principali.
+QUALI BOOKMAKER SI VEDONO DIPENDE DA CHI CHIEDE, e questo va detto perche' e'
+il contrario di quello che sembra provando in locale. Da un IP italiano la
+tabella ha undici operatori con licenza ADM — SNAI, Sisal, Eurobet,
+Lottomatica; dai runner di GitHub, che stanno negli Stati Uniti, ne ha tre e
+sono altri: `bet365.us`, `betmgm.us`, `stake.com`. Provato cambiando lingua e
+cookie: non si sposta, e' l'indirizzo.
+
+Quindi i prezzi che finiscono in produzione sono quelli del mercato americano,
+non di quello italiano come dice `price_scope` per le quote principali. Per
+questo ogni mercato porta scritti i NOMI dei bookmaker su cui e' calcolato:
+sono tre e si possono leggere, invece di far credere che dietro ci sia il
+mercato di casa.
 
 DUE COSE CHE SI VEDONO SOLO PROVANDO DA UN DATACENTER, e che sono costate un
 giro di sonda ciascuna:
@@ -163,11 +172,18 @@ def _rallenta() -> float:
     return _pausa
 
 
-# Sotto questo numero di bookmaker la mediana non e' una mediana. La stessa
-# soglia che il progetto usa per le quote principali sarebbe troppo alta qui:
-# i mercati minori hanno meno operatori, e tre prezzi concordi valgono piu' di
-# nessun prezzo.
-BOOKMAKER_MINIMI = 3
+# DUE, e non tre, perche' tre sarebbe l'unanimita'.
+#
+# Dai runner di GitHub betexplorer mostra esattamente tre operatori: chiederne
+# tre per pubblicare una linea significa pretendere che tutti e tre l'abbiano
+# aperta. Misurato su Valencia-Betis: con la soglia a tre uscivano 2 mercati,
+# le sei linee dei gol totali cadevano tutte.
+#
+# Con due il numero non e' piu' una mediana ma il punto di mezzo fra due
+# prezzi. La differenza e' reale e per questo `n_bookmaker` sta nel dato: chi
+# legge vede su quanti operatori e' calcolato, invece di doverlo supporre.
+# Uno solo no: il prezzo di un operatore e' il suo, non il mercato.
+BOOKMAKER_MINIMI = 2
 
 SOGLIA_NOME = 0.72
 
@@ -408,6 +424,7 @@ def _leggi_mercato(
     distinti, uno per linea.
     """
     per_linea: dict[str | None, list[list[float]]] = {}
+    libri: dict[str | None, list[str]] = {}
 
     for riga in re.split(r"<tr[ >]", html):
         quote = re.findall(r'data-odd="([\d.]+)"', riga)
@@ -424,6 +441,9 @@ def _leggi_mercato(
             # letta male, e una sola basterebbe a falsare la mediana.
             continue
         per_linea.setdefault(linea, []).append(valori)
+        chi = re.search(r'data-bookie="([^"]*)"', riga)
+        if chi and chi.group(1):
+            libri.setdefault(linea, []).append(chi.group(1))
 
     fuori: list[dict] = []
     for linea, righe in sorted(per_linea.items(), key=lambda kv: (kv[0] is None, kv[0])):
@@ -434,7 +454,9 @@ def _leggi_mercato(
             # intestazione della tabella, letta come se fosse un bookmaker.
             continue
         mediane = [median(r[i] for r in righe) for i in range(len(colonne))]
-        mercato = _mercato(nome, linea, colonne, mediane, len(righe), vincenti)
+        mercato = _mercato(
+            nome, linea, colonne, mediane, sorted(set(libri.get(linea, []))), vincenti
+        )
         if mercato is not None:
             fuori.append(mercato)
     return fuori
@@ -445,7 +467,7 @@ def _mercato(
     linea: str | None,
     colonne: tuple[str, ...],
     mediane: list[float],
-    n_bookmaker: int,
+    bookmaker: list[str],
     vincenti: int,
 ) -> dict | None:
     """Un mercato con le probabilita' gia' sgonfiate del margine.
@@ -469,7 +491,11 @@ def _mercato(
         "fonte": "betexplorer",
         "mercato": nome,
         "linea": linea,
-        "n_bookmaker": n_bookmaker,
+        "n_bookmaker": len(bookmaker),
+        # I NOMI, non solo quanti. Quali operatori si vedano dipende dall'IP
+        # di chi chiede, e in produzione sono americani: scriverli e' l'unico
+        # modo perche' il lettore sappia di che mercato sta guardando i prezzi.
+        "bookmaker": bookmaker,
         "esiti": [
             {
                 "esito": colonna,

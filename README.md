@@ -257,7 +257,7 @@ provata dai runner di GitHub prima di scriverci contro una riga:
 |---|---|---|
 | formazioni previste | sportsgambler.com | HTML pubblico, nessuna chiave |
 | arbitro | football-data.org | la chiave che già usiamo |
-| mercati estesi | betexplorer.com | doppia chance, gol totali su **ogni** linea (0,5–5,5), entrambe segnano — con i bookmaker a licenza italiana |
+| mercati estesi | betexplorer.com | doppia chance, gol totali su **ogni** linea (0,5–5,5), entrambe segnano |
 | stime sui giocatori | fotmob | un file JSON per statistica, con **tutti** i giocatori e i minuti veri |
 
 **Misurato da un runner di GitHub**, tutti e nove i campionati: 245 partite in
@@ -285,6 +285,13 @@ acceso.
 - *I mercati si leggono nei 5 giorni prima della partita*, due volte al giorno.
   Non prima: le quote si muovono, e leggerle una volta a sette giorni per poi
   non tornarci sarebbe pubblicare un prezzo vecchio.
+
+**I prezzi sono quelli del mercato americano, non italiano.** Quali bookmaker
+betexplorer mostri dipende dall'IP di chi chiede: da casa se ne vedono undici
+con licenza ADM, dai runner di GitHub tre statunitensi (`bet365.us`,
+`betmgm.us`, `stake.com`). Provato cambiando lingua e cookie — non si sposta.
+Per questo ogni mercato porta scritti i nomi degli operatori su cui è
+calcolato, invece di lasciar credere che dietro ci sia il mercato di casa.
 
 Da betexplorer si chiedono **tre** mercati e non sei. L'esito finale ce
 l'abbiamo già da The Odds API con ventiquattro bookmaker invece di undici, e il
