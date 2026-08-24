@@ -194,6 +194,31 @@ async def test_uscita_invalida_la_sessione(cliente):
     assert (await cliente.post("/profili/rinnovo")).status_code == 401
 
 
+async def test_l_indizio_di_sessione_e_leggibile_e_non_apre_niente(cliente):
+    """Il sito deve poter sapere se una sessione esista senza chiederlo al server.
+
+    Senza, interrogava `/profili/io` a ogni apertura di pagina — anche per chi
+    non ha mai fatto un profilo — e il browser scriveva due 401 in console per
+    ogni pagina. L'indizio e' leggibile dal JavaScript apposta, ma non e' un
+    gettone: vale "1" e da solo non entra da nessuna parte.
+    """
+    await registra(cliente)
+    assert cliente.cookies["centro_sessione"] == "1"
+
+    # Presentare il solo indizio non autentica niente.
+    del cliente.cookies["centro_accesso"]
+    del cliente.cookies["centro_rinnovo"]
+    assert (await cliente.get("/profili/io")).status_code == 401
+
+
+async def test_l_uscita_spegne_anche_l_indizio(cliente):
+    """Un indizio che sopravvive all'uscita farebbe interrogare il server a
+    ogni pagina per trenta giorni, esattamente il difetto che doveva togliere."""
+    await registra(cliente)
+    assert (await cliente.post("/profili/uscita")).status_code == 200
+    assert cliente.cookies.get("centro_sessione") in (None, "")
+
+
 async def test_uscita_funziona_anche_senza_sessione(cliente):
     """Non deve fallire quando il gettone era gia' marcio: chi clicca «esci»
     deve uscire, non ricevere un errore."""

@@ -168,6 +168,29 @@ export const profilo = {
 };
 
 /**
+ * C'e' una sessione da qualche parte?
+ *
+ * I gettoni sono `httpOnly` e questo codice non li vede — e' il punto. Ma senza
+ * un modo di saperlo il sito chiedeva `/profili/io` a OGNI apertura di pagina,
+ * anche a chi non ha mai fatto un profilo: due 401 a pagina, che il browser
+ * scrive in console come errori. Lighthouse li contava, e chi apriva gli
+ * strumenti da sviluppatore vedeva un sito che sembra rotto mentre funziona.
+ *
+ * `centro_sessione` e' l'unico cookie leggibile che l'API posa: vale "1", non
+ * apre niente da solo (c'e' una prova nel backend che lo verifica), e si spegne
+ * con il gettone di rinnovo. Se non c'e', non c'e' niente da chiedere.
+ *
+ * Vale perche' sito e API stanno sullo stesso dominio: in locale sono due porte
+ * dello stesso host, in esercizio due sottodomini con `cookie_dominio` comune.
+ * Se un giorno finissero su domini diversi non funzionerebbe nemmeno l'accesso,
+ * quindi il vincolo non e' nuovo.
+ */
+function indizioDiSessione(): boolean {
+  if (typeof document === 'undefined') return false;
+  return document.cookie.split(';').some((c) => c.trim().startsWith('centro_sessione='));
+}
+
+/**
  * Chi sono, all'apertura della pagina.
  *
  * DUE CHIAMATE E NON UNA. `io` fallisce con 401 quando il gettone d'accesso e'
@@ -181,6 +204,7 @@ export const profilo = {
  */
 export async function chiSono(): Promise<Utente | null> {
   if (!PROFILI_ACCESI) return null;
+  if (!indizioDiSessione()) return null;
   try {
     return await profilo.io();
   } catch (e) {

@@ -50,6 +50,21 @@ COOKIE_RINNOVO = "centro_rinnovo"
 # da `/salute`, `/openapi.json` e dalla documentazione.
 PERCORSO_RINNOVO = "/profili"
 
+# L'INDIZIO CHE IL JAVASCRIPT PUO' LEGGERE.
+#
+# Gli altri due cookie sono `httpOnly`, ed e' giusto: il sito non deve poterli
+# leggere nemmeno volendo. Ma cosi' il sito non ha nessun modo di sapere se una
+# sessione esista, e finiva per chiederlo al server a ogni apertura di pagina —
+# anche a chi non ha mai fatto un profilo. Per un visitatore anonimo sono due
+# 401 per pagina, che il browser scrive in console come errori: Lighthouse li
+# contava, e chiunque aprisse gli strumenti da sviluppatore vedeva un sito che
+# sembra rotto mentre funziona.
+#
+# Questo cookie non contiene un segreto e non apre niente: vale "1" e dice solo
+# «da qualche parte c'e' una sessione». Vive quanto il gettone di rinnovo e si
+# spegne con lui, quindi non puo' restare a mentire dopo l'uscita.
+COOKIE_INDIZIO = "centro_sessione"
+
 
 def _comuni() -> dict:
     imp = impostazioni()
@@ -73,6 +88,14 @@ def posa_cookie(risposta: Response, accesso: str, rinnovo: str) -> None:
         path=PERCORSO_RINNOVO,
         **_comuni(),
     )
+    # Leggibile apposta: e' l'unico che il sito deve poter vedere.
+    risposta.set_cookie(
+        COOKIE_INDIZIO,
+        "1",
+        max_age=imp.giorni_rinnovo * 86_400,
+        path="/",
+        **{**_comuni(), "httponly": False},
+    )
 
 
 def togli_cookie(risposta: Response) -> None:
@@ -83,13 +106,17 @@ def togli_cookie(risposta: Response) -> None:
     per cui «esci» sembra funzionare finche' non si ricarica la pagina.
     """
     imp = impostazioni()
-    for nome, percorso in ((COOKIE_ACCESSO, "/"), (COOKIE_RINNOVO, PERCORSO_RINNOVO)):
+    for nome, percorso, solo_http in (
+        (COOKIE_ACCESSO, "/", True),
+        (COOKIE_RINNOVO, PERCORSO_RINNOVO, True),
+        (COOKIE_INDIZIO, "/", False),
+    ):
         risposta.delete_cookie(
             nome,
             path=percorso,
             domain=imp.cookie_dominio,
             secure=imp.cookie_secure,
-            httponly=True,
+            httponly=solo_http,
             samesite=imp.cookie_samesite,
         )
 
