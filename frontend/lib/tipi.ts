@@ -123,6 +123,9 @@ export interface Quote {
 /* ------------------------------------------------------------------ */
 
 export interface Arbitro {
+  /** Chi lo ha detto. `football-data` da agosto 2026; prima era Sofascore,
+   *  che dava anche le medie cartellini qui sotto e ora non le da' piu'. */
+  fonte?: string;
   nome: string;
   paese?: string | null;
   partite?: number | null;
@@ -146,6 +149,10 @@ export interface LatoFormazione {
 }
 
 export interface Formazioni {
+  /** Chi le ha pubblicate. `sportsgambler` da agosto 2026, `sofascore` prima:
+   *  il campo esiste perche' la pagina possa dirlo invece di far finta che
+   *  sia sempre stata la stessa fonte. */
+  fonte?: string;
   confermate: boolean;
   /** Quante ore prima del fischio sono state lette. Distingue una previsione
    *  a tre giorni da una probabile di un'ora prima: stesso campo `confermate`,
@@ -207,26 +214,42 @@ export interface StimeGiocatori {
   ospiti: GiocatoreStimato[];
 }
 
-export interface Sofascore {
-  evento_id: number;
-  torneo?: string;
+/**
+ * IL CONTORNO DELLA PARTITA: arbitro, formazioni, quote estese, giocatori.
+ *
+ * Si chiamava `Sofascore` finche' una sola fonte riempiva tutto. Da agosto
+ * 2026 le formazioni arrivano da sportsgambler e l'arbitro da football-data,
+ * perche' Sofascore ha chiuso la porta a chi non ha un IP residenziale: il
+ * nome del tipo non poteva restare quello di una delle fonti: continuare a
+ * chiamarlo `Sofascore` avrebbe significato scrivere «sofascore» accanto a
+ * dati che Sofascore non ha mai visto.
+ *
+ * Ogni sezione porta la sua `fonte`. La provenienza sta dove sta il dato, non
+ * in cima al blocco: le tre sezioni possono venire da tre posti diversi, ed e'
+ * gia' successo.
+ */
+export interface Contorno {
   letto?: string;
   stadio?: string;
   arbitro?: Arbitro;
   formazioni?: Formazioni;
   quote?: { n_mercati?: number; mercati: MercatoEsteso[] };
-  /**
-   * Le stesse quote tradotte nelle NOSTRE chiavi e sgonfiate del margine.
-   *
-   * Sta qui e non dentro `odds` apposta: le due fonti non si mescolano nello
-   * stesso campo, così la pagina può sempre dire da dove viene il numero che
-   * mostra. Copre le quattro famiglie che si mappano senza interpretare —
-   * esito finale, doppia chance, entrambe segnano, gol totali sopra e sotto
-   * 2,5 e 3,5.
-   */
   market_p?: Record<string, number>;
   giocatori?: StimeGiocatori;
   parti_mancanti?: Record<string, string>;
+}
+
+/**
+ * Il blocco storico, scritto da Sofascore fino al 24 agosto 2026.
+ *
+ * Resta leggibile e non si migra. Quei dati sono veri — li ha letti Sofascore
+ * davvero — e contengono cose che le fonti nuove non pubblicano: le medie
+ * cartellini dell'arbitro e i mercati estesi. Riscriverli sotto un'altra
+ * insegna sarebbe l'unico modo di perderli sul serio.
+ */
+export interface Sofascore extends Contorno {
+  evento_id: number;
+  torneo?: string;
 }
 
 export interface Risultato {
@@ -256,6 +279,9 @@ interface FixtureBase {
   previous?: Precedente | null;
   odds?: Quote | null;
   sofascore?: Sofascore | null;
+  /** Il contorno scritto da `jobs.formazioni`. Vedi `lib/contorno.ts`:
+   *  i due campi non si leggono mai direttamente, si passa da li'. */
+  contorno?: Contorno | null;
   result?: Risultato | null;
   outcome?: 0 | 1 | null;
 }

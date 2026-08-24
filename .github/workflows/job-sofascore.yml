@@ -75,11 +75,18 @@ name: job · sofascore
 # fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
 # perdendo deve restare visibile.
 
+# 24 AGOSTO 2026: QUESTO JOB NON HA PIU' UN ORARIO.
+#
+# Il cron e' passato a `job-formazioni.yml`, che gira su `ubuntu-latest` e non
+# ha bisogno di nessun computer acceso. Qui resta la strada a mano, per quando
+# si vuole il contorno che solo Sofascore da': la panchina, le medie cartellini
+# dell'arbitro e i mercati estesi. Richiede il runner di casa e Chrome.
+#
+# Il cron NON e' stato lasciato acceso apposta. Con la macchina spenta i job in
+# coda scadevano dopo 24 ore lasciando esecuzioni rosse che non erano guasti, e
+# un rosso che non e' un guasto insegna solo a non guardare piu' i rossi.
+
 on:
-  schedule:
-    # 07:00 e 17:00 UTC. In Italia d'estate sono le 09:00 e le 19:00.
-    - cron: "0 7 * * *"
-    - cron: "0 17 * * *"
   workflow_call:
     inputs:
       window_days:

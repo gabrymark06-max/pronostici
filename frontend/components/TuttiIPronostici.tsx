@@ -2,6 +2,7 @@ import { suCento } from '@/lib/formato';
 import { famiglieAlternative, nomeFamiglia } from '@/lib/mercati';
 import { formattaQuota, quoteDi } from '@/lib/quote';
 import { tace, type Fixture } from '@/lib/tipi';
+import { contornoDi } from '@/lib/contorno';
 
 /**
  * TUTTI I PRONOSTICI DELLA PARTITA — il nostro e gli altri, sulla stessa
@@ -46,7 +47,7 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
      questa partita non ne abbiamo affatto. La seconda riguarda l'intera
      colonna e va detta una volta sotto la tavola, non ripetuta riga per riga
      con la motivazione sbagliata. */
-  const secondarie = fixture.sofascore?.market_p ?? null;
+  const secondarie = contornoDi(fixture)?.market_p ?? null;
   const nessunaQuota = !fixture.odds?.market_p && !secondarie;
 
   /* Se anche una sola riga viene dalla fonte secondaria la tavola lo dichiara

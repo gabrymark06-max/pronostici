@@ -34,6 +34,7 @@ import {
 } from '@/lib/quote';
 import { MARCHIO, righeDefinizione, SOPRA_LA_PIEGA } from '@/lib/testi';
 import { tace, type Fixture } from '@/lib/tipi';
+import { contornoDi } from '@/lib/contorno';
 
 export function generateStaticParams() {
   return [...tutteLePartite().keys()].map((id) => ({ match_id: String(id) }));
@@ -103,6 +104,8 @@ export default async function PaginaPartita({ params }: Props) {
   );
 
   const conclusa = fixture.result != null;
+  // Arbitro, formazioni e mercati estesi: due epoche, un accessore solo.
+  const contorno = contornoDi(fixture);
 
   return (
     <>
@@ -268,11 +271,11 @@ export default async function PaginaPartita({ params }: Props) {
           const voci: { id: string; testo: string }[] = [
             { id: 'pronostici', testo: 'Tutti i mercati' },
           ];
-          if (fixture.sofascore?.formazioni) voci.push({ id: 'formazioni', testo: 'Formazioni' });
-          if (fixture.sofascore?.arbitro) voci.push({ id: 'arbitro', testo: 'Arbitro' });
-          if (fixture.sofascore?.quote?.mercati?.length)
+          if (contorno?.formazioni) voci.push({ id: 'formazioni', testo: 'Formazioni' });
+          if (contorno?.arbitro) voci.push({ id: 'arbitro', testo: 'Arbitro' });
+          if (contorno?.quote?.mercati?.length)
             voci.push({ id: 'altri-mercati', testo: 'Altri mercati' });
-          if (fixture.sofascore?.giocatori) voci.push({ id: 'giocatori', testo: 'Giocatori' });
+          if (contorno?.giocatori) voci.push({ id: 'giocatori', testo: 'Giocatori' });
           if (voci.length < 2) return null;
           return (
             <nav className="blocchi" aria-label="I blocchi di questa partita">
@@ -295,9 +298,9 @@ export default async function PaginaPartita({ params }: Props) {
             un'altra fonte sono informazione utile, non nostre stime: stanno
             sotto tutto cio' su cui ci facciamo misurare, cosi' l'ordine della
             pagina dice da solo che peso hanno. */}
-        {fixture.sofascore?.formazioni ? (
+        {contorno?.formazioni ? (
           <CampoFormazioni
-            formazioni={fixture.sofascore.formazioni}
+            formazioni={contorno.formazioni}
             casa={fixture.home.name}
             ospiti={fixture.away.name}
             siglaCasa={fixture.home.tla}
@@ -305,20 +308,20 @@ export default async function PaginaPartita({ params }: Props) {
           />
         ) : null}
 
-        {fixture.sofascore?.arbitro ? (
+        {contorno?.arbitro ? (
           <BloccoArbitro
-            arbitro={fixture.sofascore.arbitro}
-            stadio={fixture.sofascore.stadio}
+            arbitro={contorno.arbitro}
+            stadio={contorno.stadio}
           />
         ) : null}
 
-        {fixture.sofascore?.quote?.mercati?.length ? (
-          <QuoteEstese mercati={fixture.sofascore.quote.mercati} />
+        {contorno?.quote?.mercati?.length ? (
+          <QuoteEstese mercati={contorno.quote.mercati} />
         ) : null}
 
-        {fixture.sofascore?.giocatori ? (
+        {contorno?.giocatori ? (
           <SezioneGiocatori
-            stime={fixture.sofascore.giocatori}
+            stime={contorno.giocatori}
             casa={fixture.home.name}
             ospiti={fixture.away.name}
           />

@@ -2,6 +2,7 @@
 
 import { usePassato } from '@/lib/orologio';
 import type { Fixture } from '@/lib/tipi';
+import { contornoDi } from '@/lib/contorno';
 
 /**
  * QUELLO CHE NON C'E' ANCORA, e quando arrivera'.
@@ -60,7 +61,7 @@ export function CosaManca({
   const giocata = usePassato(fischio, fischio <= costruzione);
   if (fixture.result || giocata) return null;
 
-  const s = fixture.sofascore;
+  const s = contornoDi(fixture);
   const mancano: Mancante[] = [];
 
   if (!s?.formazioni) {

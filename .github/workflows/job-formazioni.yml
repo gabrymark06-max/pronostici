@@ -1,0 +1,112 @@
+name: job · formazioni
+
+# FORMAZIONI PREVISTE E ARBITRO, SU GITHUB.
+#
+# Questo file sostituisce `job-sofascore.yml`, ed e' il motivo per cui esiste.
+#
+# Dal 23 agosto 2026 Sofascore autorizza la sua API con un token che nasce solo
+# dentro un browser vero e solo per IP residenziali. Sui runner di GitHub la
+# pagina non ne riceve nessuno: provato, Chrome parte davvero sotto `xvfb-run` e
+# il token non arriva entro 45 secondi. Il job era finito su un runner di casa,
+# e il progetto era tornato a dipendere da un computer acceso — la dipendenza da
+# cui era uscito il 14 agosto.
+#
+# Le fonti nuove non hanno nessun lucchetto:
+#
+#   formazioni previste   sportsgambler.com — HTML pubblico, nessuna chiave
+#   arbitro               football-data.org — la chiave che gia' usiamo
+#
+# MISURATO DA UN RUNNER DI GITHUB il 24 agosto 2026, tutti e nove i campionati:
+# 245 partite in cartellone, modulo e undici titolari per ognuna. Nello stesso
+# giro Sofascore rispondeva 403 come controllo.
+#
+# COSA SI GUADAGNA. Le previsioni arrivano fino a due settimane prima invece
+# delle 56 ore di mediana di Sofascore: la finestra passa da 4 giorni a 7, e la
+# prima partita scritta e' stata letta 104 ore prima del fischio.
+#
+# COSA SI PERDE, e va scritto qui perche' non lo si scopra da un buco: la
+# panchina, le medie cartellini dell'arbitro e le quote estese. Le quote non
+# mancano davvero — `odds.yml` e' la fonte principale e non e' mai passata di
+# qui. Il resto si perde, e vale il cambio: un contorno un po' piu' magro che
+# arriva sempre batte un contorno ricco che arriva solo se un computer e'
+# acceso.
+
+on:
+  schedule:
+    # 07:00 e 17:00 UTC — le 09:00 e le 19:00 in Italia d'estate. Le due ore
+    # restano quelle di prima: la prima dopo la pipeline delle 03:00, quando le
+    # partite di oggi ci sono gia'; la seconda a ridosso delle serali europee,
+    # perche' le designazioni arbitrali escono tardi.
+    - cron: "0 7 * * *"
+    - cron: "0 17 * * *"
+  workflow_call:
+    inputs:
+      window_days:
+        type: string
+        required: false
+        default: "7"
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: Quanti giorni avanti guardare
+        type: string
+        required: false
+        default: "7"
+      dry_run:
+        description: Calcola e riporta senza scrivere i fixture
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+# LO STESSO GRUPPO DEGLI ALTRI JOB DI DATI: tutti scrivono in `data/fixtures` e
+# committano. Due che girano insieme finiscono per sovrascriversi o per
+# collidere sul push.
+concurrency:
+  group: pronostici-data
+  cancel-in-progress: false
+
+jobs:
+  formazioni:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # LA PUNTA DEL RAMO, NON IL COMMIT CHE HA INNESCATO LA RUN.
+      #
+      # Senza `ref`, `checkout` si pianta sul commit di partenza: in una catena
+      # ogni job leggerebbe `data/` com'era prima che il precedente scrivesse.
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -e .
+
+      - name: Formazioni previste e arbitro
+        # `shell: bash` e non il default: con il python in pipe a `tee` il
+        # codice di uscita che conta e' quello di `tee`, sempre zero. Senza
+        # questa riga il job resta verde qualunque cosa dica.
+        shell: bash
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: |
+          ARGS="--window-days ${{ inputs.window_days || '7' }}"
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python -m pronostici.jobs.formazioni $ARGS | tee "$RUNNER_TEMP/formazioni.json"
+
+      - name: Riepilogo
+        if: always()
+        shell: bash
+        run: |
+          [ -s "$RUNNER_TEMP/formazioni.json" ] || exit 0
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          tail -c 4000 "$RUNNER_TEMP/formazioni.json" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: ./.github/actions/commit-data
+        with:
+          message: "dati: formazioni previste e arbitro"
+          paths: data/fixtures

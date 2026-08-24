@@ -241,17 +241,40 @@ Ogni job legge la **punta del ramo**, non il commit che ha innescato la run:
 senza, in una catena ciascuno leggerebbe `data/` com'era prima che il
 precedente scrivesse.
 
-### Perché Sofascore gira in casa
+### Perché le formazioni non vengono più da Sofascore
 
 Dal 23 agosto 2026 l'API di Sofascore vuole un token (`X-Captcha`) che si
 ottiene solo dentro un browser vero, ed è **legato all'IP**. Sui runner di
-GitHub non viene emesso: provato, la pagina non ne riceve nessuno. Il cron
-resta su GitHub — cambia solo la macchina che esegue, e il commit finisce nel
-registro pubblico come per tutti gli altri.
+GitHub non viene emesso: provato, Chrome parte davvero sotto `xvfb-run` e la
+pagina non riceve nessun token entro 45 secondi. Per un giorno il job è girato
+su un runner di casa — e il progetto era tornato a dipendere da un computer
+acceso, la dipendenza da cui era uscito il 14 agosto.
 
-Se quella macchina è spenta il job resta in coda e lo raccoglie all'accensione,
-entro 24 ore. Formazioni e arbitro esistono solo prima del fischio d'inizio:
-un giro perso non si recupera.
+Il 24 agosto è stato sostituito da due fonti che non hanno lucchetti:
+
+| | Fonte | Come |
+|---|---|---|
+| formazioni previste | sportsgambler.com | HTML pubblico, nessuna chiave |
+| arbitro | football-data.org | la chiave che già usiamo |
+
+**Misurato da un runner di GitHub**, tutti e nove i campionati: 245 partite in
+cartellone, modulo e undici titolari per ognuna. Nello stesso giro Sofascore
+rispondeva 403 come controllo.
+
+**Ci si guadagna** copertura: le previsioni arrivano fino a due settimane
+prima invece delle 56 ore di mediana di Sofascore, quindi la finestra è passata
+da 4 giorni a 7. La prima partita scritta è stata letta 104 ore prima del
+fischio.
+
+**Ci si perde** la panchina, le medie cartellini dell'arbitro e le quote
+estese. Le quote non mancano davvero — `odds.yml` è la fonte principale e non è
+mai passata di lì. Il resto si perde, e vale il cambio: un contorno più magro
+che arriva sempre batte un contorno ricco che arriva solo a computer acceso.
+
+`job-sofascore.yml` resta, senza orario, per chi vuole il contorno ricco a mano
+sul runner di casa. I dati già scritti da Sofascore non si migrano: sono veri,
+e contengono cose che le fonti nuove non pubblicano. Il frontend legge i due
+campi tramite `lib/contorno.ts`, mai direttamente.
 
 I segreti stanno nei GitHub Actions Secrets: `FOOTBALL_DATA_API_KEY` e
 `ODDS_API_KEY`. Nient'altro — quelli dell'hosting sono facoltativi, vedi sotto.
