@@ -56,6 +56,21 @@ name: job · sofascore
 # l'unico job cosi': gli altri restano su `ubuntu-latest` perche' funzionano, e
 # non devono dipendere da un computer acceso.
 #
+# DUE TRAPPOLE DEL RUNNER DI CASA, viste il 24 agosto 2026.
+#
+# `bash` NON E' SUL PATH. I passi qui sotto dichiarano `shell: bash` — devono,
+# altrimenti il codice di uscita del python finisce dentro `tee` e il job
+# resta verde qualunque cosa succeda. Ma `bash.exe` sta nella cartella `bin`
+# di Git, e l'installatore mette nel PATH solo `cmd`, che contiene git e
+# basta. Lanciando il runner a mano da una shell Git Bash il PATH arriva da
+# li' e non si vede niente; lanciato dall'attivita' pianificata eredita il
+# PATH nudo dell'utente e ogni passo muore con «bash: command not found». Il
+# runner va avviato da `avvia-runner.cmd`, che aggiunge quella cartella.
+#
+# UN SOLO RUNNER ALLA VOLTA. Due processi con la stessa registrazione si
+# contendono la sessione: si legge «A session for this runner already exists»
+# e i job restano in coda senza che nessuno li prenda.
+
 # IL CRON RESTA ACCESO APPOSTA: formazioni e arbitro esistono solo prima del
 # fischio d'inizio e non si recuperano dopo, quindi il fatto che li stiamo
 # perdendo deve restare visibile.
