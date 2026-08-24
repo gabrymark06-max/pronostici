@@ -223,6 +223,18 @@ jobs:
       # radicato va spostato sotto quel prefisso: senza, si ottiene una pagina
       # che si carica e poi non porta da nessuna parte, con i loghi rotti.
       # `NEXT_PUBLIC_SITO` evita che il sitemap dichiari il dominio segnaposto.
+      # I LOGHI VANNO SCARICATI QUI, non lasciati a un terzo.
+      #
+      # `public/crests/` e' in `.gitignore`, quindi in CI non c'e': senza questo
+      # passo il sito pubblicato punta a `crests.football-data.org` per ogni
+      # logo di ogni riga. Funziona — c'e' il ripiego apposta — ma e' la
+      # dipendenza da un terzo a runtime che il progetto voleva togliere. Lo
+      # script non fallisce mai il build: se la fonte non risponde, si torna al
+      # ripiego di prima.
+      - if: steps.hosting.outputs.salta == 'no'
+        name: Loghi delle squadre
+        run: npm run crests
+
       - if: steps.hosting.outputs.salta == 'no'
         name: Build ed export statico
         env:
