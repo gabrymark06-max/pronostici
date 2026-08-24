@@ -235,7 +235,9 @@ def _tassi_per_lega(competizioni: set[str], report: dict) -> dict[str, dict]:
     return fuori
 
 
-def _stime_lato(titolari: list[dict], tassi: dict, molt: float) -> list[dict]:
+def _stime_lato(
+    titolari: list[dict], tassi: dict, molt: float, conta: dict
+) -> list[dict]:
     """Le stime per gli undici di una squadra.
 
     SOLO I TITOLARI, come prima: per un subentrato i minuti attesi sarebbero
@@ -245,6 +247,7 @@ def _stime_lato(titolari: list[dict], tassi: dict, molt: float) -> list[dict]:
     for giocatore in titolari:
         trovato = fm.cerca(tassi, giocatore.get("nome", ""))
         if trovato is None:
+            conta["nome_non_trovato"] += 1
             continue
         stime = stime_giocatore(
             trovato.per_il_modello(),
@@ -252,6 +255,12 @@ def _stime_lato(titolari: list[dict], tassi: dict, molt: float) -> list[dict]:
             molt_cartellini=molt,
         )
         if not stime:
+            # IL MODELLO RIFIUTA I CAMPIONI CORTI, ed e' una sua regola:
+            # «meglio nessuna stima che una stima su tre partite». A stagione
+            # appena cominciata rifiuta quasi tutti, e senza questo contatore
+            # il report direbbe «ho i tassi di cinque campionati» accanto a
+            # zero stime, senza dire perche'.
+            conta["campione_corto"] += 1
             continue
         elenco.append(
             {
@@ -275,7 +284,7 @@ def _stime_lato(titolari: list[dict], tassi: dict, molt: float) -> list[dict]:
 
 
 def _giocatori(
-    formazione: sg.Formazione, tassi: dict, arbitro: dict | None
+    formazione: sg.Formazione, tassi: dict, arbitro: dict | None, conta: dict
 ) -> dict | None:
     """Le stime sui singoli, o `None` se non c'e' nessuno da stimare."""
     # SENZA LE MEDIE DELL'ARBITRO IL MOLTIPLICATORE VALE 1, e si vede.
@@ -287,8 +296,8 @@ def _giocatori(
     arb = arbitro or {}
     molt = moltiplicatore_arbitro(arb.get("gialli_per_partita"), arb.get("partite"))
 
-    casa = _stime_lato(formazione.casa.titolari, tassi, molt)
-    ospiti = _stime_lato(formazione.ospiti.titolari, tassi, molt)
+    casa = _stime_lato(formazione.casa.titolari, tassi, molt, conta)
+    ospiti = _stime_lato(formazione.ospiti.titolari, tassi, molt, conta)
     if not casa and not ospiti:
         return None
 
@@ -394,6 +403,8 @@ def run(
         "con_arbitro": 0,
         "con_mercati": 0,
         "con_giocatori": 0,
+        "giocatori_nome_non_trovato": 0,
+        "giocatori_campione_corto": 0,
         "non_agganciate": [],
         "leghe_non_lette": [],
         "arbitri_non_letti": [],
@@ -517,7 +528,10 @@ def run(
 
         # ------------------------------------------- le stime sui singoli
         if formazione is not None and codice in tassi_lega:
-            stime = _giocatori(formazione, tassi_lega[codice], arbitro)
+            conta = {"nome_non_trovato": 0, "campione_corto": 0}
+            stime = _giocatori(formazione, tassi_lega[codice], arbitro, conta)
+            report["giocatori_nome_non_trovato"] += conta["nome_non_trovato"]
+            report["giocatori_campione_corto"] += conta["campione_corto"]
             if stime:
                 report["con_giocatori"] += 1
                 blocco["giocatori"] = stime
