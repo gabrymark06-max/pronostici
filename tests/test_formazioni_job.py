@@ -73,3 +73,30 @@ class TestSenzaOra:
         a = {"letto": "2026-08-24T07:00:00Z", "arbitro": {"nome": "Maresca"}}
         b = {"letto": "2026-08-24T07:00:00Z", "arbitro": {"nome": "Orsato"}}
         assert job._senza_ora(a) != job._senza_ora(b)
+
+
+class TestGuardiaSulParsing:
+    """Il guasto tipico di una fonte letta dall'HTML e' silenzioso.
+
+    Se cambia una classe CSS l'elenco risponde ancora 200, le partite si
+    agganciano tutte e i frammenti arrivano — solo che non se ne cava piu' un
+    giocatore. Senza questa guardia il job uscirebbe verde avendo scritto
+    niente, e le formazioni di quei giorni sarebbero perse: esistono solo
+    prima del fischio d'inizio.
+    """
+
+    def _report(self, agganciate: int, con_formazioni: int) -> dict:
+        return {"agganciate": agganciate, "con_formazioni": con_formazioni}
+
+    def test_molte_agganciate_e_zero_formazioni_e_un_guasto(self) -> None:
+        r = self._report(job.SOGLIA_ALLARME, 0)
+        assert job._allarme_parsing(r) is not None
+
+    def test_poche_partite_puo_essere_vero(self) -> None:
+        """Una finestra corta in pausa nazionali non ha niente da leggere."""
+        r = self._report(job.SOGLIA_ALLARME - 1, 0)
+        assert job._allarme_parsing(r) is None
+
+    def test_una_formazione_sola_basta_a_dire_che_il_parsing_regge(self) -> None:
+        r = self._report(80, 1)
+        assert job._allarme_parsing(r) is None

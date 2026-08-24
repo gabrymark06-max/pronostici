@@ -59,6 +59,11 @@ FINESTRA_DEFAULT = 7
 # ci fa pagare niente.
 PAUSA_S = 0.7
 
+# Sotto questo numero di partite agganciate, «zero formazioni» puo' essere
+# vero: una finestra corta in pausa nazionali non ha niente da leggere.
+# Sopra, non puo'.
+SOGLIA_ALLARME = 10
+
 
 def _giorni(finestra: int, oggi: str) -> list[str]:
     inizio = datetime.strptime(oggi, "%Y-%m-%d").replace(tzinfo=UTC)
@@ -171,6 +176,22 @@ def _senza_ora(blocco: dict) -> dict:
     modifiche — che e' meta' del prodotto — diventerebbe illeggibile.
     """
     return {k: v for k, v in blocco.items() if k != "letto"}
+
+
+def _allarme_parsing(report: dict) -> str | None:
+    """Il messaggio da dare se il markup e' cambiato, o `None` se regge.
+
+    Sta fuori da `run` perche' sia provabile senza rete: e' una condizione su
+    due numeri, e un test che ne ricopiasse la formula dentro l'asserzione non
+    proverebbe niente.
+    """
+    if report["agganciate"] >= SOGLIA_ALLARME and report["con_formazioni"] == 0:
+        return (
+            f"{report['agganciate']} partite agganciate e nessuna formazione letta: "
+            "il markup di sportsgambler e' probabilmente cambiato. "
+            "Controlla `_leggi_formazione` in sources/sportsgambler.py."
+        )
+    return None
 
 
 def run(
@@ -286,6 +307,24 @@ def run(
         for giorno, aggiornate in per_giorno.items():
             if aggiornate and fx.upsert_day(giorno, aggiornate, generated_at=adesso):
                 report["days_written"].append(giorno)
+
+    # SE IL SITO CAMBIA UNA CLASSE CSS, IL GIRO DEVE DIVENTARE ROSSO.
+    #
+    # E' il guasto tipico di una fonte che si legge dall'HTML, ed e' silenzioso:
+    # l'elenco continua a rispondere 200, le partite si agganciano tutte, i
+    # frammenti arrivano — e non se ne cava piu' un giocatore. Il job uscirebbe
+    # verde avendo scritto niente, e nessuno se ne accorgerebbe fino a guardare
+    # una scheda partita e trovarla spoglia. Nel frattempo le formazioni di
+    # quei giorni sono perse: esistono solo prima del fischio d'inizio.
+    #
+    # La soglia serve a non gridare al lupo su un giro piccolo. Con almeno
+    # dieci partite agganciate e zero formazioni lette, la spiegazione «nessuno
+    # ha ancora pubblicato niente» non regge: vorrebbe dire nessuna formazione
+    # su dieci partite in sette giorni e nove campionati. E' rotto il parsing.
+    allarme = _allarme_parsing(report)
+    if allarme:
+        report["errore"] = allarme
+        log.error("%s", allarme)
 
     report["seconds"] = round(time.monotonic() - partenza, 1)
     return report
