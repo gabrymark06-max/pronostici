@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Archivo, DM_Mono, Instrument_Sans } from 'next/font/google';
 import Script from 'next/script';
 
+import { PREFISSO, SITO } from '@/lib/sito';
 import { Piede } from '@/components/Piede';
 import { ProvinciaSessione } from '@/components/Sessione';
 import { Testata } from '@/components/Testata';
@@ -60,7 +61,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pronostici.example'),
+  metadataBase: new URL(`${SITO}${PREFISSO}/`),
   title: {
     default: `${MARCHIO} — ${PAYOFF}`,
     template: `%s · ${MARCHIO}`,

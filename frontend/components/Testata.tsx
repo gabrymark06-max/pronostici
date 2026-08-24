@@ -1,3 +1,4 @@
+import { interno } from '@/lib/sito';
 import { Marchio } from './Marchio';
 import { TemaToggle } from './TemaToggle';
 import { VoceProfilo } from './VoceProfilo';
@@ -46,22 +47,22 @@ export function Testata({ giornoApertura }: { giornoApertura: string | null }) {
           {/* L'indirizzo SENZA DATA, che è quello che si condivide e si mette
               nei preferiti: deve voler dire «oggi» anche fra un mese. Rimanda
               da sé al giorno pubblicato più recente. */}
-          <a className="voce" href="/pronostico-del-giorno/">
+          <a className="voce" href={interno('/pronostico-del-giorno/')}>
             <IconaBersaglio />
             <span className="voce__nome">Pronostico del giorno</span>
           </a>
 
-          <a className="voce" href={casa}>
+          <a className="voce" href={interno(casa)}>
             <IconaGiornata />
             <span className="voce__nome">Tutte le partite</span>
           </a>
 
-          <a className="voce" href="/progressi/">
+          <a className="voce" href={interno('/progressi/')}>
             <IconaRegistro />
             <span className="voce__nome">Progressi</span>
           </a>
 
-          <a className="voce" href="/come-funziona/">
+          <a className="voce" href={interno('/come-funziona/')}>
             <IconaDomanda />
             <span className="voce__nome">Come funziona</span>
           </a>

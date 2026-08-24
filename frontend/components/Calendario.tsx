@@ -4,6 +4,7 @@ import { useEffect, useRef, useSyncExternalStore } from 'react';
 
 import type { RiepilogoGiorno } from '@/lib/dati';
 import { dataLunga, pezziGiorno } from '@/lib/formato';
+import { interno } from '@/lib/sito';
 
 /**
  * IL CALENDARIO — la sola superficie di controllo del prodotto.
@@ -87,7 +88,7 @@ export function Calendario({
                 <a
                   ref={attuale ? attivo : undefined}
                   className={`rail__giorno${parola ? ' rail__giorno--vicino' : ''}`}
-                  href={`${base}/${giorno.data}/`}
+                  href={interno(`${base}/${giorno.data}/`)}
                   aria-current={attuale ? 'date' : undefined}
                   /* WCAG 2.5.3 «Label in Name»: il nome accessibile deve
                      COMINCIARE con il testo che si vede. Chi usa il comando
@@ -173,7 +174,7 @@ function Freccia({
   return (
     <a
       className="rail__freccia"
-      href={`${base}/${data}/`}
+      href={interno(`${base}/${data}/`)}
       aria-label={`Giorno ${verso}, ${dataLunga(data)}`}
     >
       <span aria-hidden="true">{glifo}</span>

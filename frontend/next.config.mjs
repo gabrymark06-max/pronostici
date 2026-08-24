@@ -20,6 +20,19 @@ const nextConfig = {
   // Il codice non deve poter compilare con errori di tipo.
   typescript: { ignoreBuildErrors: false },
 
+  // IL PREFISSO, quando il sito non sta alla radice del dominio.
+  //
+  // GitHub Pages serve da `utente.github.io/nome-repo/`: senza questo ogni
+  // percorso assoluto punterebbe alla radice del dominio e si otterrebbe una
+  // pagina bianca con tutti i 404. Su un dominio dedicato resta vuoto e non
+  // cambia niente — e' la stessa build.
+  ...(process.env.NEXT_PUBLIC_PREFISSO
+    ? {
+        basePath: process.env.NEXT_PUBLIC_PREFISSO,
+        assetPrefix: process.env.NEXT_PUBLIC_PREFISSO,
+      }
+    : {}),
+
   // Il progetto Next vive in frontend/, ma legge data/ dalla radice del repo.
   outputFileTracingRoot: join(qui, '..'),
 };

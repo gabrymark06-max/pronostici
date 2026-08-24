@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { giornoDiApertura } from '@/lib/dati';
 import { dataLunga } from '@/lib/formato';
 import { MARCHIO } from '@/lib/testi';
+import { interno } from '@/lib/sito';
 
 /**
  * `/` è un rimando statico al giorno più recente disponibile.
@@ -39,7 +40,7 @@ export default function Home() {
     <div className="colonna colonna--lista">
       <div className="giorno-vuoto">
         <p>
-          <a href={`/giorno/${giorno}/`}>Vai alle partite di {dataLunga(giorno)} →</a>
+          <a href={interno(`/giorno/${giorno}/`)}>Vai alle partite di {dataLunga(giorno)} →</a>
         </p>
       </div>
     </div>

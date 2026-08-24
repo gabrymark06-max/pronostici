@@ -21,6 +21,7 @@ import {
   type Fixture,
   type GiornoFixtures,
 } from './tipi';
+import { interno } from './sito';
 
 /** `data/` sta nella radice del repo, un livello sopra `frontend/`. */
 const RADICE_DATI = join(process.cwd(), '..', 'data');
@@ -249,5 +250,12 @@ export function leggiBacktest(): Backtest {
 export function manifestoCrest(): Record<string, string> {
   const percorso = join(process.cwd(), 'public', 'crests', 'manifesto.json');
   if (!existsSync(percorso)) return {};
-  return leggiJson<Record<string, string>>(percorso);
+  const manifesto = leggiJson<Record<string, string>>(percorso);
+  // I percorsi nel manifesto sono radicati (`/crests/103.png`), e vanno
+  // prefissati come tutto il resto quando il sito non sta alla radice del
+  // dominio: senza, ogni riga partita mostra un logo rotto. Qui e non nei
+  // componenti perche' i consumatori sono cinque e basta dimenticarne uno.
+  return Object.fromEntries(
+    Object.entries(manifesto).map(([remoto, locale]) => [remoto, interno(locale)]),
+  );
 }

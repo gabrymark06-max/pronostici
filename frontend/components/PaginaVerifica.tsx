@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { interno } from '@/lib/sito';
 import { useParametro } from '@/lib/indirizzo';
 import { ErroreProfilo, profilo } from '@/lib/profilo';
 
@@ -73,7 +74,7 @@ export function PaginaVerifica() {
         <h1 className="titolo-sezione">Non ha funzionato</h1>
         <p>{SENZA_GETTONE}</p>
         <p className="esito__azioni">
-          <a className="azione azione--piena" href="/profilo/">
+          <a className="azione azione--piena" href={interno('/profilo/')}>
             Vai al tuo profilo
           </a>
         </p>
@@ -99,10 +100,10 @@ export function PaginaVerifica() {
           rimandare la password se un giorno la dimentichi.
         </p>
         <p className="esito__azioni">
-          <a className="azione azione--piena" href="/profilo/">
+          <a className="azione azione--piena" href={interno('/profilo/')}>
             Vai al tuo profilo
           </a>
-          <a className="azione" href="/">
+          <a className="azione" href={interno('/')}>
             Vedi le partite
           </a>
         </p>
@@ -120,7 +121,7 @@ export function PaginaVerifica() {
         chiederne uno nuovo.
       </p>
       <p className="esito__azioni">
-        <a className="azione azione--piena" href="/profilo/">
+        <a className="azione azione--piena" href={interno('/profilo/')}>
           Vai al tuo profilo
         </a>
       </p>

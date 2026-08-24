@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
 
 import { giorniDisponibili, tutteLePartite } from '@/lib/dati';
+import { PREFISSO, SITO } from '@/lib/sito';
 
 /* L'export statico richiede che la rotta sia dichiarata statica. */
 export const dynamic = 'force-static';
 
-const BASE = 'https://pronostici.example';
+/* Deciso in fase di build: vedi `lib/sito.ts`. */
+const BASE = `${SITO}${PREFISSO}`;
 
 /**
  * Il sito ha quattro tipi di pagina: la giornata, la partita, il pronostico

@@ -1,4 +1,5 @@
 import { PROFILI } from '@/lib/testi';
+import { interno } from '@/lib/sito';
 
 /**
  * I QUATTRO PROFILI, disegnati nella lingua del sito.
@@ -91,7 +92,7 @@ export function Profili() {
           <li key={p.nome}>
             <a
               className="profilo"
-              href={p.href}
+              href={interno(p.href)}
               rel="noopener noreferrer me"
               target="_blank"
               /* Il nome accessibile comincia col nome del profilo: chi usa il

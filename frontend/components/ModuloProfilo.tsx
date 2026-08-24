@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 
+import { interno } from '@/lib/sito';
 import { MINIMO_PASSWORD, profilo, ErroreProfilo, type Utente } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
@@ -183,12 +184,12 @@ export function ModuloProfilo({ modo }: { modo: Modo }) {
       </button>
 
       <p className="modulo__altro">
-        {t.altro} <a href={t.altroLink}>{t.altroTesto}</a>
+        {t.altro} <a href={interno(t.altroLink)}>{t.altroTesto}</a>
       </p>
 
       {modo === 'accesso' ? (
         <p className="modulo__altro">
-          <a href="/recupero/">Password dimenticata?</a>
+          <a href={interno('/recupero/')}>Password dimenticata?</a>
         </p>
       ) : null}
 

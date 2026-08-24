@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 
+import { interno } from '@/lib/sito';
 import { useParametro } from '@/lib/indirizzo';
 import { ErroreProfilo, MINIMO_PASSWORD, profilo } from '@/lib/profilo';
 
@@ -50,7 +51,7 @@ export function ChiediRecupero() {
           probabilmente il profilo è registrato con un altro indirizzo.
         </p>
         <p className="esito__azioni">
-          <a className="azione" href="/accedi/">
+          <a className="azione" href={interno('/accedi/')}>
             Torna all’accesso
           </a>
         </p>
@@ -89,7 +90,7 @@ export function ChiediRecupero() {
       </button>
 
       <p className="modulo__altro">
-        Ti è tornata in mente? <a href="/accedi/">Entra</a>
+        Ti è tornata in mente? <a href={interno('/accedi/')}>Entra</a>
       </p>
     </form>
   );
@@ -159,7 +160,7 @@ export function ConfermaRecupero() {
           fuori.
         </p>
         <p className="esito__azioni">
-          <a className="azione azione--piena" href="/accedi/">
+          <a className="azione azione--piena" href={interno('/accedi/')}>
             Entra
           </a>
         </p>
@@ -181,7 +182,7 @@ export function ConfermaRecupero() {
         <h1 className="titolo-sezione">Manca il codice</h1>
         <p>
           Questo indirizzo non porta nessun codice. Apri il collegamento direttamente
-          dall’email, oppure <a href="/recupero/">chiedine un altro</a>.
+          dall’email, oppure <a href={interno('/recupero/')}>chiedine un altro</a>.
         </p>
       </div>
     );

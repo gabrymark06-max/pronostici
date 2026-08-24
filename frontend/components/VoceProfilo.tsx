@@ -1,5 +1,6 @@
 'use client';
 
+import { interno } from '@/lib/sito';
 import { PROFILI_ACCESI } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
@@ -28,14 +29,14 @@ export function VoceProfilo() {
 
   if (!utente) {
     return (
-      <a className="profilo-voce profilo-voce--entra" href="/accedi/">
+      <a className="profilo-voce profilo-voce--entra" href={interno('/accedi/')}>
         Accedi
       </a>
     );
   }
 
   return (
-    <a className="profilo-voce" href="/profilo/">
+    <a className="profilo-voce" href={interno('/profilo/')}>
       <span className="profilo-voce__iniziale" aria-hidden="true">
         {utente.nome.slice(0, 1).toUpperCase()}
       </span>

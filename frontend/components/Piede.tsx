@@ -1,3 +1,4 @@
+import { interno } from '@/lib/sito';
 import { GIOCO_RESPONSABILE, GRATUITA, MARCHIO, PAYOFF, POSTA } from '@/lib/testi';
 
 import { Marchio } from './Marchio';
@@ -53,7 +54,7 @@ export function Piede() {
     <footer className="piede">
       <div className="colonna colonna--pagina piede__interno">
         <div className="piede__identita">
-          <Marchio href="/" />
+          <Marchio href={interno('/')} />
           <p className="piede__payoff">{PAYOFF}</p>
           <p className="piede__gratuita">{GRATUITA}</p>
           <Profili />
@@ -67,7 +68,7 @@ export function Piede() {
           <ul className="piede__voci">
             {VOCI.map((v) => (
               <li key={v.href}>
-                <a href={v.href}>{v.testo}</a>
+                <a href={interno(v.href)}>{v.testo}</a>
               </li>
             ))}
           </ul>

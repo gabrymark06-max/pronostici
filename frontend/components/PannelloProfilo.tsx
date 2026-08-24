@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from 'react';
 
+import { interno } from '@/lib/sito';
 import { profilo, ErroreProfilo, type SessioneAperta } from '@/lib/profilo';
 
 import { useSessione } from './Sessione';
@@ -37,12 +38,12 @@ export function PannelloProfilo() {
       <div className="pagina-profilo__fuori">
         <h1 className="titolo-sezione">Non sei collegato</h1>
         <p>
-          Questa pagina mostra i dati del tuo profilo. <a href="/accedi/">Entra</a> oppure{' '}
-          <a href="/registrati/">creane uno</a>.
+          Questa pagina mostra i dati del tuo profilo. <a href={interno('/accedi/')}>Entra</a> oppure{' '}
+          <a href={interno('/registrati/')}>creane uno</a>.
         </p>
         <p className="pagina-profilo__nota">
           I pronostici non stanno dietro l’accesso: sono pubblici e li trovi{' '}
-          <a href="/">nella lista delle partite</a> senza registrarti.
+          <a href={interno('/')}>nella lista delle partite</a> senza registrarti.
         </p>
       </div>
     );

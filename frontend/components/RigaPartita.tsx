@@ -7,6 +7,7 @@ import { tace, type Fixture } from '@/lib/tipi';
 import { AvvisoOverUnder } from './AvvisoOverUnder';
 import { Crest } from './Crest';
 import { Misurino } from './Misurino';
+import { interno } from '@/lib/sito';
 
 /**
  * LA RIGA DI PARTITA — il cuore del prodotto.
@@ -65,7 +66,7 @@ export function RigaPartita({
   const conclusa = fixture.result != null;
 
   return (
-    <a className="riga" href={`/partita/${fixture.match_id}/`}>
+    <a className="riga" href={interno(`/partita/${fixture.match_id}/`)}>
       <time className="riga__ora" dateTime={attributoOra(fixture.utc_date)}>
         {ora(fixture.utc_date)}
       </time>

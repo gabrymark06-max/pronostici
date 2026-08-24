@@ -1,4 +1,5 @@
 import { MARCHIO } from '@/lib/testi';
+import { interno } from '@/lib/sito';
 
 /**
  * IL MARCHIO — «CENTRO».
@@ -24,7 +25,7 @@ import { MARCHIO } from '@/lib/testi';
  */
 export function Marchio({ href }: { href: string }) {
   return (
-    <a className="marchio" href={href} aria-label={`${MARCHIO} — vai alle partite di oggi`}>
+    <a className="marchio" href={interno(href)} aria-label={`${MARCHIO} — vai alle partite di oggi`}>
       <svg className="marchio__segno" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
         {/* Quadro esterno: filetto di 2, quindi inset di 1 sui bordi. */}
         <rect className="marchio__anello" x="1" y="1" width="30" height="30" />

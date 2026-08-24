@@ -3,6 +3,7 @@ import { formattaQuota } from '@/lib/quote';
 import type { Gamba, Schedina as Combinazione } from '@/lib/schedine';
 
 import { Crest } from './Crest';
+import { interno } from '@/lib/sito';
 
 /**
  * UNA SCHEDINA — le partite che la compongono, e quanto vale davvero.
@@ -51,7 +52,7 @@ function Riga({ gamba, crest }: { gamba: Gamba; crest: (url: string | null) => s
   const { fixture, pronostico } = gamba;
   return (
     <li className="gamba">
-      <a className="gamba__link" href={`/partita/${fixture.match_id}/`}>
+      <a className="gamba__link" href={interno(`/partita/${fixture.match_id}/`)}>
         <span className="gamba__ora">{ora(fixture.utc_date)}</span>
 
         <span className="gamba__squadre">
