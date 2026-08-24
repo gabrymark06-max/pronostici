@@ -25,6 +25,22 @@ name: frontend
 # sono nel repo. Il job `pubblica`, che viene dopo, e' l'unico che esce di qui —
 # e senza i segreti dell'hosting si limita a dire cosa manca, senza fallire.
 
+# I COMMIT DEL BOT NON INNESCANO NIENTE, E QUESTO E' IL PUNTO.
+#
+# GitHub non fa partire nessun workflow per un push autenticato col
+# `GITHUB_TOKEN` predefinito: e' la regola che impedisce ai job di innescarsi
+# all'infinito fra loro. Conseguenza, misurata: `tests.yml` parte a ogni push su
+# `main` ed e' girato **solo** sui commit fatti a mano, mai su uno di
+# `pronostici-bot` — che ne fa parecchi al giorno dentro `data/`.
+#
+# Senza `workflow_run` il sito pubblicato si fermerebbe al giorno dell'ultimo
+# push umano: i dati continuerebbero ad aggiornarsi nel repository e la pagina
+# mostrerebbe pronostici vecchi, con l'aria di essere viva. E' il modo peggiore
+# di rompersi.
+#
+# `workflow_run` scatta alla FINE di un altro workflow, non su un push, quindi
+# quella regola non lo tocca.
+
 on:
   push:
     branches: [main]
@@ -33,6 +49,12 @@ on:
       - "design-system/**"
       - "data/**"
       - ".github/workflows/frontend.yml"
+  workflow_run:
+    workflows:
+      - "pipeline giornaliera"
+      - "quote e pronostico definitivo"
+      - "job · sofascore"
+    types: [completed]
   pull_request:
   workflow_dispatch:
 
@@ -66,9 +88,14 @@ jobs:
 
   pubblica:
     needs: build
-    # Solo dal ramo principale, e mai da una pull request: un fork non deve
-    # poter pubblicare niente.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Mai da una pull request: un fork non deve poter pubblicare niente. Dopo
+    # una pipeline dati si pubblica solo se e' andata a buon fine — se e'
+    # fallita non ha scritto niente, e non c'e' niente di nuovo da mostrare.
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
