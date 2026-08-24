@@ -132,3 +132,18 @@ class TestCerca:
     def test_gli_accenti_non_contano(self) -> None:
         tassi = {fm.canonical("Carlos Vinícius"): fm.Giocatore(nome="x", squadra="y")}
         assert fm.cerca(tassi, "Carlos Vinicius") is not None
+
+
+class TestRuolo:
+    def test_il_codice_numerico_non_diventa_un_ruolo(self) -> None:
+        """`Positions` e' una lista di codici e la legenda non e' pubblica.
+
+        Prendendone il primo, la scheda partita ha pubblicato «ruolo: 72»
+        accanto a un giocatore vero: un numero senza significato, messo dove
+        il lettore si aspetta «attaccante».
+        """
+        per_nome: dict[str, fm.Giocatore] = {}
+        riga = _riga("Pedro", 15.0)
+        riga["Positions"] = [115]
+        fm._accumula(per_nome, _lista("Top scorer", [riga]), "gol", False)
+        assert per_nome["pedro"].ruolo is None

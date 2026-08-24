@@ -218,12 +218,18 @@ def _accumula(
             minuti = int(riga.get("MinutesPlayed") or 0)
             giocatore = per_nome.get(chiave)
             if giocatore is None:
-                ruoli = riga.get("Positions") or []
+                # IL RUOLO NON SI LEGGE, e va lasciato vuoto.
+                #
+                # `Positions` c'e' ma e' una lista di codici numerici —
+                # `[115]`, `[83, 87, 72]` — e la legenda non e' pubblica.
+                # Prendendone il primo, la scheda partita ha pubblicato
+                # «ruolo: 72» accanto a un giocatore vero: un numero che non
+                # vuol dire niente, messo dove il lettore si aspetta
+                # «attaccante». Meglio nessun ruolo.
                 giocatore = Giocatore(
                     nome=nome,
                     squadra=riga.get("TeamName") or "",
                     id_fotmob=riga.get("ParticiantId"),
-                    ruolo=(ruoli[0] if isinstance(ruoli, list) and ruoli else None),
                 )
                 per_nome[chiave] = giocatore
             # I MINUTI SONO GLI STESSI IN OGNI FILE, ma un giocatore compare
