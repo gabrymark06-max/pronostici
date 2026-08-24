@@ -275,6 +275,7 @@ Il gradiente è analitico: senza, ogni passo dell'ottimizzatore costerebbe 48 va
 | [docs/research/selezione-pronostico.md](docs/research/selezione-pronostico.md) | Il metodo statistico, con le fonti |
 | [docs/research/fonti-dati.md](docs/research/fonti-dati.md) | Cosa danno davvero le fonti gratuite |
 | [docs/competitors.md](docs/competitors.md) | Come fanno gli altri, e cosa sbagliano |
+| [docs/qa.md](docs/qa.md) | Le misure di qualità del sito, e l'unico numero che non si può chiudere prima del deploy |
 
 ---
 
