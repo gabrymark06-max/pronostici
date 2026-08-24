@@ -89,6 +89,12 @@ SofascoreNonDisponibile = http.SofascoreNonRaggiungibile
 # Il muro, riesportato con lo stesso nome del trasporto: i job importano
 # `sources.sofascore`, non `sofascore_http`.
 SofascoreCiBlocca = http.SofascoreCiBlocca
+# La quota finita arriva dal trasporto col browser, e va lasciata salire per
+# la stessa ragione: fermare il giro, non saltare una partita. Il modulo si
+# importa senza costo — `websocket` lo carica solo quando apre il canale.
+from . import sofascore_cdp as _cdp  # noqa: E402
+
+QuotaEsaurita = _cdp.QuotaEsaurita
 
 
 @dataclass(frozen=True)

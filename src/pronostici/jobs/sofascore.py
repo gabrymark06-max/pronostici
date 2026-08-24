@@ -380,7 +380,7 @@ def main(argv: list[str] | None = None) -> int:
         report = run(
             finestra=args.window_days, dry_run=args.dry_run, oggi=args.today
         )
-    except sf.SofascoreCiBlocca as exc:
+    except (sf.SofascoreCiBlocca, sf.QuotaEsaurita) as exc:
         # Il giro si ferma qui, e la CI diventa rossa. Non e' pessimismo: i
         # dati pre-partita non si recuperano dopo il fischio, quindi un giro
         # perso va visto adesso, non scoperto fra un mese guardando i buchi.

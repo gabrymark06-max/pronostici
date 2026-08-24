@@ -82,6 +82,19 @@ ATTESA_TOKEN_S = 45
 # il giro successivo. Si aspetta, si rinnova il token, si riprova.
 ATTESE_403_S = (20, 60)
 
+# E QUANDO SI SMETTE DEL TUTTO.
+#
+# Le attese sopra hanno senso per un 403 isolato. Se pero' la quota e' finita
+# davvero, ogni chiamata del giro paga venti secondi, un rinnovo, sessanta
+# secondi e un altro rinnovo — circa tre minuti — e con qualche decina di
+# chiamate si arriva al timeout del job senza scrivere niente. E' esattamente
+# il difetto da venticinque minuti che il freno in `sofascore_http` aveva
+# tolto, rimesso in piedi un livello piu' sotto.
+#
+# Due chiamate di fila che non passano nemmeno dopo le attese non sono
+# sfortuna: e' la quota. Si esce subito e si dice perche'.
+QUOTA_ESAURITA_DOPO = 2
+
 # I posti dove Chrome sta su Windows, piu' quello che si porta dietro
 # `agent-browser` — se il progetto lo usa gia' per il QA, e' inutile chiedere
 # all'utente di installarne un altro.
@@ -96,6 +109,15 @@ CANDIDATI = (
 
 class ChromeNonDisponibile(RuntimeError):
     """Non c'e' un Chrome da guidare, o non si e' fatto guidare."""
+
+
+class QuotaEsaurita(RuntimeError):
+    """La quota per IP e' finita: insistere costa tempo e non porta dati.
+
+    NON eredita da `SofascoreNonRaggiungibile` per la stessa ragione del muro:
+    chi chiama cattura quella per partita e prosegue col giro, e qui proseguire
+    significa pagare le attese per ogni partita che resta.
+    """
 
 
 class ContestoPerso(RuntimeError):
@@ -270,6 +292,7 @@ class Sessione:
         self._proc = _avvia_chrome()
         self._canale = _Canale(_scheda()["webSocketDebuggerUrl"])
         self._intestazioni: dict[str, str] = {}
+        self._403_di_fila = 0
         self._rinnova()
 
     def _rinnova(self) -> None:
@@ -340,7 +363,19 @@ class Sessione:
                 self._riaggancia()
                 continue
             if ultimo[0] != 403:
+                self._403_di_fila = 0
                 return ultimo
+
+        # Neanche dopo le attese. Se ricapita subito, e' la quota, non un caso.
+        self._403_di_fila += 1
+        if self._403_di_fila >= QUOTA_ESAURITA_DOPO:
+            raise QuotaEsaurita(
+                f"Sofascore risponde 403 anche dopo le attese, "
+                f"{self._403_di_fila} chiamate di fila: la quota per questo "
+                "indirizzo e' finita. Il giro si ferma qui invece di pagare "
+                "tre minuti di attese per ogni partita che resta. Riprovare al "
+                "prossimo giro, non subito."
+            )
         return ultimo
 
     def _riaggancia(self) -> None:

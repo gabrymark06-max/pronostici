@@ -121,3 +121,59 @@ def test_un_200_senza_json_non_passa_per_buono():
     with pytest.raises(http.SofascoreNonRaggiungibile) as errore:
         http._dal_browser(finta, "/evento/9")
     assert "non JSON" in str(errore.value)
+
+
+# ------------------------------------------------------------------ #
+# La quota finita non deve costare tre minuti per partita            #
+# ------------------------------------------------------------------ #
+
+
+class _SessioneMuta(cdp.Sessione):
+    """Una sessione senza browser: risponde 403 e conta le attese."""
+
+    def __init__(self):  # non chiama super(): niente Chrome, niente CDP
+        self._intestazioni = {}
+        self._403_di_fila = 0
+        self.rinnovi = 0
+        self.chiamate = 0
+
+    def _chiama(self, percorso):
+        self.chiamate += 1
+        return 403, None
+
+    def _rinnova(self):
+        self.rinnovi += 1
+
+
+def test_la_quota_finita_ferma_il_giro(monkeypatch):
+    """Senza freno ogni partita pagherebbe le attese: con qualche decina di
+    chiamate si arriva al timeout del job senza aver scritto niente."""
+    monkeypatch.setattr(cdp.time, 'sleep', lambda _: None)
+    s = _SessioneMuta()
+
+    # La prima chiamata esaurisce le attese e torna 403 senza alzare.
+    assert s.prendi('/uno') == (403, None)
+    # La seconda capisce che non e' sfortuna.
+    with pytest.raises(cdp.QuotaEsaurita) as errore:
+        s.prendi('/due')
+
+    assert 'quota' in str(errore.value).lower()
+    assert s.chiamate == 2 * (1 + len(cdp.ATTESE_403_S))
+
+
+def test_una_risposta_buona_azzera_il_conto(monkeypatch):
+    monkeypatch.setattr(cdp.time, 'sleep', lambda _: None)
+    s = _SessioneMuta()
+    s.prendi('/uno')
+    assert s._403_di_fila == 1
+
+    s._chiama = lambda percorso: (200, {'ok': True})
+    assert s.prendi('/due') == (200, {'ok': True})
+    assert s._403_di_fila == 0
+
+
+def test_la_quota_non_e_un_errore_da_saltare_per_partita():
+    """Il job cattura `SofascoreNonDisponibile` partita per partita: se la
+    quota ne ereditasse, verrebbe inghiottita e il giro proseguirebbe a
+    pagare le attese fino al timeout."""
+    assert not issubclass(cdp.QuotaEsaurita, http.SofascoreNonRaggiungibile)
