@@ -58,6 +58,14 @@ UA = (
 )
 
 # I NOSTRI codici competizione verso i loro percorsi.
+#
+# IL PERCORSO PUO' PORTARE IL NOME DELLO SPONSOR, e cambia con lui: il
+# Brasileirao sta sotto `serie-a-betano`, non `serie-a`. Chiedendo quello
+# sbagliato betexplorer non risponde 404 — rimanda alla pagina generica del
+# calcio, che e' 200, pesa 700KB e non contiene nessuna delle nostre partite.
+# Per undici giorni il Brasileirao e' rimasto senza mercati senza che niente
+# lo dicesse: da qui la guardia in `elenco`, che grida quando una lega torna
+# vuota.
 LEGHE: dict[str, str] = {
     "PL": "england/premier-league",
     "ELC": "england/championship",
@@ -67,7 +75,7 @@ LEGHE: dict[str, str] = {
     "FL1": "france/ligue-1",
     "DED": "netherlands/eredivisie",
     "PPL": "portugal/liga-portugal",
-    "BSA": "brazil/serie-a",
+    "BSA": "brazil/serie-a-betano",
 }
 
 # I mercati che leggiamo, e come si chiamano da noi. L'ordine delle colonne e'
@@ -163,9 +171,39 @@ BOOKMAKER_MINIMI = 3
 
 SOGLIA_NOME = 0.72
 
-# Alias verso betexplorer. Stessa regola di sportsgambler: si allunga
-# misurando, non immaginando.
-ALIAS: dict[str, str] = {}
+# Alias verso betexplorer. Chiave: come lo scrivono loro, gia' normalizzato.
+# Valore: come lo scriviamo noi, idem.
+#
+# Ogni riga e' stata VISTA mancare confrontando i due vocabolari di squadre —
+# venti nomi loro contro venti nostri, per campionato — e non dedotta dalle
+# partite non agganciate: li' il «miglior candidato» e' spesso un'altra
+# partita, e ne uscivano coppie come «Bahia -> Gremio».
+#
+# Le pagine di betexplorer elencano anche squadre che non seguiamo (Bolton,
+# Schalke, Malaga sono su quelle di Championship, Bundesliga e LaLiga): quelle
+# NON vanno mappate. Un alias verso il club sbagliato e' peggio di nessun
+# alias, perche' aggancia e sbaglia in silenzio.
+ALIAS: dict[str, str] = {
+    # Abbreviazioni che non sono prefissi.
+    "manchester utd": "manchester united",
+    "sheffield utd": "sheffield united",
+    "qpr": "queens park rangers",
+    "b monchengladbach": "borussia monchengladbach",
+    "g a eagles": "go ahead eagles",
+    "ath bilbao": "athletic",
+    # Nomi in un'altra lingua.
+    "bayern munich": "bayern munchen",
+    # Loro scrivono la citta', noi la sigla (o viceversa).
+    "nijmegen": "nec",
+    "sporting cp": "sporting portugal",
+    "vitoria guimaraes": "vitoria",
+    # Brasile: loro distinguono le omonime con la sigla dello stato, noi con
+    # quella della societa'. Nessuna delle due si ritrova nell'altra.
+    "athletico pr": "paranaense",
+    "atletico mg": "mineiro",
+    "botafogo rj": "botafogo fr",
+    "flamengo rj": "flamengo",
+}
 
 
 class BetexplorerNonRaggiungibile(RuntimeError):
@@ -237,6 +275,18 @@ _RIGA = re.compile(
 )
 
 
+class LegaVuota(RuntimeError):
+    """La pagina ha risposto ma non contiene nessuna partita.
+
+    Non e' «non ci sono partite in calendario»: l'elenco copre l'intera
+    stagione, quindi zero righe significa che il percorso non esiste piu' o che
+    il markup e' cambiato. Betexplorer non risponde 404 su un percorso
+    sbagliato — rimanda alla pagina generica del calcio, che e' 200 e piena di
+    roba, e senza questo controllo il campionato resta senza mercati in
+    silenzio.
+    """
+
+
 def elenco(codice: str, *, html: str | None = None) -> list[PartitaBX]:
     """Le partite di una competizione, per l'intera stagione."""
     lega = LEGHE.get(codice)
@@ -244,7 +294,13 @@ def elenco(codice: str, *, html: str | None = None) -> list[PartitaBX]:
         return []
     if html is None:
         html = _scarica(f"/football/{lega}/fixtures/")
-    return _leggi_elenco(html)
+    partite = _leggi_elenco(html)
+    if not partite:
+        raise LegaVuota(
+            f"{codice} ({lega}): la pagina risponde ma non ha nessuna partita. "
+            "Percorso cambiato o markup diverso."
+        )
+    return partite
 
 
 def _leggi_elenco(html: str) -> list[PartitaBX]:

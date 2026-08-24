@@ -169,6 +169,12 @@ def _cartelloni_mercati(report: dict) -> dict[str, list[bx.PartitaBX]]:
     for codice in bx.LEGHE:
         try:
             per_lega[codice] = bx.elenco(codice)
+        except bx.LegaVuota as exc:
+            # NON e' «non risponde»: risponde e non ha niente dentro, che
+            # significa percorso o markup cambiati. Va distinto, perche' il
+            # primo si risolve da solo e il secondo no.
+            log.error("%s", exc)
+            report["leghe_vuote"].append(codice)
         except bx.BetexplorerNonRaggiungibile as exc:
             log.warning("elenco mercati %s non letto: %s", codice, exc)
             report["mercati_non_letti"].append(codice)
@@ -409,6 +415,7 @@ def run(
         "leghe_non_lette": [],
         "arbitri_non_letti": [],
         "mercati_non_letti": [],
+        "leghe_vuote": [],
         "tassi_non_letti": [],
         "leghe_senza_tassi": [],
         "days_written": [],

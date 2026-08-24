@@ -192,3 +192,51 @@ class TestPassoAdattivo:
         for _ in range(50):
             bx._rallenta()
         assert bx.passo() == bx.PAUSA_MASSIMA_S
+
+
+class TestLegaVuota:
+    """Una pagina che risponde 200 e non ha partite non e' «niente in calendario».
+
+    L'elenco copre l'intera stagione, quindi zero righe significa percorso
+    cambiato o markup diverso. E betexplorer non risponde 404 su un percorso
+    sbagliato: rimanda alla pagina generica del calcio, che e' 200 e pesa
+    settecento kilobyte. Il Brasileirao e' rimasto senza mercati senza che
+    niente lo dicesse, perche' il suo percorso porta il nome dello sponsor —
+    `serie-a-betano`, non `serie-a`.
+    """
+
+    def test_zero_partite_e_un_errore_non_un_silenzio(self) -> None:
+        import pytest
+
+        with pytest.raises(bx.LegaVuota):
+            bx.elenco("SA", html="<html><body>niente qui</body></html>")
+
+    def test_una_lega_che_non_seguiamo_torna_vuota_senza_gridare(self) -> None:
+        """Non e' un guasto: e' una competizione che non copriamo."""
+        assert bx.elenco("XX", html="<html></html>") == []
+
+
+class TestAliasVersoBetexplorer:
+    """Gli alias mappano societa' vere, non il primo nome che somiglia.
+
+    Le pagine elencano anche squadre che non seguiamo — Bolton e Lincoln su
+    quella di Championship, Schalke su quella di Bundesliga. Dedurre gli alias
+    dalle partite non agganciate produceva coppie come «Bahia -> Gremio»: il
+    «miglior candidato» era un'altra partita.
+    """
+
+    def test_le_omonime_brasiliane_si_distinguono(self) -> None:
+        """Loro usano la sigla dello stato, noi quella della societa'."""
+        assert bx.somiglianza("CA Paranaense", "Athletico-PR") >= bx.SOGLIA_NOME
+        assert bx.somiglianza("CA Mineiro", "Atletico-MG") >= bx.SOGLIA_NOME
+
+    def test_e_non_si_confondono_fra_loro(self) -> None:
+        assert bx.somiglianza("CA Mineiro", "Athletico-PR") < bx.SOGLIA_NOME
+        assert bx.somiglianza("Botafogo FR", "Flamengo RJ") < bx.SOGLIA_NOME
+
+    def test_le_abbreviazioni_inglesi(self) -> None:
+        assert bx.somiglianza("Manchester United FC", "Manchester Utd") >= bx.SOGLIA_NOME
+        assert bx.somiglianza("Queens Park Rangers FC", "QPR") >= bx.SOGLIA_NOME
+
+    def test_i_due_di_manchester_restano_separati(self) -> None:
+        assert bx.somiglianza("Manchester City FC", "Manchester Utd") < bx.SOGLIA_NOME
