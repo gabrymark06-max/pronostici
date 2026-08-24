@@ -227,7 +227,7 @@ pubblico, ed è il meccanismo che rende verificabile l'onestà del prodotto.
 |---|---|---|---|
 | `daily.yml` | 03:00 | GitHub | `ingest` → `settle` → `retrain` → `score`, in sequenza |
 | `odds.yml` | 10:00 e 18:00 | GitHub | `quote` alle 10:00, poi `finalize` a entrambe |
-| `job-sofascore.yml` | 07:00 e 17:00 | **runner di casa** | formazioni, arbitro, quote estese |
+| `job-contorno.yml` | 07:00 e 17:00 | GitHub | formazioni, arbitro, mercati estesi, stime sui giocatori |
 | `tests.yml` | a ogni push | GitHub | ruff + pytest su Python 3.11 e 3.12 |
 | `frontend.yml` | push su `frontend/`, `data/` | GitHub | token, tipi, lint, build, e la pubblicazione |
 
@@ -241,7 +241,7 @@ Ogni job legge la **punta del ramo**, non il commit che ha innescato la run:
 senza, in una catena ciascuno leggerebbe `data/` com'era prima che il
 precedente scrivesse.
 
-### Perché le formazioni non vengono più da Sofascore
+### Perché il contorno non viene più da Sofascore
 
 Dal 23 agosto 2026 l'API di Sofascore vuole un token (`X-Captcha`) che si
 ottiene solo dentro un browser vero, ed è **legato all'IP**. Sui runner di
@@ -250,12 +250,15 @@ pagina non riceve nessun token entro 45 secondi. Per un giorno il job è girato
 su un runner di casa — e il progetto era tornato a dipendere da un computer
 acceso, la dipendenza da cui era uscito il 14 agosto.
 
-Il 24 agosto è stato sostituito da due fonti che non hanno lucchetti:
+Il 24 agosto è stato sostituito da **quattro** fonti senza lucchetti, ognuna
+provata dai runner di GitHub prima di scriverci contro una riga:
 
-| | Fonte | Come |
+| Sezione | Fonte | Come |
 |---|---|---|
 | formazioni previste | sportsgambler.com | HTML pubblico, nessuna chiave |
 | arbitro | football-data.org | la chiave che già usiamo |
+| mercati estesi | betexplorer.com | 1X2, doppia chance, gol totali su ogni linea, entrambe segnano, draw no bet — con i bookmaker a licenza italiana |
+| stime sui giocatori | fotmob | un file JSON per statistica, con **tutti** i giocatori e i minuti veri |
 
 **Misurato da un runner di GitHub**, tutti e nove i campionati: 245 partite in
 cartellone, modulo e undici titolari per ognuna. Nello stesso giro Sofascore
@@ -266,10 +269,22 @@ prima invece delle 56 ore di mediana di Sofascore, quindi la finestra è passata
 da 4 giorni a 7. La prima partita scritta è stata letta 104 ore prima del
 fischio.
 
-**Ci si perde** la panchina, le medie cartellini dell'arbitro e le quote
-estese. Le quote non mancano davvero — `odds.yml` è la fonte principale e non è
-mai passata di lì. Il resto si perde, e vale il cambio: un contorno più magro
-che arriva sempre batte un contorno ricco che arriva solo a computer acceso.
+**Ci si perde** la panchina, le medie cartellini dell'arbitro — quindi
+`moltiplicatore_arbitro` vale 1 e le stime sui gialli non sono più corrette per
+chi dirige — e il mercato del primo tempo. Vale il cambio: un contorno un po'
+più magro che arriva sempre batte un contorno ricco che arriva solo a computer
+acceso.
+
+**Due cose sui tempi**, perché non sembrino buchi:
+
+- *Le stime sui giocatori compaiono a stagione avviata.* Servono almeno 180
+  minuti giocati perché un tasso per 90 sia una tendenza e non un episodio
+  moltiplicato — un giallo in ventun minuti darebbe più di quattro espulsioni a
+  partita. Il 24 agosto cinque campionati su nove ci arrivavano; gli altri
+  avevano giocato una giornata. Il report lo dichiara in `leghe_senza_tassi`.
+- *I mercati si leggono nei 5 giorni prima della partita*, due volte al giorno.
+  Non prima: le quote si muovono, e leggerle una volta a sette giorni per poi
+  non tornarci sarebbe pubblicare un prezzo vecchio.
 
 `job-sofascore.yml` resta, senza orario, per chi vuole il contorno ricco a mano
 sul runner di casa. I dati già scritti da Sofascore non si migrano: sono veri,
