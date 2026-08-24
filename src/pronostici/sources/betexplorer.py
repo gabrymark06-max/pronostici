@@ -6,11 +6,12 @@ chiuso la porta a chi non ha un IP residenziale, e quella sezione si e'
 svuotata. Questa fonte non ha lucchetti — HTML pubblico, nessuna chiave — ed e'
 stata provata dai runner di GitHub, non da una macchina di casa.
 
-COSA DA'. Sei mercati per partita, con le quote di ogni bookmaker:
+COSA DA'. Sei mercati per partita, con le quote di ogni bookmaker — noi ne
+leggiamo tre, quelli che non abbiamo gia' da altrove (vedi `MERCATI`):
 
-    1x2   esito finale            dc    doppia chance
-    ou    gol totali, ogni linea  ha    draw no bet
-    bts   entrambe segnano        ah    handicap asiatico (non lo leggiamo)
+    1x2   esito finale            dc    doppia chance          <-
+    ou    gol totali, ogni linea  <-    ha    draw no bet
+    bts   entrambe segnano  <-          ah    handicap asiatico
 
 E i bookmaker sono quelli con licenza italiana — SNAI, Sisal, Eurobet,
 Lottomatica, GoldBet, Planetwin365 — che e' lo stesso `price_scope: "it"` che
@@ -83,14 +84,33 @@ LEGHE: dict[str, str] = {
 # avvera. La doppia chance non lo e': "1X", "12" e "X2" coprono ogni risultato
 # due volte, e la loro somma tende a 2. Trattandola come le altre usciva un
 # margine del 113%, cioe' il banco che si prende piu' di quanto incassa.
+# SI CHIEDE SOLO QUELLO CHE NON ABBIAMO GIA', e sono tre mercati su sei.
+#
+# Betexplorer non limita la distanza fra le richieste, limita il numero: un
+# giro con cinque mercati per partita ha preso venticinque 429 anche a sei
+# secondi l'una dall'altra, e ci ha messo ventotto minuti. Rallentare non
+# bastava — bisognava chiedere di meno.
+#
+# Fuori `1x2`: l'esito finale ce l'abbiamo gia' da The Odds API, con la
+# mediana di ventiquattro bookmaker invece degli undici di qui. Chiederlo di
+# nuovo sarebbe pagare una richiesta per un dato peggiore.
+#
+# Fuori `ah`: la tabella pesa il doppio di tutte le altre insieme, e la scheda
+# partita non ha mai mostrato l'handicap asiatico.
+#
+# Fuori `ha` (draw no bet): non e' un'informazione in piu'. Togliere il
+# pareggio e rinormalizzare 1 e 2 e' un'operazione aritmetica sulle probabilita'
+# che abbiamo gia': una richiesta per un numero che sapremmo calcolare.
 MERCATI: dict[str, tuple[str, tuple[str, ...], int]] = {
-    "1x2": ("Esito finale", ("1", "X", "2"), 1),
+    # La doppia chance resta perche' qui ha i PREZZI: `odds.market_p` la
+    # ricava sommando probabilita', e una somma di probabilita' non e' una
+    # quota che qualcuno ti paga.
     "dc": ("Doppia chance", ("1X", "12", "X2"), 2),
+    # Il motivo principale per cui questa fonte esiste: The Odds API copre
+    # solo le linee 2.5 e 3.5, qui ci sono tutte da 0.5 a 5.5.
     "ou": ("Gol totali", ("Over", "Under"), 1),
+    # E l'unico mercato che l'altra fonte non da' affatto.
     "bts": ("Entrambe segnano", ("Sì", "No"), 1),
-    # Draw no bet: il pareggio annulla la giocata, quindi restano due esiti e
-    # uno solo si avvera.
-    "ha": ("Draw no bet", ("1", "2"), 1),
 }
 
 # IL PASSO SI REGOLA DA SE', invece di indovinarlo una volta per sempre.

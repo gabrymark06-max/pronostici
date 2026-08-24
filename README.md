@@ -257,7 +257,7 @@ provata dai runner di GitHub prima di scriverci contro una riga:
 |---|---|---|
 | formazioni previste | sportsgambler.com | HTML pubblico, nessuna chiave |
 | arbitro | football-data.org | la chiave che già usiamo |
-| mercati estesi | betexplorer.com | 1X2, doppia chance, gol totali su ogni linea, entrambe segnano, draw no bet — con i bookmaker a licenza italiana |
+| mercati estesi | betexplorer.com | doppia chance, gol totali su **ogni** linea (0,5–5,5), entrambe segnano — con i bookmaker a licenza italiana |
 | stime sui giocatori | fotmob | un file JSON per statistica, con **tutti** i giocatori e i minuti veri |
 
 **Misurato da un runner di GitHub**, tutti e nove i campionati: 245 partite in
@@ -285,6 +285,12 @@ acceso.
 - *I mercati si leggono nei 5 giorni prima della partita*, due volte al giorno.
   Non prima: le quote si muovono, e leggerle una volta a sette giorni per poi
   non tornarci sarebbe pubblicare un prezzo vecchio.
+
+Da betexplorer si chiedono **tre** mercati e non sei. L'esito finale ce
+l'abbiamo già da The Odds API con ventiquattro bookmaker invece di undici, e il
+draw no bet è aritmetica sull'1X2: chiederli sarebbe pagare una richiesta per
+un dato peggiore o già noto. E le richieste costano — betexplorer limita il
+numero, non la loro distanza.
 
 `job-sofascore.yml` resta, senza orario, per chi vuole il contorno ricco a mano
 sul runner di casa. I dati già scritti da Sofascore non si migrano: sono veri,
