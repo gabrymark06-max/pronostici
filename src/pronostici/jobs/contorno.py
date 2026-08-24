@@ -95,6 +95,20 @@ FINESTRA_MERCATI = 5
 # usava il job di prima.
 MINUTI_TITOLARE = 76
 
+# OLTRE QUESTO TEMPO NON SI CHIEDONO PIU' MERCATI, e si scrive quello che c'e'.
+#
+# I mercati sono la parte lenta e crescente: betexplorer limita il numero di
+# richieste, quindi il giro rallenta da solo quando ce ne sono tante, e le
+# partite crescono con le giornate piene. Misurato: 23,7 minuti con 43 partite,
+# contro un tetto del workflow di 45.
+#
+# Il punto non e' la stima, e' cosa succede quando sbaglia. Il commit sta in
+# fondo: un giro ucciso dal tetto non scrive NIENTE — nemmeno le formazioni,
+# che erano gia' in mano da venti minuti e che dopo il fischio d'inizio non si
+# recuperano piu'. Meglio qualche partita senza mercati che un giorno intero
+# senza contorno.
+SCADENZA_MERCATI_S = 1800
+
 
 def _giorni(finestra: int, oggi: str) -> list[str]:
     inizio = datetime.strptime(oggi, "%Y-%m-%d").replace(tzinfo=UTC)
@@ -416,6 +430,7 @@ def run(
         "arbitri_non_letti": [],
         "mercati_non_letti": [],
         "leghe_vuote": [],
+        "mercati_interrotti_per_tempo": False,
         "tassi_non_letti": [],
         "leghe_senza_tassi": [],
         "days_written": [],
@@ -463,6 +478,7 @@ def run(
 
     per_giorno: dict[str, list[dict]] = defaultdict(list)
     frammenti: dict[int, sg.Formazione | None] = {}
+    mercati_scaduti = False
 
     for giorno, entry, calcio in da_fare:
         loro = sg.aggancia(
@@ -514,7 +530,15 @@ def run(
         codice = entry.get("competition", "")
 
         # ------------------------------------------------ i mercati estesi
-        if calcio <= limite_mercati:
+        if not mercati_scaduti and time.monotonic() - partenza > SCADENZA_MERCATI_S:
+            mercati_scaduti = True
+            report["mercati_interrotti_per_tempo"] = True
+            log.warning(
+                "oltre %ds: smetto di chiedere mercati e scrivo quello che ho",
+                SCADENZA_MERCATI_S,
+            )
+
+        if calcio <= limite_mercati and not mercati_scaduti:
             loro_bx = bx.aggancia(
                 mercati_lega.get(codice, []),
                 entry["home"]["name"],
