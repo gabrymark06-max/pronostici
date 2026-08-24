@@ -77,10 +77,18 @@ PAUSA_S = 0.7
 SOGLIA_ALLARME = 10
 
 # I MERCATI SI CHIEDONO SOLO PER LE PARTITE VICINE, e non per avarizia: sono
-# cinque richieste per partita a tre secondi l'una, e betexplorer risponde 429
-# se si corre. Su sette giorni sarebbero venti minuti buoni di sole quote, per
-# partite su cui i bookmaker spesso non hanno ancora aperto i mercati minori.
-FINESTRA_MERCATI = 3
+# cinque richieste per partita, e betexplorer risponde 429 se si corre.
+#
+# CINQUE GIORNI, misurati e non scelti a occhio. Con tre, il giro del 24 agosto
+# ne copriva sei su cinquantaquattro agganciate: quasi tutte le partite in
+# cartellone cadevano fuori, perche' le giornate piene erano il 28, 29 e 30.
+# Con cinque ci si arriva.
+#
+# Non di piu', e non e' solo il tempo: le quote si muovono, e leggerle una
+# volta a sette giorni per poi non tornarci sarebbe pubblicare un prezzo
+# vecchio. Con due giri al giorno e questa finestra, ogni partita ha i suoi
+# mercati riletti dieci volte prima del fischio d'inizio.
+FINESTRA_MERCATI = 5
 
 # Quanti minuti si attribuiscono a un titolare. Non 90: chi comincia esce, e
 # il termine dei minuti attesi domina tutte le stime. Lo stesso numero che

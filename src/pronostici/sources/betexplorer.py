@@ -93,10 +93,15 @@ MERCATI: dict[str, tuple[str, tuple[str, ...], int]] = {
     "ha": ("Draw no bet", ("1", "2"), 1),
 }
 
-# Betexplorer risponde 429 se si corre: misurato dai runner di GitHub il 24
-# agosto 2026, due leghe su nove con due secondi di pausa. Tre, e si aspetta
-# quando lo dice lui.
-PAUSA_S = 3.0
+# Betexplorer risponde 429 se si corre. Due secondi, misurati: con tre, un giro
+# intero da GitHub ne ha preso UNO solo su circa quaranta richieste, e quello
+# e' passato al primo rinvio. Il margine c'era, e serviva: a tre secondi la
+# finestra dei mercati non arrivava alle giornate piene.
+#
+# Le attese dopo un 429 restano lunghe apposta. Un 429 non e' «niente qui», e'
+# «non adesso»: contarlo come una partita senza quote riempirebbe il sito di
+# schede spoglie senza che niente diventi rosso.
+PAUSA_S = 2.0
 ATTESE_429_S = (10, 30)
 
 # Sotto questo numero di bookmaker la mediana non e' una mediana. La stessa

@@ -74,8 +74,11 @@ jobs:
     # TRENTA MINUTI, non venti. Il job adesso legge anche i mercati estesi da
     # betexplorer — cinque richieste per partita, a tre secondi l'una perche'
     # risponde 429 se si corre — e i tassi dei giocatori da fotmob. Misurato: 
-    # tre minuti su una finestra di due giorni, e la finestra vera e' sette.
-    timeout-minutes: 30
+    # cinque minuti e mezzo su una finestra di cinque giorni, con i mercati su
+    # sei partite. Con la finestra dei mercati allargata a cinque giorni e le
+    # giornate piene dentro, il conto sale: quarantacinque minuti di tetto
+    # lasciano margine senza che un giro incagliato resti appeso per ore.
+    timeout-minutes: 45
     steps:
       # LA PUNTA DEL RAMO, NON IL COMMIT CHE HA INNESCATO LA RUN.
       #
