@@ -124,28 +124,69 @@ jobs:
           TOKEN: ${{ secrets.VERCEL_TOKEN }}
           ORG: ${{ secrets.VERCEL_ORG_ID }}
           PROGETTO: ${{ secrets.VERCEL_PROJECT_ID }}
+          SITO: ${{ vars.SITO }}
         run: |
-          if [ -n "$TOKEN" ] && [ -n "$ORG" ] && [ -n "$PROGETTO" ]; then
-            echo "collegato=si" >> "$GITHUB_OUTPUT"
-          else
+          if [ -z "$TOKEN" ] || [ -z "$ORG" ] || [ -z "$PROGETTO" ]; then
             echo "collegato=no" >> "$GITHUB_OUTPUT"
             {
-              echo "### Il sito non e' pubblicato"
+              echo "### Il sito non e' pubblicato su Vercel"
               echo
               echo "Mancano i segreti per il deploy. Servono tutti e tre:"
               echo '- `VERCEL_TOKEN` — da vercel.com/account/tokens'
               echo '- `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID` — in `.vercel/project.json`'
               echo '  dopo un `vercel link` fatto una volta in locale'
               echo
-              echo "Il brief (§11.2) sceglie **Vercel Hobby**, con Cloudflare Pages"
-              echo "come uscita pronta se un giorno servisse."
+              echo "Nel frattempo pubblica il job \`pagine\` su GitHub Pages."
             } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
+
+          # QUI INVECE SI FALLISCE, ED E' GIUSTO COSI'.
+          #
+          # Senza segreti non c'e' un guasto: non c'e' ancora un hosting. Ma con
+          # i segreti e senza `SITO` l'hosting c'e' e il sito esce sbagliato in
+          # un modo che nessuno nota: `lib/sito.ts` ripiega su
+          # `https://pronostici.example`, e il sitemap dichiara ai motori di
+          # ricerca che l'indirizzo canonico e' un dominio che non esiste.
+          # Pagine perfette, invisibili. Meglio un job rosso adesso.
+          if [ -z "$SITO" ]; then
+            {
+              echo "### Deploy fermato: manca la variabile \`SITO\`"
+              echo
+              echo "I segreti di Vercel ci sono ma nessuno ha detto a che indirizzo"
+              echo "vive il sito, quindi \`sitemap.xml\` e \`robots.txt\` uscirebbero con il"
+              echo "dominio segnaposto. Si imposta una volta sola:"
+              echo
+              echo '```'
+              echo 'gh variable set SITO --body "https://<il-tuo-progetto>.vercel.app"'
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::manca la variabile di repository SITO (indirizzo pubblico del sito)"
+            exit 1
+          fi
+
+          echo "collegato=si" >> "$GITHUB_OUTPUT"
 
       - if: steps.hosting.outputs.collegato == 'si'
         run: npm ci
+
+      # I LOGHI VANNO SCARICATI QUI, come nel job `pagine`.
+      #
+      # `public/crests/` e' in `.gitignore`, quindi in CI non esiste: senza
+      # questo passo ogni riga partita del sito pubblicato chiede il logo a
+      # `crests.football-data.org`. Funziona — il ripiego c'e' — ma e'
+      # esattamente la dipendenza da un terzo a runtime che il progetto ha
+      # tolto apposta. Lo script non fa mai fallire il build.
+      - if: steps.hosting.outputs.collegato == 'si'
+        name: Loghi delle squadre
+        run: npm run crests
+
+      # Nessun `NEXT_PUBLIC_PREFISSO`: su Vercel il sito sta alla radice del
+      # dominio, non sotto il nome del repository come su Pages.
       - if: steps.hosting.outputs.collegato == 'si'
         name: Build ed export statico
+        env:
+          NEXT_PUBLIC_SITO: ${{ vars.SITO }}
         run: npm run build
 
       # SI PUBBLICA L'EXPORT, NON IL PROGETTO.
