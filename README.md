@@ -221,15 +221,35 @@ senza scrivere. In sviluppo si lavora sulla cache e non si spende niente.
 I job girano su GitHub Actions e committano il risultato: è il registro
 pubblico, ed è il meccanismo che rende verificabile l'onestà del prodotto.
 
-| Workflow | Quando (UTC) | Cosa |
-|---|---|---|
-| `daily.yml` | 03:00 | `ingest` → `settle` → `retrain` → `score`, in sequenza |
-| `odds.yml` | 10:00 e 18:00 | `finalize` |
-| `tests.yml` | a ogni push | ruff + pytest su Python 3.11 e 3.12 |
+| Workflow | Quando (UTC) | Dove | Cosa |
+|---|---|---|---|
+| `daily.yml` | 03:00 | GitHub | `ingest` → `settle` → `retrain` → `score`, in sequenza |
+| `odds.yml` | 10:00 e 18:00 | GitHub | `quote` alle 10:00, poi `finalize` a entrambe |
+| `job-sofascore.yml` | 07:00 e 17:00 | **runner di casa** | formazioni, arbitro, quote estese |
+| `tests.yml` | a ogni push | GitHub | ruff + pytest su Python 3.11 e 3.12 |
+| `frontend.yml` | push su `frontend/`, `data/` | GitHub | token, tipi, lint, build, e la pubblicazione |
 
-Ogni job è anche eseguibile a mano (`workflow_dispatch`). Le due pipeline che
-scrivono in `data/` condividono un gruppo di concorrenza, e il push riprova
-con rebase: non si può avere un registro riscritto da due job insieme.
+Ogni job è anche eseguibile a mano (`workflow_dispatch`). Le pipeline che
+scrivono in `data/` **non condividono lo stesso gruppo di concorrenza**: un
+workflow che ne chiama un altro tenendo il gruppo che il chiamato richiede si
+aspetta da solo e non parte mai. Ognuno ha il suo, e il push riprova con
+rebase.
+
+Ogni job legge la **punta del ramo**, non il commit che ha innescato la run:
+senza, in una catena ciascuno leggerebbe `data/` com'era prima che il
+precedente scrivesse.
+
+### Perché Sofascore gira in casa
+
+Dal 23 agosto 2026 l'API di Sofascore vuole un token (`X-Captcha`) che si
+ottiene solo dentro un browser vero, ed è **legato all'IP**. Sui runner di
+GitHub non viene emesso: provato, la pagina non ne riceve nessuno. Il cron
+resta su GitHub — cambia solo la macchina che esegue, e il commit finisce nel
+registro pubblico come per tutti gli altri.
+
+Se quella macchina è spenta il job resta in coda e lo raccoglie all'accensione,
+entro 24 ore. Formazioni e arbitro esistono solo prima del fischio d'inizio:
+un giro perso non si recupera.
 
 I segreti stanno nei GitHub Actions Secrets: `FOOTBALL_DATA_API_KEY` e
 `ODDS_API_KEY`. Nient'altro.
