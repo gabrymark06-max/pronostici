@@ -160,3 +160,50 @@ Le due uscite sono simmetriche, e vanno prese consapevolmente:
 
 Finche' resta aperta, il sito si costruisce con i profili spenti: e' il
 comportamento predefinito, ed e' verificato da `check-profili-spenti.mjs`.
+
+---
+
+## Le formazioni cambiano fonte (24 agosto 2026)
+
+**Decisione: sportsgambler.com al posto di Sofascore, e il job torna su
+`ubuntu-latest`.**
+
+Il 23 agosto Sofascore ha messo davanti alla sua API un token (`X-Captcha`) che
+nasce solo dentro un browser vero e vale solo per l'IP che l'ha ottenuto. Sui
+runner di GitHub non viene emesso — provato: Chrome parte davvero sotto
+`xvfb-run` e la pagina non riceve niente in 45 secondi.
+
+Per un giorno la risposta è stata un runner self-hosted in casa. Funzionava, ma
+riportava il progetto dentro la dipendenza da cui era uscito il 14 agosto: un
+computer acceso a un'ora precisa, e formazioni perse per sempre quando non lo
+era. Non è un compromesso accettabile per un dato che esiste solo prima del
+fischio d'inizio.
+
+**Le alternative considerate, e perché sono state scartate:**
+
+| Strada | Perché no |
+|---|---|
+| Proxy residenziale davanti a Chrome | Funzionerebbe, ma costa ~2–5 $/mese e viola il vincolo #2 (zero euro) |
+| VPS come runner | ~5 €/mese, e resta un IP da datacenter: probabilmente bloccato uguale |
+| API-Football, piano gratuito | Le formazioni escono 20–40 minuti prima del fischio: troppo tardi perché il sito le mostri a chi lo apre la mattina |
+| Sportmonks, piano gratuito | Ha le formazioni previste, ma solo Danimarca e Scozia. Il piano che copre i nostri campionati costa 29 €/mese |
+
+**La strada scelta non costa niente e copre di più.** Sportsgambler pubblica le
+formazioni previste fino a due settimane prima, contro le 56 ore di mediana di
+Sofascore: la finestra del job è passata da 4 a 7 giorni. L'arbitro arriva da
+football-data.org, che lo manda già nel campo `referees` della chiamata che
+facciamo per il calendario — nessuna chiave nuova.
+
+**Cosa si perde, scritto qui perché non lo si scopra da un buco:** la panchina,
+le medie cartellini dell'arbitro e i mercati estesi. Questi ultimi solo in
+apparenza: `odds.yml` è la fonte principale delle quote e non è mai passata di
+lì.
+
+**Il campo `sofascore` non si riempie più**, ma i file già scritti non si
+migrano. Quei dati li ha letti Sofascore davvero e contengono cose che le fonti
+nuove non pubblicano: riscriverli sotto un'altra insegna sarebbe l'unico modo
+di perderli. Il nuovo va in `contorno`, con la fonte dichiarata dentro ogni
+sezione, e il frontend legge le due epoche da `lib/contorno.ts`.
+
+`job-sofascore.yml` resta senza cron, per chi vuole il contorno ricco a mano
+sul runner di casa.
