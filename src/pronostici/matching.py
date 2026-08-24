@@ -261,3 +261,58 @@ def pair_events(
         if i not in taken_events
     ]
     return pairs, unmatched
+
+
+# ------------------------------------------------------------------ #
+# Contenimento: per le fonti che scrivono i nomi PIU' CORTI dei nostri #
+# ------------------------------------------------------------------ #
+
+# Quanto due parole devono somigliarsi per contare come la stessa. Alta
+# apposta: sotto, "united" e "unidos" passerebbero.
+RATIO_PAROLA = 0.85
+
+# Sotto le tre lettere un prefisso non dice niente: "in" sta in "inter" e in
+# "internacional", che sono due club di due continenti diversi.
+PREFISSO_MINIMO_PAROLA = 3
+
+
+def _parola_simile(nostra: str, loro: str) -> bool:
+    if nostra == loro:
+        return True
+    corta, lunga = sorted((nostra, loro), key=len)
+    if len(corta) >= PREFISSO_MINIMO_PAROLA and lunga.startswith(corta):
+        return True
+    return SequenceMatcher(None, nostra, loro).ratio() >= RATIO_PAROLA
+
+
+def contenimento(nostro: str, loro: str) -> float:
+    """Quanta parte del LORO nome si ritrova nel nostro. Asimmetrica apposta.
+
+    `similarity` qui sopra confronta due nomi alla pari, ed e' giusto quando le
+    due fonti scrivono con lo stesso registro. Non e' il caso dei siti di quote
+    e formazioni: noi prendiamo il nome ufficiale da football-data.org
+    ("Borussia Dortmund", "Olympique Lyonnais", "Stade Brestois 29"), loro
+    scrivono come si dice allo stadio ("Dortmund", "Lyon", "Brest").
+
+    Con una somiglianza simmetrica le parole che loro non scrivono contano come
+    differenze, e l'abbinamento GIUSTO scende sotto soglia. Misurato su
+    sportsgambler il 24 agosto 2026: 49 partite agganciate su 174, e i
+    candidati scartati erano quasi tutti quelli buoni. Con il contenimento,
+    72 su 77 nella finestra utile.
+
+    Qui si chiede solo che ogni parola del loro nome si ritrovi nel nostro.
+    "Dortmund" dentro "Borussia Dortmund" vale 1; "Man City" contro
+    "Manchester United" vale 0,5, perche' "city" non c'e' da nessuna parte —
+    ed e' quello che tiene separati i due club della stessa citta'.
+
+    Il vero argine ai falsi positivi non e' comunque questa soglia: e' che chi
+    la usa pretende la conferma su ENTRAMBE le squadre.
+    """
+    nostre = nostro.split()
+    loro_parole = loro.split()
+    if not nostre or not loro_parole:
+        return 0.0
+    if nostro == loro:
+        return 1.0
+    trovate = sum(1 for w in loro_parole if any(_parola_simile(n, w) for n in nostre))
+    return trovate / len(loro_parole)

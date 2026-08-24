@@ -1,4 +1,4 @@
-name: job · formazioni
+name: job · contorno
 
 # FORMAZIONI PREVISTE E ARBITRO, SU GITHUB.
 #
@@ -69,9 +69,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  formazioni:
+  contorno:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # TRENTA MINUTI, non venti. Il job adesso legge anche i mercati estesi da
+    # betexplorer — cinque richieste per partita, a tre secondi l'una perche'
+    # risponde 429 se si corre — e i tassi dei giocatori da fotmob. Misurato: 
+    # tre minuti su una finestra di due giorni, e la finestra vera e' sette.
+    timeout-minutes: 30
     steps:
       # LA PUNTA DEL RAMO, NON IL COMMIT CHE HA INNESCATO LA RUN.
       #
@@ -85,7 +89,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -e .
 
-      - name: Formazioni previste e arbitro
+      - name: Formazioni, arbitro, mercati e giocatori
         # `shell: bash` e non il default: con il python in pipe a `tee` il
         # codice di uscita che conta e' quello di `tee`, sempre zero. Senza
         # questa riga il job resta verde qualunque cosa dica.
@@ -95,18 +99,18 @@ jobs:
         run: |
           ARGS="--window-days ${{ inputs.window_days || '7' }}"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
-          python -m pronostici.jobs.formazioni $ARGS | tee "$RUNNER_TEMP/formazioni.json"
+          python -m pronostici.jobs.contorno $ARGS | tee "$RUNNER_TEMP/contorno.json"
 
       - name: Riepilogo
         if: always()
         shell: bash
         run: |
-          [ -s "$RUNNER_TEMP/formazioni.json" ] || exit 0
+          [ -s "$RUNNER_TEMP/contorno.json" ] || exit 0
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
-          tail -c 4000 "$RUNNER_TEMP/formazioni.json" >> "$GITHUB_STEP_SUMMARY"
+          tail -c 4000 "$RUNNER_TEMP/contorno.json" >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - uses: ./.github/actions/commit-data
         with:
-          message: "dati: formazioni previste e arbitro"
+          message: "dati: contorno delle partite"
           paths: data/fixtures

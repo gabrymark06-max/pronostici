@@ -170,6 +170,12 @@ export interface EsitoEsteso {
 }
 
 export interface MercatoEsteso {
+  /** Chi pubblica queste quote. `betexplorer` da agosto 2026. */
+  fonte?: string;
+  /** Su quanti operatori e' calcolata la mediana. Meno di tre e il mercato
+   *  non viene pubblicato affatto: una mediana su due prezzi non e' una
+   *  mediana. */
+  n_bookmaker?: number;
   mercato: string;
   /**
    * LA LINEA, quando il mercato ne ha una: `"2.5"` per i gol totali, `"9.5"`
@@ -195,15 +201,21 @@ export interface StimaGiocatore {
 }
 
 export interface GiocatoreStimato {
-  id: number;
+  /** Manca quando la fonte non pubblica un identificativo. */
+  id?: number | null;
   nome: string;
   ruolo?: string | null;
   presenze?: number | null;
+  /** I minuti giocati in stagione: e' il denominatore vero dei tassi per 90,
+   *  e distingue un titolare da chi e' entrato dieci volte per dieci minuti. */
+  minuti?: number | null;
   torneo?: string | null;
   stime: StimaGiocatore[];
 }
 
 export interface StimeGiocatori {
+  /** Chi ha fornito i tassi. `fotmob` da agosto 2026, `sofascore` prima. */
+  fonte?: string;
   /** Sempre `false` oggi. Esiste perche' il giorno in cui diventasse `true`
    *  la pagina cambi da sola invece di restare a mentire. */
   misurato: boolean;

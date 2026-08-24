@@ -6,7 +6,7 @@ solo quando manca. Queste due no: sbagliano producendo un risultato plausibile.
 
 from __future__ import annotations
 
-from pronostici.jobs import formazioni as job
+from pronostici.jobs import contorno as job
 from pronostici.sources import sportsgambler as sg
 
 

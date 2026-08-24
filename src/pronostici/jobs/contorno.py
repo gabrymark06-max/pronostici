@@ -1,4 +1,4 @@
-"""Job — `formazioni`: attacca formazioni previste e arbitro, senza browser.
+"""Job — `contorno`: formazioni, arbitro, mercati estesi e stime sui singoli.
 
 PERCHE' SOSTITUISCE `jobs.sofascore`. Dal 23 agosto 2026 Sofascore autorizza la
 sua API con un token che nasce solo dentro un browser vero e solo per IP
@@ -7,28 +7,37 @@ il job era finito su un runner in casa: il progetto era tornato a dipendere da
 un computer acceso, che e' esattamente la dipendenza da cui era uscito in
 agosto.
 
-Qui non c'e' nessun lucchetto da aggirare. Due fonti, entrambe raggiungibili da
-qualunque macchina:
+Qui non c'e' nessun lucchetto da aggirare. Quattro fonti, tutte raggiungibili
+da qualunque macchina e tutte provate DAI RUNNER DI GITHUB, non da un
+portatile:
 
     formazioni previste   sportsgambler.com, HTML pubblico, nessuna chiave
     arbitro               football-data.org, la chiave che gia' abbiamo
+    mercati estesi        betexplorer.com, con i bookmaker italiani
+    tassi dei giocatori   fotmob, un file JSON per statistica
 
 COSA CAMBIA IN MEGLIO. Le previsioni arrivano fino a due settimane prima invece
 delle 56 ore di mediana di Sofascore, quindi la finestra predefinita e' piu'
 larga.
 
-COSA SI PERDE, e va detto invece che scoperto: la panchina, le statistiche
-dell'arbitro (medie cartellini) e le quote estese. Il nome dell'arbitro resta,
-le sue medie no. Le quote non mancano davvero — arrivano gia' da `jobs.quote`,
-che e' la fonte principale e non e' mai passata di qui.
+COSA SI PERDE, e va detto invece che scoperto:
+
+  · LA PANCHINA. Sportsgambler pubblica gli undici e basta.
+  · LE MEDIE CARTELLINI DELL'ARBITRO. Il nome arriva, le sue statistiche no,
+    e senza quelle `moltiplicatore_arbitro` vale 1: le stime sui cartellini
+    non sono piu' corrette per chi dirige. E' un'informazione in meno, non un
+    numero sbagliato — ma il campo resta nel blocco, a 1, perche' si veda.
+  · IL PRIMO TEMPO. Betexplorer non lo espone fra i mercati che leggiamo.
 
 NON SCRIVE MAI SU UNA PARTITA GIA' COMINCIATA: dopo il fischio d'inizio queste
 non sono piu' informazioni pre-partita.
 
 DOVE SCRIVE. Nel campo `contorno`, non in `sofascore`. Il vecchio campo resta
 dov'e' sui file gia' scritti — sono dati veri, letti davvero da Sofascore — ma
-non si riempie piu': mettere dati di sportsgambler in un campo chiamato
-`sofascore` sarebbe una bugia che nessun controllo puo' pescare.
+non si riempie piu': mettere dati di altre fonti in un campo chiamato
+`sofascore` sarebbe una bugia che nessun controllo puo' pescare. Per la stessa
+ragione ogni sezione porta la sua `fonte`: le quattro vengono da quattro posti
+diversi, e la pagina deve poterlo dire.
 """
 
 from __future__ import annotations
@@ -42,6 +51,9 @@ from collections import defaultdict
 from datetime import UTC, datetime, timedelta
 
 from .. import fixtures as fx
+from ..model.giocatori import moltiplicatore_arbitro, stime_giocatore
+from ..sources import betexplorer as bx
+from ..sources import fotmob as fm
 from ..sources import sportsgambler as sg
 from ..sources.football_data import FootballDataClient, FootballDataError
 
@@ -63,6 +75,17 @@ PAUSA_S = 0.7
 # vero: una finestra corta in pausa nazionali non ha niente da leggere.
 # Sopra, non puo'.
 SOGLIA_ALLARME = 10
+
+# I MERCATI SI CHIEDONO SOLO PER LE PARTITE VICINE, e non per avarizia: sono
+# cinque richieste per partita a tre secondi l'una, e betexplorer risponde 429
+# se si corre. Su sette giorni sarebbero venti minuti buoni di sole quote, per
+# partite su cui i bookmaker spesso non hanno ancora aperto i mercati minori.
+FINESTRA_MERCATI = 3
+
+# Quanti minuti si attribuiscono a un titolare. Non 90: chi comincia esce, e
+# il termine dei minuti attesi domina tutte le stime. Lo stesso numero che
+# usava il job di prima.
+MINUTI_TITOLARE = 76
 
 
 def _giorni(finestra: int, oggi: str) -> list[str]:
@@ -124,6 +147,155 @@ def _arbitri(competizioni: set[str], da: str, a: str, report: dict) -> dict[int,
                     }
                     break
     return trovati
+
+
+def _cartelloni_mercati(report: dict) -> dict[str, list[bx.PartitaBX]]:
+    """L'elenco di betexplorer per ogni competizione, tenuto separato per lega.
+
+    Separato e non unito come quello di sportsgambler: li' l'aggancio usa
+    anche la data e un elenco unico va bene, qui si abbina sui soli nomi e
+    l'elenco copre l'intera stagione. Mescolare nove campionati vorrebbe dire
+    cercare "Bologna - Lazio" fra millecinquecento righe di paesi diversi.
+    """
+    per_lega: dict[str, list[bx.PartitaBX]] = {}
+    for codice in bx.LEGHE:
+        try:
+            per_lega[codice] = bx.elenco(codice)
+        except bx.BetexplorerNonRaggiungibile as exc:
+            log.warning("elenco mercati %s non letto: %s", codice, exc)
+            report["mercati_non_letti"].append(codice)
+    return per_lega
+
+
+# I mercati estesi verso le NOSTRE chiavi. La tabella e' la stessa che il
+# progetto usa per le quote principali, cosi' i due insiemi si possono
+# confrontare invece di vivere in universi separati.
+_CHIAVI: dict[str, dict[str, str]] = {
+    "Esito finale": {"1": "1x2_home", "X": "1x2_draw", "2": "1x2_away"},
+    "Doppia chance": {"1X": "dc_1x", "12": "dc_12", "X2": "dc_x2"},
+    "Entrambe segnano": {"Sì": "btts_yes", "No": "btts_no"},
+}
+
+
+def _market_p(mercati: list[dict]) -> dict[str, float]:
+    """Le probabilita' sgonfiate, nelle nostre chiavi.
+
+    Riempie la colonna «il mercato» sulle partite che la fonte principale non
+    copre. Sta in un campo suo e non dentro `odds` apposta: le due fonti non
+    si mescolano nello stesso posto, cosi' la pagina puo' sempre dire da dove
+    viene il numero che mostra.
+    """
+    fuori: dict[str, float] = {}
+    for mercato in mercati:
+        nome = mercato.get("mercato")
+        for esito in mercato.get("esiti") or []:
+            p = esito.get("probabilita_implicita")
+            if p is None:
+                continue
+            if nome == "Gol totali" and mercato.get("linea"):
+                verso = "over" if esito["esito"] == "Over" else "under"
+                fuori[f"{verso}_{mercato['linea']}"] = p
+            else:
+                chiave = _CHIAVI.get(nome or "", {}).get(esito.get("esito", ""))
+                if chiave:
+                    fuori[chiave] = p
+    return fuori
+
+
+def _tassi_per_lega(competizioni: set[str], report: dict) -> dict[str, dict]:
+    """I tassi per 90 dei giocatori, una lega per volta.
+
+    Cinque file per campionato e nient'altro: fotmob li pubblica gia'
+    aggregati, quindi non serve nessuna cache — il giro intero costa meno di
+    un minuto, contro le circa milleduecento chiamate per giocatore che
+    costava la stessa cosa su Sofascore.
+    """
+    fuori: dict[str, dict] = {}
+    for codice in sorted(competizioni & set(fm.LEGHE)):
+        try:
+            tassi = fm.tassi_lega(codice)
+        except fm.FotmobNonRaggiungibile as exc:
+            log.warning("tassi %s non letti: %s", codice, exc)
+            report["tassi_non_letti"].append(codice)
+            continue
+        if tassi:
+            fuori[codice] = tassi
+        else:
+            # A stagione appena cominciata nessuno ha ancora i minuti minimi.
+            # Non e' un guasto, ed e' meglio dirlo che lasciare un buco muto.
+            report["leghe_senza_tassi"].append(codice)
+    return fuori
+
+
+def _stime_lato(titolari: list[dict], tassi: dict, molt: float) -> list[dict]:
+    """Le stime per gli undici di una squadra.
+
+    SOLO I TITOLARI, come prima: per un subentrato i minuti attesi sarebbero
+    inventati, e i minuti attesi sono il termine che domina ogni stima.
+    """
+    elenco: list[dict] = []
+    for giocatore in titolari:
+        trovato = fm.cerca(tassi, giocatore.get("nome", ""))
+        if trovato is None:
+            continue
+        stime = stime_giocatore(
+            trovato.per_il_modello(),
+            minuti_attesi=MINUTI_TITOLARE,
+            molt_cartellini=molt,
+        )
+        if not stime:
+            continue
+        elenco.append(
+            {
+                "id": trovato.id_fotmob,
+                "nome": trovato.nome,
+                "ruolo": trovato.ruolo,
+                "presenze": trovato.presenze,
+                "minuti": trovato.minuti,
+                "stime": [
+                    {
+                        "mercato": s.mercato,
+                        "etichetta": s.etichetta,
+                        "p": s.p,
+                        "base": s.base,
+                    }
+                    for s in stime
+                ],
+            }
+        )
+    return elenco
+
+
+def _giocatori(
+    formazione: sg.Formazione, tassi: dict, arbitro: dict | None
+) -> dict | None:
+    """Le stime sui singoli, o `None` se non c'e' nessuno da stimare."""
+    # SENZA LE MEDIE DELL'ARBITRO IL MOLTIPLICATORE VALE 1, e si vede.
+    #
+    # Sofascore mandava quanti gialli estrae un arbitro a partita, e le stime
+    # sui cartellini venivano corrette di conseguenza. football-data.org manda
+    # il nome e basta. Il campo resta nel blocco, a 1: toglierlo farebbe
+    # sparire l'informazione che quella correzione non c'e' piu'.
+    arb = arbitro or {}
+    molt = moltiplicatore_arbitro(arb.get("gialli_per_partita"), arb.get("partite"))
+
+    casa = _stime_lato(formazione.casa.titolari, tassi, molt)
+    ospiti = _stime_lato(formazione.ospiti.titolari, tassi, molt)
+    if not casa and not ospiti:
+        return None
+
+    return {
+        "fonte": "fotmob",
+        "misurato": False,
+        "nota": (
+            "Stime non misurate: non esiste una quota di mercato su questi "
+            "esiti ne' uno storico per verificarle. Non entrano nel registro."
+        ),
+        "moltiplicatore_arbitro": round(molt, 3),
+        "minuti_attesi_titolare": MINUTI_TITOLARE,
+        "casa": casa,
+        "ospiti": ospiti,
+    }
 
 
 def _lato(lato: sg.Lato) -> dict:
@@ -212,9 +384,14 @@ def run(
         "agganciate": 0,
         "con_formazioni": 0,
         "con_arbitro": 0,
+        "con_mercati": 0,
+        "con_giocatori": 0,
         "non_agganciate": [],
         "leghe_non_lette": [],
         "arbitri_non_letti": [],
+        "mercati_non_letti": [],
+        "tassi_non_letti": [],
+        "leghe_senza_tassi": [],
         "days_written": [],
         "dry_run": dry_run,
     }
@@ -248,6 +425,15 @@ def run(
 
     arbitri = _arbitri(competizioni & set(sg.LEGHE), giorni[0], giorni[-1], report)
     report["arbitri_disponibili"] = len(arbitri)
+
+    mercati_lega = _cartelloni_mercati(report)
+    tassi_lega = _tassi_per_lega(competizioni, report)
+    report["leghe_con_tassi"] = sorted(tassi_lega)
+
+    # OLTRE QUESTO ISTANTE non si chiedono piu' mercati: sono cinque richieste
+    # lente per partita, e su una finestra di sette giorni supererebbero da
+    # sole il tempo massimo del job.
+    limite_mercati = adesso + timedelta(days=FINESTRA_MERCATI)
 
     per_giorno: dict[str, list[dict]] = defaultdict(list)
     frammenti: dict[int, sg.Formazione | None] = {}
@@ -299,6 +485,35 @@ def run(
         if arbitro:
             report["con_arbitro"] += 1
 
+        codice = entry.get("competition", "")
+
+        # ------------------------------------------------ i mercati estesi
+        if calcio <= limite_mercati:
+            loro_bx = bx.aggancia(
+                mercati_lega.get(codice, []),
+                entry["home"]["name"],
+                entry["away"]["name"],
+            )
+            if loro_bx is not None:
+                try:
+                    quote = bx.mercati(loro_bx, codice)
+                except bx.BetexplorerNonRaggiungibile as exc:
+                    log.warning("mercati di %s non letti: %s", entry["match_id"], exc)
+                    quote = []
+                if quote:
+                    report["con_mercati"] += 1
+                    blocco["quote"] = {"n_mercati": len(quote), "mercati": quote}
+                    probabilita = _market_p(quote)
+                    if probabilita:
+                        blocco["market_p"] = probabilita
+
+        # ------------------------------------------- le stime sui singoli
+        if formazione is not None and codice in tassi_lega:
+            stime = _giocatori(formazione, tassi_lega[codice], arbitro)
+            if stime:
+                report["con_giocatori"] += 1
+                blocco["giocatori"] = stime
+
         if _senza_ora(blocco) == _senza_ora(entry.get("contorno") or {}):
             continue
         per_giorno[giorno].append({**entry, "contorno": blocco})
@@ -332,7 +547,7 @@ def run(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Formazioni previste (sportsgambler) e arbitro (football-data)"
+        description="Il contorno delle partite: formazioni, arbitro, mercati, giocatori"
     )
     parser.add_argument("--window-days", type=int, default=FINESTRA_DEFAULT)
     parser.add_argument("--dry-run", action="store_true")
