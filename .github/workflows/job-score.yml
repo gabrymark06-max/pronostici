@@ -38,10 +38,10 @@ jobs:
       # e il commento di `daily.yml` — «ognuno legge cio' che il precedente ha
       # scritto» — sarebbe falso. Con due job che toccano lo stesso file il
       # rebase finale non ha nemmeno una base comune sensata e fallisce.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ github.ref_name }}
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
