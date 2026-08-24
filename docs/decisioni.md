@@ -113,9 +113,10 @@ Conseguenze vincolanti per il build:
 - [x] Scope v1 e architettura — [brief.md](brief.md) §10 e §11
 - [x] Design system e direzione visiva — `design-system/`
 - [x] Build — motore, sito e registro pubblico in esercizio
-- [ ] **Pubblicare il sito.** `frontend.yml` costruisce e controlla, ma non
-      pubblica: nessun passo di deploy, nessun collegamento a un hosting. Il
-      registro pubblico esiste e non e' raggiungibile da nessuno.
+- [x] **Pubblicare il sito** — <https://gabrymark06-max.github.io/pronostici/>,
+      su GitHub Pages. Non sostituisce Vercel (§11.2 del brief): il job Pages si
+      fa da parte da solo nel momento in cui `VERCEL_TOKEN` esiste. Nel
+      frattempo il registro e' raggiungibile, che era il punto.
 - [ ] **Sciogliere la contraddizione sui profili** (vedi qui sotto).
 
 

@@ -1,5 +1,7 @@
 # CENTRO
 
+**<https://gabrymark06-max.github.io/pronostici/>**
+
 Pronostici calcistici gratuiti sui principali campionati europei. Per ogni partita **un solo pronostico consigliato**, scelto con un criterio dichiarato, spiegato, e accompagnato da quanto spesso pronostici simili si sono avverati.
 
 Quando il modello non ha niente di non ovvio da dire, **lo dice**.
