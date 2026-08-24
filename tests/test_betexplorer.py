@@ -155,3 +155,40 @@ class TestAggancio:
     def test_i_due_club_della_stessa_citta_restano_separati(self) -> None:
         elenco = [self._p("Man City", "Arsenal")]
         assert bx.aggancia(elenco, "Manchester United FC", "Arsenal FC") is None
+
+
+class TestPassoAdattivo:
+    """Il passo si regola da se', invece di essere indovinato una volta.
+
+    La soglia di betexplorer non e' un numero fisso che si possa scoprire e
+    cablare: misurato dai runner di GitHub, a tre secondi un 429 su quaranta
+    richieste, a due secondi quattordici su centocinquantacinque. Quello buono
+    cambia durante il giro stesso.
+    """
+
+    def setup_method(self) -> None:
+        bx.azzera_passo()
+
+    def teardown_method(self) -> None:
+        bx.azzera_passo()
+
+    def test_si_parte_dal_lato_veloce(self) -> None:
+        """Correre troppo costa un rinvio ogni errore; andare piano costa su
+        tutte le richieste. I due errori non pesano uguale."""
+        assert bx.passo() == bx.PAUSA_INIZIALE_S
+
+    def test_un_429_rallenta(self) -> None:
+        bx._rallenta()
+        assert bx.passo() == bx.PAUSA_INIZIALE_S + bx.INCREMENTO_S
+
+    def test_non_si_torna_mai_indietro(self) -> None:
+        """Un giro che ha appena preso un 429 non ha motivo di credere che il
+        prossimo andra' meglio."""
+        bx._rallenta()
+        dopo = bx.passo()
+        assert bx.passo() == dopo
+
+    def test_c_e_un_tetto(self) -> None:
+        for _ in range(50):
+            bx._rallenta()
+        assert bx.passo() == bx.PAUSA_MASSIMA_S

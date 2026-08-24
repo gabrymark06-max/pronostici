@@ -93,16 +93,47 @@ MERCATI: dict[str, tuple[str, tuple[str, ...], int]] = {
     "ha": ("Draw no bet", ("1", "2"), 1),
 }
 
-# Betexplorer risponde 429 se si corre. Due secondi, misurati: con tre, un giro
-# intero da GitHub ne ha preso UNO solo su circa quaranta richieste, e quello
-# e' passato al primo rinvio. Il margine c'era, e serviva: a tre secondi la
-# finestra dei mercati non arrivava alle giornate piene.
+# IL PASSO SI REGOLA DA SE', invece di indovinarlo una volta per sempre.
 #
-# Le attese dopo un 429 restano lunghe apposta. Un 429 non e' «niente qui», e'
-# «non adesso»: contarlo come una partita senza quote riempirebbe il sito di
-# schede spoglie senza che niente diventi rosso.
-PAUSA_S = 2.0
+# Betexplorer risponde 429 se si corre, ma la soglia non e' un numero fisso che
+# si possa scoprire e cablare: dipende dall'ora, dal carico, e da quante
+# richieste ha gia' visto da quell'indirizzo. Misurato dai runner di GitHub il
+# 24 agosto 2026: a tre secondi, un 429 su quaranta richieste; a due secondi,
+# quattordici su centocinquantacinque. Nessuno dei due valori e' «giusto» —
+# quello buono cambia durante il giro stesso.
+#
+# Quindi si parte veloci e si rallenta quando lo dice lui, senza tornare piu'
+# indietro: un giro che ha appena preso un 429 non ha nessun motivo di credere
+# che il prossimo andra' meglio. Il costo di sbagliare nei due versi non e' lo
+# stesso — correre troppo paga dieci secondi di rinvio a ogni errore, andare
+# piano paga un secondo per richiesta su tutte — ed e' per questo che si
+# comincia dal lato veloce.
+PAUSA_INIZIALE_S = 2.0
+PAUSA_MASSIMA_S = 6.0
+INCREMENTO_S = 1.0
+_pausa = PAUSA_INIZIALE_S
+
+# Un 429 non e' «niente qui», e' «non adesso»: contarlo come una partita senza
+# quote riempirebbe il sito di schede spoglie senza che niente diventi rosso.
 ATTESE_429_S = (10, 30)
+
+
+def azzera_passo() -> None:
+    """Riporta il passo al valore iniziale. Serve ai test, e a un giro nuovo."""
+    global _pausa
+    _pausa = PAUSA_INIZIALE_S
+
+
+def passo() -> float:
+    """Quanto si aspetta adesso fra due richieste."""
+    return _pausa
+
+
+def _rallenta() -> float:
+    global _pausa
+    _pausa = min(PAUSA_MASSIMA_S, _pausa + INCREMENTO_S)
+    return _pausa
+
 
 # Sotto questo numero di bookmaker la mediana non e' una mediana. La stessa
 # soglia che il progetto usa per le quote principali sarebbe troppo alta qui:
@@ -155,14 +186,20 @@ def _scarica(percorso: str, referer: str = "") -> str:
                 urllib.request.Request(url, headers=testate), timeout=30
             ) as risposta:
                 corpo = risposta.read().decode("utf-8", "replace")
-            time.sleep(PAUSA_S)
+            time.sleep(_pausa)
             return corpo
         except urllib.error.HTTPError as e:
             # UN 429 NON E' «NIENTE QUI»: e' «non adesso». Contarlo come una
             # partita senza mercati riempirebbe il sito di schede spoglie
             # senza che niente diventi rosso.
             if e.code == 429 and attesa is not None:
-                log.warning("429 su %s: aspetto %ds", percorso, attesa)
+                nuovo_passo = _rallenta()
+                log.warning(
+                    "429 su %s: aspetto %ds e passo a %.0fs fra le richieste",
+                    percorso,
+                    attesa,
+                    nuovo_passo,
+                )
                 time.sleep(attesa)
                 continue
             raise BetexplorerNonRaggiungibile(f"{percorso}: {e}") from e
