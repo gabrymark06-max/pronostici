@@ -209,6 +209,51 @@ jobs:
           echo "$INDIRIZZO" >> "$GITHUB_STEP_SUMMARY"
           echo "Pubblicato su $INDIRIZZO"
 
+      # `SITO` E' DAVVERO QUESTO SITO?
+      #
+      # Il controllo di prima verificava che la variabile fosse piena, non che
+      # fosse giusta — e non basta. Il 24 agosto 2026 `SITO` valeva
+      # `https://pronostici.vercel.app`, dedotto dal nome del progetto: quel
+      # sottodominio era pero' gia' di qualcun altro, e Vercel aveva assegnato
+      # `pronostici-sigma.vercel.app`. Il deploy usci' verde e il sitemap
+      # dichiaro' 351 URL sul dominio di un concorrente.
+      #
+      # Niente nei log lo mostrava. L'unico modo di accorgersene e' andare a
+      # vedere che cosa risponde davvero quell'indirizzo, ed e' quello che fa
+      # questo passo: confronta la home servita da `SITO` con quella appena
+      # costruita qui. Se non e' la stessa, o e' l'indirizzo di un altro, o
+      # l'alias non e' ancora propagato.
+      - if: steps.hosting.outputs.collegato == 'si'
+        name: L'indirizzo pubblico serve questo sito?
+        shell: bash
+        env:
+          SITO: ${{ vars.SITO }}
+        run: |
+          NOSTRA=$(sha256sum out/index.html | cut -d' ' -f1)
+          for tentativo in 1 2 3 4 5; do
+            SERVITA=$(curl -sSL --max-time 30 "$SITO/" | sha256sum | cut -d' ' -f1)
+            if [ "$SERVITA" = "$NOSTRA" ]; then
+              echo "$SITO serve questo sito."
+              exit 0
+            fi
+            echo "tentativo $tentativo: non corrisponde ancora, aspetto."
+            sleep 10
+          done
+          {
+            echo "### \`SITO\` non serve questo sito"
+            echo
+            echo "\`$SITO\` risponde, ma con una home diversa da quella appena"
+            echo "costruita. Di solito significa che quel sottodominio e' di"
+            echo "qualcun altro e Vercel ha assegnato al progetto un indirizzo"
+            echo "diverso. Quello vero e' l'\`Aliased\` del passo precedente:"
+            echo
+            echo '```'
+            echo 'gh variable set SITO --body "https://<alias-vero>"'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error::$SITO non serve questo sito: sitemap e robots.txt uscirebbero sbagliati"
+          exit 1
+
   pagine:
     needs: build
     # Solo quando NON c'e' un hosting collegato: se un giorno arrivano i

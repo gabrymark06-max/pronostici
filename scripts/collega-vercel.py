@@ -61,6 +61,32 @@ def chiama(
         raise SystemExit(f"Vercel ha risposto {e.code}: {messaggio}") from None
 
 
+def indirizzo_pubblico(progetto: dict, token: str) -> str:
+    """L'indirizzo vero del sito, CHIESTO A VERCEL e mai dedotto dal nome.
+
+    Qui c'e' stato un errore che vale la pena lasciare scritto. Questo script
+    componeva `https://{nome}.vercel.app` dando per scontato che il nome del
+    progetto diventasse il sottodominio. Non e' cosi': `pronostici.vercel.app`
+    era gia' di qualcun altro — un sito di pronostici, per giunta — e Vercel
+    aveva assegnato `pronostici-sigma.vercel.app` senza dirlo a nessuno.
+
+    Il deploy passava verde: e' il sitemap che usciva sbagliato, 351 URL che
+    dichiaravano ai motori di ricerca il sito di un concorrente come indirizzo
+    canonico. Un guasto che non si vede da nessun log — solo aprendo l'indirizzo
+    e accorgendosi che il titolo e' di un altro prodotto.
+
+    Su un progetto appena creato non c'e' ancora nessun alias: si scopre solo
+    dopo la prima pubblicazione. In quel caso si dice, e si rilancia dopo.
+    """
+    alias = ((progetto.get("targets") or {}).get("production") or {}).get("alias") or []
+    if not alias:
+        return ""
+    # Vercel ne elenca diversi (`nome-hash-utente`, `nome-parola`, gli eventuali
+    # domini propri). Quello stabile e' il piu' corto: gli altri contengono
+    # l'identificativo del singolo deploy e cambiano a ogni pubblicazione.
+    return "https://" + min(alias, key=len)
+
+
 def gh(*argomenti: str) -> None:
     esito = subprocess.run(["gh", *argomenti], capture_output=True, text=True)
     if esito.returncode != 0:
@@ -101,22 +127,36 @@ def main() -> int:
         print(f"Progetto creato: {progetto['name']}")
 
     org = progetto.get("accountId") or utente["id"]
-    sito = f"https://{NOME_PROGETTO}.vercel.app"
+    sito = indirizzo_pubblico(progetto, token)
 
     gh("secret", "set", "VERCEL_TOKEN", "--body", token)
     gh("secret", "set", "VERCEL_ORG_ID", "--body", org)
     gh("secret", "set", "VERCEL_PROJECT_ID", "--body", progetto["id"])
-    gh("variable", "set", "SITO", "--body", sito)
 
     print()
     print("Segreti scritti nel repository:")
     print(f"  VERCEL_ORG_ID       {org}")
     print(f"  VERCEL_PROJECT_ID   {progetto['id']}")
     print("  VERCEL_TOKEN        (nascosto)")
-    print(f"  SITO                {sito}")
+
+    if sito:
+        gh("variable", "set", "SITO", "--body", sito)
+        print(f"  SITO                {sito}")
+        print()
+        print("Ora lancia la pubblicazione:")
+        print("  gh workflow run frontend.yml")
+        return 0
+
+    print("  SITO                ancora ignoto")
     print()
-    print("Ora lancia la pubblicazione:")
-    print("  gh workflow run frontend.yml")
+    print("Il progetto non ha ancora pubblicato niente, quindi Vercel non gli ha")
+    print("assegnato nessun indirizzo: si scopre solo dopo il primo deploy, e")
+    print("indovinarlo dal nome e' esattamente l'errore che ha gia' pubblicato un")
+    print("sitemap verso il sito di un altro. Due comandi, in ordine:")
+    print()
+    print("  gh workflow run frontend.yml     # fallira' rosso: SITO manca ancora")
+    print("  py scripts/collega-vercel.py     # ora l'indirizzo c'e', lo scrive")
+    print("  gh workflow run frontend.yml     # questa pubblica davvero")
     return 0
 
 
