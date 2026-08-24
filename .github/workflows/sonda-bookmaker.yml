@@ -1,0 +1,31 @@
+name: sonda · bookmaker
+
+# TEMPORANEO. Una domanda sola: da un runner americano betexplorer mostra tre
+# bookmaker invece degli undici che si vedono da un IP italiano, e le linee dei
+# gol totali cadono tutte sotto la soglia della mediana. Si puo' chiedere la
+# lista italiana, o dipende solo dall'indirizzo?
+
+on:
+  workflow_dispatch:
+    inputs:
+      evento:
+        description: hash della partita su betexplorer
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - shell: bash
+        env:
+          EVENTO: ${{ inputs.evento }}
+        run: python scripts/sonda-bookmaker.py "$EVENTO" | tee -a "$GITHUB_STEP_SUMMARY"
