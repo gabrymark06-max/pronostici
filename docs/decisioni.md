@@ -107,9 +107,55 @@ Conseguenze vincolanti per il build:
 
 ## Da fare
 
-- [ ] L'utente registra una API key gratuita su the-odds-api.com
+- [x] L'utente registra una API key gratuita su the-odds-api.com
 - [x] Metodo di selezione del pronostico consigliato (ricerca)
-- [ ] Teardown competitor
-- [ ] Scope v1 e architettura
-- [ ] Design system e direzione visiva
-- [ ] Build
+- [x] Teardown competitor — [competitors.md](competitors.md)
+- [x] Scope v1 e architettura — [brief.md](brief.md) §10 e §11
+- [x] Design system e direzione visiva — `design-system/`
+- [x] Build — motore, sito e registro pubblico in esercizio
+- [ ] **Pubblicare il sito.** `frontend.yml` costruisce e controlla, ma non
+      pubblica: nessun passo di deploy, nessun collegamento a un hosting. Il
+      registro pubblico esiste e non e' raggiungibile da nessuno.
+- [ ] **Sciogliere la contraddizione sui profili** (vedi qui sotto).
+
+
+---
+
+## Aperta: i profili contraddicono il brief
+
+**Stato: da decidere.** Registrata il 2026-08-24.
+
+Il brief, §10, mette nella lista **Mai**:
+
+> - Login, account, profilazione.
+> - Piano a pagamento.
+
+E §11.1 rifiuta lo stack con server proprio con questa motivazione: *«non c'e'
+niente da servire dinamicamente. Nessuna scrittura utente, nessuna
+autenticazione, nessuna personalizzazione.»*
+
+Ma `backend/centro_profili` esiste ed e' finito: registrazione, accesso,
+sessioni, verifica dell'indirizzo, recupero della password, 62 prove. E il sito
+ha sei pagine che gli parlano.
+
+**Non c'e' nessuna decisione scritta che ribalti quel «Mai».** Questo file, che
+e' il registro delle scelte, non nomina «account» da nessun'altra parte.
+
+Perche' conta piu' di una svista di documentazione: il prodotto chiede fiducia
+mostrando il proprio registro. Un progetto che tiene un registro delle decisioni
+e poi ne prende una grossa fuori dal registro si contraddice nel punto esatto in
+cui la fiducia si gioca.
+
+Le due uscite sono simmetriche, e vanno prese consapevolmente:
+
+- **Si tengono i profili.** Allora qui va scritto perche', cosa cambia del
+  vincolo #2 (zero euro, sempre — un server con Postgres non e' gratis) e cosa
+  significa per la riga «Mai: piano a pagamento», visto che gli account di
+  solito la precedono.
+- **Si tolgono dal percorso di pubblicazione.** Il codice resta dov'e' e non si
+  butta; il sito si pubblica come export statico senza profili, che e' cio' che
+  §11.2 descrive. Si riaccendono il giorno in cui la prima uscita viene scelta
+  e scritta.
+
+Finche' resta aperta, il sito si costruisce con i profili spenti: e' il
+comportamento predefinito, ed e' verificato da `check-profili-spenti.mjs`.
