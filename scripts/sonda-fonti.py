@@ -1,71 +1,89 @@
-"""Sonda: quali fonti di formazioni rispondono, e da dove.
+"""Sonda: la catena sportsgambler regge da un IP di datacenter?
 
-Lo stesso file gira in locale (IP residenziale) e su un runner di GitHub (IP
-Azure). Il confronto fra le due colonne e' l'unica cosa che conta: una fonte
-che funziona qui e non li' e' inutile quanto Sofascore.
+La pagina di campionato risponde 200 dai runner di GitHub — gia' misurato. Ma
+le formazioni non sono li': la pagina le carica dopo, da
+`/lineups/lineups-load2.php?id=`, e un sito puo' benissimo servire l'indice a
+tutti e proteggere il pezzo che conta. Questa sonda percorre la catena intera,
+dalla pagina all'undici titolare, e va lanciata DA GITHUB: il successo da una
+macchina di casa non dimostrerebbe niente, ed e' esattamente l'errore che
+Sofascore ha gia' fatto pagare.
 """
 
 from __future__ import annotations
 
-import json
-import sys
+import re
 import urllib.error
 import urllib.request
 
+BASE = "https://www.sportsgambler.com"
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
 )
-
-CANDIDATI: list[tuple[str, str, tuple[str, ...]]] = [
-    # nome, url, spie da cercare nel corpo
-    ("espn/scoreboard", "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard", ("events",)),
-    ("espn/summary", "", ("rosters", "officials")),  # url riempita dopo
-    ("365scores", "https://webws.365scores.com/web/games/current/?appTypeId=5&langId=1&competitions=11", ("games",)),
-    ("thesportsdb", "https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4332", ("events",)),
-    ("fotmob/matches", "https://www.fotmob.com/api/matches?date=20260825", ("leagues",)),
-    ("besoccer", "https://www.besoccer.com/livescore", ("match", "alineac")),
-    ("sportsgambler/PL", "https://www.sportsgambler.com/lineups/football/england-premier-league/", ("predicted", "formation")),
-    ("sportsgambler/BSA", "https://www.sportsgambler.com/lineups/football/brazil-serie-a/", ("predicted", "formation")),
-    ("sportsgambler", "https://www.sportsgambler.com/lineups/football/", ("lineup", "formation")),
-    ("rotowire", "https://www.rotowire.com/soccer/lineups.php", ("lineup", "is-pct")),
-    ("sofascore (controllo)", "https://api.sofascore.com/api/v1/sport/football/scheduled-events/2026-08-25", ("events",)),
-]
+LEGHE = {
+    "PL": "england-premier-league",
+    "SA": "italy-serie-a",
+    "PD": "spain-la-liga",
+    "BL1": "germany-bundesliga",
+    "FL1": "france-ligue-1",
+    "DED": "netherlands-eredivisie",
+    "PPL": "portugal-primeira-liga",
+    "ELC": "england-championship",
+    "BSA": "brazil-serie-a",
+}
 
 
-def prova(url: str, spie: tuple[str, ...]) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    try:
-        with urllib.request.urlopen(req, timeout=25) as r:
-            corpo = r.read(400_000).decode("utf-8", "replace")
-            trovate = [s for s in spie if s.lower() in corpo.lower()]
-            return f"{r.status} {len(corpo) // 1024}KB spie={len(trovate)}/{len(spie)}"
-    except urllib.error.HTTPError as e:
-        return f"HTTP {e.code}"
-    except Exception as e:  # noqa: BLE001
-        return f"KO {type(e).__name__}"
+def scarica(url: str, referer: str = "") -> str:
+    testate = {"User-Agent": UA, "Accept": "*/*"}
+    if referer:
+        testate["Referer"] = referer
+        testate["X-Requested-With"] = "XMLHttpRequest"
+    req = urllib.request.Request(url, headers=testate)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read().decode("utf-8", "replace")
 
 
 def main() -> int:
-    # L'id di una partita ESPN vera, per provare `summary` che e' quello che
-    # contiene formazioni e arbitro.
-    try:
-        req = urllib.request.Request(CANDIDATI[0][1], headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=25) as r:
-            eventi = json.loads(r.read())["events"]
-        ev = eventi[0]["id"]
-        CANDIDATI[1] = (
-            "espn/summary",
-            f"https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/summary?event={ev}",
-            CANDIDATI[1][2],
-        )
-    except Exception as e:  # noqa: BLE001
-        print(f"(id ESPN non ottenuto: {type(e).__name__})", file=sys.stderr)
-        CANDIDATI[1] = ("espn/summary", CANDIDATI[0][1], CANDIDATI[1][2])
+    rotti = 0
+    for codice, lega in LEGHE.items():
+        pagina = f"{BASE}/lineups/football/{lega}/"
+        try:
+            html = scarica(pagina)
+        except (urllib.error.URLError, OSError) as e:
+            print(f"{codice:4} PAGINA KO — {e}")
+            rotti += 1
+            continue
 
-    for nome, url, spie in CANDIDATI:
-        print(f"{nome:24} {prova(url, spie)}", flush=True)
-    return 0
+        ids = re.findall(r'id="lineup(\d+)"', html)
+        previste = html.count("Predicted Lineup")
+        if not ids:
+            print(f"{codice:4} pagina 200 ma nessuna partita in elenco")
+            rotti += 1
+            continue
+
+        try:
+            pezzo = scarica(f"{BASE}/lineups/lineups-load2.php?id={ids[0]}", pagina)
+        except (urllib.error.URLError, OSError) as e:
+            print(f"{codice:4} FRAMMENTO KO — {e}")
+            rotti += 1
+            continue
+
+        modulo = re.search(r"\b\d-\d-\d(?:-\d)?\b", pezzo)
+        maglie = len(re.findall(r"\b\d{1,2}\b\s*</?[a-z]", pezzo))
+        stato = "ok" if modulo else "SENZA MODULO"
+        if not modulo:
+            rotti += 1
+        mod = modulo.group(0) if modulo else "-"
+        print(
+            f"{codice:4} partite={len(ids):3} previste={previste:3} "
+            f"frammento={len(pezzo) // 1024}KB modulo={mod} "
+            f"numeri={maglie:3} {stato}"
+        )
+
+    print()
+    esito = "tutti i campionati rispondono" if rotti == 0 else f"{rotti} problemi"
+    print("ESITO:", esito)
+    return 1 if rotti else 0
 
 
 if __name__ == "__main__":
