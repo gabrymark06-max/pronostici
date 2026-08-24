@@ -254,7 +254,38 @@ entro 24 ore. Formazioni e arbitro esistono solo prima del fischio d'inizio:
 un giro perso non si recupera.
 
 I segreti stanno nei GitHub Actions Secrets: `FOOTBALL_DATA_API_KEY` e
-`ODDS_API_KEY`. Nient'altro.
+`ODDS_API_KEY`. Nient'altro — quelli dell'hosting sono facoltativi, vedi sotto.
+
+### Pubblicare il sito
+
+Il sito si ripubblica da solo dopo ogni pipeline dati riuscita. Dove finisce
+dipende da cosa è collegato, e non c'è niente da scegliere a mano:
+
+| Segreti presenti | Chi pubblica |
+|---|---|
+| nessuno | GitHub Pages, su `<utente>.github.io/pronostici/` |
+| `VERCEL_*` + `SITO` | Vercel, e Pages si fa da parte da solo |
+
+Per collegare Vercel serve un token da
+[vercel.com/account/tokens](https://vercel.com/account/tokens). Il resto —
+creare il progetto, leggere i due identificatori, scriverli fra i segreti — lo
+fa lo script, che è innocuo da rilanciare:
+
+```bash
+py scripts/collega-vercel.py
+gh workflow run frontend.yml
+```
+
+**`SITO` non è decorativo.** È l'indirizzo che finisce in `sitemap.xml` e
+`robots.txt`: senza, `lib/sito.ts` ripiega sul segnaposto e il sito dichiara ai
+motori di ricerca 351 URL su un dominio che non esiste. Per questo il job
+fallisce rosso se i segreti di Vercel ci sono e la variabile no — mentre resta
+verde quando non c'è nessun hosting, che non è un guasto. Con un dominio
+proprio, `gh variable set SITO --body "https://tuo-dominio.it"`.
+
+Il build che finisce online è **lo stesso** che ha appena passato i controlli:
+si carica `frontend/out/` già costruito, e il progetto Vercel non ha nessun
+preset di framework apposta, perché non ricostruisca con impostazioni sue.
 
 ---
 
