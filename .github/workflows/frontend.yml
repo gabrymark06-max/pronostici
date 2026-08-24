@@ -21,7 +21,9 @@ name: frontend
 #                  controllo che legge il testo davvero pubblicato: ha fermato
 #                  «rendimento» nella barra e «peso della stima» su 21 schede.
 #
-# Non tocca la rete e non ha bisogno di segreti: i dati sono nel repo.
+# I quattro controlli non toccano la rete e non hanno bisogno di segreti: i dati
+# sono nel repo. Il job `pubblica`, che viene dopo, e' l'unico che esce di qui —
+# e senza i segreti dell'hosting si limita a dire cosa manca, senza fallire.
 
 on:
   push:
@@ -61,3 +63,80 @@ jobs:
       # `build` esegue anche `check-parole-vietate` come postbuild.
       - name: Build ed export statico
         run: npm run build
+
+  pubblica:
+    needs: build
+    # Solo dal ramo principale, e mai da una pull request: un fork non deve
+    # poter pubblicare niente.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      # SENZA IL SEGRETO NON SI FALLISCE, SI SPIEGA.
+      #
+      # Finche' nessuno ha collegato un hosting questo passo dice cosa manca ed
+      # esce verde: un job rosso ogni giorno per una cosa che non e' un guasto
+      # insegna solo a ignorare i job rossi. Diventa un deploy vero nel momento
+      # in cui i tre segreti esistono.
+      - name: C'e' un hosting collegato?
+        id: hosting
+        shell: bash
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          ORG: ${{ secrets.VERCEL_ORG_ID }}
+          PROGETTO: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ -n "$TOKEN" ] && [ -n "$ORG" ] && [ -n "$PROGETTO" ]; then
+            echo "collegato=si" >> "$GITHUB_OUTPUT"
+          else
+            echo "collegato=no" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Il sito non e' pubblicato"
+              echo
+              echo "Mancano i segreti per il deploy. Servono tutti e tre:"
+              echo '- `VERCEL_TOKEN` — da vercel.com/account/tokens'
+              echo '- `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID` — in `.vercel/project.json`'
+              echo '  dopo un `vercel link` fatto una volta in locale'
+              echo
+              echo "Il brief (§11.2) sceglie **Vercel Hobby**, con Cloudflare Pages"
+              echo "come uscita pronta se un giorno servisse."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - if: steps.hosting.outputs.collegato == 'si'
+        run: npm ci
+      - if: steps.hosting.outputs.collegato == 'si'
+        name: Build ed export statico
+        run: npm run build
+
+      # SI PUBBLICA L'EXPORT, NON IL PROGETTO.
+      #
+      # `out/` e' gia' tutto il sito: HTML statico, nessun runtime, nessuna
+      # chiave. Darlo a Vercel come cartella statica evita che ricostruisca da
+      # solo con impostazioni sue, che e' il modo classico di ritrovarsi in
+      # produzione un build diverso da quello appena controllato qui sopra.
+      - if: steps.hosting.outputs.collegato == 'si'
+        name: Pubblica su Vercel
+        shell: bash
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          INDIRIZZO=$(npx --yes vercel@latest deploy out \
+            --prod --yes --archive=tgz \
+            --token="${{ secrets.VERCEL_TOKEN }}")
+          echo "### Pubblicato" >> "$GITHUB_STEP_SUMMARY"
+          echo "$INDIRIZZO" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pubblicato su $INDIRIZZO"
