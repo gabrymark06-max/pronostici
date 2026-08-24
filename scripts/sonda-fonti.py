@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 import urllib.error
 import urllib.request
 
@@ -32,6 +33,11 @@ LEGHE = {
 }
 MERCATI = ("1x2", "ou", "bts", "dc", "ha")
 
+# BETEXPLORER RISPONDE 429 SE SI CORRE. Misurato dai runner di GitHub il 24
+# agosto 2026: due leghe su nove hanno preso «Too Many Requests» senza nessuna
+# pausa fra le richieste.
+PAUSA_S = 2.0
+
 
 def scarica(url: str, referer: str = "") -> str:
     testate = {"User-Agent": UA, "Accept": "*/*"}
@@ -41,7 +47,9 @@ def scarica(url: str, referer: str = "") -> str:
     with urllib.request.urlopen(
         urllib.request.Request(url, headers=testate), timeout=30
     ) as r:
-        return r.read().decode("utf-8", "replace")
+        corpo = r.read().decode("utf-8", "replace")
+    time.sleep(PAUSA_S)
+    return corpo
 
 
 def main() -> int:
@@ -55,7 +63,13 @@ def main() -> int:
             rotti += 1
             continue
 
-        eventi = re.findall(r'href="/[a-z]{2}/football/[^"]+/([A-Za-z0-9]{8})/"', html)
+        # Il prefisso di lingua (`/it/`) lo mette la geo-localizzazione: da un
+        # runner americano non c'e', e una regex che lo pretende trova zero
+        # partite su una pagina piena. E' il primo modo in cui questa sonda si
+        # e' sbagliata, ed e' il motivo per cui esiste.
+        eventi = re.findall(
+            r'href="(?:/[a-z]{2})?/football/[^"]+/([A-Za-z0-9]{8})/"', html
+        )
         quote_in_elenco = len(re.findall(r'data-odd="([\d.]+)"', html))
         if not eventi:
             print(f"{codice:4} pagina 200 ma nessuna partita")
