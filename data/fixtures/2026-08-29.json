@@ -863,7 +863,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 99.7,
+     "ore_prima": 99.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -1601,17 +1601,26 @@
       }
      ]
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4852,
      "btts_yes": 0.5148,
      "dc_12": 0.7044,
      "dc_1x": 0.7103,
-     "dc_x2": 0.5853
+     "dc_x2": 0.5853,
+     "over_1.5": 0.714,
+     "over_2.5": 0.4408,
+     "under_1.5": 0.286,
+     "under_2.5": 0.5592
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.35,
@@ -1637,6 +1646,59 @@
        "somma_probabilita": 2.101
       },
       {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.714
+        },
+        {
+         "decimale": 3.05,
+         "esito": "Under",
+         "probabilita_implicita": 0.286
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.86,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0686
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.4408
+        },
+        {
+         "decimale": 1.67,
+         "esito": "Under",
+         "probabilita_implicita": 0.5592
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 8.42,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0842
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.82,
@@ -1657,7 +1719,7 @@
        "somma_probabilita": 1.0703
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 4
     }
    },
    "diagnostics": {
@@ -1781,7 +1843,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 99.7,
+     "ore_prima": 99.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -2516,14 +2578,103 @@
       }
      ]
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.5148,
-     "btts_yes": 0.4852
+     "btts_yes": 0.4852,
+     "dc_12": 0.7071,
+     "dc_1x": 0.7414,
+     "dc_x2": 0.5515,
+     "over_1.5": 0.6957,
+     "over_2.5": 0.4296,
+     "under_1.5": 0.3043,
+     "under_2.5": 0.5704
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.3,
+         "esito": "1X",
+         "probabilita_implicita": 0.7414
+        },
+        {
+         "decimale": 1.35,
+         "esito": "12",
+         "probabilita_implicita": 0.7071
+        },
+        {
+         "decimale": 1.69,
+         "esito": "X2",
+         "probabilita_implicita": 0.5515
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": null,
+       "margine_percento": 5.04,
+       "mercato": "Doppia chance",
+       "n_bookmaker": 2,
+       "somma_probabilita": 2.1007
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.38,
+         "esito": "Over",
+         "probabilita_implicita": 0.6957
+        },
+        {
+         "decimale": 2.88,
+         "esito": "Under",
+         "probabilita_implicita": 0.3043
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 7.25,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0725
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.1,
+         "esito": "Over",
+         "probabilita_implicita": 0.4296
+        },
+        {
+         "decimale": 1.64,
+         "esito": "Under",
+         "probabilita_implicita": 0.5704
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 8.48,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0848
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.92,
@@ -2544,7 +2695,7 @@
        "somma_probabilita": 1.0703
       }
      ],
-     "n_mercati": 1
+     "n_mercati": 4
     }
    },
    "diagnostics": {
@@ -2777,7 +2928,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 111.2,
+     "ore_prima": 110.7,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -2829,17 +2980,24 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.463,
      "btts_yes": 0.537,
      "dc_12": 0.8168,
      "dc_1x": 0.8586,
-     "dc_x2": 0.3246
+     "dc_x2": 0.3246,
+     "over_2.75": 0.5515,
+     "under_2.75": 0.4485
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.14,
@@ -2865,6 +3023,35 @@
        "somma_probabilita": 2.0978
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.73,
+         "esito": "Over",
+         "probabilita_implicita": 0.5515
+        },
+        {
+         "decimale": 2.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.4485
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0593
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.75,
@@ -2885,7 +3072,7 @@
        "somma_probabilita": 1.0714
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 3
     }
    },
    "diagnostics": {
@@ -3060,7 +3247,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 111.2,
+     "ore_prima": 110.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -3112,19 +3299,42 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4833,
      "btts_yes": 0.5167,
      "dc_12": 0.7171,
      "dc_1x": 0.7048,
      "dc_x2": 0.5781,
+     "over_0.5": 0.9311,
+     "over_1.75": 0.675,
+     "over_2": 0.6171,
+     "over_2.25": 0.5217,
      "over_2.5": 0.4533,
-     "under_2.5": 0.5467
+     "over_2.75": 0.385,
+     "over_3": 0.3105,
+     "over_3.5": 0.2341,
+     "over_4.5": 0.088,
+     "over_5.5": 0.0258,
+     "under_0.5": 0.0689,
+     "under_1.75": 0.325,
+     "under_2": 0.3829,
+     "under_2.25": 0.4783,
+     "under_2.5": 0.5467,
+     "under_2.75": 0.615,
+     "under_3": 0.6895,
+     "under_3.5": 0.7659,
+     "under_4.5": 0.912,
+     "under_5.5": 0.9742
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.35,
@@ -3150,6 +3360,107 @@
        "somma_probabilita": 2.1176
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.9311
+        },
+        {
+         "decimale": 8.88,
+         "esito": "Under",
+         "probabilita_implicita": 0.0689
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 5.61,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0561
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.42,
+         "esito": "Over",
+         "probabilita_implicita": 0.675
+        },
+        {
+         "decimale": 2.73,
+         "esito": "Under",
+         "probabilita_implicita": 0.325
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 7.12,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0712
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.54,
+         "esito": "Over",
+         "probabilita_implicita": 0.6171
+        },
+        {
+         "decimale": 2.36,
+         "esito": "Under",
+         "probabilita_implicita": 0.3829
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.31,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0731
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.81,
+         "esito": "Over",
+         "probabilita_implicita": 0.5217
+        },
+        {
+         "decimale": 1.96,
+         "esito": "Under",
+         "probabilita_implicita": 0.4783
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0599
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.02,
@@ -3170,6 +3481,131 @@
        "somma_probabilita": 1.0798
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.385
+        },
+        {
+         "decimale": 1.54,
+         "esito": "Under",
+         "probabilita_implicita": 0.615
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 7.28,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0728
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.85,
+         "esito": "Over",
+         "probabilita_implicita": 0.3105
+        },
+        {
+         "decimale": 1.4,
+         "esito": "Under",
+         "probabilita_implicita": 0.6895
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.77,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0677
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.67,
+         "esito": "Over",
+         "probabilita_implicita": 0.2341
+        },
+        {
+         "decimale": 1.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.7659
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 5.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0595
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.62,
+         "esito": "Over",
+         "probabilita_implicita": 0.088
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.912
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.71,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0571
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 16.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0258
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9742
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0429
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.8,
@@ -3190,7 +3626,7 @@
        "somma_probabilita": 1.0791
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 12
     }
    },
    "diagnostics": {
@@ -3347,7 +3783,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 111.2,
+     "ore_prima": 110.7,
      "ospiti": {
       "modulo": "4-4-2",
       "panchina": [],
@@ -3399,19 +3835,42 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4707,
      "btts_yes": 0.5293,
      "dc_12": 0.7515,
      "dc_1x": 0.8177,
      "dc_x2": 0.4309,
+     "over_0.5": 0.947,
+     "over_1.5": 0.7777,
+     "over_2": 0.6899,
+     "over_2.25": 0.5955,
      "over_2.5": 0.5148,
-     "under_2.5": 0.4852
+     "over_2.75": 0.4581,
+     "over_3": 0.3829,
+     "over_3.5": 0.2821,
+     "over_4.5": 0.133,
+     "over_5.5": 0.048,
+     "under_0.5": 0.053,
+     "under_1.5": 0.2223,
+     "under_2": 0.3101,
+     "under_2.25": 0.4045,
+     "under_2.5": 0.4852,
+     "under_2.75": 0.5419,
+     "under_3": 0.6171,
+     "under_3.5": 0.7179,
+     "under_4.5": 0.867,
+     "under_5.5": 0.952
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.19,
@@ -3437,6 +3896,107 @@
        "somma_probabilita": 2.1047
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "Over",
+         "probabilita_implicita": 0.947
+        },
+        {
+         "decimale": 10.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.053
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 5.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.05
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.7777
+        },
+        {
+         "decimale": 3.8,
+         "esito": "Under",
+         "probabilita_implicita": 0.2223
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.32,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0632
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.39,
+         "esito": "Over",
+         "probabilita_implicita": 0.6899
+        },
+        {
+         "decimale": 2.83,
+         "esito": "Under",
+         "probabilita_implicita": 0.3101
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.34,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0734
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.6,
+         "esito": "Over",
+         "probabilita_implicita": 0.5955
+        },
+        {
+         "decimale": 2.26,
+         "esito": "Under",
+         "probabilita_implicita": 0.4045
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.94,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0694
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.82,
@@ -3457,6 +4017,131 @@
        "somma_probabilita": 1.0703
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.4581
+        },
+        {
+         "decimale": 1.74,
+         "esito": "Under",
+         "probabilita_implicita": 0.5419
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.85,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0685
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.36,
+         "esito": "Over",
+         "probabilita_implicita": 0.3829
+        },
+        {
+         "decimale": 1.54,
+         "esito": "Under",
+         "probabilita_implicita": 0.6171
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 7.31,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0731
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.1,
+         "esito": "Over",
+         "probabilita_implicita": 0.2821
+        },
+        {
+         "decimale": 1.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.7179
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 6.61,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0661
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.62,
+         "esito": "Over",
+         "probabilita_implicita": 0.133
+        },
+        {
+         "decimale": 1.13,
+         "esito": "Under",
+         "probabilita_implicita": 0.867
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.27,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0627
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 11.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.048
+        },
+        {
+         "decimale": 1.04,
+         "esito": "Under",
+         "probabilita_implicita": 0.952
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 5.04,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0504
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.78,
@@ -3477,7 +4162,7 @@
        "somma_probabilita": 1.0668
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 12
     }
    },
    "diagnostics": {
@@ -3634,7 +4319,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.2,
+     "ore_prima": 112.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -3686,21 +4371,44 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3837,
      "btts_yes": 0.6163,
      "dc_12": 0.7945,
      "dc_1x": 0.8422,
      "dc_x2": 0.3632,
+     "over_0.5": 0.98,
+     "over_2": 0.8272,
      "over_2.5": 0.6645,
+     "over_2.75": 0.6174,
+     "over_3": 0.561,
+     "over_3.25": 0.4944,
      "over_3.5": 0.4422,
+     "over_3.75": 0.3826,
+     "over_4": 0.3108,
+     "over_4.25": 0.2727,
+     "over_4.5": 0.2411,
+     "under_0.5": 0.02,
+     "under_2": 0.1728,
      "under_2.5": 0.3355,
-     "under_3.5": 0.5578
+     "under_2.75": 0.3826,
+     "under_3": 0.439,
+     "under_3.25": 0.5056,
+     "under_3.5": 0.5578,
+     "under_3.75": 0.6174,
+     "under_4": 0.6892,
+     "under_4.25": 0.7273,
+     "under_4.5": 0.7589
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.16,
@@ -3726,6 +4434,59 @@
        "somma_probabilita": 2.0984
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.98
+        },
+        {
+         "decimale": 18.0,
+         "esito": "Under",
+         "probabilita_implicita": 0.02
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.08,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0408
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.18,
+         "esito": "Over",
+         "probabilita_implicita": 0.8272
+        },
+        {
+         "decimale": 4.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.1728
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.37,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0637
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.44,
@@ -3746,6 +4507,83 @@
        "somma_probabilita": 1.0718
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.55,
+         "esito": "Over",
+         "probabilita_implicita": 0.6174
+        },
+        {
+         "decimale": 2.4,
+         "esito": "Under",
+         "probabilita_implicita": 0.3826
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.27,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0627
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.69,
+         "esito": "Over",
+         "probabilita_implicita": 0.561
+        },
+        {
+         "decimale": 2.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.439
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.17,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0617
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.92,
+         "esito": "Over",
+         "probabilita_implicita": 0.4944
+        },
+        {
+         "decimale": 1.89,
+         "esito": "Under",
+         "probabilita_implicita": 0.5056
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 5.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.05
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.1,
@@ -3766,6 +4604,107 @@
        "somma_probabilita": 1.0644
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.4,
+         "esito": "Over",
+         "probabilita_implicita": 0.3826
+        },
+        {
+         "decimale": 1.55,
+         "esito": "Under",
+         "probabilita_implicita": 0.6174
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.27,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0627
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.3108
+        },
+        {
+         "decimale": 1.4,
+         "esito": "Under",
+         "probabilita_implicita": 0.6892
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 6.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0621
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.2727
+        },
+        {
+         "decimale": 1.33,
+         "esito": "Under",
+         "probabilita_implicita": 0.7273
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.25",
+       "margine_percento": 5.68,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0568
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.2411
+        },
+        {
+         "decimale": 1.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.7589
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 7.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.07
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.55,
@@ -3786,7 +4725,7 @@
        "somma_probabilita": 1.0653
       }
      ],
-     "n_mercati": 4
+     "n_mercati": 13
     }
    },
    "diagnostics": {
@@ -4027,7 +4966,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.2,
+     "ore_prima": 112.7,
      "ospiti": {
       "modulo": "4-4-2",
       "panchina": [],
@@ -4079,19 +5018,44 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3952,
      "btts_yes": 0.6048,
      "dc_12": 0.7415,
      "dc_1x": 0.6516,
      "dc_x2": 0.6069,
+     "over_1.5": 0.8083,
+     "over_1.75": 0.7783,
+     "over_2": 0.7464,
+     "over_2.25": 0.641,
      "over_2.5": 0.57,
-     "under_2.5": 0.43
+     "over_2.75": 0.5148,
+     "over_3": 0.4446,
+     "over_3.5": 0.343,
+     "over_3.75": 0.2839,
+     "over_4": 0.2076,
+     "over_6.5": 0.0197,
+     "under_1.5": 0.1917,
+     "under_1.75": 0.2217,
+     "under_2": 0.2536,
+     "under_2.25": 0.359,
+     "under_2.5": 0.43,
+     "under_2.75": 0.4852,
+     "under_3": 0.5554,
+     "under_3.5": 0.657,
+     "under_3.75": 0.7161,
+     "under_4": 0.7924,
+     "under_6.5": 0.9803
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.44,
@@ -4117,6 +5081,107 @@
        "somma_probabilita": 2.1232
       },
       {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.21,
+         "esito": "Over",
+         "probabilita_implicita": 0.8083
+        },
+        {
+         "decimale": 4.25,
+         "esito": "Under",
+         "probabilita_implicita": 0.1917
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.52,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0652
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.7783
+        },
+        {
+         "decimale": 3.83,
+         "esito": "Under",
+         "probabilita_implicita": 0.2217
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.14,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0614
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.3,
+         "esito": "Over",
+         "probabilita_implicita": 0.7464
+        },
+        {
+         "decimale": 3.42,
+         "esito": "Under",
+         "probabilita_implicita": 0.2536
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.12,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0612
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.641
+        },
+        {
+         "decimale": 2.52,
+         "esito": "Under",
+         "probabilita_implicita": 0.359
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.49,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0649
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.67,
@@ -4137,6 +5202,155 @@
        "somma_probabilita": 1.0618
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.85,
+         "esito": "Over",
+         "probabilita_implicita": 0.5148
+        },
+        {
+         "decimale": 1.96,
+         "esito": "Under",
+         "probabilita_implicita": 0.4852
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 4.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0493
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.09,
+         "esito": "Over",
+         "probabilita_implicita": 0.4446
+        },
+        {
+         "decimale": 1.71,
+         "esito": "Under",
+         "probabilita_implicita": 0.5554
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0621
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.6,
+         "esito": "Over",
+         "probabilita_implicita": 0.343
+        },
+        {
+         "decimale": 1.46,
+         "esito": "Under",
+         "probabilita_implicita": 0.657
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 7.19,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0719
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.1,
+         "esito": "Over",
+         "probabilita_implicita": 0.2839
+        },
+        {
+         "decimale": 1.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.7161
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.33,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0633
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.05,
+         "esito": "Over",
+         "probabilita_implicita": 0.2076
+        },
+        {
+         "decimale": 1.23,
+         "esito": "Under",
+         "probabilita_implicita": 0.7924
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 5.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0599
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 19.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0197
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9803
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 3.79,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0379
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.57,
@@ -4157,7 +5371,7 @@
        "somma_probabilita": 1.0717
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 13
     }
    },
    "diagnostics": {
@@ -4380,7 +5594,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.2,
+     "ore_prima": 112.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -4432,19 +5646,52 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3621,
      "btts_yes": 0.6379,
      "dc_12": 0.7478,
      "dc_1x": 0.5766,
      "dc_x2": 0.6756,
+     "over_0.5": 0.969,
+     "over_1.5": 0.839,
+     "over_1.75": 0.81,
+     "over_2": 0.7817,
+     "over_2.25": 0.6835,
+     "over_2.5": 0.6083,
+     "over_2.75": 0.5569,
+     "over_3": 0.4965,
      "over_3.5": 0.3861,
-     "under_3.5": 0.6139
+     "over_3.75": 0.3238,
+     "over_4": 0.25,
+     "over_4.25": 0.2217,
+     "over_4.5": 0.1973,
+     "over_5.5": 0.087,
+     "over_6.5": 0.0257,
+     "under_0.5": 0.031,
+     "under_1.5": 0.161,
+     "under_1.75": 0.19,
+     "under_2": 0.2183,
+     "under_2.25": 0.3165,
+     "under_2.5": 0.3917,
+     "under_2.75": 0.4431,
+     "under_3": 0.5035,
+     "under_3.5": 0.6139,
+     "under_3.75": 0.6762,
+     "under_4": 0.75,
+     "under_4.25": 0.7783,
+     "under_4.5": 0.8027,
+     "under_5.5": 0.913,
+     "under_6.5": 0.9743
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.62,
@@ -4470,6 +5717,203 @@
        "somma_probabilita": 2.1017
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.969
+        },
+        {
+         "decimale": 15.25,
+         "esito": "Under",
+         "probabilita_implicita": 0.031
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.12,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0412
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.17,
+         "esito": "Over",
+         "probabilita_implicita": 0.839
+        },
+        {
+         "decimale": 4.9,
+         "esito": "Under",
+         "probabilita_implicita": 0.161
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.25,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0625
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.21,
+         "esito": "Over",
+         "probabilita_implicita": 0.81
+        },
+        {
+         "decimale": 4.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.19
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 5.98,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0598
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.7817
+        },
+        {
+         "decimale": 3.88,
+         "esito": "Under",
+         "probabilita_implicita": 0.2183
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.13,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0613
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.41,
+         "esito": "Over",
+         "probabilita_implicita": 0.6835
+        },
+        {
+         "decimale": 2.83,
+         "esito": "Under",
+         "probabilita_implicita": 0.3165
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.32,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0632
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.58,
+         "esito": "Over",
+         "probabilita_implicita": 0.6083
+        },
+        {
+         "decimale": 2.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.3917
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 5.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0595
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.71,
+         "esito": "Over",
+         "probabilita_implicita": 0.5569
+        },
+        {
+         "decimale": 2.1,
+         "esito": "Under",
+         "probabilita_implicita": 0.4431
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.27,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0627
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.92,
+         "esito": "Over",
+         "probabilita_implicita": 0.4965
+        },
+        {
+         "decimale": 1.9,
+         "esito": "Under",
+         "probabilita_implicita": 0.5035
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 4.85,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0485
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.38,
@@ -4490,6 +5934,155 @@
        "somma_probabilita": 1.0612
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.77,
+         "esito": "Over",
+         "probabilita_implicita": 0.3238
+        },
+        {
+         "decimale": 1.42,
+         "esito": "Under",
+         "probabilita_implicita": 0.6762
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0621
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.48,
+         "esito": "Over",
+         "probabilita_implicita": 0.25
+        },
+        {
+         "decimale": 1.29,
+         "esito": "Under",
+         "probabilita_implicita": 0.75
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 6.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.06
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.2217
+        },
+        {
+         "decimale": 1.25,
+         "esito": "Under",
+         "probabilita_implicita": 0.7783
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.25",
+       "margine_percento": 6.14,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0614
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.21,
+         "esito": "Over",
+         "probabilita_implicita": 0.1973
+        },
+        {
+         "decimale": 1.21,
+         "esito": "Under",
+         "probabilita_implicita": 0.8027
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.03,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0603
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.087
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.913
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 5.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0529
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 16.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.0257
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9743
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 4.19,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0419
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.5,
@@ -4510,7 +6103,7 @@
        "somma_probabilita": 1.0667
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 17
     }
    },
    "diagnostics": {
@@ -4685,7 +6278,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -4737,18 +6330,93 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4478,
      "btts_yes": 0.5522,
+     "dc_12": 0.7388,
+     "dc_1x": 0.7421,
+     "dc_x2": 0.5191,
+     "over_0.5": 0.9474,
      "over_1.5": 0.7653,
+     "over_2.25": 0.585,
      "over_2.5": 0.5088,
+     "over_2.75": 0.4499,
+     "over_3": 0.3742,
+     "over_3.5": 0.2871,
+     "over_4": 0.1634,
+     "over_4.5": 0.1279,
+     "under_0.5": 0.0526,
      "under_1.5": 0.2347,
-     "under_2.5": 0.4912
+     "under_2.25": 0.415,
+     "under_2.5": 0.4912,
+     "under_2.75": 0.5501,
+     "under_3": 0.6258,
+     "under_3.5": 0.7129,
+     "under_4": 0.8366,
+     "under_4.5": 0.8721
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.3,
+         "esito": "1X",
+         "probabilita_implicita": 0.7421
+        },
+        {
+         "decimale": 1.31,
+         "esito": "12",
+         "probabilita_implicita": 0.7388
+        },
+        {
+         "decimale": 1.78,
+         "esito": "X2",
+         "probabilita_implicita": 0.5191
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": null,
+       "margine_percento": 4.87,
+       "mercato": "Doppia chance",
+       "n_bookmaker": 2,
+       "somma_probabilita": 2.0973
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "Over",
+         "probabilita_implicita": 0.9474
+        },
+        {
+         "decimale": 11.0,
+         "esito": "Under",
+         "probabilita_implicita": 0.0526
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.78,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0478
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.27,
@@ -4769,6 +6437,35 @@
        "somma_probabilita": 1.0614
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.63,
+         "esito": "Over",
+         "probabilita_implicita": 0.585
+        },
+        {
+         "decimale": 2.24,
+         "esito": "Under",
+         "probabilita_implicita": 0.415
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.8,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.058
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.85,
@@ -4789,6 +6486,131 @@
        "somma_probabilita": 1.0641
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.08,
+         "esito": "Over",
+         "probabilita_implicita": 0.4499
+        },
+        {
+         "decimale": 1.73,
+         "esito": "Under",
+         "probabilita_implicita": 0.5501
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.88,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0588
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.44,
+         "esito": "Over",
+         "probabilita_implicita": 0.3742
+        },
+        {
+         "decimale": 1.53,
+         "esito": "Under",
+         "probabilita_implicita": 0.6258
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.34,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0634
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.2871
+        },
+        {
+         "decimale": 1.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.7129
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 7.13,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0713
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.92,
+         "esito": "Over",
+         "probabilita_implicita": 0.1634
+        },
+        {
+         "decimale": 1.17,
+         "esito": "Under",
+         "probabilita_implicita": 0.8366
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 5.77,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0577
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.1279
+        },
+        {
+         "decimale": 1.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.8721
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0591
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.7,
@@ -4809,7 +6631,7 @@
        "somma_probabilita": 1.076
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 11
     }
    },
    "diagnostics": {
@@ -4979,7 +6801,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -5031,17 +6853,24 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.429,
      "btts_yes": 0.571,
      "dc_12": 0.7381,
      "dc_1x": 0.6505,
-     "dc_x2": 0.6113
+     "dc_x2": 0.6113,
+     "over_2.5": 0.5284,
+     "under_2.5": 0.4716
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.45,
@@ -5067,6 +6896,35 @@
        "somma_probabilita": 2.1125
       },
       {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.5284
+        },
+        {
+         "decimale": 1.94,
+         "esito": "Under",
+         "probabilita_implicita": 0.4716
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 8.53,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0853
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.66,
@@ -5087,7 +6945,7 @@
        "somma_probabilita": 1.0675
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 3
     }
    },
    "diagnostics": {
@@ -5323,7 +7181,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -5375,17 +7233,32 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4896,
      "btts_yes": 0.5104,
      "dc_12": 0.7157,
      "dc_1x": 0.7285,
-     "dc_x2": 0.5558
+     "dc_x2": 0.5558,
+     "over_1.5": 0.7235,
+     "over_2.25": 0.5188,
+     "over_2.75": 0.3825,
+     "over_4.5": 0.0885,
+     "over_5.5": 0.0259,
+     "under_1.5": 0.2765,
+     "under_2.25": 0.4812,
+     "under_2.75": 0.6175,
+     "under_4.5": 0.9115,
+     "under_5.5": 0.9741
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.31,
@@ -5411,6 +7284,131 @@
        "somma_probabilita": 2.1213
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.33,
+         "esito": "Over",
+         "probabilita_implicita": 0.7235
+        },
+        {
+         "decimale": 3.15,
+         "esito": "Under",
+         "probabilita_implicita": 0.2765
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.65,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0665
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.5188
+        },
+        {
+         "decimale": 1.96,
+         "esito": "Under",
+         "probabilita_implicita": 0.4812
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0595
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.37,
+         "esito": "Over",
+         "probabilita_implicita": 0.3825
+        },
+        {
+         "decimale": 1.54,
+         "esito": "Under",
+         "probabilita_implicita": 0.6175
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 7.22,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0722
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.0885
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.9115
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0593
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 15.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.0259
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9741
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.39,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0439
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.83,
@@ -5431,7 +7429,7 @@
        "somma_probabilita": 1.0728
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 7
     }
    },
    "diagnostics": {
@@ -5588,7 +7586,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-3-3",
       "panchina": [],
@@ -5640,16 +7638,165 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4594,
      "btts_yes": 0.5406,
+     "dc_12": 0.742,
+     "dc_1x": 0.7688,
+     "dc_x2": 0.4892,
+     "over_0.5": 0.947,
+     "over_1.5": 0.7659,
+     "over_2": 0.6869,
+     "over_2.25": 0.5863,
      "over_2.5": 0.5122,
-     "under_2.5": 0.4878
+     "over_3": 0.3743,
+     "over_3.5": 0.2839,
+     "over_4.5": 0.1279,
+     "over_5.5": 0.0468,
+     "under_0.5": 0.053,
+     "under_1.5": 0.2341,
+     "under_2": 0.3131,
+     "under_2.25": 0.4137,
+     "under_2.5": 0.4878,
+     "under_3": 0.6257,
+     "under_3.5": 0.7161,
+     "under_4.5": 0.8721,
+     "under_5.5": 0.9532
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.26,
+         "esito": "1X",
+         "probabilita_implicita": 0.7688
+        },
+        {
+         "decimale": 1.3,
+         "esito": "12",
+         "probabilita_implicita": 0.742
+        },
+        {
+         "decimale": 1.88,
+         "esito": "X2",
+         "probabilita_implicita": 0.4892
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": null,
+       "margine_percento": 4.81,
+       "mercato": "Doppia chance",
+       "n_bookmaker": 2,
+       "somma_probabilita": 2.0962
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "Over",
+         "probabilita_implicita": 0.947
+        },
+        {
+         "decimale": 10.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.053
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 5.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.05
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.7659
+        },
+        {
+         "decimale": 3.67,
+         "esito": "Under",
+         "probabilita_implicita": 0.2341
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 5.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0595
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.4,
+         "esito": "Over",
+         "probabilita_implicita": 0.6869
+        },
+        {
+         "decimale": 2.8,
+         "esito": "Under",
+         "probabilita_implicita": 0.3131
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.4,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.074
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.62,
+         "esito": "Over",
+         "probabilita_implicita": 0.5863
+        },
+        {
+         "decimale": 2.22,
+         "esito": "Under",
+         "probabilita_implicita": 0.4137
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.77,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0677
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.81,
@@ -5670,6 +7817,107 @@
        "somma_probabilita": 1.0816
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.41,
+         "esito": "Over",
+         "probabilita_implicita": 0.3743
+        },
+        {
+         "decimale": 1.52,
+         "esito": "Under",
+         "probabilita_implicita": 0.6257
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 7.37,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0737
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.1,
+         "esito": "Over",
+         "probabilita_implicita": 0.2839
+        },
+        {
+         "decimale": 1.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.7161
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 6.33,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0633
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.1279
+        },
+        {
+         "decimale": 1.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.8721
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0591
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 12.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.0468
+        },
+        {
+         "decimale": 1.04,
+         "esito": "Under",
+         "probabilita_implicita": 0.9532
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.32,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0432
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.73,
@@ -5690,7 +7938,7 @@
        "somma_probabilita": 1.078
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 11
     }
    },
    "diagnostics": {
@@ -5847,7 +8095,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -5899,19 +8147,42 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4969,
      "btts_yes": 0.5031,
      "dc_12": 0.7152,
      "dc_1x": 0.7213,
      "dc_x2": 0.5635,
+     "over_0.5": 0.9262,
+     "over_1.5": 0.7049,
+     "over_1.75": 0.6556,
+     "over_2": 0.5935,
+     "over_2.25": 0.4993,
      "over_2.5": 0.4363,
-     "under_2.5": 0.5637
+     "over_2.75": 0.367,
+     "over_3.5": 0.216,
+     "over_4.5": 0.0838,
+     "over_5.5": 0.0252,
+     "under_0.5": 0.0738,
+     "under_1.5": 0.2951,
+     "under_1.75": 0.3444,
+     "under_2": 0.4065,
+     "under_2.25": 0.5007,
+     "under_2.5": 0.5637,
+     "under_2.75": 0.633,
+     "under_3.5": 0.784,
+     "under_4.5": 0.9162,
+     "under_5.5": 0.9748
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.33,
@@ -5937,6 +8208,131 @@
        "somma_probabilita": 2.1042
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.9262
+        },
+        {
+         "decimale": 8.5,
+         "esito": "Under",
+         "probabilita_implicita": 0.0738
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 5.66,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0566
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.37,
+         "esito": "Over",
+         "probabilita_implicita": 0.7049
+        },
+        {
+         "decimale": 3.0,
+         "esito": "Under",
+         "probabilita_implicita": 0.2951
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.33,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0633
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.46,
+         "esito": "Over",
+         "probabilita_implicita": 0.6556
+        },
+        {
+         "decimale": 2.6,
+         "esito": "Under",
+         "probabilita_implicita": 0.3444
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0695
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.6,
+         "esito": "Over",
+         "probabilita_implicita": 0.5935
+        },
+        {
+         "decimale": 2.25,
+         "esito": "Under",
+         "probabilita_implicita": 0.4065
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.94,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0694
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.89,
+         "esito": "Over",
+         "probabilita_implicita": 0.4993
+        },
+        {
+         "decimale": 1.89,
+         "esito": "Under",
+         "probabilita_implicita": 0.5007
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.96,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0596
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.1,
@@ -5957,6 +8353,107 @@
        "somma_probabilita": 1.075
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.45,
+         "esito": "Over",
+         "probabilita_implicita": 0.367
+        },
+        {
+         "decimale": 1.5,
+         "esito": "Under",
+         "probabilita_implicita": 0.633
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 7.26,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0726
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.216
+        },
+        {
+         "decimale": 1.24,
+         "esito": "Under",
+         "probabilita_implicita": 0.784
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 6.45,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0645
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.0838
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.9162
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0593
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 17.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.0252
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9748
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 3.75,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0375
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.83,
@@ -5977,7 +8474,7 @@
        "somma_probabilita": 1.087
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 12
     }
    },
    "diagnostics": {
@@ -6161,7 +8658,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -6213,19 +8710,42 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4779,
      "btts_yes": 0.5221,
      "dc_12": 0.7189,
      "dc_1x": 0.7006,
      "dc_x2": 0.5805,
+     "over_0.5": 0.9368,
+     "over_1.5": 0.7393,
+     "over_2": 0.6302,
+     "over_2.25": 0.5369,
      "over_2.5": 0.4668,
-     "under_2.5": 0.5332
+     "over_2.75": 0.3979,
+     "over_3": 0.3176,
+     "over_3.5": 0.2445,
+     "over_4.5": 0.1026,
+     "over_5.5": 0.0316,
+     "under_0.5": 0.0632,
+     "under_1.5": 0.2607,
+     "under_2": 0.3698,
+     "under_2.25": 0.4631,
+     "under_2.5": 0.5332,
+     "under_2.75": 0.6021,
+     "under_3": 0.6824,
+     "under_3.5": 0.7555,
+     "under_4.5": 0.8974,
+     "under_5.5": 0.9684
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.36,
@@ -6251,6 +8771,107 @@
        "somma_probabilita": 2.1122
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.9368
+        },
+        {
+         "decimale": 9.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.0632
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 5.18,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0518
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.31,
+         "esito": "Over",
+         "probabilita_implicita": 0.7393
+        },
+        {
+         "decimale": 3.33,
+         "esito": "Under",
+         "probabilita_implicita": 0.2607
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.41,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0641
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.51,
+         "esito": "Over",
+         "probabilita_implicita": 0.6302
+        },
+        {
+         "decimale": 2.43,
+         "esito": "Under",
+         "probabilita_implicita": 0.3698
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.38,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0738
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.77,
+         "esito": "Over",
+         "probabilita_implicita": 0.5369
+        },
+        {
+         "decimale": 2.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.4631
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.16,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0616
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.97,
@@ -6271,6 +8892,131 @@
        "somma_probabilita": 1.079
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.29,
+         "esito": "Over",
+         "probabilita_implicita": 0.3979
+        },
+        {
+         "decimale": 1.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.6021
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.86,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0686
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.78,
+         "esito": "Over",
+         "probabilita_implicita": 0.3176
+        },
+        {
+         "decimale": 1.4,
+         "esito": "Under",
+         "probabilita_implicita": 0.6824
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 7.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0721
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.52,
+         "esito": "Over",
+         "probabilita_implicita": 0.2445
+        },
+        {
+         "decimale": 1.29,
+         "esito": "Under",
+         "probabilita_implicita": 0.7555
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 6.19,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0619
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 6.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.1026
+        },
+        {
+         "decimale": 1.1,
+         "esito": "Under",
+         "probabilita_implicita": 0.8974
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.14,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0614
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 14.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.0316
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9684
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.58,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0458
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.8,
@@ -6291,7 +9037,7 @@
        "somma_probabilita": 1.0684
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 12
     }
    },
    "diagnostics": {
@@ -6448,7 +9194,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 113.7,
+     "ore_prima": 113.2,
      "ospiti": {
       "modulo": "3-1-4-2",
       "panchina": [],
@@ -6500,19 +9246,46 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.402,
      "btts_yes": 0.598,
      "dc_12": 0.7263,
      "dc_1x": 0.6467,
      "dc_x2": 0.6269,
+     "over_0.5": 0.9578,
+     "over_1.5": 0.7984,
+     "over_2": 0.7179,
+     "over_2.25": 0.6233,
      "over_2.5": 0.5467,
-     "under_2.5": 0.4533
+     "over_2.75": 0.4906,
+     "over_3": 0.4187,
+     "over_3.25": 0.3694,
+     "over_3.5": 0.3221,
+     "over_4.5": 0.1527,
+     "over_5.5": 0.058,
+     "over_6.5": 0.0139,
+     "under_0.5": 0.0422,
+     "under_1.5": 0.2016,
+     "under_2": 0.2821,
+     "under_2.25": 0.3767,
+     "under_2.5": 0.4533,
+     "under_2.75": 0.5094,
+     "under_3": 0.5813,
+     "under_3.25": 0.6306,
+     "under_3.5": 0.6779,
+     "under_4.5": 0.8473,
+     "under_5.5": 0.942,
+     "under_6.5": 0.9861
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.46,
@@ -6538,6 +9311,107 @@
        "somma_probabilita": 2.1092
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "Over",
+         "probabilita_implicita": 0.9578
+        },
+        {
+         "decimale": 12.5,
+         "esito": "Under",
+         "probabilita_implicita": 0.0422
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.62,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0462
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.22,
+         "esito": "Over",
+         "probabilita_implicita": 0.7984
+        },
+        {
+         "decimale": 4.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.2016
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.27,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0627
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.7179
+        },
+        {
+         "decimale": 3.1,
+         "esito": "Under",
+         "probabilita_implicita": 0.2821
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.61,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0661
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.52,
+         "esito": "Over",
+         "probabilita_implicita": 0.6233
+        },
+        {
+         "decimale": 2.39,
+         "esito": "Under",
+         "probabilita_implicita": 0.3767
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 7.41,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0741
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.71,
@@ -6558,6 +9432,179 @@
        "somma_probabilita": 1.0798
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.92,
+         "esito": "Over",
+         "probabilita_implicita": 0.4906
+        },
+        {
+         "decimale": 1.85,
+         "esito": "Under",
+         "probabilita_implicita": 0.5094
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0599
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.19,
+         "esito": "Over",
+         "probabilita_implicita": 0.4187
+        },
+        {
+         "decimale": 1.63,
+         "esito": "Under",
+         "probabilita_implicita": 0.5813
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 7.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0701
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.44,
+         "esito": "Over",
+         "probabilita_implicita": 0.3694
+        },
+        {
+         "decimale": 1.51,
+         "esito": "Under",
+         "probabilita_implicita": 0.6306
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 7.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0729
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.3221
+        },
+        {
+         "decimale": 1.42,
+         "esito": "Under",
+         "probabilita_implicita": 0.6779
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 7.04,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0704
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.12,
+         "esito": "Over",
+         "probabilita_implicita": 0.1527
+        },
+        {
+         "decimale": 1.15,
+         "esito": "Under",
+         "probabilita_implicita": 0.8473
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.09,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0609
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 10.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.058
+        },
+        {
+         "decimale": 1.05,
+         "esito": "Under",
+         "probabilita_implicita": 0.942
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0499
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 21.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0139
+        },
+        {
+         "decimale": 1.01,
+         "esito": "Under",
+         "probabilita_implicita": 0.9861
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 3.77,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0377
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.58,
@@ -6578,7 +9625,7 @@
        "somma_probabilita": 1.0774
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 14
     }
    },
    "diagnostics": {
@@ -6790,7 +9837,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 114.2,
+     "ore_prima": 113.7,
      "ospiti": {
       "modulo": "3-4-3",
       "panchina": [],
@@ -6842,21 +9889,40 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3594,
      "btts_yes": 0.6406,
      "dc_12": 0.7479,
      "dc_1x": 0.6545,
      "dc_x2": 0.5977,
+     "over_2.25": 0.6745,
      "over_2.5": 0.6171,
+     "over_2.75": 0.5679,
+     "over_3": 0.5103,
+     "over_3.25": 0.4465,
      "over_3.5": 0.3937,
+     "over_4.5": 0.198,
+     "over_5.5": 0.0834,
+     "over_6.5": 0.0258,
+     "under_2.25": 0.3255,
      "under_2.5": 0.3829,
-     "under_3.5": 0.6063
+     "under_2.75": 0.4321,
+     "under_3": 0.4897,
+     "under_3.25": 0.5535,
+     "under_3.5": 0.6063,
+     "under_4.5": 0.802,
+     "under_5.5": 0.9166,
+     "under_6.5": 0.9742
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.45,
@@ -6882,6 +9948,35 @@
        "somma_probabilita": 2.1018
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.42,
+         "esito": "Over",
+         "probabilita_implicita": 0.6745
+        },
+        {
+         "decimale": 2.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.3255
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.61,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0661
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.53,
@@ -6902,6 +9997,83 @@
        "somma_probabilita": 1.0828
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.67,
+         "esito": "Over",
+         "probabilita_implicita": 0.5679
+        },
+        {
+         "decimale": 2.13,
+         "esito": "Under",
+         "probabilita_implicita": 0.4321
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 7.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0701
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.84,
+         "esito": "Over",
+         "probabilita_implicita": 0.5103
+        },
+        {
+         "decimale": 1.91,
+         "esito": "Under",
+         "probabilita_implicita": 0.4897
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.7,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.067
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.07,
+         "esito": "Over",
+         "probabilita_implicita": 0.4465
+        },
+        {
+         "decimale": 1.71,
+         "esito": "Under",
+         "probabilita_implicita": 0.5535
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 6.96,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0696
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.29,
@@ -6922,6 +10094,83 @@
        "somma_probabilita": 1.0777
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.05,
+         "esito": "Over",
+         "probabilita_implicita": 0.198
+        },
+        {
+         "decimale": 1.21,
+         "esito": "Under",
+         "probabilita_implicita": 0.802
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 7.34,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0734
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.88,
+         "esito": "Over",
+         "probabilita_implicita": 0.0834
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.9166
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 5.72,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0572
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 16.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0258
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9742
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 4.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0429
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.49,
@@ -6942,7 +10191,7 @@
        "somma_probabilita": 1.0711
       }
      ],
-     "n_mercati": 4
+     "n_mercati": 11
     }
    },
    "diagnostics": {
@@ -7079,7 +10328,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 114.2,
+     "ore_prima": 113.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -7131,17 +10380,26 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.528,
      "btts_yes": 0.472,
      "dc_12": 0.7032,
      "dc_1x": 0.6382,
-     "dc_x2": 0.6586
+     "dc_x2": 0.6586,
+     "over_1.5": 0.6783,
+     "over_2.5": 0.4017,
+     "under_1.5": 0.3217,
+     "under_2.5": 0.5983
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.48,
@@ -7167,6 +10425,59 @@
        "somma_probabilita": 2.1054
       },
       {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.4,
+         "esito": "Over",
+         "probabilita_implicita": 0.6783
+        },
+        {
+         "decimale": 2.7,
+         "esito": "Under",
+         "probabilita_implicita": 0.3217
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 8.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0821
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.24,
+         "esito": "Over",
+         "probabilita_implicita": 0.4017
+        },
+        {
+         "decimale": 1.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.5983
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 8.13,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0813
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.97,
@@ -7187,7 +10498,7 @@
        "somma_probabilita": 1.0694
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 4
     }
    },
    "diagnostics": {
@@ -7390,7 +10701,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 114.2,
+     "ore_prima": 113.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -7442,60 +10753,70 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
-     "btts_no": 0.5044,
-     "btts_yes": 0.4956,
-     "dc_12": 0.7063,
-     "dc_1x": 0.6828,
-     "dc_x2": 0.6109
+     "btts_no": 0.5058,
+     "btts_yes": 0.4942,
+     "dc_12": 0.7078,
+     "dc_1x": 0.7018,
+     "dc_x2": 0.5905
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
-         "decimale": 1.39,
+         "decimale": 1.36,
          "esito": "1X",
-         "probabilita_implicita": 0.6828
+         "probabilita_implicita": 0.7018
         },
         {
          "decimale": 1.35,
          "esito": "12",
-         "probabilita_implicita": 0.7063
+         "probabilita_implicita": 0.7078
         },
         {
-         "decimale": 1.53,
+         "decimale": 1.58,
          "esito": "X2",
-         "probabilita_implicita": 0.6109
+         "probabilita_implicita": 0.5905
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 5.69,
+       "margine_percento": 5.45,
        "mercato": "Doppia chance",
        "n_bookmaker": 3,
-       "somma_probabilita": 2.1138
+       "somma_probabilita": 2.1089
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
-         "decimale": 1.9,
+         "decimale": 1.91,
          "esito": "Sì",
-         "probabilita_implicita": 0.4956
+         "probabilita_implicita": 0.4942
         },
         {
          "decimale": 1.87,
          "esito": "No",
-         "probabilita_implicita": 0.5044
+         "probabilita_implicita": 0.5058
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 6.11,
+       "margine_percento": 5.83,
        "mercato": "Entrambe segnano",
        "n_bookmaker": 3,
-       "somma_probabilita": 1.0611
+       "somma_probabilita": 1.0583
       }
      ],
      "n_mercati": 2
@@ -7751,7 +11072,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 115.0,
+     "ore_prima": 114.5,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -7803,7 +11124,7 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3952,
      "btts_yes": 0.6048,
@@ -7814,6 +11135,11 @@
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.71,
@@ -7839,6 +11165,11 @@
        "somma_probabilita": 2.1007
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.57,
@@ -8036,7 +11367,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.2,
+     "ore_prima": 115.7,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -8088,17 +11419,36 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4779,
      "btts_yes": 0.5221,
      "dc_12": 0.7275,
      "dc_1x": 0.709,
-     "dc_x2": 0.5634
+     "dc_x2": 0.5634,
+     "over_0.5": 0.9373,
+     "over_1.25": 0.8167,
+     "over_1.75": 0.6976,
+     "over_2.25": 0.5416,
+     "over_2.75": 0.4095,
+     "over_3.75": 0.1947,
+     "over_4.5": 0.1067,
+     "under_0.5": 0.0627,
+     "under_1.25": 0.1833,
+     "under_1.75": 0.3024,
+     "under_2.25": 0.4584,
+     "under_2.75": 0.5905,
+     "under_3.75": 0.8053,
+     "under_4.5": 0.8933
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.35,
@@ -8124,6 +11474,179 @@
        "somma_probabilita": 2.1044
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.9373
+        },
+        {
+         "decimale": 9.88,
+         "esito": "Under",
+         "probabilita_implicita": 0.0627
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0491
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.19,
+         "esito": "Over",
+         "probabilita_implicita": 0.8167
+        },
+        {
+         "decimale": 4.45,
+         "esito": "Under",
+         "probabilita_implicita": 0.1833
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.25",
+       "margine_percento": 6.15,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0615
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.38,
+         "esito": "Over",
+         "probabilita_implicita": 0.6976
+        },
+        {
+         "decimale": 2.95,
+         "esito": "Under",
+         "probabilita_implicita": 0.3024
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.1,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.061
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.5416
+        },
+        {
+         "decimale": 2.04,
+         "esito": "Under",
+         "probabilita_implicita": 0.4584
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.88,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0588
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.26,
+         "esito": "Over",
+         "probabilita_implicita": 0.4095
+        },
+        {
+         "decimale": 1.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.5905
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.88,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0588
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.22,
+         "esito": "Over",
+         "probabilita_implicita": 0.1947
+        },
+        {
+         "decimale": 1.21,
+         "esito": "Under",
+         "probabilita_implicita": 0.8053
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.31,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0631
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 6.62,
+         "esito": "Over",
+         "probabilita_implicita": 0.1067
+        },
+        {
+         "decimale": 1.1,
+         "esito": "Under",
+         "probabilita_implicita": 0.8933
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.06
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.8,
@@ -8144,7 +11667,7 @@
        "somma_probabilita": 1.0684
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 9
     }
    },
    "diagnostics": {
@@ -8301,7 +11824,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.2,
+     "ore_prima": 115.7,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -8353,17 +11876,44 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.5194,
      "btts_yes": 0.4806,
      "dc_12": 0.7037,
      "dc_1x": 0.5682,
-     "dc_x2": 0.7281
+     "dc_x2": 0.7281,
+     "over_1": 0.8854,
+     "over_1.25": 0.7817,
+     "over_1.75": 0.647,
+     "over_2": 0.5781,
+     "over_2.25": 0.4866,
+     "over_2.5": 0.4235,
+     "over_2.75": 0.3513,
+     "over_3": 0.27,
+     "over_3.25": 0.2389,
+     "over_3.5": 0.216,
+     "over_4.5": 0.0784,
+     "under_1": 0.1146,
+     "under_1.25": 0.2183,
+     "under_1.75": 0.353,
+     "under_2": 0.4219,
+     "under_2.25": 0.5134,
+     "under_2.5": 0.5765,
+     "under_2.75": 0.6487,
+     "under_3": 0.73,
+     "under_3.25": 0.7611,
+     "under_3.5": 0.784,
+     "under_4.5": 0.9216
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.64,
@@ -8389,6 +11939,275 @@
        "somma_probabilita": 2.1026
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.11,
+         "esito": "Over",
+         "probabilita_implicita": 0.8854
+        },
+        {
+         "decimale": 6.4,
+         "esito": "Under",
+         "probabilita_implicita": 0.1146
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1",
+       "margine_percento": 5.72,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0572
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.7817
+        },
+        {
+         "decimale": 3.88,
+         "esito": "Under",
+         "probabilita_implicita": 0.2183
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.25",
+       "margine_percento": 6.13,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0613
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.48,
+         "esito": "Over",
+         "probabilita_implicita": 0.647
+        },
+        {
+         "decimale": 2.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.353
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.18,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0618
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.65,
+         "esito": "Over",
+         "probabilita_implicita": 0.5781
+        },
+        {
+         "decimale": 2.2,
+         "esito": "Under",
+         "probabilita_implicita": 0.4219
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.06,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0606
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.96,
+         "esito": "Over",
+         "probabilita_implicita": 0.4866
+        },
+        {
+         "decimale": 1.86,
+         "esito": "Under",
+         "probabilita_implicita": 0.5134
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 4.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0491
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.21,
+         "esito": "Over",
+         "probabilita_implicita": 0.4235
+        },
+        {
+         "decimale": 1.66,
+         "esito": "Under",
+         "probabilita_implicita": 0.5765
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 5.59,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0559
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.6,
+         "esito": "Over",
+         "probabilita_implicita": 0.3513
+        },
+        {
+         "decimale": 1.48,
+         "esito": "Under",
+         "probabilita_implicita": 0.6487
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.8,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.058
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.27
+        },
+        {
+         "decimale": 1.33,
+         "esito": "Under",
+         "probabilita_implicita": 0.73
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 5.72,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0572
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.58,
+         "esito": "Over",
+         "probabilita_implicita": 0.2389
+        },
+        {
+         "decimale": 1.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.7611
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 6.4,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.064
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.98,
+         "esito": "Over",
+         "probabilita_implicita": 0.216
+        },
+        {
+         "decimale": 1.25,
+         "esito": "Under",
+         "probabilita_implicita": 0.784
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 5.48,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0548
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 8.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.0784
+        },
+        {
+         "decimale": 1.07,
+         "esito": "Under",
+         "probabilita_implicita": 0.9216
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.58,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0558
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.93,
@@ -8409,7 +12228,7 @@
        "somma_probabilita": 1.0737
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 13
     }
    },
    "diagnostics": {
@@ -8647,7 +12466,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.2,
+     "ore_prima": 115.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -8699,23 +12518,52 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3996,
      "btts_yes": 0.6004,
      "dc_12": 0.7454,
      "dc_1x": 0.7013,
      "dc_x2": 0.5533,
+     "over_0.5": 0.9636,
      "over_1.5": 0.8134,
+     "over_1.75": 0.7846,
+     "over_2": 0.7472,
+     "over_2.25": 0.65,
      "over_2.5": 0.5751,
+     "over_2.75": 0.5219,
+     "over_3": 0.452,
+     "over_3.25": 0.3957,
      "over_3.5": 0.3527,
+     "over_3.75": 0.2867,
+     "over_4": 0.2115,
+     "over_4.5": 0.1725,
+     "over_5.5": 0.0669,
+     "over_6.5": 0.0197,
+     "under_0.5": 0.0364,
      "under_1.5": 0.1866,
+     "under_1.75": 0.2154,
+     "under_2": 0.2528,
+     "under_2.25": 0.35,
      "under_2.5": 0.4249,
-     "under_3.5": 0.6473
+     "under_2.75": 0.4781,
+     "under_3": 0.548,
+     "under_3.25": 0.6043,
+     "under_3.5": 0.6473,
+     "under_3.75": 0.7133,
+     "under_4": 0.7885,
+     "under_4.5": 0.8275,
+     "under_5.5": 0.9331,
+     "under_6.5": 0.9803
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.36,
@@ -8741,6 +12589,35 @@
        "somma_probabilita": 2.1093
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.03,
+         "esito": "Over",
+         "probabilita_implicita": 0.9636
+        },
+        {
+         "decimale": 14.0,
+         "esito": "Under",
+         "probabilita_implicita": 0.0364
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.23,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0423
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.2,
@@ -8761,6 +12638,83 @@
        "somma_probabilita": 1.0606
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.24,
+         "esito": "Over",
+         "probabilita_implicita": 0.7846
+        },
+        {
+         "decimale": 3.9,
+         "esito": "Under",
+         "probabilita_implicita": 0.2154
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0629
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.3,
+         "esito": "Over",
+         "probabilita_implicita": 0.7472
+        },
+        {
+         "decimale": 3.45,
+         "esito": "Under",
+         "probabilita_implicita": 0.2528
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 5.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0591
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.48,
+         "esito": "Over",
+         "probabilita_implicita": 0.65
+        },
+        {
+         "decimale": 2.6,
+         "esito": "Under",
+         "probabilita_implicita": 0.35
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.03,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0603
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.66,
@@ -8781,6 +12735,83 @@
        "somma_probabilita": 1.059
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.5219
+        },
+        {
+         "decimale": 1.98,
+         "esito": "Under",
+         "probabilita_implicita": 0.4781
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.02,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0502
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.07,
+         "esito": "Over",
+         "probabilita_implicita": 0.452
+        },
+        {
+         "decimale": 1.73,
+         "esito": "Under",
+         "probabilita_implicita": 0.548
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 5.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0595
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.33,
+         "esito": "Over",
+         "probabilita_implicita": 0.3957
+        },
+        {
+         "decimale": 1.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.6043
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 5.92,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0592
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.6,
@@ -8801,6 +12832,131 @@
        "somma_probabilita": 1.0558
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.08,
+         "esito": "Over",
+         "probabilita_implicita": 0.2867
+        },
+        {
+         "decimale": 1.35,
+         "esito": "Under",
+         "probabilita_implicita": 0.7133
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.32,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0632
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.98,
+         "esito": "Over",
+         "probabilita_implicita": 0.2115
+        },
+        {
+         "decimale": 1.23,
+         "esito": "Under",
+         "probabilita_implicita": 0.7885
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 6.13,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0613
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.65,
+         "esito": "Over",
+         "probabilita_implicita": 0.1725
+        },
+        {
+         "decimale": 1.18,
+         "esito": "Under",
+         "probabilita_implicita": 0.8275
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.25,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0625
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 9.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.0669
+        },
+        {
+         "decimale": 1.06,
+         "esito": "Under",
+         "probabilita_implicita": 0.9331
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.6,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.046
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 19.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0197
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9803
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 3.79,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0379
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.57,
@@ -8821,7 +12977,7 @@
        "somma_probabilita": 1.0814
       }
      ],
-     "n_mercati": 5
+     "n_mercati": 17
     }
    },
    "diagnostics": {
@@ -9018,7 +13174,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.2,
+     "ore_prima": 115.7,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -9070,19 +13226,40 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4927,
      "btts_yes": 0.5073,
      "dc_12": 0.8455,
      "dc_1x": 0.9117,
      "dc_x2": 0.2428,
+     "over_0.5": 0.9745,
+     "over_1.75": 0.8246,
      "over_2.5": 0.632,
-     "under_2.5": 0.368
+     "over_2.75": 0.5861,
+     "over_3": 0.5253,
+     "over_3.25": 0.457,
+     "over_3.5": 0.4013,
+     "over_4": 0.27,
+     "over_4.25": 0.2396,
+     "under_0.5": 0.0255,
+     "under_1.75": 0.1754,
+     "under_2.5": 0.368,
+     "under_2.75": 0.4139,
+     "under_3": 0.4747,
+     "under_3.25": 0.543,
+     "under_3.5": 0.5987,
+     "under_4": 0.73,
+     "under_4.25": 0.7604
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.08,
@@ -9108,6 +13285,59 @@
        "somma_probabilita": 2.1032
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.9745
+        },
+        {
+         "decimale": 16.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.0255
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0401
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.19,
+         "esito": "Over",
+         "probabilita_implicita": 0.8246
+        },
+        {
+         "decimale": 4.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.1754
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0601
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.52,
@@ -9128,6 +13358,155 @@
        "somma_probabilita": 1.0595
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.63,
+         "esito": "Over",
+         "probabilita_implicita": 0.5861
+        },
+        {
+         "decimale": 2.24,
+         "esito": "Under",
+         "probabilita_implicita": 0.4139
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0599
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.82,
+         "esito": "Over",
+         "probabilita_implicita": 0.5253
+        },
+        {
+         "decimale": 2.0,
+         "esito": "Under",
+         "probabilita_implicita": 0.4747
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 4.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0495
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.05,
+         "esito": "Over",
+         "probabilita_implicita": 0.457
+        },
+        {
+         "decimale": 1.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.543
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 5.92,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0592
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.4013
+        },
+        {
+         "decimale": 1.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.5987
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 7.14,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0714
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.27
+        },
+        {
+         "decimale": 1.33,
+         "esito": "Under",
+         "probabilita_implicita": 0.73
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 5.72,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0572
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.55,
+         "esito": "Over",
+         "probabilita_implicita": 0.2396
+        },
+        {
+         "decimale": 1.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.7604
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.25",
+       "margine_percento": 6.6,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.066
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.86,
@@ -9148,7 +13527,7 @@
        "somma_probabilita": 1.0612
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 11
     }
    },
    "diagnostics": {
@@ -9389,7 +13768,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.5,
+     "ore_prima": 116.0,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -9441,19 +13820,36 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3996,
      "btts_yes": 0.6004,
      "dc_12": 0.831,
      "dc_1x": 0.8842,
      "dc_x2": 0.2849,
+     "over_1.5": 0.8933,
+     "over_2.75": 0.655,
+     "over_3": 0.6146,
+     "over_3.25": 0.5398,
      "over_3.5": 0.4803,
-     "under_3.5": 0.5197
+     "over_3.75": 0.4223,
+     "over_5.5": 0.1384,
+     "under_1.5": 0.1067,
+     "under_2.75": 0.345,
+     "under_3": 0.3854,
+     "under_3.25": 0.4602,
+     "under_3.5": 0.5197,
+     "under_3.75": 0.5777,
+     "under_5.5": 0.8616
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.11,
@@ -9479,6 +13875,107 @@
        "somma_probabilita": 2.1004
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.1,
+         "esito": "Over",
+         "probabilita_implicita": 0.8933
+        },
+        {
+         "decimale": 6.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.1067
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.06
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.46,
+         "esito": "Over",
+         "probabilita_implicita": 0.655
+        },
+        {
+         "decimale": 2.59,
+         "esito": "Under",
+         "probabilita_implicita": 0.345
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 7.1,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.071
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.54,
+         "esito": "Over",
+         "probabilita_implicita": 0.6146
+        },
+        {
+         "decimale": 2.34,
+         "esito": "Under",
+         "probabilita_implicita": 0.3854
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 7.37,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0737
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.75,
+         "esito": "Over",
+         "probabilita_implicita": 0.5398
+        },
+        {
+         "decimale": 2.01,
+         "esito": "Under",
+         "probabilita_implicita": 0.4602
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 6.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0693
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.92,
@@ -9499,6 +13996,59 @@
        "somma_probabilita": 1.0795
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.17,
+         "esito": "Over",
+         "probabilita_implicita": 0.4223
+        },
+        {
+         "decimale": 1.64,
+         "esito": "Under",
+         "probabilita_implicita": 0.5777
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0695
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.38,
+         "esito": "Over",
+         "probabilita_implicita": 0.1384
+        },
+        {
+         "decimale": 1.13,
+         "esito": "Under",
+         "probabilita_implicita": 0.8616
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 6.71,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0671
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.57,
@@ -9519,7 +14069,7 @@
        "somma_probabilita": 1.0814
       }
      ],
-     "n_mercati": 3
+     "n_mercati": 9
     }
    },
    "diagnostics": {
@@ -9743,7 +14293,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 116.7,
+     "ore_prima": 116.2,
      "ospiti": {
       "modulo": "4-3-3",
       "panchina": [],
@@ -9795,21 +14345,44 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.5328,
      "btts_yes": 0.4672,
      "dc_12": 0.8303,
      "dc_1x": 0.2569,
      "dc_x2": 0.9129,
+     "over_0.5": 0.9686,
+     "over_1.5": 0.811,
+     "over_2.25": 0.6481,
      "over_2.5": 0.572,
+     "over_2.75": 0.5181,
+     "over_3": 0.4465,
+     "over_3.25": 0.3845,
      "over_3.5": 0.3386,
+     "over_4.5": 0.165,
+     "over_5.5": 0.0674,
+     "over_6.5": 0.0142,
+     "under_0.5": 0.0314,
+     "under_1.5": 0.189,
+     "under_2.25": 0.3519,
      "under_2.5": 0.428,
-     "under_3.5": 0.6614
+     "under_2.75": 0.4819,
+     "under_3": 0.5535,
+     "under_3.25": 0.6155,
+     "under_3.5": 0.6614,
+     "under_4.5": 0.835,
+     "under_5.5": 0.9326,
+     "under_6.5": 0.9858
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 3.15,
@@ -9835,6 +14408,83 @@
        "somma_probabilita": 2.0981
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.02,
+         "esito": "Over",
+         "probabilita_implicita": 0.9686
+        },
+        {
+         "decimale": 14.5,
+         "esito": "Under",
+         "probabilita_implicita": 0.0314
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.46,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0446
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.2,
+         "esito": "Over",
+         "probabilita_implicita": 0.811
+        },
+        {
+         "decimale": 4.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.189
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 6.78,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0678
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.48,
+         "esito": "Over",
+         "probabilita_implicita": 0.6481
+        },
+        {
+         "decimale": 2.55,
+         "esito": "Under",
+         "probabilita_implicita": 0.3519
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 7.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0701
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.64,
@@ -9855,6 +14505,83 @@
        "somma_probabilita": 1.0815
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.5181
+        },
+        {
+         "decimale": 1.95,
+         "esito": "Under",
+         "probabilita_implicita": 0.4819
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.08,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0608
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.07,
+         "esito": "Over",
+         "probabilita_implicita": 0.4465
+        },
+        {
+         "decimale": 1.71,
+         "esito": "Under",
+         "probabilita_implicita": 0.5535
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.96,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0696
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.3845
+        },
+        {
+         "decimale": 1.54,
+         "esito": "Under",
+         "probabilita_implicita": 0.6155
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 7.19,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0719
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.6,
@@ -9875,6 +14602,83 @@
        "somma_probabilita": 1.0791
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.8,
+         "esito": "Over",
+         "probabilita_implicita": 0.165
+        },
+        {
+         "decimale": 1.17,
+         "esito": "Under",
+         "probabilita_implicita": 0.835
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.3,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.063
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 9.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.0674
+        },
+        {
+         "decimale": 1.06,
+         "esito": "Under",
+         "probabilita_implicita": 0.9326
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.87,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0487
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 19.25,
+         "esito": "Over",
+         "probabilita_implicita": 0.0142
+        },
+        {
+         "decimale": 1.01,
+         "esito": "Under",
+         "probabilita_implicita": 0.9858
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 4.2,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.042
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.98,
@@ -9895,7 +14699,7 @@
        "somma_probabilita": 1.0732
       }
      ],
-     "n_mercati": 4
+     "n_mercati": 13
     }
    },
    "diagnostics": {
@@ -10019,7 +14823,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 118.5,
+     "ore_prima": 118.0,
      "ospiti": {
       "modulo": "4-3-3",
       "panchina": [],
@@ -10071,14 +14875,77 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.6228,
-     "btts_yes": 0.3772
+     "btts_yes": 0.3772,
+     "dc_12": 0.8714,
+     "dc_1x": 0.9499,
+     "dc_x2": 0.1787,
+     "over_2": 0.7576,
+     "under_2": 0.2424
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "1X",
+         "probabilita_implicita": 0.9499
+        },
+        {
+         "decimale": 1.12,
+         "esito": "12",
+         "probabilita_implicita": 0.8714
+        },
+        {
+         "decimale": 4.37,
+         "esito": "X2",
+         "probabilita_implicita": 0.1787
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": null,
+       "margine_percento": 3.75,
+       "mercato": "Doppia chance",
+       "n_bookmaker": 2,
+       "somma_probabilita": 2.0749
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.28,
+         "esito": "Over",
+         "probabilita_implicita": 0.7576
+        },
+        {
+         "decimale": 3.52,
+         "esito": "Under",
+         "probabilita_implicita": 0.2424
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.49,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0649
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.4,
@@ -10099,7 +14966,7 @@
        "somma_probabilita": 1.0703
       }
      ],
-     "n_mercati": 1
+     "n_mercati": 3
     }
    },
    "diagnostics": {
@@ -10335,7 +15202,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 118.5,
+     "ore_prima": 118.0,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -10387,17 +15254,48 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.518,
      "btts_yes": 0.482,
      "dc_12": 0.807,
      "dc_1x": 0.8752,
-     "dc_x2": 0.3178
+     "dc_x2": 0.3178,
+     "over_0.5": 0.958,
+     "over_1.25": 0.8538,
+     "over_1.75": 0.7604,
+     "over_2": 0.7171,
+     "over_2.25": 0.6194,
+     "over_2.5": 0.5506,
+     "over_2.75": 0.488,
+     "over_3": 0.4139,
+     "over_3.25": 0.3617,
+     "over_3.75": 0.2563,
+     "over_4": 0.1866,
+     "over_4.5": 0.1527,
+     "over_6.5": 0.014,
+     "under_0.5": 0.042,
+     "under_1.25": 0.1462,
+     "under_1.75": 0.2396,
+     "under_2": 0.2829,
+     "under_2.25": 0.3806,
+     "under_2.5": 0.4494,
+     "under_2.75": 0.512,
+     "under_3": 0.5861,
+     "under_3.25": 0.6383,
+     "under_3.75": 0.7437,
+     "under_4": 0.8134,
+     "under_4.5": 0.8473,
+     "under_6.5": 0.986
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.12,
@@ -10423,6 +15321,323 @@
        "somma_probabilita": 2.1035
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.04,
+         "esito": "Over",
+         "probabilita_implicita": 0.958
+        },
+        {
+         "decimale": 12.75,
+         "esito": "Under",
+         "probabilita_implicita": 0.042
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.46,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0446
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.15,
+         "esito": "Over",
+         "probabilita_implicita": 0.8538
+        },
+        {
+         "decimale": 5.47,
+         "esito": "Under",
+         "probabilita_implicita": 0.1462
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.25",
+       "margine_percento": 5.22,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0522
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.7604
+        },
+        {
+         "decimale": 3.55,
+         "esito": "Under",
+         "probabilita_implicita": 0.2396
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 6.6,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.066
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.7171
+        },
+        {
+         "decimale": 3.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.2829
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.07,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0607
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.54,
+         "esito": "Over",
+         "probabilita_implicita": 0.6194
+        },
+        {
+         "decimale": 2.41,
+         "esito": "Under",
+         "probabilita_implicita": 0.3806
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.3,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.063
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.73,
+         "esito": "Over",
+         "probabilita_implicita": 0.5506
+        },
+        {
+         "decimale": 2.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.4494
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 5.77,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0577
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.95,
+         "esito": "Over",
+         "probabilita_implicita": 0.488
+        },
+        {
+         "decimale": 1.86,
+         "esito": "Under",
+         "probabilita_implicita": 0.512
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 4.9,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.049
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.24,
+         "esito": "Over",
+         "probabilita_implicita": 0.4139
+        },
+        {
+         "decimale": 1.63,
+         "esito": "Under",
+         "probabilita_implicita": 0.5861
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 5.99,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0599
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.52,
+         "esito": "Over",
+         "probabilita_implicita": 0.3617
+        },
+        {
+         "decimale": 1.5,
+         "esito": "Under",
+         "probabilita_implicita": 0.6383
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 6.05,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0605
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.4,
+         "esito": "Over",
+         "probabilita_implicita": 0.2563
+        },
+        {
+         "decimale": 1.31,
+         "esito": "Under",
+         "probabilita_implicita": 0.7437
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.04,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0604
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.4,
+         "esito": "Over",
+         "probabilita_implicita": 0.1866
+        },
+        {
+         "decimale": 1.2,
+         "esito": "Under",
+         "probabilita_implicita": 0.8134
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4",
+       "margine_percento": 6.06,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0606
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 5.12,
+         "esito": "Over",
+         "probabilita_implicita": 0.1527
+        },
+        {
+         "decimale": 1.15,
+         "esito": "Under",
+         "probabilita_implicita": 0.8473
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 6.09,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0609
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 20.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.014
+        },
+        {
+         "decimale": 1.01,
+         "esito": "Under",
+         "probabilita_implicita": 0.986
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "6.5",
+       "margine_percento": 3.89,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0389
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.92,
@@ -10443,7 +15658,7 @@
        "somma_probabilita": 1.0764
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 15
     }
    },
    "diagnostics": {
@@ -10646,7 +15861,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 118.5,
+     "ore_prima": 118.0,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -10698,17 +15913,50 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.5058,
      "btts_yes": 0.4942,
      "dc_12": 0.7378,
      "dc_1x": 0.7721,
-     "dc_x2": 0.4901
+     "dc_x2": 0.4901,
+     "over_0.5": 0.9279,
+     "over_1.25": 0.7996,
+     "over_1.5": 0.7191,
+     "over_1.75": 0.6747,
+     "over_2": 0.6123,
+     "over_2.25": 0.5219,
+     "over_2.5": 0.4508,
+     "over_2.75": 0.3865,
+     "over_3": 0.3012,
+     "over_3.25": 0.2618,
+     "over_3.5": 0.2396,
+     "over_3.75": 0.1829,
+     "over_4.5": 0.0921,
+     "over_5.5": 0.0258,
+     "under_0.5": 0.0721,
+     "under_1.25": 0.2004,
+     "under_1.5": 0.2809,
+     "under_1.75": 0.3253,
+     "under_2": 0.3877,
+     "under_2.25": 0.4781,
+     "under_2.5": 0.5492,
+     "under_2.75": 0.6135,
+     "under_3": 0.6988,
+     "under_3.25": 0.7382,
+     "under_3.5": 0.7604,
+     "under_3.75": 0.8171,
+     "under_4.5": 0.9079,
+     "under_5.5": 0.9742
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.25,
@@ -10734,6 +15982,347 @@
        "somma_probabilita": 2.1098
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.06,
+         "esito": "Over",
+         "probabilita_implicita": 0.9279
+        },
+        {
+         "decimale": 9.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.0721
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "0.5",
+       "margine_percento": 4.86,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0486
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.22,
+         "esito": "Over",
+         "probabilita_implicita": 0.7996
+        },
+        {
+         "decimale": 4.18,
+         "esito": "Under",
+         "probabilita_implicita": 0.2004
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.25",
+       "margine_percento": 5.92,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0592
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.7191
+        },
+        {
+         "decimale": 3.17,
+         "esito": "Under",
+         "probabilita_implicita": 0.2809
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.5",
+       "margine_percento": 5.57,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0557
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.43,
+         "esito": "Over",
+         "probabilita_implicita": 0.6747
+        },
+        {
+         "decimale": 2.77,
+         "esito": "Under",
+         "probabilita_implicita": 0.3253
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.75",
+       "margine_percento": 5.97,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0597
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.56,
+         "esito": "Over",
+         "probabilita_implicita": 0.6123
+        },
+        {
+         "decimale": 2.38,
+         "esito": "Under",
+         "probabilita_implicita": 0.3877
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.0,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.06
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.5219
+        },
+        {
+         "decimale": 1.98,
+         "esito": "Under",
+         "probabilita_implicita": 0.4781
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 5.02,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0502
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.08,
+         "esito": "Over",
+         "probabilita_implicita": 0.4508
+        },
+        {
+         "decimale": 1.73,
+         "esito": "Under",
+         "probabilita_implicita": 0.5492
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 5.71,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0571
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.38,
+         "esito": "Over",
+         "probabilita_implicita": 0.3865
+        },
+        {
+         "decimale": 1.56,
+         "esito": "Under",
+         "probabilita_implicita": 0.6135
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.21,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0621
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.98,
+         "esito": "Over",
+         "probabilita_implicita": 0.3012
+        },
+        {
+         "decimale": 1.38,
+         "esito": "Under",
+         "probabilita_implicita": 0.6988
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 5.82,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0582
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.35,
+         "esito": "Over",
+         "probabilita_implicita": 0.2618
+        },
+        {
+         "decimale": 1.31,
+         "esito": "Under",
+         "probabilita_implicita": 0.7382
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 5.9,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.059
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.55,
+         "esito": "Over",
+         "probabilita_implicita": 0.2396
+        },
+        {
+         "decimale": 1.27,
+         "esito": "Under",
+         "probabilita_implicita": 0.7604
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 6.6,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.066
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.47,
+         "esito": "Over",
+         "probabilita_implicita": 0.1829
+        },
+        {
+         "decimale": 1.19,
+         "esito": "Under",
+         "probabilita_implicita": 0.8171
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 6.03,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0603
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.0921
+        },
+        {
+         "decimale": 1.08,
+         "esito": "Under",
+         "probabilita_implicita": 0.9079
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.5,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.055
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 16.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0258
+        },
+        {
+         "decimale": 1.02,
+         "esito": "Under",
+         "probabilita_implicita": 0.9742
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "5.5",
+       "margine_percento": 4.29,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0429
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.91,
@@ -10754,7 +16343,7 @@
        "somma_probabilita": 1.0583
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 16
     }
    },
    "diagnostics": {
@@ -10990,7 +16579,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 118.5,
+     "ore_prima": 118.0,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -11042,7 +16631,7 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.463,
      "btts_yes": 0.537,
@@ -11053,6 +16642,11 @@
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.49,
@@ -11078,6 +16672,11 @@
        "somma_probabilita": 2.0942
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.75,
@@ -11235,7 +16834,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 118.7,
+     "ore_prima": 118.2,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -11287,17 +16886,26 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.3567,
      "btts_yes": 0.6433,
      "dc_12": 0.7941,
      "dc_1x": 0.4117,
-     "dc_x2": 0.7941
+     "dc_x2": 0.7941,
+     "over_3.25": 0.5125,
+     "over_3.5": 0.4557,
+     "under_3.25": 0.4875,
+     "under_3.5": 0.5443
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 2.15,
@@ -11323,6 +16931,59 @@
        "somma_probabilita": 2.1045
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.83,
+         "esito": "Over",
+         "probabilita_implicita": 0.5125
+        },
+        {
+         "decimale": 1.92,
+         "esito": "Under",
+         "probabilita_implicita": 0.4875
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 6.58,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0658
+      },
+      {
+       "bookmaker": [
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.4557
+        },
+        {
+         "decimale": 1.71,
+         "esito": "Under",
+         "probabilita_implicita": 0.5443
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.5",
+       "margine_percento": 8.48,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0848
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.48,
@@ -11343,7 +17004,7 @@
        "somma_probabilita": 1.0757
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 4
     }
    },
    "diagnostics": {
@@ -11546,7 +17207,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 119.2,
+     "ore_prima": 118.7,
      "ospiti": {
       "modulo": "4-4-2",
       "panchina": [],
@@ -11598,17 +17259,38 @@
       ]
      }
     },
-    "letto": "2026-08-24T20:16:06Z",
+    "letto": "2026-08-24T20:46:01Z",
     "market_p": {
      "btts_no": 0.4707,
      "btts_yes": 0.5293,
      "dc_12": 0.7316,
      "dc_1x": 0.5303,
-     "dc_x2": 0.7381
+     "dc_x2": 0.7381,
+     "over_1.25": 0.8246,
+     "over_2.25": 0.5604,
+     "over_2.5": 0.488,
+     "over_2.75": 0.4239,
+     "over_3": 0.3419,
+     "over_3.25": 0.3012,
+     "over_3.75": 0.2099,
+     "over_4.5": 0.1108,
+     "under_1.25": 0.1754,
+     "under_2.25": 0.4396,
+     "under_2.5": 0.512,
+     "under_2.75": 0.5761,
+     "under_3": 0.6581,
+     "under_3.25": 0.6988,
+     "under_3.75": 0.7901,
+     "under_4.5": 0.8892
     },
     "quote": {
      "mercati": [
       {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.73,
@@ -11634,6 +17316,203 @@
        "somma_probabilita": 2.1106
       },
       {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.19,
+         "esito": "Over",
+         "probabilita_implicita": 0.8246
+        },
+        {
+         "decimale": 4.62,
+         "esito": "Under",
+         "probabilita_implicita": 0.1754
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "1.25",
+       "margine_percento": 6.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0601
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.69,
+         "esito": "Over",
+         "probabilita_implicita": 0.5604
+        },
+        {
+         "decimale": 2.12,
+         "esito": "Under",
+         "probabilita_implicita": 0.4396
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.25",
+       "margine_percento": 6.28,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0628
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.95,
+         "esito": "Over",
+         "probabilita_implicita": 0.488
+        },
+        {
+         "decimale": 1.86,
+         "esito": "Under",
+         "probabilita_implicita": 0.512
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 4.9,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.049
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.19,
+         "esito": "Over",
+         "probabilita_implicita": 0.4239
+        },
+        {
+         "decimale": 1.65,
+         "esito": "Under",
+         "probabilita_implicita": 0.5761
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 6.09,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0609
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.64,
+         "esito": "Over",
+         "probabilita_implicita": 0.3419
+        },
+        {
+         "decimale": 1.46,
+         "esito": "Under",
+         "probabilita_implicita": 0.6581
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.37,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0637
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.98,
+         "esito": "Over",
+         "probabilita_implicita": 0.3012
+        },
+        {
+         "decimale": 1.38,
+         "esito": "Under",
+         "probabilita_implicita": 0.6988
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.25",
+       "margine_percento": 5.82,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0582
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 4.05,
+         "esito": "Over",
+         "probabilita_implicita": 0.2099
+        },
+        {
+         "decimale": 1.23,
+         "esito": "Under",
+         "probabilita_implicita": 0.7901
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3.75",
+       "margine_percento": 5.66,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0566
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us"
+       ],
+       "esiti": [
+        {
+         "decimale": 6.5,
+         "esito": "Over",
+         "probabilita_implicita": 0.1108
+        },
+        {
+         "decimale": 1.1,
+         "esito": "Under",
+         "probabilita_implicita": 0.8892
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "4.5",
+       "margine_percento": 5.88,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0588
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
        "esiti": [
         {
          "decimale": 1.78,
@@ -11654,7 +17533,7 @@
        "somma_probabilita": 1.0668
       }
      ],
-     "n_mercati": 2
+     "n_mercati": 10
     }
    },
    "diagnostics": {
@@ -11832,7 +17711,7 @@
    "utc_date": "2026-08-29T19:30:00Z"
   }
  ],
- "generated_at": "2026-08-24T20:16:06Z",
+ "generated_at": "2026-08-24T20:46:01Z",
  "schema_version": 1,
  "silence_count": 14,
  "total": 41
