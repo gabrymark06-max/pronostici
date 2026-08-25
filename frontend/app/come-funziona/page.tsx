@@ -67,8 +67,10 @@ export default function PaginaComeFunziona() {
           <p className="scheda-info__corpo">
             Su circa {silenzioSuCento} partite su 100 non diciamo niente. Succede quando
             il nostro modello dice quasi la stessa cosa del mercato, o quando la stima
-            oscilla troppo: un pronostico senza vantaggio è rumore, e pubblicarlo per
-            riempire la lista sarebbe la cosa più facile e più disonesta che possiamo
+            oscilla troppo, o quando la scommessa migliore <strong>paga meno di
+            1,30</strong>: un pronostico senza vantaggio è rumore, e uno che paga
+            dieci centesimi sull’euro non vale il rischio nemmeno quando esce. Pubblicarli
+            per riempire la lista sarebbe la cosa più facile e più disonesta che possiamo
             fare.
           </p>
         </article>

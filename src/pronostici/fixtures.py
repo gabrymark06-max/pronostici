@@ -250,6 +250,50 @@ CAMPO_CONTORNO = "contorno"
 CAMPI_DI_ALTRI = ("odds", "result", "outcome", "sofascore", CAMPO_CONTORNO)
 
 
+def prezzi_noti(entry: dict) -> dict[str, float]:
+    """TUTTI i prezzi veri che una partita ha in archivio, nelle nostre chiavi.
+
+    Le tre fonti scrivono in due posti diversi — `odds.prices` la principale,
+    `contorno.prezzi` le altre due — e chi deve decidere se una scommessa paga
+    abbastanza non ha nessun motivo di sapere quali sono. Qui si uniscono, con
+    la stessa precedenza che usa la scheda partita: **la principale vince**,
+    perche' e' la mediana di ventiquattro operatori.
+
+    Sta in `fixtures` e non nel job che lo usa perche' i job sono due — `score`
+    la notte e `finalize` a T-36h — e due copie della stessa lettura sono due
+    occasioni di divergere su quale campo conta.
+    """
+    fuori: dict[str, float] = {}
+    for campo in (CAMPO_CONTORNO, "sofascore"):
+        for chiave, valore in ((entry.get(campo) or {}).get("prezzi") or {}).items():
+            quota = (valore or {}).get("decimale")
+            if isinstance(quota, int | float) and quota > 1:
+                fuori.setdefault(chiave, float(quota))
+    for chiave, quota in ((entry.get("odds") or {}).get("prices") or {}).items():
+        if isinstance(quota, int | float) and quota > 1:
+            fuori[chiave] = float(quota)
+    return fuori
+
+
+def prezzi_per_partita(giorni: list[str]) -> dict[int, dict[str, float]]:
+    """L'indice `match_id -> prezzi` sui giorni indicati.
+
+    I job che scelgono il pronostico lavorano sui `Match` dell'archivio, che i
+    prezzi non li portano: stanno nei file di `data/fixtures/`, scritti da altri
+    giri. Questo li rilegge una volta sola invece che una per partita.
+    """
+    fuori: dict[int, dict[str, float]] = {}
+    for giorno in giorni:
+        dati = load_day(giorno)
+        if not dati:
+            continue
+        for entry in dati.get("fixtures", []):
+            trovati = prezzi_noti(entry)
+            if trovati:
+                fuori[int(entry["match_id"])] = trovati
+    return fuori
+
+
 def _conserva_campi_altrui(vecchio: dict, nuovo: dict) -> dict:
     """Riporta nel nuovo payload i campi che il chiamante non possiede.
 

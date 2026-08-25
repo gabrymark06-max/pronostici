@@ -15,7 +15,19 @@ export type CodiceCompetizione =
 
 export type Fase = 'preliminary' | 'definitive';
 export type Provenienza = 'model_only' | 'blended_with_odds';
-export type MotivoSilenzio = 'S_min' | 'sigma_max' | 'p_min' | 'no_candidates';
+/**
+ * Perché non c'è un pronostico. Uno per filtro, più `no_candidates`.
+ *
+ * `quota_min` è il più recente e il più diverso dagli altri: gli altri tre
+ * dicono «non sappiamo abbastanza», questo dice «sappiamo, e non conviene
+ * giocarla». Trattarlo come gli altri scriverebbe il falso sulla scheda.
+ */
+export type MotivoSilenzio =
+  | 'S_min'
+  | 'sigma_max'
+  | 'p_min'
+  | 'quota_min'
+  | 'no_candidates';
 
 export type Transizione =
   | 'first'
@@ -53,7 +65,7 @@ export interface Pronostico extends Mercato {
 export interface Diagnostica {
   n_candidates: number;
   n_clusters: number;
-  filter_bites: Partial<Record<'S_min' | 'p_min' | 'sigma_max', number>>;
+  filter_bites: Partial<Record<'S_min' | 'p_min' | 'sigma_max' | 'quota_min', number>>;
   truncated_mass: number;
 }
 

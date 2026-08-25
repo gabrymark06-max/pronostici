@@ -168,6 +168,23 @@ def run(
     markets = ("h2h",) if step == "totals_market" else MARKETS
     report["markets"] = list(markets)
 
+    # I PREZZI DELLE ALTRE DUE FONTI, per il filtro sulla quota minima.
+    #
+    # Quelli freschi di questo giro arrivano dallo snapshot e coprono cinque
+    # mercati; `contorno` gira alle 7 e alle 17, cioe' tre ore prima di ognuno
+    # dei due giri di quote, e ha gia' scritto in archivio doppia chance, gol
+    # totali, gol di squadra e handicap. Senza questa lettura il filtro
+    # deciderebbe sul prezzo dove il mercato e' uno dei cinque e sulla sola
+    # probabilita' su tutti gli altri — cioe' proprio sulle famiglie che il
+    # modello sceglie piu' spesso.
+    giorni_in_finestra = sorted(
+        {
+            (as_of + timedelta(hours=h)).strftime("%Y-%m-%d")
+            for h in range(0, window_hours + 24, 12)
+        }
+    )
+    prezzi_archivio = fx.prezzi_per_partita(giorni_in_finestra)
+
     by_date: dict[str, list[dict]] = defaultdict(list)
     ledger_rows: dict[int, list] = defaultdict(list)
     preliminary_index: dict[int, dict[str, dict]] = {}
@@ -233,6 +250,12 @@ def run(
                     market_probabilities=snapshot.probabilities,
                     model_weight=MODEL_WEIGHT,
                     ht_ratio=ht_ratio,
+                    # I prezzi appena letti vincono su quelli in archivio: sono
+                    # gli stessi mercati, riletti adesso.
+                    prezzi={
+                        **prezzi_archivio.get(match_id, {}),
+                        **snapshot.prices,
+                    },
                 )
             except KeyError as exc:
                 log.warning("%s: %s", match_id, exc)

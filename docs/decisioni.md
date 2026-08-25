@@ -271,3 +271,59 @@ sono nel codice e non nelle intenzioni:
 
 **Resta scoperto** ciò che nessuno espone: le *combo*. Lì la pagina continua a
 mostrare la probabilità e a tacere sulla quota, che è il vero stato delle cose.
+
+---
+
+## Deciso: non si consiglia niente sotto 1,30 (25 agosto 2026)
+
+**Parole del proprietario:** *"bisogna consigliare solo scommesse che abbiano
+almeno 1.30 di quota"*.
+
+`P_MIN` ha sempre avuto un verso solo — non consigliamo cio' che e' meno
+probabile che no. Ma un esito quasi certo e' un cattivo consiglio per la ragione
+opposta: non paga abbastanza perche' valga la pena rischiarci qualcosa. Misurato
+quel giorno sui 59 consigli in cartellone: **29 pagavano meno di 1,30 e nove
+meno di 1,10**, cioe' dieci centesimi sull'euro.
+
+**La regola e' sul prezzo vero, non su `1/p`.** Sono due numeri diversi e la
+differenza e' il margine dell'operatore. Cinque di quei ventinove avevano quota
+equa fra 1,30 e 1,38 — un tetto sulla sola probabilita' li avrebbe lasciati
+passare — e prezzo vero fra 1,12 e 1,22. Vale anche al contrario, ed e' il caso
+che conta di piu': una scommessa che diamo all'88 su 100 (equa 1,14) e che un
+operatore paga 1,45 e' un buon consiglio, e un tetto sulla probabilita' la
+butterebbe via proprio quando il mercato ci sta pagando piu' di quanto pensiamo
+che valga.
+
+**Dove il prezzo non c'e' si decide solo cio' che si puo' dimostrare.** Nessun
+operatore paga piu' del prezzo equo, quindi `1/p < 1,30` prova che il prezzo
+vero non arriva alla soglia anche senza vederlo — e' una deduzione, non una
+quota inventata. Sui restanti (equa sopra soglia, nessuno che li quoti: le
+combo) non si prova niente in nessuno dei due versi e passano; la scheda dice
+gia' che nessuno li quota.
+
+**Cosa costa, misurato sul cartellone di quel giorno** (79 partite):
+
+| | prima | dopo |
+|---|---|---|
+| con un pronostico | 55 | 52 |
+| in silenzio | 24 | 27 |
+| consigli sotto 1,30 | 12 | **0** |
+| quota minima consigliata | 1,12 | **1,30** |
+
+Tre partite in piu' in silenzio, non trenta: quasi tutte non tacciono, **cambiano
+consiglio**. Juventus-Parma passa da «Vittoria casa» a 1,21 a «Non entrambe
+segnano» a 1,53; Auxerre-Angers da «Under 3.5» a 1,29 a «Non entrambe segnano» a
+1,90.
+
+**Un effetto collaterale, ed e' reale:** i consigli con un prezzo passano dal 91%
+all'83%. Il filtro spinge un po' verso le combo, che nessuno quota e che quindi
+non si possono smentire. E' il prezzo della clausola «dove non si puo' provare,
+passa», e va guardato quando ci saranno piu' dati.
+
+**Il silenzio nuovo si chiama `quota_min`** e non si accorpa a `S_min`: gli altri
+motivi dicono «non sappiamo abbastanza», questo dice il contrario — sappiamo, e
+non conviene. La scheda porta nome e prezzo del mercato scartato, cosi' quel
+silenzio si puo' controllare invece che credere.
+
+La soglia e' un parametro di `build_candidates`, non una costante cablata: il
+backtest deve poter misurare quanto costa ogni valore.

@@ -52,6 +52,21 @@ def run(
     horizon = as_of + timedelta(days=days)
     started = time.monotonic()
 
+    # I PREZZI GIA' IN ARCHIVIO, per il filtro sulla quota minima.
+    #
+    # Questo giro non chiama nessuna fonte di quote — e' il preliminare, gira
+    # alle 3 di notte — ma i prezzi ci sono lo stesso: `contorno` li ha scritti
+    # il pomeriggio prima e `upsert_day` li conserva. Sono di qualche ora
+    # prima, e per decidere se una scommessa paga almeno 1,30 bastano: una
+    # quota non passa da 1,10 a 1,40 in una notte.
+    #
+    # Dove non ci sono, il filtro si accontenta di cio' che si deduce dalla
+    # probabilita' — vedi `QUOTA_MINIMA` in model/selection.py.
+    giorni_in_finestra = [
+        (as_of + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(days + 1)
+    ]
+    prezzi_noti = fx.prezzi_per_partita(giorni_in_finestra)
+
     by_date: dict[str, list[dict]] = defaultdict(list)
     ledger_rows: dict[int, list] = defaultdict(list)
     finalized = ledger.PhaseIndex()
@@ -85,6 +100,7 @@ def run(
                     tau=tau,
                     ht_ratio=ht_ratio,
                     model_weight=1.0,
+                    prezzi=prezzi_noti.get(match.match_id),
                 )
             except KeyError as exc:
                 # Squadra neopromossa senza storico: non e' un guasto.

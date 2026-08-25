@@ -17,7 +17,7 @@ from .model import markets as mk
 from .model.blend import blend_lambdas, solve_market_lambdas
 from .model.bootstrap import BootstrapResult
 from .model.matrix import MAX_GOALS, build_matrices
-from .model.selection import Selection, build_candidates, select
+from .model.selection import EPS, Selection, build_candidates, select
 
 # Mercati su cui the-odds-api ci da' un riferimento diretto (h2h + totals).
 ODDS_BACKED_KEYS = frozenset(
@@ -129,6 +129,28 @@ def _silence_sentence(
             "Quello che vediamo di diverso è troppo improbabile perché ve lo "
             "consigliamo."
         )
+    if reason == "quota_min":
+        # COL NOME E COL PREZZO, come `sigma_max` fa col nome della squadra.
+        # «Non conviene» detto in astratto e' un'opinione; «"1X" si trova a
+        # 1,12» e' un fatto che il lettore puo' andare a controllare.
+        respinto = selection.respinto_per_quota
+        if respinto is None:
+            return (
+                "Quello che vediamo di diverso è già così probabile che nessuno "
+                "lo paga abbastanza."
+            )
+        if respinto.prezzo is not None:
+            prezzo = f"{respinto.prezzo:.2f}".replace(".", ",")
+            return (
+                f"Il mercato migliore qui è «{respinto.label}», e si trova a "
+                f"{prezzo}: sotto 1,30 non lo consigliamo."
+            )
+        equa = f"{1 / max(respinto.p_tilde, EPS):.2f}".replace(".", ",")
+        return (
+            f"Il mercato migliore qui è «{respinto.label}», e nessuno lo quota. "
+            f"Alla probabilità che gli diamo non potrebbe pagare più di {equa}, "
+            "e sotto 1,30 non lo consigliamo."
+        )
     riferimento = (
         "quello che dicono già le quote"
         if with_odds
@@ -199,6 +221,7 @@ def score_fixture(
     selectable_keys: set[str] | None = None,
     excluded_families: frozenset[str] | None = None,
     include_unselectable: bool = False,
+    prezzi: dict[str, float] | None = None,
     max_goals: int = MAX_GOALS,
 ) -> FixtureScore:
     """Scora una fixture. Con `market_probabilities` (gia' sgonfiate col
@@ -251,6 +274,10 @@ def score_fixture(
         selectable_keys=selectable_keys,
         excluded_families=excluded_families,
         include_unselectable=include_unselectable,
+        # I PREZZI VERI, per il filtro sulla quota minima. Non sono le
+        # `market_probabilities` qui sopra: quelle sono probabilita' sgonfiate
+        # e servono da riferimento, questi sono quello che un operatore paga.
+        prezzi=prezzi,
         max_goals=max_goals,
     )
     selection = select(candidates, mean_matrix, max_goals=max_goals)

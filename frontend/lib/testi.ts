@@ -148,6 +148,30 @@ export function vesteSilenzio(fixture: FixtureInSilenzio): VesteSilenzio {
     };
   }
 
+  if (motivo === 'quota_min') {
+    /* IL SILENZIO CHE NON È UN'IGNORANZA.
+       Gli altri tre dicono «non sappiamo abbastanza». Questo dice il
+       contrario: sappiamo, il mercato c'è, e non conviene giocarlo. Dargli il
+       testo di «non distinguibile» — che era quello che sarebbe capitato senza
+       questo ramo — direbbe al lettore che non abbiamo trovato niente proprio
+       nel caso in cui abbiamo trovato qualcosa e l'abbiamo scartato per lui. */
+    return {
+      /* `>` e non un simbolo piu' espressivo: e' lo specchio del `<` di
+         `p_min`, e i due sono davvero i due estremi della stessa fascia —
+         sotto 50 su 100 e' troppo improbabile, sopra 77 non paga piu' niente.
+         Ed e' ASCII, quindi c'e' di sicuro nel sottoinsieme del font che ci
+         portiamo dietro. */
+      glifo: '>',
+      etichetta: 'PAGA TROPPO POCO',
+      titolo:
+        titoloDalBackend ??
+        'Quello che vediamo di diverso è già così probabile che nessuno lo paga abbastanza.',
+      sottotitolo:
+        'Non consigliamo scommesse sotto 1,30: su quelle quote il rischio non è ripagato, ' +
+        'e bastano poche uscite storte a mangiare tutte le vincite.',
+    };
+  }
+
   if (motivo === 'p_min') {
     return {
       glifo: '<',

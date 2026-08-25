@@ -54,6 +54,12 @@ Un file per giorno. È quello che la home legge.
 | `result` | `{home, away}` | comparso dopo il fischio finale |
 | `outcome` | 0 \| 1 | il pronostico si è avverato |
 
+`quota_min` è l'unico motivo che **non** dice «non sappiamo abbastanza».
+Dice il contrario: sappiamo, il mercato esiste, e non conviene giocarlo. Il
+frontend gli dà una veste sua (`PAGA TROPPO POCO`) e non lo accorpa a `S_min`.
+Quando c'è, `reasons[0]` porta il nome e il prezzo del mercato scartato: è
+quello che rende quel silenzio verificabile invece che assertivo.
+
 `prediction` e `silence` sono **mutuamente esclusivi**. Il silenzio è un tipo
 di prima classe, non un ramo `else`: va modellato nei tipi.
 
@@ -130,6 +136,7 @@ Non è un booleano proprio perché i tre messaggi sono diversi:
 | `S_min` | nessun candidato porta informazione | *"Il nostro modello dice quasi esattamente quello che dice già la media del campionato."* |
 | `sigma_max` | stima troppo instabile | *"Abbiamo troppe poche partite affidabili su [squadra] per dare un numero in cui crediamo."* |
 | `p_min` | l'unica differenza è troppo improbabile | *"Quello che vediamo di diverso è troppo improbabile perché ve lo consigliamo."* |
+| `quota_min` | il mercato migliore non paga 1,30 | *"Il mercato migliore qui è «1X», e si trova a 1,12: sotto 1,30 non lo consigliamo."* |
 | `no_candidates` | nessun mercato calcolabile (caso raro) | trattare come `S_min` |
 
 ### `transition` e `previous` (solo fase definitiva)
