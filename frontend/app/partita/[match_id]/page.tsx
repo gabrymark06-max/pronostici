@@ -7,6 +7,7 @@ import { BloccoArbitro } from '@/components/BloccoArbitro';
 import { CosaManca } from '@/components/CosaManca';
 import { CampoFormazioni } from '@/components/CampoFormazioni';
 import { QuoteEstese } from '@/components/QuoteEstese';
+import { mercatiPrincipali, uniscoMercati } from '@/lib/mercati-principali';
 import { SezioneGiocatori } from '@/components/SezioneGiocatori';
 import { BarraProbabilita } from '@/components/BarraProbabilita';
 import { BloccoRevisione } from '@/components/BloccoRevisione';
@@ -106,6 +107,11 @@ export default async function PaginaPartita({ params }: Props) {
   const conclusa = fixture.result != null;
   // Arbitro, formazioni e mercati estesi: due epoche, un accessore solo.
   const contorno = contornoDi(fixture);
+  // I prezzi delle due fonti, nella stessa tavola e con la provenienza scritta.
+  const tuttiIMercati = uniscoMercati(
+    mercatiPrincipali(fixture.odds),
+    contorno?.quote?.mercati ?? [],
+  );
 
   return (
     <>
@@ -268,7 +274,7 @@ export default async function PaginaPartita({ params }: Props) {
           ];
           if (contorno?.formazioni) voci.push({ id: 'formazioni', testo: 'Formazioni' });
           if (contorno?.arbitro) voci.push({ id: 'arbitro', testo: 'Arbitro' });
-          if (contorno?.quote?.mercati?.length)
+          if (tuttiIMercati.length)
             voci.push({ id: 'altri-mercati', testo: 'Altri mercati' });
           if (contorno?.giocatori) voci.push({ id: 'giocatori', testo: 'Giocatori' });
           if (voci.length < 2) return null;
@@ -310,9 +316,13 @@ export default async function PaginaPartita({ params }: Props) {
           />
         ) : null}
 
-        {contorno?.quote?.mercati?.length ? (
-          <QuoteEstese mercati={contorno.quote.mercati} />
-        ) : null}
+        {/* LE DUE FONTI INSIEME, e ognuna dice di essere se stessa.
+            `odds.prices` sono prezzi veri quanto quelli dell'altra fonte —
+            mediana di operatori su esito finale e gol totali — e finivano
+            scritti nel dato senza comparire mai: su Valencia-Betis il sito
+            sapeva quanto pagava l'1X2 e non lo diceva, perche' questa tavola
+            leggeva solo la secondaria. */}
+        {tuttiIMercati.length ? <QuoteEstese mercati={tuttiIMercati} /> : null}
 
         {contorno?.giocatori ? (
           <SezioneGiocatori

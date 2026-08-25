@@ -289,10 +289,11 @@ export function QuoteEstese({ mercati }: { mercati: MercatoEsteso[] }) {
       </h2>
 
       <p className="sezione__lettura">
-        Prezzi da una fonte diversa da quella che usiamo per i pronostici, sui mercati che quella
-        non copre. Il numero sotto la quota è quanto la dà il prezzo, margine dell’operatore
-        incluso: <strong>non è la nostra stima</strong>, e su questi mercati il nostro modello non
-        si pronuncia. Dove il mercato ha una scala di linee, la linea è la prima colonna: «Oltre
+        <strong>Solo prezzi che abbiamo trovato</strong>, da operatori che quel mercato lo
+        quotano davvero — nessun numero ricavato dalle nostre probabilità. Il numero sotto la
+        quota è quanto la dà il prezzo, margine dell’operatore incluso:{' '}
+        <strong>non è la nostra stima</strong>, e su questi mercati il nostro modello non si
+        pronuncia. Dove il mercato ha una scala di linee, la linea è la prima colonna: «Oltre
         2,5» vuol dire tre gol o più.
       </p>
 
