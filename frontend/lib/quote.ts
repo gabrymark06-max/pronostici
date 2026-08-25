@@ -40,7 +40,7 @@
  */
 import { decimale, suCento } from './formato';
 import { contornoDi } from './contorno';
-import type { Contorno, Fixture, Mercato, Quote } from './tipi';
+import type { Fixture, Mercato } from './tipi';
 
 export interface QuoteDelMercato {
   /** IL PREZZO, quello vero. `null` quando nessuna fonte quota il mercato. */
@@ -81,12 +81,18 @@ export function formattaQuota(q: number): string {
  * `dc_x2`), non quelle della fonte: la corrispondenza è già stata fatta nel
  * backend, e qui basta una lettura diretta.
  */
-export function quoteDi(
-  mercato: Mercato,
-  odds: Quote | null | undefined,
-  /** Il contorno: porta i prezzi di betexplorer e le sue probabilità. */
-  contorno?: Contorno | null,
-): QuoteDelMercato {
+export function quoteDi(mercato: Mercato, fixture: Fixture): QuoteDelMercato {
+  /* SI PASSA LA PARTITA, non i suoi pezzi.
+     Prima questa funzione prendeva `odds` e il contorno separati, e un
+     chiamante le passava `contorno.market_p` al posto del contorno: le sole
+     probabilita' dove servivano anche i prezzi. Il typecheck non se n'e'
+     accorto — un `Record<string, number>` e' assegnabile a un tipo di sole
+     proprieta' opzionali, perche' l'index signature non dichiara nessuna
+     proprieta' e il controllo passa a vuoto — e per un giorno la tavola dei
+     mercati e' rimasta vuota su ogni partita.
+     Con la partita intera l'errore non e' rappresentabile. */
+  const odds = fixture.odds;
+  const contorno = contornoDi(fixture);
   const prezzoPrincipale = odds?.prices?.[mercato.key];
   const haPrincipale = typeof prezzoPrincipale === 'number' && prezzoPrincipale > 1;
 
@@ -120,7 +126,7 @@ export function quoteDi(
 /** Comoda per la riga di lista: le quote del pronostico consigliato. */
 export function quoteDelPronostico(fixture: Fixture): QuoteDelMercato | null {
   if (fixture.prediction === null) return null;
-  return quoteDi(fixture.prediction, fixture.odds, contornoDi(fixture));
+  return quoteDi(fixture.prediction, fixture);
 }
 
 /**

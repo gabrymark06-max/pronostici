@@ -48,8 +48,17 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
      questa partita non ne abbiamo affatto. La seconda riguarda l'intera
      colonna e va detta una volta sotto la tavola, non ripetuta riga per riga
      con la motivazione sbagliata. */
-  const secondarie = contornoDi(fixture)?.market_p ?? null;
-  const nessunaQuota = !fixture.odds?.market_p && !secondarie;
+  /* IL CONTORNO INTERO, non una sua mappa.
+     Qui passava `contorno.market_p` — le sole probabilita' — a una funzione
+     che dal 25 agosto 2026 vuole il blocco completo, perche' i PREZZI stanno
+     in un altro campo. Il typecheck non se n'e' accorto: un `Record<string,
+     number>` e' assegnabile a un tipo fatto di sole proprieta' opzionali,
+     perche' l'index signature non ne dichiara nessuna e il controllo passa a
+     vuoto. Risultato: ne' i prezzi ne' le probabilita' della fonte secondaria
+     arrivavano mai in questa tavola, e le due colonne restavano vuote su ogni
+     partita. */
+  const contorno = contornoDi(fixture);
+  const nessunaQuota = !fixture.odds?.market_p && !contorno?.market_p;
 
   /* Se anche una sola riga viene dalla fonte secondaria la tavola lo dichiara
      sotto, una volta: la provenienza di un numero non e' un dettaglio da
@@ -60,7 +69,7 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
      dall'ordine. Qui la domanda e' semplice e la risposta si ottiene in una
      riga. */
   const usaSecondaria = gruppi.some((g) =>
-    g.mercati.some((m) => quoteDi(m, fixture.odds, secondarie).fonte === 'secondaria'),
+    g.mercati.some((m) => quoteDi(m, fixture).fonte === 'secondaria'),
   );
 
   return (
@@ -113,7 +122,7 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
                 </th>
               </tr>
               {gruppo.mercati.map((mercato) => {
-                const q = quoteDi(mercato, fixture.odds, secondarie);
+                const q = quoteDi(mercato, fixture);
                 const nostro = pick != null && mercato.key === pick.key;
                 return (
                   <tr key={mercato.key} className={nostro ? 'tabella__nostro' : undefined}>

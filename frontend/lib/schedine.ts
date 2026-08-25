@@ -38,7 +38,6 @@
  */
 import { quoteDi } from './quote';
 import { tace, type Fixture, type FixtureConPronostico, type Pronostico } from './tipi';
-import { contornoDi } from './contorno';
 
 /** Il minimo di quota che ognuna delle due schedine deve raggiungere. */
 export const QUOTA_RADDOPPIO = 2;
@@ -116,7 +115,7 @@ export function gambeCandidate(fixtures: Fixture[]): Gamba[] {
     if (tace(fixture)) continue;
     const pronostico = fixture.prediction;
     if (!(pronostico.p > 0 && pronostico.p < 1)) continue;
-    const q = quoteDi(pronostico, fixture.odds, contornoDi(fixture));
+    const q = quoteDi(pronostico, fixture);
     fuori.push({
       fixture,
       pronostico,
