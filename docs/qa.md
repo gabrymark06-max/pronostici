@@ -1,28 +1,36 @@
 # Qualità del sito — misure
 
-Aggiornato: 2026-08-24. Strumento: Lighthouse 12, profilo mobile predefinito
+Aggiornato: 2026-08-25. Strumento: Lighthouse 13, profilo mobile predefinito
 (rete lenta simulata, CPU rallentata 4×), **sul sito pubblicato**.
 
 Prima di questa pagina il sito non era mai stato misurato da nessuna macchina.
 
 ## Punteggi — sul sito pubblicato
 
-Misurato su <https://gabrymark06-max.github.io/pronostici/>, non piu' in locale.
+Misurato su <https://pronostici-sigma.vercel.app/>, che e' dove il sito vive
+adesso. La misura precedente era su GitHub Pages: stesse pagine, rete diversa,
+e i numeri di un altro indirizzo non descrivono questo.
 
-| | Home | Scheda partita |
-|---|---|---|
-| Performance | 96 | 97 |
-| Accessibilità | **100** | **100** |
-| Buone pratiche | **100** | **100** |
-| SEO | **100** | **100** |
+| | Home | Scheda partita | prima, su Pages |
+|---|---|---|---|
+| Performance | **98** | 96 | 96 / 97 |
+| Accessibilità | **100** | **100** | 100 / 100 |
+| Buone pratiche | **100** | **100** | 100 / 100 |
+| SEO | **100** | **100** | 100 / 100 |
 
 ## Core Web Vitals — tutti dentro il budget
 
 | | Home | Scheda | Budget dello studio |
 |---|---|---|---|
-| LCP | 2,5 s | **2,4 s** | < 2,5 s |
-| CLS | **0** | **0** | < 0,1 |
-| TBT | 0 ms | 40 ms | proxy di INP < 200 ms |
+| LCP | **1,5 s** | **2,4 s** | < 2,5 s |
+| CLS | **0,001** | **0** | < 0,1 |
+| TBT | **0 ms** | 50 ms | proxy di INP < 200 ms |
+
+La home guadagna un secondo pieno di LCP rispetto a GitHub Pages — 1,5 s contro
+2,5 — ed e' la rete di Vercel, non una modifica al sito: il codice servito e' lo
+stesso build. La scheda partita resta a 2,4 s, appena dentro il budget: li' il
+peso non e' la rete ma la pagina, che ha il campo delle formazioni e la tavola
+dei mercati.
 
 ### Perche' la misura in locale era peggiore
 
