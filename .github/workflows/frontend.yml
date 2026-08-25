@@ -55,6 +55,14 @@ on:
       - "quote e pronostico definitivo"
       - "job · contorno"
       - "job · sofascore"
+      # Lanciato a mano, `job · score` scrive i pronostici e li committa con
+      # `GITHUB_TOKEN`: quel push NON fa scattare nessun workflow, e il sito
+      # restava alla versione precedente finche' non passava la pipeline della
+      # notte. Dentro «pipeline giornaliera» il problema non c'e' — e' il
+      # chiamante a emettere l'evento — ma il giro a mano e' proprio quello che
+      # si usa dopo aver cambiato il modello, cioe' quando guardare il
+      # risultato serve di piu'.
+      - "job · score"
     types: [completed]
   pull_request:
   workflow_dispatch:
