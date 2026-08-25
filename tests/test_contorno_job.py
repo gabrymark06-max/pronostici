@@ -85,8 +85,19 @@ class TestGuardiaSulParsing:
     prima del fischio d'inizio.
     """
 
-    def _report(self, agganciate: int, con_formazioni: int) -> dict:
-        return {"agganciate": agganciate, "con_formazioni": con_formazioni}
+    def _report(
+        self,
+        agganciate: int,
+        con_formazioni: int,
+        kambi_agganciate: int = 0,
+        con_mercati_kambi: int = 1,
+    ) -> dict:
+        return {
+            "agganciate": agganciate,
+            "con_formazioni": con_formazioni,
+            "kambi_agganciate": kambi_agganciate,
+            "con_mercati_kambi": con_mercati_kambi,
+        }
 
     def test_molte_agganciate_e_zero_formazioni_e_un_guasto(self) -> None:
         r = self._report(job.SOGLIA_ALLARME, 0)
@@ -99,6 +110,26 @@ class TestGuardiaSulParsing:
 
     def test_una_formazione_sola_basta_a_dire_che_il_parsing_regge(self) -> None:
         r = self._report(80, 1)
+        assert job._allarme_parsing(r) is None
+
+    def test_molte_agganciate_su_kambi_e_zero_mercati_e_un_guasto(self) -> None:
+        """Kambi e' JSON: non si rompe con una classe CSS, si rompe con
+        un'etichetta rinominata. Il giro uscirebbe verde avendo scritto zero
+        prezzi proprio sulle famiglie che nessun altro quota."""
+        r = self._report(80, 5, kambi_agganciate=job.SOGLIA_ALLARME, con_mercati_kambi=0)
+        allarme = job._allarme_parsing(r)
+        assert allarme is not None
+        assert "kambi" in allarme
+
+    def test_su_kambi_poche_partite_puo_essere_vero(self) -> None:
+        """Il loro elenco copre solo le partite col libro aperto."""
+        r = self._report(
+            80, 5, kambi_agganciate=job.SOGLIA_ALLARME - 1, con_mercati_kambi=0
+        )
+        assert job._allarme_parsing(r) is None
+
+    def test_un_mercato_solo_basta_a_dire_che_le_etichette_reggono(self) -> None:
+        r = self._report(80, 5, kambi_agganciate=80, con_mercati_kambi=1)
         assert job._allarme_parsing(r) is None
 
 

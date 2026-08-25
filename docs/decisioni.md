@@ -230,3 +230,44 @@ sezione, e il frontend legge le due epoche da `lib/contorno.ts`.
 
 `job-sofascore.yml` resta senza cron, per chi vuole il contorno ricco a mano
 sul runner di casa.
+
+---
+
+## Deciso: un prezzo di un operatore solo, dove non c'è una mediana (25 agosto 2026)
+
+**Il problema.** Il sito prometteva «un pronostico per partita, con il prezzo
+dove l'abbiamo trovato», e su 62 partite in cartellone il prezzo c'era 14 volte.
+Non per un guasto: il modello sceglie il mercato in cui si discosta di più dal
+mercato, e quello quasi mai è uno dei sei che le due fonti coprivano. 24 volte
+era un *gol di squadra*, 7 un *handicap europeo* — due famiglie che **nessun
+comparatore gratuito espone**. Betexplorer serve sei mercati e basta (verificato
+sulle sue linguette: 1X2, handicap asiatico, doppia chance, draw no bet,
+entrambe segnano, gol totali); The Odds API le ha solo sull'endpoint per evento,
+che costa un credito a partita e porterebbe il consumo a tre volte il tetto
+mensile.
+
+**Le due strade.** O si restringe il consigliato ai mercati che sappiamo
+quotare — cioè si cambia il modello per far tornare i conti alla pagina — o si
+trova chi quota quelli che il modello sceglie. La prima cambierebbe il 75% dei
+consigli e ciò su cui il progetto si è fatto misurare, per un motivo che non è
+statistico. Scartata.
+
+**La scelta.** Kambi — la piattaforma dietro Unibet — pubblica quelle due
+famiglie in JSON, senza chiave, su tutti e nove i campionati. I consigli con un
+prezzo passano da 14 a 52 su 62.
+
+**Il prezzo di questa scelta, ed è reale.** Non è un comparatore: è **un
+operatore solo**. Il numero è il suo, non il consenso del mercato, ed è una
+quota più debole di una mediana. Il progetto lo accetta a due condizioni, che
+sono nel codice e non nelle intenzioni:
+
+1. **Dove esiste una mediana, vince la mediana.** `jobs.contorno._unisci` mette
+   questi mercati in fondo alla lista, e il primo che nomina una chiave se la
+   tiene. Kambi non sostituisce mai un prezzo che qualcun altro ha calcolato su
+   venti libri.
+2. **La pagina lo dice.** `prezzi` porta la `fonte` accanto al numero, e la
+   scheda scrive «un operatore europeo» invece di «N operatori». La tavola dei
+   mercati aggiunge una riga quando almeno un prezzo poggia su uno solo.
+
+**Resta scoperto** ciò che nessuno espone: le *combo*. Lì la pagina continua a
+mostrare la probabilità e a tacere sulla quota, che è il vero stato delle cose.

@@ -559,6 +559,25 @@ def _allarme_parsing(report: dict) -> str | None:
             "il markup di sportsgambler e' probabilmente cambiato. "
             "Controlla `_leggi_formazione` in sources/sportsgambler.py."
         )
+    # LO STESSO ARGOMENTO PER I PREZZI, e serve di piu' qui che altrove.
+    #
+    # Kambi e' JSON, non HTML: non si rompe cambiando una classe CSS, si rompe
+    # cambiando il nome di un'etichetta — «3-Way Handicap» che diventa
+    # «Handicap 3-Way» — e allora `ETICHETTE` non riconosce piu' niente. Le
+    # partite si agganciano tutte, le richieste rispondono 200, e il giro esce
+    # verde avendo scritto zero mercati.
+    #
+    # Sarebbe la fonte che porta il prezzo su gol di squadra e handicap, cioe'
+    # su meta' dei pronostici consigliati: la scheda tornerebbe a dire «nessuna
+    # delle fonti che leggiamo quota questa scommessa» senza che niente lo
+    # dica. Con dieci partite agganciate e zero mercati, la spiegazione «il
+    # libro non e' aperto» non regge.
+    if report["kambi_agganciate"] >= SOGLIA_ALLARME and report["con_mercati_kambi"] == 0:
+        return (
+            f"{report['kambi_agganciate']} partite agganciate su kambi e nessun "
+            "mercato letto: i nomi delle etichette sono probabilmente cambiati. "
+            "Controlla `ETICHETTE` in sources/kambi.py."
+        )
     return None
 
 
