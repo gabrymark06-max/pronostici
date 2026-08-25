@@ -156,12 +156,19 @@ export function fraseConfronto(q: QuoteDelMercato, nostra: number): string | nul
 /** La riga sul prezzo lordo, quando lo conosciamo. Nomina la provenienza, mai l'operatore. */
 export function fraseSportello(q: QuoteDelMercato): string | null {
   if (q.prezzo === null) return null;
-  const fonte =
+  /* DA DOVE VENGONO, DETTO GIUSTO. La fonte secondaria mostra operatori
+     diversi a seconda dell'indirizzo di chi chiede, e i nostri giri partono da
+     runner americani: sono `bet365.us`, `betmgm.us`, `stake.com`. Scriverli
+     «europei» perche' quello diceva il ramo di ripiego era una piccola bugia
+     dentro una modifica fatta apposta per toglierle. */
+  const dove =
     q.provenienza === 'it'
-      ? q.operatori === 1
-        ? 'un operatore con licenza italiana'
-        : `${q.operatori} operatori con licenza italiana`
-      : `${q.operatori} operatori europei`;
+      ? 'con licenza italiana'
+      : q.provenienza === 'us'
+        ? 'statunitensi'
+        : 'europei';
+  const fonte =
+    q.operatori === 1 ? `un operatore ${dove}` : `${q.operatori} operatori ${dove}`;
   return `Allo sportello questa scommessa si trova a ${formattaQuota(q.prezzo)} (${fonte}), margine incluso.`;
 }
 
