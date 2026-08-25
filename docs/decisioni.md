@@ -119,6 +119,29 @@ Conseguenze vincolanti per il build:
       frattempo il registro e' raggiungibile, che era il punto.
 - [ ] **Sciogliere la contraddizione sui profili** (vedi qui sotto).
 
+---
+
+## Deciso: Eredivisie e Primeira Liga hanno le quote di mercato (2026-08-25)
+
+Erano marcate `odds_key = None` in `competitions.py`, con il commento «solo
+modello per sempre». La decisione risaliva a quando the-odds-api non le
+copriva; il suo catalogo oggi le dà entrambe attive — verificato chiamando
+`/v4/sports`, che non consuma crediti.
+
+Entrano fra le **secondarie** insieme a Brasileirão e Championship: sono le
+prime a cedere quando la quota stringe, perché una copertura arrivata per
+ultima non deve togliere il prezzo a chi ce l'aveva già.
+
+Il tetto crediti sale da 250 a 400 su 500. Due campionati in più sono circa un
+quarto di richieste in più, e a 250 sarebbero entrati a spese di qualcun altro.
+Il tetto sta ora in `config.py` e in nessun workflow: `quote` e `finalize`
+contano sullo stesso file e ne dichiaravano due diversi — 450 e 250 — così che
+appena il primo superava 250 il secondo si spegneva da solo credendo la quota
+finita.
+
+**Misurato dopo:** Eredivisie 6 partite su 9, Primeira Liga 7 su 7. Prima
+nessuna delle due aveva un solo prezzo di mercato.
+
 
 ---
 
