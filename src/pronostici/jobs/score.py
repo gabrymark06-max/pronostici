@@ -113,6 +113,17 @@ def run(
     for day, entries in sorted(by_date.items()):
         files_changed += int(fx.upsert_day(day, entries, generated_at=as_of))
 
+    # DOPO AVER SCRITTO, si tolgono le voci rimaste nel giorno sbagliato.
+    # Questo giro ha ricostruito tutto il cartellone, quindi e' l'unico punto
+    # in cui si sa dove ogni partita si gioca davvero: `upsert_day` fonde
+    # dentro un giorno solo e una partita rinviata resterebbe anche in quello
+    # da cui e' partita.
+    giorno_giusto = {
+        int(e["match_id"]): day for day, entries in by_date.items() for e in entries
+    }
+    ripuliti = fx.rimuovi_fantasmi(giorno_giusto)
+    files_changed += len(ripuliti)
+
     appended = 0
     for season, rows in ledger_rows.items():
         appended += ledger.append(season, rows)
@@ -121,6 +132,7 @@ def run(
     return {
         "seconds": round(time.monotonic() - started, 1),
         "tau": tau_origin,
+        "giorni_ripuliti": ripuliti,
         "fixtures": total,
         "with_prediction": scored_count,
         "silent": silent_count,

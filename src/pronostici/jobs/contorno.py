@@ -51,6 +51,7 @@ from collections import defaultdict
 from datetime import UTC, datetime, timedelta
 
 from .. import fixtures as fx
+from ..fixtures import CAMPO_CONTORNO
 from ..model.giocatori import moltiplicatore_arbitro, stime_giocatore
 from ..sources import betexplorer as bx
 from ..sources import fotmob as fm
@@ -567,9 +568,9 @@ def run(
                 report["con_giocatori"] += 1
                 blocco["giocatori"] = stime
 
-        if _senza_ora(blocco) == _senza_ora(entry.get("contorno") or {}):
+        if _senza_ora(blocco) == _senza_ora(entry.get(CAMPO_CONTORNO) or {}):
             continue
-        per_giorno[giorno].append({**entry, "contorno": blocco})
+        per_giorno[giorno].append({**entry, CAMPO_CONTORNO: blocco})
 
     if not dry_run:
         for giorno, aggiornate in per_giorno.items():

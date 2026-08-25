@@ -131,6 +131,49 @@ def _kickoff_passed(entry: dict, now: datetime) -> bool:
         return False
 
 
+def rimuovi_fantasmi(giorno_giusto: dict[int, str]) -> list[str]:
+    """Toglie da ogni file del giorno le partite che quel giorno non ospita piu'.
+
+    QUANDO UNA PARTITA VIENE RIPROGRAMMATA cambia il file che le spetta, ma la
+    voce vecchia resta dov'era: `upsert_day` fonde per `match_id` dentro un
+    giorno solo e non puo' sapere niente degli altri. Il risultato e' la stessa
+    partita elencata due volte, in due giorni diversi e con due orari diversi —
+    e quella sbagliata non e' marcata in nessun modo.
+
+    Misurato il 25 agosto 2026: nove partite doppie, otto delle quali
+    brasiliane rinviate di un giorno. Il difetto e' vecchio quanto il progetto;
+    si e' visto solo quando l'archivio ha ricominciato ad accorgersi dei
+    rinvii.
+
+    `giorno_giusto` mappa `match_id` sul giorno in cui la partita si gioca
+    davvero. Chi chiama e' `jobs.score`, che ricostruisce tutto il cartellone e
+    quindi e' l'unico a saperlo.
+    """
+    ripuliti: list[str] = []
+    for percorso in sorted(FIXTURES_DIR.glob("*.json")):
+        giorno = percorso.stem
+        payload = read_json(percorso, default=None)
+        if not payload:
+            continue
+        tenute = [
+            f
+            for f in payload.get("fixtures", [])
+            # Sconosciuta al cartellone vuol dire «non ricostruita in questo
+            # giro», non «da buttare»: si tocca solo cio' che si sa collocare.
+            if giorno_giusto.get(int(f["match_id"]), giorno) == giorno
+        ]
+        if len(tenute) == len(payload.get("fixtures", [])):
+            continue
+        payload["fixtures"] = tenute
+        payload["total"] = len(tenute)
+        payload["silence_count"] = sum(
+            1 for f in tenute if f.get("prediction") is None
+        )
+        if write_json(percorso, payload):
+            ripuliti.append(giorno)
+    return ripuliti
+
+
 def upsert_day(
     day: str,
     entries: list[dict],
@@ -191,10 +234,20 @@ def upsert_day(
 # solo eseguendo `score` a mano, cioe' esattamente quando qualcuno guarda.
 #
 # La regola generale: chi riscrive una partita conserva cio' che non e' suo.
-# `sofascore` porta formazioni, arbitro e quote estese, scritte da
-# `jobs.sofascore`. Vale la stessa storia delle quote: `score` gira alle 03:00 e
-# le riscriverebbe via ogni notte.
-CAMPI_DI_ALTRI = ("odds", "result", "outcome", "sofascore")
+#
+# IL NOME DEL CAMPO STA QUI, e i job lo importano da qui. Non e' pedanteria:
+# il 24 agosto 2026 il blocco del contorno e' stato rinominato da `sofascore` a
+# `contorno` nel job che lo scrive, e questa lista e' rimasta indietro. La
+# notte dopo `score` ha ripulito formazioni, mercati e stime da 41 partite su
+# 43, e niente e' diventato rosso — il file era valido, semplicemente piu'
+# povero. Se il nome esiste in un posto solo, quel disallineamento non e'
+# rappresentabile.
+CAMPO_CONTORNO = "contorno"
+
+# `sofascore` resta nella lista pur non essendo piu' scritto da nessuno: i file
+# vecchi lo contengono, ed e' esattamente cio' che questa lista serve a non far
+# cancellare.
+CAMPI_DI_ALTRI = ("odds", "result", "outcome", "sofascore", CAMPO_CONTORNO)
 
 
 def _conserva_campi_altrui(vecchio: dict, nuovo: dict) -> dict:
