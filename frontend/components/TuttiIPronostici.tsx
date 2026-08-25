@@ -20,7 +20,8 @@ import { contornoDi } from '@/lib/contorno';
  * riga di lettura sotto dice perché il più probabile non è il migliore — che è
  * l'unica cosa che davvero serve capire per non usare male questa tavola.
  *
- * LE COLONNE SONO LE STESSE DELLA LISTA: mercato, probabilità, quota equa,
+ * LE COLONNE SONO LE STESSE DELLA LISTA: mercato, probabilità, quanto la dà
+ * il mercato, prezzo trovato,
  * quota di mercato. Un lettore che ha imparato a leggere la lista non deve
  * imparare niente di nuovo qui.
  */
@@ -91,18 +92,23 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
               <th scope="col" className="num">
                 Probabilità
               </th>
+              {/* UNA COLONNA SOLA DI QUOTE, e sono prezzi veri.
+                  «La nostra» era `1/probabilita' nostra` e «Il mercato»
+                  `1/probabilita' di mercato`: due numeri esatti, nessuno dei
+                  due un prezzo. La probabilita' del mercato resta, ma nella
+                  sua unita' — su 100 — accanto alla nostra. */}
               <th scope="col" className="num">
-                La nostra
+                Il mercato dice
               </th>
               <th scope="col" className="num">
-                Il mercato
+                Prezzo trovato
               </th>
             </tr>
           </thead>
           {gruppi.map((gruppo) => (
             <tbody key={gruppo.famiglia}>
               <tr className="tabella__famiglia">
-                <th colSpan={4} scope="colgroup">
+                <th colSpan={5} scope="colgroup">
                   {nomeFamiglia(gruppo.famiglia)}
                 </th>
               </tr>
@@ -126,20 +132,32 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
                       {suCento(mercato.p)}
                       <span className="tabella__unita"> su 100</span>
                     </td>
-                    <td className="num" data-etichetta="La nostra">
-                      {formattaQuota(q.nostra)}
-                    </td>
-                    <td className="num" data-etichetta="Il mercato">
-                      {q.mercato !== null ? (
-                        formattaQuota(q.mercato)
+                    <td className="num" data-etichetta="Il mercato dice">
+                      {q.pMercato !== null ? (
+                        <>
+                          {suCento(q.pMercato)}
+                          <span className="tabella__unita"> su 100</span>
+                        </>
                       ) : (
                         <span aria-hidden="true">—</span>
                       )}
-                      {q.mercato === null ? (
+                      {q.pMercato === null ? (
                         <span className="solo-lettori">
                           {nessunaQuota
                             ? 'per questa partita non abbiamo quote'
                             : 'il mercato non determina questa scommessa'}
+                        </span>
+                      ) : null}
+                    </td>
+                    <td className="num" data-etichetta="Prezzo trovato">
+                      {q.prezzo !== null ? (
+                        formattaQuota(q.prezzo)
+                      ) : (
+                        <span aria-hidden="true">—</span>
+                      )}
+                      {q.prezzo === null ? (
+                        <span className="solo-lettori">
+                          nessuna fonte quota questa scommessa
                         </span>
                       ) : null}
                     </td>
@@ -176,7 +194,7 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
         {nessunaQuota ? null : (
           <>
             {' '}
-            La colonna «il mercato» è la stessa quota equa calcolata sulle quote degli
+            La colonna «il mercato dice» è la probabilità ricavata dalle quote degli
             operatori, col margine tolto.
           </>
         )}

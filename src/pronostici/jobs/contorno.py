@@ -206,6 +206,45 @@ _CHIAVI: dict[str, dict[str, str]] = {
 }
 
 
+def _chiave_nostra(mercato: dict, esito: dict) -> str | None:
+    """La chiave con cui il resto del progetto chiama questo esito."""
+    nome = mercato.get("mercato")
+    if nome == "Gol totali" and mercato.get("linea"):
+        verso = "over" if esito.get("esito") == "Over" else "under"
+        return f"{verso}_{mercato['linea']}"
+    return _CHIAVI.get(nome or "", {}).get(esito.get("esito", ""))
+
+
+def _prezzi(mercati: list[dict]) -> dict[str, dict]:
+    """I PREZZI VERI, nelle nostre chiavi. Non le probabilita': le quote.
+
+    La differenza conta piu' di quanto sembri. `market_p` qui sotto sono
+    probabilita' sgonfiate del margine — utili per confrontare, ma nessuno le
+    paga. Questi sono i numeri che un operatore espone davvero, e sono gli
+    unici che la pagina ha il diritto di chiamare «quota».
+
+    Servono perche' the-odds-api quota cinque mercati e il pronostico
+    consigliato quasi mai e' uno di quelli: misurato il 25 agosto 2026, quattro
+    consigli su trentatre avevano un prezzo. Con la doppia chance, i gol totali
+    su ogni linea e l'entrambe segnano di betexplorer diventano undici.
+    """
+    fuori: dict[str, dict] = {}
+    for mercato in mercati:
+        for esito in mercato.get("esiti") or []:
+            quota = esito.get("decimale")
+            chiave = _chiave_nostra(mercato, esito)
+            if chiave and isinstance(quota, int | float) and quota > 1:
+                # Il numero di operatori viaggia CON il prezzo. La pagina dice
+                # «mediana di N operatori» e quel N cambia da un mercato
+                # all'altro: tenerne uno solo per partita vorrebbe dire
+                # attribuire a una linea il consenso di un'altra.
+                fuori[chiave] = {
+                    "decimale": float(quota),
+                    "operatori": mercato.get("n_bookmaker") or 0,
+                }
+    return fuori
+
+
 def _market_p(mercati: list[dict]) -> dict[str, float]:
     """Le probabilita' sgonfiate, nelle nostre chiavi.
 
@@ -216,18 +255,11 @@ def _market_p(mercati: list[dict]) -> dict[str, float]:
     """
     fuori: dict[str, float] = {}
     for mercato in mercati:
-        nome = mercato.get("mercato")
         for esito in mercato.get("esiti") or []:
             p = esito.get("probabilita_implicita")
-            if p is None:
-                continue
-            if nome == "Gol totali" and mercato.get("linea"):
-                verso = "over" if esito["esito"] == "Over" else "under"
-                fuori[f"{verso}_{mercato['linea']}"] = p
-            else:
-                chiave = _CHIAVI.get(nome or "", {}).get(esito.get("esito", ""))
-                if chiave:
-                    fuori[chiave] = p
+            chiave = _chiave_nostra(mercato, esito)
+            if chiave and p is not None:
+                fuori[chiave] = p
     return fuori
 
 
@@ -557,6 +589,9 @@ def run(
                     probabilita = _market_p(quote)
                     if probabilita:
                         blocco["market_p"] = probabilita
+                    prezzi = _prezzi(quote)
+                    if prezzi:
+                        blocco["prezzi"] = prezzi
 
         # ------------------------------------------- le stime sui singoli
         if formazione is not None and codice in tassi_lega:

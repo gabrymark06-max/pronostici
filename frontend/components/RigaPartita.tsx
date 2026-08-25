@@ -175,22 +175,31 @@ export function RigaPartita({
           </span>
         ) : (
           <>
-            <span className="quota__valore">{formattaQuota(quote.nostra)}</span>
-            <span className="quota__nota">
-              {quote.mercato !== null ? (
-                <>
-                  mercato <strong>{formattaQuota(quote.mercato)}</strong>
-                </>
-              ) : (
-                'la nostra'
-              )}
-            </span>
-            <span className="solo-lettori">
-              La nostra quota equa è {formattaQuota(quote.nostra)}
-              {quote.mercato !== null
-                ? `. Il mercato, tolto il margine, la valuta ${formattaQuota(quote.mercato)}.`
-                : '. Il mercato non determina questa scommessa.'}
-            </span>
+            {/* IL PREZZO O NIENTE. Qui c'era `1/probabilita' nostra`, con
+                sotto la parola «la nostra»: un numero calcolato da noi, nella
+                colonna che il lettore scorre cercando una quota. La
+                probabilita' e' gia' due colonne piu' a sinistra, ed e' il
+                numero che sappiamo davvero. */}
+            {quote.prezzo !== null ? (
+              <>
+                <span className="quota__valore">{formattaQuota(quote.prezzo)}</span>
+                <span className="quota__nota">
+                  {quote.operatori === 1 ? '1 operatore' : `${quote.operatori} operatori`}
+                </span>
+                <span className="solo-lettori">
+                  Allo sportello si trova a {formattaQuota(quote.prezzo)}, margine incluso.
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="quota__vuoto" aria-hidden="true">
+                  —
+                </span>
+                <span className="solo-lettori">
+                  Nessuna delle fonti che leggiamo quota questa scommessa.
+                </span>
+              </>
+            )}
           </>
         )}
       </span>

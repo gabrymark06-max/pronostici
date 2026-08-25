@@ -36,7 +36,7 @@
  * STESSA partita non varrebbe per niente, ed e' il motivo per cui non se ne
  * mettono mai due.
  */
-import { quotaEqua, quoteDi } from './quote';
+import { quoteDi } from './quote';
 import { tace, type Fixture, type FixtureConPronostico, type Pronostico } from './tipi';
 import { contornoDi } from './contorno';
 
@@ -50,10 +50,14 @@ const GAMBE_MASSIME = 8;
 export interface Gamba {
   fixture: FixtureConPronostico;
   pronostico: Pronostico;
-  /** La nostra quota equa su questa singola partita. */
-  quota: number;
-  /** La quota del mercato, quando una delle fonti la determina. */
-  quotaMercato: number | null;
+  /**
+   * IL PREZZO TROVATO su questa singola partita, o `null`.
+   *
+   * Era `1/probabilita' nostra`, che e' un numero nostro: una gamba non
+   * «vale» quella quota, nessuno la paga. Qui c'e' il prezzo vero quando una
+   * delle due fonti quota quel mercato, e niente quando non lo quota nessuno.
+   */
+  prezzo: number | null;
   /** `null` finche' la partita non e' conclusa. */
   uscito: boolean | null;
 }
@@ -65,16 +69,24 @@ export interface Schedina {
   gambe: Gamba[];
   /** Il prodotto delle probabilita'. E' esattamente `1 / quota`. */
   p: number;
-  /** Il prodotto delle nostre quote. */
-  quota: number;
   /**
-   * Il prodotto delle quote di mercato, e `null` se anche UNA sola gamba non
-   * ce l'ha. Un prodotto parziale non e' una quota piu' bassa: e' un numero
-   * che non corrisponde a niente.
+   * IL PREZZO DELLA MULTIPLA: il prodotto dei prezzi veri, e `null` se anche
+   * UNA sola gamba non ne ha uno.
+   *
+   * Un prodotto parziale non e' una quota piu' bassa: e' un numero che non
+   * corrisponde a nessuna giocata.
    */
-  quotaMercato: number | null;
-  /** Il minimo che questa schedina doveva raggiungere. */
-  bersaglio: number;
+  prezzo: number | null;
+  /**
+   * La probabilita' MASSIMA che questa schedina doveva rispettare.
+   *
+   * Era espressa come quota minima — 2 per il raddoppio, 5 per la multipla —
+   * e finiva in pagina come «non arriva a 5,00». Ma quel 5 non e' un prezzo
+   * che qualcuno espone: e' una soglia nostra, e nella pagina di un sito che
+   * non stampa piu' quote calcolate leggerla come una quota confonde. Le due
+   * scritture sono la stessa cosa: quota 5 e' 20 su 100.
+   */
+  bersaglioP: number;
   /** `false` quando le partite del giorno non bastavano ad arrivarci. */
   bersaglioRaggiunto: boolean;
   esito: EsitoSchedina;
@@ -104,12 +116,11 @@ export function gambeCandidate(fixtures: Fixture[]): Gamba[] {
     if (tace(fixture)) continue;
     const pronostico = fixture.prediction;
     if (!(pronostico.p > 0 && pronostico.p < 1)) continue;
-    const q = quoteDi(pronostico, fixture.odds, contornoDi(fixture)?.market_p ?? null);
+    const q = quoteDi(pronostico, fixture.odds, contornoDi(fixture));
     fuori.push({
       fixture,
       pronostico,
-      quota: quotaEqua(pronostico.p),
-      quotaMercato: q.mercato,
+      prezzo: q.prezzo,
       uscito: fixture.outcome === null || fixture.outcome === undefined ? null : fixture.outcome === 1,
     });
   }
@@ -220,10 +231,10 @@ function assembla(
   );
   const p = prodotto(ordinate);
 
-  /* Il mercato solo se lo determina su OGNI gamba. Vedi il commento sul campo. */
-  const tutteQuotate = ordinate.every((g) => g.quotaMercato !== null);
-  const quotaMercato = tutteQuotate
-    ? ordinate.reduce((acc, g) => acc * (g.quotaMercato ?? 1), 1)
+  /* Il prezzo solo se OGNI gamba ne ha uno. Vedi il commento sul campo. */
+  const tutteQuotate = ordinate.every((g) => g.prezzo !== null);
+  const prezzo = tutteQuotate
+    ? ordinate.reduce((acc, g) => acc * (g.prezzo ?? 1), 1)
     : null;
 
   const concluse = ordinate.filter((g) => g.uscito !== null).length;
@@ -237,9 +248,8 @@ function assembla(
     tipo,
     gambe: ordinate,
     p,
-    quota: 1 / p,
-    quotaMercato,
-    bersaglio,
+    prezzo,
+    bersaglioP: bersaglio,
     bersaglioRaggiunto: raggiunto,
     esito,
     concluse,
@@ -288,8 +298,8 @@ export function schedineDelGiorno(fixtures: Fixture[]): SchedineDelGiorno {
   const molteRaggiunge = molte !== null && prodotto(molte) <= 1 / QUOTA_MULTIPLA;
 
   return {
-    raddoppio: coppia ? assembla('raddoppio', coppia, QUOTA_RADDOPPIO, coppiaRaggiunge) : null,
-    multipla: molte ? assembla('multipla', molte, QUOTA_MULTIPLA, molteRaggiunge) : null,
+    raddoppio: coppia ? assembla('raddoppio', coppia, 1 / QUOTA_RADDOPPIO, coppiaRaggiunge) : null,
+    multipla: molte ? assembla('multipla', molte, 1 / QUOTA_MULTIPLA, molteRaggiunge) : null,
     candidate: cands.length,
   };
 }

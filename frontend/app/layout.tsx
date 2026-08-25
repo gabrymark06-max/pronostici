@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     template: `%s · ${MARCHIO}`,
   },
   description:
-    'Pronostici gratuiti sulle partite di calcio: uno per partita, con la probabilità, la quota equa, quante volte pronostici così si sono avverati, e nessun pronostico quando non abbiamo niente da dire.',
+    'Pronostici gratuiti sulle partite di calcio: uno per partita, con la probabilità, il prezzo dove l’abbiamo trovato, quante volte pronostici così si sono avverati, e nessun pronostico quando non abbiamo niente da dire.',
   applicationName: MARCHIO,
   authors: [{ name: MARCHIO }],
   openGraph: {

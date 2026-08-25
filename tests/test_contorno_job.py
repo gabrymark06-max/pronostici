@@ -147,3 +147,55 @@ class TestMercatiVersoLeNostreChiavi:
     def test_entrambe_segnano(self) -> None:
         m = [self._mercato("Entrambe segnano", [("Sì", 0.48), ("No", 0.52)])]
         assert job._market_p(m) == {"btts_yes": 0.48, "btts_no": 0.52}
+
+
+class TestPrezziVeri:
+    """Solo le quote che qualcuno espone davvero possono chiamarsi «quota».
+
+    `market_p` sono probabilita' sgonfiate del margine: utili a confrontare,
+    ma nessuno le paga. `prezzi` sono i numeri che un operatore mostra, e sono
+    gli unici che la pagina ha il diritto di stampare come quota.
+    """
+
+    def _mercato(self, nome, esiti, linea=None):
+        return {
+            "mercato": nome,
+            "linea": linea,
+            "esiti": [
+                {"esito": e, "decimale": q, "probabilita_implicita": round(1 / q, 4)}
+                for e, q in esiti
+            ],
+        }
+
+    def test_la_doppia_chance_finisce_nelle_nostre_chiavi(self) -> None:
+        m = [self._mercato("Doppia chance", [("1X", 1.36), ("12", 1.4), ("X2", 1.5)])]
+        assert {k: v["decimale"] for k, v in job._prezzi(m).items()} == {
+            "dc_1x": 1.36,
+            "dc_12": 1.4,
+            "dc_x2": 1.5,
+        }
+
+    def test_i_gol_totali_portano_la_linea(self) -> None:
+        m = [self._mercato("Gol totali", [("Over", 2.3), ("Under", 1.57)], linea="2.5")]
+        assert {k: v["decimale"] for k, v in job._prezzi(m).items()} == {
+            "over_2.5": 2.3,
+            "under_2.5": 1.57,
+        }
+
+    def test_una_quota_impossibile_non_entra(self) -> None:
+        """Una decimale sotto 1 e' una cella letta male, non un prezzo."""
+        m = [self._mercato("Entrambe segnano", [("Sì", 0.5), ("No", 1.8)])]
+        assert list(job._prezzi(m)) == ["btts_no"]
+
+    def test_un_mercato_che_non_sappiamo_tradurre_si_ignora(self) -> None:
+        m = [self._mercato("Handicap asiatico", [("1", 1.9), ("2", 1.9)])]
+        assert job._prezzi(m) == {}
+
+    def test_prezzi_e_probabilita_usano_la_stessa_mappatura(self) -> None:
+        """Se divergessero, la pagina mostrerebbe il prezzo di un mercato
+        accanto alla probabilita' di un altro."""
+        m = [
+            self._mercato("Doppia chance", [("1X", 1.36), ("12", 1.4), ("X2", 1.5)]),
+            self._mercato("Gol totali", [("Over", 2.3), ("Under", 1.57)], linea="2.5"),
+        ]
+        assert sorted(job._prezzi(m)) == sorted(job._market_p(m))

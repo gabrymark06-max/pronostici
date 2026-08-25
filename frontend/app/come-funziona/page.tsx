@@ -75,12 +75,13 @@ export default function PaginaComeFunziona() {
 
         <article className="scheda-info">
           <SegnoTre />
-          <h3 className="scheda-info__titolo">La quota equa</h3>
+          <h3 className="scheda-info__titolo">Le quote sono quelle vere</h3>
           <p className="scheda-info__corpo">
-            Accanto a ogni pronostico c’è la quota equa: è 1 diviso la probabilità.
-            Sotto quel prezzo la scommessa perde valore, sopra lo guadagna. Dove
-            conosciamo il prezzo degli operatori lo mettiamo accanto, così il confronto
-            lo fai tu e non lo devi credere a noi.
+            Accanto a un pronostico trovi una quota solo quando l’abbiamo letta da un
+            operatore che la espone davvero, e ti diciamo su quanti operatori è
+            calcolata. Dove nessuno quota quella scommessa non c’è nessun numero: 1
+            diviso la nostra probabilità sarebbe una quota che nessuno paga, e messa
+            lì somiglierebbe troppo a un prezzo.
           </p>
         </article>
       </div>

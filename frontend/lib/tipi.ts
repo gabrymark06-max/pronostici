@@ -246,8 +246,23 @@ export interface StimeGiocatori {
  * in cima al blocco: le tre sezioni possono venire da tre posti diversi, ed e'
  * gia' successo.
  */
+/** Un prezzo vero, con quanti operatori lo compongono. */
+export interface PrezzoTrovato {
+  decimale: number;
+  operatori: number;
+}
+
 export interface Contorno {
   letto?: string;
+  /**
+   * I PREZZI VERI della fonte secondaria, nelle nostre chiavi.
+   *
+   * Sono le stesse quote che stanno dentro `quote.mercati`, ripiegate su una
+   * mappa perché la pagina possa cercarle per mercato senza scorrere la
+   * tavola. `market_p` qui sotto sono invece probabilità: si somigliano e non
+   * sono la stessa cosa, e solo queste possono chiamarsi quota.
+   */
+  prezzi?: Record<string, PrezzoTrovato>;
   stadio?: string;
   arbitro?: Arbitro;
   formazioni?: Formazioni;

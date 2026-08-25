@@ -171,50 +171,45 @@ export default async function PaginaPartita({ params }: Props) {
               {/* ② La probabilità, con la riga di definizione operativa. */}
               <BarraProbabilita pronostico={fixture.prediction} />
 
-              {/* ③ LE DUE QUOTE, PARI A PARI. La nostra c'è sempre; quella del
-                  mercato c'è sugli undici mercati che le quote determinano in
-                  modo esatto. Il confronto è fra due quote EQUE — la loro col
-                  margine tolto — perché confrontare la nostra quota equa con
-                  un prezzo lordo farebbe sembrare il mercato sistematicamente
-                  piu' avaro di quanto sia. Il prezzo lordo compare sotto, come
-                  terza riga, quando lo conosciamo: e' l'unico dei tre numeri
-                  che qualcuno puo' davvero giocare. */}
+              {/* ③ IL PREZZO, quando esiste. UNO SOLO, e vero.
+                  Fino al 25 agosto 2026 qui c'erano due celle con due numeri
+                  calcolati da noi: `1/probabilita' nostra` e `1/probabilita' di
+                  mercato`. Erano etichettati, e l'etichetta non bastava — un
+                  numero a due decimali sotto la parola «quota» si legge come un
+                  prezzo, perche' e' cosi' che si legge una quota, e nessun
+                  operatore pagava quei numeri.
+                  Il confronto con il mercato resta, ma fra PROBABILITA': dicono
+                  la stessa cosa senza travestirsi da qualcosa che nessuno
+                  paga. */}
               {quote ? (
                 <div className="quote">
                   <div className="quote__cella">
-                    <p className="label">La nostra quota equa</p>
-                    <p className="quote__valore">{formattaQuota(quote.nostra)}</p>
-                    <p className="quote__nota">
-                      È 1 diviso la probabilità che diamo noi. Sotto questo prezzo la
-                      scommessa perde valore, sopra lo guadagna.
-                    </p>
-                  </div>
-
-                  <div className="quote__cella">
-                    <p className="label">La stessa, secondo il mercato</p>
-                    {quote.mercato !== null ? (
+                    <p className="label">Il prezzo, dove l&rsquo;abbiamo trovato</p>
+                    {quote.prezzo !== null ? (
                       <>
-                        <p className="quote__valore">{formattaQuota(quote.mercato)}</p>
-                        <p className="quote__nota">{fraseConfronto(quote)}</p>
-                        {quote.prezzo !== null ? (
-                          <p className="quote__nota quote__nota--sportello">
-                            {fraseSportello(quote)}
-                          </p>
-                        ) : null}
+                        <p className="quote__valore">{formattaQuota(quote.prezzo)}</p>
+                        <p className="quote__nota quote__nota--sportello">
+                          {fraseSportello(quote)}
+                        </p>
                       </>
                     ) : (
                       <>
                         <p className="quote__valore quote__valore--assente" aria-hidden="true">
-                          —
+                          &mdash;
                         </p>
                         <p className="quote__nota">
-                          Le quote gratuite che leggiamo — esito finale e over/under —
-                          determinano in modo esatto undici scommesse, e questa non è fra
-                          quelle. Un numero derivato per somiglianza sarebbe inventato, e
-                          non lo inventiamo.
+                          Nessuna delle fonti che leggiamo quota questa scommessa. La
+                          probabilit&agrave; qui sopra &egrave; quello che sappiamo dirne:
+                          un prezzo ricavato dalla probabilit&agrave; sarebbe un numero
+                          nostro travestito da quota, e non lo scriviamo.
                         </p>
                       </>
                     )}
+                    {fraseConfronto(quote, fixture.prediction.p) !== null ? (
+                      <p className="quote__nota">
+                        {fraseConfronto(quote, fixture.prediction.p)}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               ) : null}

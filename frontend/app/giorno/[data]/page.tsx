@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const descrizione = `${fraseSilenziDelGiorno(
     giorno.silence_count,
     giorno.total,
-  )} Un pronostico per partita, con la probabilità, la quota equa e quante volte pronostici così si sono avverati.`;
+  )} Un pronostico per partita, con la probabilità, il prezzo dove l’abbiamo trovato e quante volte pronostici così si sono avverati.`;
 
   return {
     title: titolo,

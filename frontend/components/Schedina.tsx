@@ -73,7 +73,13 @@ function Riga({ gamba, crest }: { gamba: Gamba; crest: (url: string | null) => s
           <span className="gamba__unita"> su 100</span>
         </span>
 
-        <span className="gamba__quota num">{formattaQuota(gamba.quota)}</span>
+        <span className="gamba__quota num">
+          {gamba.prezzo !== null ? (
+            formattaQuota(gamba.prezzo)
+          ) : (
+            <span aria-hidden="true">—</span>
+          )}
+        </span>
 
         <Esito uscito={gamba.uscito} />
       </a>
@@ -114,17 +120,26 @@ export function Schedina({
       </ul>
 
       <div className="schedina__piede">
+        {/* IL PREZZO O NIENTE. Qui c'era il prodotto delle nostre quote eque
+            — `1/probabilita'` moltiplicate fra loro — presentato sotto la
+            parola «Quota». Nessuno paga quel numero: la probabilita' che la
+            schedina esca tutta intera e' gia' scritta in testa, ed e' la cosa
+            che sappiamo. */}
         <p className="schedina__quota">
-          <span className="label">Quota</span>{' '}
-          <strong className="num">{formattaQuota(schedina.quota)}</strong>
-          {schedina.quotaMercato !== null ? (
+          <span className="label">Prezzo</span>{' '}
+          {schedina.prezzo !== null ? (
             <>
-              {' '}
+              <strong className="num">{formattaQuota(schedina.prezzo)}</strong>{' '}
               <span className="schedina__mercato">
-                il mercato la darebbe {formattaQuota(schedina.quotaMercato)}
+                moltiplicando i prezzi trovati sulle {schedina.gambe.length} gambe
               </span>
             </>
-          ) : null}
+          ) : (
+            <span className="schedina__mercato">
+              non calcolabile: almeno una gamba &egrave; su un mercato che nessuna
+              fonte quota
+            </span>
+          )}
         </p>
 
         {conclusa ? (
@@ -142,7 +157,10 @@ export function Schedina({
 
       {!schedina.bersaglioRaggiunto ? (
         <p className="schedina__nota">
-          <strong>Questa schedina non arriva a {formattaQuota(schedina.bersaglio)}.</strong> Le
+          <strong>
+            Questa schedina non scende sotto {suCento(schedina.bersaglioP)} su 100.
+          </strong>{' '}
+          Le
           partite di oggi su cui ci esponiamo sono poche o tutte molto probabili, e non c’è
           combinazione che ci arrivi. Preferiamo mostrarla più bassa che allungarla con
           pronostici che non faremmo.

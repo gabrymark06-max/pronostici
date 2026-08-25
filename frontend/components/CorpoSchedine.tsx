@@ -50,9 +50,9 @@ export function CorpoSchedine({ data }: { data: string }) {
           <p className="schedine__lettura">
             Due combinazioni dei pronostici di {dataLunga(data)}, scelte da una regola e non a
             mano. Il numero grande di ognuna è{' '}
-            <strong>quante volte su cento esce tutta intera</strong>, non la quota: le due cose
-            sono lo stesso numero al contrario — la nostra quota è uno diviso la probabilità —
-            e fra le due abbiamo messo grande quella che cala quando la scommessa peggiora.
+            <strong>quante volte su cento esce tutta intera</strong>. Il prezzo compare sotto,
+            e solo se ognuna delle gambe ha una quota che abbiamo trovato davvero: moltiplicare
+            quote che nessuno espone darebbe un numero che non corrisponde a nessuna giocata.
           </p>
         </header>
 
