@@ -977,6 +977,7 @@
     "filter_bites": {
      "S_min": 113,
      "p_min": 86,
+     "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -2412,10 +2413,11 @@
     "filter_bites": {
      "S_min": 81,
      "p_min": 84,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 10,
+    "n_clusters": 4,
     "truncated_mass": 1.267e-05
    },
    "expected_goals": {
@@ -2491,7 +2493,6 @@
     "band_p95": 0.8897,
     "cluster_members": [
      "combodc_12_over_1.5",
-     "hg_over_1.5",
      "combo_1_over_1.5"
     ],
     "family": "1x2",
@@ -2499,34 +2500,9 @@
     "label": "Vittoria casa",
     "p": 0.7419,
     "p_raw": 0.8048,
+    "prezzo": 1.32,
     "reference": 0.4588,
     "runners_up": [
-     {
-      "band_p5": 0.8788,
-      "band_p95": 0.9655,
-      "family": "double_chance",
-      "key": "dc_1x",
-      "label": "1X (casa o pareggio)",
-      "p": 0.9175,
-      "p_raw": 0.9279,
-      "reference": 0.7118,
-      "score": 0.129737,
-      "shrink_alpha": 0.9517,
-      "sigma": 0.0268
-     },
-     {
-      "band_p5": 0.8788,
-      "band_p95": 0.9655,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.9124,
-      "p_raw": 0.9279,
-      "reference": 0.7118,
-      "score": 0.122173,
-      "shrink_alpha": 0.9279,
-      "sigma": 0.0268
-     },
      {
       "band_p5": 0.7394,
       "band_p95": 0.8997,
@@ -2541,19 +2517,6 @@
       "sigma": 0.0515
      },
      {
-      "band_p5": 0.9014,
-      "band_p95": 0.9736,
-      "family": "team_goals",
-      "key": "hg_over_0.5",
-      "label": "Casa Over 0.5",
-      "p": 0.9352,
-      "p_raw": 0.9421,
-      "reference": 0.8001,
-      "score": 0.07297,
-      "shrink_alpha": 0.9519,
-      "sigma": 0.0236
-     },
-     {
       "band_p5": 0.5292,
       "band_p95": 0.7898,
       "family": "combo_dc",
@@ -2565,6 +2528,46 @@
       "score": 0.062796,
       "shrink_alpha": 0.5204,
       "sigma": 0.079
+     },
+     {
+      "band_p5": 0.5465,
+      "band_p95": 0.7855,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5673,
+      "p_raw": 0.6673,
+      "reference": 0.4417,
+      "score": 0.031695,
+      "shrink_alpha": 0.5568,
+      "sigma": 0.0734
+     },
+     {
+      "band_p5": 0.5782,
+      "band_p95": 0.8178,
+      "family": "over_under",
+      "key": "over_2.5",
+      "label": "Over 2.5",
+      "p": 0.5759,
+      "p_raw": 0.7071,
+      "prezzo": 1.44,
+      "reference": 0.496,
+      "score": 0.012825,
+      "shrink_alpha": 0.3786,
+      "sigma": 0.0722
+     },
+     {
+      "band_p5": 0.4932,
+      "band_p95": 0.5474,
+      "family": "multigoal",
+      "key": "mg_3_5",
+      "label": "Multigol 3-5",
+      "p": 0.5217,
+      "p_raw": 0.5333,
+      "reference": 0.4465,
+      "score": 0.011353,
+      "shrink_alpha": 0.8659,
+      "sigma": 0.0192
      }
     ],
     "score": 0.165503,
@@ -4147,7 +4150,7 @@
    "utc_date": "2026-08-27T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-25T13:21:31Z",
+ "generated_at": "2026-08-25T14:18:19Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 2
