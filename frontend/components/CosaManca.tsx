@@ -70,12 +70,12 @@ export function CosaManca({
       quando: 'di solito compaiono due o tre giorni prima della partita',
     });
   }
-  if (!s?.arbitro) {
-    mancano.push({
-      cosa: 'L’arbitro',
-      quando: 'la designazione esce a pochi giorni dal fischio, e a volte solo alla vigilia',
-    });
-  }
+  // L'ARBITRO NON SI PROMETTE PIU'. Diceva «la designazione esce a pochi
+  // giorni dal fischio», ed era una promessa che quasi mai si mantiene: la
+  // fonte gratuita lo pubblica DOPO la partita. Misurato il 25 agosto 2026 su
+  // La Liga: zero su tutte le partite in programma, undici su sedici fra
+  // quelle gia' giocate. Elencarlo fra le cose in arrivo faceva aspettare a
+  // vuoto qualcosa che arriva quando non serve piu'.
   if (!s?.giocatori) {
     mancano.push({
       cosa: 'Le stime sui singoli giocatori',
