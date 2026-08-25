@@ -246,10 +246,22 @@ export interface StimeGiocatori {
  * in cima al blocco: le tre sezioni possono venire da tre posti diversi, ed e'
  * gia' successo.
  */
-/** Un prezzo vero, con quanti operatori lo compongono. */
+/**
+ * Un prezzo vero, con quanti operatori lo compongono e chi lo ha pubblicato.
+ *
+ * `fonte` non è ridondante con `operatori`. Le due fonti che riempiono questa
+ * mappa non stanno nello stesso posto del mondo: betexplorer, letto dai nostri
+ * runner, mostra libri statunitensi; kambi è un operatore europeo, uno solo.
+ * Dire «operatori europei» sopra i primi o «statunitensi» sopra il secondo
+ * sarebbe una piccola bugia dentro una pagina fatta apposta per non averne.
+ *
+ * Manca sui file scritti prima del 25 agosto 2026: lì la fonte era una sola, e
+ * chi legge sa qual era.
+ */
 export interface PrezzoTrovato {
   decimale: number;
   operatori: number;
+  fonte?: 'betexplorer' | 'kambi';
 }
 
 export interface Contorno {

@@ -13,21 +13,25 @@ import { formattaQuota } from '@/lib/quote';
 import type { MercatoEsteso } from '@/lib/tipi';
 
 /**
- * I MERCATI CHE LA FONTE PRINCIPALE NON COPRE.
+ * TUTTI I PREZZI CHE ABBIAMO TROVATO, di tutte le fonti, nella stessa tavola.
  *
- * Le quote gia' cablate nel sito arrivano da operatori con licenza italiana e
- * coprono esito finale e over/under. Questa tabella arriva da un'altra fonte e
- * porta i mercati che quella non ha: cartellini nella partita, calci d'angolo,
- * prima squadra a segnare, primo tempo.
+ * Il nome «quote estese» viene da quando questa tabella mostrava cio' che la
+ * fonte principale non copriva — ai tempi di Sofascore erano cartellini,
+ * angoli, prima squadra a segnare. Oggi porta l'insieme: l'esito finale e i
+ * gol totali della fonte principale, la doppia chance e l'entrambe segnano del
+ * comparatore, i gol di squadra e l'handicap europeo del bookmaker. Ogni
+ * mercato compare UNA volta sola, e a parita' di nome e linea vince la fonte
+ * che ha piu' operatori dietro.
  *
  * DUE COSE CHE NON VANNO CONFUSE, ed e' il motivo per cui questo blocco sta
  * dopo i pronostici e non accanto:
  *
- *  1. la probabilita' qui accanto e' quella che il PREZZO esprime, e contiene
- *     ancora il margine dell'operatore. Non e' la nostra, e non e' nemmeno
- *     quella del mercato depurata;
- *  2. su questi mercati il nostro modello non dice niente. Non c'e' un nostro
- *     numero da confrontare, quindi non c'e' un confronto.
+ *  1. la probabilita' accanto a ogni prezzo e' quella che il PREZZO esprime,
+ *     tolto il margine dell'operatore. Non e' la nostra stima, e le due non
+ *     vanno lette come se dicessero la stessa cosa;
+ *  2. qui non c'e' nessun confronto. Su alcune di queste righe il nostro
+ *     modello ha un'opinione, e sta nella tavola dei pronostici piu' sopra —
+ *     e' quello il posto dove i due numeri si guardano.
  *
  * IL MARGINE SI DICE COME SOMMA, non come percentuale. Su un mercato equo le
  * probabilita' sommano a 100 su 100; se sommano a 108, quegli 8 sono il

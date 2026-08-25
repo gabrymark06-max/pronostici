@@ -199,3 +199,115 @@ class TestPrezziVeri:
             self._mercato("Gol totali", [("Over", 2.3), ("Under", 1.57)], linea="2.5"),
         ]
         assert sorted(job._prezzi(m)) == sorted(job._market_p(m))
+
+
+class TestDueFontiUnaTavola:
+    """betexplorer e kambi quotano gli stessi quattro mercati.
+
+    Da quando kambi legge anche esito finale, doppia chance, entrambe segnano e
+    gol totali — che gli costano zero richieste in piu', perche' viaggiano
+    nella stessa risposta dei gol di squadra — le due fonti si sovrappongono.
+    Concatenarle metteva due righe «Gol totali 2,5» una sotto l'altra con due
+    prezzi diversi: entrambi veri, e insieme illeggibili.
+    """
+
+    @staticmethod
+    def _m(fonte: str, nome: str, quota: float, linea: str | None = None) -> dict:
+        return {
+            "fonte": fonte,
+            "mercato": nome,
+            "linea": linea,
+            "n_bookmaker": 20 if fonte == "betexplorer" else 1,
+            "esiti": [
+                {"esito": "Over", "decimale": quota, "probabilita_implicita": 0.5},
+                {"esito": "Under", "decimale": quota, "probabilita_implicita": 0.5},
+            ],
+        }
+
+    def test_a_parita_di_mercato_vince_la_mediana(self) -> None:
+        mediane = [self._m("betexplorer", "Gol totali", 1.91, "2.5")]
+        singolo = [self._m("kambi", "Gol totali", 1.76, "2.5")]
+        (rimasto,) = job._unisci(mediane, singolo)
+        assert rimasto["fonte"] == "betexplorer"
+
+    def test_le_linee_diverse_convivono(self) -> None:
+        """Stesso mercato, linea diversa: sono due scommesse, non un doppione."""
+        mediane = [self._m("betexplorer", "Gol totali", 1.91, "2.5")]
+        singolo = [self._m("kambi", "Gol totali", 2.4, "3.5")]
+        assert len(job._unisci(mediane, singolo)) == 2
+
+    def test_i_mercati_senza_linea_si_riconoscono_fra_loro(self) -> None:
+        mediane = [self._m("betexplorer", "Doppia chance", 1.36)]
+        singolo = [self._m("kambi", "Doppia chance", 1.4)]
+        assert len(job._unisci(mediane, singolo)) == 1
+
+    def test_quello_che_solo_lui_quota_resta(self) -> None:
+        mediane = [self._m("betexplorer", "Gol totali", 1.91, "2.5")]
+        singolo = [self._m("kambi", "Gol di squadra casa", 1.46, "1.5")]
+        assert [m["mercato"] for m in job._unisci(mediane, singolo)] == [
+            "Gol totali",
+            "Gol di squadra casa",
+        ]
+
+    def test_senza_mediane_resta_tutto_il_singolo(self) -> None:
+        """La fonte delle mediane copre cinque giorni, questa arriva dove
+        arriva il libro: fuori da quella finestra c'e' solo lei."""
+        singolo = [self._m("kambi", "Doppia chance", 1.4)]
+        assert job._unisci([], singolo) == singolo
+
+    def test_il_prezzo_pubblicato_e_quello_della_mediana(self) -> None:
+        """La precedenza deve arrivare fino alla chiave, non fermarsi alla
+        lista: e' la chiave che la scheda partita cerca."""
+        uniti = job._unisci(
+            [self._m("betexplorer", "Gol totali", 1.91, "2.5")],
+            [self._m("kambi", "Gol totali", 1.76, "2.5")],
+        )
+        assert job._prezzi(uniti)["over_2.5"]["decimale"] == 1.91
+
+
+class TestLeChiaviDeiMercatiNuovi:
+    """I gol di squadra e l'handicap europeo verso le chiavi del modello.
+
+    Devono coincidere carattere per carattere con quelle di `model.markets`:
+    e' su quelle che la scheda partita cerca il prezzo del pronostico
+    consigliato, e `hg_under_2,5` sarebbe un prezzo vero che non si trova mai.
+    """
+
+    def test_le_chiavi_esistono_davvero_nel_catalogo(self) -> None:
+        from pronostici.model.markets import catalog
+
+        note = {d.key for d in catalog(12)}
+        casi = [
+            ({"mercato": "Gol di squadra casa", "linea": "2.5"}, {"esito": "Under"}),
+            ({"mercato": "Gol di squadra ospite", "linea": "0.5"}, {"esito": "Over"}),
+            ({"mercato": "Handicap europeo", "linea": "-2"}, {"esito": "2"}),
+            ({"mercato": "Handicap europeo", "linea": "1"}, {"esito": "1"}),
+            ({"mercato": "Handicap europeo", "linea": "-1"}, {"esito": "X"}),
+        ]
+        for mercato, esito in casi:
+            chiave = job._chiave_nostra(mercato, esito)
+            assert chiave in note, f"{mercato} {esito} -> {chiave}"
+
+    def test_una_linea_che_il_modello_non_ha_non_inventa_niente(self) -> None:
+        """Kambi quota anche l'handicap -4, noi arriviamo a -2.
+
+        La chiave si costruisce lo stesso — e' una stringa — ma non corrisponde
+        a nessun mercato nostro, quindi non la cerchera' mai nessuno. Quello
+        che conta e' che non finisca sopra la chiave di un altro.
+        """
+        from pronostici.model.markets import catalog
+
+        note = {d.key for d in catalog(12)}
+        chiave = job._chiave_nostra(
+            {"mercato": "Handicap europeo", "linea": "-4"}, {"esito": "2"}
+        )
+        assert chiave == "eh_-4_away"
+        assert chiave not in note
+
+    def test_un_esito_che_non_e_over_ne_under_non_diventa_una_chiave(self) -> None:
+        assert (
+            job._chiave_nostra(
+                {"mercato": "Gol di squadra casa", "linea": "1.5"}, {"esito": "1"}
+            )
+            is None
+        )

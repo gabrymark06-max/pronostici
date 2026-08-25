@@ -20,8 +20,14 @@ import re
 from pathlib import Path
 
 from pronostici.sources import betexplorer as bx
+from pronostici.sources import kambi as kb
 
 TABELLA = Path(__file__).resolve().parents[1] / "frontend" / "lib" / "mercati-esteso.ts"
+
+# Tutte le fonti che riempiono `contorno.quote.mercati`. Ognuna dichiara i suoi
+# mercati nella stessa forma, e la pagina deve saperli tradurre tutti: e' la
+# lista che va allungata quando ne arriva una quarta.
+FONTI = (bx.MERCATI, kb.MERCATI)
 
 
 def _chiavi(nome_costante: str) -> set[str]:
@@ -42,13 +48,13 @@ def _chiavi(nome_costante: str) -> set[str]:
 
 
 def test_ogni_mercato_che_scriviamo_sa_essere_tradotto() -> None:
-    attesi = {nome for nome, _, _ in bx.MERCATI.values()}
+    attesi = {nome for fonte in FONTI for nome, _, _ in fonte.values()}
     noti = _chiavi("NOMI")
     assert attesi <= noti, f"la pagina scarterebbe: {sorted(attesi - noti)}"
 
 
 def test_ogni_esito_che_scriviamo_sa_essere_tradotto() -> None:
-    attesi = {e for _, colonne, _ in bx.MERCATI.values() for e in colonne}
+    attesi = {e for fonte in FONTI for _, colonne, _ in fonte.values() for e in colonne}
     noti = _chiavi("ESITI")
     assert attesi <= noti, f"la pagina scarterebbe: {sorted(attesi - noti)}"
 
@@ -61,7 +67,8 @@ def test_la_doppia_chance_ha_la_stessa_copertura_dai_due_lati() -> None:
     doppio di quello vero — o glielo dimezza.
     """
     noti = _chiavi("COPERTURA")
-    for nome, _, vincenti in bx.MERCATI.values():
-        if vincenti > 1:
-            perche = f"«{nome}» copre {vincenti} volte, ma COPERTURA non lo sa"
-            assert nome in noti, perche
+    for fonte in FONTI:
+        for nome, _, vincenti in fonte.values():
+            if vincenti > 1:
+                perche = f"«{nome}» copre {vincenti} volte, ma COPERTURA non lo sa"
+                assert nome in noti, perche

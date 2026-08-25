@@ -17,17 +17,29 @@
  * pagina mostra la probabilità e tace sulla quota — che è il vero stato delle
  * cose.
  *
- * DUE FONTI, entrambe di prezzi veri:
+ * TRE FONTI, tutte di prezzi veri, in quest'ordine di precedenza:
  *
- * ① `odds.prices` — the-odds-api, mediana di operatori europei o ADM. Copre
- *    cinque mercati: esito finale e Over/Under 2,5 e 3,5.
- * ② `contorno.prezzi` — betexplorer, mediana degli operatori che mostra a chi
- *    chiede. Copre doppia chance, gol totali su ogni linea, entrambe segnano.
+ * ① `odds.prices` — the-odds-api, mediana di ventiquattro operatori europei o
+ *    ADM. Copre cinque mercati: esito finale e Over/Under 2,5 e 3,5.
+ * ② `contorno.prezzi` con `fonte: 'betexplorer'` — mediana degli operatori che
+ *    mostra a chi chiede. Doppia chance, gol totali su ogni linea, entrambe
+ *    segnano.
+ * ③ `contorno.prezzi` con `fonte: 'kambi'` — UN operatore solo, e per questo
+ *    ultimo. Copre gol di squadra e handicap europeo, che nessun comparatore
+ *    gratuito pubblica, e fa da ripiego su tutto il resto dove le mediane non
+ *    arrivano.
  *
- * Misurato il 25 agosto 2026 sui pronostici consigliati: con la sola ① quattro
- * su trentatré avevano un prezzo, con entrambe undici. I restanti sono gol di
- * squadra e handicap europeo, che nessuna fonte gratuita quota — e lì non si
- * inventa niente.
+ * L'ordine non è una preferenza estetica: una mediana di venti libri dice cosa
+ * costa quella scommessa sul mercato, il prezzo di uno dice cosa costa da lui.
+ * Dove c'è la mediana vince la mediana. Dove non c'è, un prezzo di un operatore
+ * è meglio del silenzio — purché la pagina scriva «un operatore» e non «il
+ * mercato», ed è quello che fa `fraseSportello`.
+ *
+ * Misurato sui pronostici consigliati delle 62 partite in cartellone: con la
+ * sola ① quattro avevano un prezzo, con ①② quattordici, con tutte e tre
+ * cinquantadue. Dei dieci rimasti, due sono combo che nessuno quota, tre sono
+ * partite su cui il libro non è ancora aperto, e cinque sono linee che quel
+ * bookmaker non espone per quella partita. Lì non si inventa niente.
  *
  * PERCHÉ NON C'È SISAL. Nessuna fonte gratuita la espone: the-odds-api non la
  * include in nessuna regione, verificato sulla loro tavola dei bookmaker. Non
@@ -45,17 +57,22 @@ import type { Fixture, Mercato } from './tipi';
 export interface QuoteDelMercato {
   /** IL PREZZO, quello vero. `null` quando nessuna fonte quota il mercato. */
   prezzo: number | null;
-  /** `it` = operatori ADM italiani, `eu` = mediana europea, `us` = betexplorer. */
+  /** DOVE SONO GLI OPERATORI: `it` con licenza italiana, `eu` europei, `us` statunitensi. */
   provenienza: 'it' | 'eu' | 'us' | null;
-  /** Quanti operatori compongono il consenso. */
+  /**
+   * Quanti operatori compongono il prezzo. UNO è un valore normale, non un
+   * caso di confine: su gol di squadra e handicap europeo è quasi sempre uno,
+   * e la pagina deve dirlo invece di far passare quel numero per un consenso.
+   */
   operatori: number;
   /**
    * DA DOVE VIENE IL PREZZO.
    *
    * `principale` è the-odds-api, la fonte su cui il progetto si è fatto
-   * misurare. `secondaria` è betexplorer, che copre i mercati che la prima non
-   * quota. Le due non si mescolano mai nella stessa cella, e la pagina lo dice:
-   * un numero senza provenienza è un numero di cui non si può discutere.
+   * misurare. `secondaria` è il contorno — betexplorer dove ha una mediana,
+   * kambi dove nessuno ce l'ha. Le due non si mescolano mai nella stessa
+   * cella, e la pagina lo dice: un numero senza provenienza è un numero di cui
+   * non si può discutere.
    */
   fonte: 'principale' | 'secondaria' | null;
   /**
@@ -114,9 +131,23 @@ export function quoteDi(mercato: Mercato, fixture: Fixture): QuoteDelMercato {
         ? pSecondaria
         : null;
 
+  /* DUE FONTI DENTRO LA STESSA MAPPA, e non stanno nello stesso posto del
+     mondo. `contorno.prezzi` lo riempivano solo le mediane di betexplorer, che
+     dai nostri runner mostra libri statunitensi; dal 25 agosto 2026 lo riempie
+     anche kambi, che è un operatore europeo e uno solo. Il campo `fonte` viaggia
+     con il prezzo apposta: senza, la frase sarebbe giusta per una delle due e
+     falsa per l'altra, e nessun controllo potrebbe pescarlo. */
+  const doveSecondario = trovato?.fonte === 'kambi' ? 'eu' : 'us';
+
   return {
     prezzo: haPrincipale ? prezzoPrincipale : haSecondario ? prezzoSecondario : null,
-    provenienza: haPrincipale ? (odds?.price_scope === 'it' ? 'it' : 'eu') : haSecondario ? 'us' : null,
+    provenienza: haPrincipale
+      ? odds?.price_scope === 'it'
+        ? 'it'
+        : 'eu'
+      : haSecondario
+        ? doveSecondario
+        : null,
     operatori: haPrincipale ? (odds?.price_books ?? 0) : haSecondario ? (trovato?.operatori ?? 0) : 0,
     fonte: haPrincipale ? 'principale' : haSecondario ? 'secondaria' : null,
     pMercato: p,
@@ -167,14 +198,20 @@ export function fraseSportello(q: QuoteDelMercato): string | null {
      runner americani: sono `bet365.us`, `betmgm.us`, `stake.com`. Scriverli
      «europei» perche' quello diceva il ramo di ripiego era una piccola bugia
      dentro una modifica fatta apposta per toglierle. */
+  /* AL SINGOLARE E AL PLURALE, perché adesso il singolare capita davvero.
+     Finché le fonti erano due mediane, `operatori === 1` era un caso di
+     confine; da quando c'è kambi è il caso normale su gol di squadra e
+     handicap, e «un operatore europei» sarebbe la prima cosa che si legge. */
   const dove =
     q.provenienza === 'it'
-      ? 'con licenza italiana'
+      ? ['con licenza italiana', 'con licenza italiana']
       : q.provenienza === 'us'
-        ? 'statunitensi'
-        : 'europei';
+        ? ['statunitense', 'statunitensi']
+        : ['europeo', 'europei'];
   const fonte =
-    q.operatori === 1 ? `un operatore ${dove}` : `${q.operatori} operatori ${dove}`;
+    q.operatori === 1
+      ? `un operatore ${dove[0]}`
+      : `${q.operatori} operatori ${dove[1]}`;
   return `Allo sportello questa scommessa si trova a ${formattaQuota(q.prezzo)} (${fonte}), margine incluso.`;
 }
 

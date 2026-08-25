@@ -55,6 +55,7 @@ from ..fixtures import CAMPO_CONTORNO
 from ..model.giocatori import moltiplicatore_arbitro, stime_giocatore
 from ..sources import betexplorer as bx
 from ..sources import fotmob as fm
+from ..sources import kambi as kb
 from ..sources import sportsgambler as sg
 from ..sources.football_data import FootballDataClient, FootballDataError
 
@@ -196,6 +197,64 @@ def _cartelloni_mercati(report: dict) -> dict[str, list[bx.PartitaBX]]:
     return per_lega
 
 
+def _mercati_kambi(
+    da_fare: list[tuple[str, dict, datetime]], report: dict
+) -> dict[int, list[dict]]:
+    """I gol di squadra e l'handicap europeo, per `match_id` nostro.
+
+    TUTTO IN UN COLPO, PRIMA DEL GIRO, e non partita per partita dentro: kambi
+    accetta cinque id per richiesta, quindi cinquanta partite costano dieci
+    richieste invece di cinquanta. Un giro intero sta sotto il minuto, e questo
+    ha una conseguenza che vale piu' della velocita' — questi mercati NON
+    dipendono da `SCADENZA_MERCATI_S`. Quando betexplorer viene interrotto dal
+    tempo, le partite rimaste perdono la doppia chance e i gol totali; il
+    prezzo del pronostico consigliato, che quasi sempre e' una di queste due
+    famiglie, resta.
+
+    NESSUNA FINESTRA, al contrario di betexplorer: il loro elenco contiene solo
+    le partite col libro aperto — tipicamente due giornate — quindi la finestra
+    la impone gia' la fonte, e ristringerla ancora toglierebbe soltanto.
+    """
+    per_lega: dict[str, list[kb.EventoKB]] = {}
+    for codice in kb.LEGHE:
+        try:
+            per_lega[codice] = kb.elenco(codice)
+        except kb.LegaVuota as exc:
+            # Qui vuoto NON e' un guasto: e' una lega ferma o fuori stagione.
+            # Su betexplorer significherebbe percorso cambiato, perche' li'
+            # l'elenco e' la stagione intera; qui sono le partite quotate.
+            log.info("%s", exc)
+            report["kambi_leghe_ferme"].append(codice)
+        except kb.KambiNonRaggiungibile as exc:
+            log.warning("elenco kambi %s non letto: %s", codice, exc)
+            report["kambi_non_letta"].append(codice)
+
+    abbinati: dict[int, int] = {}
+    eventi: dict[int, kb.EventoKB] = {}
+    for _giorno, entry, calcio in da_fare:
+        loro = kb.aggancia(
+            per_lega.get(entry.get("competition", ""), []),
+            entry["home"]["name"],
+            entry["away"]["name"],
+            calcio,
+        )
+        if loro is None:
+            continue
+        abbinati[entry["match_id"]] = loro.id
+        eventi[loro.id] = loro
+
+    report["kambi_agganciate"] = len(abbinati)
+    if not eventi:
+        return {}
+
+    quote = kb.quote_di_gruppo(list(eventi.values()))
+    return {
+        match_id: quote[id_evento]
+        for match_id, id_evento in abbinati.items()
+        if quote.get(id_evento)
+    }
+
+
 # I mercati estesi verso le NOSTRE chiavi. La tabella e' la stessa che il
 # progetto usa per le quote principali, cosi' i due insiemi si possono
 # confrontare invece di vivere in universi separati.
@@ -205,14 +264,59 @@ _CHIAVI: dict[str, dict[str, str]] = {
     "Entrambe segnano": {"Sì": "btts_yes", "No": "btts_no"},
 }
 
+# I mercati con una linea: il nome del mercato verso il prefisso della chiave.
+# Il verso (`over`/`under`, oppure `home`/`draw`/`away`) lo mette l'esito.
+_PREFISSO_LINEA: dict[str, str] = {
+    "Gol totali": "",
+    kb.MERCATO_GOL_CASA: "hg_",
+    kb.MERCATO_GOL_OSPITE: "ag_",
+}
+
+_LATI_HANDICAP = {"1": "home", "X": "draw", "2": "away"}
+
 
 def _chiave_nostra(mercato: dict, esito: dict) -> str | None:
-    """La chiave con cui il resto del progetto chiama questo esito."""
-    nome = mercato.get("mercato")
-    if nome == "Gol totali" and mercato.get("linea"):
-        verso = "over" if esito.get("esito") == "Over" else "under"
-        return f"{verso}_{mercato['linea']}"
-    return _CHIAVI.get(nome or "", {}).get(esito.get("esito", ""))
+    """La chiave con cui il resto del progetto chiama questo esito.
+
+    LE CHIAVI DEVONO COINCIDERE CON QUELLE DI `model.markets`, carattere per
+    carattere: e' su quelle che la scheda partita cerca il prezzo del
+    pronostico consigliato. `hg_under_2.5` con la linea scritta `2,5` o `2.50`
+    sarebbe un prezzo vero che non si ritrova mai.
+    """
+    nome = mercato.get("mercato") or ""
+    linea = mercato.get("linea")
+
+    if nome == kb.MERCATO_HANDICAP and linea:
+        lato = _LATI_HANDICAP.get(esito.get("esito", ""))
+        return f"eh_{linea}_{lato}" if lato else None
+
+    prefisso = _PREFISSO_LINEA.get(nome)
+    if prefisso is not None and linea:
+        verso = esito.get("esito")
+        if verso not in ("Over", "Under"):
+            return None
+        return f"{prefisso}{verso.lower()}_{linea}"
+
+    return _CHIAVI.get(nome, {}).get(esito.get("esito", ""))
+
+
+def _unisci(mediane: list[dict], singolo: list[dict]) -> list[dict]:
+    """Le due liste in una, senza doppioni, con le mediane davanti.
+
+    LE FONTI SI SOVRAPPONGONO. Da quando kambi legge anche esito finale, doppia
+    chance, entrambe segnano e gol totali — che gli costano zero richieste in
+    piu', perche' stanno nella stessa risposta — quei quattro mercati arrivano
+    da tutte e due. Concatenare vorrebbe dire due righe «Gol totali 2,5» una
+    sotto l'altra con due prezzi diversi: entrambi veri, e insieme illeggibili.
+
+    A parita' di mercato e linea vince la MEDIANA: e' calcolata su una ventina
+    di operatori contro l'unico di kambi. Lui resta per tutto il resto — i gol
+    di squadra e l'handicap europeo, che nessun comparatore pubblica — e per le
+    partite su cui l'altra fonte non ha agganciato niente.
+    """
+    chiave = lambda m: (m.get("mercato"), m.get("linea"))  # noqa: E731
+    visti = {chiave(m) for m in mediane}
+    return [*mediane, *(m for m in singolo if chiave(m) not in visti)]
 
 
 def _prezzi(mercati: list[dict]) -> dict[str, dict]:
@@ -226,13 +330,23 @@ def _prezzi(mercati: list[dict]) -> dict[str, dict]:
     Servono perche' the-odds-api quota cinque mercati e il pronostico
     consigliato quasi mai e' uno di quelli: misurato il 25 agosto 2026, quattro
     consigli su trentatre avevano un prezzo. Con la doppia chance, i gol totali
-    su ogni linea e l'entrambe segnano di betexplorer diventano undici.
+    su ogni linea e l'entrambe segnano di betexplorer diventano undici, e con i
+    gol di squadra e l'handicap europeo di kambi quasi tutti.
+
+    IL PRIMO CHE NOMINA UNA CHIAVE SE LA TIENE, e l'ordine della lista non e'
+    un caso: betexplorer sta davanti perche' i suoi prezzi sono una mediana di
+    operatori, kambi dietro perche' e' il prezzo di uno solo. Dove esistono
+    entrambi vince la mediana; dove esiste solo lui, un prezzo di un operatore
+    e' meglio di nessun prezzo — purche' il dato dica quale dei due e', ed e'
+    per questo che `operatori` viaggia insieme al numero.
     """
     fuori: dict[str, dict] = {}
     for mercato in mercati:
         for esito in mercato.get("esiti") or []:
             quota = esito.get("decimale")
             chiave = _chiave_nostra(mercato, esito)
+            if chiave in fuori:
+                continue
             if chiave and isinstance(quota, int | float) and quota > 1:
                 # Il numero di operatori viaggia CON il prezzo. La pagina dice
                 # «mediana di N operatori» e quel N cambia da un mercato
@@ -241,6 +355,14 @@ def _prezzi(mercati: list[dict]) -> dict[str, dict]:
                 fuori[chiave] = {
                     "decimale": float(quota),
                     "operatori": mercato.get("n_bookmaker") or 0,
+                    # DA DOVE VIENE QUESTO NUMERO. Non e' ridondante con
+                    # `operatori`: la pagina scrive «operatori statunitensi»
+                    # per la mediana di betexplorer, che dai nostri runner
+                    # mostra libri americani, e «un operatore europeo» per
+                    # kambi. Senza questo campo la mappa dei prezzi non
+                    # ricorda piu' quale delle due ha scritto la riga, e la
+                    # frase sarebbe giusta per una e falsa per l'altra.
+                    "fonte": mercato.get("fonte"),
                 }
     return fuori
 
@@ -258,7 +380,11 @@ def _market_p(mercati: list[dict]) -> dict[str, float]:
         for esito in mercato.get("esiti") or []:
             p = esito.get("probabilita_implicita")
             chiave = _chiave_nostra(mercato, esito)
-            if chiave and p is not None:
+            # Stessa precedenza dei prezzi, e per la stessa ragione: la
+            # probabilita' e' quella di QUELLE quote, e prenderla da una fonte
+            # mentre il prezzo viene dall'altra vorrebbe dire mostrare in due
+            # celle vicine due numeri che non parlano dello stesso mercato.
+            if chiave and p is not None and chiave not in fuori:
                 fuori[chiave] = p
     return fuori
 
@@ -464,6 +590,10 @@ def run(
         "mercati_non_letti": [],
         "leghe_vuote": [],
         "mercati_interrotti_per_tempo": False,
+        "kambi_agganciate": 0,
+        "con_mercati_kambi": 0,
+        "kambi_leghe_ferme": [],
+        "kambi_non_letta": [],
         "tassi_non_letti": [],
         "leghe_senza_tassi": [],
         "days_written": [],
@@ -501,6 +631,8 @@ def run(
     report["arbitri_disponibili"] = len(arbitri)
 
     mercati_lega = _cartelloni_mercati(report)
+    mercati_kambi = _mercati_kambi(da_fare, report)
+    report["con_mercati_kambi"] = len(mercati_kambi)
     tassi_lega = _tassi_per_lega(competizioni, report)
     report["leghe_con_tassi"] = sorted(tassi_lega)
 
@@ -571,6 +703,7 @@ def run(
                 SCADENZA_MERCATI_S,
             )
 
+        quote: list[dict] = []
         if calcio <= limite_mercati and not mercati_scaduti:
             loro_bx = bx.aggancia(
                 mercati_lega.get(codice, []),
@@ -585,13 +718,20 @@ def run(
                     quote = []
                 if quote:
                     report["con_mercati"] += 1
-                    blocco["quote"] = {"n_mercati": len(quote), "mercati": quote}
-                    probabilita = _market_p(quote)
-                    if probabilita:
-                        blocco["market_p"] = probabilita
-                    prezzi = _prezzi(quote)
-                    if prezzi:
-                        blocco["prezzi"] = prezzi
+
+        # LE MEDIANE DAVANTI, IL SINGOLO OPERATORE DIETRO. L'ordine di questa
+        # lista decide chi vince quando due fonti quotano lo stesso mercato:
+        # `_prezzi` e `_market_p` tengono il primo che nomina una chiave.
+        quote = _unisci(quote, mercati_kambi.get(entry["match_id"], []))
+
+        if quote:
+            blocco["quote"] = {"n_mercati": len(quote), "mercati": quote}
+            probabilita = _market_p(quote)
+            if probabilita:
+                blocco["market_p"] = probabilita
+            prezzi = _prezzi(quote)
+            if prezzi:
+                blocco["prezzi"] = prezzi
 
         # ------------------------------------------- le stime sui singoli
         if formazione is not None and codice in tassi_lega:

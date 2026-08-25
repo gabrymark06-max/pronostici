@@ -22,16 +22,16 @@ import { interno } from '@/lib/sito';
  * di risultati, ed è l'unica cosa che se ne prende — nessun marchio, nessun
  * logotipo, nessuna identità visiva di terzi.
  *
- * LE DUE QUOTE, e perché sono due.
- *  · LA NOSTRA (grande) è `1/probabilità`. C'è sempre, su ogni mercato, perché
- *    è solo un'altra forma del numero che mostriamo già. Dice: sotto questo
- *    prezzo la scommessa non conviene.
- *  · IL MERCATO (piccola, sotto) è la stessa cosa calcolata sulle quote, col
- *    margine dell'operatore tolto: un confronto pari a pari. Esiste sugli
- *    undici mercati che le quote determinano in modo esatto, e solo sulle
- *    partite entro la finestra del job `quote`. Sui gol di squadra e su
- *    entrambe-segnano non esiste, e la riga deve reggere l'assenza senza
- *    sembrare rotta: per questo la posizione grande è la nostra, non la loro.
+ * UN NUMERO GRANDE E UN PREZZO, e nessuno dei due è calcolato da noi.
+ *  · LA PROBABILITÀ (grande) è la nostra stima, ed è il prodotto. C'è sempre.
+ *    Fino al 25 agosto 2026 al suo posto stava `1/probabilità` chiamata «la
+ *    nostra quota»: un numero che nessun operatore pagava, stampato dove si
+ *    legge un prezzo.
+ *  · IL PREZZO (piccolo, sotto) è quello vero, dove una delle tre fonti lo
+ *    espone. Non c'è sempre — sulle combo non lo espone nessuno, e su una
+ *    partita fuori da ogni finestra non lo espone niente — e la riga deve
+ *    reggere l'assenza senza sembrare rotta: per questo la posizione grande è
+ *    la probabilità, non il prezzo.
  *
  * ALTEZZA 64px ESATTI da 768px in su, e il bersaglio COINCIDE con la riga. Non
  * 56px con un `::after` che sborda: due righe adiacenti che sbordano di 4px si

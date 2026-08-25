@@ -258,6 +258,7 @@ provata dai runner di GitHub prima di scriverci contro una riga:
 | formazioni previste | sportsgambler.com | HTML pubblico, nessuna chiave |
 | arbitro | football-data.org | la chiave che già usiamo |
 | mercati estesi | betexplorer.com | doppia chance, gol totali su **ogni** linea (0,5–5,5), entrambe segnano |
+| gol di squadra, handicap | kambi (Unibet) | JSON pubblico, le due famiglie che nessun comparatore espone |
 | stime sui giocatori | fotmob | un file JSON per statistica, con **tutti** i giocatori e i minuti veri |
 
 **Misurato da un runner di GitHub**, tutti e nove i campionati: 245 partite in
@@ -298,6 +299,35 @@ l'abbiamo già da The Odds API con ventiquattro bookmaker invece di undici, e il
 draw no bet è aritmetica sull'1X2: chiederli sarebbe pagare una richiesta per
 un dato peggiore o già noto. E le richieste costano — betexplorer limita il
 numero, non la loro distanza.
+
+### La terza fonte di prezzi (25 agosto 2026)
+
+**Il pronostico consigliato aveva un prezzo in 14 casi su 62.** Le due fonti
+coprivano sei mercati, e il consiglio quasi mai era uno di quelli: 24 volte era
+un *gol di squadra*, 7 un *handicap europeo*, e nessun comparatore gratuito
+quota né l'una né l'altra — betexplorer serve sei mercati e basta, The Odds API
+le ha solo sull'endpoint per evento, che costa un credito a partita e manderebbe
+il budget mensile a tre volte il tetto.
+
+Kambi è la piattaforma dietro Unibet, e la sua API è quella che alimenta il loro
+sito: JSON pubblico, nessuna chiave, tutti e nove i campionati. Da lì si leggono
+sette mercati — i due che mancavano, più cinque che viaggiano nella stessa
+risposta e quindi costano zero richieste in più. **Adesso i consigli con un
+prezzo sono 52 su 62**: dei dieci rimasti, due sono combo che nessuno espone, tre
+sono partite su cui il libro non è ancora aperto, cinque sono linee che quel
+bookmaker non offre per quella partita.
+
+**È un operatore solo, e il sito lo scrive.** Dove esiste una mediana vince la
+mediana: `jobs.contorno` mette questi mercati in fondo alla lista e il primo che
+nomina una chiave se la tiene. Dove non esiste, la scheda dice «un operatore
+europeo» invece di «N operatori», perché il prezzo di uno non è il consenso del
+mercato.
+
+**La risposta si tronca a 2000 offerte senza dirlo.** Chiedendo cinque partite
+per volta, la quarta ne riceveva 63 invece di 626 e la quinta non compariva:
+risposta 200, JSON valido, e una partita su ventuno senza prezzi. Si chiede a
+due per volta, e una risposta che tocca il tetto viene buttata e rifatta una
+partita alla volta.
 
 `job-sofascore.yml` resta, senza orario, per chi vuole il contorno ricco a mano
 sul runner di casa. I dati già scritti da Sofascore non si migrano: sono veri,

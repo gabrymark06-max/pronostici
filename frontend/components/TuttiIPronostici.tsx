@@ -72,6 +72,34 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
     g.mercati.some((m) => quoteDi(m, fixture).fonte === 'secondaria'),
   );
 
+  /* UN PREZZO DI UN OPERATORE SOLO NON E' UN CONSENSO, e la tavola lo dice.
+     Dal 25 agosto 2026 gol di squadra e handicap europeo hanno un prezzo, e
+     viene da un bookmaker solo: nessun comparatore gratuito li pubblica. E'
+     un numero vero e piu' debole di una mediana, e chi lo legge deve saperlo
+     senza doverlo dedurre. */
+  const conUnSoloOperatore = gruppi.some((g) =>
+    g.mercati.some((m) => {
+      const q = quoteDi(m, fixture);
+      return q.prezzo !== null && q.operatori === 1;
+    }),
+  );
+
+  /* QUALI FAMIGLIE RESTANO SENZA PREZZO, LETTE DALLA TAVOLA E NON DA UN ELENCO.
+     Qui sotto c'era una frase che diceva «tre famiglie: gol di squadra,
+     handicap e le combo». Era vera il giorno in cui e' stata scritta — e prima
+     ancora ne diceva altre due, corrette per lo stesso motivo. Poi e' arrivata
+     una fonte che quota le prime due, e la frase e' rimasta a dichiarare
+     un'assenza che non c'era piu', su ogni partita del sito.
+     Un elenco scritto a mano dentro una frase invecchia in silenzio. Questo si
+     ricava dalle righe che il lettore ha davanti, quindi non puo'. */
+  const senzaPrezzo = [
+    ...new Set(
+      gruppi
+        .filter((g) => g.mercati.every((m) => quoteDi(m, fixture).prezzo === null))
+        .map((g) => nomeFamiglia(g.famiglia).toLowerCase()),
+    ),
+  ];
+
   return (
     <section className="sezione" id="pronostici" aria-labelledby="titolo-tutti">
       <h2 id="titolo-tutti" className="label sezione__titolo">
@@ -181,17 +209,27 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
         <p className="sezione__nota sezione__nota--assenza">
           <strong>La colonna «il mercato» è vuota su tutte le righe</strong> perché per questa
           partita non abbiamo quote. La fonte principale copre una finestra di quattordici
-          giorni con un tetto di chiamate mensili, e la seconda non ha agganciato questa
-          partita. Non è un errore del calcolo, è una fonte che non arriva fin qui.
+          giorni con un tetto di chiamate mensili, e nessuna delle altre due ha agganciato
+          questa partita. Non è un errore del calcolo, è una fonte che non arriva fin qui.
         </p>
       ) : null}
 
       {usaSecondaria ? (
         <p className="sezione__nota sezione__nota--fonte">
-          Dove la fonte principale non arriva usiamo una <strong>seconda fonte</strong>, che
-          aggrega più operatori. Copre quattro famiglie che si traducono senza interpretare:
-          esito finale, doppia chance, entrambe segnano, e i gol totali su tutte le linee da
-          0,5 a 4,5. Il margine è tolto allo stesso modo.
+          Dove la fonte principale non arriva ne usiamo <strong>altre due</strong>. La prima
+          è un comparatore e dà la mediana di una ventina di operatori su esito finale,
+          doppia chance, entrambe segnano e gol totali. La seconda è un bookmaker europeo, e
+          quota le due famiglie che nessun comparatore gratuito pubblica: i gol di una
+          singola squadra e l’handicap a tre esiti.
+          {conUnSoloOperatore ? (
+            <>
+              {' '}
+              Su questa partita almeno un prezzo qui sopra viene da lui e{' '}
+              <strong>da lui soltanto</strong>: è il suo prezzo, non il consenso del mercato,
+              e vale meno di una mediana anche quando è giusto.
+            </>
+          ) : null}{' '}
+          Il margine è tolto allo stesso modo su tutte e tre.
         </p>
       ) : null}
 
@@ -209,21 +247,26 @@ export function TuttiIPronostici({ fixture }: { fixture: Fixture }) {
         )}
       </p>
 
-      {nessunaQuota ? null : (
-        /* PERCHE' QUELLE RIGHE SONO VUOTE, con i nomi veri.
-           Prima qui c'era una frase che dava «gol di squadra ed entrambe
-           segnano» come esempi di cio' che le fonti non determinano. Entrambe
-           segnano ora e' coperto, e la frase era rimasta a dire il falso. Le
-           famiglie scoperte sono tre e si chiamano per nome: un trattino con
-           accanto il motivo e' un dato, un trattino da solo e' un buco. */
+      {nessunaQuota || senzaPrezzo.length === 0 ? null : (
+        /* PERCHE' QUELLE RIGHE SONO VUOTE. Un trattino con accanto il motivo e'
+           un dato; un trattino da solo e' un buco. */
         <p className="sezione__nota">
-          <strong>Tre famiglie restano senza quota di mercato</strong>, e non per una nostra
-          scelta: <em>gol di squadra</em>, <em>handicap</em> e le <em>combo</em>. Nessuna delle
-          fonti gratuite che possiamo leggere quota quanti gol segna una singola squadra;
-          l’handicap ci arriva solo in versione asiatica, che è un’altra scommessa e non si
-          può scrivere sotto il nome di questa. Ricavarle dal nostro stesso modello
-          riempirebbe la colonna con il nostro numero travestito da mercato, e il confronto
-          diventerebbe noi contro noi stessi.
+          <strong>
+            {senzaPrezzo.length === 1
+              ? 'Una famiglia resta senza prezzo'
+              : `${senzaPrezzo.length} famiglie restano senza prezzo`}
+          </strong>
+          , e non per una nostra scelta:{' '}
+          {senzaPrezzo.map((nome, i) => (
+            <span key={nome}>
+              {i > 0 ? (i === senzaPrezzo.length - 1 ? ' e ' : ', ') : ''}
+              <em>{nome}</em>
+            </span>
+          ))}
+          . Le <em>combo</em> non le espone nessuna fonte gratuita; per le altre è
+          l’operatore che non ha aperto quella linea su questa partita. Ricavare il numero
+          dal nostro stesso modello riempirebbe la colonna con la nostra stima travestita da
+          mercato, e il confronto diventerebbe noi contro noi stessi.
         </p>
       )}
     </section>

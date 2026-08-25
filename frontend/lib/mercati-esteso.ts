@@ -44,6 +44,11 @@ const NOMI: Record<string, string> = {
   'Doppia chance': 'Doppia chance',
   'Gol totali': 'Gol totali',
   'Entrambe segnano': 'Entrambe le squadre segnano',
+  // kambi, dal 25 agosto 2026: le due famiglie che nessun comparatore
+  // gratuito pubblica, e su cui cadeva la meta' dei pronostici consigliati.
+  'Handicap europeo': 'Handicap europeo',
+  'Gol di squadra casa': 'Gol della squadra di casa',
+  'Gol di squadra ospite': 'Gol della squadra ospite',
 };
 
 /**

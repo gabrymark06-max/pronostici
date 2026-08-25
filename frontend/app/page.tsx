@@ -1,31 +1,51 @@
 import type { Metadata } from 'next';
 
-import { giornoDiApertura } from '@/lib/dati';
-import { dataLunga } from '@/lib/formato';
-import { MARCHIO } from '@/lib/testi';
-import { interno } from '@/lib/sito';
+import { etichettaPartite, VistaGiorno } from '@/components/VistaGiorno';
+import { giornoDiApertura, leggiGiorno } from '@/lib/dati';
+import { dataLungaMaiuscola } from '@/lib/formato';
+import { fraseSilenziDelGiorno, MARCHIO } from '@/lib/testi';
 
 /**
- * `/` è un rimando statico al giorno più recente disponibile.
+ * `/` MOSTRA LE PARTITE, non un rimando.
  *
- * In export statico non esiste un redirect di server: si usa il refresh nel
- * <head>, che funziona senza JavaScript, più un link visibile che è il ripiego
- * per chiunque il refresh non raggiunga. Il canonical punta al giorno, così
- * non si crea contenuto duplicato.
+ * Fino al 25 agosto 2026 questa pagina era un `<meta refresh>` verso
+ * `/giorno/<data>/` con un link sotto come ripiego: in export statico non
+ * esiste un redirect di server, e quella sembrava l'unica strada. Ma il costo
+ * lo pagava chi apriva il sito — una schermata quasi bianca con una riga sola,
+ * per il tempo che il browser ci metteva a seguire il refresh. La prima cosa
+ * che il prodotto diceva era «qui non c'e' niente».
+ *
+ * Il contenuto e' lo stesso a due indirizzi, e questo va dichiarato: il
+ * canonical punta al giorno, che resta l'originale. La data e' quella della
+ * COSTRUZIONE — su un sito statico non ce n'e' un'altra — e si sposta ogni
+ * notte, insieme al resto.
  */
 export function generateMetadata(): Metadata {
-  const giorno = giornoDiApertura();
-  if (!giorno) return { title: MARCHIO };
+  const data = giornoDiApertura();
+  const giorno = data ? leggiGiorno(data) : null;
+  if (!data || !giorno) return { title: MARCHIO };
+
+  /* `etichettaPartite`, non `${total} partite`: nei giorni con una sola
+     partita il titolo diceva «1 partite», e quel titolo e' anche quello che
+     compare nei risultati di ricerca. */
+  const titolo = `${dataLungaMaiuscola(data)}: ${etichettaPartite(giorno.total)}`;
+  const descrizione = `${fraseSilenziDelGiorno(
+    giorno.silence_count,
+    giorno.total,
+  )} Un pronostico per partita, con la probabilità, il prezzo dove l’abbiamo trovato e quante volte pronostici così si sono avverati.`;
+
   return {
-    alternates: { canonical: `/giorno/${giorno}/` },
-    other: { refresh: `0; url=/giorno/${giorno}/` },
+    title: titolo,
+    description: descrizione,
+    alternates: { canonical: `/giorno/${data}/` },
+    openGraph: { title: titolo, description: descrizione, type: 'website', siteName: MARCHIO },
   };
 }
 
 export default function Home() {
-  const giorno = giornoDiApertura();
+  const data = giornoDiApertura();
 
-  if (!giorno) {
+  if (!data) {
     return (
       <div className="colonna colonna--lista">
         <div className="giorno-vuoto">
@@ -36,13 +56,5 @@ export default function Home() {
     );
   }
 
-  return (
-    <div className="colonna colonna--lista">
-      <div className="giorno-vuoto">
-        <p>
-          <a href={interno(`/giorno/${giorno}/`)}>Vai alle partite di {dataLunga(giorno)} →</a>
-        </p>
-      </div>
-    </div>
-  );
+  return <VistaGiorno data={data} />;
 }
