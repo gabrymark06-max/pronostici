@@ -4,17 +4,17 @@
       "buckets": {
         "0.50-0.65": {
           "enough": false,
-          "hit_rate": 0.7692,
-          "hits": 10,
-          "mean_p": 0.585,
-          "n": 13
+          "hit_rate": 0.7778,
+          "hits": 14,
+          "mean_p": 0.5756,
+          "n": 18
         },
         "0.65-0.80": {
           "enough": false,
-          "hit_rate": 0.7,
-          "hits": 7,
-          "mean_p": 0.7457,
-          "n": 10
+          "hit_rate": 0.75,
+          "hits": 9,
+          "mean_p": 0.7424,
+          "n": 12
         },
         "0.80-1.00": {
           "enough": false,
@@ -24,12 +24,12 @@
           "n": 8
         }
       },
-      "calibration_gap": -0.06881,
-      "hit_rate": 0.7742,
-      "n": 31,
-      "skill_declared_mean": 0.06617,
-      "skill_realized_mean": 0.13498,
-      "skill_realized_se": 0.06856
+      "calibration_gap": -0.11717,
+      "hit_rate": 0.7895,
+      "n": 38,
+      "skill_declared_mean": 0.077,
+      "skill_realized_mean": 0.19418,
+      "skill_realized_se": 0.06786
     },
     "preliminary": {
       "buckets": {
@@ -42,72 +42,73 @@
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7059,
-          "hits": 24,
-          "mean_p": 0.7275,
-          "n": 34
+          "hit_rate": 0.7368,
+          "hits": 28,
+          "mean_p": 0.7269,
+          "n": 38
         },
         "0.80-1.00": {
           "enough": true,
-          "hit_rate": 0.8824,
-          "hits": 30,
-          "mean_p": 0.8904,
-          "n": 34
+          "hit_rate": 0.8889,
+          "hits": 32,
+          "mean_p": 0.8884,
+          "n": 36
         }
       },
-      "calibration_gap": 0.00254,
-      "hit_rate": 0.7326,
-      "n": 86,
-      "skill_declared_mean": 0.05787,
-      "skill_realized_mean": 0.05534,
-      "skill_realized_se": 0.03661
+      "calibration_gap": -0.01323,
+      "hit_rate": 0.75,
+      "n": 92,
+      "skill_declared_mean": 0.06185,
+      "skill_realized_mean": 0.07509,
+      "skill_realized_se": 0.03565
     }
   },
-  "generated_at": "2026-08-26T05:05:55Z",
+  "generated_at": "2026-08-28T21:15:50Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.6129,
-        "hits": 19,
-        "mean_p": 0.5803,
-        "n": 31
+        "hit_rate": 0.6389,
+        "hits": 23,
+        "mean_p": 0.5763,
+        "n": 36
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.7045,
-        "hits": 31,
-        "mean_p": 0.7316,
-        "n": 44
+        "hit_rate": 0.74,
+        "hits": 37,
+        "mean_p": 0.7306,
+        "n": 50
       },
       "0.80-1.00": {
         "enough": true,
-        "hit_rate": 0.881,
-        "hits": 37,
-        "mean_p": 0.885,
-        "n": 42
+        "hit_rate": 0.8864,
+        "hits": 39,
+        "mean_p": 0.8837,
+        "n": 44
       }
     },
-    "calibration_gap": -0.01637,
-    "hit_rate": 0.7436,
-    "n": 117,
-    "skill_declared_mean": 0.06007,
-    "skill_realized_mean": 0.07644,
-    "skill_realized_se": 0.03247
+    "calibration_gap": -0.04361,
+    "hit_rate": 0.7615,
+    "n": 130,
+    "skill_declared_mean": 0.06628,
+    "skill_realized_mean": 0.1099,
+    "skill_realized_se": 0.0323
   },
   "progress_to_500": {
-    "published": 243,
+    "published": 254,
     "target": 500
   },
   "schema_version": 1,
   "silence": {
     "definitive": {
       "by_reason": {
-        "S_min": 13
+        "S_min": 15,
+        "quota_min": 2
       },
-      "n": 45,
-      "rate": 0.2889,
-      "silent": 13
+      "n": 60,
+      "rate": 0.2833,
+      "silent": 17
     },
     "preliminary": {
       "by_reason": {
@@ -119,10 +120,10 @@
     }
   },
   "transitions": {
-    "changed": 18,
+    "changed": 28,
     "confirmed": 10,
-    "prediction_to_silence": 2,
-    "silence_to_prediction": 4,
-    "still_silent": 11
+    "prediction_to_silence": 4,
+    "silence_to_prediction": 5,
+    "still_silent": 13
   }
 }
