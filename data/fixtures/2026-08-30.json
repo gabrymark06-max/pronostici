@@ -1544,35 +1544,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 93,
+     "S_min": 109,
      "p_min": 87,
      "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
-    "truncated_mass": 4.763e-09
+    "n_clusters": 0,
+    "truncated_mass": 2.498e-09
    },
    "expected_goals": {
-    "away": 1.422,
-    "home": 1.201
+    "away": 1.21,
+    "home": 1.328
    },
    "half_time": {
-    "ht_over_0.5": 0.6924,
-    "ht_over_1.5": 0.3297,
-    "ht_over_2.5": 0.116,
-    "ht_under_0.5": 0.3076,
-    "ht_under_1.5": 0.6703,
-    "ht_under_2.5": 0.884,
-    "htft_11": 0.1824,
-    "htft_12": 0.0233,
-    "htft_1X": 0.051,
-    "htft_21": 0.0189,
-    "htft_22": 0.2501,
-    "htft_2X": 0.051,
-    "htft_X1": 0.117,
-    "htft_X2": 0.1476,
-    "htft_XX": 0.1586
+    "ht_over_0.5": 0.6803,
+    "ht_over_1.5": 0.3157,
+    "ht_over_2.5": 0.1078,
+    "ht_under_0.5": 0.3197,
+    "ht_under_1.5": 0.6843,
+    "ht_under_2.5": 0.8922,
+    "htft_11": 0.2313,
+    "htft_12": 0.0191,
+    "htft_1X": 0.0508,
+    "htft_21": 0.0214,
+    "htft_22": 0.1945,
+    "htft_2X": 0.0508,
+    "htft_X1": 0.1418,
+    "htft_X2": 0.1248,
+    "htft_XX": 0.1656
    },
    "home": {
     "crest": "https://crests.football-data.org/1780.png",
@@ -1581,22 +1581,13 @@
    },
    "match_id": 554989,
    "matchday": 25,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.30527,
-     "1x2_draw": 0.28634,
-     "1x2_home": 0.40839,
-     "dc_12": 0.71366,
-     "dc_1x": 0.69473,
-     "dc_x2": 0.59161,
-     "eh_-1_away": 0.59161,
-     "eh_1_home": 0.69473,
-     "mg_0_2": 0.53489,
-     "over_2.5": 0.46511,
-     "under_2.5": 0.53489
+    "devig": {
+     "h2h": 1.072,
+     "totals_2.5": 1.115
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -1604,81 +1595,46 @@
      "over_2.5",
      "under_2.5"
     ],
-    "n_bookmakers": 22,
+    "n_bookmakers": 24,
     "price_books": 1,
     "price_scope": "it",
     "prices": {
-     "1x2_away": 3.05,
-     "1x2_draw": 3.25,
-     "1x2_home": 2.3,
+     "1x2_away": 3.3,
+     "1x2_draw": 3.3,
+     "1x2_home": 2.21,
      "over_2.5": 1.98,
      "under_2.5": 1.71
     }
    },
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.5898,
-    "band_p95": 0.7629,
-    "cluster_members": [
-     "eh_-1_away"
-    ],
-    "family": "double_chance",
-    "key": "dc_x2",
-    "label": "X2 (pareggio o ospite)",
-    "p": 0.651,
-    "p_raw": 0.6805,
-    "prezzo": 1.62,
-    "reference": 0.5278,
-    "runners_up": [
-     {
-      "band_p5": 0.5614,
-      "band_p95": 0.7631,
-      "family": "team_goals",
-      "key": "hg_under_1.5",
-      "label": "Casa Under 1.5",
-      "p": 0.6347,
-      "p_raw": 0.6632,
-      "prezzo": 1.6,
-      "reference": 0.5583,
-      "score": 0.012048,
-      "shrink_alpha": 0.7289,
-      "sigma": 0.064
-     },
-     {
-      "band_p5": 0.6681,
-      "band_p95": 0.8264,
-      "family": "team_goals",
-      "key": "ag_over_0.5",
-      "label": "Ospite Over 0.5",
-      "p": 0.7401,
-      "p_raw": 0.7542,
-      "prezzo": 1.34,
-      "reference": 0.6718,
-      "score": 0.011022,
-      "shrink_alpha": 0.8297,
-      "sigma": 0.0475
-     }
-    ],
-    "score": 0.031078,
-    "shrink_alpha": 0.8066,
-    "sigma": 0.0582
+   "phase": "definitive",
+   "prediction": null,
+   "previous": {
+    "market_key": "dc_x2",
+    "market_label": "X2 (pareggio o ospite)",
+    "p": 0.6183,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:42Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.4212,
-    "1x2_draw": 0.2594,
-    "1x2_home": 0.3195,
-    "btts_yes": 0.5237,
-    "over_2.5": 0.4853,
-    "under_2.5": 0.5147
+    "1x2_away": 0.3386,
+    "1x2_draw": 0.2669,
+    "1x2_home": 0.3945,
+    "btts_yes": 0.5149,
+    "over_2.5": 0.4656,
+    "under_2.5": 0.5344
    },
    "reasons": [
-    "Gol attesi: CR Vasco da Gama 1.20, Cruzeiro EC 1.42 (totale 2.62).",
-    "X2 (pareggio o ospite): 65 su 100, 12 punti sopra la media di riferimento (53 su 100).",
-    "Banda di incertezza: fra 59 e 76 su 100."
+    "Fino a ieri dicevamo X2 (pareggio o ospite). Le quote sono arrivate e dicono piu' o meno quello che dicevamo noi: ritiriamo il pronostico, su questa partita non abbiamo un vantaggio da raccontare.",
+    "Il nostro modello dice quasi esattamente quello che dicono già le quote.",
+    "Gol attesi: CR Vasco da Gama 1.33, Cruzeiro EC 1.21 (totale 2.54)."
    ],
-   "silence": null,
-   "source": "model_only",
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "prediction_to_silence",
    "utc_date": "2026-08-30T00:20:00Z"
   },
   {
@@ -35094,8 +35050,8 @@
    "utc_date": "2026-08-30T22:30:00Z"
   }
  ],
- "generated_at": "2026-08-28T21:32:12Z",
+ "generated_at": "2026-08-28T22:03:15Z",
  "schema_version": 1,
- "silence_count": 9,
+ "silence_count": 10,
  "total": 26
 }
