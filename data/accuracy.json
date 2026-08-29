@@ -4,10 +4,10 @@
       "buckets": {
         "0.50-0.65": {
           "enough": false,
-          "hit_rate": 0.7778,
-          "hits": 14,
-          "mean_p": 0.5756,
-          "n": 18
+          "hit_rate": 0.8,
+          "hits": 16,
+          "mean_p": 0.5788,
+          "n": 20
         },
         "0.65-0.80": {
           "enough": false,
@@ -24,12 +24,12 @@
           "n": 8
         }
       },
-      "calibration_gap": -0.11717,
-      "hit_rate": 0.7895,
-      "n": 38,
-      "skill_declared_mean": 0.077,
-      "skill_realized_mean": 0.19418,
-      "skill_realized_se": 0.06786
+      "calibration_gap": -0.13063,
+      "hit_rate": 0.8,
+      "n": 40,
+      "skill_declared_mean": 0.08059,
+      "skill_realized_mean": 0.21122,
+      "skill_realized_se": 0.06652
     },
     "preliminary": {
       "buckets": {
@@ -42,10 +42,10 @@
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7368,
-          "hits": 28,
-          "mean_p": 0.7269,
-          "n": 38
+          "hit_rate": 0.7073,
+          "hits": 29,
+          "mean_p": 0.7259,
+          "n": 41
         },
         "0.80-1.00": {
           "enough": true,
@@ -55,30 +55,30 @@
           "n": 36
         }
       },
-      "calibration_gap": -0.01323,
-      "hit_rate": 0.75,
-      "n": 92,
-      "skill_declared_mean": 0.06185,
-      "skill_realized_mean": 0.07509,
-      "skill_realized_se": 0.03565
+      "calibration_gap": -0.00897,
+      "hit_rate": 0.7368,
+      "n": 95,
+      "skill_declared_mean": 0.06231,
+      "skill_realized_mean": 0.07128,
+      "skill_realized_se": 0.03523
     }
   },
-  "generated_at": "2026-08-28T21:15:50Z",
+  "generated_at": "2026-08-29T03:06:56Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.6389,
-        "hits": 23,
-        "mean_p": 0.5763,
-        "n": 36
+        "hit_rate": 0.6579,
+        "hits": 25,
+        "mean_p": 0.5779,
+        "n": 38
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.74,
-        "hits": 37,
-        "mean_p": 0.7306,
-        "n": 50
+        "hit_rate": 0.717,
+        "hits": 38,
+        "mean_p": 0.7296,
+        "n": 53
       },
       "0.80-1.00": {
         "enough": true,
@@ -88,42 +88,42 @@
         "n": 44
       }
     },
-    "calibration_gap": -0.04361,
-    "hit_rate": 0.7615,
-    "n": 130,
-    "skill_declared_mean": 0.06628,
-    "skill_realized_mean": 0.1099,
-    "skill_realized_se": 0.0323
+    "calibration_gap": -0.04502,
+    "hit_rate": 0.7556,
+    "n": 135,
+    "skill_declared_mean": 0.06773,
+    "skill_realized_mean": 0.11275,
+    "skill_realized_se": 0.03201
   },
   "progress_to_500": {
-    "published": 254,
+    "published": 269,
     "target": 500
   },
   "schema_version": 1,
   "silence": {
     "definitive": {
       "by_reason": {
-        "S_min": 15,
+        "S_min": 25,
         "quota_min": 2
       },
-      "n": 60,
-      "rate": 0.2833,
-      "silent": 17
+      "n": 84,
+      "rate": 0.3214,
+      "silent": 27
     },
     "preliminary": {
       "by_reason": {
-        "S_min": 78
+        "S_min": 79
       },
-      "n": 289,
-      "rate": 0.2699,
-      "silent": 78
+      "n": 291,
+      "rate": 0.2715,
+      "silent": 79
     }
   },
   "transitions": {
-    "changed": 28,
-    "confirmed": 10,
-    "prediction_to_silence": 4,
-    "silence_to_prediction": 5,
-    "still_silent": 13
+    "changed": 38,
+    "confirmed": 12,
+    "prediction_to_silence": 7,
+    "silence_to_prediction": 7,
+    "still_silent": 20
   }
 }
