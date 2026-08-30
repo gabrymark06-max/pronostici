@@ -4,17 +4,17 @@
       "buckets": {
         "0.50-0.65": {
           "enough": false,
-          "hit_rate": 0.8,
-          "hits": 16,
-          "mean_p": 0.5788,
-          "n": 20
+          "hit_rate": 0.7778,
+          "hits": 21,
+          "mean_p": 0.5676,
+          "n": 27
         },
         "0.65-0.80": {
           "enough": false,
-          "hit_rate": 0.75,
-          "hits": 9,
-          "mean_p": 0.7424,
-          "n": 12
+          "hit_rate": 0.7273,
+          "hits": 16,
+          "mean_p": 0.7263,
+          "n": 22
         },
         "0.80-1.00": {
           "enough": false,
@@ -24,91 +24,91 @@
           "n": 8
         }
       },
-      "calibration_gap": -0.13063,
-      "hit_rate": 0.8,
-      "n": 40,
-      "skill_declared_mean": 0.08059,
-      "skill_realized_mean": 0.21122,
-      "skill_realized_se": 0.06652
+      "calibration_gap": -0.10339,
+      "hit_rate": 0.7719,
+      "n": 57,
+      "skill_declared_mean": 0.06602,
+      "skill_realized_mean": 0.16941,
+      "skill_realized_se": 0.0504
     },
     "preliminary": {
       "buckets": {
         "0.50-0.65": {
           "enough": false,
-          "hit_rate": 0.5,
-          "hits": 9,
-          "mean_p": 0.577,
-          "n": 18
+          "hit_rate": 0.4762,
+          "hits": 10,
+          "mean_p": 0.5787,
+          "n": 21
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7073,
-          "hits": 29,
-          "mean_p": 0.7259,
-          "n": 41
+          "hit_rate": 0.75,
+          "hits": 36,
+          "mean_p": 0.7271,
+          "n": 48
         },
         "0.80-1.00": {
           "enough": true,
-          "hit_rate": 0.8889,
-          "hits": 32,
-          "mean_p": 0.8884,
-          "n": 36
+          "hit_rate": 0.8776,
+          "hits": 43,
+          "mean_p": 0.8803,
+          "n": 49
         }
       },
-      "calibration_gap": -0.00897,
-      "hit_rate": 0.7368,
-      "n": 95,
-      "skill_declared_mean": 0.06231,
-      "skill_realized_mean": 0.07128,
-      "skill_realized_se": 0.03523
+      "calibration_gap": -0.00266,
+      "hit_rate": 0.7542,
+      "n": 118,
+      "skill_declared_mean": 0.05801,
+      "skill_realized_mean": 0.06067,
+      "skill_realized_se": 0.0314
     }
   },
-  "generated_at": "2026-08-29T03:06:56Z",
+  "generated_at": "2026-08-30T03:06:25Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.6579,
-        "hits": 25,
-        "mean_p": 0.5779,
-        "n": 38
+        "hit_rate": 0.6458,
+        "hits": 31,
+        "mean_p": 0.5725,
+        "n": 48
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.717,
-        "hits": 38,
-        "mean_p": 0.7296,
-        "n": 53
+        "hit_rate": 0.7429,
+        "hits": 52,
+        "mean_p": 0.7268,
+        "n": 70
       },
       "0.80-1.00": {
         "enough": true,
-        "hit_rate": 0.8864,
-        "hits": 39,
-        "mean_p": 0.8837,
-        "n": 44
+        "hit_rate": 0.8772,
+        "hits": 50,
+        "mean_p": 0.8778,
+        "n": 57
       }
     },
-    "calibration_gap": -0.04502,
-    "hit_rate": 0.7556,
-    "n": 135,
-    "skill_declared_mean": 0.06773,
-    "skill_realized_mean": 0.11275,
-    "skill_realized_se": 0.03201
+    "calibration_gap": -0.03547,
+    "hit_rate": 0.76,
+    "n": 175,
+    "skill_declared_mean": 0.06062,
+    "skill_realized_mean": 0.09609,
+    "skill_realized_se": 0.02699
   },
   "progress_to_500": {
-    "published": 269,
+    "published": 284,
     "target": 500
   },
   "schema_version": 1,
   "silence": {
     "definitive": {
       "by_reason": {
-        "S_min": 25,
-        "quota_min": 2
+        "S_min": 30,
+        "quota_min": 4
       },
-      "n": 84,
-      "rate": 0.3214,
-      "silent": 27
+      "n": 106,
+      "rate": 0.3208,
+      "silent": 34
     },
     "preliminary": {
       "by_reason": {
@@ -120,10 +120,10 @@
     }
   },
   "transitions": {
-    "changed": 38,
-    "confirmed": 12,
-    "prediction_to_silence": 7,
+    "changed": 51,
+    "confirmed": 14,
+    "prediction_to_silence": 10,
     "silence_to_prediction": 7,
-    "still_silent": 20
+    "still_silent": 24
   }
 }
