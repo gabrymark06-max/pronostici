@@ -3,6 +3,114 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/1780.png",
+    "name": "CR Vasco da Gama",
+    "tla": "VAS"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 98,
+     "p_min": 87,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 1.907e-07
+   },
+   "expected_goals": {
+    "away": 0.883,
+    "home": 1.985
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7242,
+    "ht_over_1.5": 0.369,
+    "ht_over_2.5": 0.1402,
+    "ht_under_0.5": 0.2758,
+    "ht_under_1.5": 0.631,
+    "ht_under_2.5": 0.8598,
+    "htft_11": 0.408,
+    "htft_12": 0.0106,
+    "htft_1X": 0.0415,
+    "htft_21": 0.0296,
+    "htft_22": 0.0866,
+    "htft_2X": 0.0415,
+    "htft_X1": 0.1933,
+    "htft_X2": 0.0624,
+    "htft_XX": 0.1265
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1765.png",
+    "name": "Fluminense FC",
+    "tla": "FLU"
+   },
+   "match_id": 554995,
+   "matchday": 26,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5178,
+    "band_p95": 0.7472,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5866,
+    "p_raw": 0.627,
+    "reference": 0.4736,
+    "runners_up": [
+     {
+      "band_p5": 0.4547,
+      "band_p95": 0.7123,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5346,
+      "p_raw": 0.5844,
+      "reference": 0.4433,
+      "score": 0.01672,
+      "shrink_alpha": 0.6465,
+      "sigma": 0.0776
+     },
+     {
+      "band_p5": 0.5588,
+      "band_p95": 0.7691,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6211,
+      "p_raw": 0.6637,
+      "reference": 0.5525,
+      "score": 0.009641,
+      "shrink_alpha": 0.6165,
+      "sigma": 0.0649
+     }
+    ],
+    "score": 0.025663,
+    "shrink_alpha": 0.7371,
+    "sigma": 0.071
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1627,
+    "1x2_draw": 0.2103,
+    "1x2_home": 0.627,
+    "btts_yes": 0.4988,
+    "over_2.5": 0.5431,
+    "under_2.5": 0.4569
+   },
+   "reasons": [
+    "Gol attesi: Fluminense FC 1.99, CR Vasco da Gama 0.88 (totale 2.87).",
+    "Vittoria casa: 59 su 100, 11 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 52 e 75 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-06T00:00:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/666.png",
     "name": "FC Twente '65",
     "tla": "TWE"
@@ -981,128 +1089,6 @@
   },
   {
    "away": {
-    "crest": "https://crests.football-data.org/78.png",
-    "name": "Club Atlético de Madrid",
-    "tla": "ATL"
-   },
-   "competition": "PD",
-   "diagnostics": {
-    "filter_bites": {
-     "S_min": 97,
-     "p_min": 87,
-     "sigma_max": 0
-    },
-    "n_candidates": 114,
-    "n_clusters": 4,
-    "truncated_mass": 2.671e-09
-   },
-   "expected_goals": {
-    "away": 1.351,
-    "home": 1.156
-   },
-   "half_time": {
-    "ht_over_0.5": 0.6627,
-    "ht_over_1.5": 0.2962,
-    "ht_over_2.5": 0.097,
-    "ht_under_0.5": 0.3373,
-    "ht_under_1.5": 0.7038,
-    "ht_under_2.5": 0.903,
-    "htft_11": 0.1781,
-    "htft_12": 0.0223,
-    "htft_1X": 0.05,
-    "htft_21": 0.0184,
-    "htft_22": 0.2375,
-    "htft_2X": 0.05,
-    "htft_X1": 0.1232,
-    "htft_X2": 0.1525,
-    "htft_XX": 0.1681
-   },
-   "home": {
-    "crest": "https://crests.football-data.org/77.png",
-    "name": "Athletic Club",
-    "tla": "ATH"
-   },
-   "match_id": 564663,
-   "matchday": 4,
-   "model_weight": 1.0,
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.585,
-    "band_p95": 0.7676,
-    "cluster_members": [
-     "eh_-1_away"
-    ],
-    "family": "double_chance",
-    "key": "dc_x2",
-    "label": "X2 (pareggio o ospite)",
-    "p": 0.6533,
-    "p_raw": 0.68,
-    "reference": 0.5395,
-    "runners_up": [
-     {
-      "band_p5": 0.82,
-      "band_p95": 0.9418,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.877,
-      "p_raw": 0.8863,
-      "reference": 0.8074,
-      "score": 0.017349,
-      "shrink_alpha": 0.8818,
-      "sigma": 0.0384
-     },
-     {
-      "band_p5": 0.8009,
-      "band_p95": 0.9244,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.8582,
-      "p_raw": 0.868,
-      "reference": 0.7934,
-      "score": 0.014015,
-      "shrink_alpha": 0.8691,
-      "sigma": 0.0373
-     },
-     {
-      "band_p5": 0.5729,
-      "band_p95": 0.7829,
-      "family": "team_goals",
-      "key": "hg_under_1.5",
-      "label": "Casa Under 1.5",
-      "p": 0.6505,
-      "p_raw": 0.6792,
-      "reference": 0.5767,
-      "score": 0.011382,
-      "shrink_alpha": 0.7198,
-      "sigma": 0.0654
-     }
-    ],
-    "score": 0.026603,
-    "shrink_alpha": 0.8099,
-    "sigma": 0.0576
-   },
-   "raw_probabilities": {
-    "1x2_away": 0.4123,
-    "1x2_draw": 0.2677,
-    "1x2_home": 0.32,
-    "btts_yes": 0.5017,
-    "over_2.5": 0.4563,
-    "under_2.5": 0.5437
-   },
-   "reasons": [
-    "Gol attesi: Athletic Club 1.16, Club Atlético de Madrid 1.35 (totale 2.51).",
-    "X2 (pareggio o ospite): 65 su 100, 11 punti sopra la media di riferimento (54 su 100).",
-    "Banda di incertezza: fra 59 e 77 su 100."
-   ],
-   "silence": null,
-   "source": "model_only",
-   "stage": null,
-   "utc_date": "2026-09-06T15:00:00Z"
-  },
-  {
-   "away": {
     "crest": "https://crests.football-data.org/79.png",
     "name": "CA Osasuna",
     "tla": "OSA"
@@ -1587,300 +1573,6 @@
     "Gol attesi: GD Estoril Praia 2.14, FC Arouca 1.45 (totale 3.59).",
     "Casa Over 0.5: 86 su 100, 11 punti sopra la media di riferimento (75 su 100).",
     "Banda di incertezza: fra 80 e 93 su 100."
-   ],
-   "silence": null,
-   "source": "model_only",
-   "stage": null,
-   "utc_date": "2026-09-06T15:00:00Z"
-  },
-  {
-   "away": {
-    "crest": "https://crests.football-data.org/5613.png",
-    "name": "Sporting Clube de Braga",
-    "tla": "SCB"
-   },
-   "competition": "PPL",
-   "diagnostics": {
-    "filter_bites": {
-     "S_min": 90,
-     "p_min": 88,
-     "sigma_max": 0
-    },
-    "n_candidates": 114,
-    "n_clusters": 6,
-    "truncated_mass": 4.051e-08
-   },
-   "expected_goals": {
-    "away": 1.731,
-    "home": 0.906
-   },
-   "half_time": {
-    "ht_over_0.5": 0.6939,
-    "ht_over_1.5": 0.3315,
-    "ht_over_2.5": 0.117,
-    "ht_under_0.5": 0.3061,
-    "ht_under_1.5": 0.6685,
-    "ht_under_2.5": 0.883,
-    "htft_11": 0.1065,
-    "htft_12": 0.0266,
-    "htft_1X": 0.0444,
-    "htft_21": 0.0118,
-    "htft_22": 0.3556,
-    "htft_2X": 0.0444,
-    "htft_X1": 0.0768,
-    "htft_X2": 0.1863,
-    "htft_XX": 0.1476
-   },
-   "home": {
-    "crest": "https://crests.football-data.org/7822.png",
-    "name": "FC Alverca",
-    "tla": "ALV"
-   },
-   "match_id": 567296,
-   "matchday": 5,
-   "model_weight": 1.0,
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.6941,
-    "band_p95": 0.8932,
-    "cluster_members": [
-     "eh_-1_away"
-    ],
-    "family": "double_chance",
-    "key": "dc_x2",
-    "label": "X2 (pareggio o ospite)",
-    "p": 0.7547,
-    "p_raw": 0.801,
-    "reference": 0.5726,
-    "runners_up": [
-     {
-      "band_p5": 0.8764,
-      "band_p95": 0.9728,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9184,
-      "p_raw": 0.9323,
-      "reference": 0.7778,
-      "score": 0.070839,
-      "shrink_alpha": 0.9102,
-      "sigma": 0.0302
-     },
-     {
-      "band_p5": 0.8739,
-      "band_p95": 0.9744,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.9213,
-      "p_raw": 0.9327,
-      "reference": 0.8063,
-      "score": 0.052026,
-      "shrink_alpha": 0.9099,
-      "sigma": 0.033
-     },
-     {
-      "band_p5": 0.6534,
-      "band_p95": 0.8698,
-      "family": "team_goals",
-      "key": "hg_under_1.5",
-      "label": "Casa Under 1.5",
-      "p": 0.7108,
-      "p_raw": 0.7698,
-      "reference": 0.5715,
-      "score": 0.041329,
-      "shrink_alpha": 0.7023,
-      "sigma": 0.0683
-     },
-     {
-      "band_p5": 0.7258,
-      "band_p95": 0.8934,
-      "family": "team_goals",
-      "key": "ag_over_0.5",
-      "label": "Ospite Over 0.5",
-      "p": 0.7885,
-      "p_raw": 0.815,
-      "reference": 0.6869,
-      "score": 0.025779,
-      "shrink_alpha": 0.7928,
-      "sigma": 0.0536
-     },
-     {
-      "band_p5": 0.4742,
-      "band_p95": 0.716,
-      "family": "combo_dc",
-      "key": "combodc_x2_over_1.5",
-      "label": "X2 + Over 1.5",
-      "p": 0.5194,
-      "p_raw": 0.5998,
-      "reference": 0.4259,
-      "score": 0.017676,
-      "shrink_alpha": 0.5378,
-      "sigma": 0.0763
-     }
-    ],
-    "score": 0.07216,
-    "shrink_alpha": 0.797,
-    "sigma": 0.06
-   },
-   "raw_probabilities": {
-    "1x2_away": 0.5651,
-    "1x2_draw": 0.236,
-    "1x2_home": 0.199,
-    "btts_yes": 0.4797,
-    "over_2.5": 0.487,
-    "under_2.5": 0.513
-   },
-   "reasons": [
-    "Gol attesi: FC Alverca 0.91, Sporting Clube de Braga 1.73 (totale 2.64).",
-    "X2 (pareggio o ospite): 75 su 100, 18 punti sopra la media di riferimento (57 su 100).",
-    "Banda di incertezza: fra 69 e 89 su 100."
-   ],
-   "silence": null,
-   "source": "model_only",
-   "stage": null,
-   "utc_date": "2026-09-06T15:00:00Z"
-  },
-  {
-   "away": {
-    "crest": "https://crests.football-data.org/5531.png",
-    "name": "FC Famalicão",
-    "tla": "FAM"
-   },
-   "competition": "PPL",
-   "diagnostics": {
-    "filter_bites": {
-     "S_min": 86,
-     "p_min": 89,
-     "sigma_max": 0
-    },
-    "n_candidates": 114,
-    "n_clusters": 7,
-    "truncated_mass": 1.19e-09
-   },
-   "expected_goals": {
-    "away": 1.277,
-    "home": 0.82
-   },
-   "half_time": {
-    "ht_over_0.5": 0.61,
-    "ht_over_1.5": 0.2428,
-    "ht_over_2.5": 0.0699,
-    "ht_under_0.5": 0.39,
-    "ht_under_1.5": 0.7572,
-    "ht_under_2.5": 0.9301,
-    "htft_11": 0.1294,
-    "htft_12": 0.0183,
-    "htft_1X": 0.0437,
-    "htft_21": 0.0107,
-    "htft_22": 0.2774,
-    "htft_2X": 0.0437,
-    "htft_X1": 0.099,
-    "htft_X2": 0.176,
-    "htft_XX": 0.2018
-   },
-   "home": {
-    "crest": "https://crests.football-data.org/9136.png",
-    "name": "CF Estrela da Amadora",
-    "tla": "AMA"
-   },
-   "match_id": 567297,
-   "matchday": 5,
-   "model_weight": 1.0,
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.9,
-    "band_p95": 0.9778,
-    "cluster_members": [],
-    "family": "team_goals",
-    "key": "hg_under_2.5",
-    "label": "Casa Under 2.5",
-    "p": 0.9408,
-    "p_raw": 0.9473,
-    "reference": 0.8063,
-    "runners_up": [
-     {
-      "band_p5": 0.6983,
-      "band_p95": 0.8812,
-      "family": "team_goals",
-      "key": "hg_under_1.5",
-      "label": "Casa Under 1.5",
-      "p": 0.7528,
-      "p_raw": 0.8008,
-      "reference": 0.5715,
-      "score": 0.0714,
-      "shrink_alpha": 0.7905,
-      "sigma": 0.054
-     },
-     {
-      "band_p5": 0.8682,
-      "band_p95": 0.9608,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9105,
-      "p_raw": 0.922,
-      "reference": 0.7778,
-      "score": 0.061985,
-      "shrink_alpha": 0.9202,
-      "sigma": 0.0283
-     },
-     {
-      "band_p5": 0.6622,
-      "band_p95": 0.8434,
-      "family": "double_chance",
-      "key": "dc_x2",
-      "label": "X2 (pareggio o ospite)",
-      "p": 0.7248,
-      "p_raw": 0.7592,
-      "reference": 0.5726,
-      "score": 0.049705,
-      "shrink_alpha": 0.816,
-      "sigma": 0.0565
-     },
-     {
-      "band_p5": 0.6622,
-      "band_p95": 0.8434,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.7113,
-      "p_raw": 0.7592,
-      "reference": 0.5726,
-      "score": 0.041003,
-      "shrink_alpha": 0.7434,
-      "sigma": 0.0565
-     },
-     {
-      "band_p5": 0.7517,
-      "band_p95": 0.9028,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.7885,
-      "p_raw": 0.8368,
-      "reference": 0.7176,
-      "score": 0.013171,
-      "shrink_alpha": 0.595,
-      "sigma": 0.0465
-     }
-    ],
-    "score": 0.074983,
-    "shrink_alpha": 0.9538,
-    "sigma": 0.0231
-   },
-   "raw_probabilities": {
-    "1x2_away": 0.4704,
-    "1x2_draw": 0.2888,
-    "1x2_home": 0.2408,
-    "btts_yes": 0.3967,
-    "over_2.5": 0.3492,
-    "under_2.5": 0.6508
-   },
-   "reasons": [
-    "Gol attesi: CF Estrela da Amadora 0.82, FC Famalicão 1.28 (totale 2.10).",
-    "Casa Under 2.5: 94 su 100, 13 punti sopra la media di riferimento (81 su 100).",
-    "Banda di incertezza: fra 90 e 98 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -2599,8 +2291,8 @@
    "utc_date": "2026-09-06T18:45:00Z"
   }
  ],
- "generated_at": "2026-08-29T10:02:14Z",
+ "generated_at": "2026-08-30T03:08:01Z",
  "schema_version": 1,
  "silence_count": 6,
- "total": 20
+ "total": 18
 }
