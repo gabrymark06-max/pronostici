@@ -6210,35 +6210,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 79,
+     "S_min": 80,
      "p_min": 84,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 3,
-    "truncated_mass": 4.35e-05
+    "truncated_mass": 3.913e-05
    },
    "expected_goals": {
-    "away": 0.84,
-    "home": 3.308
+    "away": 0.855,
+    "home": 3.274
    },
    "half_time": {
-    "ht_over_0.5": 0.8462,
-    "ht_over_1.5": 0.5583,
-    "ht_over_2.5": 0.2888,
-    "ht_under_0.5": 0.1538,
-    "ht_under_1.5": 0.4417,
-    "ht_under_2.5": 0.7112,
-    "htft_11": 0.6249,
-    "htft_12": 0.0055,
-    "htft_1X": 0.0242,
-    "htft_21": 0.0357,
-    "htft_22": 0.0315,
-    "htft_2X": 0.0242,
-    "htft_X1": 0.179,
-    "htft_X2": 0.022,
-    "htft_XX": 0.0529
+    "ht_over_0.5": 0.845,
+    "ht_over_1.5": 0.556,
+    "ht_over_2.5": 0.2867,
+    "ht_under_0.5": 0.155,
+    "ht_under_1.5": 0.444,
+    "ht_under_2.5": 0.7133,
+    "htft_11": 0.6177,
+    "htft_12": 0.0058,
+    "htft_1X": 0.0251,
+    "htft_21": 0.0361,
+    "htft_22": 0.0333,
+    "htft_2X": 0.0251,
+    "htft_X1": 0.1795,
+    "htft_X2": 0.0231,
+    "htft_XX": 0.0544
    },
    "home": {
     "crest": "https://crests.football-data.org/1903.png",
@@ -6250,88 +6250,88 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7346,
-    "band_p95": 0.8985,
+    "band_p5": 0.7388,
+    "band_p95": 0.8997,
     "cluster_members": [
      "combo_1_over_1.5"
     ],
     "family": "combo_dc",
     "key": "combodc_12_over_1.5",
     "label": "12 + Over 1.5",
-    "p": 0.7498,
-    "p_raw": 0.8269,
+    "p": 0.7499,
+    "p_raw": 0.823,
     "reference": 0.543,
     "runners_up": [
      {
-      "band_p5": 0.6007,
-      "band_p95": 0.8401,
+      "band_p5": 0.6104,
+      "band_p95": 0.8412,
       "family": "combo_dc",
       "key": "combodc_1x_over_2.5",
       "label": "1X + Over 2.5",
-      "p": 0.5604,
-      "p_raw": 0.7331,
-      "reference": 0.3434,
-      "score": 0.098064,
-      "shrink_alpha": 0.5568,
-      "sigma": 0.0734
+      "p": 0.5633,
+      "p_raw": 0.7281,
+      "reference": 0.3428,
+      "score": 0.101323,
+      "shrink_alpha": 0.5725,
+      "sigma": 0.0711
      },
      {
-      "band_p5": 0.6103,
-      "band_p95": 0.8338,
+      "band_p5": 0.6191,
+      "band_p95": 0.8346,
       "family": "combo_dc",
       "key": "combodc_12_over_2.5",
       "label": "12 + Over 2.5",
-      "p": 0.607,
-      "p_raw": 0.7338,
-      "reference": 0.4222,
-      "score": 0.068898,
-      "shrink_alpha": 0.5929,
-      "sigma": 0.0682
+      "p": 0.6091,
+      "p_raw": 0.7297,
+      "reference": 0.4225,
+      "score": 0.070289,
+      "shrink_alpha": 0.6075,
+      "sigma": 0.0661
      },
      {
-      "band_p5": 0.702,
-      "band_p95": 0.8775,
+      "band_p5": 0.6898,
+      "band_p95": 0.8696,
       "family": "team_goals",
       "key": "ag_under_1.5",
       "label": "Ospite Under 1.5",
-      "p": 0.7649,
-      "p_raw": 0.7937,
-      "reference": 0.6531,
-      "score": 0.029391,
-      "shrink_alpha": 0.7949,
-      "sigma": 0.0533
+      "p": 0.758,
+      "p_raw": 0.7881,
+      "reference": 0.6526,
+      "score": 0.025999,
+      "shrink_alpha": 0.7781,
+      "sigma": 0.056
      },
      {
-      "band_p5": 0.6498,
-      "band_p95": 0.8656,
+      "band_p5": 0.6564,
+      "band_p95": 0.8714,
       "family": "over_under",
       "key": "over_2.5",
       "label": "Over 2.5",
-      "p": 0.6243,
-      "p_raw": 0.7752,
+      "p": 0.6281,
+      "p_raw": 0.7727,
       "prezzo": 1.39,
       "reference": 0.5153,
-      "score": 0.024102,
-      "shrink_alpha": 0.4194,
-      "sigma": 0.0664
+      "score": 0.025822,
+      "shrink_alpha": 0.4383,
+      "sigma": 0.0639
      }
     ],
-    "score": 0.091241,
-    "shrink_alpha": 0.7285,
-    "sigma": 0.0502
+    "score": 0.09135,
+    "shrink_alpha": 0.739,
+    "sigma": 0.0489
    },
    "raw_probabilities": {
-    "1x2_away": 0.0623,
-    "1x2_draw": 0.1044,
-    "1x2_home": 0.8333,
-    "btts_yes": 0.541,
-    "over_2.5": 0.7752,
-    "under_2.5": 0.2248
+    "1x2_away": 0.0657,
+    "1x2_draw": 0.1074,
+    "1x2_home": 0.8269,
+    "btts_yes": 0.5464,
+    "over_2.5": 0.7727,
+    "under_2.5": 0.2273
    },
    "reasons": [
-    "Gol attesi: Sport Lisboa e Benfica 3.31, GD Estoril Praia 0.84 (totale 4.15).",
+    "Gol attesi: Sport Lisboa e Benfica 3.27, GD Estoril Praia 0.86 (totale 4.13).",
     "12 + Over 1.5: 75 su 100, 21 punti sopra la media di riferimento (54 su 100).",
-    "Banda di incertezza: fra 73 e 90 su 100."
+    "Banda di incertezza: fra 74 e 90 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -7159,35 +7159,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 94,
-     "p_min": 88,
+     "S_min": 95,
+     "p_min": 89,
      "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 3,
-    "truncated_mass": 2.542e-07
+    "truncated_mass": 2.206e-07
    },
    "expected_goals": {
-    "away": 0.902,
-    "home": 2.037
+    "away": 0.896,
+    "home": 2.011
    },
    "half_time": {
-    "ht_over_0.5": 0.7346,
-    "ht_over_1.5": 0.3826,
-    "ht_over_2.5": 0.1491,
-    "ht_under_0.5": 0.2654,
-    "ht_under_1.5": 0.6174,
-    "ht_under_2.5": 0.8509,
-    "htft_11": 0.4151,
-    "htft_12": 0.0108,
-    "htft_1X": 0.0415,
-    "htft_21": 0.0304,
-    "htft_22": 0.0862,
-    "htft_2X": 0.0415,
-    "htft_X1": 0.1913,
-    "htft_X2": 0.0611,
-    "htft_XX": 0.122
+    "ht_over_0.5": 0.7308,
+    "ht_over_1.5": 0.3776,
+    "ht_over_2.5": 0.1458,
+    "ht_under_0.5": 0.2692,
+    "ht_under_1.5": 0.6224,
+    "ht_under_2.5": 0.8542,
+    "htft_11": 0.4117,
+    "htft_12": 0.0107,
+    "htft_1X": 0.0416,
+    "htft_21": 0.03,
+    "htft_22": 0.0869,
+    "htft_2X": 0.0416,
+    "htft_X1": 0.1915,
+    "htft_X2": 0.0618,
+    "htft_XX": 0.1241
    },
    "home": {
     "crest": "https://crests.football-data.org/5613.png",
@@ -7199,61 +7199,61 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5131,
-    "band_p95": 0.7312,
+    "band_p5": 0.5132,
+    "band_p95": 0.7381,
     "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.581,
-    "p_raw": 0.6328,
+    "p": 0.5762,
+    "p_raw": 0.629,
     "prezzo": 1.71,
-    "reference": 0.4284,
+    "reference": 0.4276,
     "runners_up": [
      {
-      "band_p5": 0.4734,
-      "band_p95": 0.7227,
+      "band_p5": 0.4506,
+      "band_p95": 0.7172,
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.5402,
-      "p_raw": 0.5982,
+      "p": 0.53,
+      "p_raw": 0.5908,
       "prezzo": 1.81,
-      "reference": 0.4299,
-      "score": 0.024508,
-      "shrink_alpha": 0.6552,
-      "sigma": 0.0761
+      "reference": 0.4301,
+      "score": 0.020109,
+      "shrink_alpha": 0.6219,
+      "sigma": 0.0818
      },
      {
-      "band_p5": 0.5728,
-      "band_p95": 0.7697,
+      "band_p5": 0.5524,
+      "band_p95": 0.7735,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6214,
-      "p_raw": 0.6744,
-      "reference": 0.5281,
-      "score": 0.017702,
-      "shrink_alpha": 0.6377,
-      "sigma": 0.062
+      "p": 0.6117,
+      "p_raw": 0.6681,
+      "reference": 0.5273,
+      "score": 0.014465,
+      "shrink_alpha": 0.5994,
+      "sigma": 0.0673
      }
     ],
-    "score": 0.046928,
-    "shrink_alpha": 0.7468,
-    "sigma": 0.0692
+    "score": 0.044494,
+    "shrink_alpha": 0.7377,
+    "sigma": 0.0709
    },
    "raw_probabilities": {
-    "1x2_away": 0.1605,
-    "1x2_draw": 0.2067,
-    "1x2_home": 0.6328,
-    "btts_yes": 0.5103,
-    "over_2.5": 0.559,
-    "under_2.5": 0.441
+    "1x2_away": 0.1623,
+    "1x2_draw": 0.2086,
+    "1x2_home": 0.629,
+    "btts_yes": 0.505,
+    "over_2.5": 0.5511,
+    "under_2.5": 0.4489
    },
    "reasons": [
-    "Gol attesi: Sporting Clube de Braga 2.04, Vitória SC 0.90 (totale 2.94).",
+    "Gol attesi: Sporting Clube de Braga 2.01, Vitória SC 0.90 (totale 2.91).",
     "Vittoria casa: 58 su 100, 15 punti sopra la media di riferimento (43 su 100).",
-    "Banda di incertezza: fra 51 e 73 su 100."
+    "Banda di incertezza: fra 51 e 74 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -10594,33 +10594,33 @@
     "filter_bites": {
      "S_min": 113,
      "p_min": 86,
-     "quota_min": 10,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 6.445e-09
+    "truncated_mass": 4.784e-09
    },
    "expected_goals": {
-    "away": 1.265,
-    "home": 1.453
+    "away": 1.271,
+    "home": 1.406
    },
    "half_time": {
-    "ht_over_0.5": 0.705,
-    "ht_over_1.5": 0.3449,
-    "ht_over_2.5": 0.1251,
-    "ht_under_0.5": 0.295,
-    "ht_under_1.5": 0.6551,
-    "ht_under_2.5": 0.8749,
-    "htft_11": 0.2471,
-    "htft_12": 0.0203,
-    "htft_1X": 0.0518,
-    "htft_21": 0.0242,
-    "htft_22": 0.19,
-    "htft_2X": 0.0518,
-    "htft_X1": 0.1439,
-    "htft_X2": 0.1187,
-    "htft_XX": 0.1523
+    "ht_over_0.5": 0.6998,
+    "ht_over_1.5": 0.3386,
+    "ht_over_2.5": 0.1213,
+    "ht_under_0.5": 0.3002,
+    "ht_under_1.5": 0.6614,
+    "ht_under_2.5": 0.8787,
+    "htft_11": 0.2378,
+    "htft_12": 0.0204,
+    "htft_1X": 0.0517,
+    "htft_21": 0.0232,
+    "htft_22": 0.1964,
+    "htft_2X": 0.0517,
+    "htft_X1": 0.1409,
+    "htft_X2": 0.1225,
+    "htft_XX": 0.1554
    },
    "home": {
     "crest": "https://crests.football-data.org/4287.png",
@@ -10666,16 +10666,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3308,
-    "1x2_draw": 0.2551,
-    "1x2_home": 0.4142,
-    "btts_yes": 0.5317,
-    "over_2.5": 0.5034,
-    "under_2.5": 0.4966
+    "1x2_away": 0.3419,
+    "1x2_draw": 0.2562,
+    "1x2_home": 0.402,
+    "btts_yes": 0.5235,
+    "over_2.5": 0.4937,
+    "under_2.5": 0.5063
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Clube do Remo 1.45, Coritiba FBC 1.27 (totale 2.72)."
+    "Gol attesi: Clube do Remo 1.41, Coritiba FBC 1.27 (totale 2.68)."
    ],
    "silence": {
     "reason": "S_min"
@@ -10685,7 +10685,7 @@
    "utc_date": "2026-08-31T23:00:00Z"
   }
  ],
- "generated_at": "2026-08-30T17:06:49Z",
+ "generated_at": "2026-08-31T03:08:15Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 8

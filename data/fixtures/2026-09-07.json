@@ -3,6 +3,142 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/712.png",
+    "name": "FC Arouca",
+    "tla": "FCA"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 85,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 1.312e-07
+   },
+   "expected_goals": {
+    "away": 1.55,
+    "home": 1.904
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7899,
+    "ht_over_1.5": 0.4621,
+    "ht_over_2.5": 0.2064,
+    "ht_under_0.5": 0.2101,
+    "ht_under_1.5": 0.5379,
+    "ht_under_2.5": 0.7936,
+    "htft_11": 0.2881,
+    "htft_12": 0.0255,
+    "htft_1X": 0.054,
+    "htft_21": 0.0336,
+    "htft_22": 0.1878,
+    "htft_2X": 0.054,
+    "htft_X1": 0.1405,
+    "htft_X2": 0.1035,
+    "htft_XX": 0.113
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/582.png",
+    "name": "GD Estoril Praia",
+    "tla": "EST"
+   },
+   "match_id": 567295,
+   "matchday": 5,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5572,
+    "band_p95": 0.7525,
+    "cluster_members": [
+     "combogo_gol_over_1.5"
+    ],
+    "family": "btts",
+    "key": "btts_yes",
+    "label": "Entrambe segnano",
+    "p": 0.5974,
+    "p_raw": 0.6613,
+    "reference": 0.4958,
+    "runners_up": [
+     {
+      "band_p5": 0.4572,
+      "band_p95": 0.6692,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5172,
+      "p_raw": 0.5718,
+      "reference": 0.4225,
+      "score": 0.018152,
+      "shrink_alpha": 0.6347,
+      "sigma": 0.0624
+     },
+     {
+      "band_p5": 0.577,
+      "band_p95": 0.7406,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6364,
+      "p_raw": 0.6679,
+      "reference": 0.543,
+      "score": 0.017909,
+      "shrink_alpha": 0.7481,
+      "sigma": 0.0478
+     },
+     {
+      "band_p5": 0.6898,
+      "band_p95": 0.8548,
+      "family": "team_goals",
+      "key": "ag_over_0.5",
+      "label": "Ospite Over 0.5",
+      "p": 0.7642,
+      "p_raw": 0.7819,
+      "reference": 0.6887,
+      "score": 0.013983,
+      "shrink_alpha": 0.8097,
+      "sigma": 0.0509
+     },
+     {
+      "band_p5": 0.4352,
+      "band_p95": 0.6913,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.512,
+      "p_raw": 0.5619,
+      "reference": 0.4301,
+      "score": 0.013531,
+      "shrink_alpha": 0.6213,
+      "sigma": 0.0819
+     }
+    ],
+    "score": 0.020767,
+    "shrink_alpha": 0.6139,
+    "sigma": 0.0583
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3185,
+    "1x2_draw": 0.2204,
+    "1x2_home": 0.4611,
+    "btts_yes": 0.6613,
+    "over_2.5": 0.6647,
+    "under_2.5": 0.3353
+   },
+   "reasons": [
+    "Gol attesi: GD Estoril Praia 1.90, FC Arouca 1.55 (totale 3.45).",
+    "Entrambe segnano: 60 su 100, 10 punti sopra la media di riferimento (50 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-07T00:00:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/5890.png",
     "name": "US Lecce",
     "tla": "USL"
@@ -289,8 +425,8 @@
    "utc_date": "2026-09-07T18:45:00Z"
   }
  ],
- "generated_at": "2026-08-30T10:01:00Z",
+ "generated_at": "2026-08-31T03:08:15Z",
  "schema_version": 1,
  "silence_count": 1,
- "total": 2
+ "total": 3
 }
