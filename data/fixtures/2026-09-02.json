@@ -62,7 +62,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 73.6,
+     "ore_prima": 59.7,
      "ospiti": {
       "modulo": "3-4-2-1",
       "panchina": [],
@@ -114,7 +114,7 @@
       ]
      }
     },
-    "letto": "2026-08-30T17:06:49Z",
+    "letto": "2026-08-31T07:03:06Z",
     "market_p": {
      "1x2_away": 0.2756,
      "1x2_draw": 0.2756,
@@ -127,9 +127,9 @@
      "ag_under_2.5": 0.9332,
      "btts_no": 0.4645,
      "btts_yes": 0.5355,
-     "dc_12": 0.7211,
-     "dc_1x": 0.7273,
-     "dc_x2": 0.5516,
+     "dc_12": 0.7172,
+     "dc_1x": 0.7365,
+     "dc_x2": 0.5463,
      "eh_-1_away": 0.5545,
      "eh_-1_draw": 0.2295,
      "eh_-1_home": 0.216,
@@ -152,17 +152,21 @@
      "hg_under_3.5": 0.9823,
      "over_0.5": 0.9589,
      "over_1.5": 0.7496,
+     "over_2": 0.6481,
      "over_2.25": 0.5539,
      "over_2.5": 0.4783,
      "over_2.75": 0.4182,
+     "over_3": 0.3346,
      "over_3.5": 0.2577,
      "over_4.5": 0.1108,
      "over_5.5": 0.0163,
      "under_0.5": 0.0411,
      "under_1.5": 0.2504,
+     "under_2": 0.3519,
      "under_2.25": 0.4461,
      "under_2.5": 0.5217,
      "under_2.75": 0.5818,
+     "under_3": 0.6654,
      "under_3.5": 0.7423,
      "under_4.5": 0.8892,
      "under_5.5": 0.9837
@@ -229,7 +233,7 @@
       "operatori": 3
      },
      "dc_1x": {
-      "decimale": 1.32,
+      "decimale": 1.3,
       "fonte": "betexplorer",
       "operatori": 3
      },
@@ -348,6 +352,11 @@
       "fonte": "betexplorer",
       "operatori": 2
      },
+     "over_2": {
+      "decimale": 1.48,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
      "over_2.25": {
       "decimale": 1.7,
       "fonte": "betexplorer",
@@ -360,6 +369,11 @@
      },
      "over_2.75": {
       "decimale": 2.2,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "over_3": {
+      "decimale": 2.67,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -388,6 +402,11 @@
       "fonte": "betexplorer",
       "operatori": 2
      },
+     "under_2": {
+      "decimale": 2.55,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
      "under_2.25": {
       "decimale": 2.06,
       "fonte": "betexplorer",
@@ -400,6 +419,11 @@
      },
      "under_2.75": {
       "decimale": 1.63,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_3": {
+      "decimale": 1.44,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -429,27 +453,27 @@
        ],
        "esiti": [
         {
-         "decimale": 1.32,
+         "decimale": 1.3,
          "esito": "1X",
-         "probabilita_implicita": 0.7273
+         "probabilita_implicita": 0.7365
         },
         {
          "decimale": 1.33,
          "esito": "12",
-         "probabilita_implicita": 0.7211
+         "probabilita_implicita": 0.7172
         },
         {
          "decimale": 1.68,
          "esito": "X2",
-         "probabilita_implicita": 0.5516
+         "probabilita_implicita": 0.5463
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 5.23,
+       "margine_percento": 5.82,
        "mercato": "Doppia chance",
        "n_bookmaker": 3,
-       "somma_probabilita": 2.1047
+       "somma_probabilita": 2.1163
       },
       {
        "bookmaker": [
@@ -474,6 +498,30 @@
        "mercato": "Gol totali",
        "n_bookmaker": 2,
        "somma_probabilita": 1.0693
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.48,
+         "esito": "Over",
+         "probabilita_implicita": 0.6481
+        },
+        {
+         "decimale": 2.55,
+         "esito": "Under",
+         "probabilita_implicita": 0.3519
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.01,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0701
       },
       {
        "bookmaker": [
@@ -546,6 +594,30 @@
        "mercato": "Gol totali",
        "n_bookmaker": 2,
        "somma_probabilita": 1.0691
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.67,
+         "esito": "Over",
+         "probabilita_implicita": 0.3346
+        },
+        {
+         "decimale": 1.44,
+         "esito": "Under",
+         "probabilita_implicita": 0.6654
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.97,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0697
       },
       {
        "bookmaker": [
@@ -967,7 +1039,7 @@
        "somma_probabilita": 1.1124
       }
      ],
-     "n_mercati": 22
+     "n_mercati": 24
     }
    },
    "diagnostics": {
@@ -1092,7 +1164,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 73.6,
+     "ore_prima": 59.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -1144,70 +1216,73 @@
       ]
      }
     },
-    "letto": "2026-08-30T17:06:49Z",
+    "letto": "2026-08-31T07:03:06Z",
     "market_p": {
-     "1x2_away": 0.2428,
-     "1x2_draw": 0.2578,
-     "1x2_home": 0.4994,
-     "ag_over_0.5": 0.6953,
-     "ag_over_1.5": 0.2891,
+     "1x2_away": 0.2465,
+     "1x2_draw": 0.254,
+     "1x2_home": 0.4995,
+     "ag_over_0.5": 0.6893,
+     "ag_over_1.5": 0.2937,
      "ag_over_2.5": 0.0563,
-     "ag_under_0.5": 0.3047,
-     "ag_under_1.5": 0.7109,
+     "ag_under_0.5": 0.3107,
+     "ag_under_1.5": 0.7063,
      "ag_under_2.5": 0.9437,
-     "btts_no": 0.4576,
-     "btts_yes": 0.5424,
-     "dc_12": 0.7477,
-     "dc_1x": 0.7617,
-     "dc_x2": 0.4907,
-     "eh_-1_away": 0.5006,
-     "eh_-1_draw": 0.2414,
-     "eh_-1_home": 0.258,
-     "eh_-2_away": 0.7549,
-     "eh_-2_draw": 0.1438,
-     "eh_-2_home": 0.1013,
-     "eh_-3_away": 0.9146,
-     "eh_-3_draw": 0.0514,
-     "eh_-3_home": 0.034,
-     "eh_1_away": 0.0835,
-     "eh_1_draw": 0.143,
-     "eh_1_home": 0.7735,
-     "eh_2_away": 0.021,
-     "eh_2_draw": 0.0433,
-     "eh_2_home": 0.9357,
-     "hg_over_0.5": 0.8423,
-     "hg_over_1.5": 0.4938,
-     "hg_over_2.5": 0.2107,
-     "hg_over_3.5": 0.0643,
-     "hg_under_0.5": 0.1577,
-     "hg_under_1.5": 0.5062,
-     "hg_under_2.5": 0.7893,
-     "hg_under_3.5": 0.9357,
-     "over_0.5": 0.952,
-     "over_1.5": 0.7777,
-     "over_2.25": 0.5992,
-     "over_2.5": 0.5231,
-     "over_2.75": 0.4602,
-     "over_3.5": 0.2821,
-     "over_4.5": 0.1299,
-     "over_5.5": 0.0422,
-     "under_0.5": 0.048,
-     "under_1.5": 0.2223,
-     "under_2.25": 0.4008,
-     "under_2.5": 0.4769,
-     "under_2.75": 0.5398,
-     "under_3.5": 0.7179,
-     "under_4.5": 0.8701,
-     "under_5.5": 0.9578
+     "btts_no": 0.4397,
+     "btts_yes": 0.5603,
+     "dc_12": 0.7428,
+     "dc_1x": 0.7635,
+     "dc_x2": 0.4938,
+     "eh_-1_away": 0.504,
+     "eh_-1_draw": 0.2377,
+     "eh_-1_home": 0.2583,
+     "eh_-2_away": 0.7539,
+     "eh_-2_draw": 0.1458,
+     "eh_-2_home": 0.1003,
+     "eh_-3_away": 0.9154,
+     "eh_-3_draw": 0.0528,
+     "eh_-3_home": 0.0318,
+     "eh_1_away": 0.0847,
+     "eh_1_draw": 0.148,
+     "eh_1_home": 0.7673,
+     "hg_over_0.5": 0.8408,
+     "hg_over_1.5": 0.4923,
+     "hg_over_2.5": 0.2046,
+     "hg_over_3.5": 0.0322,
+     "hg_under_0.5": 0.1592,
+     "hg_under_1.5": 0.5077,
+     "hg_under_2.5": 0.7954,
+     "hg_under_3.5": 0.9678,
+     "over_0.5": 0.9474,
+     "over_1.5": 0.7812,
+     "over_2": 0.7072,
+     "over_2.25": 0.6081,
+     "over_2.5": 0.5297,
+     "over_2.75": 0.4733,
+     "over_3": 0.4008,
+     "over_3.25": 0.3488,
+     "over_3.5": 0.3007,
+     "over_4.5": 0.1372,
+     "over_5.5": 0.0526,
+     "under_0.5": 0.0526,
+     "under_1.5": 0.2188,
+     "under_2": 0.2928,
+     "under_2.25": 0.3919,
+     "under_2.5": 0.4703,
+     "under_2.75": 0.5267,
+     "under_3": 0.5992,
+     "under_3.25": 0.6512,
+     "under_3.5": 0.6993,
+     "under_4.5": 0.8628,
+     "under_5.5": 0.9474
     },
     "prezzi": {
      "1x2_away": {
-      "decimale": 3.7,
+      "decimale": 3.65,
       "fonte": "kambi",
       "operatori": 1
      },
      "1x2_draw": {
-      "decimale": 3.5,
+      "decimale": 3.55,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1217,12 +1292,12 @@
       "operatori": 1
      },
      "ag_over_0.5": {
-      "decimale": 1.37,
+      "decimale": 1.38,
       "fonte": "kambi",
       "operatori": 1
      },
      "ag_over_1.5": {
-      "decimale": 2.9,
+      "decimale": 2.88,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1232,12 +1307,12 @@
       "operatori": 1
      },
      "ag_under_0.5": {
-      "decimale": 2.8,
+      "decimale": 2.75,
       "fonte": "kambi",
       "operatori": 1
      },
      "ag_under_1.5": {
-      "decimale": 1.34,
+      "decimale": 1.35,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1247,17 +1322,17 @@
       "operatori": 1
      },
      "btts_no": {
-      "decimale": 2.0,
+      "decimale": 2.07,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "btts_yes": {
-      "decimale": 1.72,
+      "decimale": 1.67,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "dc_12": {
-      "decimale": 1.28,
+      "decimale": 1.29,
       "fonte": "betexplorer",
       "operatori": 3
      },
@@ -1272,12 +1347,12 @@
       "operatori": 3
      },
      "eh_-1_away": {
-      "decimale": 1.84,
+      "decimale": 1.83,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_-1_draw": {
-      "decimale": 3.5,
+      "decimale": 3.55,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1292,7 +1367,7 @@
       "operatori": 1
      },
      "eh_-2_draw": {
-      "decimale": 5.2,
+      "decimale": 5.1,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1312,7 +1387,7 @@
       "operatori": 1
      },
      "eh_-3_home": {
-      "decimale": 13.0,
+      "decimale": 14.0,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1322,27 +1397,12 @@
       "operatori": 1
      },
      "eh_1_draw": {
-      "decimale": 5.1,
+      "decimale": 5.0,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_1_home": {
-      "decimale": 1.24,
-      "fonte": "kambi",
-      "operatori": 1
-     },
-     "eh_2_away": {
-      "decimale": 17.0,
-      "fonte": "kambi",
-      "operatori": 1
-     },
-     "eh_2_draw": {
-      "decimale": 10.0,
-      "fonte": "kambi",
-      "operatori": 1
-     },
-     "eh_2_home": {
-      "decimale": 1.05,
+      "decimale": 1.25,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1352,22 +1412,22 @@
       "operatori": 1
      },
      "hg_over_1.5": {
-      "decimale": 1.86,
+      "decimale": 1.87,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_over_2.5": {
-      "decimale": 3.7,
+      "decimale": 3.75,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_over_3.5": {
-      "decimale": 7.5,
+      "decimale": 8.0,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_under_0.5": {
-      "decimale": 4.5,
+      "decimale": 4.4,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1377,12 +1437,12 @@
       "operatori": 1
      },
      "hg_under_2.5": {
-      "decimale": 1.22,
+      "decimale": 1.21,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_under_3.5": {
-      "decimale": 1.05,
+      "decimale": 1.02,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -1396,68 +1456,98 @@
       "fonte": "betexplorer",
       "operatori": 2
      },
+     "over_2": {
+      "decimale": 1.36,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
      "over_2.25": {
-      "decimale": 1.58,
+      "decimale": 1.56,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_2.5": {
-      "decimale": 1.81,
+      "decimale": 1.77,
+      "fonte": "betexplorer",
+      "operatori": 3
+     },
+     "over_2.75": {
+      "decimale": 1.98,
       "fonte": "betexplorer",
       "operatori": 2
      },
-     "over_2.75": {
-      "decimale": 2.01,
+     "over_3": {
+      "decimale": 2.27,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "over_3.25": {
+      "decimale": 2.58,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_3.5": {
-      "decimale": 3.1,
+      "decimale": 2.95,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_4.5": {
-      "decimale": 5.62,
+      "decimale": 5.5,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_5.5": {
-      "decimale": 12.5,
+      "decimale": 11.0,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_0.5": {
-      "decimale": 11.25,
+      "decimale": 11.0,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_1.5": {
-      "decimale": 3.8,
+      "decimale": 3.85,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_2": {
+      "decimale": 2.98,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2.25": {
-      "decimale": 2.27,
+      "decimale": 2.33,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2.5": {
       "decimale": 1.97,
       "fonte": "betexplorer",
-      "operatori": 2
+      "operatori": 3
      },
      "under_2.75": {
-      "decimale": 1.75,
+      "decimale": 1.8,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_3": {
+      "decimale": 1.58,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_3.25": {
+      "decimale": 1.47,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_3.5": {
-      "decimale": 1.35,
+      "decimale": 1.38,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_4.5": {
-      "decimale": 1.12,
+      "decimale": 1.13,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -1479,25 +1569,25 @@
         {
          "decimale": 1.26,
          "esito": "1X",
-         "probabilita_implicita": 0.7617
+         "probabilita_implicita": 0.7635
         },
         {
-         "decimale": 1.28,
+         "decimale": 1.29,
          "esito": "12",
-         "probabilita_implicita": 0.7477
+         "probabilita_implicita": 0.7428
         },
         {
          "decimale": 1.83,
          "esito": "X2",
-         "probabilita_implicita": 0.4907
+         "probabilita_implicita": 0.4938
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 6.07,
+       "margine_percento": 5.76,
        "mercato": "Doppia chance",
        "n_bookmaker": 3,
-       "somma_probabilita": 2.1213
+       "somma_probabilita": 2.1153
       },
       {
        "bookmaker": [
@@ -1508,20 +1598,20 @@
         {
          "decimale": 1.04,
          "esito": "Over",
-         "probabilita_implicita": 0.952
+         "probabilita_implicita": 0.9474
         },
         {
-         "decimale": 11.25,
+         "decimale": 11.0,
          "esito": "Under",
-         "probabilita_implicita": 0.048
+         "probabilita_implicita": 0.0526
         }
        ],
        "fonte": "betexplorer",
        "linea": "0.5",
-       "margine_percento": 5.04,
+       "margine_percento": 4.78,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0504
+       "somma_probabilita": 1.0478
       },
       {
        "bookmaker": [
@@ -1532,20 +1622,20 @@
         {
          "decimale": 1.25,
          "esito": "Over",
-         "probabilita_implicita": 0.7777
+         "probabilita_implicita": 0.7812
         },
         {
-         "decimale": 3.8,
+         "decimale": 3.85,
          "esito": "Under",
-         "probabilita_implicita": 0.2223
+         "probabilita_implicita": 0.2188
         }
        ],
        "fonte": "betexplorer",
        "linea": "1.5",
-       "margine_percento": 6.32,
+       "margine_percento": 6.3,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0632
+       "somma_probabilita": 1.063
       },
       {
        "bookmaker": [
@@ -1554,18 +1644,115 @@
        ],
        "esiti": [
         {
-         "decimale": 1.58,
+         "decimale": 1.36,
          "esito": "Over",
-         "probabilita_implicita": 0.5992
+         "probabilita_implicita": 0.7072
         },
         {
-         "decimale": 2.27,
+         "decimale": 2.98,
          "esito": "Under",
-         "probabilita_implicita": 0.4008
+         "probabilita_implicita": 0.2928
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 7.14,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0714
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.56,
+         "esito": "Over",
+         "probabilita_implicita": 0.6081
+        },
+        {
+         "decimale": 2.33,
+         "esito": "Under",
+         "probabilita_implicita": 0.3919
         }
        ],
        "fonte": "betexplorer",
        "linea": "2.25",
+       "margine_percento": 6.91,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0691
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "betmgm.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.77,
+         "esito": "Over",
+         "probabilita_implicita": 0.5297
+        },
+        {
+         "decimale": 1.97,
+         "esito": "Under",
+         "probabilita_implicita": 0.4703
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.5",
+       "margine_percento": 7.26,
+       "mercato": "Gol totali",
+       "n_bookmaker": 3,
+       "somma_probabilita": 1.0726
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.98,
+         "esito": "Over",
+         "probabilita_implicita": 0.4733
+        },
+        {
+         "decimale": 1.8,
+         "esito": "Under",
+         "probabilita_implicita": 0.5267
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2.75",
+       "margine_percento": 5.93,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0593
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.27,
+         "esito": "Over",
+         "probabilita_implicita": 0.4008
+        },
+        {
+         "decimale": 1.58,
+         "esito": "Under",
+         "probabilita_implicita": 0.5992
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
        "margine_percento": 7.05,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
@@ -1578,46 +1765,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.81,
+         "decimale": 2.58,
          "esito": "Over",
-         "probabilita_implicita": 0.5231
+         "probabilita_implicita": 0.3488
         },
         {
-         "decimale": 1.97,
+         "decimale": 1.47,
          "esito": "Under",
-         "probabilita_implicita": 0.4769
+         "probabilita_implicita": 0.6512
         }
        ],
        "fonte": "betexplorer",
-       "linea": "2.5",
-       "margine_percento": 6.01,
+       "linea": "3.25",
+       "margine_percento": 6.86,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0601
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 2.01,
-         "esito": "Over",
-         "probabilita_implicita": 0.4602
-        },
-        {
-         "decimale": 1.75,
-         "esito": "Under",
-         "probabilita_implicita": 0.5398
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2.75",
-       "margine_percento": 6.93,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0693
+       "somma_probabilita": 1.0686
       },
       {
        "bookmaker": [
@@ -1626,22 +1789,22 @@
        ],
        "esiti": [
         {
-         "decimale": 3.1,
+         "decimale": 2.95,
          "esito": "Over",
-         "probabilita_implicita": 0.2821
+         "probabilita_implicita": 0.3007
         },
         {
-         "decimale": 1.35,
+         "decimale": 1.38,
          "esito": "Under",
-         "probabilita_implicita": 0.7179
+         "probabilita_implicita": 0.6993
         }
        ],
        "fonte": "betexplorer",
        "linea": "3.5",
-       "margine_percento": 6.61,
+       "margine_percento": 6.36,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0661
+       "somma_probabilita": 1.0636
       },
       {
        "bookmaker": [
@@ -1650,22 +1813,22 @@
        ],
        "esiti": [
         {
-         "decimale": 5.62,
+         "decimale": 5.5,
          "esito": "Over",
-         "probabilita_implicita": 0.1299
+         "probabilita_implicita": 0.1372
         },
         {
-         "decimale": 1.12,
+         "decimale": 1.13,
          "esito": "Under",
-         "probabilita_implicita": 0.8701
+         "probabilita_implicita": 0.8628
         }
        ],
        "fonte": "betexplorer",
        "linea": "4.5",
-       "margine_percento": 6.67,
+       "margine_percento": 6.29,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0667
+       "somma_probabilita": 1.0629
       },
       {
        "bookmaker": [
@@ -1674,22 +1837,22 @@
        ],
        "esiti": [
         {
-         "decimale": 12.5,
+         "decimale": 11.0,
          "esito": "Over",
-         "probabilita_implicita": 0.0422
+         "probabilita_implicita": 0.0526
         },
         {
          "decimale": 1.04,
          "esito": "Under",
-         "probabilita_implicita": 0.9578
+         "probabilita_implicita": 0.9474
         }
        ],
        "fonte": "betexplorer",
        "linea": "5.5",
-       "margine_percento": 4.62,
+       "margine_percento": 4.78,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0462
+       "somma_probabilita": 1.0478
       },
       {
        "bookmaker": [
@@ -1699,22 +1862,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.72,
+         "decimale": 1.67,
          "esito": "Sì",
-         "probabilita_implicita": 0.5424
+         "probabilita_implicita": 0.5603
         },
         {
-         "decimale": 2.0,
+         "decimale": 2.07,
          "esito": "No",
-         "probabilita_implicita": 0.4576
+         "probabilita_implicita": 0.4397
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 8.14,
+       "margine_percento": 8.19,
        "mercato": "Entrambe segnano",
        "n_bookmaker": 3,
-       "somma_probabilita": 1.0814
+       "somma_probabilita": 1.0819
       },
       {
        "bookmaker": [
@@ -1724,25 +1887,25 @@
         {
          "decimale": 1.9,
          "esito": "1",
-         "probabilita_implicita": 0.4994
+         "probabilita_implicita": 0.4995
         },
         {
-         "decimale": 3.5,
+         "decimale": 3.55,
          "esito": "X",
-         "probabilita_implicita": 0.2578
+         "probabilita_implicita": 0.254
         },
         {
-         "decimale": 3.7,
+         "decimale": 3.65,
          "esito": "2",
-         "probabilita_implicita": 0.2428
+         "probabilita_implicita": 0.2465
         }
        ],
        "fonte": "kambi",
        "linea": null,
-       "margine_percento": 8.23,
+       "margine_percento": 8.2,
        "mercato": "Esito finale",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0823
+       "somma_probabilita": 1.082
       },
       {
        "bookmaker": [
@@ -1752,20 +1915,20 @@
         {
          "decimale": 1.15,
          "esito": "Over",
-         "probabilita_implicita": 0.8423
+         "probabilita_implicita": 0.8408
         },
         {
-         "decimale": 4.5,
+         "decimale": 4.4,
          "esito": "Under",
-         "probabilita_implicita": 0.1577
+         "probabilita_implicita": 0.1592
         }
        ],
        "fonte": "kambi",
        "linea": "0.5",
-       "margine_percento": 9.18,
+       "margine_percento": 9.68,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0918
+       "somma_probabilita": 1.0968
       },
       {
        "bookmaker": [
@@ -1773,22 +1936,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.86,
+         "decimale": 1.87,
          "esito": "Over",
-         "probabilita_implicita": 0.4938
+         "probabilita_implicita": 0.4923
         },
         {
          "decimale": 1.82,
          "esito": "Under",
-         "probabilita_implicita": 0.5062
+         "probabilita_implicita": 0.5077
         }
        ],
        "fonte": "kambi",
        "linea": "1.5",
-       "margine_percento": 8.71,
+       "margine_percento": 8.42,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0871
+       "somma_probabilita": 1.0842
       },
       {
        "bookmaker": [
@@ -1796,22 +1959,22 @@
        ],
        "esiti": [
         {
-         "decimale": 3.7,
+         "decimale": 3.75,
          "esito": "Over",
-         "probabilita_implicita": 0.2107
+         "probabilita_implicita": 0.2046
         },
         {
-         "decimale": 1.22,
+         "decimale": 1.21,
          "esito": "Under",
-         "probabilita_implicita": 0.7893
+         "probabilita_implicita": 0.7954
         }
        ],
        "fonte": "kambi",
        "linea": "2.5",
-       "margine_percento": 8.99,
+       "margine_percento": 9.31,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0899
+       "somma_probabilita": 1.0931
       },
       {
        "bookmaker": [
@@ -1819,22 +1982,22 @@
        ],
        "esiti": [
         {
-         "decimale": 7.5,
+         "decimale": 8.0,
          "esito": "Over",
-         "probabilita_implicita": 0.0643
+         "probabilita_implicita": 0.0322
         },
         {
-         "decimale": 1.05,
+         "decimale": 1.02,
          "esito": "Under",
-         "probabilita_implicita": 0.9357
+         "probabilita_implicita": 0.9678
         }
        ],
        "fonte": "kambi",
        "linea": "3.5",
-       "margine_percento": 8.57,
+       "margine_percento": 10.54,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0857
+       "somma_probabilita": 1.1054
       },
       {
        "bookmaker": [
@@ -1842,22 +2005,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.37,
+         "decimale": 1.38,
          "esito": "Over",
-         "probabilita_implicita": 0.6953
+         "probabilita_implicita": 0.6893
         },
         {
-         "decimale": 2.8,
+         "decimale": 2.75,
          "esito": "Under",
-         "probabilita_implicita": 0.3047
+         "probabilita_implicita": 0.3107
         }
        ],
        "fonte": "kambi",
        "linea": "0.5",
-       "margine_percento": 8.71,
+       "margine_percento": 8.83,
        "mercato": "Gol di squadra ospite",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0871
+       "somma_probabilita": 1.0883
       },
       {
        "bookmaker": [
@@ -1865,22 +2028,22 @@
        ],
        "esiti": [
         {
-         "decimale": 2.9,
+         "decimale": 2.88,
          "esito": "Over",
-         "probabilita_implicita": 0.2891
+         "probabilita_implicita": 0.2937
         },
         {
-         "decimale": 1.34,
+         "decimale": 1.35,
          "esito": "Under",
-         "probabilita_implicita": 0.7109
+         "probabilita_implicita": 0.7063
         }
        ],
        "fonte": "kambi",
        "linea": "1.5",
-       "margine_percento": 9.11,
+       "margine_percento": 8.8,
        "mercato": "Gol di squadra ospite",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0911
+       "somma_probabilita": 1.088
       },
       {
        "bookmaker": [
@@ -1913,25 +2076,25 @@
         {
          "decimale": 3.3,
          "esito": "1",
-         "probabilita_implicita": 0.258
+         "probabilita_implicita": 0.2583
         },
         {
-         "decimale": 3.5,
+         "decimale": 3.55,
          "esito": "X",
-         "probabilita_implicita": 0.2414
+         "probabilita_implicita": 0.2377
         },
         {
-         "decimale": 1.84,
+         "decimale": 1.83,
          "esito": "2",
-         "probabilita_implicita": 0.5006
+         "probabilita_implicita": 0.504
         }
        ],
        "fonte": "kambi",
        "linea": "-1",
-       "margine_percento": 13.22,
+       "margine_percento": 13.12,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1322
+       "somma_probabilita": 1.1312
       },
       {
        "bookmaker": [
@@ -1941,81 +2104,25 @@
         {
          "decimale": 7.0,
          "esito": "1",
-         "probabilita_implicita": 0.1013
-        },
-        {
-         "decimale": 5.2,
-         "esito": "X",
-         "probabilita_implicita": 0.1438
-        },
-        {
-         "decimale": 1.27,
-         "esito": "2",
-         "probabilita_implicita": 0.7549
-        }
-       ],
-       "fonte": "kambi",
-       "linea": "-2",
-       "margine_percento": 12.26,
-       "mercato": "Handicap europeo",
-       "n_bookmaker": 1,
-       "somma_probabilita": 1.1226
-      },
-      {
-       "bookmaker": [
-        "unibet"
-       ],
-       "esiti": [
-        {
-         "decimale": 13.0,
-         "esito": "1",
-         "probabilita_implicita": 0.034
-        },
-        {
-         "decimale": 9.5,
-         "esito": "X",
-         "probabilita_implicita": 0.0514
-        },
-        {
-         "decimale": 1.07,
-         "esito": "2",
-         "probabilita_implicita": 0.9146
-        }
-       ],
-       "fonte": "kambi",
-       "linea": "-3",
-       "margine_percento": 11.68,
-       "mercato": "Handicap europeo",
-       "n_bookmaker": 1,
-       "somma_probabilita": 1.1168
-      },
-      {
-       "bookmaker": [
-        "unibet"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.24,
-         "esito": "1",
-         "probabilita_implicita": 0.7735
+         "probabilita_implicita": 0.1003
         },
         {
          "decimale": 5.1,
          "esito": "X",
-         "probabilita_implicita": 0.143
+         "probabilita_implicita": 0.1458
         },
         {
-         "decimale": 8.0,
+         "decimale": 1.27,
          "esito": "2",
-         "probabilita_implicita": 0.0835
+         "probabilita_implicita": 0.7539
         }
        ],
        "fonte": "kambi",
-       "linea": "1",
-       "margine_percento": 12.75,
+       "linea": "-2",
+       "margine_percento": 12.63,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1275
+       "somma_probabilita": 1.1263
       },
       {
        "bookmaker": [
@@ -2023,30 +2130,58 @@
        ],
        "esiti": [
         {
-         "decimale": 1.05,
+         "decimale": 14.0,
          "esito": "1",
-         "probabilita_implicita": 0.9357
+         "probabilita_implicita": 0.0318
         },
         {
-         "decimale": 10.0,
+         "decimale": 9.5,
          "esito": "X",
-         "probabilita_implicita": 0.0433
+         "probabilita_implicita": 0.0528
         },
         {
-         "decimale": 17.0,
+         "decimale": 1.07,
          "esito": "2",
-         "probabilita_implicita": 0.021
+         "probabilita_implicita": 0.9154
         }
        ],
        "fonte": "kambi",
-       "linea": "2",
-       "margine_percento": 11.12,
+       "linea": "-3",
+       "margine_percento": 11.13,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1112
+       "somma_probabilita": 1.1113
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.25,
+         "esito": "1",
+         "probabilita_implicita": 0.7673
+        },
+        {
+         "decimale": 5.0,
+         "esito": "X",
+         "probabilita_implicita": 0.148
+        },
+        {
+         "decimale": 8.0,
+         "esito": "2",
+         "probabilita_implicita": 0.0847
+        }
+       ],
+       "fonte": "kambi",
+       "linea": "1",
+       "margine_percento": 12.5,
+       "mercato": "Handicap europeo",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.125
       }
      ],
-     "n_mercati": 23
+     "n_mercati": 25
     }
    },
    "diagnostics": {
@@ -2171,7 +2306,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 73.6,
+     "ore_prima": 59.7,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -2223,60 +2358,58 @@
       ]
      }
     },
-    "letto": "2026-08-30T17:06:49Z",
+    "letto": "2026-08-31T07:03:06Z",
     "market_p": {
-     "1x2_away": 0.2117,
-     "1x2_draw": 0.2619,
-     "1x2_home": 0.5263,
+     "1x2_away": 0.212,
+     "1x2_draw": 0.2582,
+     "1x2_home": 0.5298,
      "ag_over_0.5": 0.6213,
      "ag_over_1.5": 0.2195,
      "ag_over_2.5": 0.0177,
      "ag_under_0.5": 0.3787,
      "ag_under_1.5": 0.7805,
      "ag_under_2.5": 0.9823,
-     "btts_no": 0.5319,
-     "btts_yes": 0.4681,
-     "dc_12": 0.7414,
-     "dc_1x": 0.8233,
-     "dc_x2": 0.4353,
-     "eh_-1_away": 0.4757,
-     "eh_-1_draw": 0.2509,
-     "eh_-1_home": 0.2735,
-     "eh_-2_away": 0.7408,
-     "eh_-2_draw": 0.1538,
-     "eh_-2_home": 0.1054,
-     "eh_-3_away": 0.9145,
-     "eh_-3_draw": 0.0549,
-     "eh_-3_home": 0.0306,
+     "btts_no": 0.5262,
+     "btts_yes": 0.4738,
+     "dc_12": 0.7391,
+     "dc_1x": 0.8216,
+     "dc_x2": 0.4392,
+     "eh_-1_away": 0.4738,
+     "eh_-1_draw": 0.2518,
+     "eh_-1_home": 0.2744,
+     "eh_-2_away": 0.7361,
+     "eh_-2_draw": 0.1563,
+     "eh_-2_home": 0.1076,
+     "eh_-3_away": 0.9138,
+     "eh_-3_draw": 0.0535,
+     "eh_-3_home": 0.0328,
      "eh_1_away": 0.0663,
      "eh_1_draw": 0.131,
      "eh_1_home": 0.8027,
-     "hg_over_0.5": 0.8259,
-     "hg_over_1.5": 0.4738,
-     "hg_over_2.5": 0.1888,
+     "hg_over_0.5": 0.8204,
+     "hg_over_1.5": 0.4783,
+     "hg_over_2.5": 0.1898,
      "hg_over_3.5": 0.0315,
-     "hg_under_0.5": 0.1741,
-     "hg_under_1.5": 0.5262,
-     "hg_under_2.5": 0.8112,
+     "hg_under_0.5": 0.1796,
+     "hg_under_1.5": 0.5217,
+     "hg_under_2.5": 0.8102,
      "hg_under_3.5": 0.9685,
      "over_0.5": 0.9275,
-     "over_1.5": 0.7217,
-     "over_2": 0.6106,
-     "over_2.25": 0.5217,
+     "over_1.5": 0.7406,
+     "over_1.75": 0.675,
+     "over_2": 0.6155,
+     "over_2.25": 0.5252,
      "over_2.5": 0.4504,
-     "over_2.75": 0.3952,
-     "over_3.5": 0.2274,
-     "over_4.5": 0.0885,
-     "over_5.5": 0.0259,
+     "over_3.5": 0.2318,
+     "over_4.5": 0.0829,
      "under_0.5": 0.0725,
-     "under_1.5": 0.2783,
-     "under_2": 0.3894,
-     "under_2.25": 0.4783,
+     "under_1.5": 0.2594,
+     "under_1.75": 0.325,
+     "under_2": 0.3845,
+     "under_2.25": 0.4748,
      "under_2.5": 0.5496,
-     "under_2.75": 0.6048,
-     "under_3.5": 0.7726,
-     "under_4.5": 0.9115,
-     "under_5.5": 0.9741
+     "under_3.5": 0.7682,
+     "under_4.5": 0.9171
     },
     "prezzi": {
      "1x2_away": {
@@ -2285,12 +2418,12 @@
       "operatori": 1
      },
      "1x2_draw": {
-      "decimale": 3.45,
+      "decimale": 3.5,
       "fonte": "kambi",
       "operatori": 1
      },
      "1x2_home": {
-      "decimale": 1.81,
+      "decimale": 1.8,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2325,12 +2458,12 @@
       "operatori": 1
      },
      "btts_no": {
-      "decimale": 1.75,
+      "decimale": 1.76,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "btts_yes": {
-      "decimale": 1.96,
+      "decimale": 1.93,
       "fonte": "betexplorer",
       "operatori": 3
      },
@@ -2345,12 +2478,12 @@
       "operatori": 3
      },
      "dc_x2": {
-      "decimale": 2.03,
+      "decimale": 2.0,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "eh_-1_away": {
-      "decimale": 1.93,
+      "decimale": 1.94,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2365,7 +2498,7 @@
       "operatori": 1
      },
      "eh_-2_away": {
-      "decimale": 1.29,
+      "decimale": 1.3,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2390,7 +2523,7 @@
       "operatori": 1
      },
      "eh_-3_home": {
-      "decimale": 14.0,
+      "decimale": 13.0,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2410,17 +2543,17 @@
       "operatori": 1
      },
      "hg_over_0.5": {
-      "decimale": 1.17,
+      "decimale": 1.18,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_over_1.5": {
-      "decimale": 1.93,
+      "decimale": 1.91,
       "fonte": "kambi",
       "operatori": 1
      },
      "hg_over_2.5": {
-      "decimale": 4.0,
+      "decimale": 3.95,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2435,7 +2568,7 @@
       "operatori": 1
      },
      "hg_under_1.5": {
-      "decimale": 1.76,
+      "decimale": 1.77,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -2455,12 +2588,17 @@
       "operatori": 2
      },
      "over_1.5": {
-      "decimale": 1.34,
+      "decimale": 1.3,
+      "fonte": "kambi",
+      "operatori": 1
+     },
+     "over_1.75": {
+      "decimale": 1.42,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_2": {
-      "decimale": 1.56,
+      "decimale": 1.54,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -2474,25 +2612,15 @@
       "fonte": "betexplorer",
       "operatori": 2
      },
-     "over_2.75": {
-      "decimale": 2.3,
-      "fonte": "betexplorer",
-      "operatori": 2
-     },
      "over_3.5": {
       "decimale": 3.6,
       "fonte": "kambi",
       "operatori": 1
      },
      "over_4.5": {
-      "decimale": 7.5,
-      "fonte": "betexplorer",
-      "operatori": 2
-     },
-     "over_5.5": {
-      "decimale": 15.75,
-      "fonte": "betexplorer",
-      "operatori": 2
+      "decimale": 7.0,
+      "fonte": "kambi",
+      "operatori": 1
      },
      "under_0.5": {
       "decimale": 9.0,
@@ -2500,17 +2628,22 @@
       "operatori": 2
      },
      "under_1.5": {
-      "decimale": 3.15,
+      "decimale": 3.25,
+      "fonte": "kambi",
+      "operatori": 1
+     },
+     "under_1.75": {
+      "decimale": 2.73,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2": {
-      "decimale": 2.34,
+      "decimale": 2.35,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2.25": {
-      "decimale": 1.96,
+      "decimale": 1.98,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -2519,25 +2652,15 @@
       "fonte": "betexplorer",
       "operatori": 2
      },
-     "under_2.75": {
-      "decimale": 1.57,
-      "fonte": "betexplorer",
-      "operatori": 2
-     },
      "under_3.5": {
-      "decimale": 1.25,
+      "decimale": 1.26,
       "fonte": "kambi",
       "operatori": 1
      },
      "under_4.5": {
-      "decimale": 1.08,
-      "fonte": "betexplorer",
-      "operatori": 2
-     },
-     "under_5.5": {
-      "decimale": 1.02,
-      "fonte": "betexplorer",
-      "operatori": 2
+      "decimale": 1.07,
+      "fonte": "kambi",
+      "operatori": 1
      }
     },
     "quote": {
@@ -2552,25 +2675,25 @@
         {
          "decimale": 1.18,
          "esito": "1X",
-         "probabilita_implicita": 0.8233
+         "probabilita_implicita": 0.8216
         },
         {
          "decimale": 1.29,
          "esito": "12",
-         "probabilita_implicita": 0.7414
+         "probabilita_implicita": 0.7391
         },
         {
-         "decimale": 2.03,
+         "decimale": 2.0,
          "esito": "X2",
-         "probabilita_implicita": 0.4353
+         "probabilita_implicita": 0.4392
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 5.76,
+       "margine_percento": 6.13,
        "mercato": "Doppia chance",
        "n_bookmaker": 3,
-       "somma_probabilita": 2.1153
+       "somma_probabilita": 2.1227
       },
       {
        "bookmaker": [
@@ -2599,26 +2722,26 @@
       {
        "bookmaker": [
         "bet365.us",
-        "betmgm.us"
+        "stake.com"
        ],
        "esiti": [
         {
-         "decimale": 1.34,
+         "decimale": 1.42,
          "esito": "Over",
-         "probabilita_implicita": 0.7217
+         "probabilita_implicita": 0.675
         },
         {
-         "decimale": 3.15,
+         "decimale": 2.73,
          "esito": "Under",
-         "probabilita_implicita": 0.2783
+         "probabilita_implicita": 0.325
         }
        ],
        "fonte": "betexplorer",
-       "linea": "1.5",
-       "margine_percento": 6.37,
+       "linea": "1.75",
+       "margine_percento": 7.12,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0637
+       "somma_probabilita": 1.0712
       },
       {
        "bookmaker": [
@@ -2627,22 +2750,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.56,
+         "decimale": 1.54,
          "esito": "Over",
-         "probabilita_implicita": 0.6106
+         "probabilita_implicita": 0.6155
         },
         {
-         "decimale": 2.34,
+         "decimale": 2.35,
          "esito": "Under",
-         "probabilita_implicita": 0.3894
+         "probabilita_implicita": 0.3845
         }
        ],
        "fonte": "betexplorer",
        "linea": "2",
-       "margine_percento": 6.84,
+       "margine_percento": 7.19,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0684
+       "somma_probabilita": 1.0719
       },
       {
        "bookmaker": [
@@ -2653,20 +2776,20 @@
         {
          "decimale": 1.81,
          "esito": "Over",
-         "probabilita_implicita": 0.5217
+         "probabilita_implicita": 0.5252
         },
         {
-         "decimale": 1.96,
+         "decimale": 1.98,
          "esito": "Under",
-         "probabilita_implicita": 0.4783
+         "probabilita_implicita": 0.4748
         }
        ],
        "fonte": "betexplorer",
        "linea": "2.25",
-       "margine_percento": 5.99,
+       "margine_percento": 5.91,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0599
+       "somma_probabilita": 1.0591
       },
       {
        "bookmaker": [
@@ -2695,172 +2818,26 @@
       {
        "bookmaker": [
         "bet365.us",
-        "stake.com"
-       ],
-       "esiti": [
-        {
-         "decimale": 2.3,
-         "esito": "Over",
-         "probabilita_implicita": 0.3952
-        },
-        {
-         "decimale": 1.57,
-         "esito": "Under",
-         "probabilita_implicita": 0.6048
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "2.75",
-       "margine_percento": 7.17,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0717
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us"
-       ],
-       "esiti": [
-        {
-         "decimale": 7.5,
-         "esito": "Over",
-         "probabilita_implicita": 0.0885
-        },
-        {
-         "decimale": 1.08,
-         "esito": "Under",
-         "probabilita_implicita": 0.9115
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "4.5",
-       "margine_percento": 5.93,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0593
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
-        "betmgm.us"
-       ],
-       "esiti": [
-        {
-         "decimale": 15.75,
-         "esito": "Over",
-         "probabilita_implicita": 0.0259
-        },
-        {
-         "decimale": 1.02,
-         "esito": "Under",
-         "probabilita_implicita": 0.9741
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": "5.5",
-       "margine_percento": 4.39,
-       "mercato": "Gol totali",
-       "n_bookmaker": 2,
-       "somma_probabilita": 1.0439
-      },
-      {
-       "bookmaker": [
-        "bet365.us",
         "betmgm.us",
         "stake.com"
        ],
        "esiti": [
         {
-         "decimale": 1.96,
-         "esito": "Sì",
-         "probabilita_implicita": 0.4681
-        },
-        {
-         "decimale": 1.75,
-         "esito": "No",
-         "probabilita_implicita": 0.5319
-        }
-       ],
-       "fonte": "betexplorer",
-       "linea": null,
-       "margine_percento": 8.16,
-       "mercato": "Entrambe segnano",
-       "n_bookmaker": 3,
-       "somma_probabilita": 1.0816
-      },
-      {
-       "bookmaker": [
-        "unibet"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.81,
-         "esito": "1",
-         "probabilita_implicita": 0.5263
-        },
-        {
-         "decimale": 3.45,
-         "esito": "X",
-         "probabilita_implicita": 0.2619
-        },
-        {
-         "decimale": 4.2,
-         "esito": "2",
-         "probabilita_implicita": 0.2117
-        }
-       ],
-       "fonte": "kambi",
-       "linea": null,
-       "margine_percento": 8.04,
-       "mercato": "Esito finale",
-       "n_bookmaker": 1,
-       "somma_probabilita": 1.0804
-      },
-      {
-       "bookmaker": [
-        "unibet"
-       ],
-       "esiti": [
-        {
-         "decimale": 1.17,
-         "esito": "Over",
-         "probabilita_implicita": 0.8259
-        },
-        {
-         "decimale": 4.2,
-         "esito": "Under",
-         "probabilita_implicita": 0.1741
-        }
-       ],
-       "fonte": "kambi",
-       "linea": "0.5",
-       "margine_percento": 9.28,
-       "mercato": "Gol di squadra casa",
-       "n_bookmaker": 1,
-       "somma_probabilita": 1.0928
-      },
-      {
-       "bookmaker": [
-        "unibet"
-       ],
-       "esiti": [
-        {
          "decimale": 1.93,
-         "esito": "Over",
+         "esito": "Sì",
          "probabilita_implicita": 0.4738
         },
         {
          "decimale": 1.76,
-         "esito": "Under",
+         "esito": "No",
          "probabilita_implicita": 0.5262
         }
        ],
-       "fonte": "kambi",
-       "linea": "1.5",
+       "fonte": "betexplorer",
+       "linea": null,
        "margine_percento": 8.63,
-       "mercato": "Gol di squadra casa",
-       "n_bookmaker": 1,
+       "mercato": "Entrambe segnano",
+       "n_bookmaker": 3,
        "somma_probabilita": 1.0863
       },
       {
@@ -2869,22 +2846,96 @@
        ],
        "esiti": [
         {
-         "decimale": 4.0,
+         "decimale": 1.8,
+         "esito": "1",
+         "probabilita_implicita": 0.5298
+        },
+        {
+         "decimale": 3.5,
+         "esito": "X",
+         "probabilita_implicita": 0.2582
+        },
+        {
+         "decimale": 4.2,
+         "esito": "2",
+         "probabilita_implicita": 0.212
+        }
+       ],
+       "fonte": "kambi",
+       "linea": null,
+       "margine_percento": 7.94,
+       "mercato": "Esito finale",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.0794
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.18,
          "esito": "Over",
-         "probabilita_implicita": 0.1888
+         "probabilita_implicita": 0.8204
+        },
+        {
+         "decimale": 4.2,
+         "esito": "Under",
+         "probabilita_implicita": 0.1796
+        }
+       ],
+       "fonte": "kambi",
+       "linea": "0.5",
+       "margine_percento": 8.56,
+       "mercato": "Gol di squadra casa",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.0856
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.91,
+         "esito": "Over",
+         "probabilita_implicita": 0.4783
+        },
+        {
+         "decimale": 1.77,
+         "esito": "Under",
+         "probabilita_implicita": 0.5217
+        }
+       ],
+       "fonte": "kambi",
+       "linea": "1.5",
+       "margine_percento": 8.85,
+       "mercato": "Gol di squadra casa",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.0885
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.95,
+         "esito": "Over",
+         "probabilita_implicita": 0.1898
         },
         {
          "decimale": 1.19,
          "esito": "Under",
-         "probabilita_implicita": 0.8112
+         "probabilita_implicita": 0.8102
         }
        ],
        "fonte": "kambi",
        "linea": "2.5",
-       "margine_percento": 9.03,
+       "margine_percento": 9.35,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0903
+       "somma_probabilita": 1.0935
       },
       {
        "bookmaker": [
@@ -2984,22 +3035,68 @@
        ],
        "esiti": [
         {
-         "decimale": 3.6,
+         "decimale": 1.3,
          "esito": "Over",
-         "probabilita_implicita": 0.2274
+         "probabilita_implicita": 0.7406
         },
         {
-         "decimale": 1.25,
+         "decimale": 3.25,
          "esito": "Under",
-         "probabilita_implicita": 0.7726
+         "probabilita_implicita": 0.2594
+        }
+       ],
+       "fonte": "kambi",
+       "linea": "1.5",
+       "margine_percento": 7.69,
+       "mercato": "Gol totali",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.0769
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 3.6,
+         "esito": "Over",
+         "probabilita_implicita": 0.2318
+        },
+        {
+         "decimale": 1.26,
+         "esito": "Under",
+         "probabilita_implicita": 0.7682
         }
        ],
        "fonte": "kambi",
        "linea": "3.5",
-       "margine_percento": 7.78,
+       "margine_percento": 7.14,
        "mercato": "Gol totali",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0778
+       "somma_probabilita": 1.0714
+      },
+      {
+       "bookmaker": [
+        "unibet"
+       ],
+       "esiti": [
+        {
+         "decimale": 7.0,
+         "esito": "Over",
+         "probabilita_implicita": 0.0829
+        },
+        {
+         "decimale": 1.07,
+         "esito": "Under",
+         "probabilita_implicita": 0.9171
+        }
+       ],
+       "fonte": "kambi",
+       "linea": "4.5",
+       "margine_percento": 7.74,
+       "mercato": "Gol totali",
+       "n_bookmaker": 1,
+       "somma_probabilita": 1.0774
       },
       {
        "bookmaker": [
@@ -3009,25 +3106,25 @@
         {
          "decimale": 3.15,
          "esito": "1",
-         "probabilita_implicita": 0.2735
+         "probabilita_implicita": 0.2744
         },
         {
          "decimale": 3.4,
          "esito": "X",
-         "probabilita_implicita": 0.2509
+         "probabilita_implicita": 0.2518
         },
         {
-         "decimale": 1.93,
+         "decimale": 1.94,
          "esito": "2",
-         "probabilita_implicita": 0.4757
+         "probabilita_implicita": 0.4738
         }
        ],
        "fonte": "kambi",
        "linea": "-1",
-       "margine_percento": 12.97,
+       "margine_percento": 12.7,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1297
+       "somma_probabilita": 1.127
       },
       {
        "bookmaker": [
@@ -3037,25 +3134,25 @@
         {
          "decimale": 6.75,
          "esito": "1",
-         "probabilita_implicita": 0.1054
+         "probabilita_implicita": 0.1076
         },
         {
          "decimale": 4.9,
          "esito": "X",
-         "probabilita_implicita": 0.1538
+         "probabilita_implicita": 0.1563
         },
         {
-         "decimale": 1.29,
+         "decimale": 1.3,
          "esito": "2",
-         "probabilita_implicita": 0.7408
+         "probabilita_implicita": 0.7361
         }
        ],
        "fonte": "kambi",
        "linea": "-2",
-       "margine_percento": 12.74,
+       "margine_percento": 12.15,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1274
+       "somma_probabilita": 1.1215
       },
       {
        "bookmaker": [
@@ -3063,27 +3160,27 @@
        ],
        "esiti": [
         {
-         "decimale": 14.0,
+         "decimale": 13.0,
          "esito": "1",
-         "probabilita_implicita": 0.0306
+         "probabilita_implicita": 0.0328
         },
         {
          "decimale": 9.0,
          "esito": "X",
-         "probabilita_implicita": 0.0549
+         "probabilita_implicita": 0.0535
         },
         {
          "decimale": 1.07,
          "esito": "2",
-         "probabilita_implicita": 0.9145
+         "probabilita_implicita": 0.9138
         }
        ],
        "fonte": "kambi",
        "linea": "-3",
-       "margine_percento": 11.71,
+       "margine_percento": 12.26,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1171
+       "somma_probabilita": 1.1226
       },
       {
        "bookmaker": [
@@ -3114,7 +3211,7 @@
        "somma_probabilita": 1.1238
       }
      ],
-     "n_mercati": 23
+     "n_mercati": 22
     }
    },
    "diagnostics": {
@@ -3253,7 +3350,7 @@
      },
      "confermate": false,
      "fonte": "sportsgambler",
-     "ore_prima": 73.9,
+     "ore_prima": 59.9,
      "ospiti": {
       "modulo": "4-2-3-1",
       "panchina": [],
@@ -3305,65 +3402,69 @@
       ]
      }
     },
-    "letto": "2026-08-30T17:06:49Z",
+    "letto": "2026-08-31T07:03:06Z",
     "market_p": {
-     "1x2_away": 0.3533,
-     "1x2_draw": 0.2814,
+     "1x2_away": 0.3578,
+     "1x2_draw": 0.2769,
      "1x2_home": 0.3653,
      "ag_over_0.5": 0.7547,
-     "ag_over_1.5": 0.3668,
-     "ag_over_2.5": 0.1069,
+     "ag_over_1.5": 0.371,
+     "ag_over_2.5": 0.115,
      "ag_under_0.5": 0.2453,
-     "ag_under_1.5": 0.6332,
-     "ag_under_2.5": 0.8931,
-     "btts_no": 0.4363,
-     "btts_yes": 0.5637,
-     "dc_12": 0.7385,
-     "dc_1x": 0.6308,
-     "dc_x2": 0.6308,
-     "eh_-1_away": 0.6415,
-     "eh_-1_draw": 0.2054,
-     "eh_-1_home": 0.153,
+     "ag_under_1.5": 0.629,
+     "ag_under_2.5": 0.885,
+     "btts_no": 0.427,
+     "btts_yes": 0.573,
+     "dc_12": 0.7264,
+     "dc_1x": 0.6318,
+     "dc_x2": 0.6417,
+     "eh_-1_away": 0.6466,
+     "eh_-1_draw": 0.1968,
+     "eh_-1_home": 0.1566,
      "eh_-2_away": 0.8594,
      "eh_-2_draw": 0.0895,
      "eh_-2_home": 0.0511,
-     "eh_1_away": 0.1485,
-     "eh_1_draw": 0.1955,
-     "eh_1_home": 0.6559,
+     "eh_1_away": 0.1524,
+     "eh_1_draw": 0.2017,
+     "eh_1_home": 0.6459,
      "eh_2_away": 0.0463,
      "eh_2_draw": 0.0865,
      "eh_2_home": 0.8672,
      "hg_over_0.5": 0.7608,
      "hg_over_1.5": 0.371,
-     "hg_over_2.5": 0.115,
+     "hg_over_2.5": 0.1159,
      "hg_under_0.5": 0.2392,
      "hg_under_1.5": 0.629,
-     "hg_under_2.5": 0.885,
-     "over_0.5": 0.9523,
-     "over_1.5": 0.7659,
-     "over_2.25": 0.5838,
-     "over_2.5": 0.5061,
-     "over_2.75": 0.4465,
-     "over_3.5": 0.2821,
-     "over_4.5": 0.1238,
-     "over_5.5": 0.0422,
-     "under_0.5": 0.0477,
-     "under_1.5": 0.2341,
-     "under_2.25": 0.4162,
-     "under_2.5": 0.4939,
-     "under_2.75": 0.5535,
-     "under_3.5": 0.7179,
-     "under_4.5": 0.8762,
-     "under_5.5": 0.9578
+     "hg_under_2.5": 0.8841,
+     "over_0.5": 0.9474,
+     "over_1.5": 0.78,
+     "over_2": 0.6969,
+     "over_2.25": 0.6,
+     "over_2.5": 0.5197,
+     "over_2.75": 0.462,
+     "over_3": 0.3878,
+     "over_3.5": 0.2962,
+     "over_4.5": 0.133,
+     "over_5.5": 0.048,
+     "under_0.5": 0.0526,
+     "under_1.5": 0.22,
+     "under_2": 0.3031,
+     "under_2.25": 0.4,
+     "under_2.5": 0.4803,
+     "under_2.75": 0.538,
+     "under_3": 0.6122,
+     "under_3.5": 0.7038,
+     "under_4.5": 0.867,
+     "under_5.5": 0.952
     },
     "prezzi": {
      "1x2_away": {
-      "decimale": 2.63,
+      "decimale": 2.6,
       "fonte": "kambi",
       "operatori": 1
      },
      "1x2_draw": {
-      "decimale": 3.25,
+      "decimale": 3.3,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -3378,12 +3479,12 @@
       "operatori": 1
      },
      "ag_over_1.5": {
-      "decimale": 2.4,
+      "decimale": 2.38,
       "fonte": "kambi",
       "operatori": 1
      },
      "ag_over_2.5": {
-      "decimale": 5.5,
+      "decimale": 5.4,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -3393,27 +3494,27 @@
       "operatori": 1
      },
      "ag_under_1.5": {
-      "decimale": 1.49,
+      "decimale": 1.5,
       "fonte": "kambi",
       "operatori": 1
      },
      "ag_under_2.5": {
-      "decimale": 1.09,
+      "decimale": 1.1,
       "fonte": "kambi",
       "operatori": 1
      },
      "btts_no": {
-      "decimale": 2.1,
+      "decimale": 2.11,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "btts_yes": {
-      "decimale": 1.67,
+      "decimale": 1.63,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "dc_12": {
-      "decimale": 1.3,
+      "decimale": 1.32,
       "fonte": "betexplorer",
       "operatori": 3
      },
@@ -3423,22 +3524,22 @@
       "operatori": 3
      },
      "dc_x2": {
-      "decimale": 1.49,
+      "decimale": 1.47,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "eh_-1_away": {
-      "decimale": 1.47,
+      "decimale": 1.46,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_-1_draw": {
-      "decimale": 3.95,
+      "decimale": 4.1,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_-1_home": {
-      "decimale": 5.1,
+      "decimale": 5.0,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -3458,17 +3559,17 @@
       "operatori": 1
      },
      "eh_1_away": {
-      "decimale": 5.2,
+      "decimale": 5.1,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_1_draw": {
-      "decimale": 4.1,
+      "decimale": 4.0,
       "fonte": "kambi",
       "operatori": 1
      },
      "eh_1_home": {
-      "decimale": 1.44,
+      "decimale": 1.46,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -3498,7 +3599,7 @@
       "operatori": 1
      },
      "hg_over_2.5": {
-      "decimale": 5.4,
+      "decimale": 5.3,
       "fonte": "kambi",
       "operatori": 1
      },
@@ -3523,72 +3624,92 @@
       "operatori": 2
      },
      "over_1.5": {
-      "decimale": 1.27,
+      "decimale": 1.25,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "over_2": {
+      "decimale": 1.38,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_2.25": {
-      "decimale": 1.62,
+      "decimale": 1.58,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_2.5": {
-      "decimale": 1.83,
+      "decimale": 1.79,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "over_2.75": {
-      "decimale": 2.07,
+      "decimale": 2.01,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "over_3": {
+      "decimale": 2.34,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_3.5": {
-      "decimale": 3.1,
+      "decimale": 2.98,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_4.5": {
-      "decimale": 6.0,
+      "decimale": 5.62,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "over_5.5": {
-      "decimale": 12.5,
+      "decimale": 11.25,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_0.5": {
-      "decimale": 11.5,
+      "decimale": 11.0,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_1.5": {
-      "decimale": 3.67,
+      "decimale": 3.8,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_2": {
+      "decimale": 2.9,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2.25": {
-      "decimale": 2.21,
+      "decimale": 2.29,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_2.5": {
-      "decimale": 1.87,
+      "decimale": 1.92,
       "fonte": "betexplorer",
       "operatori": 3
      },
      "under_2.75": {
-      "decimale": 1.71,
+      "decimale": 1.75,
+      "fonte": "betexplorer",
+      "operatori": 2
+     },
+     "under_3": {
+      "decimale": 1.56,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_3.5": {
-      "decimale": 1.35,
+      "decimale": 1.37,
       "fonte": "betexplorer",
       "operatori": 2
      },
      "under_4.5": {
-      "decimale": 1.12,
+      "decimale": 1.13,
       "fonte": "betexplorer",
       "operatori": 2
      },
@@ -3610,25 +3731,25 @@
         {
          "decimale": 1.49,
          "esito": "1X",
-         "probabilita_implicita": 0.6308
+         "probabilita_implicita": 0.6318
         },
         {
-         "decimale": 1.3,
+         "decimale": 1.32,
          "esito": "12",
-         "probabilita_implicita": 0.7385
+         "probabilita_implicita": 0.7264
         },
         {
-         "decimale": 1.49,
+         "decimale": 1.47,
          "esito": "X2",
-         "probabilita_implicita": 0.6308
+         "probabilita_implicita": 0.6417
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 5.58,
+       "margine_percento": 5.45,
        "mercato": "Doppia chance",
        "n_bookmaker": 3,
-       "somma_probabilita": 2.1115
+       "somma_probabilita": 2.109
       },
       {
        "bookmaker": [
@@ -3639,20 +3760,20 @@
         {
          "decimale": 1.04,
          "esito": "Over",
-         "probabilita_implicita": 0.9523
+         "probabilita_implicita": 0.9474
         },
         {
-         "decimale": 11.5,
+         "decimale": 11.0,
          "esito": "Under",
-         "probabilita_implicita": 0.0477
+         "probabilita_implicita": 0.0526
         }
        ],
        "fonte": "betexplorer",
        "linea": "0.5",
-       "margine_percento": 4.85,
+       "margine_percento": 4.78,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0485
+       "somma_probabilita": 1.0478
       },
       {
        "bookmaker": [
@@ -3661,22 +3782,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.27,
+         "decimale": 1.25,
          "esito": "Over",
-         "probabilita_implicita": 0.7659
+         "probabilita_implicita": 0.78
         },
         {
-         "decimale": 3.67,
+         "decimale": 3.8,
          "esito": "Under",
-         "probabilita_implicita": 0.2341
+         "probabilita_implicita": 0.22
         }
        ],
        "fonte": "betexplorer",
        "linea": "1.5",
-       "margine_percento": 5.95,
+       "margine_percento": 6.64,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0595
+       "somma_probabilita": 1.0664
       },
       {
        "bookmaker": [
@@ -3685,22 +3806,46 @@
        ],
        "esiti": [
         {
-         "decimale": 1.62,
+         "decimale": 1.38,
          "esito": "Over",
-         "probabilita_implicita": 0.5838
+         "probabilita_implicita": 0.6969
         },
         {
-         "decimale": 2.21,
+         "decimale": 2.9,
          "esito": "Under",
-         "probabilita_implicita": 0.4162
+         "probabilita_implicita": 0.3031
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "2",
+       "margine_percento": 6.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0695
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 1.58,
+         "esito": "Over",
+         "probabilita_implicita": 0.6
+        },
+        {
+         "decimale": 2.29,
+         "esito": "Under",
+         "probabilita_implicita": 0.4
         }
        ],
        "fonte": "betexplorer",
        "linea": "2.25",
-       "margine_percento": 6.89,
+       "margine_percento": 6.86,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0689
+       "somma_probabilita": 1.0686
       },
       {
        "bookmaker": [
@@ -3710,22 +3855,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.83,
+         "decimale": 1.79,
          "esito": "Over",
-         "probabilita_implicita": 0.5061
+         "probabilita_implicita": 0.5197
         },
         {
-         "decimale": 1.87,
+         "decimale": 1.92,
          "esito": "Under",
-         "probabilita_implicita": 0.4939
+         "probabilita_implicita": 0.4803
         }
        ],
        "fonte": "betexplorer",
        "linea": "2.5",
-       "margine_percento": 8.12,
+       "margine_percento": 7.95,
        "mercato": "Gol totali",
        "n_bookmaker": 3,
-       "somma_probabilita": 1.0812
+       "somma_probabilita": 1.0795
       },
       {
        "bookmaker": [
@@ -3734,22 +3879,46 @@
        ],
        "esiti": [
         {
-         "decimale": 2.07,
+         "decimale": 2.01,
          "esito": "Over",
-         "probabilita_implicita": 0.4465
+         "probabilita_implicita": 0.462
         },
         {
-         "decimale": 1.71,
+         "decimale": 1.75,
          "esito": "Under",
-         "probabilita_implicita": 0.5535
+         "probabilita_implicita": 0.538
         }
        ],
        "fonte": "betexplorer",
        "linea": "2.75",
-       "margine_percento": 6.96,
+       "margine_percento": 6.61,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0696
+       "somma_probabilita": 1.0661
+      },
+      {
+       "bookmaker": [
+        "bet365.us",
+        "stake.com"
+       ],
+       "esiti": [
+        {
+         "decimale": 2.34,
+         "esito": "Over",
+         "probabilita_implicita": 0.3878
+        },
+        {
+         "decimale": 1.56,
+         "esito": "Under",
+         "probabilita_implicita": 0.6122
+        }
+       ],
+       "fonte": "betexplorer",
+       "linea": "3",
+       "margine_percento": 6.95,
+       "mercato": "Gol totali",
+       "n_bookmaker": 2,
+       "somma_probabilita": 1.0695
       },
       {
        "bookmaker": [
@@ -3758,14 +3927,14 @@
        ],
        "esiti": [
         {
-         "decimale": 3.1,
+         "decimale": 2.98,
          "esito": "Over",
-         "probabilita_implicita": 0.2821
+         "probabilita_implicita": 0.2962
         },
         {
-         "decimale": 1.35,
+         "decimale": 1.37,
          "esito": "Under",
-         "probabilita_implicita": 0.7179
+         "probabilita_implicita": 0.7038
         }
        ],
        "fonte": "betexplorer",
@@ -3782,22 +3951,22 @@
        ],
        "esiti": [
         {
-         "decimale": 6.0,
+         "decimale": 5.62,
          "esito": "Over",
-         "probabilita_implicita": 0.1238
+         "probabilita_implicita": 0.133
         },
         {
-         "decimale": 1.12,
+         "decimale": 1.13,
          "esito": "Under",
-         "probabilita_implicita": 0.8762
+         "probabilita_implicita": 0.867
         }
        ],
        "fonte": "betexplorer",
        "linea": "4.5",
-       "margine_percento": 5.95,
+       "margine_percento": 6.27,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0595
+       "somma_probabilita": 1.0627
       },
       {
        "bookmaker": [
@@ -3806,22 +3975,22 @@
        ],
        "esiti": [
         {
-         "decimale": 12.5,
+         "decimale": 11.25,
          "esito": "Over",
-         "probabilita_implicita": 0.0422
+         "probabilita_implicita": 0.048
         },
         {
          "decimale": 1.04,
          "esito": "Under",
-         "probabilita_implicita": 0.9578
+         "probabilita_implicita": 0.952
         }
        ],
        "fonte": "betexplorer",
        "linea": "5.5",
-       "margine_percento": 4.62,
+       "margine_percento": 5.04,
        "mercato": "Gol totali",
        "n_bookmaker": 2,
-       "somma_probabilita": 1.0462
+       "somma_probabilita": 1.0504
       },
       {
        "bookmaker": [
@@ -3831,22 +4000,22 @@
        ],
        "esiti": [
         {
-         "decimale": 1.67,
+         "decimale": 1.63,
          "esito": "Sì",
-         "probabilita_implicita": 0.5637
+         "probabilita_implicita": 0.573
         },
         {
-         "decimale": 2.1,
+         "decimale": 2.11,
          "esito": "No",
-         "probabilita_implicita": 0.4363
+         "probabilita_implicita": 0.427
         }
        ],
        "fonte": "betexplorer",
        "linea": null,
-       "margine_percento": 7.5,
+       "margine_percento": 8.74,
        "mercato": "Entrambe segnano",
        "n_bookmaker": 3,
-       "somma_probabilita": 1.075
+       "somma_probabilita": 1.0874
       },
       {
        "bookmaker": [
@@ -3859,22 +4028,22 @@
          "probabilita_implicita": 0.3653
         },
         {
-         "decimale": 3.25,
+         "decimale": 3.3,
          "esito": "X",
-         "probabilita_implicita": 0.2814
+         "probabilita_implicita": 0.2769
         },
         {
-         "decimale": 2.63,
+         "decimale": 2.6,
          "esito": "2",
-         "probabilita_implicita": 0.3533
+         "probabilita_implicita": 0.3578
         }
        ],
        "fonte": "kambi",
        "linea": null,
-       "margine_percento": 8.01,
+       "margine_percento": 7.98,
        "mercato": "Esito finale",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0801
+       "somma_probabilita": 1.0798
       },
       {
        "bookmaker": [
@@ -3928,22 +4097,22 @@
        ],
        "esiti": [
         {
-         "decimale": 5.4,
+         "decimale": 5.3,
          "esito": "Over",
-         "probabilita_implicita": 0.115
+         "probabilita_implicita": 0.1159
         },
         {
          "decimale": 1.1,
          "esito": "Under",
-         "probabilita_implicita": 0.885
+         "probabilita_implicita": 0.8841
         }
        ],
        "fonte": "kambi",
        "linea": "2.5",
-       "margine_percento": 9.43,
+       "margine_percento": 9.78,
        "mercato": "Gol di squadra casa",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0943
+       "somma_probabilita": 1.0978
       },
       {
        "bookmaker": [
@@ -3974,22 +4143,22 @@
        ],
        "esiti": [
         {
-         "decimale": 2.4,
+         "decimale": 2.38,
          "esito": "Over",
-         "probabilita_implicita": 0.3668
+         "probabilita_implicita": 0.371
         },
         {
-         "decimale": 1.49,
+         "decimale": 1.5,
          "esito": "Under",
-         "probabilita_implicita": 0.6332
+         "probabilita_implicita": 0.629
         }
        ],
        "fonte": "kambi",
        "linea": "1.5",
-       "margine_percento": 8.78,
+       "margine_percento": 8.68,
        "mercato": "Gol di squadra ospite",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0878
+       "somma_probabilita": 1.0868
       },
       {
        "bookmaker": [
@@ -3997,22 +4166,22 @@
        ],
        "esiti": [
         {
-         "decimale": 5.5,
+         "decimale": 5.4,
          "esito": "Over",
-         "probabilita_implicita": 0.1069
+         "probabilita_implicita": 0.115
         },
         {
-         "decimale": 1.09,
+         "decimale": 1.1,
          "esito": "Under",
-         "probabilita_implicita": 0.8931
+         "probabilita_implicita": 0.885
         }
        ],
        "fonte": "kambi",
        "linea": "2.5",
-       "margine_percento": 9.92,
+       "margine_percento": 9.43,
        "mercato": "Gol di squadra ospite",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.0992
+       "somma_probabilita": 1.0943
       },
       {
        "bookmaker": [
@@ -4020,27 +4189,27 @@
        ],
        "esiti": [
         {
-         "decimale": 5.1,
+         "decimale": 5.0,
          "esito": "1",
-         "probabilita_implicita": 0.153
+         "probabilita_implicita": 0.1566
         },
         {
-         "decimale": 3.95,
+         "decimale": 4.1,
          "esito": "X",
-         "probabilita_implicita": 0.2054
+         "probabilita_implicita": 0.1968
         },
         {
-         "decimale": 1.47,
+         "decimale": 1.46,
          "esito": "2",
-         "probabilita_implicita": 0.6415
+         "probabilita_implicita": 0.6466
         }
        ],
        "fonte": "kambi",
        "linea": "-1",
-       "margine_percento": 12.95,
+       "margine_percento": 12.88,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1295
+       "somma_probabilita": 1.1288
       },
       {
        "bookmaker": [
@@ -4076,27 +4245,27 @@
        ],
        "esiti": [
         {
-         "decimale": 1.44,
+         "decimale": 1.46,
          "esito": "1",
-         "probabilita_implicita": 0.6559
+         "probabilita_implicita": 0.6459
         },
         {
-         "decimale": 4.1,
+         "decimale": 4.0,
          "esito": "X",
-         "probabilita_implicita": 0.1955
+         "probabilita_implicita": 0.2017
         },
         {
-         "decimale": 5.2,
+         "decimale": 5.1,
          "esito": "2",
-         "probabilita_implicita": 0.1485
+         "probabilita_implicita": 0.1524
         }
        ],
        "fonte": "kambi",
        "linea": "1",
-       "margine_percento": 13.07,
+       "margine_percento": 13.1,
        "mercato": "Handicap europeo",
        "n_bookmaker": 1,
-       "somma_probabilita": 1.1307
+       "somma_probabilita": 1.131
       },
       {
        "bookmaker": [
@@ -4127,7 +4296,7 @@
        "somma_probabilita": 1.1227
       }
      ],
-     "n_mercati": 21
+     "n_mercati": 23
     }
    },
    "diagnostics": {
@@ -4362,7 +4531,7 @@
    "utc_date": "2026-09-02T22:30:00Z"
   }
  ],
- "generated_at": "2026-08-31T03:08:15Z",
+ "generated_at": "2026-08-31T07:03:06Z",
  "schema_version": 1,
  "silence_count": 2,
  "total": 5
