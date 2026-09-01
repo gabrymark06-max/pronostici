@@ -6170,35 +6170,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 87,
-     "p_min": 88,
-     "quota_min": 12,
+     "S_min": 85,
+     "p_min": 83,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
-    "truncated_mass": 1.092e-06
+    "n_clusters": 4,
+    "truncated_mass": 2.056e-06
    },
    "expected_goals": {
-    "away": 0.769,
-    "home": 2.326
+    "away": 0.665,
+    "home": 2.466
    },
    "half_time": {
-    "ht_over_0.5": 0.7507,
-    "ht_over_1.5": 0.4044,
-    "ht_over_2.5": 0.1638,
-    "ht_under_0.5": 0.2493,
-    "ht_under_1.5": 0.5956,
-    "ht_under_2.5": 0.8362,
-    "htft_11": 0.4898,
-    "htft_12": 0.0074,
-    "htft_1X": 0.0341,
-    "htft_21": 0.0306,
-    "htft_22": 0.0566,
-    "htft_2X": 0.0341,
-    "htft_X1": 0.2027,
-    "htft_X2": 0.0425,
-    "htft_XX": 0.1024
+    "ht_over_0.5": 0.7547,
+    "ht_over_1.5": 0.41,
+    "ht_over_2.5": 0.1678,
+    "ht_under_0.5": 0.2453,
+    "ht_under_1.5": 0.59,
+    "ht_under_2.5": 0.8322,
+    "htft_11": 0.533,
+    "htft_12": 0.0054,
+    "htft_1X": 0.0289,
+    "htft_21": 0.0286,
+    "htft_22": 0.0419,
+    "htft_2X": 0.0289,
+    "htft_X1": 0.2075,
+    "htft_X2": 0.0329,
+    "htft_XX": 0.0928
    },
    "home": {
     "crest": "https://crests.football-data.org/1783.png",
@@ -6207,104 +6207,149 @@
    },
    "match_id": 554775,
    "matchday": 4,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.07463,
-     "1x2_draw": 0.14598,
-     "1x2_home": 0.77939,
-     "dc_12": 0.85402,
-     "dc_1x": 0.92537,
-     "dc_x2": 0.22061,
-     "eh_-1_away": 0.22061,
-     "eh_1_home": 0.92537,
-     "mg_0_2": 0.39925,
-     "over_2.5": 0.60075,
-     "under_2.5": 0.39925
+    "devig": {
+     "h2h": 1.125,
+     "totals_2.5": 1.118,
+     "totals_3.5": 1.146
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
      "1x2_home",
      "over_2.5",
-     "under_2.5"
+     "over_3.5",
+     "under_2.5",
+     "under_3.5"
     ],
     "n_bookmakers": 24,
     "price_books": 1,
     "price_scope": "it",
     "prices": {
      "1x2_away": 11.0,
-     "1x2_draw": 5.8,
-     "1x2_home": 1.26,
-     "over_2.5": 1.58,
-     "under_2.5": 2.19
+     "1x2_draw": 6.0,
+     "1x2_home": 1.25,
+     "over_2.5": 1.56,
+     "under_2.5": 2.23
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.5373,
-    "band_p95": 0.7881,
+    "band_p5": 0.493,
+    "band_p95": 0.5896,
     "cluster_members": [],
-    "family": "team_goals",
-    "key": "hg_over_1.5",
-    "label": "Casa Over 1.5",
-    "p": 0.5913,
-    "p_raw": 0.6677,
-    "prezzo": 1.38,
-    "reference": 0.4451,
+    "family": "handicap_eu",
+    "key": "eh_-1_home",
+    "label": "Handicap -1 casa",
+    "p": 0.5165,
+    "p_raw": 0.5449,
+    "prezzo": 1.75,
+    "reference": 0.2202,
     "runners_up": [
      {
-      "band_p5": 0.6268,
-      "band_p95": 0.8295,
+      "band_p5": 0.6131,
+      "band_p95": 0.7019,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.6228,
+      "p_raw": 0.6605,
+      "reference": 0.357,
+      "score": 0.145366,
+      "shrink_alpha": 0.8758,
+      "sigma": 0.0275
+     },
+     {
+      "band_p5": 0.6598,
+      "band_p95": 0.7469,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6892,
+      "p_raw": 0.7046,
+      "prezzo": 1.36,
+      "reference": 0.4451,
+      "score": 0.121209,
+      "shrink_alpha": 0.9406,
+      "sigma": 0.0264
+     },
+     {
+      "band_p5": 0.7311,
+      "band_p95": 0.8,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.669,
-      "p_raw": 0.7345,
+      "p": 0.7534,
+      "p_raw": 0.7674,
       "reference": 0.5536,
-      "score": 0.027663,
-      "shrink_alpha": 0.6379,
-      "sigma": 0.062
+      "score": 0.08578,
+      "shrink_alpha": 0.9347,
+      "sigma": 0.0218
      },
      {
-      "band_p5": 0.5686,
-      "band_p95": 0.7855,
+      "band_p5": 0.5102,
+      "band_p95": 0.611,
       "family": "combo_dc",
-      "key": "combodc_12_over_1.5",
-      "label": "12 + Over 1.5",
-      "p": 0.6307,
-      "p_raw": 0.6845,
-      "reference": 0.5383,
-      "score": 0.01746,
-      "shrink_alpha": 0.6319,
-      "sigma": 0.0628
+      "key": "combodc_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.5373,
+      "p_raw": 0.5631,
+      "reference": 0.3408,
+      "score": 0.08086,
+      "shrink_alpha": 0.884,
+      "sigma": 0.0298
+     },
+     {
+      "band_p5": 0.4782,
+      "band_p95": 0.5508,
+      "family": "team_goals",
+      "key": "ag_under_0.5",
+      "label": "Ospite Under 0.5",
+      "p": 0.5074,
+      "p_raw": 0.5148,
+      "prezzo": 1.82,
+      "reference": 0.3257,
+      "score": 0.070329,
+      "shrink_alpha": 0.9612,
+      "sigma": 0.0211
      }
     ],
-    "score": 0.042963,
-    "shrink_alpha": 0.6568,
-    "sigma": 0.0758
+    "score": 0.209262,
+    "shrink_alpha": 0.9126,
+    "sigma": 0.0297
+   },
+   "previous": {
+    "market_key": "1x2_home",
+    "market_label": "Vittoria casa",
+    "p": 0.6625,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-28T21:17:12Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.1101,
-    "1x2_draw": 0.1721,
-    "1x2_home": 0.7178,
-    "btts_yes": 0.4771,
-    "over_2.5": 0.5926,
-    "under_2.5": 0.4074
+    "1x2_away": 0.0806,
+    "1x2_draw": 0.151,
+    "1x2_home": 0.7684,
+    "btts_yes": 0.4437,
+    "over_2.5": 0.6048,
+    "under_2.5": 0.3952
    },
    "reasons": [
-    "Gol attesi: CR Flamengo 2.33, Mirassol FC 0.77 (totale 3.09).",
-    "Casa Over 1.5: 59 su 100, 15 punti sopra la media di riferimento (45 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Fino a ieri dicevamo Vittoria casa. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Handicap -1 casa.",
+    "Gol attesi: CR Flamengo 2.47, Mirassol FC 0.66 (totale 3.13).",
+    "Handicap -1 casa: 52 su 100, 30 punti sopra la media di riferimento (22 su 100).",
+    "Banda di incertezza: fra 49 e 59 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-02T22:30:00Z"
   }
  ],
- "generated_at": "2026-09-01T17:11:52Z",
+ "generated_at": "2026-09-01T18:08:29Z",
  "schema_version": 1,
  "silence_count": 2,
  "total": 5
