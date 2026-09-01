@@ -1123,33 +1123,33 @@
     "filter_bites": {
      "S_min": 96,
      "p_min": 88,
-     "quota_min": 7,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 4,
-    "truncated_mass": 1.355e-09
+    "n_clusters": 3,
+    "truncated_mass": 1.625e-09
    },
    "expected_goals": {
-    "away": 1.278,
-    "home": 1.078
+    "away": 1.3,
+    "home": 1.084
    },
    "half_time": {
-    "ht_over_0.5": 0.6411,
-    "ht_over_1.5": 0.2733,
-    "ht_over_2.5": 0.0849,
-    "ht_under_0.5": 0.3589,
-    "ht_under_1.5": 0.7267,
-    "ht_under_2.5": 0.9151,
-    "htft_11": 0.1724,
-    "htft_12": 0.0205,
-    "htft_1X": 0.0486,
-    "htft_21": 0.0166,
-    "htft_22": 0.2346,
-    "htft_2X": 0.0486,
-    "htft_X1": 0.1232,
-    "htft_X2": 0.155,
-    "htft_XX": 0.1806
+    "ht_over_0.5": 0.6454,
+    "ht_over_1.5": 0.2777,
+    "ht_over_2.5": 0.0872,
+    "ht_under_0.5": 0.3546,
+    "ht_under_1.5": 0.7223,
+    "ht_under_2.5": 0.9128,
+    "htft_11": 0.1712,
+    "htft_12": 0.0209,
+    "htft_1X": 0.0488,
+    "htft_21": 0.0167,
+    "htft_22": 0.2379,
+    "htft_2X": 0.0488,
+    "htft_X1": 0.1218,
+    "htft_X2": 0.1557,
+    "htft_XX": 0.1781
    },
    "home": {
     "crest": "https://crests.football-data.org/511.png",
@@ -1194,86 +1194,61 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5829,
-    "band_p95": 0.821,
+    "band_p5": 0.58,
+    "band_p95": 0.8046,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.6563,
-    "p_raw": 0.7077,
-    "reference": 0.5411,
+    "p": 0.6567,
+    "p_raw": 0.7055,
+    "prezzo": 1.33,
+    "reference": 0.5404,
     "runners_up": [
      {
-      "band_p5": 0.585,
-      "band_p95": 0.7869,
+      "band_p5": 0.5864,
+      "band_p95": 0.7842,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6524,
-      "p_raw": 0.6864,
-      "prezzo": 1.36,
-      "reference": 0.546,
-      "score": 0.023321,
-      "shrink_alpha": 0.758,
-      "sigma": 0.0672
+      "p": 0.6571,
+      "p_raw": 0.6888,
+      "prezzo": 1.33,
+      "reference": 0.5454,
+      "score": 0.025734,
+      "shrink_alpha": 0.7788,
+      "sigma": 0.0634
      },
      {
-      "band_p5": 0.585,
-      "band_p95": 0.7869,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.6403,
-      "p_raw": 0.6864,
-      "reference": 0.546,
-      "score": 0.018254,
-      "shrink_alpha": 0.6718,
-      "sigma": 0.0672
-     },
-     {
-      "band_p5": 0.6905,
-      "band_p95": 0.8691,
-      "family": "over_under",
-      "key": "under_3.5",
-      "label": "Under 3.5",
-      "p": 0.7234,
-      "p_raw": 0.7858,
-      "reference": 0.6589,
-      "score": 0.009557,
-      "shrink_alpha": 0.5078,
-      "sigma": 0.0555
-     },
-     {
-      "band_p5": 0.6268,
-      "band_p95": 0.7269,
+      "band_p5": 0.6257,
+      "band_p95": 0.7261,
       "family": "multigoal",
       "key": "mg_1_3",
       "label": "Multigol 1-3",
-      "p": 0.6608,
-      "p_raw": 0.6878,
-      "reference": 0.5963,
-      "score": 0.00883,
-      "shrink_alpha": 0.7049,
-      "sigma": 0.0316
+      "p": 0.6594,
+      "p_raw": 0.685,
+      "reference": 0.5969,
+      "score": 0.008285,
+      "shrink_alpha": 0.7095,
+      "sigma": 0.0312
      }
     ],
-    "score": 0.027313,
-    "shrink_alpha": 0.6917,
-    "sigma": 0.07
+    "score": 0.027844,
+    "shrink_alpha": 0.7047,
+    "sigma": 0.0679
    },
    "raw_probabilities": {
-    "1x2_away": 0.4107,
-    "1x2_draw": 0.2757,
-    "1x2_home": 0.3136,
-    "btts_yes": 0.4673,
-    "over_2.5": 0.4174,
-    "under_2.5": 0.5826
+    "1x2_away": 0.415,
+    "1x2_draw": 0.2738,
+    "1x2_home": 0.3112,
+    "btts_yes": 0.4734,
+    "over_2.5": 0.4246,
+    "under_2.5": 0.5754
    },
    "reasons": [
-    "Gol attesi: Toulouse FC 1.08, Lille OSC 1.28 (totale 2.36).",
+    "Gol attesi: Toulouse FC 1.08, Lille OSC 1.30 (totale 2.38).",
     "Casa Under 1.5: 66 su 100, 12 punti sopra la media di riferimento (54 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Banda di incertezza: fra 58 e 80 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1992,33 +1967,33 @@
     "filter_bites": {
      "S_min": 113,
      "p_min": 87,
-     "quota_min": 9,
+     "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.41e-08
+    "truncated_mass": 1.501e-08
    },
    "expected_goals": {
-    "away": 1.348,
-    "home": 1.555
+    "away": 1.31,
+    "home": 1.572
    },
    "half_time": {
-    "ht_over_0.5": 0.717,
-    "ht_over_1.5": 0.3598,
-    "ht_over_2.5": 0.1343,
-    "ht_under_0.5": 0.283,
-    "ht_under_1.5": 0.6402,
-    "ht_under_2.5": 0.8657,
-    "htft_11": 0.2496,
-    "htft_12": 0.0225,
-    "htft_1X": 0.0525,
-    "htft_21": 0.0271,
-    "htft_22": 0.189,
-    "htft_2X": 0.0525,
-    "htft_X1": 0.1463,
-    "htft_X2": 0.1193,
-    "htft_XX": 0.1411
+    "ht_over_0.5": 0.7153,
+    "ht_over_1.5": 0.3576,
+    "ht_over_2.5": 0.1329,
+    "ht_under_0.5": 0.2847,
+    "ht_under_1.5": 0.6424,
+    "ht_under_2.5": 0.8671,
+    "htft_11": 0.2581,
+    "htft_12": 0.0216,
+    "htft_1X": 0.0521,
+    "htft_21": 0.0273,
+    "htft_22": 0.1812,
+    "htft_2X": 0.0521,
+    "htft_X1": 0.1498,
+    "htft_X2": 0.1157,
+    "htft_XX": 0.142
    },
    "home": {
     "crest": "https://crests.football-data.org/92.png",
@@ -2064,16 +2039,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3317,
-    "1x2_draw": 0.2459,
-    "1x2_home": 0.4224,
-    "btts_yes": 0.5765,
-    "over_2.5": 0.5515,
-    "under_2.5": 0.4485
+    "1x2_away": 0.32,
+    "1x2_draw": 0.2455,
+    "1x2_home": 0.4345,
+    "btts_yes": 0.5706,
+    "over_2.5": 0.546,
+    "under_2.5": 0.454
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Real Sociedad de Fútbol 1.56, RC Celta de Vigo 1.35 (totale 2.90)."
+    "Gol attesi: Real Sociedad de Fútbol 1.57, RC Celta de Vigo 1.31 (totale 2.88)."
    ],
    "silence": {
     "reason": "S_min"
@@ -2083,7 +2058,7 @@
    "utc_date": "2026-09-03T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-31T17:06:39Z",
+ "generated_at": "2026-09-01T03:11:04Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 2

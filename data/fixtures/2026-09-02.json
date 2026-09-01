@@ -866,7 +866,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 86,
-     "quota_min": 9,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -3074,7 +3074,7 @@
     "filter_bites": {
      "S_min": 97,
      "p_min": 89,
-     "quota_min": 14,
+     "quota_min": 13,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -3120,7 +3120,7 @@
     "label": "Non entrambe segnano",
     "p": 0.5504,
     "p_raw": 0.6055,
-    "prezzo": 1.75,
+    "prezzo": 1.77,
     "reference": 0.4583,
     "runners_up": [],
     "score": 0.01699,
@@ -4241,7 +4241,7 @@
     "label": "Ospite Under 1.5",
     "p": 0.7803,
     "p_raw": 0.8041,
-    "prezzo": 1.49,
+    "prezzo": 1.57,
     "reference": 0.6971,
     "runners_up": [
      {
@@ -4252,7 +4252,7 @@
       "label": "Non entrambe segnano",
       "p": 0.5407,
       "p_raw": 0.598,
-      "prezzo": 2.1,
+      "prezzo": 2.2,
       "reference": 0.4583,
       "score": 0.013607,
       "shrink_alpha": 0.5897,
@@ -6113,28 +6113,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 3,
-    "truncated_mass": 1.087e-06
+    "truncated_mass": 1.092e-06
    },
    "expected_goals": {
-    "away": 0.765,
-    "home": 2.324
+    "away": 0.769,
+    "home": 2.326
    },
    "half_time": {
     "ht_over_0.5": 0.7507,
     "ht_over_1.5": 0.4044,
-    "ht_over_2.5": 0.1639,
+    "ht_over_2.5": 0.1638,
     "ht_under_0.5": 0.2493,
     "ht_under_1.5": 0.5956,
-    "ht_under_2.5": 0.8361,
-    "htft_11": 0.4906,
-    "htft_12": 0.0073,
-    "htft_1X": 0.034,
-    "htft_21": 0.0304,
-    "htft_22": 0.0563,
-    "htft_2X": 0.034,
-    "htft_X1": 0.2026,
-    "htft_X2": 0.0423,
-    "htft_XX": 0.1025
+    "ht_under_2.5": 0.8362,
+    "htft_11": 0.4898,
+    "htft_12": 0.0074,
+    "htft_1X": 0.0341,
+    "htft_21": 0.0306,
+    "htft_22": 0.0566,
+    "htft_2X": 0.0341,
+    "htft_X1": 0.2027,
+    "htft_X2": 0.0425,
+    "htft_XX": 0.1024
    },
    "home": {
     "crest": "https://crests.football-data.org/1783.png",
@@ -6179,58 +6179,59 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5372,
-    "band_p95": 0.7806,
+    "band_p5": 0.5373,
+    "band_p95": 0.7881,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_over_1.5",
     "label": "Casa Over 1.5",
-    "p": 0.5925,
-    "p_raw": 0.6679,
-    "reference": 0.4444,
+    "p": 0.5913,
+    "p_raw": 0.6677,
+    "prezzo": 1.38,
+    "reference": 0.4451,
     "runners_up": [
      {
-      "band_p5": 0.6265,
-      "band_p95": 0.8289,
+      "band_p5": 0.6268,
+      "band_p95": 0.8295,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6709,
-      "p_raw": 0.7349,
-      "reference": 0.5534,
-      "score": 0.028688,
-      "shrink_alpha": 0.6474,
-      "sigma": 0.0607
+      "p": 0.669,
+      "p_raw": 0.7345,
+      "reference": 0.5536,
+      "score": 0.027663,
+      "shrink_alpha": 0.6379,
+      "sigma": 0.062
      },
      {
-      "band_p5": 0.5678,
-      "band_p95": 0.7791,
+      "band_p5": 0.5686,
+      "band_p95": 0.7855,
       "family": "combo_dc",
       "key": "combodc_12_over_1.5",
       "label": "12 + Over 1.5",
-      "p": 0.63,
-      "p_raw": 0.684,
-      "reference": 0.538,
-      "score": 0.017295,
-      "shrink_alpha": 0.6301,
-      "sigma": 0.0631
+      "p": 0.6307,
+      "p_raw": 0.6845,
+      "reference": 0.5383,
+      "score": 0.01746,
+      "shrink_alpha": 0.6319,
+      "sigma": 0.0628
      }
     ],
-    "score": 0.04408,
-    "shrink_alpha": 0.6625,
-    "sigma": 0.0749
+    "score": 0.042963,
+    "shrink_alpha": 0.6568,
+    "sigma": 0.0758
    },
    "raw_probabilities": {
-    "1x2_away": 0.1087,
-    "1x2_draw": 0.1724,
-    "1x2_home": 0.7189,
-    "btts_yes": 0.4761,
-    "over_2.5": 0.5915,
-    "under_2.5": 0.4085
+    "1x2_away": 0.1101,
+    "1x2_draw": 0.1721,
+    "1x2_home": 0.7178,
+    "btts_yes": 0.4771,
+    "over_2.5": 0.5926,
+    "under_2.5": 0.4074
    },
    "reasons": [
-    "Gol attesi: CR Flamengo 2.32, Mirassol FC 0.77 (totale 3.09).",
-    "Casa Over 1.5: 59 su 100, 15 punti sopra la media di riferimento (44 su 100).",
+    "Gol attesi: CR Flamengo 2.33, Mirassol FC 0.77 (totale 3.09).",
+    "Casa Over 1.5: 59 su 100, 15 punti sopra la media di riferimento (45 su 100).",
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
@@ -6239,7 +6240,7 @@
    "utc_date": "2026-09-02T22:30:00Z"
   }
  ],
- "generated_at": "2026-08-31T17:06:39Z",
+ "generated_at": "2026-09-01T03:11:04Z",
  "schema_version": 1,
  "silence_count": 2,
  "total": 5
