@@ -327,3 +327,43 @@ silenzio si puo' controllare invece che credere.
 
 La soglia e' un parametro di `build_candidates`, non una costante cablata: il
 backtest deve poter misurare quanto costa ogni valore.
+
+---
+
+## Deciso: le puntate sono 10 e 3 euro, e il conto si tiene in pubblico (25 agosto 2026)
+
+**Parole del proprietario:** *"d'ora in poi calcola che sul raddoppio ci metterei
+10 euro e sulle schedine ci metterei 3 euro"*.
+
+Fino a qui il sito misurava una cosa sola: la **calibrazione**, cioè quanto la
+probabilità dichiarata somiglia a quella che si avvera. È la misura giusta per
+un modello, e non risponde alla domanda che si fa chi legge — *quanto ci
+avrei rimesso*. Le due non coincidono: si può essere calibrati benissimo e
+perdere soldi, perché in mezzo c'è il margine dell'operatore, e su una multipla
+a tre gambe ci sta tre volte.
+
+Misurato sul cartellone del 29 agosto: il raddoppio ha quota nostra 2,03 e prezzo
+vero **2,20** — il mercato paga più del giusto. La multipla ha quota nostra 5,01 e
+prezzo vero **3,01**: quaranta per cento in meno. Senza il conto in euro quel
+divario non si vede da nessuna parte del sito.
+
+**Le puntate sono fisse e dichiarate prima.** Dieci euro sul raddoppio, tre sulla
+multipla, uguali ogni giorno, in `frontend/lib/puntate.ts`. Non sono un esempio e
+non sono regolabili dal lettore: una puntata scelta dopo aver visto il risultato
+non misura niente, e una regolabile trasformerebbe un rendiconto in un
+simulatore.
+
+**Entra nel conto solo ciò che si poteva davvero giocare**: una schedina conta
+quando è finita e quando OGNI gamba ha un prezzo trovato. Se ne manca uno, quella
+schedina non era piazzabile a nessuna cifra, e moltiplicare le nostre quote eque
+darebbe un incasso che nessuno avrebbe pagato.
+
+**Il numero grande è il netto, perdite comprese.** Un conto che mostra le vincite
+e tace le perdite è quello che fanno i siti che campano di questo, ed è l'esatto
+contrario del motivo per cui la pagina dei progressi esiste.
+
+**Il conto comincia adesso, e va detto perché.** Sulle 17 schedine già concluse,
+**zero gambe su 51** avevano un prezzo: le schedine pescano i mercati più
+probabili — gol di squadra, handicap, combo — e fino a oggi nessun comparatore
+gratuito li quotava. Il record in probabilità esiste da agosto (raddoppio 6 su 10,
+multipla 2 su 7), quello in euro parte da zero.

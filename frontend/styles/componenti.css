@@ -2702,6 +2702,22 @@
   font-size: var(--fs-quota);
 }
 
+/* I SOLDI, sulla riga sotto e non accanto.
+   Il piede e' un `space-between` a due poli — prezzo a sinistra, verdetto a
+   destra — e infilarci un terzo blocco farebbe collassare i primi due a
+   larghezze che cambiano ogni giorno. Questa riga occupa tutta la larghezza.
+   Nessun `order`: sta gia' ultima nel markup, quindi l'ordine in cui si legge
+   e quello in cui si vede sono lo stesso — che e' l'unica ragione per cui
+   `order` andrebbe evitato qui. */
+.schedina__soldi {
+  flex-basis: 100%;
+}
+
+.schedina__soldi strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-quota);
+}
+
 .schedina__mercato,
 .schedina__verdetto {
   font-size: var(--fs-body-s);

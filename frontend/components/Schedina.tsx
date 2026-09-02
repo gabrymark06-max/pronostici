@@ -1,6 +1,7 @@
-import { ora, suCento } from '@/lib/formato';
+import { euro, ora, suCento } from '@/lib/formato';
 import { formattaQuota } from '@/lib/quote';
 import type { Gamba, Schedina as Combinazione } from '@/lib/schedine';
+import { denaroDi } from '@/lib/puntate';
 
 import { Crest } from './Crest';
 import { interno } from '@/lib/sito';
@@ -96,6 +97,7 @@ export function Schedina({
 }) {
   const titolo = TITOLI[schedina.tipo];
   const conclusa = schedina.esito !== 'in-corso';
+  const soldi = denaroDi(schedina);
 
   return (
     <section className={`schedina schedina--${schedina.esito}`}>
@@ -151,6 +153,40 @@ export function Schedina({
         ) : schedina.concluse > 0 ? (
           <p className="schedina__verdetto">
             {schedina.concluse} su {schedina.gambe.length} già giocate, tutte a posto finora.
+          </p>
+        ) : null}
+
+        {/* QUANTO CI SI METTE E QUANTO TORNA, alla puntata dichiarata.
+            Il prezzo qui sopra è un moltiplicatore, e un moltiplicatore non si
+            legge finché non gli si mette accanto una cifra. Dieci euro sul
+            raddoppio e tre sulla multipla sono decisi una volta sola in
+            `lib/puntate.ts` e valgono uguali ogni giorno: una puntata scelta
+            dopo aver visto il risultato non misura niente.
+            STA IN FONDO NEL MARKUP e in fondo in pagina: nessun `order`, così
+            chi legge con lo schermo e chi legge con le orecchie trovano le
+            stesse cose nello stesso ordine. */}
+        {soldi.ritorno !== null ? (
+          <p className="schedina__soldi">
+            <span className="label">Con {euro(soldi.puntata)}</span>{' '}
+            {conclusa ? (
+              schedina.esito === 'uscita' ? (
+                <>
+                  tornavano <strong className="num">{euro(soldi.ritorno)}</strong>{' '}
+                  <span className="schedina__mercato">
+                    ({euro(soldi.guadagno ?? 0)} di guadagno)
+                  </span>
+                </>
+              ) : (
+                <>
+                  si perdevano <strong className="num">{euro(soldi.puntata)}</strong>
+                </>
+              )
+            ) : (
+              <>
+                tornano <strong className="num">{euro(soldi.ritorno)}</strong>{' '}
+                <span className="schedina__mercato">se esce tutta intera</span>
+              </>
+            )}
           </p>
         ) : null}
       </div>

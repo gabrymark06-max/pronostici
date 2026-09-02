@@ -108,6 +108,25 @@ export function intero(n: number): string {
 }
 
 /**
+ * 22 → "22 €", 3.5 → "3,50 €", -13 → "−13 €".
+ *
+ * I centesimi si scrivono solo quando ci sono: «10 €» e non «10,00 €», perché
+ * la puntata è un numero tondo e stamparlo con due zeri lo fa somigliare a un
+ * saldo. Il meno è il segno tipografico U+2212, non il trattino: allineato con
+ * le cifre e largo uguale, invece di un trattino corto che a colpo d'occhio si
+ * legge come un elenco.
+ */
+export function euro(n: number): string {
+  const tondo = Math.round(n * 100) / 100;
+  const cifre = Number.isInteger(tondo) ? 0 : 2;
+  const valore = Math.abs(tondo).toLocaleString('it-IT', {
+    minimumFractionDigits: cifre,
+    maximumFractionDigits: cifre,
+  });
+  return `${tondo < 0 ? '−' : ''}${valore} €`;
+}
+
+/**
  * I testi generati dal backend arrivano con gli apostrofi ASCII al posto degli
  * accenti ("e'", "gia'", "piu'"). Sono frasi già pronte da mostrare
  * (schema.md: `reasons` è italiano pronto), quindi la correzione è tipografica

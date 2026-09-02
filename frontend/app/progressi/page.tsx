@@ -7,8 +7,9 @@ import {
   type BarraCampionato,
   type PuntoCalibrazione,
 } from '@/components/grafici';
-import { leggiAccuracy, leggiBacktest } from '@/lib/dati';
-import { intero, suCento } from '@/lib/formato';
+import { giorniDisponibili, leggiAccuracy, leggiBacktest, leggiGiorno } from '@/lib/dati';
+import { euro, intero, suCento } from '@/lib/formato';
+import { conto, PUNTATE } from '@/lib/puntate';
 import { etichettaFascia, FASCE, MARCHIO, NOMI_COMPETIZIONE } from '@/lib/testi';
 
 /**
@@ -54,6 +55,17 @@ export default function PaginaProgressi() {
   const vivo = accuracy.live;
   const conclusi = vivo.n ?? 0;
   const usciti = typeof vivo.hit_rate === 'number' ? Math.round(vivo.hit_rate * conclusi) : null;
+
+  /* IL CONTO DELLE SCHEDINE si ricompone da zero a ogni build: le schedine
+     non stanno nell'archivio, nascono dal file del giorno. Camminare tutti i
+     giorni pubblicati costa una lettura per file, la stessa che fa il
+     calendario, e in cambio non c'è nessuno stato da tenere sincronizzato. */
+  const conti = conto(
+    giorniDisponibili().map((data) => ({
+      data,
+      fixtures: leggiGiorno(data)?.fixtures ?? [],
+    })),
+  );
 
   const pubblicati = accuracy.progress_to_500.published;
   const bersaglio = accuracy.progress_to_500.target;
@@ -242,6 +254,58 @@ export default function PaginaProgressi() {
             </p>
           </section>
         ) : null}
+
+        {/* IL CONTO DELLE SCHEDINE, in euro e con le perdite dentro.
+            Il resto di questa pagina misura la nostra calibrazione: quanto la
+            probabilità dichiarata somiglia a quella che si avvera. Questo
+            misura un'altra cosa, e più scomoda — cosa sarebbe successo a un
+            portafoglio. Le due non coincidono: si può essere calibrati bene e
+            perdere soldi, perché il margine dell'operatore sta in mezzo, e su
+            una multipla a tre gambe ci sta tre volte.
+            IL NUMERO GRANDE È IL NETTO. Un conto che mostra le vincite e tace
+            le perdite è quello che fanno i siti che campano di questo. */}
+        <section className="carta carta--vivo">
+          <div className="carta__testa">
+            <h3 className="carta__titolo">Le schedine, in euro</h3>
+            <p className="carta__occhiello">
+              {euro(PUNTATE.raddoppio)} sul raddoppio e {euro(PUNTATE.multipla)} sulla
+              multipla, ogni giorno, ai prezzi che abbiamo trovato davvero.
+            </p>
+          </div>
+
+          <div className="carta__corpo">
+            {conti.giocate.length > 0 ? (
+              <>
+                <p className="progressi__vivo">
+                  <strong>{euro(conti.netto)}</strong>{' '}
+                  {conti.netto >= 0 ? 'di guadagno' : 'di perdita'} su{' '}
+                  {euro(conti.speso)} giocati in {conti.giocate.length} schedine.
+                </p>
+                <p className="carta__avviso">
+                  {conti.vinte} uscite su {conti.giocate.length}. È un campione minuscolo e
+                  non dice ancora niente: bastano una multipla presa o due raddoppi sbagliati
+                  a ribaltare il segno. Serve a esserci, non a concludere.
+                </p>
+              </>
+            ) : (
+              <p className="progressi__vivo">
+                Nessuna schedina è ancora entrata nel conto. Ci entra quando è finita e quando
+                <strong> ognuna</strong> delle sue gambe ha un prezzo che abbiamo trovato:
+                moltiplicare quote che nessuno espone darebbe un incasso che nessuno avrebbe
+                mai pagato.
+              </p>
+            )}
+          </div>
+
+          {conti.senzaPrezzo > 0 ? (
+            <p className="carta__nota">
+              Altre {conti.senzaPrezzo} schedine sono finite ma restano fuori dal conto: almeno
+              una gamba era su un mercato che nessuna fonte quotava. Fino al 25 agosto 2026
+              erano quasi tutte — le schedine pescano i mercati più probabili, e nessun
+              comparatore gratuito li prezzava.
+            </p>
+          ) : null}
+        </section>
 
         <section className="carta carta--vivo">
           <div className="carta__testa">
