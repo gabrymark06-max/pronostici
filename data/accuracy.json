@@ -4,17 +4,17 @@
       "buckets": {
         "0.50-0.65": {
           "enough": true,
-          "hit_rate": 0.6944,
-          "hits": 25,
-          "mean_p": 0.5718,
-          "n": 36
+          "hit_rate": 0.6667,
+          "hits": 28,
+          "mean_p": 0.5742,
+          "n": 42
         },
         "0.65-0.80": {
-          "enough": false,
-          "hit_rate": 0.7857,
-          "hits": 22,
-          "mean_p": 0.7171,
-          "n": 28
+          "enough": true,
+          "hit_rate": 0.8,
+          "hits": 24,
+          "mean_p": 0.7196,
+          "n": 30
         },
         "0.80-1.00": {
           "enough": false,
@@ -24,107 +24,107 @@
           "n": 8
         }
       },
-      "calibration_gap": -0.08444,
-      "hit_rate": 0.75,
-      "n": 72,
-      "skill_declared_mean": 0.06066,
-      "skill_realized_mean": 0.1451,
-      "skill_realized_se": 0.04246
+      "calibration_gap": -0.08174,
+      "hit_rate": 0.7375,
+      "n": 80,
+      "skill_declared_mean": 0.06206,
+      "skill_realized_mean": 0.1438,
+      "skill_realized_se": 0.04102
     },
     "preliminary": {
       "buckets": {
         "0.50-0.65": {
           "enough": false,
-          "hit_rate": 0.52,
-          "hits": 13,
-          "mean_p": 0.5817,
-          "n": 25
+          "hit_rate": 0.5357,
+          "hits": 15,
+          "mean_p": 0.5868,
+          "n": 28
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7455,
-          "hits": 41,
-          "mean_p": 0.7292,
-          "n": 55
+          "hit_rate": 0.7667,
+          "hits": 46,
+          "mean_p": 0.7279,
+          "n": 60
         },
         "0.80-1.00": {
           "enough": true,
-          "hit_rate": 0.8814,
-          "hits": 52,
-          "mean_p": 0.8773,
-          "n": 59
+          "hit_rate": 0.8852,
+          "hits": 54,
+          "mean_p": 0.8783,
+          "n": 61
         }
       },
-      "calibration_gap": -0.01106,
-      "hit_rate": 0.7626,
-      "n": 139,
-      "skill_declared_mean": 0.05625,
-      "skill_realized_mean": 0.06731,
-      "skill_realized_se": 0.02778
+      "calibration_gap": -0.02036,
+      "hit_rate": 0.7718,
+      "n": 149,
+      "skill_declared_mean": 0.0573,
+      "skill_realized_mean": 0.07765,
+      "skill_realized_se": 0.02647
     }
   },
-  "generated_at": "2026-09-01T03:09:50Z",
+  "generated_at": "2026-09-02T03:09:03Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.623,
-        "hits": 38,
-        "mean_p": 0.5759,
-        "n": 61
+        "hit_rate": 0.6143,
+        "hits": 43,
+        "mean_p": 0.5792,
+        "n": 70
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.759,
-        "hits": 63,
+        "hit_rate": 0.7778,
+        "hits": 70,
         "mean_p": 0.7251,
-        "n": 83
+        "n": 90
       },
       "0.80-1.00": {
         "enough": true,
-        "hit_rate": 0.8806,
-        "hits": 59,
-        "mean_p": 0.8755,
-        "n": 67
+        "hit_rate": 0.8841,
+        "hits": 61,
+        "mean_p": 0.8765,
+        "n": 69
       }
     },
-    "calibration_gap": -0.0361,
-    "hit_rate": 0.7583,
-    "n": 211,
-    "skill_declared_mean": 0.05775,
-    "skill_realized_mean": 0.09385,
-    "skill_realized_se": 0.02342
+    "calibration_gap": -0.0418,
+    "hit_rate": 0.7598,
+    "n": 229,
+    "skill_declared_mean": 0.05896,
+    "skill_realized_mean": 0.10076,
+    "skill_realized_se": 0.02245
   },
   "progress_to_500": {
-    "published": 292,
+    "published": 298,
     "target": 500
   },
   "schema_version": 1,
   "silence": {
     "definitive": {
       "by_reason": {
-        "S_min": 30,
-        "quota_min": 4
+        "S_min": 36,
+        "quota_min": 5
       },
-      "n": 111,
-      "rate": 0.3063,
-      "silent": 34
+      "n": 124,
+      "rate": 0.3306,
+      "silent": 41
     },
     "preliminary": {
       "by_reason": {
-        "S_min": 84,
+        "S_min": 85,
         "quota_min": 5
       },
-      "n": 304,
-      "rate": 0.2928,
-      "silent": 89
+      "n": 305,
+      "rate": 0.2951,
+      "silent": 90
     }
   },
   "transitions": {
-    "changed": 56,
-    "confirmed": 14,
-    "prediction_to_silence": 10,
-    "silence_to_prediction": 7,
-    "still_silent": 24
+    "changed": 58,
+    "confirmed": 15,
+    "prediction_to_silence": 13,
+    "silence_to_prediction": 10,
+    "still_silent": 28
   }
 }
