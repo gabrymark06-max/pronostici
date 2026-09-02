@@ -1011,35 +1011,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 96,
-     "p_min": 88,
+     "S_min": 91,
+     "p_min": 87,
      "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
-    "truncated_mass": 1.625e-09
+    "n_clusters": 2,
+    "truncated_mass": 3.277e-09
    },
    "expected_goals": {
-    "away": 1.3,
-    "home": 1.084
+    "away": 1.386,
+    "home": 1.082
    },
    "half_time": {
-    "ht_over_0.5": 0.6454,
-    "ht_over_1.5": 0.2777,
-    "ht_over_2.5": 0.0872,
-    "ht_under_0.5": 0.3546,
-    "ht_under_1.5": 0.7223,
-    "ht_under_2.5": 0.9128,
-    "htft_11": 0.1712,
-    "htft_12": 0.0209,
-    "htft_1X": 0.0488,
-    "htft_21": 0.0167,
-    "htft_22": 0.2379,
-    "htft_2X": 0.0488,
-    "htft_X1": 0.1218,
-    "htft_X2": 0.1557,
-    "htft_XX": 0.1781
+    "ht_over_0.5": 0.6582,
+    "ht_over_1.5": 0.2913,
+    "ht_over_2.5": 0.0943,
+    "ht_under_0.5": 0.3418,
+    "ht_under_1.5": 0.7087,
+    "ht_under_2.5": 0.9057,
+    "htft_11": 0.1618,
+    "htft_12": 0.0227,
+    "htft_1X": 0.049,
+    "htft_21": 0.0166,
+    "htft_22": 0.255,
+    "htft_2X": 0.049,
+    "htft_X1": 0.1148,
+    "htft_X2": 0.1609,
+    "htft_XX": 0.1701
    },
    "home": {
     "crest": "https://crests.football-data.org/511.png",
@@ -1048,22 +1048,13 @@
    },
    "match_id": 559696,
    "matchday": 3,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.44437,
-     "1x2_draw": 0.28221,
-     "1x2_home": 0.27342,
-     "dc_12": 0.71779,
-     "dc_1x": 0.55563,
-     "dc_x2": 0.72658,
-     "eh_-1_away": 0.72658,
-     "eh_1_home": 0.55563,
-     "mg_0_2": 0.53309,
-     "over_2.5": 0.46691,
-     "under_2.5": 0.53309
+    "devig": {
+     "h2h": 1.06,
+     "totals_2.5": 1.091
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -1082,67 +1073,76 @@
      "under_2.5": 1.73
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.58,
-    "band_p95": 0.8046,
+    "band_p5": 0.6635,
+    "band_p95": 0.7427,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.6567,
-    "p_raw": 0.7055,
+    "p": 0.6974,
+    "p_raw": 0.7057,
     "prezzo": 1.33,
     "reference": 0.5404,
     "runners_up": [
      {
-      "band_p5": 0.5864,
-      "band_p95": 0.7842,
-      "family": "double_chance",
-      "key": "dc_x2",
-      "label": "X2 (pareggio o ospite)",
-      "p": 0.6571,
-      "p_raw": 0.6888,
-      "prezzo": 1.33,
-      "reference": 0.5454,
-      "score": 0.025734,
-      "shrink_alpha": 0.7788,
-      "sigma": 0.0634
+      "band_p5": 0.7318,
+      "band_p95": 0.7991,
+      "family": "multigoal",
+      "key": "mg_0_3",
+      "label": "Multigol 0-3",
+      "p": 0.7483,
+      "p_raw": 0.7641,
+      "reference": 0.6594,
+      "score": 0.018481,
+      "shrink_alpha": 0.8488,
+      "sigma": 0.0206
      },
      {
-      "band_p5": 0.6257,
-      "band_p95": 0.7261,
+      "band_p5": 0.655,
+      "band_p95": 0.704,
       "family": "multigoal",
       "key": "mg_1_3",
       "label": "Multigol 1-3",
-      "p": 0.6594,
-      "p_raw": 0.685,
+      "p": 0.6724,
+      "p_raw": 0.6793,
       "reference": 0.5969,
-      "score": 0.008285,
-      "shrink_alpha": 0.7095,
-      "sigma": 0.0312
+      "score": 0.012159,
+      "shrink_alpha": 0.9168,
+      "sigma": 0.0147
      }
     ],
-    "score": 0.027844,
-    "shrink_alpha": 0.7047,
-    "sigma": 0.0679
+    "score": 0.051394,
+    "shrink_alpha": 0.9497,
+    "sigma": 0.0241
+   },
+   "previous": {
+    "market_key": "hg_under_2.5",
+    "market_label": "Casa Under 2.5",
+    "p": 0.8905,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:40Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.415,
-    "1x2_draw": 0.2738,
-    "1x2_home": 0.3112,
-    "btts_yes": 0.4734,
-    "over_2.5": 0.4246,
-    "under_2.5": 0.5754
+    "1x2_away": 0.4389,
+    "1x2_draw": 0.2674,
+    "1x2_home": 0.2937,
+    "btts_yes": 0.4945,
+    "over_2.5": 0.4478,
+    "under_2.5": 0.5522
    },
    "reasons": [
-    "Gol attesi: Toulouse FC 1.08, Lille OSC 1.30 (totale 2.38).",
-    "Casa Under 1.5: 66 su 100, 12 punti sopra la media di riferimento (54 su 100).",
-    "Banda di incertezza: fra 58 e 80 su 100."
+    "Fino a ieri dicevamo Casa Under 2.5. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Casa Under 1.5.",
+    "Gol attesi: Toulouse FC 1.08, Lille OSC 1.39 (totale 2.47).",
+    "Casa Under 1.5: 70 su 100, 16 punti sopra la media di riferimento (54 su 100).",
+    "Banda di incertezza: fra 66 e 74 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-03T18:45:00Z"
   },
   {
@@ -2338,35 +2338,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 113,
+     "S_min": 114,
      "p_min": 87,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.31e-08
+    "truncated_mass": 1.518e-08
    },
    "expected_goals": {
-    "away": 1.311,
-    "home": 1.551
+    "away": 1.137,
+    "home": 1.586
    },
    "half_time": {
-    "ht_over_0.5": 0.713,
-    "ht_over_1.5": 0.3548,
-    "ht_over_2.5": 0.1312,
-    "ht_under_0.5": 0.287,
-    "ht_under_1.5": 0.6452,
-    "ht_under_2.5": 0.8688,
-    "htft_11": 0.2543,
-    "htft_12": 0.0216,
-    "htft_1X": 0.0522,
-    "htft_21": 0.0269,
-    "htft_22": 0.1836,
-    "htft_2X": 0.0522,
-    "htft_X1": 0.1487,
-    "htft_X2": 0.1172,
-    "htft_XX": 0.1433
+    "ht_over_0.5": 0.6951,
+    "ht_over_1.5": 0.333,
+    "ht_over_2.5": 0.1179,
+    "ht_under_0.5": 0.3049,
+    "ht_under_1.5": 0.667,
+    "ht_under_2.5": 0.8821,
+    "htft_11": 0.2853,
+    "htft_12": 0.0176,
+    "htft_1X": 0.0498,
+    "htft_21": 0.0268,
+    "htft_22": 0.1517,
+    "htft_2X": 0.0498,
+    "htft_X1": 0.1652,
+    "htft_X2": 0.1038,
+    "htft_XX": 0.1498
    },
    "home": {
     "crest": "https://crests.football-data.org/92.png",
@@ -2375,22 +2375,13 @@
    },
    "match_id": 564682,
    "matchday": 6,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.24084,
-     "1x2_draw": 0.26187,
-     "1x2_home": 0.49729,
-     "dc_12": 0.73813,
-     "dc_1x": 0.75916,
-     "dc_x2": 0.50271,
-     "eh_-1_away": 0.50271,
-     "eh_1_home": 0.75916,
-     "mg_0_2": 0.49928,
-     "over_2.5": 0.50072,
-     "under_2.5": 0.49928
+    "devig": {
+     "h2h": 1.046,
+     "totals_2.5": 1.087
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -2409,29 +2400,39 @@
      "under_2.5": 1.84
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": null,
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-08-28T21:17:10Z"
+   },
    "raw_probabilities": {
-    "1x2_away": 0.3236,
-    "1x2_draw": 0.2466,
-    "1x2_home": 0.4298,
-    "btts_yes": 0.5684,
-    "over_2.5": 0.5423,
-    "under_2.5": 0.4577
+    "1x2_away": 0.2732,
+    "1x2_draw": 0.2497,
+    "1x2_home": 0.4771,
+    "btts_yes": 0.5396,
+    "over_2.5": 0.5118,
+    "under_2.5": 0.4882
    },
    "reasons": [
-    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Real Sociedad de Fútbol 1.55, RC Celta de Vigo 1.31 (totale 2.86)."
+    "Anche con le quote non abbiamo niente da aggiungere su questa partita.",
+    "Il nostro modello dice quasi esattamente quello che dicono già le quote.",
+    "Gol attesi: Real Sociedad de Fútbol 1.59, RC Celta de Vigo 1.14 (totale 2.72)."
    ],
    "silence": {
     "reason": "S_min"
    },
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "still_silent",
    "utc_date": "2026-09-03T19:00:00Z"
   }
  ],
- "generated_at": "2026-09-02T10:01:23Z",
+ "generated_at": "2026-09-02T10:01:52Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 2
