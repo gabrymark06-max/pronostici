@@ -3,6 +3,210 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/670.png",
+    "name": "SBV Excelsior",
+    "tla": "EXC"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 99,
+     "p_min": 86,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 5.506e-07
+   },
+   "expected_goals": {
+    "away": 1.189,
+    "home": 2.184
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7788,
+    "ht_over_1.5": 0.445,
+    "ht_over_2.5": 0.1933,
+    "ht_under_0.5": 0.2212,
+    "ht_under_1.5": 0.555,
+    "ht_under_2.5": 0.8067,
+    "htft_11": 0.3898,
+    "htft_12": 0.0163,
+    "htft_1X": 0.0468,
+    "htft_21": 0.0364,
+    "htft_22": 0.1119,
+    "htft_2X": 0.0468,
+    "htft_X1": 0.1738,
+    "htft_X2": 0.071,
+    "htft_XX": 0.1072
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1915.png",
+    "name": "NEC",
+    "tla": "NEC"
+   },
+   "match_id": 558233,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.447,
+    "band_p95": 0.722,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5458,
+    "p_raw": 0.5965,
+    "reference": 0.4421,
+    "runners_up": [
+     {
+      "band_p5": 0.4774,
+      "band_p95": 0.7657,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.578,
+      "p_raw": 0.6337,
+      "reference": 0.4936,
+      "score": 0.014281,
+      "shrink_alpha": 0.6024,
+      "sigma": 0.0852
+     },
+     {
+      "band_p5": 0.6786,
+      "band_p95": 0.8785,
+      "family": "handicap_eu",
+      "key": "eh_1_home",
+      "label": "Handicap +1 casa",
+      "p": 0.7671,
+      "p_raw": 0.7961,
+      "reference": 0.6953,
+      "score": 0.01279,
+      "shrink_alpha": 0.7119,
+      "sigma": 0.0611
+     },
+     {
+      "band_p5": 0.5577,
+      "band_p95": 0.7964,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6284,
+      "p_raw": 0.6819,
+      "reference": 0.5589,
+      "score": 0.009945,
+      "shrink_alpha": 0.565,
+      "sigma": 0.0722
+     }
+    ],
+    "score": 0.021616,
+    "shrink_alpha": 0.6715,
+    "sigma": 0.0832
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2039,
+    "1x2_draw": 0.1996,
+    "1x2_home": 0.5965,
+    "btts_yes": 0.6062,
+    "over_2.5": 0.6485,
+    "under_2.5": 0.3515
+   },
+   "reasons": [
+    "Gol attesi: NEC 2.18, SBV Excelsior 1.19 (totale 3.37).",
+    "Vittoria casa: 55 su 100, 10 punti sopra la media di riferimento (44 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-08T16:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/58.png",
+    "name": "Aston Villa FC",
+    "tla": "AVL"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 99,
+     "p_min": 87,
+     "quota_min": 6,
+     "sigma_max": 21
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 2.274e-07
+   },
+   "expected_goals": {
+    "away": 2.016,
+    "home": 1.167
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7443,
+    "ht_over_1.5": 0.3956,
+    "ht_over_2.5": 0.1578,
+    "ht_under_0.5": 0.2557,
+    "ht_under_1.5": 0.6044,
+    "ht_under_2.5": 0.8422,
+    "htft_11": 0.1184,
+    "htft_12": 0.035,
+    "htft_1X": 0.0477,
+    "htft_21": 0.017,
+    "htft_22": 0.3555,
+    "htft_2X": 0.0477,
+    "htft_X1": 0.0807,
+    "htft_X2": 0.1795,
+    "htft_XX": 0.1184
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/851.png",
+    "name": "Club Brugge KV",
+    "tla": "BRU"
+   },
+   "match_id": 575323,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.57,
+    "band_p95": 0.9111,
+    "cluster_members": [
+     "eh_-1_away"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.665,
+    "p_raw": 0.7745,
+    "reference": 0.5216,
+    "runners_up": [],
+    "score": 0.042141,
+    "shrink_alpha": 0.5669,
+    "sigma": 0.1039
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.5649,
+    "1x2_draw": 0.2096,
+    "1x2_home": 0.2255,
+    "btts_yes": 0.5678,
+    "over_2.5": 0.6022,
+    "under_2.5": 0.3978
+   },
+   "reasons": [
+    "Gol attesi: Club Brugge KV 1.17, Aston Villa FC 2.02 (totale 3.18).",
+    "X2 (pareggio o ospite): 66 su 100, 14 punti sopra la media di riferimento (52 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-08T16:45:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/356.png",
     "name": "Sheffield United FC",
     "tla": "SHE"
@@ -12,32 +216,33 @@
     "filter_bites": {
      "S_min": 93,
      "p_min": 89,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 5,
-    "truncated_mass": 4.709e-10
+    "n_clusters": 3,
+    "truncated_mass": 3.305e-10
    },
    "expected_goals": {
-    "away": 1.169,
-    "home": 0.993
+    "away": 1.124,
+    "home": 1.01
    },
    "half_time": {
-    "ht_over_0.5": 0.6251,
-    "ht_over_1.5": 0.2573,
-    "ht_over_2.5": 0.0769,
-    "ht_under_0.5": 0.3749,
-    "ht_under_1.5": 0.7427,
-    "ht_under_2.5": 0.9231,
-    "htft_11": 0.1736,
-    "htft_12": 0.0173,
+    "ht_over_0.5": 0.6222,
+    "ht_over_1.5": 0.2545,
+    "ht_over_2.5": 0.0755,
+    "ht_under_0.5": 0.3778,
+    "ht_under_1.5": 0.7455,
+    "ht_under_2.5": 0.9245,
+    "htft_11": 0.1829,
+    "htft_12": 0.0164,
     "htft_1X": 0.047,
-    "htft_21": 0.0142,
-    "htft_22": 0.2308,
+    "htft_21": 0.0144,
+    "htft_22": 0.2199,
     "htft_2X": 0.047,
-    "htft_X1": 0.1212,
-    "htft_X2": 0.15,
-    "htft_XX": 0.1988
+    "htft_X1": 0.1259,
+    "htft_X2": 0.1445,
+    "htft_XX": 0.202
    },
    "home": {
     "crest": "https://crests.football-data.org/59.png",
@@ -49,102 +254,76 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6312,
-    "band_p95": 0.8216,
+    "band_p5": 0.6355,
+    "band_p95": 0.8225,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.7062,
-    "p_raw": 0.7385,
-    "reference": 0.5919,
+    "p": 0.7002,
+    "p_raw": 0.7319,
+    "reference": 0.5894,
     "runners_up": [
      {
-      "band_p5": 0.86,
-      "band_p95": 0.9576,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.9133,
-      "p_raw": 0.9189,
-      "reference": 0.8381,
-      "score": 0.024291,
-      "shrink_alpha": 0.9296,
-      "sigma": 0.0289
-     },
-     {
-      "band_p5": 0.6008,
-      "band_p95": 0.7689,
+      "band_p5": 0.5854,
+      "band_p95": 0.7645,
       "family": "double_chance",
       "key": "dc_x2",
       "label": "X2 (pareggio o ospite)",
-      "p": 0.6687,
-      "p_raw": 0.69,
-      "reference": 0.5624,
-      "score": 0.023591,
-      "shrink_alpha": 0.8337,
-      "sigma": 0.0531
+      "p": 0.6565,
+      "p_raw": 0.6766,
+      "reference": 0.5632,
+      "score": 0.018093,
+      "shrink_alpha": 0.8229,
+      "sigma": 0.0552
      },
      {
-      "band_p5": 0.6008,
-      "band_p95": 0.7689,
+      "band_p5": 0.5854,
+      "band_p95": 0.7645,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.6601,
-      "p_raw": 0.69,
-      "reference": 0.5624,
-      "score": 0.019863,
-      "shrink_alpha": 0.766,
-      "sigma": 0.0531
+      "p": 0.6485,
+      "p_raw": 0.6766,
+      "reference": 0.5632,
+      "score": 0.015079,
+      "shrink_alpha": 0.7521,
+      "sigma": 0.0552
      },
      {
-      "band_p5": 0.8201,
-      "band_p95": 0.93,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.876,
-      "p_raw": 0.8841,
-      "reference": 0.8039,
-      "score": 0.018366,
-      "shrink_alpha": 0.8988,
-      "sigma": 0.0323
-     },
-     {
-      "band_p5": 0.4854,
-      "band_p95": 0.6511,
+      "band_p5": 0.4952,
+      "band_p95": 0.6571,
       "family": "btts",
       "key": "btts_no",
       "label": "Non entrambe segnano",
-      "p": 0.5364,
-      "p_raw": 0.5721,
-      "reference": 0.465,
-      "score": 0.010191,
-      "shrink_alpha": 0.6665,
-      "sigma": 0.052
+      "p": 0.5385,
+      "p_raw": 0.5759,
+      "reference": 0.4587,
+      "score": 0.012766,
+      "shrink_alpha": 0.6807,
+      "sigma": 0.0503
      }
     ],
-    "score": 0.028146,
-    "shrink_alpha": 0.7799,
-    "sigma": 0.0557
+    "score": 0.026348,
+    "shrink_alpha": 0.7777,
+    "sigma": 0.0561
    },
    "raw_probabilities": {
-    "1x2_away": 0.3984,
-    "1x2_draw": 0.2916,
-    "1x2_home": 0.31,
-    "btts_yes": 0.4279,
-    "over_2.5": 0.3663,
-    "under_2.5": 0.6337
+    "1x2_away": 0.3809,
+    "1x2_draw": 0.2957,
+    "1x2_home": 0.3234,
+    "btts_yes": 0.4241,
+    "over_2.5": 0.3592,
+    "under_2.5": 0.6408
    },
    "reasons": [
-    "Gol attesi: Blackburn Rovers FC 0.99, Sheffield United FC 1.17 (totale 2.16).",
-    "Casa Under 1.5: 71 su 100, 11 punti sopra la media di riferimento (59 su 100).",
-    "Banda di incertezza: fra 63 e 82 su 100."
+    "Gol attesi: Blackburn Rovers FC 1.01, Sheffield United FC 1.12 (totale 2.13).",
+    "Casa Under 1.5: 70 su 100, 11 punti sopra la media di riferimento (59 su 100).",
+    "Banda di incertezza: fra 64 e 82 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-08T18:45:00Z"
   },
   {
@@ -156,34 +335,35 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 97,
+     "S_min": 99,
      "p_min": 88,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 7,
-    "truncated_mass": 1.733e-07
+    "n_clusters": 3,
+    "truncated_mass": 1.485e-07
    },
    "expected_goals": {
-    "away": 0.995,
-    "home": 1.968
+    "away": 1.056,
+    "home": 1.941
    },
    "half_time": {
-    "ht_over_0.5": 0.7395,
-    "ht_over_1.5": 0.3891,
-    "ht_over_2.5": 0.1534,
-    "ht_under_0.5": 0.2605,
-    "ht_under_1.5": 0.6109,
-    "ht_under_2.5": 0.8466,
-    "htft_11": 0.3873,
-    "htft_12": 0.0129,
-    "htft_1X": 0.0447,
-    "htft_21": 0.0308,
-    "htft_22": 0.1029,
-    "htft_2X": 0.0447,
-    "htft_X1": 0.182,
-    "htft_X2": 0.0697,
-    "htft_XX": 0.1251
+    "ht_over_0.5": 0.7451,
+    "ht_over_1.5": 0.3967,
+    "ht_over_2.5": 0.1586,
+    "ht_under_0.5": 0.2549,
+    "ht_under_1.5": 0.6033,
+    "ht_under_2.5": 0.8414,
+    "htft_11": 0.3729,
+    "htft_12": 0.0142,
+    "htft_1X": 0.0464,
+    "htft_21": 0.031,
+    "htft_22": 0.1133,
+    "htft_2X": 0.0464,
+    "htft_X1": 0.1759,
+    "htft_X2": 0.0743,
+    "htft_XX": 0.1255
    },
    "home": {
     "crest": "https://crests.football-data.org/340.png",
@@ -195,102 +375,63 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.4789,
-    "band_p95": 0.7078,
+    "band_p5": 0.4482,
+    "band_p95": 0.6943,
     "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.5556,
-    "p_raw": 0.5976,
-    "reference": 0.4376,
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.5127,
+    "p_raw": 0.5722,
+    "reference": 0.4106,
     "runners_up": [
      {
-      "band_p5": 0.4579,
-      "band_p95": 0.6962,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.522,
-      "p_raw": 0.5803,
-      "reference": 0.4081,
-      "score": 0.026325,
-      "shrink_alpha": 0.6612,
-      "sigma": 0.0751
+      "band_p5": 0.4495,
+      "band_p95": 0.6891,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5383,
+      "p_raw": 0.5767,
+      "reference": 0.4368,
+      "score": 0.020711,
+      "shrink_alpha": 0.7251,
+      "sigma": 0.0732
      },
      {
-      "band_p5": 0.7141,
-      "band_p95": 0.8795,
-      "family": "double_chance",
-      "key": "dc_1x",
-      "label": "1X (casa o pareggio)",
-      "p": 0.795,
-      "p_raw": 0.811,
-      "reference": 0.7067,
-      "score": 0.020192,
-      "shrink_alpha": 0.8469,
-      "sigma": 0.0505
-     },
-     {
-      "band_p5": 0.7141,
-      "band_p95": 0.8795,
-      "family": "handicap_eu",
-      "key": "eh_1_home",
-      "label": "Handicap +1 casa",
-      "p": 0.7884,
-      "p_raw": 0.811,
-      "reference": 0.7067,
-      "score": 0.017166,
-      "shrink_alpha": 0.7833,
-      "sigma": 0.0505
-     },
-     {
-      "band_p5": 0.7872,
-      "band_p95": 0.9112,
-      "family": "team_goals",
-      "key": "hg_over_0.5",
-      "label": "Casa Over 0.5",
-      "p": 0.8448,
-      "p_raw": 0.855,
-      "reference": 0.7744,
-      "score": 0.015485,
-      "shrink_alpha": 0.8741,
-      "sigma": 0.0398
-     },
-     {
-      "band_p5": 0.8859,
-      "band_p95": 0.9659,
-      "family": "handicap_eu",
-      "key": "eh_2_home",
-      "label": "Handicap +2 casa",
-      "p": 0.9298,
-      "p_raw": 0.9331,
-      "reference": 0.8816,
-      "score": 0.012785,
-      "shrink_alpha": 0.9358,
-      "sigma": 0.0252
+      "band_p5": 0.539,
+      "band_p95": 0.7502,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5993,
+      "p_raw": 0.644,
+      "reference": 0.5298,
+      "score": 0.009777,
+      "shrink_alpha": 0.6088,
+      "sigma": 0.066
      }
     ],
-    "score": 0.027979,
-    "shrink_alpha": 0.7372,
-    "sigma": 0.071
+    "score": 0.021178,
+    "shrink_alpha": 0.6321,
+    "sigma": 0.08
    },
    "raw_probabilities": {
-    "1x2_away": 0.189,
-    "1x2_draw": 0.2133,
-    "1x2_home": 0.5976,
-    "btts_yes": 0.5344,
-    "over_2.5": 0.5651,
-    "under_2.5": 0.4349
+    "1x2_away": 0.2051,
+    "1x2_draw": 0.2182,
+    "1x2_home": 0.5767,
+    "btts_yes": 0.5506,
+    "over_2.5": 0.5718,
+    "under_2.5": 0.4282
    },
    "reasons": [
-    "Gol attesi: Southampton FC 1.97, Swansea City AFC 1.00 (totale 2.96).",
-    "Vittoria casa: 56 su 100, 12 punti sopra la media di riferimento (44 su 100).",
-    "Banda di incertezza: fra 48 e 71 su 100."
+    "Gol attesi: Southampton FC 1.94, Swansea City AFC 1.06 (totale 3.00).",
+    "Casa Over 1.5: 51 su 100, 10 punti sopra la media di riferimento (41 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-08T18:45:00Z"
   },
   {
@@ -304,32 +445,33 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 87,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.881e-09
+    "truncated_mass": 1.347e-09
    },
    "expected_goals": {
-    "away": 1.141,
-    "home": 1.308
+    "away": 1.051,
+    "home": 1.281
    },
    "half_time": {
-    "ht_over_0.5": 0.671,
-    "ht_over_1.5": 0.3052,
-    "ht_over_2.5": 0.1019,
-    "ht_under_0.5": 0.329,
-    "ht_under_1.5": 0.6948,
-    "ht_under_2.5": 0.8981,
-    "htft_11": 0.2382,
-    "htft_12": 0.0174,
-    "htft_1X": 0.05,
-    "htft_21": 0.0207,
-    "htft_22": 0.1856,
-    "htft_2X": 0.05,
-    "htft_X1": 0.1452,
-    "htft_X2": 0.1208,
-    "htft_XX": 0.1722
+    "ht_over_0.5": 0.6549,
+    "ht_over_1.5": 0.2877,
+    "ht_over_2.5": 0.0924,
+    "ht_under_0.5": 0.3451,
+    "ht_under_1.5": 0.7123,
+    "ht_under_2.5": 0.9076,
+    "htft_11": 0.2463,
+    "htft_12": 0.0154,
+    "htft_1X": 0.0486,
+    "htft_21": 0.0197,
+    "htft_22": 0.1726,
+    "htft_2X": 0.0486,
+    "htft_X1": 0.151,
+    "htft_X2": 0.116,
+    "htft_XX": 0.1818
    },
    "home": {
     "crest": "https://crests.football-data.org/346.png",
@@ -342,22 +484,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.325,
-    "1x2_draw": 0.2705,
-    "1x2_home": 0.4045,
-    "btts_yes": 0.49,
-    "over_2.5": 0.4415,
-    "under_2.5": 0.5585
+    "1x2_away": 0.3051,
+    "1x2_draw": 0.2782,
+    "1x2_home": 0.4167,
+    "btts_yes": 0.4635,
+    "over_2.5": 0.4114,
+    "under_2.5": 0.5886
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Watford FC 1.31, Preston North End FC 1.14 (totale 2.45)."
+    "Gol attesi: Watford FC 1.28, Preston North End FC 1.05 (totale 2.33)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-08T18:45:00Z"
   },
   {
@@ -369,34 +511,35 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 113,
-     "p_min": 87,
+     "S_min": 114,
+     "p_min": 86,
+     "quota_min": 7,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.109e-09
+    "truncated_mass": 2.71e-09
    },
    "expected_goals": {
-    "away": 1.146,
-    "home": 1.233
+    "away": 1.13,
+    "home": 1.358
    },
    "half_time": {
-    "ht_over_0.5": 0.6604,
-    "ht_over_1.5": 0.2937,
-    "ht_over_2.5": 0.0956,
-    "ht_under_0.5": 0.3396,
-    "ht_under_1.5": 0.7063,
-    "ht_under_2.5": 0.9044,
-    "htft_11": 0.2229,
-    "htft_12": 0.0175,
-    "htft_1X": 0.0496,
-    "htft_21": 0.0191,
-    "htft_22": 0.1953,
-    "htft_2X": 0.0496,
-    "htft_X1": 0.1402,
-    "htft_X2": 0.1272,
-    "htft_XX": 0.1785
+    "ht_over_0.5": 0.6786,
+    "ht_over_1.5": 0.3137,
+    "ht_over_2.5": 0.1067,
+    "ht_under_0.5": 0.3214,
+    "ht_under_1.5": 0.6863,
+    "ht_under_2.5": 0.8933,
+    "htft_11": 0.25,
+    "htft_12": 0.0172,
+    "htft_1X": 0.05,
+    "htft_21": 0.0215,
+    "htft_22": 0.1787,
+    "htft_2X": 0.05,
+    "htft_X1": 0.1482,
+    "htft_X2": 0.1157,
+    "htft_XX": 0.1686
    },
    "home": {
     "crest": "https://crests.football-data.org/715.png",
@@ -409,22 +552,22 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.3416,
-    "1x2_draw": 0.2757,
-    "1x2_home": 0.3827,
-    "btts_yes": 0.4754,
-    "over_2.5": 0.4234,
-    "under_2.5": 0.5766
+    "1x2_away": 0.3134,
+    "1x2_draw": 0.2676,
+    "1x2_home": 0.4191,
+    "btts_yes": 0.4934,
+    "over_2.5": 0.4507,
+    "under_2.5": 0.5493
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Cardiff City FC 1.23, Stoke City FC 1.15 (totale 2.38)."
+    "Gol attesi: Cardiff City FC 1.36, Stoke City FC 1.13 (totale 2.49)."
    ],
    "silence": {
     "reason": "S_min"
    },
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-08T18:45:00Z"
   },
   {
@@ -516,34 +659,35 @@
    "competition": "ELC",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 83,
+     "S_min": 95,
      "p_min": 87,
+     "quota_min": 7,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 8,
-    "truncated_mass": 1.103e-08
+    "n_clusters": 2,
+    "truncated_mass": 5.977e-09
    },
    "expected_goals": {
-    "away": 1.545,
-    "home": 0.477
+    "away": 1.465,
+    "home": 0.99
    },
    "half_time": {
-    "ht_over_0.5": 0.6007,
-    "ht_over_1.5": 0.2341,
-    "ht_over_2.5": 0.0658,
-    "ht_under_0.5": 0.3993,
-    "ht_under_1.5": 0.7659,
-    "ht_under_2.5": 0.9342,
-    "htft_11": 0.0571,
-    "htft_12": 0.0163,
-    "htft_1X": 0.0303,
-    "htft_21": 0.0041,
-    "htft_22": 0.3996,
-    "htft_2X": 0.0303,
-    "htft_X1": 0.0505,
-    "htft_X2": 0.223,
-    "htft_XX": 0.1888
+    "ht_over_0.5": 0.6737,
+    "ht_over_1.5": 0.3083,
+    "ht_over_2.5": 0.1036,
+    "ht_under_0.5": 0.3263,
+    "ht_under_1.5": 0.6917,
+    "ht_under_2.5": 0.8964,
+    "htft_11": 0.1432,
+    "htft_12": 0.0227,
+    "htft_1X": 0.0477,
+    "htft_21": 0.014,
+    "htft_22": 0.2921,
+    "htft_2X": 0.0477,
+    "htft_X1": 0.0982,
+    "htft_X2": 0.1662,
+    "htft_XX": 0.1681
    },
    "home": {
     "crest": "https://crests.football-data.org/404.png",
@@ -555,109 +699,327 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.8082,
-    "band_p95": 0.9435,
+    "band_p5": 0.6023,
+    "band_p95": 0.8466,
     "cluster_members": [
      "eh_-1_away"
     ],
     "family": "double_chance",
     "key": "dc_x2",
     "label": "X2 (pareggio o ospite)",
-    "p": 0.8512,
-    "p_raw": 0.8855,
-    "reference": 0.5624,
+    "p": 0.6932,
+    "p_raw": 0.7413,
+    "reference": 0.5632,
     "runners_up": [
      {
-      "band_p5": 0.8395,
-      "band_p95": 0.9672,
+      "band_p5": 0.6048,
+      "band_p95": 0.8571,
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.8702,
-      "p_raw": 0.9139,
-      "reference": 0.5919,
-      "score": 0.186681,
-      "shrink_alpha": 0.8642,
-      "sigma": 0.0416
-     },
-     {
-      "band_p5": 0.9495,
-      "band_p95": 0.9926,
-      "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9722,
-      "p_raw": 0.9759,
-      "reference": 0.8039,
-      "score": 0.130529,
-      "shrink_alpha": 0.9788,
-      "sigma": 0.0141
-     },
-     {
-      "band_p5": 0.4968,
-      "band_p95": 0.7564,
-      "family": "1x2",
-      "key": "1x2_away",
-      "label": "Vittoria ospite",
-      "p": 0.5316,
-      "p_raw": 0.6334,
-      "reference": 0.2933,
-      "score": 0.123472,
-      "shrink_alpha": 0.7008,
-      "sigma": 0.0777
-     },
-     {
-      "band_p5": 0.9642,
-      "band_p95": 0.997,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.9833,
-      "p_raw": 0.9852,
-      "reference": 0.8381,
-      "score": 0.119143,
-      "shrink_alpha": 0.9868,
-      "sigma": 0.0121
-     },
-     {
-      "band_p5": 0.4974,
-      "band_p95": 0.6531,
-      "family": "combo_dc_gol",
-      "key": "combodcg_12_nogol",
-      "label": "12 + NoGoal",
-      "p": 0.5215,
-      "p_raw": 0.5694,
-      "reference": 0.3959,
-      "score": 0.032203,
-      "shrink_alpha": 0.724,
-      "sigma": 0.0483
+      "p": 0.6889,
+      "p_raw": 0.7393,
+      "reference": 0.5894,
+      "score": 0.021148,
+      "shrink_alpha": 0.6642,
+      "sigma": 0.0746
      }
     ],
-    "score": 0.192264,
-    "shrink_alpha": 0.8938,
-    "sigma": 0.041
+    "score": 0.035592,
+    "shrink_alpha": 0.73,
+    "sigma": 0.0723
    },
    "raw_probabilities": {
-    "1x2_away": 0.6334,
-    "1x2_draw": 0.2522,
-    "1x2_home": 0.1145,
-    "btts_yes": 0.291,
-    "over_2.5": 0.3291,
-    "under_2.5": 0.6709
+    "1x2_away": 0.4787,
+    "1x2_draw": 0.2626,
+    "1x2_home": 0.2587,
+    "btts_yes": 0.4714,
+    "over_2.5": 0.4415,
+    "under_2.5": 0.5585
    },
    "reasons": [
-    "Gol attesi: Wrexham AFC 0.48, Burnley FC 1.55 (totale 2.02).",
-    "X2 (pareggio o ospite): 85 su 100, 29 punti sopra la media di riferimento (56 su 100).",
-    "Banda di incertezza: fra 81 e 94 su 100."
+    "Gol attesi: Wrexham AFC 0.99, Burnley FC 1.46 (totale 2.46).",
+    "X2 (pareggio o ospite): 69 su 100, 13 punti sopra la media di riferimento (56 su 100).",
+    "Banda di incertezza: fra 60 e 85 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-08T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/563.png",
+    "name": "West Ham United FC",
+    "tla": "WHU"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 113,
+     "p_min": 86,
+     "quota_min": 7,
+     "sigma_max": 75
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.583e-07
+   },
+   "expected_goals": {
+    "away": 1.951,
+    "home": 1.285
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7714,
+    "ht_over_1.5": 0.4341,
+    "ht_over_2.5": 0.1851,
+    "ht_under_0.5": 0.2286,
+    "ht_under_1.5": 0.5659,
+    "ht_under_2.5": 0.8149,
+    "htft_11": 0.1449,
+    "htft_12": 0.0332,
+    "htft_1X": 0.0507,
+    "htft_21": 0.0192,
+    "htft_22": 0.3372,
+    "htft_2X": 0.0507,
+    "htft_X1": 0.0867,
+    "htft_X2": 0.159,
+    "htft_XX": 0.1185
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/60.png",
+    "name": "Bolton Wanderers FC",
+    "tla": "BOL"
+   },
+   "match_id": 561827,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.4979,
+    "1x2_draw": 0.2147,
+    "1x2_home": 0.2874,
+    "btts_yes": 0.49,
+    "over_2.5": 0.5678,
+    "under_2.5": 0.4322
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Bolton Wanderers FC 1.28, West Ham United FC 1.95 (totale 3.24)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-08T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/108.png",
+    "name": "FC Internazionale Milano",
+    "tla": "INT"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 87,
+     "quota_min": 6,
+     "sigma_max": 1
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 2.198e-07
+   },
+   "expected_goals": {
+    "away": 1.269,
+    "home": 2.01
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7545,
+    "ht_over_1.5": 0.4097,
+    "ht_over_2.5": 0.1676,
+    "ht_under_0.5": 0.2455,
+    "ht_under_1.5": 0.5903,
+    "ht_under_2.5": 0.8324,
+    "htft_11": 0.3385,
+    "htft_12": 0.0194,
+    "htft_1X": 0.0496,
+    "htft_21": 0.0357,
+    "htft_22": 0.1327,
+    "htft_2X": 0.0496,
+    "htft_X1": 0.1713,
+    "htft_X2": 0.0869,
+    "htft_XX": 0.1163
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/86.png",
+    "name": "Real Madrid CF",
+    "tla": "RMA"
+   },
+   "match_id": 575325,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2469,
+    "1x2_draw": 0.2118,
+    "1x2_home": 0.5413,
+    "btts_yes": 0.6013,
+    "over_2.5": 0.6251,
+    "under_2.5": 0.3749
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Real Madrid CF 2.01, FC Internazionale Milano 1.27 (totale 3.28)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-08T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/94.png",
+    "name": "Villarreal CF",
+    "tla": "VIL"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 93,
+     "p_min": 86,
+     "quota_min": 9,
+     "sigma_max": 33
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 0.0001427
+   },
+   "expected_goals": {
+    "away": 0.504,
+    "home": 3.735
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8372,
+    "ht_over_1.5": 0.5418,
+    "ht_over_2.5": 0.2735,
+    "ht_under_0.5": 0.1628,
+    "ht_under_1.5": 0.4582,
+    "ht_under_2.5": 0.7265,
+    "htft_11": 0.7167,
+    "htft_12": 0.0016,
+    "htft_1X": 0.0116,
+    "htft_21": 0.0244,
+    "htft_22": 0.0101,
+    "htft_2X": 0.0116,
+    "htft_X1": 0.1811,
+    "htft_X2": 0.0088,
+    "htft_XX": 0.0341
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4.png",
+    "name": "Borussia Dortmund",
+    "tla": "BVB"
+   },
+   "match_id": 575327,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.7412,
+    "band_p95": 0.9856,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.7668,
+    "p_raw": 0.8993,
+    "reference": 0.4784,
+    "runners_up": [
+     {
+      "band_p5": 0.6463,
+      "band_p95": 0.9732,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6869,
+      "p_raw": 0.8535,
+      "reference": 0.5225,
+      "score": 0.055773,
+      "shrink_alpha": 0.4966,
+      "sigma": 0.1056
+     },
+     {
+      "band_p5": 0.7178,
+      "band_p95": 0.9789,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.692,
+      "p_raw": 0.8786,
+      "reference": 0.5342,
+      "score": 0.051728,
+      "shrink_alpha": 0.4583,
+      "sigma": 0.0895
+     },
+     {
+      "band_p5": 0.6057,
+      "band_p95": 0.9634,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.5199,
+      "p_raw": 0.8314,
+      "reference": 0.3944,
+      "score": 0.032123,
+      "shrink_alpha": 0.2871,
+      "sigma": 0.1152
+     },
+     {
+      "band_p5": 0.6572,
+      "band_p95": 0.9691,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.754,
+      "p_raw": 0.8512,
+      "reference": 0.6883,
+      "score": 0.010529,
+      "shrink_alpha": 0.4037,
+      "sigma": 0.1
+     }
+    ],
+    "score": 0.174067,
+    "shrink_alpha": 0.6853,
+    "sigma": 0.0806
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.0303,
+    "1x2_draw": 0.0704,
+    "1x2_home": 0.8993,
+    "btts_yes": 0.3622,
+    "over_2.5": 0.7601,
+    "under_2.5": 0.2399
+   },
+   "reasons": [
+    "Gol attesi: Borussia Dortmund 3.73, Villarreal CF 0.50 (totale 4.24).",
+    "Vittoria casa: 77 su 100, 29 punti sopra la media di riferimento (48 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-08T19:00:00Z"
   }
  ],
- "generated_at": "2026-08-12T11:54:39Z",
+ "generated_at": "2026-09-02T03:10:17Z",
  "schema_version": 1,
- "silence_count": 2,
- "total": 6
+ "silence_count": 4,
+ "total": 11
 }

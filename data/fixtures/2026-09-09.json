@@ -3,6 +3,103 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/325.png",
+    "name": "Portsmouth FC",
+    "tla": "POR"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 98,
+     "p_min": 86,
+     "quota_min": 8,
+     "sigma_max": 47
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 5.772e-05
+   },
+   "expected_goals": {
+    "away": 1.651,
+    "home": 3.404
+   },
+   "half_time": {
+    "ht_over_0.5": 0.9003,
+    "ht_over_1.5": 0.6705,
+    "ht_over_2.5": 0.4055,
+    "ht_under_0.5": 0.0997,
+    "ht_under_1.5": 0.3295,
+    "ht_under_2.5": 0.5945,
+    "htft_11": 0.5055,
+    "htft_12": 0.0181,
+    "htft_1X": 0.0405,
+    "htft_21": 0.0523,
+    "htft_22": 0.088,
+    "htft_2X": 0.0405,
+    "htft_X1": 0.1526,
+    "htft_X2": 0.0455,
+    "htft_XX": 0.0571
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/76.png",
+    "name": "Wolverhampton Wanderers FC",
+    "tla": "WOL"
+   },
+   "match_id": 561826,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.663,
+    "band_p95": 0.931,
+    "cluster_members": [
+     "combodc_12_over_2.5"
+    ],
+    "family": "combo_dc",
+    "key": "combodc_12_over_1.5",
+    "label": "12 + Over 1.5",
+    "p": 0.6695,
+    "p_raw": 0.8178,
+    "reference": 0.5404,
+    "runners_up": [
+     {
+      "band_p5": 0.603,
+      "band_p95": 0.9761,
+      "family": "over_under",
+      "key": "over_2.5",
+      "label": "Over 2.5",
+      "p": 0.5529,
+      "p_raw": 0.844,
+      "reference": 0.4859,
+      "score": 0.008988,
+      "shrink_alpha": 0.187,
+      "sigma": 0.1176
+     }
+    ],
+    "score": 0.03442,
+    "shrink_alpha": 0.4653,
+    "sigma": 0.0882
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1824,
+    "1x2_draw": 0.1349,
+    "1x2_home": 0.6827,
+    "btts_yes": 0.7255,
+    "over_2.5": 0.844,
+    "under_2.5": 0.156
+   },
+   "reasons": [
+    "Gol attesi: Wolverhampton Wanderers FC 3.40, Portsmouth FC 1.65 (totale 5.06).",
+    "12 + Over 1.5: 67 su 100, 13 punti sopra la media di riferimento (54 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-09T00:00:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/1912.png",
     "name": "Telstar 1963",
     "tla": "TEL"
@@ -535,8 +632,8 @@
    "utc_date": "2026-09-09T19:15:00Z"
   }
  ],
- "generated_at": "2026-09-01T10:01:19Z",
+ "generated_at": "2026-09-02T03:10:17Z",
  "schema_version": 1,
  "silence_count": 2,
- "total": 5
+ "total": 6
 }
