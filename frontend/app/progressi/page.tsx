@@ -282,7 +282,8 @@ export default function PaginaProgressi() {
                   {euro(conti.speso)} giocati in {conti.giocate.length} schedine.
                 </p>
                 <p className="carta__avviso">
-                  {conti.vinte} uscite su {conti.giocate.length}. È un campione minuscolo e
+                  {conti.vinte} {conti.vinte === 1 ? 'uscita' : 'uscite'} su{' '}
+                  {conti.giocate.length}. È un campione minuscolo e
                   non dice ancora niente: bastano una multipla presa o due raddoppi sbagliati
                   a ribaltare il segno. Serve a esserci, non a concludere.
                 </p>
