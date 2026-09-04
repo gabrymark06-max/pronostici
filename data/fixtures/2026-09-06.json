@@ -1603,35 +1603,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 96,
-     "p_min": 88,
+     "S_min": 112,
+     "p_min": 87,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 5,
-    "truncated_mass": 3.192e-07
+    "n_clusters": 0,
+    "truncated_mass": 1.938e-08
    },
    "expected_goals": {
-    "away": 0.922,
-    "home": 2.079
+    "away": 0.985,
+    "home": 1.622
    },
    "half_time": {
-    "ht_over_0.5": 0.7404,
-    "ht_over_1.5": 0.3903,
-    "ht_over_2.5": 0.1542,
-    "ht_under_0.5": 0.2596,
-    "ht_under_1.5": 0.6097,
-    "ht_under_2.5": 0.8458,
-    "htft_11": 0.4183,
-    "htft_12": 0.0111,
-    "htft_1X": 0.0416,
-    "htft_21": 0.0314,
-    "htft_22": 0.0859,
-    "htft_2X": 0.0416,
-    "htft_X1": 0.1911,
-    "htft_X2": 0.0606,
-    "htft_XX": 0.1185
+    "ht_over_0.5": 0.6901,
+    "ht_over_1.5": 0.327,
+    "ht_over_2.5": 0.1144,
+    "ht_under_0.5": 0.3099,
+    "ht_under_1.5": 0.673,
+    "ht_under_2.5": 0.8856,
+    "htft_11": 0.3214,
+    "htft_12": 0.0138,
+    "htft_1X": 0.047,
+    "htft_21": 0.0257,
+    "htft_22": 0.1269,
+    "htft_2X": 0.047,
+    "htft_X1": 0.1756,
+    "htft_X2": 0.0887,
+    "htft_XX": 0.1539
    },
    "home": {
     "crest": "https://crests.football-data.org/1765.png",
@@ -1640,22 +1640,13 @@
    },
    "match_id": 554995,
    "matchday": 26,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.26108,
-     "1x2_draw": 0.27808,
-     "1x2_home": 0.46084,
-     "dc_12": 0.72192,
-     "dc_1x": 0.73892,
-     "dc_x2": 0.53916,
-     "eh_-1_away": 0.53916,
-     "eh_1_home": 0.73892,
-     "mg_0_2": 0.55449,
-     "over_2.5": 0.44551,
-     "under_2.5": 0.55449
+    "devig": {
+     "h2h": 1.074,
+     "totals_2.5": 1.109
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -1674,94 +1665,35 @@
      "under_2.5": 1.68
     }
    },
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.5306,
-    "band_p95": 0.7498,
-    "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.596,
-    "p_raw": 0.6366,
-    "prezzo": 1.92,
-    "reference": 0.4739,
-    "runners_up": [
-     {
-      "band_p5": 0.4728,
-      "band_p95": 0.7341,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.5514,
-      "p_raw": 0.609,
-      "prezzo": 2.2,
-      "reference": 0.4456,
-      "score": 0.022479,
-      "shrink_alpha": 0.6475,
-      "sigma": 0.0774
-     },
-     {
-      "band_p5": 0.579,
-      "band_p95": 0.7827,
-      "family": "combo_dc",
-      "key": "combodc_1x_over_1.5",
-      "label": "1X + Over 1.5",
-      "p": 0.6358,
-      "p_raw": 0.6823,
-      "reference": 0.5541,
-      "score": 0.013722,
-      "shrink_alpha": 0.6372,
-      "sigma": 0.0621
-     },
-     {
-      "band_p5": 0.543,
-      "band_p95": 0.7405,
-      "family": "combo_dc",
-      "key": "combodc_12_over_1.5",
-      "label": "12 + Over 1.5",
-      "p": 0.6088,
-      "p_raw": 0.6456,
-      "reference": 0.5387,
-      "score": 0.010006,
-      "shrink_alpha": 0.6562,
-      "sigma": 0.0596
-     },
-     {
-      "band_p5": 0.7418,
-      "band_p95": 0.8495,
-      "family": "double_chance",
-      "key": "dc_12",
-      "label": "12 (nessun pareggio)",
-      "p": 0.7925,
-      "p_raw": 0.7969,
-      "prezzo": 1.33,
-      "reference": 0.7332,
-      "score": 0.009454,
-      "shrink_alpha": 0.9312,
-      "sigma": 0.0323
-     }
-    ],
-    "score": 0.029972,
-    "shrink_alpha": 0.7508,
-    "sigma": 0.0685
+   "phase": "definitive",
+   "prediction": null,
+   "previous": {
+    "market_key": "1x2_home",
+    "market_label": "Vittoria casa",
+    "p": 0.5751,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:42Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.1603,
-    "1x2_draw": 0.2031,
-    "1x2_home": 0.6366,
-    "btts_yes": 0.5205,
-    "over_2.5": 0.5727,
-    "under_2.5": 0.4273
+    "1x2_away": 0.2292,
+    "1x2_draw": 0.2486,
+    "1x2_home": 0.5222,
+    "btts_yes": 0.5023,
+    "over_2.5": 0.483,
+    "under_2.5": 0.517
    },
    "reasons": [
-    "Gol attesi: Fluminense FC 2.08, CR Vasco da Gama 0.92 (totale 3.00).",
-    "Vittoria casa: 60 su 100, 12 punti sopra la media di riferimento (47 su 100).",
-    "Banda di incertezza: fra 53 e 75 su 100."
+    "Fino a ieri dicevamo Vittoria casa. Le quote sono arrivate e dicono piu' o meno quello che dicevamo noi: ritiriamo il pronostico, su questa partita non abbiamo un vantaggio da raccontare.",
+    "Il nostro modello dice quasi esattamente quello che dicono già le quote.",
+    "Gol attesi: Fluminense FC 1.62, CR Vasco da Gama 0.98 (totale 2.61)."
    ],
-   "silence": null,
-   "source": "model_only",
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "prediction_to_silence",
    "utc_date": "2026-09-06T00:00:00Z"
   },
   {
@@ -35859,8 +35791,8 @@
    "utc_date": "2026-09-06T22:30:00Z"
   }
  ],
- "generated_at": "2026-09-04T17:11:08Z",
+ "generated_at": "2026-09-04T18:08:39Z",
  "schema_version": 1,
- "silence_count": 10,
+ "silence_count": 11,
  "total": 28
 }
