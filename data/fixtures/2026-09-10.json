@@ -3,6 +3,208 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/1887.png",
+    "name": "FK Shakhtar Donetsk",
+    "tla": "SHD"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 99,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 36
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 3.146e-05
+   },
+   "expected_goals": {
+    "away": 0.997,
+    "home": 3.203
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8345,
+    "ht_over_1.5": 0.5369,
+    "ht_over_2.5": 0.2691,
+    "ht_under_0.5": 0.1655,
+    "ht_under_1.5": 0.4631,
+    "ht_under_2.5": 0.7309,
+    "htft_11": 0.5705,
+    "htft_12": 0.0082,
+    "htft_1X": 0.0293,
+    "htft_21": 0.0421,
+    "htft_22": 0.043,
+    "htft_2X": 0.0293,
+    "htft_X1": 0.1884,
+    "htft_X2": 0.0301,
+    "htft_XX": 0.0591
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/674.png",
+    "name": "PSV",
+    "tla": "PSV"
+   },
+   "match_id": 575336,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6123,
+    "band_p95": 0.955,
+    "cluster_members": [],
+    "family": "combo_dc",
+    "key": "combodc_1x_over_1.5",
+    "label": "1X + Over 1.5",
+    "p": 0.6357,
+    "p_raw": 0.8174,
+    "reference": 0.5342,
+    "runners_up": [],
+    "score": 0.021048,
+    "shrink_alpha": 0.3584,
+    "sigma": 0.1101
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1006,
+    "1x2_draw": 0.125,
+    "1x2_home": 0.7744,
+    "btts_yes": 0.5689,
+    "over_2.5": 0.7581,
+    "under_2.5": 0.2419
+   },
+   "reasons": [
+    "Gol attesi: PSV 3.20, FK Shakhtar Donetsk 1.00 (totale 4.20).",
+    "1X + Over 1.5: 64 su 100, 10 punti sopra la media di riferimento (53 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-10T16:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5721.png",
+    "name": "FK Bodø/Glimt",
+    "tla": "FK"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 94,
+     "p_min": 86,
+     "quota_min": 9,
+     "sigma_max": 19
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 0.0001421
+   },
+   "expected_goals": {
+    "away": 1.281,
+    "home": 3.733
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8833,
+    "ht_over_1.5": 0.6325,
+    "ht_over_2.5": 0.3632,
+    "ht_under_0.5": 0.1167,
+    "ht_under_1.5": 0.3675,
+    "ht_under_2.5": 0.6368,
+    "htft_11": 0.5922,
+    "htft_12": 0.0102,
+    "htft_1X": 0.0291,
+    "htft_21": 0.0498,
+    "htft_22": 0.0455,
+    "htft_2X": 0.0291,
+    "htft_X1": 0.1701,
+    "htft_X2": 0.0281,
+    "htft_XX": 0.0457
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/5.png",
+    "name": "FC Bayern München",
+    "tla": "FCB"
+   },
+   "match_id": 575337,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6517,
+    "band_p95": 0.9739,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.7013,
+    "p_raw": 0.8567,
+    "reference": 0.5225,
+    "runners_up": [
+     {
+      "band_p5": 0.5595,
+      "band_p95": 0.9489,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.6313,
+      "p_raw": 0.7871,
+      "reference": 0.4784,
+      "score": 0.047193,
+      "shrink_alpha": 0.4955,
+      "sigma": 0.12
+     },
+     {
+      "band_p5": 0.669,
+      "band_p95": 0.9683,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6772,
+      "p_raw": 0.8551,
+      "reference": 0.5342,
+      "score": 0.042272,
+      "shrink_alpha": 0.4457,
+      "sigma": 0.0918
+     },
+     {
+      "band_p5": 0.6051,
+      "band_p95": 0.9354,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.6649,
+      "p_raw": 0.7884,
+      "reference": 0.5829,
+      "score": 0.014168,
+      "shrink_alpha": 0.3992,
+      "sigma": 0.101
+     }
+    ],
+    "score": 0.066281,
+    "shrink_alpha": 0.535,
+    "sigma": 0.0978
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.103,
+    "1x2_draw": 0.1099,
+    "1x2_home": 0.7871,
+    "btts_yes": 0.6777,
+    "over_2.5": 0.8514,
+    "under_2.5": 0.1486
+   },
+   "reasons": [
+    "Gol attesi: FC Bayern München 3.73, FK Bodø/Glimt 1.28 (totale 5.01).",
+    "Casa Over 1.5: 70 su 100, 18 punti sopra la media di riferimento (52 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-10T19:00:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/5613.png",
     "name": "Sporting Clube de Braga",
     "tla": "SCB"
@@ -11,33 +213,34 @@
    "diagnostics": {
     "filter_bites": {
      "S_min": 89,
-     "p_min": 88,
+     "p_min": 87,
+     "quota_min": 8,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 7,
-    "truncated_mass": 8.161e-08
+    "n_clusters": 4,
+    "truncated_mass": 1.336e-07
    },
    "expected_goals": {
-    "away": 1.841,
-    "home": 0.916
+    "away": 1.923,
+    "home": 0.961
    },
    "half_time": {
-    "ht_over_0.5": 0.71,
-    "ht_over_1.5": 0.3511,
-    "ht_over_2.5": 0.1289,
-    "ht_under_0.5": 0.29,
-    "ht_under_1.5": 0.6489,
-    "ht_under_2.5": 0.8711,
-    "htft_11": 0.1002,
-    "htft_12": 0.0283,
-    "htft_1X": 0.0438,
-    "htft_21": 0.0117,
-    "htft_22": 0.3749,
-    "htft_2X": 0.0438,
-    "htft_X1": 0.0716,
-    "htft_X2": 0.1881,
-    "htft_XX": 0.1376
+    "ht_over_0.5": 0.7277,
+    "ht_over_1.5": 0.3735,
+    "ht_over_2.5": 0.1431,
+    "ht_under_0.5": 0.2723,
+    "ht_under_1.5": 0.6265,
+    "ht_under_2.5": 0.8569,
+    "htft_11": 0.101,
+    "htft_12": 0.0299,
+    "htft_1X": 0.0442,
+    "htft_21": 0.0124,
+    "htft_22": 0.3835,
+    "htft_2X": 0.0442,
+    "htft_X1": 0.0701,
+    "htft_X2": 0.1851,
+    "htft_XX": 0.1295
    },
    "home": {
     "crest": "https://crests.football-data.org/9136.png",
@@ -49,109 +252,81 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7243,
-    "band_p95": 0.8899,
-    "cluster_members": [
-     "eh_-1_away"
-    ],
-    "family": "double_chance",
-    "key": "dc_x2",
-    "label": "X2 (pareggio o ospite)",
-    "p": 0.7764,
-    "p_raw": 0.8133,
-    "reference": 0.5726,
+    "band_p5": 0.4844,
+    "band_p95": 0.7056,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_away",
+    "label": "Vittoria ospite",
+    "p": 0.5231,
+    "p_raw": 0.5965,
+    "reference": 0.3095,
     "runners_up": [
      {
-      "band_p5": 0.4644,
-      "band_p95": 0.6994,
-      "family": "1x2",
-      "key": "1x2_away",
-      "label": "Vittoria ospite",
-      "p": 0.5132,
-      "p_raw": 0.5888,
-      "reference": 0.3076,
-      "score": 0.091111,
-      "shrink_alpha": 0.731,
-      "sigma": 0.0721
-     },
-     {
-      "band_p5": 0.8915,
-      "band_p95": 0.9716,
+      "band_p5": 0.7287,
+      "band_p95": 0.8885,
       "family": "handicap_eu",
-      "key": "eh_-2_away",
-      "label": "Handicap -2 ospite",
-      "p": 0.9271,
-      "p_raw": 0.9369,
-      "reference": 0.7778,
-      "score": 0.081585,
-      "shrink_alpha": 0.939,
-      "sigma": 0.0245
+      "key": "eh_-1_away",
+      "label": "Handicap -1 ospite",
+      "p": 0.7627,
+      "p_raw": 0.8133,
+      "reference": 0.5716,
+      "score": 0.079845,
+      "shrink_alpha": 0.7907,
+      "sigma": 0.0494
      },
      {
-      "band_p5": 0.8805,
-      "band_p95": 0.9691,
-      "family": "team_goals",
-      "key": "hg_under_2.5",
-      "label": "Casa Under 2.5",
-      "p": 0.9232,
-      "p_raw": 0.9319,
-      "reference": 0.8063,
-      "score": 0.053976,
-      "shrink_alpha": 0.9312,
-      "sigma": 0.0285
+      "band_p5": 0.5452,
+      "band_p95": 0.7388,
+      "family": "combo_dc",
+      "key": "combodc_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5642,
+      "p_raw": 0.6452,
+      "reference": 0.4259,
+      "score": 0.038533,
+      "shrink_alpha": 0.6306,
+      "sigma": 0.063
      },
      {
-      "band_p5": 0.6643,
-      "band_p95": 0.8535,
+      "band_p5": 0.6341,
+      "band_p95": 0.8455,
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.7187,
-      "p_raw": 0.7662,
-      "reference": 0.5715,
-      "score": 0.046339,
-      "shrink_alpha": 0.7563,
-      "sigma": 0.0595
-     },
-     {
-      "band_p5": 0.7663,
-      "band_p95": 0.8956,
-      "family": "team_goals",
-      "key": "ag_over_0.5",
-      "label": "Ospite Over 0.5",
-      "p": 0.8163,
-      "p_raw": 0.8362,
-      "reference": 0.6869,
-      "score": 0.042963,
-      "shrink_alpha": 0.8668,
-      "sigma": 0.0411
+      "p": 0.7012,
+      "p_raw": 0.7499,
+      "reference": 0.5703,
+      "score": 0.036315,
+      "shrink_alpha": 0.7287,
+      "sigma": 0.064
      }
     ],
-    "score": 0.091559,
-    "shrink_alpha": 0.8468,
-    "sigma": 0.0506
+    "score": 0.098066,
+    "shrink_alpha": 0.7445,
+    "sigma": 0.0697
    },
    "raw_probabilities": {
-    "1x2_away": 0.5888,
-    "1x2_draw": 0.2245,
+    "1x2_away": 0.5965,
+    "1x2_draw": 0.2169,
     "1x2_home": 0.1867,
-    "btts_yes": 0.497,
-    "over_2.5": 0.5175,
-    "under_2.5": 0.4825
+    "btts_yes": 0.5187,
+    "over_2.5": 0.5465,
+    "under_2.5": 0.4535
    },
    "reasons": [
-    "Gol attesi: CF Estrela da Amadora 0.92, Sporting Clube de Braga 1.84 (totale 2.76).",
-    "X2 (pareggio o ospite): 78 su 100, 20 punti sopra la media di riferimento (57 su 100).",
-    "Banda di incertezza: fra 72 e 89 su 100."
+    "Gol attesi: CF Estrela da Amadora 0.96, Sporting Clube de Braga 1.92 (totale 2.88).",
+    "Vittoria ospite: 52 su 100, 21 punti sopra la media di riferimento (31 su 100).",
+    "Banda di incertezza: fra 48 e 71 su 100."
    ],
    "silence": null,
    "source": "model_only",
-   "stage": null,
+   "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-10T19:15:00Z"
   }
  ],
- "generated_at": "2026-08-12T11:54:39Z",
+ "generated_at": "2026-09-04T03:10:42Z",
  "schema_version": 1,
  "silence_count": 0,
- "total": 1
+ "total": 3
 }

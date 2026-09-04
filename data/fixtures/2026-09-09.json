@@ -228,7 +228,7 @@
     "filter_bites": {
      "S_min": 89,
      "p_min": 84,
-     "quota_min": 11,
+     "quota_min": 12,
      "sigma_max": 14
     },
     "n_candidates": 114,
@@ -314,19 +314,6 @@
     "reference": 0.5342,
     "runners_up": [
      {
-      "band_p5": 0.6533,
-      "band_p95": 0.978,
-      "family": "1x2",
-      "key": "1x2_home",
-      "label": "Vittoria casa",
-      "p": 0.6883,
-      "p_raw": 0.8529,
-      "reference": 0.4784,
-      "score": 0.089906,
-      "shrink_alpha": 0.5605,
-      "sigma": 0.1053
-     },
-     {
       "band_p5": 0.6929,
       "band_p95": 0.9763,
       "family": "combo_dc",
@@ -377,6 +364,19 @@
       "score": 0.035865,
       "shrink_alpha": 0.2982,
       "sigma": 0.1122
+     },
+     {
+      "band_p5": 0.508,
+      "band_p95": 0.8043,
+      "family": "combo_dc_gol",
+      "key": "combodcg_12_gol",
+      "label": "12 + Goal",
+      "p": 0.5271,
+      "p_raw": 0.6634,
+      "reference": 0.4252,
+      "score": 0.020929,
+      "shrink_alpha": 0.4276,
+      "sigma": 0.0906
      }
     ],
     "score": 0.095268,
@@ -840,6 +840,7 @@
       "label": "Over 3.5",
       "p": 0.6957,
       "p_raw": 0.9567,
+      "prezzo": 1.6,
       "reference": 0.432,
       "score": 0.141559,
       "shrink_alpha": 0.5026,
@@ -963,6 +964,7 @@
     "label": "Vittoria ospite",
     "p": 0.5735,
     "p_raw": 0.8022,
+    "prezzo": 1.88,
     "reference": 0.3202,
     "runners_up": [
      {
@@ -1264,7 +1266,7 @@
    "utc_date": "2026-09-09T19:45:00Z"
   }
  ],
- "generated_at": "2026-09-03T10:00:57Z",
+ "generated_at": "2026-09-04T03:10:42Z",
  "schema_version": 1,
  "silence_count": 3,
  "total": 11
