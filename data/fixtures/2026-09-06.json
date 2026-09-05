@@ -36545,35 +36545,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 94,
+     "S_min": 90,
      "p_min": 87,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 3,
-    "truncated_mass": 4.462e-07
+    "truncated_mass": 3.099e-07
    },
    "expected_goals": {
-    "away": 0.769,
-    "home": 2.143
+    "away": 0.656,
+    "home": 2.074
    },
    "half_time": {
-    "ht_over_0.5": 0.7298,
-    "ht_over_1.5": 0.3762,
-    "ht_over_2.5": 0.1449,
-    "ht_under_0.5": 0.2702,
-    "ht_under_1.5": 0.6238,
-    "ht_under_2.5": 0.8551,
-    "htft_11": 0.4579,
-    "htft_12": 0.0079,
-    "htft_1X": 0.0363,
-    "htft_21": 0.0291,
-    "htft_22": 0.0647,
-    "htft_2X": 0.0363,
-    "htft_X1": 0.2031,
-    "htft_X2": 0.0489,
-    "htft_XX": 0.1159
+    "ht_over_0.5": 0.7067,
+    "ht_over_1.5": 0.3469,
+    "ht_over_2.5": 0.1263,
+    "ht_under_0.5": 0.2933,
+    "ht_under_1.5": 0.6531,
+    "ht_under_2.5": 0.8737,
+    "htft_11": 0.4669,
+    "htft_12": 0.0062,
+    "htft_1X": 0.0331,
+    "htft_21": 0.0258,
+    "htft_22": 0.0554,
+    "htft_2X": 0.0331,
+    "htft_X1": 0.2122,
+    "htft_X2": 0.0443,
+    "htft_XX": 0.123
    },
    "home": {
     "crest": "https://crests.football-data.org/1779.png",
@@ -36582,22 +36582,13 @@
    },
    "match_id": 554992,
    "matchday": 26,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.0989,
-     "1x2_draw": 0.19014,
-     "1x2_home": 0.71095,
-     "dc_12": 0.80986,
-     "dc_1x": 0.9011,
-     "dc_x2": 0.28905,
-     "eh_-1_away": 0.28905,
-     "eh_1_home": 0.9011,
-     "mg_0_2": 0.50447,
-     "over_2.5": 0.49553,
-     "under_2.5": 0.50447
+    "devig": {
+     "h2h": 1.092,
+     "totals_2.5": 1.112
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -36609,78 +36600,117 @@
     "price_books": 1,
     "price_scope": "it",
     "prices": {
-     "1x2_away": 8.2,
-     "1x2_draw": 4.7,
-     "1x2_home": 1.38,
+     "1x2_away": 7.8,
+     "1x2_draw": 4.6,
+     "1x2_home": 1.4,
      "over_2.5": 1.85,
      "under_2.5": 1.82
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.5576,
-    "band_p95": 0.8109,
-    "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.6186,
-    "p_raw": 0.6832,
-    "prezzo": 1.38,
-    "reference": 0.4739,
+    "band_p5": 0.5365,
+    "band_p95": 0.6289,
+    "cluster_members": [
+     "ag_under_0.5",
+     "combodcg_12_nogol"
+    ],
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.5676,
+    "p_raw": 0.5802,
+    "prezzo": 1.61,
+    "reference": 0.4742,
     "runners_up": [
      {
-      "band_p5": 0.4618,
-      "band_p95": 0.765,
+      "band_p5": 0.5166,
+      "band_p95": 0.6224,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.5318,
+      "p_raw": 0.5685,
+      "reference": 0.3576,
+      "score": 0.063012,
+      "shrink_alpha": 0.8262,
+      "sigma": 0.0335
+     },
+     {
+      "band_p5": 0.5553,
+      "band_p95": 0.6642,
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.5438,
-      "p_raw": 0.6217,
+      "p": 0.5968,
+      "p_raw": 0.6124,
       "prezzo": 1.5,
       "reference": 0.4456,
-      "score": 0.019373,
-      "shrink_alpha": 0.5575,
-      "sigma": 0.0935
+      "score": 0.045979,
+      "shrink_alpha": 0.9063,
+      "sigma": 0.0337
      },
      {
-      "band_p5": 0.5606,
-      "band_p95": 0.8123,
+      "band_p5": 0.646,
+      "band_p95": 0.736,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6299,
-      "p_raw": 0.6957,
+      "p": 0.6782,
+      "p_raw": 0.6924,
       "reference": 0.5541,
-      "score": 0.011792,
-      "shrink_alpha": 0.5352,
-      "sigma": 0.0767
+      "score": 0.032106,
+      "shrink_alpha": 0.8975,
+      "sigma": 0.0278
+     },
+     {
+      "band_p5": 0.5802,
+      "band_p95": 0.677,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6215,
+      "p_raw": 0.6319,
+      "reference": 0.5387,
+      "score": 0.013975,
+      "shrink_alpha": 0.8879,
+      "sigma": 0.0292
      }
     ],
-    "score": 0.042194,
-    "shrink_alpha": 0.6915,
-    "sigma": 0.0794
+    "score": 0.017492,
+    "shrink_alpha": 0.8812,
+    "sigma": 0.027
+   },
+   "previous": {
+    "market_key": "dc_1x",
+    "market_label": "1X (casa o pareggio)",
+    "p": 0.8827,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:42Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.1256,
-    "1x2_draw": 0.1912,
-    "1x2_home": 0.6832,
-    "btts_yes": 0.4637,
-    "over_2.5": 0.5502,
-    "under_2.5": 0.4498
+    "1x2_away": 0.1061,
+    "1x2_draw": 0.1902,
+    "1x2_home": 0.7038,
+    "btts_yes": 0.4198,
+    "over_2.5": 0.5129,
+    "under_2.5": 0.4871
    },
    "reasons": [
-    "Gol attesi: SC Corinthians Paulista 2.14, Chapecoense AF 0.77 (totale 2.91).",
-    "Vittoria casa: 62 su 100, 14 punti sopra la media di riferimento (47 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Fino a ieri dicevamo 1X (casa o pareggio). Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Non entrambe segnano.",
+    "Gol attesi: SC Corinthians Paulista 2.07, Chapecoense AF 0.66 (totale 2.73).",
+    "Non entrambe segnano: 57 su 100, 9 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 54 e 63 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-06T22:30:00Z"
   }
  ],
- "generated_at": "2026-09-05T17:10:47Z",
+ "generated_at": "2026-09-05T18:07:55Z",
  "schema_version": 1,
  "silence_count": 10,
  "total": 28
