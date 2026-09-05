@@ -118,35 +118,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 99,
+     "S_min": 103,
      "p_min": 86,
-     "quota_min": 8,
+     "quota_min": 7,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 4,
-    "truncated_mass": 5.506e-07
+    "truncated_mass": 4.274e-07
    },
    "expected_goals": {
-    "away": 1.189,
-    "home": 2.184
+    "away": 1.195,
+    "home": 2.134
    },
    "half_time": {
-    "ht_over_0.5": 0.7788,
-    "ht_over_1.5": 0.445,
-    "ht_over_2.5": 0.1933,
-    "ht_under_0.5": 0.2212,
-    "ht_under_1.5": 0.555,
-    "ht_under_2.5": 0.8067,
-    "htft_11": 0.3898,
-    "htft_12": 0.0163,
-    "htft_1X": 0.0468,
-    "htft_21": 0.0364,
-    "htft_22": 0.1119,
-    "htft_2X": 0.0468,
-    "htft_X1": 0.1738,
-    "htft_X2": 0.071,
-    "htft_XX": 0.1072
+    "ht_over_0.5": 0.7745,
+    "ht_over_1.5": 0.4387,
+    "ht_over_2.5": 0.1885,
+    "ht_under_0.5": 0.2255,
+    "ht_under_1.5": 0.5613,
+    "ht_under_2.5": 0.8115,
+    "htft_11": 0.3802,
+    "htft_12": 0.0167,
+    "htft_1X": 0.0474,
+    "htft_21": 0.0358,
+    "htft_22": 0.1164,
+    "htft_2X": 0.0474,
+    "htft_X1": 0.1725,
+    "htft_X2": 0.0737,
+    "htft_XX": 0.11
    },
    "home": {
     "crest": "https://crests.football-data.org/1915.png",
@@ -158,71 +158,84 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.447,
-    "band_p95": 0.722,
+    "band_p5": 0.429,
+    "band_p95": 0.7211,
     "cluster_members": [],
     "family": "1x2",
     "key": "1x2_home",
     "label": "Vittoria casa",
-    "p": 0.5458,
-    "p_raw": 0.5965,
-    "reference": 0.4421,
+    "p": 0.5351,
+    "p_raw": 0.5849,
+    "reference": 0.4417,
     "runners_up": [
      {
-      "band_p5": 0.4774,
-      "band_p95": 0.7657,
+      "band_p5": 0.67,
+      "band_p95": 0.8829,
+      "family": "double_chance",
+      "key": "dc_1x",
+      "label": "1X (casa o pareggio)",
+      "p": 0.7676,
+      "p_raw": 0.7886,
+      "reference": 0.6956,
+      "score": 0.012897,
+      "shrink_alpha": 0.7747,
+      "sigma": 0.0641
+     },
+     {
+      "band_p5": 0.4805,
+      "band_p95": 0.7559,
       "family": "team_goals",
       "key": "hg_over_1.5",
       "label": "Casa Over 1.5",
-      "p": 0.578,
-      "p_raw": 0.6337,
-      "reference": 0.4936,
-      "score": 0.014281,
-      "shrink_alpha": 0.6024,
-      "sigma": 0.0852
+      "p": 0.5717,
+      "p_raw": 0.6218,
+      "reference": 0.4944,
+      "score": 0.011983,
+      "shrink_alpha": 0.6068,
+      "sigma": 0.0844
      },
      {
-      "band_p5": 0.6786,
-      "band_p95": 0.8785,
+      "band_p5": 0.67,
+      "band_p95": 0.8829,
       "family": "handicap_eu",
       "key": "eh_1_home",
       "label": "Handicap +1 casa",
-      "p": 0.7671,
-      "p_raw": 0.7961,
-      "reference": 0.6953,
-      "score": 0.01279,
-      "shrink_alpha": 0.7119,
-      "sigma": 0.0611
+      "p": 0.7599,
+      "p_raw": 0.7886,
+      "reference": 0.6956,
+      "score": 0.010226,
+      "shrink_alpha": 0.692,
+      "sigma": 0.0641
      },
      {
-      "band_p5": 0.5577,
-      "band_p95": 0.7964,
+      "band_p5": 0.5485,
+      "band_p95": 0.7847,
       "family": "combo_dc",
       "key": "combodc_1x_over_1.5",
       "label": "1X + Over 1.5",
-      "p": 0.6284,
-      "p_raw": 0.6819,
-      "reference": 0.5589,
-      "score": 0.009945,
-      "shrink_alpha": 0.565,
-      "sigma": 0.0722
+      "p": 0.6226,
+      "p_raw": 0.6721,
+      "reference": 0.5597,
+      "score": 0.008122,
+      "shrink_alpha": 0.5593,
+      "sigma": 0.073
      }
     ],
-    "score": 0.021616,
-    "shrink_alpha": 0.6715,
-    "sigma": 0.0832
+    "score": 0.017539,
+    "shrink_alpha": 0.6524,
+    "sigma": 0.0868
    },
    "raw_probabilities": {
-    "1x2_away": 0.2039,
-    "1x2_draw": 0.1996,
-    "1x2_home": 0.5965,
-    "btts_yes": 0.6062,
-    "over_2.5": 0.6485,
-    "under_2.5": 0.3515
+    "1x2_away": 0.2114,
+    "1x2_draw": 0.2037,
+    "1x2_home": 0.5849,
+    "btts_yes": 0.6042,
+    "over_2.5": 0.6409,
+    "under_2.5": 0.3591
    },
    "reasons": [
-    "Gol attesi: NEC 2.18, SBV Excelsior 1.19 (totale 3.37).",
-    "Vittoria casa: 55 su 100, 10 punti sopra la media di riferimento (44 su 100).",
+    "Gol attesi: NEC 2.13, SBV Excelsior 1.20 (totale 3.33).",
+    "Vittoria casa: 54 su 100, 9 punti sopra la media di riferimento (44 su 100).",
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
@@ -609,6 +622,7 @@
       "label": "Vittoria casa",
       "p": 0.5321,
       "p_raw": 0.5664,
+      "prezzo": 1.86,
       "reference": 0.4363,
       "score": 0.018494,
       "shrink_alpha": 0.7368,
@@ -1437,7 +1451,7 @@
    "utc_date": "2026-09-08T19:00:00Z"
   }
  ],
- "generated_at": "2026-09-04T17:11:08Z",
+ "generated_at": "2026-09-05T03:11:08Z",
  "schema_version": 1,
  "silence_count": 4,
  "total": 11

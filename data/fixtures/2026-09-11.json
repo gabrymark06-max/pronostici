@@ -1,0 +1,486 @@
+{
+ "date": "2026-09-11",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/672.png",
+    "name": "Willem II Tilburg",
+    "tla": "WII"
+   },
+   "competition": "DED",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 85,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 5,
+    "truncated_mass": 5.196e-06
+   },
+   "expected_goals": {
+    "away": 0.763,
+    "home": 2.69
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7867,
+    "ht_over_1.5": 0.4571,
+    "ht_over_2.5": 0.2025,
+    "ht_under_0.5": 0.2133,
+    "ht_under_1.5": 0.5429,
+    "ht_under_2.5": 0.7975,
+    "htft_11": 0.5491,
+    "htft_12": 0.0063,
+    "htft_1X": 0.0294,
+    "htft_21": 0.0326,
+    "htft_22": 0.0428,
+    "htft_2X": 0.0294,
+    "htft_X1": 0.1987,
+    "htft_X2": 0.0319,
+    "htft_XX": 0.0798
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/682.png",
+    "name": "AZ",
+    "tla": "AZ"
+   },
+   "match_id": 558899,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6597,
+    "band_p95": 0.8746,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6938,
+    "p_raw": 0.7736,
+    "reference": 0.4417,
+    "runners_up": [
+     {
+      "band_p5": 0.7263,
+      "band_p95": 0.9063,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7636,
+      "p_raw": 0.8204,
+      "reference": 0.5911,
+      "score": 0.066032,
+      "shrink_alpha": 0.7524,
+      "sigma": 0.0602
+     },
+     {
+      "band_p5": 0.6164,
+      "band_p95": 0.8605,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6573,
+      "p_raw": 0.7401,
+      "reference": 0.4944,
+      "score": 0.053955,
+      "shrink_alpha": 0.6631,
+      "sigma": 0.0748
+     },
+     {
+      "band_p5": 0.6886,
+      "band_p95": 0.8848,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.711,
+      "p_raw": 0.7919,
+      "reference": 0.5597,
+      "score": 0.048449,
+      "shrink_alpha": 0.6517,
+      "sigma": 0.0602
+     },
+     {
+      "band_p5": 0.56,
+      "band_p95": 0.8156,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.5044,
+      "p_raw": 0.6857,
+      "reference": 0.3549,
+      "score": 0.046627,
+      "shrink_alpha": 0.4519,
+      "sigma": 0.0805
+     },
+     {
+      "band_p5": 0.6417,
+      "band_p95": 0.851,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6976,
+      "p_raw": 0.7454,
+      "reference": 0.6186,
+      "score": 0.013655,
+      "shrink_alpha": 0.6228,
+      "sigma": 0.064
+     }
+    ],
+    "score": 0.129406,
+    "shrink_alpha": 0.7596,
+    "sigma": 0.0669
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.0851,
+    "1x2_draw": 0.1413,
+    "1x2_home": 0.7736,
+    "btts_yes": 0.4886,
+    "over_2.5": 0.6627,
+    "under_2.5": 0.3373
+   },
+   "reasons": [
+    "Gol attesi: AZ 2.69, Willem II Tilburg 0.76 (totale 3.45).",
+    "Vittoria casa: 69 su 100, 25 punti sopra la media di riferimento (44 su 100).",
+    "Banda di incertezza: fra 66 e 87 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-11T18:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/99.png",
+    "name": "ACF Fiorentina",
+    "tla": "FIO"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 96,
+     "p_min": 88,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 7.756e-09
+   },
+   "expected_goals": {
+    "away": 1.499,
+    "home": 0.799
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6325,
+    "ht_over_1.5": 0.2646,
+    "ht_over_2.5": 0.0805,
+    "ht_under_0.5": 0.3675,
+    "ht_under_1.5": 0.7354,
+    "ht_under_2.5": 0.9195,
+    "htft_11": 0.1052,
+    "htft_12": 0.0222,
+    "htft_1X": 0.0425,
+    "htft_21": 0.0103,
+    "htft_22": 0.3214,
+    "htft_2X": 0.0425,
+    "htft_X1": 0.0843,
+    "htft_X2": 0.1947,
+    "htft_XX": 0.1769
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/454.png",
+    "name": "Venezia FC",
+    "tla": "VEN"
+   },
+   "match_id": 558606,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6865,
+    "band_p95": 0.891,
+    "cluster_members": [
+     "eh_-1_away"
+    ],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.752,
+    "p_raw": 0.7964,
+    "reference": 0.5931,
+    "runners_up": [
+     {
+      "band_p5": 0.7042,
+      "band_p95": 0.9004,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7552,
+      "p_raw": 0.8078,
+      "reference": 0.6042,
+      "score": 0.05086,
+      "shrink_alpha": 0.7417,
+      "sigma": 0.0619
+     }
+    ],
+    "score": 0.055691,
+    "shrink_alpha": 0.7815,
+    "sigma": 0.0629
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.534,
+    "1x2_draw": 0.2624,
+    "1x2_home": 0.2036,
+    "btts_yes": 0.4171,
+    "over_2.5": 0.4016,
+    "under_2.5": 0.5984
+   },
+   "reasons": [
+    "Gol attesi: Venezia FC 0.80, ACF Fiorentina 1.50 (totale 2.30).",
+    "X2 (pareggio o ospite): 75 su 100, 16 punti sopra la media di riferimento (59 su 100).",
+    "Banda di incertezza: fra 69 e 89 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-11T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/516.png",
+    "name": "Olympique de Marseille",
+    "tla": "MAR"
+   },
+   "competition": "FL1",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 100,
+     "p_min": 85,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 1.035e-07
+   },
+   "expected_goals": {
+    "away": 1.727,
+    "home": 1.801
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7847,
+    "ht_over_1.5": 0.454,
+    "ht_over_2.5": 0.2001,
+    "ht_under_0.5": 0.2153,
+    "ht_under_1.5": 0.546,
+    "ht_under_2.5": 0.7999,
+    "htft_11": 0.2428,
+    "htft_12": 0.0306,
+    "htft_1X": 0.0549,
+    "htft_21": 0.0324,
+    "htft_22": 0.2223,
+    "htft_2X": 0.0549,
+    "htft_X1": 0.1291,
+    "htft_X2": 0.1211,
+    "htft_XX": 0.1119
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/529.png",
+    "name": "Stade Rennais FC 1901",
+    "tla": "REN"
+   },
+   "match_id": 559689,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.584,
+    "band_p95": 0.7595,
+    "cluster_members": [
+     "combogo_gol_over_1.5"
+    ],
+    "family": "btts",
+    "key": "btts_yes",
+    "label": "Entrambe segnano",
+    "p": 0.6296,
+    "p_raw": 0.6771,
+    "reference": 0.5392,
+    "runners_up": [
+     {
+      "band_p5": 0.4846,
+      "band_p95": 0.6684,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5487,
+      "p_raw": 0.5816,
+      "reference": 0.4763,
+      "score": 0.010471,
+      "shrink_alpha": 0.6873,
+      "sigma": 0.0555
+     }
+    ],
+    "score": 0.016695,
+    "shrink_alpha": 0.6558,
+    "sigma": 0.0533
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3758,
+    "1x2_draw": 0.2195,
+    "1x2_home": 0.4047,
+    "btts_yes": 0.6771,
+    "over_2.5": 0.6791,
+    "under_2.5": 0.3209
+   },
+   "reasons": [
+    "Gol attesi: Stade Rennais FC 1901 1.80, Olympique de Marseille 1.73 (totale 3.53).",
+    "Entrambe segnano: 63 su 100, 9 punti sopra la media di riferimento (54 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-11T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/404.png",
+    "name": "Wrexham AFC",
+    "tla": "WRE"
+   },
+   "competition": "ELC",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 112,
+     "p_min": 87,
+     "quota_min": 9,
+     "sigma_max": 54
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.189e-06
+   },
+   "expected_goals": {
+    "away": 1.563,
+    "home": 2.341
+   },
+   "half_time": {
+    "ht_over_0.5": 0.8312,
+    "ht_over_1.5": 0.5309,
+    "ht_over_2.5": 0.2638,
+    "ht_under_0.5": 0.1688,
+    "ht_under_1.5": 0.4691,
+    "ht_under_2.5": 0.7362,
+    "htft_11": 0.3601,
+    "htft_12": 0.0235,
+    "htft_1X": 0.0514,
+    "htft_21": 0.0409,
+    "htft_22": 0.1492,
+    "htft_2X": 0.0514,
+    "htft_X1": 0.1498,
+    "htft_X2": 0.0804,
+    "htft_XX": 0.0933
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/563.png",
+    "name": "West Ham United FC",
+    "tla": "WHU"
+   },
+   "match_id": 561842,
+   "matchday": 7,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2808,
+    "1x2_draw": 0.1863,
+    "1x2_home": 0.5329,
+    "btts_yes": 0.6403,
+    "over_2.5": 0.6999,
+    "under_2.5": 0.3001
+   },
+   "reasons": [
+    "Il mercato migliore qui è «12 (nessun pareggio)», e nessuno lo quota. Alla probabilità che gli diamo non potrebbe pagare più di 1,25, e sotto 1,30 non lo consigliamo.",
+    "Gol attesi: West Ham United FC 2.34, Wrexham AFC 1.56 (totale 3.90)."
+   ],
+   "silence": {
+    "reason": "quota_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-11T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/95.png",
+    "name": "Valencia CF",
+    "tla": "VAL"
+   },
+   "competition": "PD",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 86,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 8.335e-09
+   },
+   "expected_goals": {
+    "away": 1.128,
+    "home": 1.504
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6826,
+    "ht_over_1.5": 0.3184,
+    "ht_over_2.5": 0.1094,
+    "ht_under_0.5": 0.3174,
+    "ht_under_1.5": 0.6816,
+    "ht_under_2.5": 0.8906,
+    "htft_11": 0.2712,
+    "htft_12": 0.0175,
+    "htft_1X": 0.0498,
+    "htft_21": 0.0252,
+    "htft_22": 0.1581,
+    "htft_2X": 0.0498,
+    "htft_X1": 0.1624,
+    "htft_X2": 0.109,
+    "htft_XX": 0.1569
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/559.png",
+    "name": "Sevilla FC",
+    "tla": "SEV"
+   },
+   "match_id": 564669,
+   "matchday": 5,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2865,
+    "1x2_draw": 0.255,
+    "1x2_home": 0.4585,
+    "btts_yes": 0.5186,
+    "over_2.5": 0.4875,
+    "under_2.5": 0.5125
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Sevilla FC 1.50, Valencia CF 1.13 (totale 2.63)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-11T19:00:00Z"
+  }
+ ],
+ "generated_at": "2026-09-05T03:11:08Z",
+ "schema_version": 1,
+ "silence_count": 2,
+ "total": 5
+}

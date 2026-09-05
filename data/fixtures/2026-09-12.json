@@ -1,0 +1,387 @@
+{
+ "date": "2026-09-12",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/4287.png",
+    "name": "Clube do Remo",
+    "tla": "CRE"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 106,
+     "p_min": 88,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 2.811e-07
+   },
+   "expected_goals": {
+    "away": 1.041,
+    "home": 2.055
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7513,
+    "ht_over_1.5": 0.4052,
+    "ht_over_2.5": 0.1644,
+    "ht_under_0.5": 0.2487,
+    "ht_under_1.5": 0.5948,
+    "ht_under_2.5": 0.8356,
+    "htft_11": 0.393,
+    "htft_12": 0.0136,
+    "htft_1X": 0.0449,
+    "htft_21": 0.0328,
+    "htft_22": 0.1023,
+    "htft_2X": 0.0449,
+    "htft_X1": 0.1817,
+    "htft_X2": 0.0687,
+    "htft_XX": 0.118
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1777.png",
+    "name": "EC Bahia",
+    "tla": "BAH"
+   },
+   "match_id": 555001,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4397,
+    "band_p95": 0.7528,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.5247,
+    "p_raw": 0.5989,
+    "reference": 0.4456,
+    "runners_up": [
+     {
+      "band_p5": 0.4489,
+      "band_p95": 0.7533,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5507,
+      "p_raw": 0.6019,
+      "reference": 0.4739,
+      "score": 0.011811,
+      "shrink_alpha": 0.5999,
+      "sigma": 0.0971
+     }
+    ],
+    "score": 0.012587,
+    "shrink_alpha": 0.5162,
+    "sigma": 0.1016
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1904,
+    "1x2_draw": 0.2077,
+    "1x2_home": 0.6019,
+    "btts_yes": 0.5493,
+    "over_2.5": 0.5903,
+    "under_2.5": 0.4097
+   },
+   "reasons": [
+    "Gol attesi: EC Bahia 2.06, Clube do Remo 1.04 (totale 3.10).",
+    "Casa Over 1.5: 52 su 100, 8 punti sopra la media di riferimento (45 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": null,
+   "utc_date": "2026-09-12T00:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1768.png",
+    "name": "CA Paranaense",
+    "tla": "CAP"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 111,
+     "p_min": 86,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 1.042e-09
+   },
+   "expected_goals": {
+    "away": 1.192,
+    "home": 1.192
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6573,
+    "ht_over_1.5": 0.2904,
+    "ht_over_2.5": 0.0938,
+    "ht_under_0.5": 0.3427,
+    "ht_under_1.5": 0.7096,
+    "ht_under_2.5": 0.9062,
+    "htft_11": 0.2077,
+    "htft_12": 0.0185,
+    "htft_1X": 0.0497,
+    "htft_21": 0.0185,
+    "htft_22": 0.2077,
+    "htft_2X": 0.0497,
+    "htft_X1": 0.1349,
+    "htft_X2": 0.1349,
+    "htft_XX": 0.1784
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4241.png",
+    "name": "Coritiba FBC",
+    "tla": "COR"
+   },
+   "match_id": 555004,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4685,
+    "band_p95": 0.7959,
+    "cluster_members": [],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.5938,
+    "p_raw": 0.6387,
+    "reference": 0.5261,
+    "runners_up": [],
+    "score": 0.00926,
+    "shrink_alpha": 0.6015,
+    "sigma": 0.0968
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3627,
+    "1x2_draw": 0.276,
+    "1x2_home": 0.3613,
+    "btts_yes": 0.4685,
+    "over_2.5": 0.4223,
+    "under_2.5": 0.5777
+   },
+   "reasons": [
+    "Gol attesi: Coritiba FBC 1.19, CA Paranaense 1.19 (totale 2.38).",
+    "X2 (pareggio o ospite): 59 su 100, 7 punti sopra la media di riferimento (53 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-12T00:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1779.png",
+    "name": "SC Corinthians Paulista",
+    "tla": "COR"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 88,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 2.051e-07
+   },
+   "expected_goals": {
+    "away": 0.649,
+    "home": 1.998
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6957,
+    "ht_over_1.5": 0.3336,
+    "ht_over_2.5": 0.1183,
+    "ht_under_0.5": 0.3043,
+    "ht_under_1.5": 0.6664,
+    "ht_under_2.5": 0.8817,
+    "htft_11": 0.4542,
+    "htft_12": 0.0062,
+    "htft_1X": 0.0336,
+    "htft_21": 0.025,
+    "htft_22": 0.0579,
+    "htft_2X": 0.0336,
+    "htft_X1": 0.2128,
+    "htft_X2": 0.0467,
+    "htft_XX": 0.13
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1783.png",
+    "name": "CR Flamengo",
+    "tla": "FLA"
+   },
+   "match_id": 555005,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5824,
+    "band_p95": 0.7821,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6442,
+    "p_raw": 0.6878,
+    "reference": 0.4739,
+    "runners_up": [
+     {
+      "band_p5": 0.4668,
+      "band_p95": 0.712,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5414,
+      "p_raw": 0.5885,
+      "reference": 0.4456,
+      "score": 0.018452,
+      "shrink_alpha": 0.6705,
+      "sigma": 0.0735
+     },
+     {
+      "band_p5": 0.5088,
+      "band_p95": 0.6747,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.5511,
+      "p_raw": 0.592,
+      "reference": 0.4742,
+      "score": 0.01184,
+      "shrink_alpha": 0.6529,
+      "sigma": 0.0536
+     },
+     {
+      "band_p5": 0.5685,
+      "band_p95": 0.7721,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6287,
+      "p_raw": 0.6706,
+      "reference": 0.5541,
+      "score": 0.011414,
+      "shrink_alpha": 0.64,
+      "sigma": 0.0617
+     }
+    ],
+    "score": 0.058614,
+    "shrink_alpha": 0.7961,
+    "sigma": 0.0602
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.113,
+    "1x2_draw": 0.1992,
+    "1x2_home": 0.6878,
+    "btts_yes": 0.408,
+    "over_2.5": 0.4908,
+    "under_2.5": 0.5092
+   },
+   "reasons": [
+    "Gol attesi: CR Flamengo 2.00, SC Corinthians Paulista 0.65 (totale 2.65).",
+    "Vittoria casa: 64 su 100, 17 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 58 e 78 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": null,
+   "utc_date": "2026-09-12T00:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1782.png",
+    "name": "EC Vitória",
+    "tla": "VIT"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 104,
+     "p_min": 88,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 2.346e-08
+   },
+   "expected_goals": {
+    "away": 0.817,
+    "home": 1.65
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6699,
+    "ht_over_1.5": 0.3041,
+    "ht_over_2.5": 0.1013,
+    "ht_under_0.5": 0.3301,
+    "ht_under_1.5": 0.6959,
+    "ht_under_2.5": 0.8987,
+    "htft_11": 0.3553,
+    "htft_12": 0.0102,
+    "htft_1X": 0.0425,
+    "htft_21": 0.0242,
+    "htft_22": 0.0993,
+    "htft_2X": 0.0425,
+    "htft_X1": 0.1923,
+    "htft_X2": 0.0748,
+    "htft_XX": 0.1591
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4364.png",
+    "name": "Mirassol FC",
+    "tla": "MIR"
+   },
+   "match_id": 555007,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4616,
+    "band_p95": 0.6836,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.544,
+    "p_raw": 0.5683,
+    "reference": 0.4739,
+    "runners_up": [],
+    "score": 0.009859,
+    "shrink_alpha": 0.7427,
+    "sigma": 0.07
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1868,
+    "1x2_draw": 0.2449,
+    "1x2_home": 0.5683,
+    "btts_yes": 0.4446,
+    "over_2.5": 0.4457,
+    "under_2.5": 0.5543
+   },
+   "reasons": [
+    "Gol attesi: Mirassol FC 1.65, EC Vitória 0.82 (totale 2.47).",
+    "Vittoria casa: 54 su 100, 7 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 46 e 68 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": null,
+   "utc_date": "2026-09-12T00:00:00Z"
+  }
+ ],
+ "generated_at": "2026-09-05T03:11:08Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 4
+}

@@ -93,11 +93,11 @@
     "filter_bites": {
      "S_min": 94,
      "p_min": 86,
-     "quota_min": 9,
+     "quota_min": 10,
      "sigma_max": 19
     },
     "n_candidates": 114,
-    "n_clusters": 4,
+    "n_clusters": 3,
     "truncated_mass": 0.0001421
    },
    "expected_goals": {
@@ -179,19 +179,6 @@
     "reference": 0.5225,
     "runners_up": [
      {
-      "band_p5": 0.5595,
-      "band_p95": 0.9489,
-      "family": "1x2",
-      "key": "1x2_home",
-      "label": "Vittoria casa",
-      "p": 0.6313,
-      "p_raw": 0.7871,
-      "reference": 0.4784,
-      "score": 0.047193,
-      "shrink_alpha": 0.4955,
-      "sigma": 0.12
-     },
-     {
       "band_p5": 0.669,
       "band_p95": 0.9683,
       "family": "combo_dc",
@@ -249,35 +236,35 @@
    "competition": "PPL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
+     "S_min": 88,
      "p_min": 87,
      "quota_min": 8,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 4,
-    "truncated_mass": 1.336e-07
+    "truncated_mass": 1.66e-07
    },
    "expected_goals": {
-    "away": 1.923,
-    "home": 0.961
+    "away": 1.961,
+    "home": 0.973
    },
    "half_time": {
-    "ht_over_0.5": 0.7277,
-    "ht_over_1.5": 0.3735,
-    "ht_over_2.5": 0.1431,
-    "ht_under_0.5": 0.2723,
-    "ht_under_1.5": 0.6265,
-    "ht_under_2.5": 0.8569,
-    "htft_11": 0.101,
-    "htft_12": 0.0299,
+    "ht_over_0.5": 0.734,
+    "ht_over_1.5": 0.3817,
+    "ht_over_2.5": 0.1485,
+    "ht_under_0.5": 0.266,
+    "ht_under_1.5": 0.6183,
+    "ht_under_2.5": 0.8515,
+    "htft_11": 0.1,
+    "htft_12": 0.0305,
     "htft_1X": 0.0442,
-    "htft_21": 0.0124,
-    "htft_22": 0.3835,
+    "htft_21": 0.0125,
+    "htft_22": 0.3887,
     "htft_2X": 0.0442,
-    "htft_X1": 0.0701,
-    "htft_X2": 0.1851,
-    "htft_XX": 0.1295
+    "htft_X1": 0.0689,
+    "htft_X2": 0.1847,
+    "htft_XX": 0.1263
    },
    "home": {
     "crest": "https://crests.football-data.org/9136.png",
@@ -289,72 +276,72 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.4844,
-    "band_p95": 0.7056,
+    "band_p5": 0.4651,
+    "band_p95": 0.7103,
     "cluster_members": [],
     "family": "1x2",
     "key": "1x2_away",
     "label": "Vittoria ospite",
-    "p": 0.5231,
-    "p_raw": 0.5965,
-    "reference": 0.3095,
+    "p": 0.5141,
+    "p_raw": 0.5997,
+    "reference": 0.3093,
     "runners_up": [
      {
-      "band_p5": 0.7287,
-      "band_p95": 0.8885,
+      "band_p5": 0.722,
+      "band_p95": 0.8881,
       "family": "handicap_eu",
       "key": "eh_-1_away",
       "label": "Handicap -1 ospite",
-      "p": 0.7627,
-      "p_raw": 0.8133,
-      "reference": 0.5716,
-      "score": 0.079845,
-      "shrink_alpha": 0.7907,
-      "sigma": 0.0494
+      "p": 0.7587,
+      "p_raw": 0.8155,
+      "reference": 0.571,
+      "score": 0.07673,
+      "shrink_alpha": 0.7675,
+      "sigma": 0.0529
      },
      {
-      "band_p5": 0.5452,
-      "band_p95": 0.7388,
-      "family": "combo_dc",
-      "key": "combodc_x2_over_1.5",
-      "label": "X2 + Over 1.5",
-      "p": 0.5642,
-      "p_raw": 0.6452,
-      "reference": 0.4259,
-      "score": 0.038533,
-      "shrink_alpha": 0.6306,
-      "sigma": 0.063
-     },
-     {
-      "band_p5": 0.6341,
-      "band_p95": 0.8455,
+      "band_p5": 0.6507,
+      "band_p95": 0.8358,
       "family": "team_goals",
       "key": "hg_under_1.5",
       "label": "Casa Under 1.5",
-      "p": 0.7012,
-      "p_raw": 0.7499,
-      "reference": 0.5703,
-      "score": 0.036315,
-      "shrink_alpha": 0.7287,
-      "sigma": 0.064
+      "p": 0.7011,
+      "p_raw": 0.7458,
+      "reference": 0.5696,
+      "score": 0.036632,
+      "shrink_alpha": 0.7464,
+      "sigma": 0.0611
+     },
+     {
+      "band_p5": 0.539,
+      "band_p95": 0.7606,
+      "family": "combo_dc",
+      "key": "combodc_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5602,
+      "p_raw": 0.6536,
+      "reference": 0.4255,
+      "score": 0.036565,
+      "shrink_alpha": 0.5904,
+      "sigma": 0.0685
      }
     ],
-    "score": 0.098066,
-    "shrink_alpha": 0.7445,
-    "sigma": 0.0697
+    "score": 0.090317,
+    "shrink_alpha": 0.705,
+    "sigma": 0.0769
    },
    "raw_probabilities": {
-    "1x2_away": 0.5965,
-    "1x2_draw": 0.2169,
-    "1x2_home": 0.1867,
-    "btts_yes": 0.5187,
-    "over_2.5": 0.5465,
-    "under_2.5": 0.4535
+    "1x2_away": 0.5997,
+    "1x2_draw": 0.2158,
+    "1x2_home": 0.1845,
+    "btts_yes": 0.5266,
+    "over_2.5": 0.5577,
+    "under_2.5": 0.4423
    },
    "reasons": [
-    "Gol attesi: CF Estrela da Amadora 0.96, Sporting Clube de Braga 1.92 (totale 2.88).",
-    "Vittoria ospite: 52 su 100, 21 punti sopra la media di riferimento (31 su 100).",
-    "Banda di incertezza: fra 48 e 71 su 100."
+    "Gol attesi: CF Estrela da Amadora 0.97, Sporting Clube de Braga 1.96 (totale 2.93).",
+    "Vittoria ospite: 51 su 100, 20 punti sopra la media di riferimento (31 su 100).",
+    "Banda di incertezza: fra 47 e 71 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -362,7 +349,7 @@
    "utc_date": "2026-09-10T19:15:00Z"
   }
  ],
- "generated_at": "2026-09-04T10:01:08Z",
+ "generated_at": "2026-09-05T03:11:08Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 3
