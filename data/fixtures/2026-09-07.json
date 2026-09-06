@@ -1121,28 +1121,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 2,
-    "truncated_mass": 6.191e-10
+    "truncated_mass": 1.464e-09
    },
    "expected_goals": {
-    "away": 0.814,
-    "home": 1.208
+    "away": 0.838,
+    "home": 1.3
    },
    "half_time": {
-    "ht_over_0.5": 0.5835,
-    "ht_over_1.5": 0.2187,
-    "ht_over_2.5": 0.059,
-    "ht_under_0.5": 0.4165,
-    "ht_under_1.5": 0.7813,
-    "ht_under_2.5": 0.941,
-    "htft_11": 0.2572,
-    "htft_12": 0.0109,
-    "htft_1X": 0.0432,
-    "htft_21": 0.0175,
-    "htft_22": 0.1312,
-    "htft_2X": 0.0432,
-    "htft_X1": 0.1782,
-    "htft_X2": 0.1068,
-    "htft_XX": 0.2119
+    "ht_over_0.5": 0.6038,
+    "ht_over_1.5": 0.237,
+    "ht_over_2.5": 0.0672,
+    "ht_under_0.5": 0.3962,
+    "ht_under_1.5": 0.763,
+    "ht_under_2.5": 0.9328,
+    "htft_11": 0.2728,
+    "htft_12": 0.0114,
+    "htft_1X": 0.0439,
+    "htft_21": 0.0193,
+    "htft_22": 0.1273,
+    "htft_2X": 0.0439,
+    "htft_X1": 0.1814,
+    "htft_X2": 0.102,
+    "htft_XX": 0.198
    },
    "home": {
     "crest": "https://crests.football-data.org/104.png",
@@ -1151,22 +1151,13 @@
    },
    "match_id": 558610,
    "matchday": 3,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.22738,
-     "1x2_draw": 0.29207,
-     "1x2_home": 0.48055,
-     "dc_12": 0.70793,
-     "dc_1x": 0.77262,
-     "dc_x2": 0.51945,
-     "eh_-1_away": 0.51945,
-     "eh_1_home": 0.77262,
-     "mg_0_2": 0.61626,
-     "over_2.5": 0.38374,
-     "under_2.5": 0.61626
+    "devig": {
+     "h2h": 1.05,
+     "totals_2.5": 1.105
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -1185,54 +1176,63 @@
      "under_2.5": 1.54
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.5243,
-    "band_p95": 0.6987,
+    "band_p5": 0.5522,
+    "band_p95": 0.6228,
     "cluster_members": [],
     "family": "btts",
     "key": "btts_no",
     "label": "Non entrambe segnano",
-    "p": 0.5776,
-    "p_raw": 0.6158,
+    "p": 0.5822,
+    "p_raw": 0.5885,
     "prezzo": 1.7,
     "reference": 0.5047,
     "runners_up": [
      {
-      "band_p5": 0.5547,
-      "band_p95": 0.7637,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.591,
-      "p_raw": 0.6708,
-      "prezzo": 1.54,
-      "reference": 0.5239,
-      "score": 0.009107,
-      "shrink_alpha": 0.4571,
-      "sigma": 0.0615
+      "band_p5": 0.4956,
+      "band_p95": 0.5457,
+      "family": "multigoal",
+      "key": "mg_1_2",
+      "label": "Multigol 1-2",
+      "p": 0.5144,
+      "p_raw": 0.5216,
+      "reference": 0.4431,
+      "score": 0.010236,
+      "shrink_alpha": 0.9092,
+      "sigma": 0.0154
      }
     ],
-    "score": 0.010651,
-    "shrink_alpha": 0.6557,
-    "sigma": 0.0533
+    "score": 0.012072,
+    "shrink_alpha": 0.9255,
+    "sigma": 0.0209
+   },
+   "previous": {
+    "market_key": "ag_under_1.5",
+    "market_label": "Ospite Under 1.5",
+    "p": 0.7704,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:40Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.2508,
-    "1x2_draw": 0.297,
-    "1x2_home": 0.4523,
-    "btts_yes": 0.3842,
-    "over_2.5": 0.3292,
-    "under_2.5": 0.6708
+    "1x2_away": 0.2412,
+    "1x2_draw": 0.285,
+    "1x2_home": 0.4738,
+    "btts_yes": 0.4115,
+    "over_2.5": 0.3604,
+    "under_2.5": 0.6396
    },
    "reasons": [
-    "Gol attesi: Cagliari Calcio 1.21, US Lecce 0.81 (totale 2.02).",
-    "Non entrambe segnano: 58 su 100, 7 punti sopra la media di riferimento (50 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Fino a ieri dicevamo Ospite Under 1.5. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Non entrambe segnano.",
+    "Gol attesi: Cagliari Calcio 1.30, US Lecce 0.84 (totale 2.14).",
+    "Non entrambe segnano: 58 su 100, 8 punti sopra la media di riferimento (50 su 100).",
+    "Banda di incertezza: fra 55 e 62 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-07T16:30:00Z"
   },
   {
@@ -2011,35 +2011,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 76,
-     "p_min": 88,
+     "S_min": 83,
+     "p_min": 86,
      "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 5,
-    "truncated_mass": 2.955e-11
+    "n_clusters": 4,
+    "truncated_mass": 8.798e-11
    },
    "expected_goals": {
-    "away": 0.852,
-    "home": 0.91
+    "away": 0.859,
+    "home": 1.017
    },
    "half_time": {
-    "ht_over_0.5": 0.5364,
-    "ht_over_1.5": 0.1801,
-    "ht_over_2.5": 0.043,
-    "ht_under_0.5": 0.4636,
-    "ht_under_1.5": 0.8199,
-    "ht_under_2.5": 0.957,
-    "htft_11": 0.1892,
-    "htft_12": 0.0111,
-    "htft_1X": 0.0416,
-    "htft_21": 0.012,
-    "htft_22": 0.17,
-    "htft_2X": 0.0416,
-    "htft_X1": 0.1483,
-    "htft_X2": 0.1365,
-    "htft_XX": 0.2497
+    "ht_over_0.5": 0.5587,
+    "ht_over_1.5": 0.1977,
+    "ht_over_2.5": 0.05,
+    "ht_under_0.5": 0.4413,
+    "ht_under_1.5": 0.8023,
+    "ht_under_2.5": 0.95,
+    "htft_11": 0.2113,
+    "htft_12": 0.0115,
+    "htft_1X": 0.043,
+    "htft_21": 0.0141,
+    "htft_22": 0.1594,
+    "htft_2X": 0.043,
+    "htft_X1": 0.1575,
+    "htft_X2": 0.1269,
+    "htft_XX": 0.2333
    },
    "home": {
     "crest": "https://crests.football-data.org/82.png",
@@ -2048,26 +2048,14 @@
    },
    "match_id": 564665,
    "matchday": 4,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.27582,
-     "1x2_draw": 0.33042,
-     "1x2_home": 0.39376,
-     "combogo_nogol_under_1.5": 0.40871,
-     "dc_12": 0.66958,
-     "dc_1x": 0.72418,
-     "dc_x2": 0.60624,
-     "eh_-1_away": 0.60624,
-     "eh_1_home": 0.72418,
-     "mg_0_1": 0.40871,
-     "mg_0_2": 0.69598,
-     "over_1.5": 0.59129,
-     "over_2.5": 0.30402,
-     "under_1.5": 0.40871,
-     "under_2.5": 0.69598
+    "devig": {
+     "h2h": 1.04,
+     "totals_1.5": 1.103,
+     "totals_2.5": 1.101
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -2088,108 +2076,92 @@
      "under_1.5": 2.16
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.6787,
-    "band_p95": 0.8513,
-    "cluster_members": [],
-    "family": "team_goals",
-    "key": "hg_under_1.5",
-    "label": "Casa Under 1.5",
-    "p": 0.729,
-    "p_raw": 0.7683,
-    "prezzo": 1.35,
-    "reference": 0.574,
+    "band_p5": 0.6006,
+    "band_p95": 0.6674,
+    "cluster_members": [
+     "combogo_nogol_under_2.5"
+    ],
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.6214,
+    "p_raw": 0.6332,
+    "prezzo": 1.57,
+    "reference": 0.4501,
     "runners_up": [
      {
-      "band_p5": 0.5745,
-      "band_p95": 0.7414,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.5958,
-      "p_raw": 0.6625,
-      "prezzo": 1.57,
-      "reference": 0.4501,
-      "score": 0.042663,
-      "shrink_alpha": 0.6861,
-      "sigma": 0.0497
+      "band_p5": 0.6958,
+      "band_p95": 0.7649,
+      "family": "team_goals",
+      "key": "hg_under_1.5",
+      "label": "Casa Under 1.5",
+      "p": 0.7235,
+      "p_raw": 0.7295,
+      "prezzo": 1.35,
+      "reference": 0.574,
+      "score": 0.047952,
+      "shrink_alpha": 0.9617,
+      "sigma": 0.0209
      },
      {
-      "band_p5": 0.6409,
-      "band_p95": 0.8223,
-      "family": "over_under",
-      "key": "under_2.5",
-      "label": "Under 2.5",
-      "p": 0.6244,
-      "p_raw": 0.7398,
-      "prezzo": 1.37,
-      "reference": 0.5008,
-      "score": 0.030854,
-      "shrink_alpha": 0.517,
-      "sigma": 0.0545
+      "band_p5": 0.4873,
+      "band_p95": 0.5566,
+      "family": "combo_dc",
+      "key": "combodc_1x_under_2.5",
+      "label": "1X + Under 2.5",
+      "p": 0.5132,
+      "p_raw": 0.5217,
+      "reference": 0.3836,
+      "score": 0.034489,
+      "shrink_alpha": 0.9382,
+      "sigma": 0.0211
      },
      {
-      "band_p5": 0.6409,
-      "band_p95": 0.8223,
-      "family": "multigoal",
-      "key": "mg_0_2",
-      "label": "Multigol 0-2",
-      "p": 0.6071,
-      "p_raw": 0.7398,
-      "reference": 0.5008,
-      "score": 0.02278,
-      "shrink_alpha": 0.4448,
-      "sigma": 0.0545
-     },
-     {
-      "band_p5": 0.5216,
-      "band_p95": 0.5916,
+      "band_p5": 0.5352,
+      "band_p95": 0.5753,
       "family": "multigoal",
       "key": "mg_1_2",
       "label": "Multigol 1-2",
-      "p": 0.5468,
-      "p_raw": 0.5651,
+      "p": 0.5516,
+      "p_raw": 0.5569,
       "reference": 0.4501,
-      "score": 0.018753,
-      "shrink_alpha": 0.8409,
-      "sigma": 0.0212
-     },
-     {
-      "band_p5": 0.5518,
-      "band_p95": 0.7364,
-      "family": "double_chance",
-      "key": "dc_x2",
-      "label": "X2 (pareggio o ospite)",
-      "p": 0.6287,
-      "p_raw": 0.6501,
-      "prezzo": 1.55,
-      "reference": 0.5372,
-      "score": 0.017098,
-      "shrink_alpha": 0.8106,
-      "sigma": 0.0575
+      "score": 0.020662,
+      "shrink_alpha": 0.9499,
+      "sigma": 0.0112
      }
     ],
-    "score": 0.051662,
-    "shrink_alpha": 0.7977,
-    "sigma": 0.0528
+    "score": 0.059057,
+    "shrink_alpha": 0.9352,
+    "sigma": 0.0193
+   },
+   "previous": {
+    "market_key": "hg_under_2.5",
+    "market_label": "Casa Under 2.5",
+    "p": 0.9043,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:40Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.3182,
-    "1x2_draw": 0.3318,
-    "1x2_home": 0.3499,
-    "btts_yes": 0.3375,
-    "over_2.5": 0.2602,
-    "under_2.5": 0.7398
+    "1x2_away": 0.2983,
+    "1x2_draw": 0.3184,
+    "1x2_home": 0.3833,
+    "btts_yes": 0.3668,
+    "over_2.5": 0.2898,
+    "under_2.5": 0.7102
    },
    "reasons": [
-    "Gol attesi: Getafe CF 0.91, RC Celta de Vigo 0.85 (totale 1.76).",
-    "Casa Under 1.5: 73 su 100, 15 punti sopra la media di riferimento (57 su 100).",
-    "Banda di incertezza: fra 68 e 85 su 100."
+    "Fino a ieri dicevamo Casa Under 2.5. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Non entrambe segnano.",
+    "Gol attesi: Getafe CF 1.02, RC Celta de Vigo 0.86 (totale 1.88).",
+    "Non entrambe segnano: 62 su 100, 17 punti sopra la media di riferimento (45 su 100).",
+    "Banda di incertezza: fra 60 e 67 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-07T17:00:00Z"
   },
   {
@@ -3349,35 +3321,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 111,
-     "p_min": 88,
+     "S_min": 110,
+     "p_min": 89,
      "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 2,
-    "truncated_mass": 9.426e-10
+    "n_clusters": 1,
+    "truncated_mass": 7.876e-10
    },
    "expected_goals": {
-    "away": 1.235,
-    "home": 1.07
+    "away": 1.207,
+    "home": 1.092
    },
    "half_time": {
-    "ht_over_0.5": 0.6316,
-    "ht_over_1.5": 0.2637,
-    "ht_over_2.5": 0.08,
-    "ht_under_0.5": 0.3684,
-    "ht_under_1.5": 0.7363,
-    "ht_under_2.5": 0.92,
-    "htft_11": 0.1752,
-    "htft_12": 0.0196,
-    "htft_1X": 0.0483,
-    "htft_21": 0.0164,
-    "htft_22": 0.2267,
-    "htft_2X": 0.0483,
-    "htft_X1": 0.1266,
-    "htft_X2": 0.1535,
-    "htft_XX": 0.1855
+    "ht_over_0.5": 0.6305,
+    "ht_over_1.5": 0.2626,
+    "ht_over_2.5": 0.0795,
+    "ht_under_0.5": 0.3695,
+    "ht_under_1.5": 0.7374,
+    "ht_under_2.5": 0.9205,
+    "htft_11": 0.1825,
+    "htft_12": 0.0191,
+    "htft_1X": 0.0484,
+    "htft_21": 0.0169,
+    "htft_22": 0.2182,
+    "htft_2X": 0.0484,
+    "htft_X1": 0.1307,
+    "htft_X2": 0.1495,
+    "htft_XX": 0.1864
    },
    "home": {
     "crest": "https://crests.football-data.org/115.png",
@@ -3386,22 +3358,13 @@
    },
    "match_id": 558617,
    "matchday": 3,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.37087,
-     "1x2_draw": 0.30172,
-     "1x2_home": 0.32741,
-     "dc_12": 0.69828,
-     "dc_1x": 0.62913,
-     "dc_x2": 0.67259,
-     "eh_-1_away": 0.67259,
-     "eh_1_home": 0.62913,
-     "mg_0_2": 0.59049,
-     "over_2.5": 0.40951,
-     "under_2.5": 0.59049
+    "devig": {
+     "h2h": 1.049,
+     "totals_2.5": 1.092
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -3420,54 +3383,49 @@
      "under_2.5": 1.58
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.5936,
-    "band_p95": 0.8139,
+    "band_p5": 0.6618,
+    "band_p95": 0.7418,
     "cluster_members": [],
     "family": "team_goals",
     "key": "hg_under_1.5",
     "label": "Casa Under 1.5",
-    "p": 0.6787,
-    "p_raw": 0.7105,
-    "prezzo": 1.35,
+    "p": 0.6969,
+    "p_raw": 0.7021,
+    "prezzo": 1.37,
     "reference": 0.6031,
-    "runners_up": [
-     {
-      "band_p5": 0.5659,
-      "band_p95": 0.778,
-      "family": "double_chance",
-      "key": "dc_x2",
-      "label": "X2 (pareggio o ospite)",
-      "p": 0.6604,
-      "p_raw": 0.6806,
-      "prezzo": 1.4,
-      "reference": 0.5927,
-      "score": 0.009696,
-      "shrink_alpha": 0.7702,
-      "sigma": 0.0649
-     }
-    ],
-    "score": 0.012261,
-    "shrink_alpha": 0.7036,
-    "sigma": 0.0681
+    "runners_up": [],
+    "score": 0.019025,
+    "shrink_alpha": 0.9474,
+    "sigma": 0.0247
+   },
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-08-12T11:54:40Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.4007,
-    "1x2_draw": 0.2799,
-    "1x2_home": 0.3194,
-    "btts_yes": 0.4581,
-    "over_2.5": 0.4042,
-    "under_2.5": 0.5958
+    "1x2_away": 0.3872,
+    "1x2_draw": 0.2823,
+    "1x2_home": 0.3305,
+    "btts_yes": 0.4643,
+    "over_2.5": 0.4034,
+    "under_2.5": 0.5966
    },
    "reasons": [
-    "Gol attesi: Udinese Calcio 1.07, SS Lazio 1.24 (totale 2.31).",
-    "Casa Under 1.5: 68 su 100, 8 punti sopra la media di riferimento (60 su 100).",
-    "Banda di incertezza: fra 59 e 81 su 100."
+    "Prima delle quote non avevamo niente da dire su questa partita. Dal confronto con il mercato e' emerso Casa Under 1.5.",
+    "Gol attesi: Udinese Calcio 1.09, SS Lazio 1.21 (totale 2.30).",
+    "Casa Under 1.5: 70 su 100, 9 punti sopra la media di riferimento (60 su 100).",
+    "Banda di incertezza: fra 66 e 74 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "silence_to_prediction",
    "utc_date": "2026-09-07T18:45:00Z"
   },
   {
@@ -4220,35 +4178,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 91,
-     "p_min": 85,
+     "S_min": 106,
+     "p_min": 87,
      "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 4,
-    "truncated_mass": 1.936e-07
+    "n_clusters": 1,
+    "truncated_mass": 2.099e-08
    },
    "expected_goals": {
-    "away": 1.566,
-    "home": 1.976
+    "away": 1.343,
+    "home": 1.619
    },
    "half_time": {
-    "ht_over_0.5": 0.7973,
-    "ht_over_1.5": 0.4737,
-    "ht_over_2.5": 0.2156,
-    "ht_under_0.5": 0.2027,
-    "ht_under_1.5": 0.5263,
-    "ht_under_2.5": 0.7844,
-    "htft_11": 0.2975,
-    "htft_12": 0.0256,
-    "htft_1X": 0.0538,
-    "htft_21": 0.035,
-    "htft_22": 0.1826,
-    "htft_2X": 0.0538,
-    "htft_X1": 0.142,
-    "htft_X2": 0.1002,
-    "htft_XX": 0.1093
+    "ht_over_0.5": 0.7368,
+    "ht_over_1.5": 0.3855,
+    "ht_over_2.5": 0.151,
+    "ht_under_0.5": 0.2632,
+    "ht_under_1.5": 0.6145,
+    "ht_under_2.5": 0.849,
+    "htft_11": 0.267,
+    "htft_12": 0.0217,
+    "htft_1X": 0.0527,
+    "htft_21": 0.0277,
+    "htft_22": 0.1852,
+    "htft_2X": 0.0527,
+    "htft_X1": 0.1449,
+    "htft_X2": 0.1112,
+    "htft_XX": 0.1368
    },
    "home": {
     "crest": "https://crests.football-data.org/582.png",
@@ -4257,22 +4215,13 @@
    },
    "match_id": 567295,
    "matchday": 5,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.31046,
-     "1x2_draw": 0.27667,
-     "1x2_home": 0.41287,
-     "dc_12": 0.72333,
-     "dc_1x": 0.68954,
-     "dc_x2": 0.58713,
-     "eh_-1_away": 0.58713,
-     "eh_1_home": 0.68954,
-     "mg_0_2": 0.48977,
-     "over_2.5": 0.51023,
-     "under_2.5": 0.48977
+    "devig": {
+     "h2h": 1.076,
+     "totals_2.5": 1.099
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -4291,110 +4240,51 @@
      "under_2.5": 1.92
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.5897,
-    "band_p95": 0.7573,
+    "band_p5": 0.5592,
+    "band_p95": 0.6243,
     "cluster_members": [
      "combogo_gol_over_1.5"
     ],
     "family": "btts",
     "key": "btts_yes",
     "label": "Entrambe segnano",
-    "p": 0.615,
-    "p_raw": 0.6722,
+    "p": 0.5852,
+    "p_raw": 0.5914,
     "prezzo": 1.66,
     "reference": 0.4957,
-    "runners_up": [
-     {
-      "band_p5": 0.4974,
-      "band_p95": 0.6706,
-      "family": "combo_dc",
-      "key": "combodc_12_over_2.5",
-      "label": "12 + Over 2.5",
-      "p": 0.5372,
-      "p_raw": 0.5865,
-      "reference": 0.4234,
-      "score": 0.026155,
-      "shrink_alpha": 0.6978,
-      "sigma": 0.0542
-     },
-     {
-      "band_p5": 0.6101,
-      "band_p95": 0.7436,
-      "family": "combo_dc",
-      "key": "combodc_12_over_1.5",
-      "label": "12 + Over 1.5",
-      "p": 0.6529,
-      "p_raw": 0.6797,
-      "reference": 0.544,
-      "score": 0.024438,
-      "shrink_alpha": 0.8027,
-      "sigma": 0.0408
-     },
-     {
-      "band_p5": 0.4515,
-      "band_p95": 0.7075,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.5297,
-      "p_raw": 0.5821,
-      "prezzo": 2.08,
-      "reference": 0.4308,
-      "score": 0.019687,
-      "shrink_alpha": 0.6536,
-      "sigma": 0.0764
-     },
-     {
-      "band_p5": 0.7066,
-      "band_p95": 0.856,
-      "family": "team_goals",
-      "key": "ag_over_0.5",
-      "label": "Ospite Over 0.5",
-      "p": 0.7687,
-      "p_raw": 0.7856,
-      "prezzo": 1.34,
-      "reference": 0.6879,
-      "score": 0.016095,
-      "shrink_alpha": 0.8272,
-      "sigma": 0.048
-     },
-     {
-      "band_p5": 0.5745,
-      "band_p95": 0.7835,
-      "family": "over_under",
-      "key": "over_2.5",
-      "label": "Over 2.5",
-      "p": 0.588,
-      "p_raw": 0.6817,
-      "prezzo": 1.85,
-      "reference": 0.5165,
-      "score": 0.010301,
-      "shrink_alpha": 0.4329,
-      "sigma": 0.0646
-     }
-    ],
-    "score": 0.028701,
-    "shrink_alpha": 0.676,
-    "sigma": 0.0509
+    "runners_up": [],
+    "score": 0.0161,
+    "shrink_alpha": 0.9356,
+    "sigma": 0.0193
+   },
+   "previous": {
+    "market_key": "hg_over_0.5",
+    "market_label": "Casa Over 0.5",
+    "p": 0.8625,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:41Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.3112,
-    "1x2_draw": 0.2146,
-    "1x2_home": 0.4743,
-    "btts_yes": 0.6722,
-    "over_2.5": 0.6817,
-    "under_2.5": 0.3183
+    "1x2_away": 0.3186,
+    "1x2_draw": 0.2415,
+    "1x2_home": 0.4398,
+    "btts_yes": 0.5914,
+    "over_2.5": 0.5679,
+    "under_2.5": 0.4321
    },
    "reasons": [
-    "Gol attesi: GD Estoril Praia 1.98, FC Arouca 1.57 (totale 3.54).",
-    "Entrambe segnano: 61 su 100, 12 punti sopra la media di riferimento (50 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Fino a ieri dicevamo Casa Over 0.5. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Entrambe segnano.",
+    "Gol attesi: GD Estoril Praia 1.62, FC Arouca 1.34 (totale 2.96).",
+    "Entrambe segnano: 59 su 100, 9 punti sopra la media di riferimento (50 su 100).",
+    "Banda di incertezza: fra 56 e 62 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "changed",
    "utc_date": "2026-09-07T19:15:00Z"
   },
   {
@@ -5289,35 +5179,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 113,
-     "p_min": 87,
-     "quota_min": 10,
+     "S_min": 104,
+     "p_min": 88,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 2.769e-08
+    "truncated_mass": 9.333e-09
    },
    "expected_goals": {
-    "away": 1.331,
-    "home": 1.664
+    "away": 1.437,
+    "home": 1.433
    },
    "half_time": {
-    "ht_over_0.5": 0.729,
-    "ht_over_1.5": 0.3752,
-    "ht_over_2.5": 0.1442,
-    "ht_under_0.5": 0.271,
-    "ht_under_1.5": 0.6248,
-    "ht_under_2.5": 0.8558,
-    "htft_11": 0.2717,
-    "htft_12": 0.0219,
-    "htft_1X": 0.0523,
-    "htft_21": 0.0292,
-    "htft_22": 0.175,
-    "htft_2X": 0.0523,
-    "htft_X1": 0.1522,
-    "htft_X2": 0.1104,
-    "htft_XX": 0.1351
+    "ht_over_0.5": 0.714,
+    "ht_over_1.5": 0.356,
+    "ht_over_2.5": 0.1319,
+    "ht_under_0.5": 0.286,
+    "ht_under_1.5": 0.644,
+    "ht_under_2.5": 0.8681,
+    "htft_11": 0.2174,
+    "htft_12": 0.0246,
+    "htft_1X": 0.0528,
+    "htft_21": 0.0245,
+    "htft_22": 0.2185,
+    "htft_2X": 0.0528,
+    "htft_X1": 0.1327,
+    "htft_X2": 0.1331,
+    "htft_XX": 0.1437
    },
    "home": {
     "crest": "https://crests.football-data.org/285.png",
@@ -5326,22 +5216,13 @@
    },
    "match_id": 564658,
    "matchday": 4,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.40671,
-     "1x2_draw": 0.26737,
-     "1x2_home": 0.32592,
-     "dc_12": 0.73263,
-     "dc_1x": 0.59329,
-     "dc_x2": 0.67408,
-     "eh_-1_away": 0.67408,
-     "eh_1_home": 0.59329,
-     "mg_0_2": 0.45813,
-     "over_2.5": 0.54187,
-     "under_2.5": 0.45813
+    "devig": {
+     "h2h": 1.053,
+     "totals_2.5": 1.095
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -5360,25 +5241,35 @@
      "under_2.5": 1.96
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": null,
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-08-12T11:54:40Z"
+   },
    "raw_probabilities": {
-    "1x2_away": 0.3101,
-    "1x2_draw": 0.2373,
-    "1x2_home": 0.4526,
-    "btts_yes": 0.5851,
-    "over_2.5": 0.5701,
-    "under_2.5": 0.4299
+    "1x2_away": 0.3766,
+    "1x2_draw": 0.2483,
+    "1x2_home": 0.3751,
+    "btts_yes": 0.5789,
+    "over_2.5": 0.5466,
+    "under_2.5": 0.4534
    },
    "reasons": [
-    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Elche CF 1.66, Real Sociedad de Fútbol 1.33 (totale 2.99)."
+    "Anche con le quote non abbiamo niente da aggiungere su questa partita.",
+    "Il mercato migliore qui è «Ospite Over 0.5», e si trova a 1,22: sotto 1,30 non lo consigliamo.",
+    "Gol attesi: Elche CF 1.43, Real Sociedad de Fútbol 1.44 (totale 2.87)."
    ],
    "silence": {
-    "reason": "S_min"
+    "reason": "quota_min"
    },
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "still_silent",
    "utc_date": "2026-09-07T19:30:00Z"
   },
   {
@@ -7077,7 +6968,7 @@
    "utc_date": "2026-09-07T23:00:00Z"
   }
  ],
- "generated_at": "2026-09-06T10:00:56Z",
+ "generated_at": "2026-09-06T10:01:20Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 6
