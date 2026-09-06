@@ -7499,35 +7499,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 104,
-     "p_min": 89,
+     "S_min": 111,
+     "p_min": 88,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 1,
-    "truncated_mass": 6.83e-10
+    "n_clusters": 0,
+    "truncated_mass": 2.007e-09
    },
    "expected_goals": {
-    "away": 1.034,
-    "home": 1.204
+    "away": 1.024,
+    "home": 1.331
    },
    "half_time": {
-    "ht_over_0.5": 0.6343,
-    "ht_over_1.5": 0.2664,
-    "ht_over_2.5": 0.0814,
-    "ht_under_0.5": 0.3657,
-    "ht_under_1.5": 0.7336,
-    "ht_under_2.5": 0.9186,
-    "htft_11": 0.2308,
-    "htft_12": 0.0152,
-    "htft_1X": 0.0479,
-    "htft_21": 0.0183,
-    "htft_22": 0.1764,
-    "htft_2X": 0.0479,
-    "htft_X1": 0.1498,
-    "htft_X2": 0.1225,
-    "htft_XX": 0.1913
+    "ht_over_0.5": 0.6531,
+    "ht_over_1.5": 0.2858,
+    "ht_over_2.5": 0.0914,
+    "ht_under_0.5": 0.3469,
+    "ht_under_1.5": 0.7142,
+    "ht_under_2.5": 0.9086,
+    "htft_11": 0.2576,
+    "htft_12": 0.015,
+    "htft_1X": 0.0482,
+    "htft_21": 0.0207,
+    "htft_22": 0.1609,
+    "htft_2X": 0.0482,
+    "htft_X1": 0.1585,
+    "htft_X2": 0.1117,
+    "htft_XX": 0.1791
    },
    "home": {
     "crest": "https://crests.football-data.org/1782.png",
@@ -7536,22 +7536,13 @@
    },
    "match_id": 554999,
    "matchday": 26,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.26229,
-     "1x2_draw": 0.27978,
-     "1x2_home": 0.45794,
-     "dc_12": 0.72022,
-     "dc_1x": 0.73771,
-     "dc_x2": 0.54206,
-     "eh_-1_away": 0.54206,
-     "eh_1_home": 0.73771,
-     "mg_0_2": 0.55866,
-     "over_2.5": 0.44134,
-     "under_2.5": 0.55866
+    "devig": {
+     "h2h": 1.078,
+     "totals_2.5": 1.11
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -7570,44 +7561,40 @@
      "under_2.5": 1.65
     }
    },
-   "phase": "preliminary",
-   "prediction": {
-    "band_p5": 0.5502,
-    "band_p95": 0.7638,
-    "cluster_members": [],
-    "family": "team_goals",
-    "key": "hg_under_1.5",
-    "label": "Casa Under 1.5",
-    "p": 0.6309,
-    "p_raw": 0.6623,
-    "prezzo": 1.65,
-    "reference": 0.5539,
-    "runners_up": [],
-    "score": 0.012181,
-    "shrink_alpha": 0.71,
-    "sigma": 0.067
+   "phase": "definitive",
+   "prediction": null,
+   "previous": {
+    "market_key": "hg_under_1.5",
+    "market_label": "Casa Under 1.5",
+    "p": 0.6236,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-08-12T11:54:42Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.3163,
-    "1x2_draw": 0.2844,
-    "1x2_home": 0.3993,
-    "btts_yes": 0.4441,
-    "over_2.5": 0.3867,
-    "under_2.5": 0.6133
+    "1x2_away": 0.2885,
+    "1x2_draw": 0.2742,
+    "1x2_home": 0.4373,
+    "btts_yes": 0.4701,
+    "over_2.5": 0.4184,
+    "under_2.5": 0.5816
    },
    "reasons": [
-    "Gol attesi: EC Vitória 1.20, Grêmio FBPA 1.03 (totale 2.24).",
-    "Casa Under 1.5: 63 su 100, 8 punti sopra la media di riferimento (55 su 100).",
-    "Banda di incertezza: fra 55 e 76 su 100."
+    "Fino a ieri dicevamo Casa Under 1.5. Le quote sono arrivate e dicono piu' o meno quello che dicevamo noi: ritiriamo il pronostico, su questa partita non abbiamo un vantaggio da raccontare.",
+    "Il nostro modello dice quasi esattamente quello che dicono già le quote.",
+    "Gol attesi: EC Vitória 1.33, Grêmio FBPA 1.02 (totale 2.35)."
    ],
-   "silence": null,
-   "source": "model_only",
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "prediction_to_silence",
    "utc_date": "2026-09-07T23:00:00Z"
   }
  ],
- "generated_at": "2026-09-06T17:10:32Z",
+ "generated_at": "2026-09-06T18:07:57Z",
  "schema_version": 1,
- "silence_count": 1,
+ "silence_count": 2,
  "total": 6
 }
