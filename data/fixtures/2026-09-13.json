@@ -1,0 +1,90 @@
+{
+ "date": "2026-09-13",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1771.png",
+    "name": "Cruzeiro EC",
+    "tla": "CRU"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 110,
+     "p_min": 86,
+     "quota_min": 7,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 2.353e-09
+   },
+   "expected_goals": {
+    "away": 1.221,
+    "home": 1.314
+   },
+   "half_time": {
+    "ht_over_0.5": 0.68,
+    "ht_over_1.5": 0.3154,
+    "ht_over_2.5": 0.1077,
+    "ht_under_0.5": 0.32,
+    "ht_under_1.5": 0.6846,
+    "ht_under_2.5": 0.8923,
+    "htft_11": 0.2273,
+    "htft_12": 0.0193,
+    "htft_1X": 0.0508,
+    "htft_21": 0.0212,
+    "htft_22": 0.1982,
+    "htft_2X": 0.0508,
+    "htft_X1": 0.14,
+    "htft_X2": 0.1266,
+    "htft_XX": 0.1659
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/6685.png",
+    "name": "Santos FC",
+    "tla": "SAN"
+   },
+   "match_id": 555009,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4955,
+    "band_p95": 0.7158,
+    "cluster_members": [],
+    "family": "double_chance",
+    "key": "dc_x2",
+    "label": "X2 (pareggio o ospite)",
+    "p": 0.5901,
+    "p_raw": 0.611,
+    "reference": 0.5257,
+    "runners_up": [],
+    "score": 0.008376,
+    "shrink_alpha": 0.7544,
+    "sigma": 0.0678
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3459,
+    "1x2_draw": 0.2652,
+    "1x2_home": 0.389,
+    "btts_yes": 0.507,
+    "over_2.5": 0.4629,
+    "under_2.5": 0.5371
+   },
+   "reasons": [
+    "Gol attesi: Santos FC 1.31, Cruzeiro EC 1.22 (totale 2.53).",
+    "X2 (pareggio o ospite): 59 su 100, 6 punti sopra la media di riferimento (53 su 100).",
+    "Banda di incertezza: fra 50 e 72 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-13T00:00:00Z"
+  }
+ ],
+ "generated_at": "2026-09-06T03:11:22Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 1
+}
