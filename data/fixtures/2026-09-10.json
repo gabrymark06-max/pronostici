@@ -938,35 +938,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 89,
+     "S_min": 88,
      "p_min": 87,
-     "quota_min": 9,
+     "quota_min": 13,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 4,
-    "truncated_mass": 1.888e-07
+    "truncated_mass": 2.17e-07
    },
    "expected_goals": {
-    "away": 1.983,
-    "home": 1.018
+    "away": 2.008,
+    "home": 1.009
    },
    "half_time": {
-    "ht_over_0.5": 0.7413,
-    "ht_over_1.5": 0.3915,
-    "ht_over_2.5": 0.155,
-    "ht_under_0.5": 0.2587,
-    "ht_under_1.5": 0.6085,
-    "ht_under_2.5": 0.845,
-    "htft_11": 0.1044,
-    "htft_12": 0.0315,
-    "htft_1X": 0.0451,
-    "htft_21": 0.0134,
-    "htft_22": 0.3845,
-    "htft_2X": 0.0451,
-    "htft_X1": 0.0707,
-    "htft_X2": 0.1818,
-    "htft_XX": 0.1235
+    "ht_over_0.5": 0.7431,
+    "ht_over_1.5": 0.394,
+    "ht_over_2.5": 0.1567,
+    "ht_under_0.5": 0.2569,
+    "ht_under_1.5": 0.606,
+    "ht_under_2.5": 0.8433,
+    "htft_11": 0.1015,
+    "htft_12": 0.0317,
+    "htft_1X": 0.0446,
+    "htft_21": 0.0131,
+    "htft_22": 0.3905,
+    "htft_2X": 0.0446,
+    "htft_X1": 0.069,
+    "htft_X2": 0.183,
+    "htft_XX": 0.122
    },
    "home": {
     "crest": "https://crests.football-data.org/9136.png",
@@ -978,72 +978,74 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.4756,
-    "band_p95": 0.7066,
+    "band_p5": 0.4776,
+    "band_p95": 0.7238,
     "cluster_members": [],
     "family": "1x2",
     "key": "1x2_away",
     "label": "Vittoria ospite",
-    "p": 0.5223,
-    "p_raw": 0.5952,
-    "reference": 0.3104,
+    "p": 0.5237,
+    "p_raw": 0.6026,
+    "prezzo": 1.7,
+    "reference": 0.3101,
     "runners_up": [
      {
-      "band_p5": 0.7161,
-      "band_p95": 0.8849,
-      "family": "handicap_eu",
-      "key": "eh_-1_away",
-      "label": "Handicap -1 ospite",
-      "p": 0.7575,
-      "p_raw": 0.8087,
-      "reference": 0.5726,
-      "score": 0.074571,
-      "shrink_alpha": 0.7831,
-      "sigma": 0.0506
+      "band_p5": 0.4657,
+      "band_p95": 0.7123,
+      "family": "team_goals",
+      "key": "ag_over_1.5",
+      "label": "Ospite Over 1.5",
+      "p": 0.5022,
+      "p_raw": 0.5904,
+      "prezzo": 1.83,
+      "reference": 0.346,
+      "score": 0.051219,
+      "shrink_alpha": 0.639,
+      "sigma": 0.0789
      },
      {
-      "band_p5": 0.5456,
-      "band_p95": 0.761,
+      "band_p5": 0.5592,
+      "band_p95": 0.7599,
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5666,
-      "p_raw": 0.6551,
-      "reference": 0.4259,
-      "score": 0.039865,
-      "shrink_alpha": 0.6138,
-      "sigma": 0.0653
+      "p": 0.5714,
+      "p_raw": 0.6608,
+      "reference": 0.4255,
+      "score": 0.042901,
+      "shrink_alpha": 0.62,
+      "sigma": 0.0644
      },
      {
-      "band_p5": 0.6257,
-      "band_p95": 0.8275,
-      "family": "team_goals",
-      "key": "hg_under_1.5",
-      "label": "Casa Under 1.5",
-      "p": 0.6833,
-      "p_raw": 0.7292,
-      "reference": 0.5695,
-      "score": 0.027225,
-      "shrink_alpha": 0.7121,
-      "sigma": 0.0667
+      "band_p5": 0.54,
+      "band_p95": 0.7302,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6057,
+      "p_raw": 0.6381,
+      "reference": 0.5423,
+      "score": 0.008204,
+      "shrink_alpha": 0.6626,
+      "sigma": 0.0587
      }
     ],
-    "score": 0.096477,
-    "shrink_alpha": 0.7443,
-    "sigma": 0.0697
+    "score": 0.09801,
+    "shrink_alpha": 0.7304,
+    "sigma": 0.0722
    },
    "raw_probabilities": {
-    "1x2_away": 0.5952,
-    "1x2_draw": 0.2136,
-    "1x2_home": 0.1913,
-    "btts_yes": 0.5423,
-    "over_2.5": 0.5722,
-    "under_2.5": 0.4278
+    "1x2_away": 0.6026,
+    "1x2_draw": 0.2105,
+    "1x2_home": 0.1869,
+    "btts_yes": 0.5412,
+    "over_2.5": 0.5758,
+    "under_2.5": 0.4242
    },
    "reasons": [
-    "Gol attesi: CF Estrela da Amadora 1.02, Sporting Clube de Braga 1.98 (totale 3.00).",
+    "Gol attesi: CF Estrela da Amadora 1.01, Sporting Clube de Braga 2.01 (totale 3.02).",
     "Vittoria ospite: 52 su 100, 21 punti sopra la media di riferimento (31 su 100).",
-    "Banda di incertezza: fra 48 e 71 su 100."
+    "Banda di incertezza: fra 48 e 72 su 100."
    ],
    "silence": null,
    "source": "model_only",
@@ -1051,7 +1053,7 @@
    "utc_date": "2026-09-10T19:15:00Z"
   }
  ],
- "generated_at": "2026-09-07T17:11:28Z",
+ "generated_at": "2026-09-08T03:10:57Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 3

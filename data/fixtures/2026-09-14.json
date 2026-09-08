@@ -1,0 +1,844 @@
+{
+ "date": "2026-09-14",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/112.png",
+    "name": "Parma Calcio 1913",
+    "tla": "PAR"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 89,
+     "p_min": 87,
+     "quota_min": 12,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 5.254e-08
+   },
+   "expected_goals": {
+    "away": 0.61,
+    "home": 1.771
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6424,
+    "ht_over_1.5": 0.2746,
+    "ht_over_2.5": 0.0856,
+    "ht_under_0.5": 0.3576,
+    "ht_under_1.5": 0.7254,
+    "ht_under_2.5": 0.9144,
+    "htft_11": 0.4079,
+    "htft_12": 0.0061,
+    "htft_1X": 0.0341,
+    "htft_21": 0.0226,
+    "htft_22": 0.0618,
+    "htft_2X": 0.0341,
+    "htft_X1": 0.2242,
+    "htft_X2": 0.0545,
+    "htft_XX": 0.1547
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/7397.png",
+    "name": "Como 1907",
+    "tla": "COM"
+   },
+   "match_id": 558602,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5339,
+    "band_p95": 0.7574,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5931,
+    "p_raw": 0.6503,
+    "reference": 0.4066,
+    "runners_up": [
+     {
+      "band_p5": 0.4714,
+      "band_p95": 0.5904,
+      "family": "combo_dc_gol",
+      "key": "combodcg_12_nogol",
+      "label": "12 + NoGoal",
+      "p": 0.5081,
+      "p_raw": 0.5296,
+      "reference": 0.4214,
+      "score": 0.015191,
+      "shrink_alpha": 0.8015,
+      "sigma": 0.039
+     },
+     {
+      "band_p5": 0.5502,
+      "band_p95": 0.7042,
+      "family": "btts",
+      "key": "btts_no",
+      "label": "Non entrambe segnano",
+      "p": 0.588,
+      "p_raw": 0.6258,
+      "reference": 0.5029,
+      "score": 0.014578,
+      "shrink_alpha": 0.6922,
+      "sigma": 0.049
+     },
+     {
+      "band_p5": 0.5001,
+      "band_p95": 0.7124,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.5738,
+      "p_raw": 0.616,
+      "reference": 0.502,
+      "score": 0.010341,
+      "shrink_alpha": 0.6294,
+      "sigma": 0.0631
+     }
+    ],
+    "score": 0.070378,
+    "shrink_alpha": 0.7652,
+    "sigma": 0.0659
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1245,
+    "1x2_draw": 0.2251,
+    "1x2_home": 0.6503,
+    "btts_yes": 0.3742,
+    "over_2.5": 0.4239,
+    "under_2.5": 0.5761
+   },
+   "reasons": [
+    "Gol attesi: Como 1907 1.77, Parma Calcio 1913 0.61 (totale 2.38).",
+    "Vittoria casa: 59 su 100, 19 punti sopra la media di riferimento (41 su 100).",
+    "Banda di incertezza: fra 53 e 76 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/100.png",
+    "name": "AS Roma",
+    "tla": "ROM"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 88,
+     "p_min": 88,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 1.874e-07
+   },
+   "expected_goals": {
+    "away": 1.982,
+    "home": 0.806
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7002,
+    "ht_over_1.5": 0.339,
+    "ht_over_2.5": 0.1215,
+    "ht_under_0.5": 0.2998,
+    "ht_under_1.5": 0.661,
+    "ht_under_2.5": 0.8785,
+    "htft_11": 0.0752,
+    "htft_12": 0.0292,
+    "htft_1X": 0.039,
+    "htft_21": 0.0093,
+    "htft_22": 0.4122,
+    "htft_2X": 0.039,
+    "htft_X1": 0.0594,
+    "htft_X2": 0.2078,
+    "htft_XX": 0.1289
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/586.png",
+    "name": "Torino FC",
+    "tla": "TOR"
+   },
+   "match_id": 558603,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5506,
+    "band_p95": 0.7622,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_away",
+    "label": "Vittoria ospite",
+    "p": 0.571,
+    "p_raw": 0.6452,
+    "reference": 0.3276,
+    "runners_up": [
+     {
+      "band_p5": 0.4676,
+      "band_p95": 0.7022,
+      "family": "team_goals",
+      "key": "ag_over_1.5",
+      "label": "Ospite Over 1.5",
+      "p": 0.5097,
+      "p_raw": 0.5845,
+      "reference": 0.3459,
+      "score": 0.056213,
+      "shrink_alpha": 0.6862,
+      "sigma": 0.0709
+     },
+     {
+      "band_p5": 0.5696,
+      "band_p95": 0.7628,
+      "family": "combo_dc",
+      "key": "combodc_x2_over_1.5",
+      "label": "X2 + Over 1.5",
+      "p": 0.5866,
+      "p_raw": 0.6667,
+      "reference": 0.4301,
+      "score": 0.049276,
+      "shrink_alpha": 0.6613,
+      "sigma": 0.0589
+     }
+    ],
+    "score": 0.124413,
+    "shrink_alpha": 0.7662,
+    "sigma": 0.0657
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.6452,
+    "1x2_draw": 0.2085,
+    "1x2_home": 0.1463,
+    "btts_yes": 0.4715,
+    "over_2.5": 0.525,
+    "under_2.5": 0.475
+   },
+   "reasons": [
+    "Gol attesi: Torino FC 0.81, AS Roma 1.98 (totale 2.79).",
+    "Vittoria ospite: 57 su 100, 24 punti sopra la media di riferimento (33 su 100).",
+    "Banda di incertezza: fra 55 e 76 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T16:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/9136.png",
+    "name": "CF Estrela da Amadora",
+    "tla": "AMA"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 88,
+     "quota_min": 7,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 5.391e-09
+   },
+   "expected_goals": {
+    "away": 1.347,
+    "home": 1.389
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7084,
+    "ht_over_1.5": 0.349,
+    "ht_over_2.5": 0.1276,
+    "ht_under_0.5": 0.2916,
+    "ht_under_1.5": 0.651,
+    "ht_under_2.5": 0.8724,
+    "htft_11": 0.225,
+    "htft_12": 0.022,
+    "htft_1X": 0.0523,
+    "htft_21": 0.0229,
+    "htft_22": 0.2123,
+    "htft_2X": 0.0523,
+    "htft_X1": 0.1336,
+    "htft_X2": 0.128,
+    "htft_XX": 0.1516
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/496.png",
+    "name": "Rio Ave FC",
+    "tla": "RIO"
+   },
+   "match_id": 567303,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3637,
+    "1x2_draw": 0.254,
+    "1x2_home": 0.3823,
+    "btts_yes": 0.5461,
+    "over_2.5": 0.5116,
+    "under_2.5": 0.4884
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Rio Ave FC 1.39, CF Estrela da Amadora 1.35 (totale 2.74)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T17:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/115.png",
+    "name": "Udinese Calcio",
+    "tla": "UDI"
+   },
+   "competition": "SA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 80,
+     "p_min": 86,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 6,
+    "truncated_mass": 2.526e-06
+   },
+   "expected_goals": {
+    "away": 0.901,
+    "home": 2.514
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7712,
+    "ht_over_1.5": 0.4338,
+    "ht_over_2.5": 0.1849,
+    "ht_under_0.5": 0.2288,
+    "ht_under_1.5": 0.5662,
+    "ht_under_2.5": 0.8151,
+    "htft_11": 0.4871,
+    "htft_12": 0.0093,
+    "htft_1X": 0.0356,
+    "htft_21": 0.0362,
+    "htft_22": 0.0601,
+    "htft_2X": 0.0356,
+    "htft_X1": 0.2011,
+    "htft_X2": 0.0444,
+    "htft_XX": 0.0906
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/108.png",
+    "name": "FC Internazionale Milano",
+    "tla": "INT"
+   },
+   "match_id": 558601,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.6112,
+    "band_p95": 0.82,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6463,
+    "p_raw": 0.7193,
+    "reference": 0.4066,
+    "runners_up": [
+     {
+      "band_p5": 0.5861,
+      "band_p95": 0.8101,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.612,
+      "p_raw": 0.7084,
+      "reference": 0.3964,
+      "score": 0.094335,
+      "shrink_alpha": 0.691,
+      "sigma": 0.0702
+     },
+     {
+      "band_p5": 0.6667,
+      "band_p95": 0.8461,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6778,
+      "p_raw": 0.7631,
+      "reference": 0.502,
+      "score": 0.063232,
+      "shrink_alpha": 0.6733,
+      "sigma": 0.0573
+     },
+     {
+      "band_p5": 0.6197,
+      "band_p95": 0.8038,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6651,
+      "p_raw": 0.7218,
+      "reference": 0.5391,
+      "score": 0.032765,
+      "shrink_alpha": 0.69,
+      "sigma": 0.0552
+     },
+     {
+      "band_p5": 0.4853,
+      "band_p95": 0.7158,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.524,
+      "p_raw": 0.6043,
+      "reference": 0.4079,
+      "score": 0.027359,
+      "shrink_alpha": 0.5913,
+      "sigma": 0.0684
+     },
+     {
+      "band_p5": 0.6816,
+      "band_p95": 0.8607,
+      "family": "team_goals",
+      "key": "ag_under_1.5",
+      "label": "Ospite Under 1.5",
+      "p": 0.7457,
+      "p_raw": 0.7717,
+      "reference": 0.6541,
+      "score": 0.019526,
+      "shrink_alpha": 0.7795,
+      "sigma": 0.0558
+     }
+    ],
+    "score": 0.116481,
+    "shrink_alpha": 0.7665,
+    "sigma": 0.0656
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1171,
+    "1x2_draw": 0.1636,
+    "1x2_home": 0.7193,
+    "btts_yes": 0.5389,
+    "over_2.5": 0.6576,
+    "under_2.5": 0.3424
+   },
+   "reasons": [
+    "Gol attesi: FC Internazionale Milano 2.51, Udinese Calcio 0.90 (totale 3.41).",
+    "Vittoria casa: 65 su 100, 24 punti sopra la media di riferimento (41 su 100).",
+    "Banda di incertezza: fra 61 e 82 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T18:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/67.png",
+    "name": "Newcastle United FC",
+    "tla": "NEW"
+   },
+   "competition": "PL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 6.214e-09
+   },
+   "expected_goals": {
+    "away": 1.363,
+    "home": 1.406
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7123,
+    "ht_over_1.5": 0.3538,
+    "ht_over_2.5": 0.1306,
+    "ht_under_0.5": 0.2877,
+    "ht_under_1.5": 0.6462,
+    "ht_under_2.5": 0.8694,
+    "htft_11": 0.2258,
+    "htft_12": 0.0224,
+    "htft_1X": 0.0525,
+    "htft_21": 0.0233,
+    "htft_22": 0.2129,
+    "htft_2X": 0.0525,
+    "htft_X1": 0.1334,
+    "htft_X2": 0.1278,
+    "htft_XX": 0.1495
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/341.png",
+    "name": "Leeds United FC",
+    "tla": "LEE"
+   },
+   "match_id": 560579,
+   "matchday": 4,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.365,
+    "1x2_draw": 0.2517,
+    "1x2_home": 0.3833,
+    "btts_yes": 0.5506,
+    "over_2.5": 0.5195,
+    "under_2.5": 0.4805
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Leeds United FC 1.41, Newcastle United FC 1.36 (totale 2.77)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/90.png",
+    "name": "Real Betis Balompié",
+    "tla": "BET"
+   },
+   "competition": "PD",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 101,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 2.296e-07
+   },
+   "expected_goals": {
+    "away": 1.261,
+    "home": 2.018
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7598,
+    "ht_over_1.5": 0.4173,
+    "ht_over_2.5": 0.1729,
+    "ht_under_0.5": 0.2402,
+    "ht_under_1.5": 0.5827,
+    "ht_under_2.5": 0.8271,
+    "htft_11": 0.344,
+    "htft_12": 0.019,
+    "htft_1X": 0.0495,
+    "htft_21": 0.0354,
+    "htft_22": 0.1321,
+    "htft_2X": 0.0495,
+    "htft_X1": 0.1697,
+    "htft_X2": 0.0849,
+    "htft_XX": 0.1158
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/94.png",
+    "name": "Villarreal CF",
+    "tla": "VIL"
+   },
+   "match_id": 564671,
+   "matchday": 5,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4497,
+    "band_p95": 0.7189,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.5346,
+    "p_raw": 0.5931,
+    "reference": 0.4253,
+    "runners_up": [
+     {
+      "band_p5": 0.5733,
+      "band_p95": 0.7424,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6321,
+      "p_raw": 0.6597,
+      "reference": 0.5539,
+      "score": 0.012556,
+      "shrink_alpha": 0.7388,
+      "sigma": 0.0489
+     },
+     {
+      "band_p5": 0.4508,
+      "band_p95": 0.6554,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5149,
+      "p_raw": 0.5526,
+      "reference": 0.4465,
+      "score": 0.009402,
+      "shrink_alpha": 0.6447,
+      "sigma": 0.0611
+     },
+     {
+      "band_p5": 0.5315,
+      "band_p95": 0.7513,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6036,
+      "p_raw": 0.6435,
+      "reference": 0.5389,
+      "score": 0.008509,
+      "shrink_alpha": 0.6185,
+      "sigma": 0.0646
+     }
+    ],
+    "score": 0.024094,
+    "shrink_alpha": 0.6513,
+    "sigma": 0.0768
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.2391,
+    "1x2_draw": 0.2139,
+    "1x2_home": 0.547,
+    "btts_yes": 0.6133,
+    "over_2.5": 0.6315,
+    "under_2.5": 0.3685
+   },
+   "reasons": [
+    "Gol attesi: Villarreal CF 2.02, Real Betis Balompié 1.26 (totale 3.28).",
+    "Casa Over 1.5: 53 su 100, 11 punti sopra la media di riferimento (43 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/5575.png",
+    "name": "CS Marítimo",
+    "tla": "CSM"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 88,
+     "quota_min": 7,
+     "sigma_max": 48
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 4.164e-09
+   },
+   "expected_goals": {
+    "away": 1.281,
+    "home": 1.38
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6983,
+    "ht_over_1.5": 0.3368,
+    "ht_over_2.5": 0.1202,
+    "ht_under_0.5": 0.3017,
+    "ht_under_1.5": 0.6632,
+    "ht_under_2.5": 0.8798,
+    "htft_11": 0.2318,
+    "htft_12": 0.0206,
+    "htft_1X": 0.0517,
+    "htft_21": 0.0226,
+    "htft_22": 0.2016,
+    "htft_2X": 0.0517,
+    "htft_X1": 0.1384,
+    "htft_X2": 0.1249,
+    "htft_XX": 0.1566
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/583.png",
+    "name": "Moreirense FC",
+    "tla": "MOR"
+   },
+   "match_id": 567302,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3506,
+    "1x2_draw": 0.2526,
+    "1x2_home": 0.3968,
+    "btts_yes": 0.4878,
+    "over_2.5": 0.4799,
+    "under_2.5": 0.5201
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Moreirense FC 1.38, CS Marítimo 1.28 (totale 2.66)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T19:15:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/582.png",
+    "name": "GD Estoril Praia",
+    "tla": "EST"
+   },
+   "competition": "PPL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 92,
+     "p_min": 86,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 5,
+    "truncated_mass": 1.376e-06
+   },
+   "expected_goals": {
+    "away": 1.021,
+    "home": 2.376
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7835,
+    "ht_over_1.5": 0.4522,
+    "ht_over_2.5": 0.1988,
+    "ht_under_0.5": 0.2165,
+    "ht_under_1.5": 0.5478,
+    "ht_under_2.5": 0.8012,
+    "htft_11": 0.4528,
+    "htft_12": 0.0119,
+    "htft_1X": 0.0408,
+    "htft_21": 0.0361,
+    "htft_22": 0.0807,
+    "htft_2X": 0.0408,
+    "htft_X1": 0.1852,
+    "htft_X2": 0.0539,
+    "htft_XX": 0.0979
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/5613.png",
+    "name": "Sporting Clube de Braga",
+    "tla": "SCB"
+   },
+   "match_id": 567308,
+   "matchday": 6,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5543,
+    "band_p95": 0.7747,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6085,
+    "p_raw": 0.6707,
+    "reference": 0.4269,
+    "runners_up": [
+     {
+      "band_p5": 0.5589,
+      "band_p95": 0.7961,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.6019,
+      "p_raw": 0.6798,
+      "reference": 0.4299,
+      "score": 0.059652,
+      "shrink_alpha": 0.6885,
+      "sigma": 0.0706
+     },
+     {
+      "band_p5": 0.6382,
+      "band_p95": 0.8193,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6631,
+      "p_raw": 0.7324,
+      "reference": 0.5258,
+      "score": 0.038713,
+      "shrink_alpha": 0.6648,
+      "sigma": 0.0584
+     },
+     {
+      "band_p5": 0.613,
+      "band_p95": 0.7915,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6572,
+      "p_raw": 0.7036,
+      "reference": 0.5423,
+      "score": 0.027215,
+      "shrink_alpha": 0.7121,
+      "sigma": 0.0523
+     },
+     {
+      "band_p5": 0.4762,
+      "band_p95": 0.6971,
+      "family": "combo_dc",
+      "key": "combodc_12_over_2.5",
+      "label": "12 + Over 2.5",
+      "p": 0.5256,
+      "p_raw": 0.5912,
+      "reference": 0.4224,
+      "score": 0.021517,
+      "shrink_alpha": 0.6117,
+      "sigma": 0.0656
+     }
+    ],
+    "score": 0.066475,
+    "shrink_alpha": 0.7448,
+    "sigma": 0.0696
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1504,
+    "1x2_draw": 0.1789,
+    "1x2_home": 0.6707,
+    "btts_yes": 0.5718,
+    "over_2.5": 0.6544,
+    "under_2.5": 0.3456
+   },
+   "reasons": [
+    "Gol attesi: Sporting Clube de Braga 2.38, GD Estoril Praia 1.02 (totale 3.40).",
+    "Vittoria casa: 61 su 100, 18 punti sopra la media di riferimento (43 su 100).",
+    "Banda di incertezza: fra 55 e 77 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T19:45:00Z"
+  }
+ ],
+ "generated_at": "2026-09-08T03:10:57Z",
+ "schema_version": 1,
+ "silence_count": 3,
+ "total": 8
+}

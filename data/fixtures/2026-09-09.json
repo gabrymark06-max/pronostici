@@ -1183,11 +1183,11 @@
     "filter_bites": {
      "S_min": 98,
      "p_min": 87,
-     "quota_min": 10,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
+    "n_clusters": 1,
     "truncated_mass": 3.881e-07
    },
    "expected_goals": {
@@ -1261,46 +1261,19 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6088,
-    "band_p95": 0.8356,
+    "band_p5": 0.5796,
+    "band_p95": 0.7836,
     "cluster_members": [],
-    "family": "team_goals",
-    "key": "ag_under_1.5",
-    "label": "Ospite Under 1.5",
-    "p": 0.6875,
-    "p_raw": 0.7311,
-    "reference": 0.5852,
-    "runners_up": [
-     {
-      "band_p5": 0.5796,
-      "band_p95": 0.7836,
-      "family": "combo_dc",
-      "key": "combodc_1x_over_1.5",
-      "label": "1X + Over 1.5",
-      "p": 0.6357,
-      "p_raw": 0.6832,
-      "reference": 0.5557,
-      "score": 0.013164,
-      "shrink_alpha": 0.6271,
-      "sigma": 0.0635
-     },
-     {
-      "band_p5": 0.4874,
-      "band_p95": 0.7387,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.5736,
-      "p_raw": 0.6179,
-      "reference": 0.495,
-      "score": 0.012401,
-      "shrink_alpha": 0.64,
-      "sigma": 0.0787
-     }
-    ],
-    "score": 0.022247,
-    "shrink_alpha": 0.7009,
-    "sigma": 0.0685
+    "family": "combo_dc",
+    "key": "combodc_1x_over_1.5",
+    "label": "1X + Over 1.5",
+    "p": 0.6357,
+    "p_raw": 0.6832,
+    "reference": 0.5557,
+    "runners_up": [],
+    "score": 0.013164,
+    "shrink_alpha": 0.6271,
+    "sigma": 0.0635
    },
    "raw_probabilities": {
     "1x2_away": 0.1749,
@@ -1312,8 +1285,8 @@
    },
    "reasons": [
     "Gol attesi: FC Twente '65 2.12, Telstar 1963 1.01 (totale 3.13).",
-    "Ospite Under 1.5: 69 su 100, 10 punti sopra la media di riferimento (59 su 100).",
-    "Banda di incertezza: fra 61 e 84 su 100."
+    "1X + Over 1.5: 64 su 100, 8 punti sopra la media di riferimento (56 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
@@ -4228,7 +4201,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 86,
-     "quota_min": 7,
+     "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -5587,7 +5560,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 87,
-     "quota_min": 10,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -5916,7 +5889,6 @@
       "label": "Over 3.5",
       "p": 0.6957,
       "p_raw": 0.9567,
-      "prezzo": 1.6,
       "reference": 0.432,
       "score": 0.141559,
       "shrink_alpha": 0.5026,
@@ -6035,7 +6007,7 @@
     "label": "Vittoria ospite",
     "p": 0.5735,
     "p_raw": 0.8022,
-    "prezzo": 1.84,
+    "prezzo": 1.79,
     "reference": 0.3202,
     "runners_up": [
      {
@@ -7070,35 +7042,35 @@
    },
    "diagnostics": {
     "filter_bites": {
-     "S_min": 83,
+     "S_min": 84,
      "p_min": 88,
-     "quota_min": 11,
+     "quota_min": 13,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 5,
-    "truncated_mass": 1.973e-06
+    "n_clusters": 3,
+    "truncated_mass": 1.881e-06
    },
    "expected_goals": {
-    "away": 2.456,
-    "home": 0.723
+    "away": 2.445,
+    "home": 0.744
    },
    "half_time": {
-    "ht_over_0.5": 0.7612,
-    "ht_over_1.5": 0.4192,
-    "ht_over_2.5": 0.1743,
-    "ht_under_0.5": 0.2388,
-    "ht_under_1.5": 0.5808,
-    "ht_under_2.5": 0.8257,
-    "htft_11": 0.0474,
-    "htft_12": 0.0301,
-    "htft_1X": 0.031,
-    "htft_21": 0.0063,
-    "htft_22": 0.5212,
-    "htft_2X": 0.031,
-    "htft_X1": 0.036,
-    "htft_X2": 0.2033,
-    "htft_XX": 0.0936
+    "ht_over_0.5": 0.7622,
+    "ht_over_1.5": 0.4207,
+    "ht_over_2.5": 0.1754,
+    "ht_under_0.5": 0.2378,
+    "ht_under_1.5": 0.5793,
+    "ht_under_2.5": 0.8246,
+    "htft_11": 0.0497,
+    "htft_12": 0.0306,
+    "htft_1X": 0.0318,
+    "htft_21": 0.0066,
+    "htft_22": 0.5155,
+    "htft_2X": 0.0318,
+    "htft_X1": 0.0374,
+    "htft_X2": 0.2022,
+    "htft_XX": 0.0943
    },
    "home": {
     "crest": "https://crests.football-data.org/583.png",
@@ -7110,85 +7082,59 @@
    "model_weight": 1.0,
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6454,
-    "band_p95": 0.8414,
+    "band_p5": 0.654,
+    "band_p95": 0.8477,
     "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_away",
-    "label": "Vittoria ospite",
-    "p": 0.6573,
-    "p_raw": 0.7499,
-    "reference": 0.3104,
+    "family": "combo_dc",
+    "key": "combodc_x2_over_1.5",
+    "label": "X2 + Over 1.5",
+    "p": 0.6422,
+    "p_raw": 0.7553,
+    "reference": 0.4255,
     "runners_up": [
      {
-      "band_p5": 0.5869,
-      "band_p95": 0.8014,
-      "family": "team_goals",
-      "key": "ag_over_1.5",
-      "label": "Ospite Over 1.5",
-      "p": 0.5924,
-      "p_raw": 0.6971,
-      "reference": 0.3465,
-      "score": 0.125286,
-      "shrink_alpha": 0.7013,
-      "sigma": 0.0685
-     },
-     {
-      "band_p5": 0.6667,
-      "band_p95": 0.8438,
-      "family": "combo_dc",
-      "key": "combodc_x2_over_1.5",
-      "label": "X2 + Over 1.5",
-      "p": 0.6555,
-      "p_raw": 0.7588,
-      "reference": 0.4259,
-      "score": 0.106741,
-      "shrink_alpha": 0.6897,
-      "sigma": 0.0552
-     },
-     {
-      "band_p5": 0.6147,
-      "band_p95": 0.798,
+      "band_p5": 0.5933,
+      "band_p95": 0.8013,
       "family": "combo_dc",
       "key": "combodc_12_over_1.5",
       "label": "12 + Over 1.5",
-      "p": 0.6532,
-      "p_raw": 0.7078,
-      "reference": 0.543,
-      "score": 0.024971,
-      "shrink_alpha": 0.6685,
-      "sigma": 0.058
+      "p": 0.6446,
+      "p_raw": 0.7049,
+      "reference": 0.5423,
+      "score": 0.021493,
+      "shrink_alpha": 0.6291,
+      "sigma": 0.0632
      },
      {
-      "band_p5": 0.4603,
-      "band_p95": 0.6875,
+      "band_p5": 0.4498,
+      "band_p95": 0.6902,
       "family": "combo_dc",
       "key": "combodc_12_over_2.5",
       "label": "12 + Over 2.5",
-      "p": 0.5092,
-      "p_raw": 0.5716,
-      "reference": 0.423,
-      "score": 0.015017,
-      "shrink_alpha": 0.5799,
-      "sigma": 0.0701
+      "p": 0.5007,
+      "p_raw": 0.5707,
+      "reference": 0.4224,
+      "score": 0.012396,
+      "shrink_alpha": 0.5276,
+      "sigma": 0.0779
      }
     ],
-    "score": 0.253511,
-    "shrink_alpha": 0.7892,
-    "sigma": 0.0615
+    "score": 0.094988,
+    "shrink_alpha": 0.6573,
+    "sigma": 0.0594
    },
    "raw_probabilities": {
-    "1x2_away": 0.7499,
-    "1x2_draw": 0.157,
-    "1x2_home": 0.0931,
-    "btts_yes": 0.464,
-    "over_2.5": 0.6112,
-    "under_2.5": 0.3888
+    "1x2_away": 0.7433,
+    "1x2_draw": 0.1595,
+    "1x2_home": 0.0972,
+    "btts_yes": 0.4721,
+    "over_2.5": 0.6118,
+    "under_2.5": 0.3882
    },
    "reasons": [
-    "Gol attesi: Moreirense FC 0.72, Sport Lisboa e Benfica 2.46 (totale 3.18).",
-    "Vittoria ospite: 66 su 100, 35 punti sopra la media di riferimento (31 su 100).",
-    "Banda di incertezza: fra 65 e 84 su 100."
+    "Gol attesi: Moreirense FC 0.74, Sport Lisboa e Benfica 2.45 (totale 3.19).",
+    "X2 + Over 1.5: 64 su 100, 22 punti sopra la media di riferimento (43 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
@@ -7196,7 +7142,7 @@
    "utc_date": "2026-09-09T19:45:00Z"
   }
  ],
- "generated_at": "2026-09-07T17:11:28Z",
+ "generated_at": "2026-09-08T03:10:57Z",
  "schema_version": 1,
  "silence_count": 3,
  "total": 11
