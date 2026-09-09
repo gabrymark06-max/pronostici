@@ -91,35 +91,35 @@
    "competition": "CL",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 93,
-     "p_min": 87,
-     "quota_min": 10,
-     "sigma_max": 18
+     "S_min": 86,
+     "p_min": 82,
+     "quota_min": 13,
+     "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
-    "truncated_mass": 0.0001175
+    "n_clusters": 7,
+    "truncated_mass": 0.0001761
    },
    "expected_goals": {
-    "away": 1.291,
-    "home": 3.66
+    "away": 0.972,
+    "home": 3.818
    },
    "half_time": {
-    "ht_over_0.5": 0.8805,
-    "ht_over_1.5": 0.6267,
-    "ht_over_2.5": 0.357,
-    "ht_under_0.5": 0.1195,
-    "ht_under_1.5": 0.3733,
-    "ht_under_2.5": 0.643,
-    "htft_11": 0.5821,
-    "htft_12": 0.0108,
-    "htft_1X": 0.0302,
-    "htft_21": 0.0499,
-    "htft_22": 0.0484,
-    "htft_2X": 0.0302,
-    "htft_X1": 0.1708,
-    "htft_X2": 0.0298,
-    "htft_XX": 0.0477
+    "ht_over_0.5": 0.872,
+    "ht_over_1.5": 0.6088,
+    "ht_over_2.5": 0.3383,
+    "ht_under_0.5": 0.128,
+    "ht_under_1.5": 0.3912,
+    "ht_under_2.5": 0.6617,
+    "htft_11": 0.6511,
+    "htft_12": 0.0057,
+    "htft_1X": 0.0216,
+    "htft_21": 0.0412,
+    "htft_22": 0.027,
+    "htft_2X": 0.0216,
+    "htft_X1": 0.1735,
+    "htft_X2": 0.0186,
+    "htft_XX": 0.0396
    },
    "home": {
     "crest": "https://crests.football-data.org/5.png",
@@ -128,24 +128,14 @@
    },
    "match_id": 575337,
    "matchday": 1,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.03976,
-     "1x2_draw": 0.06736,
-     "1x2_home": 0.89288,
-     "dc_12": 0.93264,
-     "dc_1x": 0.96024,
-     "dc_x2": 0.10712,
-     "eh_-1_away": 0.10712,
-     "eh_1_home": 0.96024,
-     "mg_0_2": 0.13073,
-     "over_2.5": 0.86927,
-     "over_4.5": 0.51685,
-     "under_2.5": 0.13073,
-     "under_4.5": 0.48315
+    "devig": {
+     "h2h": 1.086,
+     "totals_2.5": 1.146,
+     "totals_4.5": 1.073
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -166,65 +156,114 @@
      "under_4.5": 1.87
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": {
-    "band_p5": 0.6668,
-    "band_p95": 0.9715,
+    "band_p5": 0.6335,
+    "band_p95": 0.8165,
     "cluster_members": [],
     "family": "team_goals",
-    "key": "hg_over_1.5",
-    "label": "Casa Over 1.5",
-    "p": 0.6928,
-    "p_raw": 0.8506,
-    "reference": 0.5256,
+    "key": "hg_over_2.5",
+    "label": "Casa Over 2.5",
+    "p": 0.629,
+    "p_raw": 0.7293,
+    "reference": 0.2964,
     "runners_up": [
      {
-      "band_p5": 0.6632,
-      "band_p95": 0.9696,
-      "family": "combo_dc",
-      "key": "combodc_1x_over_1.5",
-      "label": "1X + Over 1.5",
-      "p": 0.6675,
-      "p_raw": 0.8495,
-      "reference": 0.5326,
-      "score": 0.037462,
-      "shrink_alpha": 0.4257,
-      "sigma": 0.0956
+      "band_p5": 0.6238,
+      "band_p95": 0.8079,
+      "family": "handicap_eu",
+      "key": "eh_-1_home",
+      "label": "Handicap -1 casa",
+      "p": 0.6137,
+      "p_raw": 0.7214,
+      "reference": 0.2858,
+      "score": 0.231634,
+      "shrink_alpha": 0.7528,
+      "sigma": 0.0551
      },
      {
-      "band_p5": 0.6125,
-      "band_p95": 0.932,
+      "band_p5": 0.7414,
+      "band_p95": 0.8756,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_2.5",
+      "label": "1X + Over 2.5",
+      "p": 0.7201,
+      "p_raw": 0.8125,
+      "reference": 0.3894,
+      "score": 0.22439,
+      "shrink_alpha": 0.7816,
+      "sigma": 0.0435
+     },
+     {
+      "band_p5": 0.7564,
+      "band_p95": 0.8922,
+      "family": "combo",
+      "key": "combo_1_over_1.5",
+      "label": "1 + Over 1.5",
+      "p": 0.7225,
+      "p_raw": 0.8298,
+      "reference": 0.3923,
+      "score": 0.223738,
+      "shrink_alpha": 0.7548,
+      "sigma": 0.0417
+     },
+     {
+      "band_p5": 0.6846,
+      "band_p95": 0.8447,
+      "family": "combo",
+      "key": "combo_1_over_2.5",
+      "label": "1 + Over 2.5",
+      "p": 0.6305,
+      "p_raw": 0.7688,
+      "reference": 0.3317,
+      "score": 0.186033,
+      "shrink_alpha": 0.6836,
+      "sigma": 0.0497
+     },
+     {
+      "band_p5": 0.7477,
+      "band_p95": 0.8684,
       "family": "combo_dc",
       "key": "combodc_12_over_2.5",
       "label": "12 + Over 2.5",
-      "p": 0.6651,
-      "p_raw": 0.7833,
+      "p": 0.7665,
+      "p_raw": 0.8093,
       "reference": 0.5841,
-      "score": 0.013841,
-      "shrink_alpha": 0.4068,
-      "sigma": 0.0994
+      "score": 0.073515,
+      "shrink_alpha": 0.8097,
+      "sigma": 0.0399
      }
     ],
-    "score": 0.057852,
-    "shrink_alpha": 0.5145,
-    "sigma": 0.1019
+    "score": 0.235764,
+    "shrink_alpha": 0.7684,
+    "sigma": 0.0576
+   },
+   "previous": {
+    "market_key": "hg_over_1.5",
+    "market_label": "Casa Over 1.5",
+    "p": 0.7013,
+    "phase": "preliminary",
+    "silence_reason": null,
+    "written_at": "2026-09-04T03:10:45Z"
    },
    "raw_probabilities": {
-    "1x2_away": 0.1081,
-    "1x2_draw": 0.1137,
-    "1x2_home": 0.7783,
-    "btts_yes": 0.6812,
-    "over_2.5": 0.8481,
-    "under_2.5": 0.1519
+    "1x2_away": 0.0532,
+    "1x2_draw": 0.0844,
+    "1x2_home": 0.8624,
+    "btts_yes": 0.6058,
+    "over_2.5": 0.8531,
+    "under_2.5": 0.1469
    },
    "reasons": [
-    "Gol attesi: FC Bayern München 3.66, FK Bodø/Glimt 1.29 (totale 4.95).",
-    "Casa Over 1.5: 69 su 100, 17 punti sopra la media di riferimento (53 su 100).",
-    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+    "Fino a ieri dicevamo Casa Over 1.5. Con l'arrivo delle quote la nostra stima e' cambiata: ora diciamo Casa Over 2.5.",
+    "Gol attesi: FC Bayern München 3.82, FK Bodø/Glimt 0.97 (totale 4.79).",
+    "Casa Over 2.5: 63 su 100, 33 punti sopra la media di riferimento (30 su 100).",
+    "Banda di incertezza: fra 63 e 82 su 100."
    ],
    "silence": null,
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "LEAGUE_STAGE",
+   "transition": "changed",
    "utc_date": "2026-09-10T19:00:00Z"
   },
   {
@@ -1048,7 +1087,7 @@
    "utc_date": "2026-09-10T19:15:00Z"
   }
  ],
- "generated_at": "2026-09-09T10:01:07Z",
+ "generated_at": "2026-09-09T10:01:33Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 3
