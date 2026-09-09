@@ -899,7 +899,7 @@
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 3,
+    "n_clusters": 2,
     "truncated_mass": 5.254e-08
    },
    "expected_goals": {
@@ -966,42 +966,19 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5339,
-    "band_p95": 0.7574,
-    "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.5931,
-    "p_raw": 0.6503,
-    "reference": 0.4066,
+    "band_p5": 0.5502,
+    "band_p95": 0.7042,
+    "cluster_members": [
+     "combodcg_12_nogol"
+    ],
+    "family": "btts",
+    "key": "btts_no",
+    "label": "Non entrambe segnano",
+    "p": 0.588,
+    "p_raw": 0.6258,
+    "prezzo": 1.57,
+    "reference": 0.5029,
     "runners_up": [
-     {
-      "band_p5": 0.4714,
-      "band_p95": 0.5904,
-      "family": "combo_dc_gol",
-      "key": "combodcg_12_nogol",
-      "label": "12 + NoGoal",
-      "p": 0.5081,
-      "p_raw": 0.5296,
-      "reference": 0.4214,
-      "score": 0.015191,
-      "shrink_alpha": 0.8015,
-      "sigma": 0.039
-     },
-     {
-      "band_p5": 0.5502,
-      "band_p95": 0.7042,
-      "family": "btts",
-      "key": "btts_no",
-      "label": "Non entrambe segnano",
-      "p": 0.588,
-      "p_raw": 0.6258,
-      "reference": 0.5029,
-      "score": 0.014578,
-      "shrink_alpha": 0.6922,
-      "sigma": 0.049
-     },
      {
       "band_p5": 0.5001,
       "band_p95": 0.7124,
@@ -1016,9 +993,9 @@
       "sigma": 0.0631
      }
     ],
-    "score": 0.070378,
-    "shrink_alpha": 0.7652,
-    "sigma": 0.0659
+    "score": 0.014578,
+    "shrink_alpha": 0.6922,
+    "sigma": 0.049
    },
    "raw_probabilities": {
     "1x2_away": 0.1245,
@@ -1030,8 +1007,8 @@
    },
    "reasons": [
     "Gol attesi: Como 1907 1.77, Parma Calcio 1913 0.61 (totale 2.38).",
-    "Vittoria casa: 59 su 100, 19 punti sopra la media di riferimento (41 su 100).",
-    "Banda di incertezza: fra 53 e 76 su 100."
+    "Non entrambe segnano: 59 su 100, 9 punti sopra la media di riferimento (50 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
@@ -1897,7 +1874,7 @@
     "filter_bites": {
      "S_min": 88,
      "p_min": 88,
-     "quota_min": 10,
+     "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -1976,6 +1953,7 @@
     "label": "Vittoria ospite",
     "p": 0.571,
     "p_raw": 0.6452,
+    "prezzo": 1.6,
     "reference": 0.3276,
     "runners_up": [
      {
@@ -1986,6 +1964,7 @@
       "label": "Ospite Over 1.5",
       "p": 0.5097,
       "p_raw": 0.5845,
+      "prezzo": 1.68,
       "reference": 0.3459,
       "score": 0.056213,
       "shrink_alpha": 0.6862,
@@ -2864,7 +2843,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 88,
-     "quota_min": 7,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -3848,11 +3827,11 @@
     "filter_bites": {
      "S_min": 80,
      "p_min": 86,
-     "quota_min": 9,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 6,
+    "n_clusters": 4,
     "truncated_mass": 2.526e-06
    },
    "expected_goals": {
@@ -3924,29 +3903,17 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.6112,
-    "band_p95": 0.82,
+    "band_p5": 0.5861,
+    "band_p95": 0.8101,
     "cluster_members": [],
-    "family": "1x2",
-    "key": "1x2_home",
-    "label": "Vittoria casa",
-    "p": 0.6463,
-    "p_raw": 0.7193,
-    "reference": 0.4066,
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.612,
+    "p_raw": 0.7084,
+    "prezzo": 1.34,
+    "reference": 0.3964,
     "runners_up": [
-     {
-      "band_p5": 0.5861,
-      "band_p95": 0.8101,
-      "family": "team_goals",
-      "key": "hg_over_1.5",
-      "label": "Casa Over 1.5",
-      "p": 0.612,
-      "p_raw": 0.7084,
-      "reference": 0.3964,
-      "score": 0.094335,
-      "shrink_alpha": 0.691,
-      "sigma": 0.0702
-     },
      {
       "band_p5": 0.6667,
       "band_p95": 0.8461,
@@ -3987,22 +3954,23 @@
       "sigma": 0.0684
      },
      {
-      "band_p5": 0.6816,
-      "band_p95": 0.8607,
-      "family": "team_goals",
-      "key": "ag_under_1.5",
-      "label": "Ospite Under 1.5",
-      "p": 0.7457,
-      "p_raw": 0.7717,
-      "reference": 0.6541,
-      "score": 0.019526,
-      "shrink_alpha": 0.7795,
-      "sigma": 0.0558
+      "band_p5": 0.5406,
+      "band_p95": 0.7706,
+      "family": "over_under",
+      "key": "over_2.5",
+      "label": "Over 2.5",
+      "p": 0.5464,
+      "p_raw": 0.6576,
+      "prezzo": 1.58,
+      "reference": 0.4763,
+      "score": 0.009852,
+      "shrink_alpha": 0.3869,
+      "sigma": 0.071
      }
     ],
-    "score": 0.116481,
-    "shrink_alpha": 0.7665,
-    "sigma": 0.0656
+    "score": 0.094335,
+    "shrink_alpha": 0.691,
+    "sigma": 0.0702
    },
    "raw_probabilities": {
     "1x2_away": 0.1171,
@@ -4014,8 +3982,8 @@
    },
    "reasons": [
     "Gol attesi: FC Internazionale Milano 2.51, Udinese Calcio 0.90 (totale 3.41).",
-    "Vittoria casa: 65 su 100, 24 punti sopra la media di riferimento (41 su 100).",
-    "Banda di incertezza: fra 61 e 82 su 100."
+    "Casa Over 1.5: 61 su 100, 22 punti sopra la media di riferimento (40 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
    "source": "model_only",
@@ -4916,7 +4884,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 87,
-     "quota_min": 8,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -5900,7 +5868,7 @@
     "filter_bites": {
      "S_min": 101,
      "p_min": 87,
-     "quota_min": 8,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -5984,6 +5952,7 @@
     "label": "Casa Over 1.5",
     "p": 0.5346,
     "p_raw": 0.5931,
+    "prezzo": 1.71,
     "reference": 0.4253,
     "runners_up": [
      {
@@ -6906,7 +6875,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 88,
-     "quota_min": 7,
+     "quota_min": 8,
      "sigma_max": 48
     },
     "n_candidates": 114,
@@ -7917,7 +7886,7 @@
     "filter_bites": {
      "S_min": 92,
      "p_min": 86,
-     "quota_min": 10,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -7963,6 +7932,7 @@
     "label": "Vittoria casa",
     "p": 0.6085,
     "p_raw": 0.6707,
+    "prezzo": 1.49,
     "reference": 0.4269,
     "runners_up": [
      {
@@ -7973,6 +7943,7 @@
       "label": "Casa Over 1.5",
       "p": 0.6019,
       "p_raw": 0.6798,
+      "prezzo": 1.61,
       "reference": 0.4299,
       "score": 0.059652,
       "shrink_alpha": 0.6885,
@@ -8039,10 +8010,107 @@
    "source": "model_only",
    "stage": "REGULAR_SEASON",
    "utc_date": "2026-09-14T19:45:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/4287.png",
+    "name": "Clube do Remo",
+    "tla": "CRE"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 106,
+     "p_min": 87,
+     "quota_min": 11,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 2.444e-07
+   },
+   "expected_goals": {
+    "away": 1.019,
+    "home": 2.03
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7458,
+    "ht_over_1.5": 0.3976,
+    "ht_over_2.5": 0.1592,
+    "ht_under_0.5": 0.2542,
+    "ht_under_1.5": 0.6024,
+    "ht_under_2.5": 0.8408,
+    "htft_11": 0.3922,
+    "htft_12": 0.0132,
+    "htft_1X": 0.0446,
+    "htft_21": 0.0322,
+    "htft_22": 0.1012,
+    "htft_2X": 0.0446,
+    "htft_X1": 0.183,
+    "htft_X2": 0.0686,
+    "htft_XX": 0.1202
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1777.png",
+    "name": "EC Bahia",
+    "tla": "BAH"
+   },
+   "match_id": 555001,
+   "matchday": 27,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4364,
+    "band_p95": 0.7667,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.5483,
+    "p_raw": 0.6012,
+    "prezzo": 1.48,
+    "reference": 0.473,
+    "runners_up": [
+     {
+      "band_p5": 0.4233,
+      "band_p95": 0.7553,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5188,
+      "p_raw": 0.5915,
+      "prezzo": 1.54,
+      "reference": 0.4451,
+      "score": 0.010893,
+      "shrink_alpha": 0.5029,
+      "sigma": 0.1043
+     }
+    ],
+    "score": 0.011362,
+    "shrink_alpha": 0.5874,
+    "sigma": 0.0997
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1896,
+    "1x2_draw": 0.2091,
+    "1x2_home": 0.6012,
+    "btts_yes": 0.5408,
+    "over_2.5": 0.5805,
+    "under_2.5": 0.4195
+   },
+   "reasons": [
+    "Gol attesi: EC Bahia 2.03, Clube do Remo 1.02 (totale 3.05).",
+    "Vittoria casa: 55 su 100, 8 punti sopra la media di riferimento (47 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-09-14T23:00:00Z"
   }
  ],
- "generated_at": "2026-09-08T17:12:59Z",
+ "generated_at": "2026-09-09T03:11:09Z",
  "schema_version": 1,
  "silence_count": 3,
- "total": 8
+ "total": 9
 }
