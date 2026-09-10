@@ -329,8 +329,9 @@ risposta 200, JSON valido, e una partita su ventuno senza prezzi. Si chiede a
 due per volta, e una risposta che tocca il tetto viene buttata e rifatta una
 partita alla volta.
 
-`job-sofascore.yml` resta, senza orario, per chi vuole il contorno ricco a mano
-sul runner di casa. I dati già scritti da Sofascore non si migrano: sono veri,
+Sofascore non si legge più, né a orario né a mano: il workflow e il runner di
+casa che gli serviva sono stati tolti il 10 settembre (`docs/decisioni.md` dice
+perché). I dati già scritti da Sofascore non si migrano: sono veri,
 e contengono cose che le fonti nuove non pubblicano. Il frontend legge i due
 campi tramite `lib/contorno.ts`, mai direttamente.
 

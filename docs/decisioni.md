@@ -228,8 +228,10 @@ nuove non pubblicano: riscriverli sotto un'altra insegna sarebbe l'unico modo
 di perderli. Il nuovo va in `contorno`, con la fonte dichiarata dentro ogni
 sezione, e il frontend legge le due epoche da `lib/contorno.ts`.
 
-`job-sofascore.yml` resta senza cron, per chi vuole il contorno ricco a mano
-sul runner di casa.
+`job-sofascore.yml` è rimasto senza cron per diciassette giorni, «per chi vuole
+il contorno ricco a mano sul runner di casa». Nessuno lo ha voluto, e il
+runner ascoltava job che non arrivavano: il 10 settembre sono stati tolti
+tutti e due. La spiegazione del lucchetto di Sofascore resta qui sopra.
 
 ---
 
