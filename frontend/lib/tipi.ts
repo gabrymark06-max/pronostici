@@ -27,7 +27,11 @@ export type MotivoSilenzio =
   | 'sigma_max'
   | 'p_min'
   | 'quota_min'
-  | 'no_candidates';
+  | 'no_candidates'
+  /* Una squadra che il modello non ha mai visto in questa competizione:
+     i numeri sono quelli di una squadra media, e su quelli non si
+     consiglia. Prima la partita spariva del tutto dal calendario. */
+  | 'fuori_modello';
 
 export type Transizione =
   | 'first'

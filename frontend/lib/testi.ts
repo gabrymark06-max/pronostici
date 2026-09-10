@@ -172,6 +172,25 @@ export function vesteSilenzio(fixture: FixtureInSilenzio): VesteSilenzio {
     };
   }
 
+  if (motivo === 'fuori_modello') {
+    /* IL SILENZIO DI CHI NON HA ANCORA VISTO NIENTE.
+       Diverso da `sigma_max`, che parla di una squadra vista poco: qui la
+       squadra non e' mai entrata nel modello di questa competizione — la
+       Roma alla prima di Champions dopo anni. I numeri in pagina sono
+       quelli di una squadra media, e va detto, altrimenti un lettore li
+       prende per una stima sulla Roma. Fino al 10 settembre 2026 queste
+       partite non comparivano affatto, e sei partite sembravano due. */
+    return {
+      glifo: '?',
+      etichetta: 'SQUADRA NUOVA QUI',
+      titolo:
+        titoloDalBackend ??
+        'Una delle due squadre non ha ancora giocato in questa competizione da quando il modello la osserva.',
+      sottotitolo:
+        'I numeri mostrati valgono per una squadra media della competizione: sono un punto di partenza, non una stima su questa squadra.',
+    };
+  }
+
   if (motivo === 'p_min') {
     return {
       glifo: '<',

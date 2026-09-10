@@ -3,6 +3,74 @@
  "fixtures": [
   {
    "away": {
+    "crest": "https://crests.football-data.org/100.png",
+    "name": "AS Roma",
+    "tla": "ROM"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 86,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 7.836e-09
+   },
+   "expected_goals": {
+    "away": 1.129,
+    "home": 1.496
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6772,
+    "ht_over_1.5": 0.3122,
+    "ht_over_2.5": 0.1059,
+    "ht_under_0.5": 0.3228,
+    "ht_under_1.5": 0.6878,
+    "ht_under_2.5": 0.8941,
+    "htft_11": 0.2676,
+    "htft_12": 0.0177,
+    "htft_1X": 0.0497,
+    "htft_21": 0.0253,
+    "htft_22": 0.1578,
+    "htft_2X": 0.0497,
+    "htft_X1": 0.1636,
+    "htft_X2": 0.1107,
+    "htft_XX": 0.1578
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/613.png",
+    "name": "Fenerbahçe SK",
+    "tla": "FEN"
+   },
+   "match_id": 575335,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.288,
+    "1x2_draw": 0.2539,
+    "1x2_home": 0.4581,
+    "btts_yes": 0.5224,
+    "over_2.5": 0.4873,
+    "under_2.5": 0.5127
+   },
+   "reasons": [
+    "Fenerbahçe SK e AS Roma non hanno ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: Fenerbahçe SK 1.50, AS Roma 1.13 (totale 2.62)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-10T16:45:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/1887.png",
     "name": "FK Shakhtar Donetsk",
     "tla": "SHD"
@@ -279,6 +347,210 @@
    "source": "blended_with_odds",
    "stage": "LEAGUE_STAGE",
    "transition": "changed",
+   "utc_date": "2026-09-10T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/10233.png",
+    "name": "Sabah FK",
+    "tla": "SAB"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 86,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 7.836e-09
+   },
+   "expected_goals": {
+    "away": 1.129,
+    "home": 1.496
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6772,
+    "ht_over_1.5": 0.3122,
+    "ht_over_2.5": 0.1059,
+    "ht_under_0.5": 0.3228,
+    "ht_under_1.5": 0.6878,
+    "ht_under_2.5": 0.8941,
+    "htft_11": 0.2676,
+    "htft_12": 0.0177,
+    "htft_1X": 0.0497,
+    "htft_21": 0.0253,
+    "htft_22": 0.1578,
+    "htft_2X": 0.0497,
+    "htft_X1": 0.1636,
+    "htft_X2": 0.1107,
+    "htft_XX": 0.1578
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/66.png",
+    "name": "Manchester United FC",
+    "tla": "MUN"
+   },
+   "match_id": 575338,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.288,
+    "1x2_draw": 0.2539,
+    "1x2_home": 0.4581,
+    "btts_yes": 0.5224,
+    "over_2.5": 0.4873,
+    "under_2.5": 0.5127
+   },
+   "reasons": [
+    "Manchester United FC e Sabah FK non hanno ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: Manchester United FC 1.50, Sabah FK 1.13 (totale 2.62)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-10T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/721.png",
+    "name": "RB Leipzig",
+    "tla": "RBL"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 113,
+     "p_min": 86,
+     "quota_min": 6,
+     "sigma_max": 33
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 1.959e-08
+   },
+   "expected_goals": {
+    "away": 1.085,
+    "home": 1.623
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6886,
+    "ht_over_1.5": 0.3253,
+    "ht_over_2.5": 0.1133,
+    "ht_under_0.5": 0.3114,
+    "ht_under_1.5": 0.6747,
+    "ht_under_2.5": 0.8867,
+    "htft_11": 0.2981,
+    "htft_12": 0.0164,
+    "htft_1X": 0.0487,
+    "htft_21": 0.0274,
+    "htft_22": 0.1389,
+    "htft_2X": 0.0487,
+    "htft_X1": 0.1734,
+    "htft_X2": 0.0988,
+    "htft_XX": 0.1497
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/7397.png",
+    "name": "Como 1907",
+    "tla": "COM"
+   },
+   "match_id": 575339,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2628,
+    "1x2_draw": 0.2379,
+    "1x2_home": 0.4993,
+    "btts_yes": 0.4913,
+    "over_2.5": 0.4966,
+    "under_2.5": 0.5034
+   },
+   "reasons": [
+    "Como 1907 non ha ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: Como 1907 1.62, RB Leipzig 1.08 (totale 2.71)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
+   "utc_date": "2026-09-10T19:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/546.png",
+    "name": "Racing Club de Lens",
+    "tla": "RCL"
+   },
+   "competition": "CL",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 97,
+     "p_min": 87,
+     "quota_min": 7,
+     "sigma_max": 24
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 1.157e-08
+   },
+   "expected_goals": {
+    "away": 1.552,
+    "home": 0.882
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6496,
+    "ht_over_1.5": 0.2821,
+    "ht_over_2.5": 0.0894,
+    "ht_under_0.5": 0.3504,
+    "ht_under_1.5": 0.7179,
+    "ht_under_2.5": 0.9106,
+    "htft_11": 0.1134,
+    "htft_12": 0.0243,
+    "htft_1X": 0.0445,
+    "htft_21": 0.012,
+    "htft_22": 0.316,
+    "htft_2X": 0.0445,
+    "htft_X1": 0.0885,
+    "htft_X2": 0.1902,
+    "htft_XX": 0.1666
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/930.png",
+    "name": "SK Slavia Praha",
+    "tla": "SLP"
+   },
+   "match_id": 575340,
+   "matchday": 1,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.5312,
+    "1x2_draw": 0.2511,
+    "1x2_home": 0.2177,
+    "btts_yes": 0.4301,
+    "over_2.5": 0.4319,
+    "under_2.5": 0.5681
+   },
+   "reasons": [
+    "Racing Club de Lens non ha ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: SK Slavia Praha 0.88, Racing Club de Lens 1.55 (totale 2.43)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
+   "source": "model_only",
+   "stage": "LEAGUE_STAGE",
    "utc_date": "2026-09-10T19:00:00Z"
   },
   {
@@ -1271,8 +1543,8 @@
    "utc_date": "2026-09-10T19:15:00Z"
   }
  ],
- "generated_at": "2026-09-10T10:00:53Z",
+ "generated_at": "2026-09-10T13:13:50Z",
  "schema_version": 1,
- "silence_count": 0,
- "total": 3
+ "silence_count": 4,
+ "total": 7
 }

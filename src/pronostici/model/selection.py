@@ -267,7 +267,10 @@ class Selection:
     """Il risultato: un pronostico, oppure il silenzio con la sua ragione."""
 
     pick: Candidate | None
-    silence_reason: str | None  # "S_min" | "sigma_max" | "p_min" | "no_candidates"
+    # "S_min" | "sigma_max" | "p_min" | "quota_min" | "no_candidates" |
+    # "fuori_modello" (una squadra che il modello non ha mai visto: i numeri
+    # sono quelli di una squadra media, e su quelli non si consiglia).
+    silence_reason: str | None
     n_candidates: int
     n_clusters: int
     cluster_members: list[str] = field(default_factory=list)

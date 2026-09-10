@@ -8,7 +8,7 @@ produzione, altrimenti non misura niente.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 import numpy as np
 
@@ -113,6 +113,17 @@ def _silence_sentence(
     ma inutile; con il nome e' una diagnosi.
     """
     reason = selection.silence_reason
+    if reason == "fuori_modello":
+        # COL NOME, come `sigma_max`: «una squadra» non spiega niente, «la
+        # Roma» spiega tutto. Se sono due, tutte e due.
+        fuori = [t for t in (match.home_name, match.away_name) if not boot.knows(t)]
+        chi = " e ".join(fuori) if fuori else "una delle due squadre"
+        verbo = "hanno" if len(fuori) > 1 else "ha"
+        return (
+            f"{chi} non {verbo} ancora giocato in questa competizione da quando "
+            "il modello la osserva: i numeri qui sotto valgono per una squadra "
+            "media, e su una squadra media non consigliamo niente."
+        )
     if reason == "sigma_max":
         team = boot.least_reliable(match.home_name, match.away_name)
         if team:
@@ -226,10 +237,22 @@ def score_fixture(
 ) -> FixtureScore:
     """Scora una fixture. Con `market_probabilities` (gia' sgonfiate col
     metodo power) fonde modello e mercato e passa a w = 0,35."""
-    if match.home_name not in boot.teams or match.away_name not in boot.teams:
-        raise KeyError(
-            f"squadra fuori dal modello: {match.home_name} / {match.away_name}"
-        )
+    # UNA SQUADRA CHE IL MODELLO NON CONOSCE NON FA SPARIRE LA PARTITA.
+    #
+    # Fino al 10 settembre 2026 qui si sollevava KeyError e `score` saltava la
+    # fixture: sei partite di Champions diventavano due, perche' Roma, Como,
+    # Lens e Fenerbahce non hanno storico in Champions nella finestra del
+    # modello. Ma la partita si gioca lo stesso, e un calendario che la omette
+    # e' un calendario sbagliato — non un pronostico prudente.
+    #
+    # Adesso la squadra sconosciuta prende i parametri della squadra media
+    # (vedi `BootstrapResult._params`), i numeri si calcolano come sempre — gol
+    # attesi, probabilita' grezze, tempo — e la scheda esce **in silenzio** con
+    # il motivo `fuori_modello`: i numeri ci sono, ma sono un prior, e su un
+    # prior non si consiglia una scommessa.
+    sconosciute = [
+        t for t in (match.home_name, match.away_name) if not boot.knows(t)
+    ]
 
     lam_h, lam_a = boot.rates(match.home_name, match.away_name)
     rho = boot.rho
@@ -281,6 +304,15 @@ def score_fixture(
         max_goals=max_goals,
     )
     selection = select(candidates, mean_matrix, max_goals=max_goals)
+    if sconosciute:
+        selection = replace(
+            selection,
+            pick=None,
+            silence_reason="fuori_modello",
+            cluster_members=[],
+            runners_up=[],
+            respinto_per_quota=None,
+        )
 
     lam_home_point = float(lam_h.mean())
     lam_away_point = float(lam_a.mean())

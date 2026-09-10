@@ -33,13 +33,40 @@ class BootstrapResult:
     def draws(self) -> int:
         return len(self.home_adv)
 
+    def knows(self, team: str) -> bool:
+        return team in self.teams
+
+    def _params(self, team: str) -> tuple[np.ndarray, np.ndarray]:
+        """Attacco e difesa di una squadra per ogni draw — o della squadra media.
+
+        UNA SQUADRA CHE IL MODELLO NON HA MAI VISTO non e' una squadra senza
+        forza: e' una squadra di cui non sappiamo la forza. La stima meno
+        sbagliata e' «una squadra media di questa competizione», cioe' la media
+        delle colonne, draw per draw — cosi' l'incertezza dei rifit resta
+        dentro e il resto della pipeline non deve sapere niente.
+
+        E' un prior, non una previsione: chi lo usa deve dirlo (vedi il
+        silenzio `fuori_modello` in `pipeline.score_fixture`). Prima di questo
+        metodo la partita veniva semplicemente scartata, e sei partite di
+        Champions su sei diventavano due — la Roma non ha storico in Champions
+        nella finestra del modello, ma la partita della Roma si gioca lo stesso.
+        """
+        if team in self.teams:
+            i = self.teams.index(team)
+            return self.attack[:, i], self.defence[:, i]
+        return self.attack.mean(axis=1), self.defence.mean(axis=1)
+
     def rates(self, home: str, away: str) -> tuple[np.ndarray, np.ndarray]:
-        """(lambda_casa, lambda_ospite) per tutti i draw, vettorizzato."""
-        h = self.teams.index(home)
-        a = self.teams.index(away)
+        """(lambda_casa, lambda_ospite) per tutti i draw, vettorizzato.
+
+        Per una squadra fuori dal modello valgono i parametri medi: vedi
+        `_params`.
+        """
+        att_h, dif_h = self._params(home)
+        att_a, dif_a = self._params(away)
         return (
-            np.exp(self.attack[:, h] + self.defence[:, a] + self.home_adv),
-            np.exp(self.attack[:, a] + self.defence[:, h]),
+            np.exp(att_h + dif_a + self.home_adv),
+            np.exp(att_a + dif_h),
         )
 
     def team_spread(self, team: str) -> float:
