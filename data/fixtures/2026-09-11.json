@@ -1570,6 +1570,99 @@
   },
   {
    "away": {
+    "crest": "https://crests.football-data.org/6.png",
+    "name": "FC Schalke 04",
+    "tla": "S04"
+   },
+   "competition": "BL1",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 110,
+     "p_min": 87,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 1.571e-08
+   },
+   "expected_goals": {
+    "away": 1.427,
+    "home": 1.549
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7403,
+    "ht_over_1.5": 0.3901,
+    "ht_over_2.5": 0.1541,
+    "ht_under_0.5": 0.2597,
+    "ht_under_1.5": 0.6099,
+    "ht_under_2.5": 0.8459,
+    "htft_11": 0.2439,
+    "htft_12": 0.0236,
+    "htft_1X": 0.0534,
+    "htft_21": 0.0263,
+    "htft_22": 0.2077,
+    "htft_2X": 0.0534,
+    "htft_X1": 0.1348,
+    "htft_X2": 0.12,
+    "htft_XX": 0.1368
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/28.png",
+    "name": "1. FC Union Berlin",
+    "tla": "UNB"
+   },
+   "match_id": 565797,
+   "matchday": 3,
+   "model_weight": 0.35,
+   "odds": {
+    "devig": {
+     "h2h": 1.054,
+     "totals_2.5": 1.11
+    },
+    "fetched": "network",
+    "markets": [
+     "1x2_away",
+     "1x2_draw",
+     "1x2_home",
+     "over_2.5",
+     "under_2.5"
+    ],
+    "n_bookmakers": 23,
+    "price_books": 1,
+    "price_scope": "it",
+    "prices": {
+     "1x2_away": 2.95,
+     "1x2_draw": 3.55,
+     "1x2_home": 2.32,
+     "over_2.5": 1.6,
+     "under_2.5": 2.16
+    }
+   },
+   "phase": "definitive",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3509,
+    "1x2_draw": 0.2447,
+    "1x2_home": 0.4044,
+    "btts_yes": 0.5986,
+    "over_2.5": 0.5712,
+    "under_2.5": 0.4288
+   },
+   "reasons": [
+    "FC Schalke 04 non ha ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: 1. FC Union Berlin 1.55, FC Schalke 04 1.43 (totale 2.98)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
+   "source": "blended_with_odds",
+   "stage": null,
+   "transition": "first",
+   "utc_date": "2026-09-11T18:30:00Z"
+  },
+  {
+   "away": {
     "crest": "https://crests.football-data.org/99.png",
     "name": "ACF Fiorentina",
     "tla": "FIO"
@@ -5895,8 +5988,8 @@
    "utc_date": "2026-09-11T19:00:00Z"
   }
  ],
- "generated_at": "2026-09-10T17:11:54Z",
+ "generated_at": "2026-09-10T18:08:50Z",
  "schema_version": 1,
- "silence_count": 0,
- "total": 5
+ "silence_count": 1,
+ "total": 6
 }
