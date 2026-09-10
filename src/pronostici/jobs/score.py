@@ -24,11 +24,8 @@ from .. import fixtures as fx
 from .. import ledger
 from ..archive import load_all
 from ..competitions import ACTIVE_CODES
-from ..model.bootstrap import BootstrapResult
 from ..model.tau import resolve as resolve_tau
-from ..pipeline import score_fixture
-from ..storage import read_json
-from .retrain import params_path
+from ..pipeline import carica_bootstrap, score_fixture
 
 log = logging.getLogger("score")
 
@@ -74,19 +71,23 @@ def run(
     skipped: list[dict] = []
 
     for code in competitions:
-        payload = read_json(params_path(code), default=None)
-        if not payload:
-            log.warning("%s: nessun params.json, salto (esegui `retrain`)", code)
-            continue
-        boot = BootstrapResult.from_dict(payload["bootstrap"])
-        base_rates = payload["base_rates"]
-        ht_ratio = payload.get("half_time_ratio")
-
         upcoming = [
             m
             for m in load_all(code)
             if not m.is_finished and as_of <= m.date <= horizon
         ]
+        # Le squadre di queste partite: chi manca al modello di questa
+        # competizione viene preso in prestito dal suo campionato.
+        squadre = sorted(
+            {m.home_name for m in upcoming} | {m.away_name for m in upcoming}
+        )
+        boot, payload = carica_bootstrap(code, squadre)
+        if boot is None:
+            log.warning("%s: nessun params.json, salto (esegui `retrain`)", code)
+            continue
+        base_rates = payload["base_rates"]
+        ht_ratio = payload.get("half_time_ratio")
+
         for match in upcoming:
             # Una partita gia' finalizzata non torna preliminare: la revisione
             # e' unica e non si annulla da sola la notte dopo (brief 7.2).

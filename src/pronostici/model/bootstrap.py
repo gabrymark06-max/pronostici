@@ -9,13 +9,25 @@ prodotti esterni di Poisson: millisecondi.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 
 from .dixon_coles import DCParams, MatchData, fit
 
 DEFAULT_DRAWS = 300
+
+# Quanto della distanza dalla media si porta dietro una squadra presa in
+# prestito da un altro campionato (vedi `BootstrapResult.con_prestiti`).
+# 0,7: chi domina un campionato non domina la Champions, ma non e' nemmeno
+# una squadra qualunque. E' un giudizio, e sta qui per poter diventare una
+# misura quando il backtest avra' abbastanza partite di coppa da dirlo.
+PRESTITO_SHRINK = 0.7
+
+
+def _non_zero(sigma: np.ndarray) -> np.ndarray:
+    """Una deviazione standard nulla non deve dividere per zero."""
+    return np.where(sigma > 1e-9, sigma, 1.0)
 
 
 @dataclass(frozen=True)
@@ -33,8 +45,82 @@ class BootstrapResult:
     def draws(self) -> int:
         return len(self.home_adv)
 
+    # Da dove viene la forza di una squadra che questo modello non ha visto:
+    # nome -> codice della competizione da cui e' stata presa in prestito.
+    # Vuoto per un bootstrap nato dal fit; si riempie con `con_prestiti`.
+    prestiti: dict[str, str] = field(default_factory=dict)
+
     def knows(self, team: str) -> bool:
         return team in self.teams
+
+    def con_prestiti(
+        self, altri: dict[str, BootstrapResult], squadre: list[str]
+    ) -> BootstrapResult:
+        """Lo stesso modello, con in piu' le squadre prese da un altro campionato.
+
+        IL PROBLEMA CHE RISOLVE. La Roma alla prima di Champions non ha storico
+        in Champions, ma ne ha tre stagioni in Serie A, e quel modello sa
+        benissimo quanto e' forte. Trattarla come «squadra media» (vedi
+        `_params`) e' onesto ma butta via informazione che abbiamo.
+
+        COME SI TRAPIANTA. I parametri di Dixon-Coles sono relativi al proprio
+        campionato: l'attacco della Roma dice quanto segna rispetto alla media
+        della Serie A, non in assoluto. Quindi non si copia il numero, si copia
+        LA POSIZIONE: quante deviazioni standard sopra la media del suo
+        campionato — draw per draw, cosi' l'incertezza del rifit viaggia con
+        lei — e la si riporta sulla media e la dispersione di questo modello.
+        Una squadra a una deviazione sopra la media in Serie A e' circa una
+        quarta; a una deviazione sopra la media in Champions e' circa un'ottava.
+        E' esattamente il ridimensionamento che serve.
+
+        CON UN FRENO. `PRESTITO_SHRINK` accorcia la distanza dalla media: chi
+        domina un campionato piccolo non domina la Champions, e il modello di
+        Serie A non sa niente di come la Roma gioca contro il Bayern. Il freno
+        e' un giudizio, non una misura, e sta in una costante per poterlo
+        cambiare quando il backtest avra' abbastanza partite per dire quanto.
+
+        Chi non trova posto in nessun altro modello resta fuori, e per lui vale
+        ancora la squadra media col suo silenzio.
+        """
+        nuovi_att: list[np.ndarray] = []
+        nuovi_dif: list[np.ndarray] = []
+        nomi: list[str] = []
+        origine: dict[str, str] = dict(self.prestiti)
+        mia_att_m, mia_att_s = self.attack.mean(axis=1), self.attack.std(axis=1)
+        mia_dif_m, mia_dif_s = self.defence.mean(axis=1), self.defence.std(axis=1)
+
+        for team in squadre:
+            if team in self.teams or team in nomi:
+                continue
+            for codice, altro in altri.items():
+                if team not in altro.teams or altro.draws != self.draws:
+                    continue
+                i = altro.teams.index(team)
+                z_att = (altro.attack[:, i] - altro.attack.mean(axis=1)) / _non_zero(
+                    altro.attack.std(axis=1)
+                )
+                z_dif = (altro.defence[:, i] - altro.defence.mean(axis=1)) / _non_zero(
+                    altro.defence.std(axis=1)
+                )
+                nuovi_att.append(mia_att_m + PRESTITO_SHRINK * z_att * mia_att_s)
+                nuovi_dif.append(mia_dif_m + PRESTITO_SHRINK * z_dif * mia_dif_s)
+                nomi.append(team)
+                origine[team] = codice
+                break
+
+        if not nomi:
+            return self
+        return BootstrapResult(
+            point=self.point,
+            attack=np.column_stack([self.attack, *nuovi_att]),
+            defence=np.column_stack([self.defence, *nuovi_dif]),
+            home_adv=self.home_adv,
+            rho=self.rho,
+            teams=(*self.teams, *nomi),
+            converged=self.converged,
+            seed=self.seed,
+            prestiti=origine,
+        )
 
     def _params(self, team: str) -> tuple[np.ndarray, np.ndarray]:
         """Attacco e difesa di una squadra per ogni draw — o della squadra media.

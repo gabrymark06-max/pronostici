@@ -36,9 +36,8 @@ from ..archive import load_all
 from ..competitions import ACTIVE_CODES, get
 from ..matching import pair_events
 from ..model.blend import MODEL_WEIGHT
-from ..model.bootstrap import BootstrapResult
 from ..model.tau import resolve as resolve_tau
-from ..pipeline import score_fixture
+from ..pipeline import carica_bootstrap, score_fixture
 from ..sources.odds_api import (
     MARKETS,
     SECONDARY_LEAGUES,
@@ -233,7 +232,12 @@ def run(
             }
         )
 
-        boot = BootstrapResult.from_dict(params["bootstrap"])
+        # Le squadre che il modello di coppa non ha si prendono in prestito dal
+        # campionato: lo stesso caricatore della notte, cosi' la Roma vale
+        # uguale alle 3 e alle 15.
+        boot, _ = carica_bootstrap(
+            code, sorted({m.home_name for m in matches} | {m.away_name for m in matches})
+        )
         base_rates = params["base_rates"]
         ht_ratio = params.get("half_time_ratio")
         by_id = {m.match_id: m for m in matches}

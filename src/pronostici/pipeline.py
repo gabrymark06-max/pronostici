@@ -170,6 +170,39 @@ def _silence_sentence(
     return f"Il nostro modello dice quasi esattamente {riferimento}."
 
 
+NOMI_CAMPIONATO = {
+    "SA": "Serie A",
+    "PL": "Premier League",
+    "PD": "Liga",
+    "BL1": "Bundesliga",
+    "FL1": "Ligue 1",
+    "DED": "Eredivisie",
+    "PPL": "Primeira Liga",
+    "ELC": "Championship",
+    "BSA": "Brasileirão",
+    "CL": "Champions League",
+}
+
+
+def _frase_prestito(match: Match, boot: BootstrapResult) -> list[str]:
+    """Da dove viene la forza di una squadra che qui non si e' ancora vista.
+
+    Va detto in pagina, sempre: il lettore che vede «Roma 1,6 gol attesi» in
+    Champions ha il diritto di sapere che quel numero viene dalla Serie A,
+    riportato in scala. Non e' un'avvertenza di rito — cambia quanto fidarsi.
+    """
+    frasi = []
+    for team in (match.home_name, match.away_name):
+        da = boot.prestiti.get(team)
+        if da:
+            frasi.append(
+                f"La forza di {team} viene dalla {NOMI_CAMPIONATO.get(da, da)}: in "
+                "questa competizione non l'abbiamo ancora vista giocare, e il "
+                "numero è riportato in scala con prudenza."
+            )
+    return frasi
+
+
 def _reasons(
     match: Match,
     lam_home: float,
@@ -187,13 +220,18 @@ def _reasons(
         f"Gol attesi: {match.home_name} {lam_home:.2f}, "
         f"{match.away_name} {lam_away:.2f} (totale {lam_home + lam_away:.2f})."
     )
+    prestito = _frase_prestito(match, boot)
     pick = selection.pick
     if pick is None:
         # Il perche' del silenzio viene prima dei gol attesi: e' la risposta
         # alla domanda che l'utente si sta facendo guardando la scheda.
-        return [_silence_sentence(match, selection, boot, with_odds), expected]
+        return [
+            _silence_sentence(match, selection, boot, with_odds),
+            expected,
+            *prestito,
+        ]
 
-    out = [expected]
+    out = [expected, *prestito]
 
     reference = references.get(pick.key, pick.reference)
     delta = (pick.p_tilde - reference) * 100
@@ -218,6 +256,43 @@ def _reasons(
             f"Banda di incertezza: fra {pick.p5 * 100:.0f} e {pick.p95 * 100:.0f} su 100."
         )
     return out
+
+
+def carica_bootstrap(
+    code: str, squadre: list[str] | None = None
+) -> tuple[BootstrapResult | None, dict]:
+    """Il bootstrap di una competizione, con in prestito le squadre che non ha.
+
+    Restituisce `(bootstrap, params)`; `(None, {})` se la competizione non e'
+    mai stata addestrata. E' l'unico posto da cui `score` e `finalize` prendono
+    il modello, e per questo il prestito sta qui e non in uno dei due: la
+    stessa Roma valutata in due modi diversi dalla notte al pomeriggio sarebbe
+    un bug che si vede solo confrontando due file a mano.
+
+    Il prestito si fa solo per le squadre che servono davvero (`squadre`):
+    caricare tutti i campionati per cinquanta squadre che non giocano sarebbe
+    lavoro buttato, e il file dei parametri e' grosso.
+    """
+    from .competitions import ACTIVE_CODES
+    from .config import LEAGUES_DIR
+    from .storage import read_json
+
+    params = read_json(LEAGUES_DIR / code / "params.json", default=None)
+    if not params:
+        return None, {}
+    boot = BootstrapResult.from_dict(params["bootstrap"])
+    mancanti = [s for s in (squadre or []) if not boot.knows(s)]
+    if not mancanti:
+        return boot, params
+
+    altri: dict[str, BootstrapResult] = {}
+    for altro in ACTIVE_CODES:
+        if altro == code:
+            continue
+        payload = read_json(LEAGUES_DIR / altro / "params.json", default=None)
+        if payload:
+            altri[altro] = BootstrapResult.from_dict(payload["bootstrap"])
+    return boot.con_prestiti(altri, mancanti), params
 
 
 def score_fixture(
