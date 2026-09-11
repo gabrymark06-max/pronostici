@@ -155,6 +155,28 @@ class TestSomiglianza:
         """Il verso si inverte e il contenimento fallirebbe dalla parte sbagliata."""
         assert sg.somiglianza("NEC", "NEC Nijmegen") >= sg.SOGLIA
 
+    def test_alias_della_champions(self) -> None:
+        """Misurati sul cartellone del 10 settembre 2026: le due su diciotto che
+        mancavano. "Sh." e' sotto le tre lettere del prefisso; "Prague" e
+        "Praha" si somigliano al 73%, sotto l'85 per parola."""
+        assert sg.somiglianza("FK Shakhtar Donetsk", "Sh. Donetsk") >= sg.SOGLIA
+        assert sg.somiglianza("SK Slavia Praha", "Slavia Prague") >= sg.SOGLIA
+
+
+class TestLeghe:
+    def test_la_champions_ha_la_sua_pagina(self) -> None:
+        """Mancava, e mancava in silenzio: il job diceva «nessuna riga
+        corrispondente nel cartellone» per ogni partita di Champions — la frase
+        giusta per una partita non trovata, non per una pagina mai chiesta."""
+        assert sg.LEGHE["CL"] == "uefa-champions-league"
+
+    def test_ogni_competizione_attiva_con_formazioni_e_nella_mappa(self) -> None:
+        """Le coppe non si dimenticano piu' in silenzio: se una competizione
+        attiva non ha la pagina, qui si vede subito, non fra sei mesi."""
+        from pronostici.competitions import ACTIVE_CODES
+
+        assert set(ACTIVE_CODES) <= set(sg.LEGHE), set(ACTIVE_CODES) - set(sg.LEGHE)
+
 
 class TestAggancia:
     CARTELLONE = [

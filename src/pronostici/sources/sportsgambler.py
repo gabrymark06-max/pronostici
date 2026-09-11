@@ -66,6 +66,13 @@ LEGHE: dict[str, str] = {
     "DED": "netherlands-eredivisie",
     "PPL": "portugal-primeira-liga",
     "BSA": "brazil-serie-a",
+    # LA COPPA MANCAVA, e mancava in silenzio: il job diceva «nessuna riga
+    # corrispondente nel cartellone» per ogni partita di Champions, che e'
+    # la frase giusta per una partita non trovata in una pagina letta — non
+    # per una pagina mai chiesta. Lo slug e' questo e non `champions-league`:
+    # quello rimanda all'indice generale, che risponde 200 con cento partite
+    # di altri campionati, e nessun errore.
+    "CL": "uefa-champions-league",
 }
 
 # Soglia di somiglianza fra i nostri nomi e i loro. La stessa che usa il
@@ -100,6 +107,12 @@ ALIAS: dict[str, str] = {
     "b m gladbach": "borussia monchengladbach",
     "athletico pr": "paranaense",
     "qpr": "queens park rangers",
+    # Champions, misurati sul cartellone del 10 settembre 2026: 16 su 18
+    # agganciate, e le due mancanti erano queste. "Sh." e' un'abbreviazione
+    # sotto le tre lettere, che il prefisso non puo' salvare; "Prague" e
+    # "Praha" si somigliano al 73%, e la soglia per parola e' 85.
+    "sh donetsk": "shakhtar donetsk",
+    "slavia prague": "slavia praha",
 }
 
 MESI = {

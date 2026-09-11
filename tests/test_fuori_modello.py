@@ -197,7 +197,8 @@ def test_chi_domina_il_suo_campionato_arriva_forte_ma_non_dominante(boot):
     z_in_sa = (
         (serie_a.attack[:, 0] - serie_a.attack.mean(axis=1)) / serie_a.attack.std(axis=1)
     ).mean()
-    assert att_roma == pytest.approx(media_cl + PRESTITO_SHRINK * z_in_sa * sd_cl, rel=0.05)
+    atteso = media_cl + PRESTITO_SHRINK * z_in_sa * sd_cl
+    assert att_roma == pytest.approx(atteso, rel=0.05)
 
 
 def test_una_squadra_in_prestito_non_e_piu_fuori_modello(boot):
