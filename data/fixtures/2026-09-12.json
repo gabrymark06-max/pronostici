@@ -1756,7 +1756,7 @@
     "label": "X2 (pareggio o ospite)",
     "p": 0.5918,
     "p_raw": 0.6298,
-    "prezzo": 1.43,
+    "prezzo": 1.4,
     "reference": 0.527,
     "runners_up": [],
     "score": 0.008494,
@@ -3174,7 +3174,7 @@
     "filter_bites": {
      "S_min": 112,
      "p_min": 87,
-     "quota_min": 9,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -4950,7 +4950,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 86,
-     "quota_min": 7,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -7524,7 +7524,7 @@
     "filter_bites": {
      "S_min": 108,
      "p_min": 88,
-     "quota_min": 11,
+     "quota_min": 10,
      "sigma_max": 59
     },
     "n_candidates": 114,
@@ -7604,7 +7604,7 @@
     "under_2.5": 0.482
    },
    "reasons": [
-    "Il mercato migliore qui è «Handicap -2 ospite», e si trova a 1,23: sotto 1,30 non lo consigliamo.",
+    "Il mercato migliore qui è «Handicap -2 ospite», e si trova a 1,22: sotto 1,30 non lo consigliamo.",
     "Gol attesi: Genoa CFC 0.90, Frosinone Calcio 1.95 (totale 2.85)."
    ],
    "silence": {
@@ -9010,7 +9010,7 @@
     "label": "Ospite Over 1.5",
     "p": 0.5522,
     "p_raw": 0.6114,
-    "prezzo": 1.85,
+    "prezzo": 1.78,
     "reference": 0.4197,
     "runners_up": [
      {
@@ -9021,7 +9021,7 @@
       "label": "Entrambe segnano",
       "p": 0.6786,
       "p_raw": 0.7197,
-      "prezzo": 1.36,
+      "prezzo": 1.33,
       "reference": 0.5799,
       "score": 0.020588,
       "shrink_alpha": 0.7059,
@@ -9098,6 +9098,74 @@
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
    "silence": null,
+   "source": "model_only",
+   "stage": null,
+   "utc_date": "2026-09-12T13:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/29.png",
+    "name": "SC Paderborn 07",
+    "tla": "SCP"
+   },
+   "competition": "BL1",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 92,
+     "p_min": 86,
+     "quota_min": 8,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 9.608e-07
+   },
+   "expected_goals": {
+    "away": 1.018,
+    "home": 2.298
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7773,
+    "ht_over_1.5": 0.4429,
+    "ht_over_2.5": 0.1917,
+    "ht_under_0.5": 0.2227,
+    "ht_under_1.5": 0.5571,
+    "ht_under_2.5": 0.8083,
+    "htft_11": 0.4415,
+    "htft_12": 0.0121,
+    "htft_1X": 0.0417,
+    "htft_21": 0.0351,
+    "htft_22": 0.0849,
+    "htft_2X": 0.0417,
+    "htft_X1": 0.1841,
+    "htft_X2": 0.0565,
+    "htft_XX": 0.1025
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4.png",
+    "name": "Borussia Dortmund",
+    "tla": "BVB"
+   },
+   "match_id": 565795,
+   "matchday": 3,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.1546,
+    "1x2_draw": 0.1868,
+    "1x2_home": 0.6586,
+    "btts_yes": 0.5711,
+    "over_2.5": 0.6415,
+    "under_2.5": 0.3585
+   },
+   "reasons": [
+    "SC Paderborn 07 non ha ancora giocato in questa competizione da quando il modello la osserva: i numeri qui sotto valgono per una squadra media, e su una squadra media non consigliamo niente.",
+    "Gol attesi: Borussia Dortmund 2.30, SC Paderborn 07 1.02 (totale 3.32)."
+   ],
+   "silence": {
+    "reason": "fuori_modello"
+   },
    "source": "model_only",
    "stage": null,
    "utc_date": "2026-09-12T13:30:00Z"
@@ -10417,7 +10485,7 @@
     "label": "Casa Under 1.5",
     "p": 0.6175,
     "p_raw": 0.669,
-    "prezzo": 1.47,
+    "prezzo": 1.48,
     "reference": 0.5098,
     "runners_up": [
      {
@@ -10441,7 +10509,7 @@
       "label": "Ospite Over 1.5",
       "p": 0.5013,
       "p_raw": 0.54,
-      "prezzo": 1.47,
+      "prezzo": 1.45,
       "reference": 0.4197,
       "score": 0.013509,
       "shrink_alpha": 0.6788,
@@ -11868,7 +11936,7 @@
     "under_2.5": 0.3588
    },
    "reasons": [
-    "Il mercato migliore qui è «Casa Over 0.5», e si trova a 1,10: sotto 1,30 non lo consigliamo.",
+    "Il mercato migliore qui è «Casa Over 0.5», e si trova a 1,12: sotto 1,30 non lo consigliamo.",
     "Gol attesi: 1. FSV Mainz 05 1.89, Eintracht Frankfurt 1.43 (totale 3.32)."
    ],
    "silence": {
@@ -14471,7 +14539,7 @@
     "filter_bites": {
      "S_min": 93,
      "p_min": 87,
-     "quota_min": 12,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -14550,7 +14618,7 @@
     "label": "Vittoria casa",
     "p": 0.5716,
     "p_raw": 0.6424,
-    "prezzo": 1.91,
+    "prezzo": 1.9,
     "reference": 0.4232,
     "runners_up": [
      {
@@ -14561,7 +14629,7 @@
       "label": "Casa Over 1.5",
       "p": 0.5638,
       "p_raw": 0.6331,
-      "prezzo": 1.84,
+      "prezzo": 1.83,
       "reference": 0.4645,
       "score": 0.019763,
       "shrink_alpha": 0.5889,
@@ -16060,7 +16128,7 @@
       "label": "Casa Over 1.5",
       "p": 0.5557,
       "p_raw": 0.6005,
-      "prezzo": 1.35,
+      "prezzo": 1.37,
       "reference": 0.4645,
       "score": 0.016671,
       "shrink_alpha": 0.6707,
@@ -17295,7 +17363,7 @@
     "filter_bites": {
      "S_min": 113,
      "p_min": 87,
-     "quota_min": 10,
+     "quota_min": 9,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -18687,7 +18755,7 @@
     "filter_bites": {
      "S_min": 114,
      "p_min": 87,
-     "quota_min": 11,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -20162,7 +20230,7 @@
     "label": "Casa Under 1.5",
     "p": 0.9256,
     "p_raw": 0.9848,
-    "prezzo": 3.8,
+    "prezzo": 3.6,
     "reference": 0.5355,
     "runners_up": [
      {
@@ -20173,7 +20241,7 @@
       "label": "Casa Under 0.5",
       "p": 0.5357,
       "p_raw": 0.8845,
-      "prezzo": 11.0,
+      "prezzo": 10.0,
       "reference": 0.2309,
       "score": 0.216545,
       "shrink_alpha": 0.4664,
@@ -20187,7 +20255,7 @@
       "label": "Casa Under 2.5",
       "p": 0.9952,
       "p_raw": 0.9973,
-      "prezzo": 1.97,
+      "prezzo": 1.91,
       "reference": 0.7965,
       "score": 0.203656,
       "shrink_alpha": 0.9896,
@@ -20201,7 +20269,7 @@
       "label": "Handicap -2 ospite",
       "p": 0.9809,
       "p_raw": 0.9923,
-      "prezzo": 2.25,
+      "prezzo": 2.2,
       "reference": 0.7784,
       "score": 0.180032,
       "shrink_alpha": 0.947,
@@ -20215,7 +20283,7 @@
       "label": "X2 (pareggio o ospite)",
       "p": 0.8466,
       "p_raw": 0.9433,
-      "prezzo": 4.0,
+      "prezzo": 4.1,
       "reference": 0.5768,
       "score": 0.169197,
       "shrink_alpha": 0.736,
@@ -20229,7 +20297,7 @@
       "label": "Non entrambe segnano",
       "p": 0.701,
       "p_raw": 0.9358,
-      "prezzo": 1.87,
+      "prezzo": 1.84,
       "reference": 0.4391,
       "score": 0.139863,
       "shrink_alpha": 0.5273,
@@ -21705,6 +21773,7 @@
     "label": "Casa Over 1.5",
     "p": 0.5541,
     "p_raw": 0.6321,
+    "prezzo": 1.56,
     "reference": 0.411,
     "runners_up": [
      {
@@ -23320,11 +23389,11 @@
     "filter_bites": {
      "S_min": 79,
      "p_min": 88,
-     "quota_min": 9,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
-    "n_clusters": 5,
+    "n_clusters": 6,
     "truncated_mass": 1.035e-10
    },
    "expected_goals": {
@@ -23399,6 +23468,7 @@
     "label": "Casa Under 1.5",
     "p": 0.7413,
     "p_raw": 0.7752,
+    "prezzo": 1.42,
     "reference": 0.589,
     "runners_up": [
      {
@@ -23409,6 +23479,7 @@
       "label": "Non entrambe segnano",
       "p": 0.5759,
       "p_raw": 0.6264,
+      "prezzo": 2.1,
       "reference": 0.4574,
       "score": 0.028196,
       "shrink_alpha": 0.7015,
@@ -23422,6 +23493,7 @@
       "label": "X2 (pareggio o ospite)",
       "p": 0.6721,
       "p_raw": 0.6928,
+      "prezzo": 1.4,
       "reference": 0.5642,
       "score": 0.024336,
       "shrink_alpha": 0.8394,
@@ -23435,6 +23507,7 @@
       "label": "Handicap -1 ospite",
       "p": 0.6637,
       "p_raw": 0.6928,
+      "prezzo": 1.37,
       "reference": 0.5642,
       "score": 0.020604,
       "shrink_alpha": 0.7734,
@@ -23455,17 +23528,18 @@
       "sigma": 0.0537
      },
      {
-      "band_p5": 0.4992,
-      "band_p95": 0.581,
-      "family": "multigoal",
-      "key": "mg_1_2",
-      "label": "Multigol 1-2",
-      "p": 0.5248,
-      "p_raw": 0.5492,
-      "reference": 0.44,
-      "score": 0.014454,
-      "shrink_alpha": 0.7763,
-      "sigma": 0.0262
+      "band_p5": 0.8035,
+      "band_p95": 0.9191,
+      "family": "over_under",
+      "key": "under_3.5",
+      "label": "Under 3.5",
+      "p": 0.8392,
+      "p_raw": 0.8696,
+      "prezzo": 1.35,
+      "reference": 0.7608,
+      "score": 0.018468,
+      "shrink_alpha": 0.7208,
+      "sigma": 0.0351
      }
     ],
     "score": 0.050728,
@@ -24697,6 +24771,7 @@
     "label": "Non entrambe segnano",
     "p": 0.5295,
     "p_raw": 0.5712,
+    "prezzo": 1.83,
     "reference": 0.4574,
     "runners_up": [],
     "score": 0.010413,
@@ -25883,7 +25958,7 @@
     "filter_bites": {
      "S_min": 109,
      "p_min": 89,
-     "quota_min": 9,
+     "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -25962,6 +26037,7 @@
     "label": "Non entrambe segnano",
     "p": 0.5218,
     "p_raw": 0.5491,
+    "prezzo": 2.04,
     "reference": 0.4574,
     "runners_up": [],
     "score": 0.008312,
@@ -27429,7 +27505,7 @@
     "filter_bites": {
      "S_min": 90,
      "p_min": 89,
-     "quota_min": 9,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -27508,6 +27584,7 @@
     "label": "Casa Under 1.5",
     "p": 0.7189,
     "p_raw": 0.7675,
+    "prezzo": 1.74,
     "reference": 0.589,
     "runners_up": [
      {
@@ -27518,6 +27595,7 @@
       "label": "X2 (pareggio o ospite)",
       "p": 0.6793,
       "p_raw": 0.7101,
+      "prezzo": 1.65,
       "reference": 0.5642,
       "score": 0.027746,
       "shrink_alpha": 0.7887,
@@ -27531,6 +27609,7 @@
       "label": "Handicap -1 ospite",
       "p": 0.6677,
       "p_raw": 0.7101,
+      "prezzo": 1.68,
       "reference": 0.5642,
       "score": 0.022343,
       "shrink_alpha": 0.7092,
@@ -27544,6 +27623,7 @@
       "label": "Non entrambe segnano",
       "p": 0.5428,
       "p_raw": 0.5987,
+      "prezzo": 2.06,
       "reference": 0.4574,
       "score": 0.014618,
       "shrink_alpha": 0.6044,
@@ -28933,7 +29013,7 @@
     "filter_bites": {
      "S_min": 111,
      "p_min": 87,
-     "quota_min": 7,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -30133,7 +30213,7 @@
     "filter_bites": {
      "S_min": 110,
      "p_min": 86,
-     "quota_min": 11,
+     "quota_min": 12,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -32917,28 +32997,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 1.829e-09
+    "truncated_mass": 2.324e-09
    },
    "expected_goals": {
-    "away": 0.995,
-    "home": 1.321
+    "away": 0.985,
+    "home": 1.35
    },
    "half_time": {
-    "ht_over_0.5": 0.6473,
-    "ht_over_1.5": 0.2798,
-    "ht_over_2.5": 0.0882,
-    "ht_under_0.5": 0.3527,
-    "ht_under_1.5": 0.7202,
-    "ht_under_2.5": 0.9118,
-    "htft_11": 0.2603,
-    "htft_12": 0.0144,
-    "htft_1X": 0.0477,
-    "htft_21": 0.0204,
-    "htft_22": 0.1566,
-    "htft_2X": 0.0477,
-    "htft_X1": 0.1606,
-    "htft_X2": 0.11,
-    "htft_XX": 0.1823
+    "ht_over_0.5": 0.6507,
+    "ht_over_1.5": 0.2833,
+    "ht_over_2.5": 0.0901,
+    "ht_under_0.5": 0.3493,
+    "ht_under_1.5": 0.7167,
+    "ht_under_2.5": 0.9099,
+    "htft_11": 0.2675,
+    "htft_12": 0.0142,
+    "htft_1X": 0.0476,
+    "htft_21": 0.0208,
+    "htft_22": 0.1522,
+    "htft_2X": 0.0476,
+    "htft_X1": 0.1629,
+    "htft_X2": 0.1071,
+    "htft_XX": 0.1801
    },
    "home": {
     "crest": "https://crests.football-data.org/5529.png",
@@ -32984,16 +33064,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2839,
-    "1x2_draw": 0.2753,
-    "1x2_home": 0.4408,
-    "btts_yes": 0.4516,
-    "over_2.5": 0.4065,
-    "under_2.5": 0.5935
+    "1x2_away": 0.2748,
+    "1x2_draw": 0.2752,
+    "1x2_home": 0.45,
+    "btts_yes": 0.4546,
+    "over_2.5": 0.4113,
+    "under_2.5": 0.5887
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: CD Nacional 1.32, FC Alverca 0.99 (totale 2.32)."
+    "Gol attesi: CD Nacional 1.35, FC Alverca 0.99 (totale 2.34)."
    ],
    "silence": {
     "reason": "S_min"
@@ -36603,7 +36683,7 @@
     "filter_bites": {
      "S_min": 99,
      "p_min": 88,
-     "quota_min": 11,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -36682,7 +36762,7 @@
     "label": "Casa Under 1.5",
     "p": 0.6422,
     "p_raw": 0.6844,
-    "prezzo": 1.72,
+    "prezzo": 1.74,
     "reference": 0.5355,
     "runners_up": [
      {
@@ -36707,7 +36787,7 @@
       "label": "Handicap -1 ospite",
       "p": 0.6416,
       "p_raw": 0.6688,
-      "prezzo": 1.78,
+      "prezzo": 1.77,
       "reference": 0.5768,
       "score": 0.008747,
       "shrink_alpha": 0.7043,
@@ -42265,28 +42345,28 @@
     },
     "n_candidates": 114,
     "n_clusters": 2,
-    "truncated_mass": 2.331e-07
+    "truncated_mass": 1.953e-07
    },
    "expected_goals": {
-    "away": 2.021,
-    "home": 0.491
+    "away": 1.989,
+    "home": 0.483
    },
    "half_time": {
-    "ht_over_0.5": 0.6771,
-    "ht_over_1.5": 0.3121,
-    "ht_over_2.5": 0.1058,
-    "ht_under_0.5": 0.3229,
-    "ht_under_1.5": 0.6879,
-    "ht_under_2.5": 0.8942,
-    "htft_11": 0.0401,
-    "htft_12": 0.0208,
+    "ht_over_0.5": 0.6716,
+    "ht_over_1.5": 0.3059,
+    "ht_over_2.5": 0.1023,
+    "ht_under_0.5": 0.3284,
+    "ht_under_1.5": 0.6941,
+    "ht_under_2.5": 0.8977,
+    "htft_11": 0.0403,
+    "htft_12": 0.0203,
     "htft_1X": 0.0269,
     "htft_21": 0.0037,
-    "htft_22": 0.4904,
+    "htft_22": 0.4863,
     "htft_2X": 0.0269,
-    "htft_X1": 0.035,
-    "htft_X2": 0.2261,
-    "htft_XX": 0.13
+    "htft_X1": 0.0354,
+    "htft_X2": 0.2268,
+    "htft_XX": 0.1334
    },
    "home": {
     "crest": "https://crests.football-data.org/6618.png",
@@ -42331,8 +42411,8 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5699,
-    "band_p95": 0.7565,
+    "band_p5": 0.5845,
+    "band_p95": 0.7691,
     "cluster_members": [
      "combodcg_12_nogol",
      "hg_under_0.5"
@@ -42340,53 +42420,53 @@
     "family": "btts",
     "key": "btts_no",
     "label": "Non entrambe segnano",
-    "p": 0.6084,
-    "p_raw": 0.6685,
-    "prezzo": 1.54,
-    "reference": 0.5076,
+    "p": 0.6092,
+    "p_raw": 0.6738,
+    "prezzo": 1.52,
+    "reference": 0.5069,
     "runners_up": [
      {
-      "band_p5": 0.4767,
-      "band_p95": 0.7032,
+      "band_p5": 0.4594,
+      "band_p95": 0.6943,
       "family": "team_goals",
       "key": "ag_over_1.5",
       "label": "Ospite Over 1.5",
-      "p": 0.5176,
-      "p_raw": 0.5951,
-      "prezzo": 1.47,
-      "reference": 0.3469,
-      "score": 0.06102,
-      "shrink_alpha": 0.6881,
-      "sigma": 0.0706
+      "p": 0.5039,
+      "p_raw": 0.586,
+      "prezzo": 1.38,
+      "reference": 0.3464,
+      "score": 0.052052,
+      "shrink_alpha": 0.6574,
+      "sigma": 0.0757
      },
      {
-      "band_p5": 0.569,
-      "band_p95": 0.7639,
+      "band_p5": 0.5491,
+      "band_p95": 0.7544,
       "family": "combo_dc",
       "key": "combodc_x2_over_1.5",
       "label": "X2 + Over 1.5",
-      "p": 0.5839,
-      "p_raw": 0.6696,
-      "reference": 0.426,
-      "score": 0.050228,
-      "shrink_alpha": 0.6483,
-      "sigma": 0.0606
+      "p": 0.5687,
+      "p_raw": 0.6616,
+      "reference": 0.4256,
+      "score": 0.041241,
+      "shrink_alpha": 0.6061,
+      "sigma": 0.0663
      }
     ],
-    "score": 0.02053,
-    "shrink_alpha": 0.6265,
-    "sigma": 0.0568
+    "score": 0.021142,
+    "shrink_alpha": 0.6131,
+    "sigma": 0.0584
    },
    "raw_probabilities": {
-    "1x2_away": 0.7335,
-    "1x2_draw": 0.1852,
-    "1x2_home": 0.0813,
-    "btts_yes": 0.3315,
-    "over_2.5": 0.4572,
-    "under_2.5": 0.5428
+    "1x2_away": 0.7287,
+    "1x2_draw": 0.1902,
+    "1x2_home": 0.0811,
+    "btts_yes": 0.3262,
+    "over_2.5": 0.4469,
+    "under_2.5": 0.5531
    },
    "reasons": [
-    "Gol attesi: Casa Pia AC 0.49, FC Porto 2.02 (totale 2.51).",
+    "Gol attesi: Casa Pia AC 0.48, FC Porto 1.99 (totale 2.47).",
     "Non entrambe segnano: 61 su 100, 10 punti sopra la media di riferimento (51 su 100).",
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
@@ -43811,7 +43891,7 @@
     "label": "Casa Under 1.5",
     "p": 0.6592,
     "p_raw": 0.714,
-    "prezzo": 1.33,
+    "prezzo": 1.32,
     "reference": 0.5037,
     "runners_up": [
      {
@@ -44989,7 +45069,7 @@
     "label": "Vittoria casa",
     "p": 0.5526,
     "p_raw": 0.601,
-    "prezzo": 1.56,
+    "prezzo": 1.57,
     "reference": 0.4066,
     "runners_up": [
      {
@@ -48650,7 +48730,7 @@
     "filter_bites": {
      "S_min": 77,
      "p_min": 89,
-     "quota_min": 11,
+     "quota_min": 10,
      "sigma_max": 0
     },
     "n_candidates": 114,
@@ -48729,7 +48809,7 @@
     "label": "Ospite Under 1.5",
     "p": 0.7492,
     "p_raw": 0.7798,
-    "prezzo": 1.3,
+    "prezzo": 1.36,
     "reference": 0.6333,
     "runners_up": [
      {
@@ -48740,7 +48820,7 @@
       "label": "Casa Under 1.5",
       "p": 0.6512,
       "p_raw": 0.7025,
-      "prezzo": 1.56,
+      "prezzo": 1.49,
       "reference": 0.5419,
       "score": 0.024577,
       "shrink_alpha": 0.6804,
@@ -48767,7 +48847,7 @@
       "label": "Non entrambe segnano",
       "p": 0.5583,
       "p_raw": 0.6178,
-      "prezzo": 1.91,
+      "prezzo": 1.95,
       "reference": 0.4585,
       "score": 0.019981,
       "shrink_alpha": 0.6267,
@@ -48781,7 +48861,7 @@
       "label": "Under 2.5",
       "p": 0.5523,
       "p_raw": 0.6845,
-      "prezzo": 1.68,
+      "prezzo": 1.69,
       "reference": 0.4568,
       "score": 0.018279,
       "shrink_alpha": 0.4194,
@@ -53251,7 +53331,7 @@
     "label": "Ospite Over 1.5",
     "p": 0.6973,
     "p_raw": 0.8885,
-    "prezzo": 1.34,
+    "prezzo": 1.35,
     "reference": 0.4158,
     "runners_up": [
      {
@@ -53301,7 +53381,7 @@
       "label": "Over 2.5",
       "p": 0.6811,
       "p_raw": 0.8823,
-      "prezzo": 1.33,
+      "prezzo": 1.37,
       "reference": 0.5959,
       "score": 0.015484,
       "shrink_alpha": 0.2973,
@@ -54566,7 +54646,7 @@
     "label": "Non entrambe segnano",
     "p": 0.5556,
     "p_raw": 0.6389,
-    "prezzo": 1.64,
+    "prezzo": 1.62,
     "reference": 0.4391,
     "runners_up": [
      {
@@ -56003,7 +56083,7 @@
       "label": "Non entrambe segnano",
       "p": 0.5202,
       "p_raw": 0.5595,
-      "prezzo": 1.75,
+      "prezzo": 1.77,
       "reference": 0.4492,
       "score": 0.010126,
       "shrink_alpha": 0.6437,
@@ -57341,32 +57421,32 @@
      "S_min": 114,
      "p_min": 88,
      "quota_min": 11,
-     "sigma_max": 50
+     "sigma_max": 54
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 7.722e-09
+    "truncated_mass": 3.034e-09
    },
    "expected_goals": {
-    "away": 1.058,
-    "home": 1.497
+    "away": 1.052,
+    "home": 1.379
    },
    "half_time": {
-    "ht_over_0.5": 0.6832,
-    "ht_over_1.5": 0.3191,
-    "ht_over_2.5": 0.1098,
-    "ht_under_0.5": 0.3168,
-    "ht_under_1.5": 0.6809,
-    "ht_under_2.5": 0.8902,
-    "htft_11": 0.2855,
+    "ht_over_0.5": 0.6654,
+    "ht_over_1.5": 0.299,
+    "ht_over_2.5": 0.0985,
+    "ht_under_0.5": 0.3346,
+    "ht_under_1.5": 0.701,
+    "ht_under_2.5": 0.9015,
+    "htft_11": 0.2634,
     "htft_12": 0.0156,
-    "htft_1X": 0.0489,
-    "htft_21": 0.0241,
-    "htft_22": 0.1503,
-    "htft_2X": 0.0489,
-    "htft_X1": 0.1636,
-    "htft_X2": 0.102,
-    "htft_XX": 0.1612
+    "htft_1X": 0.0488,
+    "htft_21": 0.0218,
+    "htft_22": 0.161,
+    "htft_2X": 0.0488,
+    "htft_X1": 0.1582,
+    "htft_X2": 0.1099,
+    "htft_XX": 0.1724
    },
    "home": {
     "crest": "https://crests.football-data.org/5527.png",
@@ -57412,16 +57492,16 @@
    "phase": "preliminary",
    "prediction": null,
    "raw_probabilities": {
-    "1x2_away": 0.2872,
-    "1x2_draw": 0.2524,
-    "1x2_home": 0.4605,
-    "btts_yes": 0.4494,
-    "over_2.5": 0.4556,
-    "under_2.5": 0.5444
+    "1x2_away": 0.2995,
+    "1x2_draw": 0.2684,
+    "1x2_home": 0.432,
+    "btts_yes": 0.433,
+    "over_2.5": 0.4254,
+    "under_2.5": 0.5746
    },
    "reasons": [
     "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: Académico de Viseu FC 1.50, Vitória SC 1.06 (totale 2.55)."
+    "Gol attesi: Académico de Viseu FC 1.38, Vitória SC 1.05 (totale 2.43)."
    ],
    "silence": {
     "reason": "S_min"
@@ -60863,7 +60943,7 @@
       "label": "Casa Over 1.5",
       "p": 0.5217,
       "p_raw": 0.5603,
-      "prezzo": 1.87,
+      "prezzo": 1.85,
       "reference": 0.4451,
       "score": 0.01178,
       "shrink_alpha": 0.665,
@@ -62682,8 +62762,8 @@
    "utc_date": "2026-09-12T23:30:00Z"
   }
  ],
- "generated_at": "2026-09-10T17:11:54Z",
+ "generated_at": "2026-09-11T03:10:43Z",
  "schema_version": 1,
- "silence_count": 21,
- "total": 47
+ "silence_count": 22,
+ "total": 48
 }
