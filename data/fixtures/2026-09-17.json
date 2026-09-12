@@ -10,35 +10,35 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 85,
+     "S_min": 84,
      "p_min": 87,
      "quota_min": 11,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 3,
-    "truncated_mass": 1.974e-09
+    "truncated_mass": 1.923e-09
    },
    "expected_goals": {
-    "away": 0.666,
-    "home": 1.334
+    "away": 0.677,
+    "home": 1.331
    },
    "half_time": {
-    "ht_over_0.5": 0.581,
-    "ht_over_1.5": 0.2165,
-    "ht_over_2.5": 0.058,
-    "ht_under_0.5": 0.419,
-    "ht_under_1.5": 0.7835,
-    "ht_under_2.5": 0.942,
-    "htft_11": 0.3087,
-    "htft_12": 0.0078,
-    "htft_1X": 0.0388,
-    "htft_21": 0.0178,
-    "htft_22": 0.0957,
-    "htft_2X": 0.0388,
-    "htft_X1": 0.2021,
-    "htft_X2": 0.0827,
-    "htft_XX": 0.2076
+    "ht_over_0.5": 0.5824,
+    "ht_over_1.5": 0.2177,
+    "ht_over_2.5": 0.0585,
+    "ht_under_0.5": 0.4176,
+    "ht_under_1.5": 0.7823,
+    "ht_under_2.5": 0.9415,
+    "htft_11": 0.306,
+    "htft_12": 0.008,
+    "htft_1X": 0.0392,
+    "htft_21": 0.0179,
+    "htft_22": 0.0978,
+    "htft_2X": 0.0392,
+    "htft_X1": 0.2007,
+    "htft_X2": 0.0841,
+    "htft_XX": 0.207
    },
    "home": {
     "crest": "https://crests.football-data.org/90.png",
@@ -83,57 +83,71 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.5593,
-    "band_p95": 0.7336,
+    "band_p5": 0.5624,
+    "band_p95": 0.7278,
     "cluster_members": [],
     "family": "btts",
     "key": "btts_no",
     "label": "Non entrambe segnano",
-    "p": 0.5823,
-    "p_raw": 0.6474,
-    "reference": 0.4492,
+    "p": 0.5819,
+    "p_raw": 0.6438,
+    "reference": 0.4496,
     "runners_up": [
      {
-      "band_p5": 0.4692,
+      "band_p5": 0.4674,
       "band_p95": 0.6406,
       "family": "combo_dc",
       "key": "combodc_1x_under_2.5",
       "label": "1X + Under 2.5",
-      "p": 0.5029,
-      "p_raw": 0.5551,
-      "reference": 0.3844,
-      "score": 0.02889,
-      "shrink_alpha": 0.6945,
-      "sigma": 0.0546
+      "p": 0.5022,
+      "p_raw": 0.5514,
+      "reference": 0.3851,
+      "score": 0.028185,
+      "shrink_alpha": 0.7042,
+      "sigma": 0.0533
      },
      {
-      "band_p5": 0.5599,
-      "band_p95": 0.7751,
+      "band_p5": 0.5691,
+      "band_p95": 0.7749,
       "family": "over_under",
       "key": "under_2.5",
       "label": "Under 2.5",
-      "p": 0.5731,
-      "p_raw": 0.677,
-      "reference": 0.5008,
-      "score": 0.010482,
-      "shrink_alpha": 0.4102,
-      "sigma": 0.0676
+      "p": 0.5785,
+      "p_raw": 0.6746,
+      "prezzo": 1.58,
+      "reference": 0.5014,
+      "score": 0.011942,
+      "shrink_alpha": 0.445,
+      "sigma": 0.063
+     },
+     {
+      "band_p5": 0.5691,
+      "band_p95": 0.7749,
+      "family": "multigoal",
+      "key": "mg_0_2",
+      "label": "Multigol 0-2",
+      "p": 0.5664,
+      "p_raw": 0.6746,
+      "reference": 0.5014,
+      "score": 0.008475,
+      "shrink_alpha": 0.3752,
+      "sigma": 0.063
      }
     ],
-    "score": 0.035576,
-    "shrink_alpha": 0.6714,
-    "sigma": 0.0514
+    "score": 0.035187,
+    "shrink_alpha": 0.6816,
+    "sigma": 0.0502
    },
    "raw_probabilities": {
-    "1x2_away": 0.1884,
-    "1x2_draw": 0.2859,
-    "1x2_home": 0.5256,
-    "btts_yes": 0.3526,
-    "over_2.5": 0.323,
-    "under_2.5": 0.677
+    "1x2_away": 0.1922,
+    "1x2_draw": 0.2855,
+    "1x2_home": 0.5223,
+    "btts_yes": 0.3562,
+    "over_2.5": 0.3254,
+    "under_2.5": 0.6746
    },
    "reasons": [
-    "Gol attesi: Real Betis Balompié 1.33, Getafe CF 0.67 (totale 2.00).",
+    "Gol attesi: Real Betis Balompié 1.33, Getafe CF 0.68 (totale 2.01).",
     "Non entrambe segnano: 58 su 100, 13 punti sopra la media di riferimento (45 su 100).",
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
@@ -151,35 +165,35 @@
    "competition": "PD",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 93,
+     "S_min": 94,
      "p_min": 87,
      "quota_min": 9,
-     "sigma_max": 51
+     "sigma_max": 55
     },
     "n_candidates": 114,
     "n_clusters": 1,
-    "truncated_mass": 7.093e-09
+    "truncated_mass": 1.148e-08
    },
    "expected_goals": {
-    "away": 1.488,
-    "home": 0.329
+    "away": 1.551,
+    "home": 0.326
    },
    "half_time": {
-    "ht_over_0.5": 0.5463,
-    "ht_over_1.5": 0.1878,
-    "ht_over_2.5": 0.0461,
-    "ht_under_0.5": 0.4537,
-    "ht_under_1.5": 0.8122,
-    "ht_under_2.5": 0.9539,
-    "htft_11": 0.0378,
-    "htft_12": 0.0124,
-    "htft_1X": 0.0228,
-    "htft_21": 0.0022,
-    "htft_22": 0.4054,
-    "htft_2X": 0.0228,
-    "htft_X1": 0.0392,
-    "htft_X2": 0.2506,
-    "htft_XX": 0.2069
+    "ht_over_0.5": 0.5579,
+    "ht_over_1.5": 0.1971,
+    "ht_over_2.5": 0.0498,
+    "ht_under_0.5": 0.4421,
+    "ht_under_1.5": 0.8029,
+    "ht_under_2.5": 0.9502,
+    "htft_11": 0.0355,
+    "htft_12": 0.0128,
+    "htft_1X": 0.0223,
+    "htft_21": 0.0021,
+    "htft_22": 0.4197,
+    "htft_2X": 0.0223,
+    "htft_X1": 0.0367,
+    "htft_X2": 0.2523,
+    "htft_XX": 0.1963
    },
    "home": {
     "crest": "https://crests.football-data.org/84.png",
@@ -224,30 +238,30 @@
    },
    "phase": "preliminary",
    "prediction": {
-    "band_p5": 0.7108,
-    "band_p95": 0.9924,
+    "band_p5": 0.7272,
+    "band_p95": 0.9928,
     "cluster_members": [],
     "family": "handicap_eu",
     "key": "eh_-1_away",
     "label": "Handicap -1 ospite",
-    "p": 0.7388,
-    "p_raw": 0.9123,
-    "reference": 0.5391,
+    "p": 0.7365,
+    "p_raw": 0.9143,
+    "reference": 0.5381,
     "runners_up": [],
-    "score": 0.084466,
-    "shrink_alpha": 0.5351,
-    "sigma": 0.0896
+    "score": 0.083302,
+    "shrink_alpha": 0.5275,
+    "sigma": 0.091
    },
    "raw_probabilities": {
-    "1x2_away": 0.6384,
-    "1x2_draw": 0.274,
-    "1x2_home": 0.0877,
-    "btts_yes": 0.1861,
-    "over_2.5": 0.2792,
-    "under_2.5": 0.7208
+    "1x2_away": 0.6528,
+    "1x2_draw": 0.2615,
+    "1x2_home": 0.0857,
+    "btts_yes": 0.1869,
+    "over_2.5": 0.2935,
+    "under_2.5": 0.7065
    },
    "reasons": [
-    "Gol attesi: Málaga CF 0.33, Villarreal CF 1.49 (totale 1.82).",
+    "Gol attesi: Málaga CF 0.33, Villarreal CF 1.55 (totale 1.88).",
     "Handicap -1 ospite: 74 su 100, 20 punti sopra la media di riferimento (54 su 100).",
     "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
    ],
@@ -257,7 +271,7 @@
    "utc_date": "2026-09-17T19:30:00Z"
   }
  ],
- "generated_at": "2026-09-11T10:01:01Z",
+ "generated_at": "2026-09-12T03:10:48Z",
  "schema_version": 1,
  "silence_count": 0,
  "total": 2
