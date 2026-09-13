@@ -4,17 +4,17 @@
       "buckets": {
         "0.50-0.65": {
           "enough": true,
-          "hit_rate": 0.6234,
-          "hits": 48,
-          "mean_p": 0.5698,
-          "n": 77
+          "hit_rate": 0.6136,
+          "hits": 54,
+          "mean_p": 0.5712,
+          "n": 88
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7759,
-          "hits": 45,
-          "mean_p": 0.7127,
-          "n": 58
+          "hit_rate": 0.7344,
+          "hits": 47,
+          "mean_p": 0.7119,
+          "n": 64
         },
         "0.80-1.00": {
           "enough": false,
@@ -24,28 +24,28 @@
           "n": 8
         }
       },
-      "calibration_gap": -0.06014,
-      "hit_rate": 0.6993,
-      "n": 143,
-      "skill_declared_mean": 0.06359,
-      "skill_realized_mean": 0.12373,
-      "skill_realized_se": 0.0313
+      "calibration_gap": -0.04654,
+      "hit_rate": 0.675,
+      "n": 160,
+      "skill_declared_mean": 0.06246,
+      "skill_realized_mean": 0.109,
+      "skill_realized_se": 0.0298
     },
     "preliminary": {
       "buckets": {
         "0.50-0.65": {
           "enough": true,
-          "hit_rate": 0.5882,
-          "hits": 30,
-          "mean_p": 0.5847,
-          "n": 51
+          "hit_rate": 0.5652,
+          "hits": 39,
+          "mean_p": 0.5844,
+          "n": 69
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7667,
-          "hits": 69,
-          "mean_p": 0.727,
-          "n": 90
+          "hit_rate": 0.73,
+          "hits": 73,
+          "mean_p": 0.7262,
+          "n": 100
         },
         "0.80-1.00": {
           "enough": true,
@@ -55,30 +55,30 @@
           "n": 84
         }
       },
-      "calibration_gap": -0.02714,
-      "hit_rate": 0.7689,
-      "n": 225,
-      "skill_declared_mean": 0.05933,
-      "skill_realized_mean": 0.08648,
-      "skill_realized_se": 0.02195
+      "calibration_gap": -0.01487,
+      "hit_rate": 0.7352,
+      "n": 253,
+      "skill_declared_mean": 0.05787,
+      "skill_realized_mean": 0.07274,
+      "skill_realized_se": 0.0207
     }
   },
-  "generated_at": "2026-09-12T03:09:39Z",
+  "generated_at": "2026-09-13T03:09:36Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.6094,
-        "hits": 78,
-        "mean_p": 0.5757,
-        "n": 128
+        "hit_rate": 0.5924,
+        "hits": 93,
+        "mean_p": 0.577,
+        "n": 157
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.7703,
-        "hits": 114,
-        "mean_p": 0.7214,
-        "n": 148
+        "hit_rate": 0.7317,
+        "hits": 120,
+        "mean_p": 0.7206,
+        "n": 164
       },
       "0.80-1.00": {
         "enough": true,
@@ -88,15 +88,15 @@
         "n": 92
       }
     },
-    "calibration_gap": -0.03997,
-    "hit_rate": 0.7418,
-    "n": 368,
-    "skill_declared_mean": 0.06099,
-    "skill_realized_mean": 0.10095,
-    "skill_realized_se": 0.01811
+    "calibration_gap": -0.02714,
+    "hit_rate": 0.7119,
+    "n": 413,
+    "skill_declared_mean": 0.05965,
+    "skill_realized_mean": 0.08679,
+    "skill_realized_se": 0.01715
   },
   "progress_to_500": {
-    "published": 449,
+    "published": 463,
     "target": 500
   },
   "schema_version": 1,
@@ -104,30 +104,30 @@
     "definitive": {
       "by_reason": {
         "S_min": 64,
-        "fuori_modello": 4,
-        "quota_min": 14
+        "fuori_modello": 5,
+        "quota_min": 15
       },
-      "n": 242,
-      "rate": 0.3388,
-      "silent": 82
+      "n": 254,
+      "rate": 0.3307,
+      "silent": 84
     },
     "preliminary": {
       "by_reason": {
-        "S_min": 112,
+        "S_min": 115,
         "fuori_modello": 6,
         "quota_min": 13
       },
-      "n": 420,
-      "rate": 0.3119,
-      "silent": 131
+      "n": 427,
+      "rate": 0.3138,
+      "silent": 134
     }
   },
   "transitions": {
-    "changed": 107,
-    "confirmed": 23,
+    "changed": 115,
+    "confirmed": 24,
     "first": 1,
-    "prediction_to_silence": 27,
-    "silence_to_prediction": 30,
-    "still_silent": 54
+    "prediction_to_silence": 28,
+    "silence_to_prediction": 31,
+    "still_silent": 55
   }
 }
