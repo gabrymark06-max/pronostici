@@ -4,17 +4,17 @@
       "buckets": {
         "0.50-0.65": {
           "enough": true,
-          "hit_rate": 0.59,
+          "hit_rate": 0.5842,
           "hits": 59,
-          "mean_p": 0.5705,
-          "n": 100
+          "mean_p": 0.5702,
+          "n": 101
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7424,
-          "hits": 49,
-          "mean_p": 0.7114,
-          "n": 66
+          "hit_rate": 0.7463,
+          "hits": 50,
+          "mean_p": 0.7115,
+          "n": 67
         },
         "0.80-1.00": {
           "enough": false,
@@ -24,28 +24,28 @@
           "n": 9
         }
       },
-      "calibration_gap": -0.04903,
-      "hit_rate": 0.6629,
-      "n": 175,
-      "skill_declared_mean": 0.066,
-      "skill_realized_mean": 0.11503,
-      "skill_realized_se": 0.02982
+      "calibration_gap": -0.04854,
+      "hit_rate": 0.661,
+      "n": 177,
+      "skill_declared_mean": 0.06564,
+      "skill_realized_mean": 0.11418,
+      "skill_realized_se": 0.02954
     },
     "preliminary": {
       "buckets": {
         "0.50-0.65": {
           "enough": true,
-          "hit_rate": 0.6,
-          "hits": 51,
-          "mean_p": 0.5828,
-          "n": 85
+          "hit_rate": 0.5977,
+          "hits": 52,
+          "mean_p": 0.5813,
+          "n": 87
         },
         "0.65-0.80": {
           "enough": true,
-          "hit_rate": 0.7222,
-          "hits": 78,
-          "mean_p": 0.7257,
-          "n": 108
+          "hit_rate": 0.7273,
+          "hits": 80,
+          "mean_p": 0.7262,
+          "n": 110
         },
         "0.80-1.00": {
           "enough": true,
@@ -55,30 +55,30 @@
           "n": 84
         }
       },
-      "calibration_gap": -0.02351,
-      "hit_rate": 0.7329,
-      "n": 277,
-      "skill_declared_mean": 0.0586,
-      "skill_realized_mean": 0.08212,
-      "skill_realized_se": 0.01985
+      "calibration_gap": -0.02583,
+      "hit_rate": 0.7331,
+      "n": 281,
+      "skill_declared_mean": 0.05894,
+      "skill_realized_mean": 0.08477,
+      "skill_realized_se": 0.01973
     }
   },
-  "generated_at": "2026-09-15T03:10:52Z",
+  "generated_at": "2026-09-16T03:09:32Z",
   "live": {
     "buckets": {
       "0.50-0.65": {
         "enough": true,
-        "hit_rate": 0.5946,
-        "hits": 110,
-        "mean_p": 0.5762,
-        "n": 185
+        "hit_rate": 0.5904,
+        "hits": 111,
+        "mean_p": 0.5753,
+        "n": 188
       },
       "0.65-0.80": {
         "enough": true,
-        "hit_rate": 0.7299,
-        "hits": 127,
-        "mean_p": 0.7203,
-        "n": 174
+        "hit_rate": 0.7345,
+        "hits": 130,
+        "mean_p": 0.7206,
+        "n": 177
       },
       "0.80-1.00": {
         "enough": true,
@@ -88,28 +88,28 @@
         "n": 93
       }
     },
-    "calibration_gap": -0.03339,
-    "hit_rate": 0.7058,
-    "n": 452,
-    "skill_declared_mean": 0.06147,
-    "skill_realized_mean": 0.09486,
-    "skill_realized_se": 0.01677
+    "calibration_gap": -0.03461,
+    "hit_rate": 0.7052,
+    "n": 458,
+    "skill_declared_mean": 0.06153,
+    "skill_realized_mean": 0.09614,
+    "skill_realized_se": 0.01663
   },
   "progress_to_500": {
-    "published": 518,
+    "published": 521,
     "target": 500
   },
   "schema_version": 1,
   "silence": {
     "definitive": {
       "by_reason": {
-        "S_min": 64,
+        "S_min": 65,
         "fuori_modello": 5,
         "quota_min": 15
       },
-      "n": 261,
-      "rate": 0.3218,
-      "silent": 84
+      "n": 265,
+      "rate": 0.3208,
+      "silent": 85
     },
     "preliminary": {
       "by_reason": {
@@ -123,11 +123,11 @@
     }
   },
   "transitions": {
-    "changed": 120,
+    "changed": 122,
     "confirmed": 25,
     "first": 1,
     "prediction_to_silence": 28,
-    "silence_to_prediction": 32,
-    "still_silent": 55
+    "silence_to_prediction": 33,
+    "still_silent": 56
   }
 }
