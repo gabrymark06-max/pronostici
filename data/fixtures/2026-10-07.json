@@ -1,0 +1,415 @@
+{
+ "date": "2026-10-07",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/4364.png",
+    "name": "Mirassol FC",
+    "tla": "MIR"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 86,
+     "quota_min": 7,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 2.714e-09
+   },
+   "expected_goals": {
+    "away": 1.151,
+    "home": 1.355
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6745,
+    "ht_over_1.5": 0.3092,
+    "ht_over_2.5": 0.1042,
+    "ht_under_0.5": 0.3255,
+    "ht_under_1.5": 0.6908,
+    "ht_under_2.5": 0.8958,
+    "htft_11": 0.2438,
+    "htft_12": 0.0178,
+    "htft_1X": 0.0502,
+    "htft_21": 0.0218,
+    "htft_22": 0.1806,
+    "htft_2X": 0.0502,
+    "htft_X1": 0.1487,
+    "htft_X2": 0.1192,
+    "htft_XX": 0.1676
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4286.png",
+    "name": "RB Bragantino",
+    "tla": "RBB"
+   },
+   "match_id": 555022,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3198,
+    "1x2_draw": 0.2657,
+    "1x2_home": 0.4145,
+    "btts_yes": 0.4984,
+    "over_2.5": 0.4554,
+    "under_2.5": 0.5446
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: RB Bragantino 1.35, Mirassol FC 1.15 (totale 2.51)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-07T22:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1779.png",
+    "name": "SC Corinthians Paulista",
+    "tla": "COR"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 108,
+     "p_min": 88,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 1,
+    "truncated_mass": 1.091e-09
+   },
+   "expected_goals": {
+    "away": 1.036,
+    "home": 1.258
+   },
+   "half_time": {
+    "ht_over_0.5": 0.6422,
+    "ht_over_1.5": 0.2745,
+    "ht_over_2.5": 0.0855,
+    "ht_under_0.5": 0.3578,
+    "ht_under_1.5": 0.7255,
+    "ht_under_2.5": 0.9145,
+    "htft_11": 0.241,
+    "htft_12": 0.0153,
+    "htft_1X": 0.0482,
+    "htft_21": 0.0194,
+    "htft_22": 0.1703,
+    "htft_2X": 0.0482,
+    "htft_X1": 0.1536,
+    "htft_X2": 0.1186,
+    "htft_XX": 0.1855
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/6684.png",
+    "name": "SC Internacional",
+    "tla": "SCI"
+   },
+   "match_id": 555025,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5308,
+    "band_p95": 0.7436,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_under_1.5",
+    "label": "Casa Under 1.5",
+    "p": 0.6178,
+    "p_raw": 0.6429,
+    "reference": 0.5523,
+    "runners_up": [],
+    "score": 0.008764,
+    "shrink_alpha": 0.7227,
+    "sigma": 0.065
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.3057,
+    "1x2_draw": 0.2801,
+    "1x2_home": 0.4142,
+    "btts_yes": 0.4549,
+    "over_2.5": 0.4015,
+    "under_2.5": 0.5985
+   },
+   "reasons": [
+    "Gol attesi: SC Internacional 1.26, SC Corinthians Paulista 1.04 (totale 2.29).",
+    "Casa Under 1.5: 62 su 100, 7 punti sopra la media di riferimento (55 su 100).",
+    "Banda di incertezza: fra 53 e 74 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-07T22:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1767.png",
+    "name": "Grêmio FBPA",
+    "tla": "FBP"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 114,
+     "p_min": 86,
+     "quota_min": 7,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 4.949e-09
+   },
+   "expected_goals": {
+    "away": 1.21,
+    "home": 1.426
+   },
+   "half_time": {
+    "ht_over_0.5": 0.693,
+    "ht_over_1.5": 0.3305,
+    "ht_over_2.5": 0.1164,
+    "ht_under_0.5": 0.307,
+    "ht_under_1.5": 0.6695,
+    "ht_under_2.5": 0.8836,
+    "htft_11": 0.2493,
+    "htft_12": 0.0191,
+    "htft_1X": 0.0511,
+    "htft_21": 0.0235,
+    "htft_22": 0.1831,
+    "htft_2X": 0.0511,
+    "htft_X1": 0.1475,
+    "htft_X2": 0.1176,
+    "htft_XX": 0.1578
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/4287.png",
+    "name": "Clube do Remo",
+    "tla": "CRE"
+   },
+   "match_id": 555027,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.3238,
+    "1x2_draw": 0.2562,
+    "1x2_home": 0.42,
+    "btts_yes": 0.5187,
+    "over_2.5": 0.4866,
+    "under_2.5": 0.5134
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: Clube do Remo 1.43, Grêmio FBPA 1.21 (totale 2.64)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-07T22:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1772_large.png",
+    "name": "Chapecoense AF",
+    "tla": "CHA"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 112,
+     "p_min": 87,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 0,
+    "truncated_mass": 4.397e-08
+   },
+   "expected_goals": {
+    "away": 0.964,
+    "home": 1.743
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7026,
+    "ht_over_1.5": 0.342,
+    "ht_over_2.5": 0.1233,
+    "ht_under_0.5": 0.2974,
+    "ht_under_1.5": 0.658,
+    "ht_under_2.5": 0.8767,
+    "htft_11": 0.3476,
+    "htft_12": 0.013,
+    "htft_1X": 0.0458,
+    "htft_21": 0.0275,
+    "htft_22": 0.1139,
+    "htft_2X": 0.0458,
+    "htft_X1": 0.1819,
+    "htft_X2": 0.0803,
+    "htft_XX": 0.1443
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1782.png",
+    "name": "EC Vitória",
+    "tla": "VIT"
+   },
+   "match_id": 555029,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": null,
+   "raw_probabilities": {
+    "1x2_away": 0.2122,
+    "1x2_draw": 0.2341,
+    "1x2_home": 0.5537,
+    "btts_yes": 0.498,
+    "over_2.5": 0.5038,
+    "under_2.5": 0.4962
+   },
+   "reasons": [
+    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
+    "Gol attesi: EC Vitória 1.74, Chapecoense AF 0.96 (totale 2.71)."
+   ],
+   "silence": {
+    "reason": "S_min"
+   },
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-07T23:00:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1780.png",
+    "name": "CR Vasco da Gama",
+    "tla": "VAS"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 95,
+     "p_min": 88,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 4,
+    "truncated_mass": 2.925e-07
+   },
+   "expected_goals": {
+    "away": 1.097,
+    "home": 2.063
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7572,
+    "ht_over_1.5": 0.4136,
+    "ht_over_2.5": 0.1703,
+    "ht_under_0.5": 0.2428,
+    "ht_under_1.5": 0.5864,
+    "ht_under_2.5": 0.8297,
+    "htft_11": 0.3842,
+    "htft_12": 0.0148,
+    "htft_1X": 0.0461,
+    "htft_21": 0.0337,
+    "htft_22": 0.1089,
+    "htft_2X": 0.0461,
+    "htft_X1": 0.1781,
+    "htft_X2": 0.0717,
+    "htft_XX": 0.1164
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1770.png",
+    "name": "Botafogo FR",
+    "tla": "BOT"
+   },
+   "match_id": 555021,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.4862,
+    "band_p95": 0.7193,
+    "cluster_members": [],
+    "family": "team_goals",
+    "key": "hg_over_1.5",
+    "label": "Casa Over 1.5",
+    "p": 0.555,
+    "p_raw": 0.6056,
+    "reference": 0.4477,
+    "runners_up": [
+     {
+      "band_p5": 0.4813,
+      "band_p95": 0.7157,
+      "family": "1x2",
+      "key": "1x2_home",
+      "label": "Vittoria casa",
+      "p": 0.5626,
+      "p_raw": 0.5939,
+      "reference": 0.4745,
+      "score": 0.015549,
+      "shrink_alpha": 0.7375,
+      "sigma": 0.0709
+     },
+     {
+      "band_p5": 0.5747,
+      "band_p95": 0.737,
+      "family": "combo_dc",
+      "key": "combodc_12_over_1.5",
+      "label": "12 + Over 1.5",
+      "p": 0.6253,
+      "p_raw": 0.6556,
+      "reference": 0.5426,
+      "score": 0.013973,
+      "shrink_alpha": 0.7314,
+      "sigma": 0.0499
+     },
+     {
+      "band_p5": 0.566,
+      "band_p95": 0.7622,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.626,
+      "p_raw": 0.6676,
+      "reference": 0.5518,
+      "score": 0.011282,
+      "shrink_alpha": 0.6403,
+      "sigma": 0.0617
+     }
+    ],
+    "score": 0.023115,
+    "shrink_alpha": 0.6793,
+    "sigma": 0.0721
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.199,
+    "1x2_draw": 0.2071,
+    "1x2_home": 0.5939,
+    "btts_yes": 0.5734,
+    "over_2.5": 0.6077,
+    "under_2.5": 0.3923
+   },
+   "reasons": [
+    "Gol attesi: Botafogo FR 2.06, CR Vasco da Gama 1.10 (totale 3.16).",
+    "Casa Over 1.5: 55 su 100, 11 punti sopra la media di riferimento (45 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-07T23:30:00Z"
+  }
+ ],
+ "generated_at": "2026-10-01T09:44:55Z",
+ "schema_version": 1,
+ "silence_count": 3,
+ "total": 5
+}
