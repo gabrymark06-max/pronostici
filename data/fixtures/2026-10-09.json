@@ -1,0 +1,212 @@
+{
+ "date": "2026-10-09",
+ "fixtures": [
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/4241.png",
+    "name": "Coritiba FBC",
+    "tla": "COR"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 105,
+     "p_min": 88,
+     "quota_min": 9,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 2,
+    "truncated_mass": 2.629e-07
+   },
+   "expected_goals": {
+    "away": 0.968,
+    "home": 2.043
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7405,
+    "ht_over_1.5": 0.3905,
+    "ht_over_2.5": 0.1544,
+    "ht_under_0.5": 0.2595,
+    "ht_under_1.5": 0.6095,
+    "ht_under_2.5": 0.8456,
+    "htft_11": 0.4029,
+    "htft_12": 0.0122,
+    "htft_1X": 0.0432,
+    "htft_21": 0.0317,
+    "htft_22": 0.0936,
+    "htft_2X": 0.0432,
+    "htft_X1": 0.1877,
+    "htft_X2": 0.0651,
+    "htft_XX": 0.1204
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1765.png",
+    "name": "Fluminense FC",
+    "tla": "FLU"
+   },
+   "match_id": 555024,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.47,
+    "band_p95": 0.7627,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.567,
+    "p_raw": 0.6176,
+    "reference": 0.4745,
+    "runners_up": [
+     {
+      "band_p5": 0.4447,
+      "band_p95": 0.7492,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5326,
+      "p_raw": 0.5975,
+      "reference": 0.4477,
+      "score": 0.014481,
+      "shrink_alpha": 0.5669,
+      "sigma": 0.0917
+     }
+    ],
+    "score": 0.017158,
+    "shrink_alpha": 0.6464,
+    "sigma": 0.0879
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1764,
+    "1x2_draw": 0.206,
+    "1x2_home": 0.6176,
+    "btts_yes": 0.5283,
+    "over_2.5": 0.5739,
+    "under_2.5": 0.4261
+   },
+   "reasons": [
+    "Gol attesi: Fluminense FC 2.04, Coritiba FBC 0.97 (totale 3.01).",
+    "Vittoria casa: 57 su 100, 9 punti sopra la media di riferimento (47 su 100).",
+    "Stima prudente: l'incertezza è alta, e il valore mostrato è già riportato verso la media."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-09T00:30:00Z"
+  },
+  {
+   "away": {
+    "crest": "https://crests.football-data.org/1777.png",
+    "name": "EC Bahia",
+    "tla": "BAH"
+   },
+   "competition": "BSA",
+   "diagnostics": {
+    "filter_bites": {
+     "S_min": 95,
+     "p_min": 88,
+     "quota_min": 10,
+     "sigma_max": 0
+    },
+    "n_candidates": 114,
+    "n_clusters": 3,
+    "truncated_mass": 1.577e-07
+   },
+   "expected_goals": {
+    "away": 0.746,
+    "home": 1.952
+   },
+   "half_time": {
+    "ht_over_0.5": 0.7014,
+    "ht_over_1.5": 0.3405,
+    "ht_over_2.5": 0.1224,
+    "ht_under_0.5": 0.2986,
+    "ht_under_1.5": 0.6595,
+    "ht_under_2.5": 0.8776,
+    "htft_11": 0.4262,
+    "htft_12": 0.0081,
+    "htft_1X": 0.0376,
+    "htft_21": 0.0268,
+    "htft_22": 0.0714,
+    "htft_2X": 0.0376,
+    "htft_X1": 0.2049,
+    "htft_X2": 0.0551,
+    "htft_XX": 0.1324
+   },
+   "home": {
+    "crest": "https://crests.football-data.org/1769.png",
+    "name": "SE Palmeiras",
+    "tla": "PAL"
+   },
+   "match_id": 555026,
+   "matchday": 29,
+   "model_weight": 1.0,
+   "phase": "preliminary",
+   "prediction": {
+    "band_p5": 0.5393,
+    "band_p95": 0.756,
+    "cluster_members": [],
+    "family": "1x2",
+    "key": "1x2_home",
+    "label": "Vittoria casa",
+    "p": 0.6114,
+    "p_raw": 0.6541,
+    "reference": 0.4745,
+    "runners_up": [
+     {
+      "band_p5": 0.4428,
+      "band_p95": 0.6984,
+      "family": "team_goals",
+      "key": "hg_over_1.5",
+      "label": "Casa Over 1.5",
+      "p": 0.5283,
+      "p_raw": 0.5751,
+      "reference": 0.4477,
+      "score": 0.01307,
+      "shrink_alpha": 0.6329,
+      "sigma": 0.0799
+     },
+     {
+      "band_p5": 0.5433,
+      "band_p95": 0.7585,
+      "family": "combo_dc",
+      "key": "combodc_1x_over_1.5",
+      "label": "1X + Over 1.5",
+      "p": 0.6167,
+      "p_raw": 0.6588,
+      "reference": 0.5518,
+      "score": 0.008613,
+      "shrink_alpha": 0.6061,
+      "sigma": 0.0663
+     }
+    ],
+    "score": 0.037682,
+    "shrink_alpha": 0.762,
+    "sigma": 0.0665
+   },
+   "raw_probabilities": {
+    "1x2_away": 0.1377,
+    "1x2_draw": 0.2082,
+    "1x2_home": 0.6541,
+    "btts_yes": 0.4446,
+    "over_2.5": 0.5025,
+    "under_2.5": 0.4975
+   },
+   "reasons": [
+    "Gol attesi: SE Palmeiras 1.95, EC Bahia 0.75 (totale 2.70).",
+    "Vittoria casa: 61 su 100, 14 punti sopra la media di riferimento (47 su 100).",
+    "Banda di incertezza: fra 54 e 76 su 100."
+   ],
+   "silence": null,
+   "source": "model_only",
+   "stage": "REGULAR_SEASON",
+   "utc_date": "2026-10-09T00:30:00Z"
+  }
+ ],
+ "generated_at": "2026-10-02T09:19:27Z",
+ "schema_version": 1,
+ "silence_count": 0,
+ "total": 2
+}
