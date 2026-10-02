@@ -10,35 +10,35 @@
    "competition": "BSA",
    "diagnostics": {
     "filter_bites": {
-     "S_min": 113,
-     "p_min": 87,
-     "quota_min": 8,
+     "S_min": 114,
+     "p_min": 86,
+     "quota_min": 7,
      "sigma_max": 0
     },
     "n_candidates": 114,
     "n_clusters": 0,
-    "truncated_mass": 4.903e-09
+    "truncated_mass": 8.665e-09
    },
    "expected_goals": {
-    "away": 0.908,
-    "home": 1.441
+    "away": 1.043,
+    "home": 1.512
    },
    "half_time": {
-    "ht_over_0.5": 0.6509,
-    "ht_over_1.5": 0.2835,
-    "ht_over_2.5": 0.0902,
-    "ht_under_0.5": 0.3491,
-    "ht_under_1.5": 0.7165,
-    "ht_under_2.5": 0.9098,
-    "htft_11": 0.2971,
-    "htft_12": 0.0125,
-    "htft_1X": 0.0458,
-    "htft_21": 0.022,
-    "htft_22": 0.1299,
-    "htft_2X": 0.0458,
-    "htft_X1": 0.1759,
-    "htft_X2": 0.095,
-    "htft_XX": 0.1761
+    "ht_over_0.5": 0.6817,
+    "ht_over_1.5": 0.3174,
+    "ht_over_2.5": 0.1088,
+    "ht_under_0.5": 0.3183,
+    "ht_under_1.5": 0.6826,
+    "ht_under_2.5": 0.8912,
+    "htft_11": 0.29,
+    "htft_12": 0.0153,
+    "htft_1X": 0.0486,
+    "htft_21": 0.0243,
+    "htft_22": 0.1459,
+    "htft_2X": 0.0486,
+    "htft_X1": 0.1663,
+    "htft_X2": 0.1002,
+    "htft_XX": 0.1608
    },
    "home": {
     "crest": "https://crests.football-data.org/1766.png",
@@ -47,22 +47,13 @@
    },
    "match_id": 554940,
    "matchday": 21,
-   "model_weight": 1.0,
+   "model_weight": 0.35,
    "odds": {
-    "fetched": "network",
-    "market_p": {
-     "1x2_away": 0.26537,
-     "1x2_draw": 0.26871,
-     "1x2_home": 0.46592,
-     "dc_12": 0.73129,
-     "dc_1x": 0.73463,
-     "dc_x2": 0.53408,
-     "eh_-1_away": 0.53408,
-     "eh_1_home": 0.73463,
-     "mg_0_2": 0.49336,
-     "over_2.5": 0.50664,
-     "under_2.5": 0.49336
+    "devig": {
+     "h2h": 1.071,
+     "totals_2.5": 1.105
     },
+    "fetched": "network",
     "markets": [
      "1x2_away",
      "1x2_draw",
@@ -81,29 +72,39 @@
      "under_2.5": 1.87
     }
    },
-   "phase": "preliminary",
+   "phase": "definitive",
    "prediction": null,
+   "previous": {
+    "market_key": null,
+    "market_label": null,
+    "p": null,
+    "phase": "preliminary",
+    "silence_reason": "S_min",
+    "written_at": "2026-09-27T08:55:09Z"
+   },
    "raw_probabilities": {
-    "1x2_away": 0.2403,
-    "1x2_draw": 0.2665,
-    "1x2_home": 0.4932,
-    "btts_yes": 0.4473,
-    "over_2.5": 0.4152,
-    "under_2.5": 0.5848
+    "1x2_away": 0.2622,
+    "1x2_draw": 0.257,
+    "1x2_home": 0.4808,
+    "btts_yes": 0.5034,
+    "over_2.5": 0.4699,
+    "under_2.5": 0.5301
    },
    "reasons": [
-    "Il nostro modello dice quasi esattamente quello che dice già la media del campionato.",
-    "Gol attesi: CA Mineiro 1.44, RB Bragantino 0.91 (totale 2.35)."
+    "Anche con le quote non abbiamo niente da aggiungere su questa partita.",
+    "Il nostro modello dice quasi esattamente quello che dicono già le quote.",
+    "Gol attesi: CA Mineiro 1.51, RB Bragantino 1.04 (totale 2.56)."
    ],
    "silence": {
     "reason": "S_min"
    },
-   "source": "model_only",
+   "source": "blended_with_odds",
    "stage": "REGULAR_SEASON",
+   "transition": "still_silent",
    "utc_date": "2026-10-03T21:30:00Z"
   }
  ],
- "generated_at": "2026-10-02T15:59:19Z",
+ "generated_at": "2026-10-02T15:59:40Z",
  "schema_version": 1,
  "silence_count": 1,
  "total": 1
